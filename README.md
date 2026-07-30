@@ -17,7 +17,7 @@ npm run deploy     # build + publish dist/ to the gh-pages branch
 npm run audit:svg  # check every diagram's text fits its boxes
 ```
 
-Hosted on GitHub Pages at `/lessons/` (see `base` in `vite.config.js` — change it
+Hosted on GitHub Pages at `/classroom/` (see `base` in `vite.config.js` — change it
 if you rename the repo).
 
 ## How it's organised
