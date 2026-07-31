@@ -9,6 +9,7 @@ import CompareLayout from './CompareLayout.jsx'
 import StackLayout from './StackLayout.jsx'
 import StepsLayout from './StepsLayout.jsx'
 import CalloutLayout from './CalloutLayout.jsx'
+import GalleryLayout from './GalleryLayout.jsx'
 
 export const LAYOUTS = {
   hero: HeroLayout,
@@ -19,6 +20,7 @@ export const LAYOUTS = {
   stack: StackLayout,
   steps: StepsLayout,
   callout: CalloutLayout,
+  gallery: GalleryLayout,
 }
 
 export function getLayout(name) {

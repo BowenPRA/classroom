@@ -30,8 +30,10 @@ export function Ic({ name, ...props }) {
 
 // ── Typed note cards (the `.note-*` boxes) ───────────────────────────────────
 /**
- * A typed note card. `note` = { tone, text, badge, badgeVn, icon }.
- * `badge: false` hides the badge; otherwise a tone default is used.
+ * A typed note card, shaped like a Cambridge Learner's Book panel: a solid
+ * colour header strip over a tinted body with a matching hairline border.
+ * `note` = { tone, text, badge, badgeVn, icon }. `badge: false` hides the strip.
+ * **Bold** runs inside the body take the tone's key-word colour.
  */
 export function Note({ note, lang = 'en', isDisplayMode = false }) {
   const tone = NOTE_TONES[note.tone] || NOTE_TONES.write
@@ -44,19 +46,18 @@ export function Note({ note, lang = 'en', isDisplayMode = false }) {
   const lines = String(text || '').split('\n').filter((l) => l.trim())
 
   return (
-    <div className={`relative rounded-2xl border-2 ${tone.card} ${tone.border} shadow-sm ${isDisplayMode ? 'p-[clamp(1.1rem,1.8vw,1.75rem)]' : 'p-4 sm:p-5'}`}
-      style={{ borderLeftWidth: 6, borderLeftColor: tone.accent }}>
+    <div className={`overflow-hidden rounded-xl border-2 ${tone.border} shadow-sm`}>
       {showBadge && (
-        <div className={`inline-flex items-center gap-1.5 rounded-full text-white font-black uppercase tracking-widest mb-2.5 shadow-sm ${isDisplayMode ? 'text-[clamp(0.65rem,0.95vw,0.95rem)] px-3 py-1' : 'text-[10px] px-2.5 py-1'}`}
+        <div className={`flex items-center gap-2 text-white font-black uppercase tracking-[0.15em] ${isDisplayMode ? 'text-[clamp(0.7rem,1vw,1rem)] px-4 py-2' : 'text-[10px] sm:text-[11px] px-3.5 py-2'}`}
           style={{ backgroundColor: tone.accent }}>
           <Ic name={iconName} className={isDisplayMode ? 'w-4 h-4' : 'w-3.5 h-3.5'} strokeWidth={3} />
           {badgeText}
         </div>
       )}
-      <div className={`${tone.text} font-bold leading-relaxed space-y-2`}>
+      <div className={`${tone.card} ${tone.text} font-semibold leading-relaxed space-y-2 ${isDisplayMode ? 'p-[clamp(1rem,1.7vw,1.6rem)]' : 'p-3.5 sm:p-5'}`}>
         {lines.map((line, i) => (
           <p key={i} className={isDisplayMode ? 'text-[clamp(1.05rem,1.7vw,1.55rem)]' : 'text-[15px] sm:text-base lg:text-lg'}>
-            {parseInlineText(line)}
+            {parseInlineText(line, { strongClass: tone.strong })}
           </p>
         ))}
       </div>
@@ -147,7 +148,9 @@ export function Media({ slide, source, ctx, drawThis = (source || slide).drawThi
           <WidgetErrorBoundary><WidgetRenderer config={src.widget} /></WidgetErrorBoundary>
         </div>
       ) : hasSvg ? (
-        <div className={`w-full h-full flex items-center justify-center ${isDisplayMode ? 'p-6' : 'p-3 sm:p-4'}`} dangerouslySetInnerHTML={{ __html: src.inlineSvg }} />
+        // text-slate-* matters: diagram labels use fill="currentColor", which
+        // would otherwise inherit near-black and vanish on a dark panel.
+        <div className={`w-full h-full flex items-center justify-center text-slate-800 dark:text-slate-100 ${isDisplayMode ? 'p-6' : 'p-3 sm:p-4'}`} dangerouslySetInnerHTML={{ __html: src.inlineSvg }} />
       ) : (
         <img src={src.image} alt={title || 'Diagram'} className={`w-full h-full object-contain ${isDisplayMode ? 'p-4' : 'p-2 sm:p-3'}`} draggable={false} />
       )}

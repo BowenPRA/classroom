@@ -84,6 +84,7 @@ Each slide is a plain object. Set **`layout`** to pick a shape. (Slides with no
 | `stack` | Grid of note cards / checklist | `accent`, `icon`, `title`, `content`, `columns` (1\|2), `notes` — or `variant:'checklist'` + `items` |
 | `steps` | Numbered sequence | `accent`, `icon`, `title`, `content`, `steps: [{text}]`, optional side media, `reveal` |
 | `callout` | Single accent "glass" card | `accent`, `icon`, `eyebrow`, `title`, `content`, `notes`, `reveal` |
+| `gallery` | Grid of picture + key word cards | `accent`, `icon`, `title`, `eyebrow`, `content`, `tone`, `columns` (2\|3\|4), `copy`/`copyLabel`, `items: [{inlineSvg\|image, term, text, tag}]` |
 
 Any field can be suffixed `…Vn` for the Vietnamese version (e.g. `titleVn`,
 `contentVn`, and inside `notes`/`columns`/`card`/`reveal`: `textVn`, `headingVn`,
@@ -94,9 +95,12 @@ Any field can be suffixed `…Vn` for the Vietnamese version (e.g. `titleVn`,
 - **`accent`** — a raw hex (e.g. `'#14b8a6'`) used for chips, borders and icons;
   theme-safe on light and dark. (`hero`/`showcase` title bars can also take a
   `color` like `'bg-[#hex]'`.)
-- **`notes`** — typed "copy this" cards: `{ tone, text, badge?, icon? }`. Tones:
-  `write` (blue), `task` (orange), `plant` (green), `homework` (rose), `theory`
-  (violet), `info` (teal). `badge:false` hides the badge.
+- **`notes`** — typed "copy this" cards, drawn as Learner's Book panels (a solid
+  colour header strip over a tinted body): `{ tone, text, badge?, icon? }`.
+  Tones: `write` (orange — the copy-this-down panel), `task` (purple), `plant`
+  (green), `homework` (red), `theory` (blue), `info` (teal). `badge:false` hides
+  the strip. **Bold** runs inside a note pick up that tone's key-word colour, so
+  writing `**Cell:** the smallest…` prints the term the way the book does.
 - **`reveal`** — a click-to-reveal answer box: `{ label, prompt?, answer }`.
 - **media** — `inlineSvg` (from `diagrams.js`), `widget` (a component), or
   `image` (import a file from the unit's `images/` folder so Vite hashes it and
@@ -113,6 +117,17 @@ Any field can be suffixed `…Vn` for the Vietnamese version (e.g. `titleVn`,
 
 Real photos live in the unit's `images/` folder with a `CREDITS.json` recording
 each source + licence (see `content/y7-science/U01_1/images/`).
+
+### Drawing diagrams
+
+House style (see `content/y7-science/U01_1/diagrams.js`): open every diagram with
+a white plate `<rect>` so it stays legible on light *and* dark slides, outline
+shapes in dark ink with flat pale fills, and set labels in the book's orange
+(`#c25e12`) out in the margins on a thin leader line.
+
+Write label `<text>` **literally** in the template string. The audit only sees
+raw text in the diagram block — anything produced by a `${helper(...)}` call is
+invisible to it, so a helper that emits `<text>` silently opts out of checking.
 
 Run `npm run audit:svg` after editing any diagram — a lesson isn't done until it's
 clean.

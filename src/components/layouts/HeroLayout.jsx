@@ -6,9 +6,11 @@ import { parseInlineText, toHex } from './helpers.jsx'
 
 export default function HeroLayout({ slide: s, ctx }) {
   const { pick, lang, isDisplayMode } = ctx
-  const accent = toHex(s.accent || s.color, '#1cb0f6')
-  const bgClass = s.color && s.color.startsWith('bg-') ? s.color : ''
-  const bgStyle = bgClass ? undefined : { backgroundColor: accent }
+  const accent = toHex(s.accent || s.color, '#0087a8')
+  // Always paint the background inline from the parsed hex. `color: 'bg-[#hex]'`
+  // is kept as a convenience for authors, but relying on the class alone breaks
+  // silently (white text on white) if Tailwind never scanned that file.
+  const bgStyle = { backgroundColor: toHex(s.color || s.accent, accent) }
   const title = pick(s.title, s.titleVn)
   const subtitle = pick(s.subtitle, s.subtitleVn)
   const objective = pick(s.objective, s.objectiveVn)
@@ -19,7 +21,7 @@ export default function HeroLayout({ slide: s, ctx }) {
   const cardBadge = card ? pick(card.badge, card.badgeVn) : null
 
   return (
-    <div className={`flex-1 flex flex-col items-center justify-center text-center text-white overflow-y-auto custom-scrollbar min-h-0 ${bgClass} ${isDisplayMode ? 'p-8 sm:p-12' : 'p-8 sm:p-12'}`} style={bgStyle}>
+    <div className="flex-1 flex flex-col items-center justify-center text-center text-white overflow-y-auto custom-scrollbar min-h-0 p-8 sm:p-12" style={bgStyle}>
       {(brand || s.date) && (
         <div className={`flex items-center justify-center gap-2 flex-wrap ${isDisplayMode ? 'mb-5' : 'mb-4'}`}>
           {brand && (

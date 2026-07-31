@@ -10,7 +10,10 @@ function LessonView() {
   const course = getCourse(courseId)
   const lesson = getLesson(courseId, slug)
   if (!course || !lesson) return <Navigate to="/" replace />
-  return <Deck lesson={lesson} course={course} />
+  // Key by lesson so navigating straight from one deck's URL to another's
+  // remounts at slide 1. Without it the slide index carries over, which lands
+  // you mid-deck — and crashes outright if the new deck has fewer slides.
+  return <Deck key={`${courseId}/${slug}`} lesson={lesson} course={course} />
 }
 
 function PlanView() {

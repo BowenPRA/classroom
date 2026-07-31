@@ -3,7 +3,10 @@ import tailwindcssAnimate from 'tailwindcss-animate'
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'class',
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  // Lesson data files carry Tailwind classes too (e.g. a hero's `color:
+  // 'bg-[#5c2483]'`), so `content/` must be scanned or those arbitrary values
+  // are never generated and the slide renders with no background.
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}', './content/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {

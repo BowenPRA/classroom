@@ -331,7 +331,7 @@ export default function Deck({ lesson, course }) {
                               <WidgetErrorBoundary><WidgetRenderer config={s.widget} /></WidgetErrorBoundary>
                             </div>
                           ) : s.inlineSvg ? (
-                            <div className={`w-full h-full flex items-center justify-center ${isDisplayMode ? 'p-6' : 'p-3 sm:p-4'}`} dangerouslySetInnerHTML={{ __html: s.inlineSvg }} />
+                            <div className={`w-full h-full flex items-center justify-center text-slate-800 dark:text-slate-100 ${isDisplayMode ? 'p-6' : 'p-3 sm:p-4'}`} dangerouslySetInnerHTML={{ __html: s.inlineSvg }} />
                           ) : (
                             <iframe src={s.image} title={slideTitle || 'Diagram'} className="absolute inset-0 w-full h-full pointer-events-none select-none dark:opacity-90" scrolling="no" />
                           )}
@@ -373,7 +373,7 @@ export default function Deck({ lesson, course }) {
                   <div className={`flex-1 overflow-y-auto custom-scrollbar ${isDisplayMode ? 'p-[clamp(1.5rem,3vw,3rem)]' : 'p-4 sm:p-6 lg:p-10'} ${s.inlineSvg ? 'lg:w-[55%] lg:border-r-2 border-slate-100 dark:border-slate-800' : 'w-full max-w-4xl mx-auto'}`}>{renderContent(slideContent)}</div>
                   {s.inlineSvg && (
                     <div className={`flex-1 lg:w-[45%] bg-slate-50/50 dark:bg-slate-900/50 flex items-center justify-center flex-shrink-0 min-h-0 ${isDisplayMode ? 'p-[clamp(1.5rem,3vw,3rem)]' : 'p-3 sm:p-4 lg:p-8'}`}>
-                      <div className="w-full h-full flex items-center justify-center bg-white dark:bg-slate-800 rounded-2xl lg:rounded-[2rem] border-2 border-slate-200 dark:border-slate-700 shadow-sm p-3 sm:p-4" dangerouslySetInnerHTML={{ __html: s.inlineSvg }} />
+                      <div className="w-full h-full flex items-center justify-center bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-2xl lg:rounded-[2rem] border-2 border-slate-200 dark:border-slate-700 shadow-sm p-3 sm:p-4" dangerouslySetInnerHTML={{ __html: s.inlineSvg }} />
                     </div>
                   )}
                 </div>
@@ -454,7 +454,7 @@ export default function Deck({ lesson, course }) {
             {zoomedImage.type === 'widget' ? (
               <WidgetErrorBoundary><WidgetRenderer config={zoomedImage.config} /></WidgetErrorBoundary>
             ) : zoomedImage.type === 'svg' ? (
-              <div className="w-full h-full flex items-center justify-center bg-white dark:bg-slate-800 rounded-xl shadow-sm" dangerouslySetInnerHTML={{ __html: zoomedImage.content }} />
+              <div className="w-full h-full flex items-center justify-center bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-xl shadow-sm" dangerouslySetInnerHTML={{ __html: zoomedImage.content }} />
             ) : zoomedImage.type === 'img' ? (
               <img src={zoomedImage.src} alt="Expanded" className="w-full h-full object-contain rounded-xl bg-white dark:bg-slate-800 p-4" draggable={false} />
             ) : (
