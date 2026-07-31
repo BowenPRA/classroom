@@ -22,8 +22,11 @@ export default function GalleryLayout({ slide: s, ctx }) {
   const title = pick(s.title, s.titleVn)
   const content = pick(s.content, s.contentVn)
   const items = s.items || []
-  const grid = COLS[s.columns] || COLS[4]
-  const dense = items.length > 4
+  const colCount = COLS[s.columns] ? s.columns : 4
+  const grid = COLS[colCount]
+  // Anything that needs a second row switches to picture-beside-text, so the
+  // whole set still fits on a projector without scrolling.
+  const dense = Math.ceil(items.length / colCount) > 1
   const copyLabel = s.copy === false ? null
     : pick(s.copyLabel, s.copyLabelVn) || (lang === 'vn' ? tone.labelVn : tone.label)
 

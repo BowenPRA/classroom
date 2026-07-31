@@ -2,15 +2,16 @@
 // accent header, body, notes, and optional media. For animal vs plant, shared vs
 // exclusive, same vs different signs, diagram vs micrograph.
 import { Note, Media, HeaderBar, Ic } from './primitives.jsx'
-import { renderContent, toHex } from './helpers.jsx'
+import { parseInlineText, renderContent, toHex } from './helpers.jsx'
 
 function Column({ col, ctx }) {
   const { pick, lang, isDisplayMode } = ctx
-  const accent = toHex(col.accent, '#1cb0f6')
+  const accent = toHex(col.accent, '#0087a8')
   const heading = pick(col.heading, col.headingVn)
   const content = pick(col.content, col.contentVn)
   const hasMedia = !!col.widget || !!col.inlineSvg || !!col.image
   const caption = pick(col.caption, col.captionVn)
+  const hasText = !!content || col.notes?.length > 0
 
   return (
     <div className="flex-1 min-h-0 flex flex-col rounded-2xl lg:rounded-[1.75rem] bg-white dark:bg-slate-800/60 border-2 border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
@@ -20,15 +21,25 @@ function Column({ col, ctx }) {
           {heading}
         </div>
       )}
-      <div className={`flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col gap-3 ${isDisplayMode ? 'p-[clamp(1rem,2vw,2rem)]' : 'p-4 sm:p-5'}`}>
+      {/* The media takes the space left over, and the caption is always pinned
+          below it — an image-only column used to push its caption off-slide. */}
+      <div className={`flex-1 min-h-0 flex flex-col gap-3 ${isDisplayMode ? 'p-[clamp(1rem,2vw,2rem)]' : 'p-4 sm:p-5'}`}>
         {hasMedia && (
-          <div className="w-full shrink-0" style={{ minHeight: isDisplayMode ? '11rem' : '8rem', height: content || col.notes?.length ? (isDisplayMode ? '14rem' : '11rem') : '100%' }}>
+          <div className={`w-full min-h-0 ${hasText ? 'h-[42%] shrink-0' : 'flex-1'}`}>
             <Media slide={col} source={col} ctx={ctx} drawThis={col.drawThis} />
           </div>
         )}
-        {content && <div>{renderContent(content, { isDisplayMode })}</div>}
-        {col.notes?.length > 0 && col.notes.map((note, i) => <Note key={i} note={note} lang={lang} isDisplayMode={isDisplayMode} />)}
-        {caption && <div className={`text-center font-bold text-slate-500 dark:text-slate-400 ${isDisplayMode ? 'text-[clamp(0.85rem,1.3vw,1.2rem)]' : 'text-xs sm:text-sm'}`}>{caption}</div>}
+        {hasText && (
+          <div className={`min-h-0 overflow-y-auto custom-scrollbar flex flex-col gap-3 ${hasMedia ? 'flex-1' : ''}`}>
+            {content && <div>{renderContent(content, { isDisplayMode })}</div>}
+            {col.notes?.length > 0 && col.notes.map((note, i) => <Note key={i} note={note} lang={lang} isDisplayMode={isDisplayMode} />)}
+          </div>
+        )}
+        {caption && (
+          <div className={`shrink-0 text-center font-bold text-slate-500 dark:text-slate-400 leading-snug ${isDisplayMode ? 'text-[clamp(0.85rem,1.3vw,1.2rem)]' : 'text-xs sm:text-sm'}`}>
+            {parseInlineText(caption)}
+          </div>
+        )}
       </div>
     </div>
   )

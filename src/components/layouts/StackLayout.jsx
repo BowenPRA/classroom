@@ -2,7 +2,7 @@
 // note cards. `variant:'checklist'` renders ticked summary items instead. For
 // organelle definition lists and lesson recaps.
 import { Note, HeaderBar, Ic } from './primitives.jsx'
-import { renderContent, toHex } from './helpers.jsx'
+import { parseInlineText, renderContent, toHex } from './helpers.jsx'
 
 export default function StackLayout({ slide: s, ctx }) {
   const { pick, lang, isDisplayMode } = ctx
@@ -28,7 +28,7 @@ export default function StackLayout({ slide: s, ctx }) {
                     <span className="shrink-0 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: accent, width: isDisplayMode ? 40 : 32, height: isDisplayMode ? 40 : 32 }}>
                       <Ic name="CheckCircle2" className={isDisplayMode ? 'w-6 h-6 text-white' : 'w-5 h-5 text-white'} strokeWidth={3} />
                     </span>
-                    <span className={`font-bold text-slate-700 dark:text-slate-200 leading-snug ${isDisplayMode ? 'text-[clamp(1.05rem,1.7vw,1.5rem)]' : 'text-[15px] sm:text-base lg:text-lg'}`}>{text}</span>
+                    <span className={`font-bold text-slate-700 dark:text-slate-200 leading-snug ${isDisplayMode ? 'text-[clamp(1.05rem,1.7vw,1.5rem)]' : 'text-[15px] sm:text-base lg:text-lg'}`}>{parseInlineText(text)}</span>
                   </div>
                 )
               })}

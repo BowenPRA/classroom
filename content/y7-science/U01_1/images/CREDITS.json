@@ -24,6 +24,35 @@
     "bytes": 127598
   },
   {
+    "name": "hooke-cork.jpg",
+    "title": "File:Micrographia Schem 11.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Micrographia_Schem_11.jpg",
+    "license": "Public domain",
+    "artist": "Robert Hooke (1635-1703), Micrographia, 1665",
+    "usage": "Cropped to Fig. 1 (the cork micrograph) and downscaled."
+  },
+  {
+    "name": "prison-cell.jpg",
+    "title": "File:Prison cell (2761961063).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Prison_cell_(2761961063).jpg",
+    "license": "CC BY 2.0",
+    "artist": "NikiSublime from Boston, USA"
+  },
+  {
+    "name": "everest.jpg",
+    "title": "File:Everest North Face toward Base Camp Tibet Luca Galuzzi 2006.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg",
+    "license": "CC BY-SA 2.5",
+    "artist": "Luca Galuzzi (Lucag)"
+  },
+  {
+    "name": "electron-microscope.jpg",
+    "title": "File:Electron microscope Mamut at the Institute of Scientific Instruments of the Czech Academy of Science in Brno (2).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Electron_microscope_Mamut_at_the_Institute_of_Scientific_Instruments_of_the_Czech_Academy_of_Science_in_Brno_(2).jpg",
+    "license": "CC BY-SA 3.0 cz",
+    "artist": "Akademie ved Ceske republiky / Czech Academy of Sciences"
+  },
+  {
     "title": "File:Onion Epidermis Cells W.M. 40x - 132.jpg",
     "name": "onion-cells.jpg",
     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Onion_Epidermis_Cells_W.M._40x_-_132.jpg/1280px-Onion_Epidermis_Cells_W.M._40x_-_132.jpg",

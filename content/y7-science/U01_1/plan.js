@@ -20,12 +20,13 @@ export const plan = {
   ],
   timeline: [
     { time: '0–5 min', phase: 'Starter', detail: 'Title slide. Students write one full sentence describing how small a cell is, using a measurement or a comparison.' },
-    { time: '5–15 min', phase: 'Soda-can challenge', detail: 'Pairs get a can. Reveal the cell size (0.02 mm); students derive the scale factor (120 ÷ 0.02 = 6000×) themselves, then apply it to Mr Bowen (178 cm → 10.68 km, taller than Everest). Use the Scale Challenge widget, then the scale strip to consolidate.' },
-    { time: '15–22 min', phase: 'Define + etymology', detail: 'Copy the definition of "cell". Latin "cella" = little room (every class is an English class). Then the leaf micrograph from p. 9 — ask Question 1 (what are the green circles?) and reveal.' },
-    { time: '22–32 min', phase: 'Organelles', detail: 'Analogy (classroom furniture / body organs). Copy "organelle". Explore the interactive cell. Draw This: the p. 9 plant-cell diagram, all seven labels. Then the four shared organelles (picture gallery).' },
-    { time: '32–40 min', phase: 'Plant extras + compare', detail: 'The five plant-only terms (green gallery). Side-by-side animal vs plant diagrams. Bonus: the ER — not examined, but worth showing.' },
-    { time: '40–47 min', phase: 'Microscopy', detail: 'Draw This: the labelled microscope from p. 10. Copy the definition of "microscope"; walk the light path. Discuss electron microscopes and reveal.' },
-    { time: '47–50 min', phase: 'Models + recap + HW', detail: 'Mr Seth model-building link and "limitations". Summary checklist. Set homework (read pp. 8–12; copy + answer the 2 questions on p. 9 in full sentences).' },
+    { time: '5–10 min', phase: 'The question', detail: 'Pairs, cans out. Slide 2 gives the question ONLY — one average cell magnified to soda-can size, how big is Mr Bowen (178 cm)? No numbers yet. Take guesses around the room and write a few on the board before moving on.' },
+    { time: '10–16 min', phase: 'Working it out', detail: 'Slide 3 has the numbers and a step-through calculator: 0.02 mm and 120 mm → scale factor 6000 → 178 cm × 6000 = 10.68 km → vs Everest 8.85 km. Press one step at a time; let them do each step on paper first. Slide 4 is the Everest payoff photo; slide 5 the scale strip.' },
+    { time: '16–24 min', phase: 'Define + etymology', detail: 'Copy the definition of "cell". Then the reveal — hint first: "what is a prison cell?" They already own the word. Latin cella = a small room. Slide 7 pairs a real prison cell with Hooke\'s own 1665 cork drawing. Then the leaf micrograph (p. 9 Question 1: what are the green circles?).' },
+    { time: '24–32 min', phase: 'Organelles', detail: 'Analogy (classroom furniture / body organs). Copy "organelle". Explore the interactive cell — tap each part, the selected one is highlighted and everything else greys out. Draw This: the p. 9 plant-cell diagram, all seven labels. Then the four shared organelles (picture gallery).' },
+    { time: '32–40 min', phase: 'Plant extras + compare', detail: 'Two green galleries: what holds a plant up (wall, cellulose, vacuole + real onion cells), then how it feeds itself (chloroplast, chlorophyll + real pondweed). Side-by-side diagrams, then the same two cells as real photographs. Bonus: the ER — not examined, but worth showing.' },
+    { time: '40–47 min', phase: 'Microscopy', detail: 'Draw This: the labelled microscope from p. 10. Copy the definition of "microscope"; walk the light path. Then the real electron microscope — ask how it can see something light slides past, and reveal.' },
+    { time: '47–50 min', phase: 'Models + recap + HW', detail: 'Mr Seth model-building link and "limitations". Summary checklist — students should leave with 13 definitions and 2 labelled drawings. Set homework (read pp. 8–12; copy + answer the 2 questions on p. 9 in full sentences).' },
   ],
   answers: [
     { q: 'Scale factor (can ÷ cell):', a: '120 mm ÷ 0.02 mm = 6000×' },
@@ -37,7 +38,7 @@ export const plan = {
     { q: 'Plant-only organelles:', a: 'cell wall (cellulose), chloroplast (chlorophyll), sap vacuole' },
   ],
   notes:
-    'The soda-can task is the hook — resist giving the scale factor; make pairs derive 6000× from the numbers. ' +
+    'The soda-can task is the hook — the question slide comes BEFORE any numbers on purpose. Take wild guesses first; the gap between their guess and 10.68 km is the lesson. Resist giving the scale factor; make pairs derive 6000× from the numbers. ' +
     'Push for full English sentences throughout (starter and homework). Emphasise that plant cells have everything animal cells have, PLUS the extras. ' +
     'Two slides are marked Draw This (the p. 9 cell diagram and the p. 10 microscope) — budget real drawing time for those. ' +
     'Anything students must copy appears in an orange "Write This Down" panel; everything else is discussion. ' +

@@ -14,7 +14,7 @@ export default function StatementLayout({ slide: s, ctx }) {
   const label = pick(s.label, s.labelVn)
 
   return (
-    <div className={`flex-1 flex flex-col items-center justify-center overflow-y-auto custom-scrollbar bg-slate-50 dark:bg-slate-900 min-h-0 ${isDisplayMode ? 'p-[clamp(2rem,5vw,5rem)]' : 'p-6 sm:p-10 lg:p-16'}`}>
+    <div className={`flex-1 flex flex-col items-center justify-center overflow-y-auto custom-scrollbar bg-slate-50 dark:bg-slate-900 min-h-0 ${isDisplayMode ? 'p-[clamp(2rem,5vw,5rem)]' : 'p-6 sm:p-8 lg:p-10'}`}>
       <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center gap-5">
         {eyebrow && <Pill accent={accent} isDisplayMode={isDisplayMode}>{eyebrow}</Pill>}
 

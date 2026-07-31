@@ -9,7 +9,7 @@ import {
   Zap, Info, CheckCircle2, Lightbulb, Ruler, Maximize2, Quote, Boxes, Sprout,
   Building2, Dna, Atom, ScanEye, Telescope, GraduationCap, Beaker, TestTube,
   Layers, ArrowRight, Target, Users, MessageSquare, Scale, Equal, AlertTriangle,
-  ShieldCheck, Repeat, HelpCircle, ChevronDown,
+  ShieldCheck, Repeat, HelpCircle, ChevronDown, Sun, Droplet,
 } from 'lucide-react'
 import WidgetRenderer, { WidgetErrorBoundary } from '../WidgetRenderer.jsx'
 import { parseInlineText, renderContent, NOTE_TONES } from './helpers.jsx'
@@ -20,7 +20,7 @@ const ICONS = {
   Zap, Info, CheckCircle2, Lightbulb, Ruler, Quote, Boxes, Sprout, Building2,
   Dna, Atom, ScanEye, Telescope, GraduationCap, Beaker, TestTube, Layers,
   ArrowRight, Target, Users, MessageSquare, Scale, Equal, AlertTriangle,
-  ShieldCheck, Repeat, HelpCircle,
+  ShieldCheck, Repeat, HelpCircle, Sun, Droplet,
 }
 
 /** Render a lucide icon by name (falls back to Info). */

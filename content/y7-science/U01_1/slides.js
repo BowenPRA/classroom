@@ -14,6 +14,13 @@ import { ScaleChallengeWidget, CellExplorerWidget } from './widgets.jsx'
 import lbPlantCell from './images/lb-plant-cell-diagram.jpg'
 import lbLeaf from './images/lb-leaf-micrograph.jpg'
 import lbMicroscope from './images/lb-microscope-labelled.jpg'
+import hookeCork from './images/hooke-cork.jpg'
+import prisonCell from './images/prison-cell.jpg'
+import everest from './images/everest.jpg'
+import electronMicroscope from './images/electron-microscope.jpg'
+import onionCells from './images/onion-cells.jpg'
+import cheekCells from './images/cheek-cells.jpg'
+import chloroplastsPhoto from './images/chloroplasts.jpg'
 
 const TEAL = '#0087a8'
 const PURPLE = '#5c2483'
@@ -43,34 +50,54 @@ export const slides = [
       textVn: 'Viết một **câu hoàn chỉnh** mô tả tế bào nhỏ như thế nào. Em phải dùng một **đơn vị đo** (như mm) hoặc một **so sánh thực tế**.',
     },
   },
+  // The question on its own, with nothing to work from yet. Give the room a
+  // couple of minutes to argue about it before any numbers appear.
+  {
+    layout: 'statement',
+    accent: PURPLE,
+    icon: 'Scale',
+    eyebrow: 'In pairs — no calculators yet',
+    eyebrowVn: 'Theo cặp — chưa dùng máy tính',
+    title: 'The Soda Can Challenge',
+    titleVn: 'Thử thách Lon Nước Ngọt',
+    label: 'Discuss',
+    labelVn: 'Thảo luận',
+    labelIcon: 'MessageSquare',
+    text: 'Imagine one **average cell** in Mr Bowen’s body was magnified until it was the size of a **soda can**. How big would Mr Bowen be?',
+    textVn: 'Hãy tưởng tượng một **tế bào trung bình** trong cơ thể thầy Bowen được phóng to đến khi bằng một **lon nước ngọt**. Khi đó thầy Bowen sẽ to cỡ nào?',
+    sub: 'Mr Bowen is **178 cm** tall. A building? A mountain? Agree with your partner, and be ready to say why.',
+    subVn: 'Thầy Bowen cao **178 cm**. Một toà nhà? Một ngọn núi? Hãy thống nhất với bạn cùng cặp và sẵn sàng giải thích vì sao.',
+  },
   {
     layout: 'split',
     accent: PURPLE,
     icon: 'Scale',
-    title: 'The Soda Can Challenge',
-    titleVn: 'Thử thách Lon Nước Ngọt',
+    title: 'Working It Out',
+    titleVn: 'Cùng tính toán',
     ratio: 45,
     content:
-      'In **pairs**, take a soda can. If Mr Bowen was magnified so that one cell in his body was the size of that can, how tall would he be?\n\n' +
+      'Now let’s find the real answer together. Everything you need is on the right — press through it one step at a time.\n\n' +
       '> **1.** A typical human cell is **0.02 mm** across.\n' +
       '> **2.** A soda can is about **120 mm** tall.\n' +
       '> **3.** Work out the **scale factor** — how many times bigger?',
     contentVn:
-      'Theo **cặp đôi**, hãy cầm một lon nước ngọt. Nếu thầy Bowen được phóng to sao cho một tế bào trong cơ thể thầy to bằng cái lon đó, thầy sẽ cao bao nhiêu?\n\n' +
+      'Bây giờ hãy cùng tìm đáp án thật. Mọi thứ em cần đều ở bên phải — bấm từng bước một.\n\n' +
       '> **1.** Một tế bào người thường rộng **0,02 mm**.\n' +
       '> **2.** Một lon nước ngọt cao khoảng **120 mm**.\n' +
       '> **3.** Hãy tính **hệ số phóng đại** — lớn hơn bao nhiêu lần?',
-    reveal: {
-      label: 'The Big Reveal',
-      labelVn: 'Tiết lộ kết quả',
-      answer:
-        'Magnifying 0.02 mm up to 120 mm is a scale factor of **6,000**.\n\n' +
-        'Multiply Mr Bowen’s height (178 cm) by 6,000 and he would be **10,680 metres — 10.68 km** tall. Taller than Mount Everest!',
-      answerVn:
-        'Phóng từ 0,02 mm lên 120 mm là hệ số phóng đại **6.000**.\n\n' +
-        'Nhân chiều cao của thầy Bowen (178 cm) với 6.000, thầy sẽ cao **10.680 mét — 10,68 km**. Cao hơn cả đỉnh Everest!',
-    },
     widget: ScaleChallengeWidget,
+  },
+  {
+    layout: 'showcase',
+    accent: GREEN,
+    icon: 'Sparkles',
+    eyebrow: 'The answer',
+    eyebrowVn: 'Đáp án',
+    title: 'Taller Than Everest',
+    titleVn: 'Cao hơn cả Everest',
+    image: everest,
+    caption: 'Magnified 6000×, Mr Bowen would be **10.68 km** tall. Everest is **8.85 km**. He would stand almost 2 km above the summit — and that is how much bigger a soda can is than one of your cells.',
+    captionVn: 'Phóng đại 6000 lần, thầy Bowen sẽ cao **10,68 km**. Everest cao **8,85 km**. Thầy sẽ đứng cao hơn đỉnh núi gần 2 km — và đó chính là mức chênh lệch giữa một lon nước ngọt và một tế bào của em.',
   },
   {
     layout: 'showcase',
@@ -107,9 +134,36 @@ export const slides = [
     reveal: {
       label: 'Every class is an English class — where does "cell" come from?',
       labelVn: 'Mỗi tiết học đều là tiết tiếng Anh — từ "cell" đến từ đâu?',
-      answer: 'From the Latin word **cella**, meaning a "**small room**" or tiny house. Robert Hooke looked at cork through an early microscope and thought the little boxes looked like the bare rooms monks lived in.',
-      answerVn: 'Từ tiếng Latin **cella**, nghĩa là "**căn phòng nhỏ**" hay ngôi nhà tí hon. Robert Hooke quan sát nút bần qua kính hiển vi thời đầu và thấy những chiếc hộp nhỏ ấy giống các căn phòng trống nơi tu sĩ sống.',
+      prompt: '**Hint:** you already know this word. What are **prison cells**? What makes a prison cell a "cell"?',
+      promptVn: '**Gợi ý:** em đã biết từ này rồi. **Prison cell** (phòng giam) là gì? Điều gì khiến một phòng giam được gọi là "cell"?',
+      answer: 'From the Latin word **cella**, meaning a "**small room**". A prison cell is a small bare room — and so was a monk’s cell. Robert Hooke looked at cork through an early microscope, saw rows of little empty boxes, and used the same word.',
+      answerVn: 'Từ tiếng Latin **cella**, nghĩa là "**căn phòng nhỏ**". Phòng giam là một căn phòng nhỏ trống trải — phòng của tu sĩ cũng vậy. Robert Hooke quan sát nút bần qua kính hiển vi thời đầu, thấy những dãy hộp nhỏ trống rỗng, và dùng đúng từ đó.',
     },
+  },
+  {
+    layout: 'compare',
+    accent: PURPLE,
+    icon: 'Boxes',
+    title: 'Same Word, Two Places',
+    titleVn: 'Cùng một từ, hai nơi',
+    columns: [
+      {
+        heading: 'A prison cell', headingVn: 'Phòng giam',
+        accent: '#5c6570',
+        icon: 'Home',
+        image: prisonCell,
+        caption: 'A small, bare room. This is the meaning you already knew.',
+        captionVn: 'Một căn phòng nhỏ, trống trải. Đây là nghĩa em đã biết.',
+      },
+      {
+        heading: 'Hooke’s cork, 1665', headingVn: 'Nút bần của Hooke, 1665',
+        accent: PURPLE,
+        icon: 'Microscope',
+        image: hookeCork,
+        caption: 'Robert Hooke’s own drawing of cork under his microscope — rows of little rooms. He named them **cells**, and the name stuck for 360 years.',
+        captionVn: 'Bản vẽ của chính Robert Hooke về nút bần dưới kính hiển vi — những dãy phòng nhỏ. Ông gọi chúng là **cells**, và cái tên ấy tồn tại suốt 360 năm.',
+      },
+    ],
   },
   {
     layout: 'split',
@@ -216,18 +270,20 @@ export const slides = [
   },
 
   // ── Section 5: the plant-only extras ─────────────────────────────────────
+  // The five plant-only terms, split so each pair gets room to breathe and can
+  // be paired with the real thing under a microscope.
   {
     layout: 'gallery',
     accent: GREEN,
     icon: 'Leaf',
     tone: 'plant',
-    columns: 3,
-    eyebrow: 'Plant cell exclusives',
-    eyebrowVn: 'Đặc quyền của tế bào thực vật',
-    title: 'Plants Get These As Well',
-    titleVn: 'Thực vật còn có thêm những thứ này',
-    content: 'A plant cell has **everything** an animal cell has, **plus** the extras below — they let a plant stand up straight and make its own food.',
-    contentVn: 'Tế bào thực vật có **mọi thứ** mà tế bào động vật có, **cộng thêm** những phần dưới đây — giúp cây đứng thẳng và tự tạo ra thức ăn.',
+    columns: 2,
+    eyebrow: 'Plant cell exclusives · 1 of 2',
+    eyebrowVn: 'Đặc quyền của tế bào thực vật · 1/2',
+    title: 'What Holds a Plant Up',
+    titleVn: 'Điều gì giữ cho cây đứng vững',
+    content: 'A plant cell has **everything** an animal cell has, **plus** some extras. An animal has a skeleton to hold it up — a plant does not, so every single cell needs a stiff box around it.',
+    contentVn: 'Tế bào thực vật có **mọi thứ** mà tế bào động vật có, **cộng thêm** vài phần nữa. Động vật có bộ xương để nâng đỡ — cây thì không, nên mỗi tế bào cần một chiếc hộp cứng bao quanh.',
     items: [
       {
         inlineSvg: DIAGRAMS.ORG_WALL,
@@ -242,6 +298,33 @@ export const slides = [
         textVn: 'Chất dai, dạng sợi, **cấu tạo nên thành tế bào**.',
       },
       {
+        inlineSvg: DIAGRAMS.ORG_VACUOLE,
+        term: 'Sap vacuole', termVn: 'Không bào',
+        text: 'A large space of cell sap — sugars and water — that **keeps the cell firm**, like air in a tyre.',
+        textVn: 'Khoảng lớn chứa dịch tế bào — đường và nước — **giúp tế bào căng cứng**, như hơi trong lốp xe.',
+      },
+      {
+        image: onionCells,
+        term: 'The real thing', termVn: 'Vật thật',
+        text: 'Onion cells down a microscope. Those hard straight edges are **cell walls** — animal cells never look this boxy.',
+        textVn: 'Tế bào hành dưới kính hiển vi. Những cạnh thẳng cứng đó là **thành tế bào** — tế bào động vật không bao giờ vuông vắn như vậy.',
+      },
+    ],
+  },
+  {
+    layout: 'gallery',
+    accent: GREEN,
+    icon: 'Sun',
+    tone: 'plant',
+    columns: 3,
+    eyebrow: 'Plant cell exclusives · 2 of 2',
+    eyebrowVn: 'Đặc quyền của tế bào thực vật · 2/2',
+    title: 'How a Plant Feeds Itself',
+    titleVn: 'Cây tự nuôi mình bằng cách nào',
+    content: 'An animal has to go and find food. A plant makes its own, inside these — which is the whole reason plants are green.',
+    contentVn: 'Động vật phải đi tìm thức ăn. Cây tự tạo ra thức ăn bên trong những bộ phận này — và đó chính là lý do cây có màu xanh.',
+    items: [
+      {
         inlineSvg: DIAGRAMS.ORG_CHLOROPLAST,
         term: 'Chloroplast', termVn: 'Lục lạp',
         text: 'Green structures where the plant **makes its food using sunlight**.',
@@ -254,10 +337,10 @@ export const slides = [
         textVn: '**Chất màu xanh bên trong lục lạp**, hấp thụ ánh sáng mặt trời.',
       },
       {
-        inlineSvg: DIAGRAMS.ORG_VACUOLE,
-        term: 'Sap vacuole', termVn: 'Không bào',
-        text: 'A large space of cell sap — sugars and water — that **keeps the cell firm**.',
-        textVn: 'Khoảng lớn chứa dịch tế bào — đường và nước — **giúp tế bào căng cứng**.',
+        image: chloroplastsPhoto,
+        term: 'The real thing', termVn: 'Vật thật',
+        text: 'Chloroplasts inside a pondweed leaf. Every green dot is one chloroplast, packed with chlorophyll.',
+        textVn: 'Lục lạp bên trong lá rong đuôi chó. Mỗi chấm xanh là một lục lạp, chứa đầy diệp lục.',
       },
     ],
   },
@@ -283,6 +366,33 @@ export const slides = [
         inlineSvg: DIAGRAMS.PLANT_CELL,
         caption: 'Boxy and stiff. The same four parts, plus a wall, chloroplasts and a big sap vacuole.',
         captionVn: 'Vuông vắn và cứng. Vẫn bốn bộ phận đó, cộng thêm thành tế bào, lục lạp và không bào lớn.',
+      },
+    ],
+  },
+  {
+    layout: 'compare',
+    accent: TEAL,
+    icon: 'ScanEye',
+    eyebrow: 'Not drawings — photographs',
+    eyebrowVn: 'Không phải hình vẽ — ảnh chụp',
+    title: 'The Same Two Cells, For Real',
+    titleVn: 'Vẫn hai loại tế bào đó, ngoài đời thật',
+    columns: [
+      {
+        heading: 'A human cheek cell', headingVn: 'Một tế bào má người',
+        accent: '#c2185b',
+        icon: 'Users',
+        image: cheekCells,
+        caption: 'Scraped from the inside of someone’s cheek, then stained. Soft and shapeless, with no straight edges — the small dark dot near the middle is its **nucleus**.',
+        captionVn: 'Lấy từ mặt trong má của một người rồi nhuộm màu. Mềm và không có hình dạng cố định, không có cạnh thẳng — chấm sẫm nhỏ ở giữa là **nhân** của nó.',
+      },
+      {
+        heading: 'Onion cells', headingVn: 'Tế bào hành',
+        accent: GREEN,
+        icon: 'Leaf',
+        image: onionCells,
+        caption: 'A single layer peeled off an onion. Stacked like bricks, because every one is inside a stiff **cell wall**.',
+        captionVn: 'Một lớp mỏng bóc từ củ hành. Xếp chồng như những viên gạch, vì mỗi tế bào nằm trong một **thành tế bào** cứng.',
       },
     ],
   },
@@ -337,10 +447,8 @@ export const slides = [
     side: 'left',
     inlineSvg: DIAGRAMS.MICROSCOPE_LIGHT,
     content:
-      'If a cell is only **0.02 mm** across, how can we possibly know what a chloroplast looks like?\n\n' +
       'Light shines up through the specimen. Two curved pieces of glass — **lenses** — bend that light, and the image reaching your eye is far bigger than the real thing.',
     contentVn:
-      'Nếu một tế bào chỉ rộng **0,02 mm**, làm sao ta biết được lục lạp trông ra sao?\n\n' +
       'Ánh sáng chiếu xuyên qua mẫu vật. Hai miếng thuỷ tinh cong — **thấu kính** — bẻ cong ánh sáng đó, và hình ảnh đến mắt em to hơn vật thật rất nhiều.',
     notes: [
       {
@@ -350,31 +458,36 @@ export const slides = [
       },
       {
         tone: 'info',
-        text: 'Once the lab equipment is ready, we will use these microscopes ourselves to look at real onion cells.',
-        textVn: 'Khi thiết bị phòng thí nghiệm sẵn sàng, chúng ta sẽ tự dùng kính hiển vi để quan sát tế bào hành thật.',
+        text: 'Once the lab kit arrives, we will use these ourselves on real onion cells.',
+        textVn: 'Khi có thiết bị phòng thí nghiệm, chúng ta sẽ tự dùng chúng để quan sát tế bào hành thật.',
       },
     ],
   },
   {
-    layout: 'callout',
+    layout: 'split',
     accent: PURPLE,
     icon: 'ScanEye',
     eyebrow: 'Pushing the limits',
     eyebrowVn: 'Vượt giới hạn',
     title: 'Smaller Than a Cell',
     titleVn: 'Nhỏ hơn cả tế bào',
+    ratio: 45,
+    side: 'left',
+    image: electronMicroscope,
     content:
-      'To see things smaller than a cell — **viruses**, or even single **molecules** — scientists use an **Electron Microscope**.\n\n' +
-      'Here is the puzzle. If something is too small for a wave of light to bounce off it, how could an electron microscope possibly work?',
+      'To see things smaller than a cell — **viruses**, or even single **molecules** — scientists use an **Electron Microscope** like this one. It fills a room and costs more than a house.\n\n' +
+      'Here is the puzzle. If something is too small for a wave of light to bounce off it, how could this machine possibly see it?',
     contentVn:
-      'Để nhìn những thứ nhỏ hơn tế bào — **virus**, hay thậm chí từng **phân tử** — các nhà khoa học dùng **Kính hiển vi điện tử**.\n\n' +
-      'Câu đố là đây. Nếu một vật quá nhỏ để sóng ánh sáng phản xạ lại, thì kính hiển vi điện tử hoạt động kiểu gì?',
+      'Để nhìn những thứ nhỏ hơn tế bào — **virus**, hay thậm chí từng **phân tử** — các nhà khoa học dùng **Kính hiển vi điện tử** như chiếc này. Nó chiếm cả một căn phòng và đắt hơn một ngôi nhà.\n\n' +
+      'Câu đố là đây. Nếu một vật quá nhỏ để sóng ánh sáng phản xạ lại, thì cỗ máy này nhìn thấy nó bằng cách nào?',
     reveal: {
       label: 'Discuss, then reveal',
       labelVn: 'Thảo luận rồi hiện đáp án',
       answer: 'It fires a beam of **electrons** instead of light. An electron is far smaller than a wave of light, so it can pick out detail that light simply slides past.',
       answerVn: 'Nó bắn một chùm **electron** thay cho ánh sáng. Electron nhỏ hơn sóng ánh sáng rất nhiều, nên nó thấy được những chi tiết mà ánh sáng lướt qua mất.',
     },
+    caption: 'A modern electron microscope.',
+    captionVn: 'Một kính hiển vi điện tử hiện đại.',
   },
 
   // ── Section 8: models, limitations, and the recap ────────────────────────
@@ -408,17 +521,23 @@ export const slides = [
     accent: TEAL,
     icon: 'CheckCircle2',
     columns: 2,
-    title: 'Summary Checklist',
-    titleVn: 'Bảng tổng kết',
-    content: 'Tick each one you could explain to somebody who missed today’s lesson.',
-    contentVn: 'Đánh dấu từng mục em có thể giải thích cho một bạn vắng mặt hôm nay.',
+    eyebrow: 'Before you leave',
+    eyebrowVn: 'Trước khi ra về',
+    title: 'Can You Do All Six?',
+    titleVn: 'Em làm được cả sáu điều này chứ?',
+    content:
+      'Read each line and be honest with yourself. If you could not explain one of them to a friend who missed today, that is the part to look at tonight.\n\n' +
+      '> Your notebook should now have **13 definitions** and **2 labelled drawings** in it. Check.',
+    contentVn:
+      'Đọc từng dòng và thành thật với chính mình. Nếu có điều nào em chưa giải thích được cho một bạn vắng mặt hôm nay, thì tối nay hãy xem lại phần đó.\n\n' +
+      '> Trong vở của em bây giờ phải có **13 định nghĩa** và **2 hình vẽ có chú thích**. Hãy kiểm tra lại.',
     items: [
-      { text: 'I can describe **how small a cell is** and what magnification means.', textVn: 'Em mô tả được **tế bào nhỏ đến mức nào** và phóng đại nghĩa là gì.' },
-      { text: 'I can define a **cell** and an **organelle**.', textVn: 'Em định nghĩa được **tế bào** và **bào quan**.' },
-      { text: 'I can name the **four parts every cell has**, and what each one does.', textVn: 'Em kể được **bốn bộ phận mọi tế bào đều có** và nhiệm vụ của từng cái.' },
-      { text: 'I can name the **plant-only parts**: cell wall, chloroplast, sap vacuole.', textVn: 'Em kể được **các bộ phận chỉ có ở thực vật**: thành tế bào, lục lạp, không bào.' },
-      { text: 'I can explain what a **microscope** does and name its main parts.', textVn: 'Em giải thích được **kính hiển vi** làm gì và gọi tên các bộ phận chính.' },
-      { text: 'I can explain what the **limitations** of a model are.', textVn: 'Em giải thích được **hạn chế** của một mô hình là gì.' },
+      { text: 'Say **how small a cell is** — with a number or a comparison.', textVn: 'Nói được **tế bào nhỏ đến mức nào** — bằng con số hoặc phép so sánh.' },
+      { text: 'Define a **cell** and an **organelle**, and say where the word "cell" came from.', textVn: 'Định nghĩa **tế bào** và **bào quan**, và nói được từ "cell" bắt nguồn từ đâu.' },
+      { text: 'Name the **four parts every cell has**, and what each one does.', textVn: 'Kể được **bốn bộ phận mọi tế bào đều có** và nhiệm vụ của từng cái.' },
+      { text: 'Name the **five plant-only parts**, and why a plant needs them.', textVn: 'Kể được **năm bộ phận chỉ có ở thực vật**, và vì sao cây cần chúng.' },
+      { text: 'Explain what a **microscope** does, and label its main parts.', textVn: 'Giải thích **kính hiển vi** làm gì, và chú thích các bộ phận chính.' },
+      { text: 'Explain the **limitations** of a scientific model.', textVn: 'Giải thích **hạn chế** của một mô hình khoa học.' },
     ],
   },
 

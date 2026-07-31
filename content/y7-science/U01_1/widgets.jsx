@@ -1,111 +1,105 @@
 import { useState } from 'react'
 
-/* ============================================================= *
- * WIDGET 1 — SCALE CHALLENGE (the soda-can proportion)
- * The teacher reveals the size of a cell (0.02 mm). Students then
- * find the scale factor themselves: a soda can is 120 mm, so the
- * cell must be magnified 120 / 0.02 = 6000×. The same magnification
- * turns Mr Bowen (178 cm) into a 10.68 km giant — taller than
- * Everest. Slide the magnification and watch both facts move.
- * ============================================================= */
-const CELL_MM = 0.02
-const CAN_MM = 120
-const BOWEN_CM = 178
-const EVEREST_M = 8849
-
 // Cambridge palette, matching the deck's note cards and diagrams.
 const TEAL = '#0087a8'
 const PURPLE = '#5c2483'
 const ORANGE = '#c25e12'
 const GREEN = '#4a8b23'
+const INK = '#2b2b2b'
+
+/* ============================================================= *
+ * WIDGET 1 — THE MAGNIFICATION CALCULATOR
+ *
+ * One job: show the soda-can calculation one step at a time, in
+ * numbers big enough to read from the back of the room. The
+ * teacher presses "Next step" as the class works it out on paper;
+ * nothing is revealed early and there is nothing to fiddle with.
+ * ============================================================= */
+const STEPS = [
+  {
+    label: 'Step 1 — how big is a cell?',
+    lines: [['A typical human cell', '0.02 mm'], ['A soda can', '120 mm']],
+    note: 'Both measured the same way, in millimetres.',
+  },
+  {
+    label: 'Step 2 — how many times bigger?',
+    sum: '120 ÷ 0.02 = 6000',
+    lines: [['Scale factor', '6000×']],
+    note: 'The cell has to be magnified 6000 times to become a can.',
+  },
+  {
+    label: 'Step 3 — magnify Mr Bowen by the same amount',
+    sum: '178 cm × 6000 = 1 068 000 cm',
+    lines: [['Mr Bowen, magnified', '10.68 km']],
+    note: '1 068 000 cm = 10 680 m = 10.68 km.',
+  },
+  {
+    label: 'Step 4 — is that big?',
+    lines: [['Mr Bowen, magnified', '10.68 km'], ['Mount Everest', '8.85 km']],
+    note: 'He would stand 1.83 km taller than Everest.',
+    compare: true,
+  },
+]
 
 export const ScaleChallengeWidget = () => {
-  const [revealed, setRevealed] = useState(false)
-  const [mag, setMag] = useState(6000)
-
-  const magnifiedCell = CELL_MM * mag // in mm
-  const matchesCan = Math.abs(magnifiedCell - CAN_MM) < 1
-  const bowenM = (BOWEN_CM / 100) * mag // metres
-  const bowenKm = bowenM / 1000
-  const tallerThanEverest = bowenM > EVEREST_M
-  const maxM = Math.max(bowenM, EVEREST_M)
-  const pct = (m) => `${Math.max(4, (m / maxM) * 100)}%`
+  const [step, setStep] = useState(0)
+  const cur = STEPS[step]
+  const last = step === STEPS.length - 1
 
   return (
     <div className="w-full h-full flex flex-col select-none">
-      <div className="flex-1 min-h-[210px] w-full bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-inner relative flex flex-col p-3 sm:p-5 overflow-y-auto custom-scrollbar">
-        {/* The proportion readout */}
-        <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap text-center">
-          <div className="flex flex-col items-center">
-            <span className="text-2xl sm:text-3xl" aria-hidden="true">🔬</span>
-            <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">A cell</span>
-            <span className="font-mono font-black text-sm sm:text-lg" style={{ color: TEAL }}>{revealed ? `${CELL_MM} mm` : '? mm'}</span>
-          </div>
-          <span className="font-black text-slate-400 text-lg">×</span>
-          <div className="flex flex-col items-center">
-            <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Magnify</span>
-            <span className="font-mono font-black text-sm sm:text-lg" style={{ color: PURPLE }}>{mag.toLocaleString()}×</span>
-          </div>
-          <span className="font-black text-slate-400 text-lg">=</span>
-          <div className="flex flex-col items-center">
-            <span className="text-2xl sm:text-3xl" aria-hidden="true">🥤</span>
-            <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Soda can</span>
-            <span className="font-mono font-black text-sm sm:text-lg" style={{ color: matchesCan ? GREEN : undefined }}>
-              {revealed ? `${Math.round(magnifiedCell)} mm` : '120 mm'}
-            </span>
-          </div>
+      <div className="flex-1 min-h-[220px] w-full bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-inner flex flex-col p-4 sm:p-6 overflow-y-auto custom-scrollbar">
+        <div className="text-xs sm:text-sm font-black uppercase tracking-[0.15em] mb-4" style={{ color: TEAL }}>
+          {cur.label}
         </div>
 
-        {revealed && matchesCan && (
-          <div className="mt-2 mx-auto text-center text-[11px] sm:text-sm font-black rounded-lg px-4 py-1.5 border-2"
-            style={{ color: GREEN, borderColor: `${GREEN}55`, backgroundColor: `${GREEN}14` }}>
-            ✓ 120 ÷ 0.02 = 6,000 — the magnified cell is exactly a soda can
+        {cur.sum && (
+          <div className="font-mono font-black text-center rounded-xl py-2.5 px-3 mb-4 text-lg sm:text-2xl"
+            style={{ color: ORANGE, backgroundColor: `${ORANGE}12` }}>
+            {cur.sum}
           </div>
         )}
 
-        {/* Mr Bowen vs Everest */}
-        <div className="flex-1 flex items-end justify-center gap-6 sm:gap-10 mt-4 min-h-[120px]">
-          <div className="flex flex-col items-center justify-end h-full">
-            <span className="font-mono font-black text-xs sm:text-sm mb-1" style={{ color: tallerThanEverest ? GREEN : TEAL }}>{bowenKm.toFixed(2)} km</span>
-            <div className="w-10 sm:w-14 rounded-t-lg border-2 transition-all duration-300 flex items-start justify-center"
-              style={{ height: pct(bowenM), backgroundColor: tallerThanEverest ? GREEN : TEAL, borderColor: tallerThanEverest ? '#3d731c' : '#00697f' }}>
-              <span className="text-lg mt-1" aria-hidden="true">🧍</span>
+        <div className="space-y-2.5">
+          {cur.lines.map(([name, value], i) => (
+            <div key={i} className="flex items-baseline justify-between gap-3 border-b-2 border-dashed border-slate-200 dark:border-slate-700 pb-2">
+              <span className="font-bold text-slate-600 dark:text-slate-300 text-sm sm:text-base">{name}</span>
+              <span className="font-mono font-black text-xl sm:text-3xl tabular-nums" style={{ color: PURPLE }}>{value}</span>
             </div>
-            <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-1">Mr Bowen</span>
-          </div>
-          <div className="flex flex-col items-center justify-end h-full">
-            <span className="font-mono font-black text-xs sm:text-sm mb-1 text-slate-500 dark:text-slate-300">8.85 km</span>
-            <div className="w-10 sm:w-14 rounded-t-lg bg-slate-300 dark:bg-slate-600 border-2 border-slate-400 dark:border-slate-500 transition-all duration-300 flex items-start justify-center" style={{ height: pct(EVEREST_M) }}>
-              <span className="text-lg mt-1" aria-hidden="true">🏔️</span>
-            </div>
-            <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-1">Everest</span>
-          </div>
+          ))}
         </div>
+
+        {cur.compare && (
+          <div className="flex-1 flex items-end justify-center gap-8 sm:gap-12 mt-5 min-h-[110px]">
+            {[['Mr Bowen', 10.68, GREEN], ['Everest', 8.85, '#94a3b8']].map(([name, km, colour]) => (
+              <div key={name} className="flex flex-col items-center justify-end h-full">
+                <span className="font-mono font-black text-xs sm:text-sm mb-1" style={{ color: colour }}>{km} km</span>
+                <div className="w-12 sm:w-16 rounded-t-md transition-all duration-500"
+                  style={{ height: `${(km / 10.68) * 100}%`, backgroundColor: colour }} />
+                <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-1.5">{name}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <p className="mt-4 text-[13px] sm:text-base font-semibold text-slate-500 dark:text-slate-400 leading-snug">{cur.note}</p>
       </div>
 
-      {/* Controls */}
-      <div className="w-full bg-white dark:bg-slate-800 p-3 sm:p-4 rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-700 mt-2 flex-shrink-0">
-        {!revealed ? (
-          <button
-            onClick={() => setRevealed(true)}
-            className="w-full py-2.5 rounded-xl font-black text-sm uppercase tracking-widest text-white active:scale-95 transition-all"
-            style={{ backgroundColor: TEAL }}>
-            🔍 Reveal the size of a cell (0.02 mm)
-          </button>
-        ) : (
-          <>
-            <div className="flex items-center gap-3">
-              <span className="w-20 text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Magnify</span>
-              <input type="range" min="1000" max="10000" step="250" value={mag} onChange={(e) => setMag(Number(e.target.value))}
-                className="flex-1 h-2.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer" style={{ accentColor: PURPLE }} />
-              <span className="w-16 text-right font-mono font-bold text-slate-600 dark:text-slate-300">{mag.toLocaleString()}×</span>
-            </div>
-            <div className="mt-2 text-center text-[11px] sm:text-sm font-black rounded-lg py-1.5 px-3"
-              style={{ color: tallerThanEverest ? GREEN : ORANGE, backgroundColor: tallerThanEverest ? `${GREEN}14` : `${ORANGE}14` }}>
-              {tallerThanEverest ? `Magnified ${mag.toLocaleString()}×, Mr Bowen is ${bowenKm.toFixed(2)} km — taller than Everest` : 'Not tall enough yet — keep magnifying to pass Everest'}
-            </div>
-          </>
-        )}
+      <div className="w-full flex items-center gap-2 mt-2 flex-shrink-0">
+        <button
+          onClick={() => setStep((n) => Math.max(0, n - 1))}
+          disabled={step === 0}
+          className="px-4 py-3 rounded-xl font-black text-sm uppercase tracking-widest border-2 border-slate-200 dark:border-slate-700 text-slate-500 disabled:opacity-30 active:scale-95 transition-all">
+          Back
+        </button>
+        <button
+          onClick={() => setStep((n) => Math.min(STEPS.length - 1, n + 1))}
+          disabled={last}
+          className="flex-1 py-3 rounded-xl font-black text-sm uppercase tracking-widest text-white disabled:opacity-40 active:scale-95 transition-all"
+          style={{ backgroundColor: last ? GREEN : TEAL }}>
+          {last ? 'That is the whole calculation' : 'Next step'}
+        </button>
+        <span className="w-14 text-center font-mono font-black text-slate-400 tabular-nums">{step + 1}/{STEPS.length}</span>
       </div>
     </div>
   )
@@ -114,18 +108,17 @@ export const ScaleChallengeWidget = () => {
 /* ============================================================= *
  * WIDGET 2 — CELL EXPLORER
  * Toggle animal / plant, then tap an organelle to reveal its job.
- * The picture uses the same flat Learner's-Book palette as the
- * printed diagrams. Nothing is dimmed — the selected part gets a
- * halo and a heavier outline instead, so the whole cell stays
- * readable from the back of the room at all times.
+ * The selected part is unmissable: everything else drops to a
+ * flat grey, the chosen part keeps its full colour, gains a heavy
+ * outline and a coloured halo, and is named on the picture.
  * ============================================================= */
 const WALL_F = '#f9dcc4', WALL_S = '#e07b39'
-const CYTO_F = '#eaf0f8', MEMB_S = '#8fa6c4'
+const CYTO_F = '#eaf0f8'
 const VAC_F = '#dbeafe', VAC_S = '#7ba7d4'
 const NUC_F = '#9b7fc4', NUC_S = '#6f52a0'
 const CHL_F = '#5aab4e', CHL_S = '#3a7d31'
 const AMEM_S = '#c2185b'
-const INK = '#2b2b2b'
+const GREY_F = '#eef1f4', GREY_S = '#c3ccd6'
 
 const ORGANELLES = {
   membrane: { name: 'Cell membrane', color: AMEM_S, job: 'A thin, flexible layer that controls what goes in and out of the cell.', both: true },
@@ -138,7 +131,7 @@ const ORGANELLES = {
 }
 
 const PLANT_CHLOROPLASTS = [[84, 62], [84, 104], [216, 62], [216, 112], [216, 160]]
-const ANIMAL_MITOS = [[78, 152], [228, 62], [220, 148]]
+const ANIMAL_MITOS = [[74, 152], [226, 62], [222, 148]]
 
 export const CellExplorerWidget = () => {
   const [mode, setMode] = useState('plant') // 'plant' | 'animal'
@@ -148,8 +141,10 @@ export const CellExplorerWidget = () => {
   const active = keys.includes(sel) ? sel : 'nucleus'
   const cur = ORGANELLES[active]
   const on = (k) => active === k
-  // Selected parts get a heavier outline; nothing is faded out.
-  const sw = (k, base, hot) => (on(k) ? hot : base)
+  // Selected keeps its real colour; everything else goes flat grey.
+  const fill = (k, colour) => (on(k) ? colour : GREY_F)
+  const line = (k, colour) => (on(k) ? colour : GREY_S)
+  const wide = (k, base, hot) => (on(k) ? hot : base)
 
   return (
     <div className="w-full h-full flex flex-col select-none">
@@ -169,34 +164,47 @@ export const CellExplorerWidget = () => {
 
         {/* cell picture — always drawn on white so it reads in dark mode too */}
         <div className="flex-1 min-h-0 flex items-center justify-center">
-          <svg viewBox="0 0 300 220" className="w-full h-full max-h-[160px]">
+          <svg viewBox="0 0 300 220" className="w-full h-full max-h-[250px]">
             <rect x="0" y="0" width="300" height="220" rx="12" fill="#ffffff" />
             {mode === 'plant' ? (
               <g>
-                {on('wall') && <rect x="44" y="14" width="212" height="192" rx="28" fill={`${WALL_S}22`} />}
-                <rect x="52" y="22" width="196" height="176" rx="22" fill={WALL_F} stroke={WALL_S} strokeWidth={sw('wall', 3, 7)} />
-                <rect x="61" y="31" width="178" height="158" rx="16" fill={on('cytoplasm') ? `${TEAL}30` : CYTO_F} stroke={on('membrane') ? AMEM_S : MEMB_S} strokeWidth={sw('membrane', 2, 6)} />
-                <rect x="104" y="58" width="92" height="104" rx="26" fill={VAC_F} stroke={VAC_S} strokeWidth={sw('vacuole', 2, 6)} />
+                {on('wall') && <rect x="42" y="12" width="216" height="196" rx="30" fill="none" stroke={WALL_S} strokeWidth="10" opacity="0.28" />}
+                <rect x="52" y="22" width="196" height="176" rx="22" fill={fill('wall', WALL_F)} stroke={line('wall', WALL_S)} strokeWidth={wide('wall', 3, 7)} />
+                {on('membrane') && <rect x="57" y="27" width="186" height="166" rx="20" fill="none" stroke={AMEM_S} strokeWidth="9" opacity="0.28" />}
+                <rect x="61" y="31" width="178" height="158" rx="16" fill={on('cytoplasm') ? `${TEAL}33` : CYTO_F} stroke={line('membrane', AMEM_S)} strokeWidth={wide('membrane', 2, 6)} />
+                {on('vacuole') && <rect x="99" y="53" width="102" height="114" rx="30" fill="none" stroke={VAC_S} strokeWidth="9" opacity="0.3" />}
+                <rect x="104" y="58" width="92" height="104" rx="26" fill={fill('vacuole', VAC_F)} stroke={line('vacuole', VAC_S)} strokeWidth={wide('vacuole', 2, 6)} />
                 {PLANT_CHLOROPLASTS.map(([x, y], i) => (
-                  <ellipse key={i} cx={x} cy={y} rx="11" ry="17" fill={CHL_F} stroke={CHL_S} strokeWidth={sw('chloroplast', 2, 5)} />
+                  <g key={i}>
+                    {on('chloroplast') && <ellipse cx={x} cy={y} rx="16" ry="22" fill={CHL_S} opacity="0.25" />}
+                    <ellipse cx={x} cy={y} rx="11" ry="17" fill={fill('chloroplast', CHL_F)} stroke={line('chloroplast', CHL_S)} strokeWidth={wide('chloroplast', 2, 4)} />
+                  </g>
                 ))}
-                <ellipse cx="86" cy="142" rx="19" ry="24" fill={NUC_F} stroke={NUC_S} strokeWidth={sw('nucleus', 2, 6)} />
-                <ellipse cx="140" cy="180" rx="15" ry="9" fill="#ffffff" stroke={INK} strokeWidth={sw('mitochondria', 2, 4)} />
-                <path d="M 128 180 q 6 -7 12 0 q 6 7 12 0" fill="none" stroke={INK} strokeWidth="1.5" />
+                {on('nucleus') && <ellipse cx="86" cy="142" rx="26" ry="31" fill={NUC_S} opacity="0.25" />}
+                <ellipse cx="86" cy="142" rx="19" ry="24" fill={fill('nucleus', NUC_F)} stroke={line('nucleus', NUC_S)} strokeWidth={wide('nucleus', 2, 5)} />
+                {on('mitochondria') && <ellipse cx="140" cy="180" rx="21" ry="15" fill="#8a5a2b" opacity="0.22" />}
+                <ellipse cx="140" cy="180" rx="15" ry="9" fill="#ffffff" stroke={on('mitochondria') ? INK : GREY_S} strokeWidth={wide('mitochondria', 2, 4)} />
+                <path d="M 128 180 q 6 -7 12 0 q 6 7 12 0" fill="none" stroke={on('mitochondria') ? INK : GREY_S} strokeWidth="1.5" />
               </g>
             ) : (
               <g>
-                <ellipse cx="150" cy="110" rx="118" ry="82" fill={on('cytoplasm') ? `${TEAL}30` : CYTO_F} stroke={AMEM_S} strokeWidth={sw('membrane', 3, 7)} />
-                <circle cx="160" cy="100" r="32" fill={NUC_F} stroke={NUC_S} strokeWidth={sw('nucleus', 2, 6)} />
-                <circle cx="170" cy="90" r="10" fill={NUC_S} />
+                {on('membrane') && <ellipse cx="150" cy="110" rx="123" ry="87" fill="none" stroke={AMEM_S} strokeWidth="10" opacity="0.26" />}
+                <ellipse cx="150" cy="110" rx="118" ry="82" fill={on('cytoplasm') ? `${TEAL}33` : CYTO_F} stroke={line('membrane', AMEM_S)} strokeWidth={wide('membrane', 3, 7)} />
+                {on('nucleus') && <circle cx="160" cy="100" r="39" fill={NUC_S} opacity="0.25" />}
+                <circle cx="160" cy="100" r="32" fill={fill('nucleus', NUC_F)} stroke={line('nucleus', NUC_S)} strokeWidth={wide('nucleus', 2, 6)} />
+                <circle cx="170" cy="90" r="10" fill={on('nucleus') ? NUC_S : GREY_S} />
                 {ANIMAL_MITOS.map(([x, y], i) => (
                   <g key={i}>
-                    <ellipse cx={x} cy={y} rx="17" ry="10" fill="#ffffff" stroke={INK} strokeWidth={sw('mitochondria', 2, 4)} />
-                    <path d={`M ${x - 13} ${y} q 6.5 -8 13 0 q 6.5 8 13 0`} fill="none" stroke={INK} strokeWidth="1.5" />
+                    {on('mitochondria') && <ellipse cx={x} cy={y} rx="24" ry="17" fill="#8a5a2b" opacity="0.22" />}
+                    <ellipse cx={x} cy={y} rx="17" ry="10" fill="#ffffff" stroke={on('mitochondria') ? INK : GREY_S} strokeWidth={wide('mitochondria', 2, 4)} />
+                    <path d={`M ${x - 13} ${y} q 6.5 -8 13 0 q 6.5 8 13 0`} fill="none" stroke={on('mitochondria') ? INK : GREY_S} strokeWidth="1.5" />
                   </g>
                 ))}
               </g>
             )}
+            {/* name the selected part right on the picture */}
+            <text x="150" y="212" fontFamily="Inter, 'Segoe UI', sans-serif" fontSize="14" fontWeight="bold"
+              fill={cur.color} textAnchor="middle">{cur.name}</text>
           </svg>
         </div>
 
