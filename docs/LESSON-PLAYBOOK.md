@@ -274,6 +274,14 @@ still overflowed. → *Key off what actually causes the overflow — rows.*
 because they weren't passed through `parseInlineText`. → *Any author-facing
 string field must go through it.*
 
+**A `$` in body text ate the sentence.**
+`parseInlineText` splits on `/(\$[\s\S]+?\$)/` to find KaTeX, so *any* two dollar
+signs on a line become a maths span. Writing a currency amount — even the
+escaped `$\$20$` — printed a stray backslash and swallowed the words between.
+→ *Never put a `$` in prose. Write "20 dollars", and keep `$…$` for real maths.*
+Related: a lone signed number reads better as plain text with a Unicode minus
+(`−5`) than as `$-5$`; save KaTeX for expressions that actually have operators.
+
 **Slide index carried across lessons.**
 Navigating from one lesson URL straight to another kept the index, landing
 mid-deck and crashing when the second deck was shorter. Fixed with a `key` on

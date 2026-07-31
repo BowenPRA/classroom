@@ -10,7 +10,7 @@ export default {
     unit: '1.1',
     id: 'U01_1',
     title: 'Adding & Subtracting Integers',
-    objective: 'Add and subtract positive and negative integers using a number line.',
+    objective: 'Add and subtract integers on a number line, and turn an English sentence into a calculation.',
     order: 1,
   },
   slides,

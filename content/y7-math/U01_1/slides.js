@@ -1,353 +1,644 @@
 // content/y7-math/U01_1/slides.js
-// The projected lesson deck for 1.1 Adding & Subtracting Integers.
-// Rebuilt on the flexible layout system (hero / split / compare / statement /
-// showcase / callout / stack / steps) — same pedagogy, widgets and diagrams.
-import { DIAGRAMS } from './diagrams.js';
-import {
-  NumberLineWidget,
-  TeamActivityWidget,
-  TempDropProblemWidget,
-  WarmerProblemWidget,
-} from './widgets.jsx';
+// Year 7 Mathematics · 1.1 Adding & Subtracting Integers.
+//
+// Styled after the Cambridge Lower Secondary Learner's Book: teal section
+// headers, purple activity boxes, red homework, and the book's orange for every
+// key word the students are expected to copy down. Anything a student must
+// write into their notebook is either an orange "Write This Down" panel or an
+// orange-ruled bumper — never plain body text, and never game rules.
+//
+// The spine of this lesson is ENGLISH. The class can already do the arithmetic;
+// what costs them marks is the wording of a question. So the deck teaches the
+// vocabulary of change and comparison, drills the sentence → calculation
+// translation both ways, and finishes on word problems that have to be read
+// carefully before they can be answered.
+import { DIAGRAMS } from './diagrams.js'
+import { TeamActivityWidget, NumberLineWidget, TranslateWidget } from './widgets.jsx'
+import liftPanel from './images/lift-panel.jpg'
+import piggyBank from './images/piggy-bank.jpg'
+import southPoleStation from './images/south-pole-station.jpg'
+import boomerangNebula from './images/boomerang-nebula.jpg'
+import snail from './images/snail.jpg'
+
+const TEAL = '#0087a8'
+const PURPLE = '#5c2483'
+const ORANGE = '#c25e12'
+const GREEN = '#4a8b23'
+const RED = '#c8102e'
+const BLUE = '#1a5fa8'
 
 export const slides = [
-  // 1 ─ Title + objective + warm-up ────────────────────────────────────────
+  // ── Section 1: open, and get negatives into the room ─────────────────────
   {
     layout: 'hero',
-    color: 'bg-[#8b5cf6]',
-    icon: 'BookOpen',
+    color: '#5c2483',
+    icon: 'Ruler',
+    brand: 'Year 7 Mathematics',
+    brandVn: 'Toán Lớp 7',
     eyebrow: 'Unit 1 · 1.1',
     eyebrowVn: 'Chương 1 · 1.1',
+    date: '6 Aug 2026',
     title: 'Adding & Subtracting Integers',
     titleVn: 'Cộng và Trừ Số nguyên',
-    objective: 'I can add and subtract positive and negative integers by moving along a number line.',
-    objectiveVn: 'Em có thể cộng và trừ số nguyên dương và âm bằng cách di chuyển trên trục số.',
+    // No `objective` here on purpose: the starter card is what the class needs
+    // on screen while they settle, and the two together overflow a projector in
+    // Project mode. The objective lives in index.js meta and in plan.js.
     card: {
       icon: 'Pencil',
-      badge: 'Warm-Up · Do this now in your book',
-      badgeVn: 'Khởi động · Làm ngay vào vở',
-      text: 'Write down **at least 3 things** that can be described with negative numbers.',
-      textVn: 'Viết ra **ít nhất 3 thứ** có thể được mô tả bằng số âm.',
+      badge: 'Starter Task',
+      badgeVn: 'Nhiệm vụ khởi động',
+      text: 'Write down **three things** that can be described with a **negative number**. A full sentence for each.',
+      textVn: 'Viết ra **ba thứ** có thể được mô tả bằng **số âm**. Mỗi thứ một câu hoàn chỉnh.',
     },
   },
-
-  // 2 ─ Team activity: brainstorm negatives (timer + reveal) ────────────────
   {
     layout: 'split',
-    accent: '#58cc02',
+    accent: PURPLE,
     icon: 'Users',
     title: 'Team Game: Name the Negatives',
     titleVn: 'Trò chơi đội: Kể tên số âm',
     ratio: 45,
     content:
-      'Play in **teams of two**, one whiteboard each.\n\n' +
-      '> **1.** In **2 minutes**, list as many things as you can that use **negative numbers**.\n' +
-      '> **2.** Take turns reading your list out loud.\n' +
-      '> **3.** If another team has the **same** idea, **both cross it out**.\n' +
-      '> **4.** The team with the most **unique** ideas wins! 🏆',
+      'Play in **teams of two**, one whiteboard each. An idea only counts if you can say **where the negative number is**.',
     contentVn:
-      'Chơi theo **đội hai người**, mỗi người một bảng con.\n\n' +
-      '> **1.** Trong **2 phút**, hãy liệt kê càng nhiều thứ dùng **số âm** càng tốt.\n' +
-      '> **2.** Lần lượt đọc to danh sách của mình.\n' +
-      '> **3.** Nếu đội khác có ý tưởng **giống nhau**, **cả hai cùng gạch bỏ**.\n' +
-      '> **4.** Đội có nhiều ý tưởng **độc nhất** nhất sẽ thắng! 🏆',
+      'Chơi theo **đội hai người**, mỗi đội một bảng con. Một ý tưởng chỉ được tính nếu em nói được **số âm nằm ở đâu**.',
+    notes: [
+      {
+        tone: 'task',
+        badge: 'Game Rules',
+        badgeVn: 'Luật chơi',
+        text:
+          '**1.** In **2 minutes**, list everything you can think of that uses negative numbers.\n' +
+          '**2.** Take turns reading your list out loud.\n' +
+          '**3.** If another team has the **same** idea, **both** cross it out.\n' +
+          '**4.** The most **unique** ideas wins.',
+        textVn:
+          '**1.** Trong **2 phút**, hãy liệt kê mọi thứ em nghĩ ra có dùng số âm.\n' +
+          '**2.** Lần lượt đọc to danh sách của mình.\n' +
+          '**3.** Nếu đội khác có ý tưởng **giống nhau**, **cả hai** cùng gạch bỏ.\n' +
+          '**4.** Đội có nhiều ý tưởng **độc nhất** nhất sẽ thắng.',
+      },
+    ],
     widget: TeamActivityWidget,
   },
 
-  // 3 ─ The number line ─────────────────────────────────────────────────────
+  // ── Section 2: the line, and the words for reading it ────────────────────
   {
     layout: 'split',
-    accent: '#1cb0f6',
-    icon: 'BookOpen',
+    accent: TEAL,
+    icon: 'Ruler',
     title: 'The Number Line',
     titleVn: 'Trục số',
     ratio: 45,
-    inlineSvg: DIAGRAMS.NOTES_NUMBER_LINE_BIG,
+    inlineSvg: DIAGRAMS.NUMBER_LINE_BIG,
     drawThis: true,
-    content:
-      'Every integer has a home on the number line. Copy these into your book:\n\n' +
-      '> **Integer**: a whole number that is **positive, negative, or zero** — never a fraction.\n' +
-      '> **Positive**: to the **right** of zero. **Negative**: to the **left** of zero.\n' +
-      '> **Zero** is neither positive nor negative — it sits in the middle.\n' +
-      '> Zero and the positives together are the **whole (natural) numbers**.',
-    contentVn:
-      'Mỗi số nguyên có một vị trí trên trục số. Hãy chép vào vở:\n\n' +
-      '> **Số nguyên**: một số nguyên vẹn, có thể **dương, âm hoặc bằng không** — không bao giờ là phân số.\n' +
-      '> **Số dương**: ở bên **phải** số không. **Số âm**: ở bên **trái** số không.\n' +
-      '> **Số không** không âm cũng không dương — nó nằm ở giữa.\n' +
-      '> Số không cùng với các số dương là các **số tự nhiên**.',
-    exampleLabel: 'Read it',
-    exampleLabelVn: 'Đọc thử',
-    example: '$-3$ is 3 steps **left** of zero. $4$ is 4 steps **right** of zero. So $-3 < 4$.',
-    exampleVn: '$-3$ ở **bên trái** số không 3 bước. $4$ ở **bên phải** số không 4 bước. Vậy $-3 < 4$.',
-  },
-
-  // 4 ─ Framing (discussion) + interactive jumper ──────────────────────────
-  {
-    layout: 'split',
-    accent: '#ff9600',
-    icon: 'MessageSquare',
-    title: 'Left or Right?',
-    titleVn: 'Trái hay Phải?',
-    ratio: 45,
-    content:
-      'Every add or subtract is just a **move** along the line. Before you calculate, always ask **one question**:\n\n' +
-      '> **"Should I move RIGHT or LEFT?"**\n' +
-      '> **Right** = bigger. **Left** = smaller.\n\n' +
-      'Play with the tool. Can you find the rule for **+** and **−** yourself?',
-    contentVn:
-      'Mỗi phép cộng hay trừ chỉ là một **bước di chuyển** trên trục số. Trước khi tính, hãy luôn tự hỏi **một câu**:\n\n' +
-      '> **"Mình nên đi sang PHẢI hay TRÁI?"**\n' +
-      '> **Phải** = lớn hơn. **Trái** = nhỏ hơn.\n\n' +
-      'Hãy thử công cụ. Em có tự tìm ra quy tắc cho **+** và **−** không?',
-    widget: NumberLineWidget,
-  },
-
-  // 5 ─ Two signs together → combine into one (comparison) ──────────────────
-  {
-    layout: 'compare',
-    accent: '#8b5cf6',
-    icon: 'Equal',
-    title: 'Two Signs Together',
-    titleVn: 'Hai dấu đứng cạnh nhau',
-    columns: [
+    content: 'Every integer has its own place on the line. Copy the whole line into your book, from −5 to 5.',
+    contentVn: 'Mỗi số nguyên có một vị trí riêng trên trục số. Hãy chép cả trục số vào vở, từ −5 đến 5.',
+    notes: [
       {
-        heading: 'Same signs → +',
-        headingVn: 'Cùng dấu → +',
-        icon: 'ArrowRight',
-        accent: '#22c55e',
-        content:
-          'Two of the **same** sign combine into a **plus** — so you move **right**.\n\n' +
-          '> $+\\,+ \\;=\\; +$ and $-\\,- \\;=\\; +$',
-        contentVn:
-          'Hai dấu **giống nhau** gộp thành dấu **cộng** — nên em đi sang **phải**.\n\n' +
-          '> $+\\,+ \\;=\\; +$ và $-\\,- \\;=\\; +$',
-        notes: [{ tone: 'info', badge: 'Example', badgeVn: 'Ví dụ', text: '$5 - (-3) = 5 + 3 = 8$', icon: 'Equal' }],
+        tone: 'write',
+        text: '**Integer:** a whole number that is positive, negative or zero — never a fraction.',
+        textVn: '**Số nguyên:** một số nguyên vẹn, có thể dương, âm hoặc bằng không — không bao giờ là phân số.',
       },
       {
-        heading: 'Different signs → −',
-        headingVn: 'Khác dấu → −',
-        icon: 'ArrowRight',
-        accent: '#ef4444',
-        content:
-          'Two **different** signs combine into a **minus** — so you move **left**.\n\n' +
-          '> $+\\,- \\;=\\; -$ and $-\\,+ \\;=\\; -$',
-        contentVn:
-          'Hai dấu **khác nhau** gộp thành dấu **trừ** — nên em đi sang **trái**.\n\n' +
-          '> $+\\,- \\;=\\; -$ và $-\\,+ \\;=\\; -$',
-        notes: [{ tone: 'homework', badge: 'Example', badgeVn: 'Ví dụ', text: '$5 + (-3) = 5 - 3 = 2$', icon: 'Equal' }],
+        tone: 'write',
+        text: '**Positive** integers sit to the **right** of zero. **Negative** integers sit to the **left**. **Zero** is neither.',
+        textVn: 'Số nguyên **dương** nằm bên **phải** số không. Số nguyên **âm** nằm bên **trái**. **Số không** không thuộc bên nào.',
+      },
+    ],
+  },
+  {
+    layout: 'split',
+    accent: TEAL,
+    icon: 'Scale',
+    title: 'Above Zero, Below Zero',
+    titleVn: 'Trên không, dưới không',
+    ratio: 45,
+    side: 'left',
+    inlineSvg: DIAGRAMS.THERMOMETER,
+    content:
+      'A thermometer is the same number line, stood on its end. The words change — the maths does not.\n\n' +
+      'Careful: −8 is **lower** than −4, because it is further from zero on the cold side.',
+    contentVn:
+      'Nhiệt kế chính là trục số đó, dựng đứng lên. Từ ngữ thay đổi — phép toán thì không.\n\n' +
+      'Cẩn thận: −8 **thấp hơn** −4, vì nó xa số không hơn về phía lạnh.',
+    notes: [
+      {
+        tone: 'write',
+        text: '**above / below zero · higher / lower · warmer / colder** — every one of these tells you **which side of zero** a number is on.',
+        textVn: '**above / below zero** (trên / dưới không) · **higher / lower** (cao hơn / thấp hơn) · **warmer / colder** (ấm hơn / lạnh hơn) — tất cả đều cho biết số đó nằm **phía nào của số không**.',
+      },
+    ],
+  },
+  {
+    layout: 'split',
+    accent: BLUE,
+    icon: 'Quote',
+    eyebrow: 'Every class is an English class',
+    eyebrowVn: 'Mỗi tiết học đều là tiết tiếng Anh',
+    title: '“Negative Five” or “Minus Five”?',
+    titleVn: '“Negative five” hay “minus five”?',
+    ratio: 45,
+    inlineSvg: DIAGRAMS.SIGN_OR_OPERATION,
+    content: 'The same little dash does **two different jobs**, and each job has its own English word.',
+    contentVn: 'Cùng một dấu gạch nhỏ làm **hai việc khác nhau**, và mỗi việc có một từ tiếng Anh riêng.',
+    notes: [
+      {
+        tone: 'write',
+        text: '**negative five** = the number −5 (the dash is a **sign**).\n**minus** = the operation, as in $8 - 5$ (the dash is an **instruction**).',
+        textVn: '**negative five** = số −5 (dấu gạch là **dấu của số**).\n**minus** = phép tính, như trong $8 - 5$ (dấu gạch là **lệnh làm tính**).',
+      },
+      {
+        tone: 'info',
+        badge: 'Real life',
+        badgeVn: 'Đời thực',
+        text: 'Weather forecasts break this rule and say “minus five degrees”. In maths, say **negative five**.',
+        textVn: 'Bản tin thời tiết phá luật này và nói “minus five degrees”. Trong toán, hãy nói **negative five**.',
       },
     ],
   },
 
-  // 6 ─ Adding integers ────────────────────────────────────────────────────
+  // ── Section 3: which way do you move? ────────────────────────────────────
+  {
+    layout: 'statement',
+    accent: PURPLE,
+    icon: 'HelpCircle',
+    eyebrow: 'In pairs — no numbers yet',
+    eyebrowVn: 'Theo cặp — chưa dùng số',
+    title: 'Which Way Do You Move?',
+    titleVn: 'Em di chuyển về phía nào?',
+    label: 'Discuss',
+    labelVn: 'Thảo luận',
+    labelIcon: 'MessageSquare',
+    text: 'The temperature **falls**. You pay back money you **owe**. The lift goes **down**.',
+    textVn: 'Nhiệt độ **giảm**. Em trả lại số tiền em **đang nợ**. Thang máy đi **xuống**.',
+    sub: 'For each one: do you move **left** or **right** along the number line? No calculations — just point, and be ready to say **why**.',
+    subVn: 'Với mỗi trường hợp: em đi sang **trái** hay **phải** trên trục số? Chưa tính toán — chỉ cần chỉ, và sẵn sàng giải thích **vì sao**.',
+  },
   {
     layout: 'split',
-    accent: '#ff9600',
+    accent: ORANGE,
+    icon: 'ArrowRight',
+    title: 'Left or Right?',
+    titleVn: 'Trái hay Phải?',
+    ratio: 45,
+    content:
+      'Every add and every subtract is just a **move** along the line.\n\n' +
+      'Change **one thing at a time** and watch which way the arrow goes. Can you find the rule **before** you press the orange button?',
+    contentVn:
+      'Mỗi phép cộng và mỗi phép trừ chỉ là một **bước di chuyển** trên trục số.\n\n' +
+      'Hãy thay đổi **từng thứ một** và xem mũi tên đi về phía nào. Em có tìm ra quy tắc **trước khi** bấm nút màu cam không?',
+    notes: [
+      {
+        tone: 'task',
+        badge: 'Your job',
+        badgeVn: 'Nhiệm vụ của em',
+        text: 'Find **all four** rules: add a positive, add a negative, subtract a positive, subtract a negative.',
+        textVn: 'Tìm đủ **bốn** quy tắc: cộng số dương, cộng số âm, trừ số dương, trừ số âm.',
+      },
+    ],
+    widget: NumberLineWidget,
+  },
+  {
+    layout: 'split',
+    accent: TEAL,
     icon: 'Target',
     title: 'Adding Integers',
     titleVn: 'Cộng số nguyên',
     ratio: 45,
-    inlineSvg: DIAGRAMS.NOTES_ADD_NEG,
-    drawThis: true,
-    content:
-      'To **add**, start at the first number and move:\n\n' +
-      '> Add a **positive** → move **right**.\n' +
-      '> Add a **negative** → move **left**.',
-    contentVn:
-      'Để **cộng**, bắt đầu ở số thứ nhất và di chuyển:\n\n' +
-      '> Cộng số **dương** → đi sang **phải**.\n' +
-      '> Cộng số **âm** → đi sang **trái**.',
+    inlineSvg: DIAGRAMS.ADD_NEG,
+    content: 'Start at the first number, then move.',
+    contentVn: 'Bắt đầu ở số thứ nhất, rồi di chuyển.',
+    notes: [
+      {
+        tone: 'write',
+        text: 'Add a **positive** → move **right**.\nAdd a **negative** → move **left**.',
+        textVn: 'Cộng số **dương** → đi sang **phải**.\nCộng số **âm** → đi sang **trái**.',
+      },
+    ],
     exampleLabel: 'Examples',
     exampleLabelVn: 'Ví dụ',
-    example:
-      '**1)** $-3 + (-4) = -7$: start at $-3$, move $4$ **left**.\n\n' +
-      '**2)** $-2 + 6 = 4$: start at $-2$, move $6$ **right**.',
-    exampleVn:
-      '**1)** $-3 + (-4) = -7$: bắt đầu ở $-3$, đi $4$ bước sang **trái**.\n\n' +
-      '**2)** $-2 + 6 = 4$: bắt đầu ở $-2$, đi $6$ bước sang **phải**.',
+    example: '**1)** $-3 + (-4) = -7$\n\n**2)** $-2 + 6 = 4$',
+    exampleVn: '**1)** $-3 + (-4) = -7$\n\n**2)** $-2 + 6 = 4$',
   },
-
-  // 7 ─ Subtracting a positive ─────────────────────────────────────────────
   {
     layout: 'split',
-    accent: '#ff4b4b',
+    accent: TEAL,
     icon: 'Scale',
     title: 'Subtracting Integers',
     titleVn: 'Trừ số nguyên',
     ratio: 45,
     side: 'left',
-    inlineSvg: DIAGRAMS.NOTES_SUB_POS,
-    drawThis: true,
-    content:
-      'Subtracting a **positive** is the opposite of adding one:\n\n' +
-      '> Subtract a **positive** → move **left**, to a smaller number.\n\n' +
-      'You can end up below zero — that is fine!',
-    contentVn:
-      'Trừ một số **dương** thì ngược lại với cộng:\n\n' +
-      '> Trừ số **dương** → đi sang **trái**, đến số nhỏ hơn.\n\n' +
-      'Em có thể xuống dưới số không — điều đó hoàn toàn ổn!',
+    inlineSvg: DIAGRAMS.SUB_POS,
+    content: 'Subtracting a **positive** is the opposite of adding one. You can finish below zero — that is fine.',
+    contentVn: 'Trừ một số **dương** thì ngược lại với cộng. Em có thể kết thúc dưới số không — điều đó hoàn toàn ổn.',
+    notes: [
+      {
+        tone: 'write',
+        text: 'Subtract a **positive** → move **left**, to a smaller number.',
+        textVn: 'Trừ số **dương** → đi sang **trái**, đến số nhỏ hơn.',
+      },
+    ],
     exampleLabel: 'Examples',
     exampleLabelVn: 'Ví dụ',
-    example:
-      '**1)** $-6 - 3 = -9$: start at $-6$, move $3$ **left**.\n\n' +
-      '**2)** $2 - 5 = -3$: start at $2$, move $5$ **left**.',
-    exampleVn:
-      '**1)** $-6 - 3 = -9$: bắt đầu ở $-6$, đi $3$ bước sang **trái**.\n\n' +
-      '**2)** $2 - 5 = -3$: bắt đầu ở $2$, đi $5$ bước sang **trái**.',
+    example: '**1)** $-6 - 3 = -9$\n\n**2)** $2 - 5 = -3$',
+    exampleVn: '**1)** $-6 - 3 = -9$\n\n**2)** $2 - 5 = -3$',
   },
-
-  // 8 ─ The big rule (statement) ───────────────────────────────────────────
   {
-    layout: 'statement',
-    accent: '#14b8a6',
+    layout: 'split',
+    accent: PURPLE,
+    icon: 'Equal',
+    title: 'Two Signs Together',
+    titleVn: 'Hai dấu đứng cạnh nhau',
+    ratio: 45,
+    inlineSvg: DIAGRAMS.TWO_SIGNS,
+    content: 'Sometimes two signs end up **next to each other**. Combine them into one sign first, then move.',
+    contentVn: 'Đôi khi hai dấu **đứng cạnh nhau**. Hãy gộp chúng thành một dấu trước, rồi mới di chuyển.',
+    notes: [
+      {
+        tone: 'write',
+        text: '**Same** signs → **$+$** → move **right**.\n**Different** signs → **$-$** → move **left**.',
+        textVn: 'Hai dấu **giống nhau** → **$+$** → đi sang **phải**.\nHai dấu **khác nhau** → **$-$** → đi sang **trái**.',
+      },
+      {
+        tone: 'info',
+        badge: 'Careful',
+        badgeVn: 'Cẩn thận',
+        icon: 'AlertTriangle',
+        text: 'Only $-(-)$ turns into $+$. A single $+(-)$ still sends you left: $5 + (-3) = 2$, **not** $8$.',
+        textVn: 'Chỉ có $-(-)$ mới đổi thành $+$. Một dấu $+(-)$ vẫn đưa em sang trái: $5 + (-3) = 2$, **không** phải $8$.',
+      },
+    ],
+  },
+  {
+    layout: 'split',
+    accent: GREEN,
     icon: 'ShieldCheck',
     eyebrow: 'The big rule of the lesson',
     eyebrowVn: 'Quy tắc lớn của bài học',
-    label: 'Write This Down',
-    labelVn: 'Chép vào vở',
-    text: 'Minus a negative = plus:  $a - (-b) = a + b$',
-    textVn: 'Trừ số âm = cộng:  $a - (-b) = a + b$',
-    sub: 'Different signs cancel, so subtracting a negative sends you **right**. Think of debt: if the bank removes your $\\$5$ debt, you are $\\$5$ richer!',
-    subVn: 'Hai dấu khác nhau triệt tiêu, nên trừ một số âm đưa em sang **phải**. Hãy nghĩ về nợ: nếu ngân hàng xóa khoản nợ $\\$5$, em giàu hơn $\\$5$!',
-    reveal: {
-      label: 'See two examples',
-      labelVn: 'Xem hai ví dụ',
-      answer:
-        '**1)** $2 - (-5) = 2 + 5 = 7$.\n\n' +
-        '**2)** $-6 - (-9) = -6 + 9 = 3$.',
-      answerVn:
-        '**1)** $2 - (-5) = 2 + 5 = 7$.\n\n' +
-        '**2)** $-6 - (-9) = -6 + 9 = 3$.',
-    },
-  },
-
-  // 9 ─ See it on the line (showcase) ──────────────────────────────────────
-  {
-    layout: 'showcase',
-    accent: '#14b8a6',
-    icon: 'Target',
-    title: 'See It on the Line',
-    titleVn: 'Nhìn trên trục số',
-    inlineSvg: DIAGRAMS.NOTES_SUB_NEG,
-    drawThis: true,
-    caption: '$2 - (-5)$ becomes $2 + 5$: start at $2$ and jump $5$ to the **right**.',
-    captionVn: '$2 - (-5)$ trở thành $2 + 5$: bắt đầu ở $2$ và nhảy $5$ bước sang **phải**.',
-  },
-
-  // 10 ─ Watch out: the minus sign does two jobs (callout) ──────────────────
-  {
-    layout: 'callout',
-    accent: '#ff4b4b',
-    icon: 'AlertTriangle',
-    eyebrow: 'Common mistake',
-    eyebrowVn: 'Lỗi thường gặp',
-    title: 'Watch Out!',
-    titleVn: 'Cẩn thận!',
-    content:
-      'The minus sign does **two jobs** — be sure which one you mean.\n\n' +
-      '> In $8 + (-12)$, the $-$ is the **sign** of $12$ (a negative number).\n' +
-      '> Only **$-(-)$** turns into $+$. A single **$+(-)$** still means **move left**.',
-    contentVn:
-      'Dấu trừ làm **hai việc** — hãy chắc chắn em muốn nói việc nào.\n\n' +
-      '> Trong $8 + (-12)$, dấu $-$ là **dấu** của $12$ (một số âm).\n' +
-      '> Chỉ có **$-(-)$** mới đổi thành $+$. Một dấu **$+(-)$** vẫn nghĩa là **đi sang trái**.',
-    notes: [
-      { tone: 'homework', badge: 'Do not do this', badgeVn: 'Đừng làm thế này', icon: 'AlertTriangle', text: '$5 + (-3) = 2$ (move left), **NOT** $8$. Don’t flip $+(-)$ into $+$.', textVn: '$5 + (-3) = 2$ (đi sang trái), **KHÔNG** phải $8$. Đừng đổi $+(-)$ thành $+$.' },
-    ],
-  },
-
-  // 11 ─ Word problem 1: temperature drop ──────────────────────────────────
-  {
-    layout: 'split',
-    accent: '#ff4b4b',
-    icon: 'Target',
-    title: 'Word Problem: Temperature',
-    titleVn: 'Bài toán đố: Nhiệt độ',
-    ratio: 45,
-    content:
-      'Read carefully, then work it out on your whiteboard.\n\n' +
-      '> At **noon** the temperature is **$4°C$**.\n' +
-      '> By **midnight** it has **dropped $9$ degrees**.\n\n' +
-      'What is the temperature at midnight?',
-    contentVn:
-      'Đọc kỹ, rồi tính trên bảng con của em.\n\n' +
-      '> Vào **buổi trưa** nhiệt độ là **$4°C$**.\n' +
-      '> Đến **nửa đêm** nhiệt độ đã **giảm $9$ độ**.\n\n' +
-      'Nhiệt độ lúc nửa đêm là bao nhiêu?',
-    widget: TempDropProblemWidget,
-  },
-
-  // 12 ─ Word problem 2: how much warmer ───────────────────────────────────
-  {
-    layout: 'split',
-    accent: '#14b8a6',
-    icon: 'MessageSquare',
-    title: 'Word Problem: How Much Warmer?',
-    titleVn: 'Bài toán đố: Ấm hơn bao nhiêu?',
+    title: 'Minus a Negative',
+    titleVn: 'Trừ một số âm',
     ratio: 45,
     side: 'left',
-    content:
-      'This one hides a **subtract-a-negative**. Spot it!\n\n' +
-      '> The **freezer** is **$-15°C$**.\n' +
-      '> The **room** is **$20°C$**.\n\n' +
-      'How many degrees **warmer** is the room than the freezer?',
-    contentVn:
-      'Bài này ẩn một phép **trừ số âm**. Hãy tìm ra nó!\n\n' +
-      '> **Tủ đông** là **$-15°C$**.\n' +
-      '> **Căn phòng** là **$20°C$**.\n\n' +
-      'Căn phòng **ấm hơn** tủ đông bao nhiêu độ?',
-    widget: WarmerProblemWidget,
-  },
-
-  // 13 ─ Recap: all the rules (stack) ──────────────────────────────────────
-  {
-    layout: 'stack',
-    accent: '#14b8a6',
-    icon: 'ShieldCheck',
-    columns: 1,
-    title: 'Recap: The Rules',
-    titleVn: 'Tóm tắt: Các quy tắc',
-    content: 'Keep this in your notebook — it is everything from today.',
-    contentVn: 'Hãy giữ điều này trong vở — đây là tất cả những gì hôm nay.',
+    inlineSvg: DIAGRAMS.SUB_NEG,
+    drawThis: true,
+    content: 'To subtract a negative, add its **inverse** instead. Think of a debt: if the bank **takes away** the 5 dollars you owe, you are **5 dollars richer**.',
+    contentVn: 'Để trừ một số âm, hãy cộng **số đối** của nó. Hãy nghĩ về nợ: nếu ngân hàng **xoá** khoản nợ 5 đô của em, em **giàu thêm 5 đô**.',
     notes: [
-      { tone: 'write', text: '**Ask first:** move **right** (bigger) or **left** (smaller)?', textVn: '**Hỏi trước:** đi sang **phải** (lớn hơn) hay **trái** (nhỏ hơn)?' },
-      { tone: 'write', text: 'Add **+** → right. Add **−** → left. Subtract **+** → left.', textVn: 'Cộng **+** → phải. Cộng **−** → trái. Trừ **+** → trái.' },
-      { tone: 'write', text: '**Same** signs → **+** (right). **Different** signs → **−** (left).', textVn: '**Cùng** dấu → **+** (phải). **Khác** dấu → **−** (trái).' },
-      { tone: 'write', text: '**Minus a negative = plus:** $a - (-b) = a + b$.', textVn: '**Trừ số âm = cộng:** $a - (-b) = a + b$.' },
+      {
+        tone: 'write',
+        text: '**Inverse:** the opposite of a number. The inverse of 5 is −5, and the inverse of −5 is 5.',
+        textVn: '**Số đối:** số ngược lại của một số. Số đối của 5 là −5, và số đối của −5 là 5.',
+      },
+      {
+        tone: 'write',
+        text: '**Minus a negative = plus:**  $a - (-b) = a + b$',
+        textVn: '**Trừ số âm = cộng:**  $a - (-b) = a + b$',
+      },
     ],
   },
 
-  // 14 ─ Quick self-check (steps + reveal) ─────────────────────────────────
+  // ── Section 4: the language of change ────────────────────────────────────
   {
-    layout: 'steps',
-    accent: '#8b5cf6',
-    icon: 'Repeat',
-    title: 'Quick Self-Check',
-    titleVn: 'Tự kiểm tra nhanh',
-    content: 'Try each on your whiteboard, then check with a partner before you reveal.',
-    contentVn: 'Thử từng câu trên bảng con, kiểm tra với bạn rồi mới bấm hiện đáp án.',
-    steps: [
-      { text: '**a)**  $20 + (-5)$', textVn: '**a)**  $20 + (-5)$' },
-      { text: '**b)**  $-10 - (-15)$', textVn: '**b)**  $-10 - (-15)$' },
-      { text: '**c)**  $-2 + (-13)$', textVn: '**c)**  $-2 + (-13)$' },
+    layout: 'compare',
+    accent: ORANGE,
+    icon: 'MessageSquare',
+    eyebrow: 'The words that do the work',
+    eyebrowVn: 'Những từ làm nên phép tính',
+    title: 'Which Way Does the Word Send You?',
+    titleVn: 'Từ ngữ đưa em về phía nào?',
+    columns: [
+      {
+        heading: 'These send you UP',
+        headingVn: 'Những từ đưa em LÊN',
+        accent: GREEN,
+        icon: 'ArrowRight',
+        content: '**rise · increase · gain · deposit · climb · warmer · higher · above · more than**',
+        contentVn: '**rise** (tăng) · **increase** (tăng lên) · **gain** (được thêm) · **deposit** (gửi tiền vào) · **climb** (leo lên) · **warmer** (ấm hơn) · **higher** (cao hơn) · **above** (trên) · **more than** (nhiều hơn)',
+        notes: [
+          {
+            tone: 'write',
+            text: 'The temperature **rises by** 6 → +6\nHe **deposits** 20 dollars → +20',
+            textVn: 'Nhiệt độ **rises by** (tăng thêm) 6 → +6\nThầy ấy **deposits** (gửi vào) 20 đô → +20',
+          },
+        ],
+      },
+      {
+        heading: 'These send you DOWN',
+        headingVn: 'Những từ đưa em XUỐNG',
+        accent: RED,
+        icon: 'ArrowRight',
+        content: '**fall · drop · decrease · loss · withdraw · owe · colder · lower · below · less than**',
+        contentVn: '**fall** (giảm) · **drop** (rơi xuống) · **decrease** (giảm bớt) · **loss** (mất mát) · **withdraw** (rút tiền ra) · **owe** (nợ) · **colder** (lạnh hơn) · **lower** (thấp hơn) · **below** (dưới) · **less than** (ít hơn)',
+        notes: [
+          {
+            tone: 'write',
+            text: 'The temperature **falls by** 9 → −9\nShe **owes** 12 dollars → −12',
+            textVn: 'Nhiệt độ **falls by** (giảm đi) 9 → −9\nCô ấy **owes** (nợ) 12 đô → −12',
+          },
+        ],
+      },
     ],
+  },
+  {
+    layout: 'statement',
+    accent: ORANGE,
+    icon: 'Quote',
+    eyebrow: 'Every class is an English class',
+    eyebrowVn: 'Mỗi tiết học đều là tiết tiếng Anh',
+    title: 'Read It Very Carefully',
+    titleVn: 'Hãy đọc thật kỹ',
+    label: 'Whiteboards',
+    labelVn: 'Bảng con',
+    labelIcon: 'Pencil',
+    text: 'Subtract 5 from 8.',
+    textVn: 'Subtract 5 from 8.',
+    sub: 'Write the calculation — not the answer. Which number do you write **first**?',
+    subVn: 'Hãy viết **phép tính** — chưa cần đáp án. Em viết số nào **trước**?',
     reveal: {
-      label: 'Reveal the answers',
-      labelVn: 'Hiện đáp án',
-      answer: '**a)** $15$    **b)** $5$    **c)** $-15$',
-      answerVn: '**a)** $15$    **b)** $5$    **c)** $-15$',
+      label: 'Show me',
+      labelVn: 'Cho em xem',
+      prompt: '**Hint:** the word **from** tells you where you **start**. Where do you start?',
+      promptVn: '**Gợi ý:** từ **from** cho biết em **bắt đầu** ở đâu. Vậy em bắt đầu ở đâu?',
+      answer:
+        'It is $8 - 5 = 3$ — **not** $5 - 8$. In English the two numbers arrive in the **opposite order** to the calculation.\n\n' +
+        'The same trap: **take 7 away from 3** → $3 - 7$.   **6 less than 2** → $2 - 6$.',
+      answerVn:
+        'Đáp án là $8 - 5 = 3$ — **không** phải $5 - 8$. Trong tiếng Anh, hai số xuất hiện theo **thứ tự ngược lại** với phép tính.\n\n' +
+        'Cùng một cái bẫy: **take 7 away from 3** → $3 - 7$.   **6 less than 2** → $2 - 6$.',
+    },
+  },
+  {
+    layout: 'split',
+    accent: TEAL,
+    icon: 'Repeat',
+    title: 'Say It, Then Write It',
+    titleVn: 'Đọc câu, rồi viết phép tính',
+    ratio: 45,
+    content:
+      'The arithmetic is the easy part. The **English** is where the marks are lost — so let us practise the translation.\n\n' +
+      'For every sentence: find the **signal words**, write the **calculation**, and only then work out the answer.',
+    contentVn:
+      'Phần tính toán là phần dễ. **Tiếng Anh** mới là chỗ mất điểm — nên hãy luyện tập cách chuyển đổi.\n\n' +
+      'Với mỗi câu: tìm **từ khoá**, viết **phép tính**, rồi mới tính ra đáp án.',
+    notes: [
+      {
+        tone: 'task',
+        badge: 'On your whiteboard',
+        badgeVn: 'Trên bảng con',
+        text: 'Everyone writes the calculation **before** anybody says the answer out loud.',
+        textVn: 'Mọi người viết phép tính **trước khi** có ai đó nói to đáp án.',
+      },
+    ],
+    widget: TranslateWidget,
+  },
+
+  // ── Section 5: difference ────────────────────────────────────────────────
+  {
+    layout: 'statement',
+    accent: ORANGE,
+    eyebrow: 'Every class is an English class',
+    eyebrowVn: 'Mỗi tiết học đều là tiết tiếng Anh',
+    title: 'Two Questions That Look the Same',
+    titleVn: 'Hai câu hỏi trông giống nhau',
+    label: 'Discuss',
+    labelVn: 'Thảo luận',
+    labelIcon: 'MessageSquare',
+    text: 'Find the difference between −3 and 4.',
+    textVn: 'Find the difference between −3 and 4.',
+    sub: 'And: **what is −3 minus 4?** The same question?',
+    subVn: 'Và: **−3 minus 4 bằng bao nhiêu?** Cùng một câu hỏi chứ?',
+    reveal: {
+      label: 'Show me',
+      labelVn: 'Cho em xem',
+      prompt: '**Hint:** put both numbers on the number line. How many **steps apart** are they?',
+      promptVn: '**Gợi ý:** đặt cả hai số lên trục số. Chúng cách nhau **bao nhiêu bước**?',
+      answer:
+        'A **difference** is the **gap** between two numbers, so it is never negative. From −3 to 4 is **7** steps: the difference is $7$.\n\n' +
+        'But $-3 - 4 = -7$. Two different questions, two different answers.',
+      answerVn:
+        '**Hiệu (difference)** là **khoảng cách** giữa hai số, nên nó không bao giờ âm. Từ −3 đến 4 là **7** bước: hiệu bằng $7$.\n\n' +
+        'Nhưng $-3 - 4 = -7$. Hai câu hỏi khác nhau, hai đáp án khác nhau.',
+    },
+  },
+  {
+    layout: 'split',
+    accent: GREEN,
+    icon: 'Scale',
+    title: 'How Much Warmer? How Much Lower?',
+    titleVn: 'Ấm hơn bao nhiêu? Thấp hơn bao nhiêu?',
+    ratio: 45,
+    inlineSvg: DIAGRAMS.DIFFERENCE_GAP,
+    content: 'All of these ask for the **same thing** — the gap: **how much warmer · how much colder · how much higher · how many more**.',
+    contentVn: 'Tất cả đều hỏi **cùng một thứ** — khoảng cách: **how much warmer · how much colder · how much higher · how many more**.',
+    notes: [
+      {
+        tone: 'write',
+        text: '**Difference:** how far apart two numbers are. Work it out with **bigger − smaller**. The answer is never negative.',
+        textVn: '**Hiệu:** hai số cách nhau bao xa. Tính bằng **số lớn − số bé**. Đáp án không bao giờ âm.',
+      },
+    ],
+    exampleLabel: 'Worked example',
+    exampleLabelVn: 'Ví dụ mẫu',
+    example: 'Freezer −15 °C, room 20 °C. How much **warmer**?  $20 - (-15) = 35$ degrees.',
+    exampleVn: 'Tủ đông −15 °C, căn phòng 20 °C. **Ấm hơn** bao nhiêu?  $20 - (-15) = 35$ độ.',
+  },
+
+  // ── Section 6: word problems ─────────────────────────────────────────────
+  {
+    layout: 'split',
+    accent: TEAL,
+    icon: 'Target',
+    eyebrow: 'Problem 1',
+    eyebrowVn: 'Bài 1',
+    title: 'The Car Park',
+    titleVn: 'Bãi đỗ xe',
+    ratio: 55,
+    image: liftPanel,
+    content:
+      'Mr Bowen parks on level **B4** — four floors **below** the ground, which is floor −4.\n\n' +
+      'He gets into the lift and goes **up 9 floors**.\n\n' +
+      'Which floor is he on now?',
+    contentVn:
+      'Thầy Bowen đỗ xe ở tầng **B4** — bốn tầng **dưới** mặt đất, tức là tầng −4.\n\n' +
+      'Thầy bước vào thang máy và đi **lên 9 tầng**.\n\n' +
+      'Bây giờ thầy đang ở tầng nào?',
+    reveal: {
+      label: 'Check your answer',
+      labelVn: 'Kiểm tra đáp án',
+      answer: '$-4 + 9 = 5$. He is on **floor 5**.',
+      answerVn: '$-4 + 9 = 5$. Thầy đang ở **tầng 5**.',
+    },
+    caption: 'The B buttons are the floors below zero.',
+    captionVn: 'Các nút B là những tầng dưới số không.',
+  },
+  {
+    layout: 'split',
+    accent: TEAL,
+    icon: 'Target',
+    eyebrow: 'Problem 2',
+    eyebrowVn: 'Bài 2',
+    title: 'The Bank Account',
+    titleVn: 'Tài khoản ngân hàng',
+    ratio: 55,
+    side: 'left',
+    image: piggyBank,
+    content:
+      'Mr Bowen has −6 dollars in his account — he **owes** the bank 6 dollars.\n\n' +
+      'He **deposits** 20 dollars. Then he **withdraws** 9 dollars. Then the bank **takes away** a 4-dollar debt he had forgotten about.\n\n' +
+      'How much does he have now?',
+    contentVn:
+      'Thầy Bowen có −6 đô trong tài khoản — thầy **nợ** ngân hàng 6 đô.\n\n' +
+      'Thầy **gửi vào** 20 đô. Rồi thầy **rút ra** 9 đô. Sau đó ngân hàng **xoá** khoản nợ 4 đô mà thầy đã quên mất.\n\n' +
+      'Bây giờ thầy có bao nhiêu tiền?',
+    reveal: {
+      label: 'Check your answer',
+      labelVn: 'Kiểm tra đáp án',
+      answer: '$-6 + 20 - 9 - (-4) = 9$, so **9 dollars**. Taking away a debt **adds** to your money.',
+      answerVn: '$-6 + 20 - 9 - (-4) = 9$, vậy là **9 đô**. Xoá một khoản nợ thì **cộng thêm** vào số tiền của em.',
+    },
+  },
+  {
+    layout: 'split',
+    accent: TEAL,
+    icon: 'Target',
+    eyebrow: 'Problem 3',
+    eyebrowVn: 'Bài 3',
+    title: 'The Research Station',
+    titleVn: 'Trạm nghiên cứu',
+    ratio: 55,
+    image: southPoleStation,
+    content:
+      'At 6 a.m. it is −11 °C at the research station. By noon the temperature has **risen 4 degrees**. By midnight it has **fallen 9 degrees**.\n\n' +
+      'There are 17 penguins and 3 scientists at the station.\n\n' +
+      'What is the temperature at midnight?',
+    contentVn:
+      'Lúc 6 giờ sáng, trạm nghiên cứu ở −11 °C. Đến trưa, nhiệt độ đã **tăng 4 độ**. Đến nửa đêm, nhiệt độ đã **giảm 9 độ**.\n\n' +
+      'Ở trạm có 17 con chim cánh cụt và 3 nhà khoa học.\n\n' +
+      'Nhiệt độ lúc nửa đêm là bao nhiêu?',
+    reveal: {
+      label: 'Check your answer',
+      labelVn: 'Kiểm tra đáp án',
+      answer: '$-11 + 4 - 9 = -16$, so −16 °C. The penguins and the scientists are not part of the calculation — a question can contain numbers you do not need.',
+      answerVn: '$-11 + 4 - 9 = -16$, vậy là −16 °C. Chim cánh cụt và các nhà khoa học không tham gia vào phép tính — một câu hỏi có thể chứa những con số em không cần dùng.',
+    },
+    caption: 'Amundsen–Scott Station at the South Pole.',
+    captionVn: 'Trạm Amundsen–Scott ở Nam Cực.',
+  },
+  {
+    layout: 'split',
+    accent: TEAL,
+    icon: 'Target',
+    eyebrow: 'Problem 4',
+    eyebrowVn: 'Bài 4',
+    title: 'The Soup',
+    titleVn: 'Bát súp',
+    ratio: 55,
+    side: 'left',
+    image: boomerangNebula,
+    content:
+      'Mr Bowen leaves a bowl of soup outside his spaceship. The soup is at 78 °C. Space is at −270 °C.\n\n' +
+      'How many degrees must the soup **fall** to reach the temperature of space?',
+    contentVn:
+      'Thầy Bowen để một bát súp bên ngoài phi thuyền. Bát súp ở 78 °C. Không gian vũ trụ ở −270 °C.\n\n' +
+      'Bát súp phải **giảm** bao nhiêu độ để bằng nhiệt độ của vũ trụ?',
+    reveal: {
+      label: 'Check your answer',
+      labelVn: 'Kiểm tra đáp án',
+      answer: '$78 - (-270) = 78 + 270 = 348$. It must fall **348 degrees** — that is the **difference** between the two temperatures.',
+      answerVn: '$78 - (-270) = 78 + 270 = 348$. Nó phải giảm **348 độ** — đó chính là **hiệu** giữa hai nhiệt độ.',
+    },
+    caption: 'The Boomerang Nebula, about −272 °C: the coldest place anyone has found.',
+    captionVn: 'Tinh vân Boomerang, khoảng −272 °C: nơi lạnh nhất từng được tìm thấy.',
+  },
+  {
+    layout: 'split',
+    accent: TEAL,
+    icon: 'Target',
+    eyebrow: 'Problem 5',
+    eyebrowVn: 'Bài 5',
+    title: 'The Snail',
+    titleVn: 'Con ốc sên',
+    ratio: 55,
+    image: snail,
+    content:
+      'A snail is at the bottom of a well, 12 metres below the ground, at −12 m.\n\n' +
+      'Every day it climbs **up 3 m**. Every night it slides **down 3 m**.\n\n' +
+      'Where is the snail after 9 days?',
+    contentVn:
+      'Một con ốc sên ở đáy giếng, sâu 12 mét dưới mặt đất, tức là −12 m.\n\n' +
+      'Mỗi ngày nó bò **lên 3 m**. Mỗi đêm nó tụt **xuống 3 m**.\n\n' +
+      'Sau 9 ngày, con ốc sên ở đâu?',
+    reveal: {
+      label: 'Check your answer',
+      labelVn: 'Kiểm tra đáp án',
+      answer: 'Each day: $+3 - 3 = 0$. After 9 days the snail is still at −12 m, at the bottom of the well. Some questions are long, but the numbers cancel.',
+      answerVn: 'Mỗi ngày: $+3 - 3 = 0$. Sau 9 ngày, con ốc sên vẫn ở −12 m, dưới đáy giếng. Có những câu hỏi rất dài, nhưng các con số triệt tiêu nhau.',
     },
   },
 
-  // 15 ─ Celebration + exit question ───────────────────────────────────────
+  // ── Section 7: recap and homework ────────────────────────────────────────
+  {
+    layout: 'stack',
+    variant: 'checklist',
+    accent: TEAL,
+    icon: 'CheckCircle2',
+    columns: 2,
+    eyebrow: 'Before you leave',
+    eyebrowVn: 'Trước khi ra về',
+    title: 'Can You Do All Eight?',
+    titleVn: 'Em làm được cả tám điều này chứ?',
+    content:
+      '> Your notebook should now have **4 definitions**, the **four movement rules** and **2 drawings** in it. Check.',
+    contentVn:
+      '> Trong vở của em bây giờ phải có **4 định nghĩa**, **bốn quy tắc di chuyển** và **2 hình vẽ**. Hãy kiểm tra lại.',
+    items: [
+      { text: 'Say what an **integer** is, and where each kind sits on the line.', textVn: 'Nói được **số nguyên** là gì và mỗi loại nằm ở đâu trên trục số.' },
+      { text: 'Say −5 out loud correctly, and know when English says **minus**.', textVn: 'Đọc đúng −5, và biết khi nào tiếng Anh nói **minus**.' },
+      { text: 'Move the right way in **all four** cases.', textVn: 'Di chuyển đúng hướng trong **cả bốn** trường hợp.' },
+      { text: 'Explain **minus a negative = plus**, using the word **inverse**.', textVn: 'Giải thích **trừ số âm = cộng**, dùng từ **số đối**.' },
+      { text: 'Give three **up** words and three **down** words.', textVn: 'Nêu ba từ **đi lên** và ba từ **đi xuống**.' },
+      { text: 'Turn “subtract 5 from 8” into a calculation, the right way round.', textVn: 'Chuyển “subtract 5 from 8” thành phép tính, đúng thứ tự.' },
+      { text: 'Find the **difference**, and say why it is never negative.', textVn: 'Tìm **hiệu**, và nói vì sao nó không bao giờ âm.' },
+      { text: 'Write the **calculation before the answer**.', textVn: 'Viết **phép tính trước khi viết đáp án**.' },
+    ],
+  },
+  {
+    layout: 'callout',
+    accent: RED,
+    icon: 'Home',
+    eyebrow: 'Homework Assignment',
+    eyebrowVn: 'Bài tập về nhà',
+    title: 'For Next Lesson',
+    titleVn: 'Cho tiết học sau',
+    content: 'Take your **Exercise 1.1** sheet home. Show the **calculation** every time — not just the answer.',
+    contentVn: 'Mang phiếu **Exercise 1.1** về nhà. Luôn viết **phép tính** — không chỉ viết đáp án.',
+    notes: [
+      {
+        tone: 'homework',
+        badge: 'Exercise 1.1',
+        badgeVn: 'Bài tập 1.1',
+        icon: 'Pencil',
+        text:
+          '**Focus** — questions 1 to 5. Everybody.\n' +
+          '**Practice** — questions 6 to 12. Q6 and Q7 have a missing number; Q8 and Q9 are estimates, so round first.\n' +
+          '**Challenge** — questions 13 and 14, the two tables. An attempt beats a blank.',
+        textVn:
+          '**Focus** — câu 1 đến 5. Tất cả các em.\n' +
+          '**Practice** — câu 6 đến 12. Câu 6 và 7 có ô trống; câu 8 và 9 là ước lượng, hãy làm tròn trước.\n' +
+          '**Challenge** — câu 13 và 14, hai bảng số. Làm sai vẫn hơn bỏ trống.',
+      },
+    ],
+  },
   {
     layout: 'hero',
-    color: 'bg-[#14b8a6]',
+    color: '#0087a8',
     icon: 'CheckCircle2',
+    brand: 'Year 7 Mathematics',
+    brandVn: 'Toán Lớp 7',
     title: 'Lesson Complete!',
     titleVn: 'Hoàn thành bài học!',
-    subtitle: 'You can now add and subtract integers on a number line — even subtracting a negative. Exit question: what is $-4 - (-10)$?',
-    subtitleVn: 'Bây giờ em có thể cộng và trừ số nguyên trên trục số — kể cả trừ số âm. Câu hỏi ra về: $-4 - (-10)$ bằng bao nhiêu?',
+    subtitle: 'You can move both ways along the number line, and you can turn an English sentence into a calculation. Exit question: the temperature is −4 °C and it **falls by 10 degrees**. What is it now?',
+    subtitleVn: 'Em đã có thể di chuyển cả hai hướng trên trục số, và chuyển một câu tiếng Anh thành phép tính. Câu hỏi ra về: nhiệt độ đang là −4 °C và **giảm 10 độ**. Bây giờ là bao nhiêu?',
   },
-];
+]

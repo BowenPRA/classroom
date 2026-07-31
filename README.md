@@ -109,6 +109,10 @@ Any field can be suffixed `…Vn` for the Vietnamese version (e.g. `titleVn`,
   the strip. **Bold** runs inside a note pick up that tone's key-word colour, so
   writing `**Cell:** the smallest…` prints the term the way the book does.
 - **`reveal`** — a click-to-reveal answer box: `{ label, prompt?, answer }`.
+- **widgets** — a `widget` component is rendered with the deck's current
+  language as a prop (`({ lang }) => …`, `'en' | 'vn'`), so its own buttons and
+  labels can be bilingual like the rest of the slide. Ignore the prop if the
+  widget has no text of its own.
 - **media** — `inlineSvg` (from `diagrams.js`), `widget` (a component), or
   `image` (import a file from the unit's `images/` folder so Vite hashes it and
   respects the `/classroom/` base — don't hand-write `/public` paths). `drawThis`

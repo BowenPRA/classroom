@@ -328,7 +328,7 @@ export default function Deck({ lesson, course }) {
                           )}
                           {s.widget ? (
                             <div className={`w-full h-full flex items-center justify-center ${isDisplayMode ? 'p-6' : 'p-2 sm:p-4'}`}>
-                              <WidgetErrorBoundary><WidgetRenderer config={s.widget} /></WidgetErrorBoundary>
+                              <WidgetErrorBoundary><WidgetRenderer config={s.widget} lang={lang} /></WidgetErrorBoundary>
                             </div>
                           ) : s.inlineSvg ? (
                             <div className={`w-full h-full flex items-center justify-center text-slate-800 dark:text-slate-100 ${isDisplayMode ? 'p-6' : 'p-3 sm:p-4'}`} dangerouslySetInnerHTML={{ __html: s.inlineSvg }} />
@@ -452,7 +452,7 @@ export default function Deck({ lesson, course }) {
           </button>
           <div className="relative w-full h-full max-w-7xl max-h-[90vh] flex items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-[2rem] shadow-2xl overflow-hidden p-2 sm:p-6 animate-in zoom-in-95 duration-300 border-4 border-slate-200 dark:border-slate-700">
             {zoomedImage.type === 'widget' ? (
-              <WidgetErrorBoundary><WidgetRenderer config={zoomedImage.config} /></WidgetErrorBoundary>
+              <WidgetErrorBoundary><WidgetRenderer config={zoomedImage.config} lang={lang} /></WidgetErrorBoundary>
             ) : zoomedImage.type === 'svg' ? (
               <div className="w-full h-full flex items-center justify-center bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-xl shadow-sm" dangerouslySetInnerHTML={{ __html: zoomedImage.content }} />
             ) : zoomedImage.type === 'img' ? (

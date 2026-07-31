@@ -7,14 +7,18 @@ import { Construction } from 'lucide-react'
  *   2. A config object:              widget: { type: 'Name', params: {...} }
  * Only the component-reference form is used today; the config branch is a
  * stub for future generic, registry-based widgets.
+ *
+ * `lang` is the deck's current language ('en' | 'vn'). It is handed to the
+ * widget so its own interface text can be bilingual like the rest of a slide —
+ * widgets that don't need it can ignore the prop.
  */
-export default function WidgetRenderer({ config }) {
+export default function WidgetRenderer({ config, lang = 'en' }) {
   if (!config) return null
 
   // Component reference (function) or already-created element.
   if (typeof config === 'function' || (typeof config === 'object' && config.$$typeof)) {
     const Widget = config
-    return <Widget />
+    return <Widget lang={lang} />
   }
 
   // Config object — no generic widgets registered yet.

@@ -145,7 +145,7 @@ export function Media({ slide, source, ctx, drawThis = (source || slide).drawThi
       )}
       {hasWidget ? (
         <div className={`w-full h-full flex items-center justify-center ${isDisplayMode ? 'p-6' : 'p-2 sm:p-4'}`}>
-          <WidgetErrorBoundary><WidgetRenderer config={src.widget} /></WidgetErrorBoundary>
+          <WidgetErrorBoundary><WidgetRenderer config={src.widget} lang={lang} /></WidgetErrorBoundary>
         </div>
       ) : hasSvg ? (
         // text-slate-* matters: diagram labels use fill="currentColor", which
