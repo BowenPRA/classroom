@@ -10,6 +10,7 @@ import {
 import { SafeInlineMath, SafeBlockMath } from '../lib/SafeMath.jsx'
 import WidgetRenderer, { WidgetErrorBoundary } from './WidgetRenderer.jsx'
 import { useDarkMode } from '../lib/useDarkMode.js'
+import { getLayout } from './layouts/index.js'
 
 const IconMap = {
   BookOpen, Scale, Target, MessageSquare, ShieldCheck,
@@ -112,6 +113,8 @@ export default function Deck({ lesson, course }) {
 
   const s = slides[currentIndex]
   const pick = (en, vn) => (lang === 'vn' ? (vn || en) : en)
+  const LayoutComp = getLayout(s.layout)
+  const ctx = { lang, pick, isDisplayMode, bilingual, onZoom: setZoomedImage }
   const slideTitle = pick(s.title, s.titleVn)
   const slideSubtitle = pick(s.subtitle, s.subtitleVn)
   const slideObjective = pick(s.objective, s.objectiveVn)
@@ -255,10 +258,13 @@ export default function Deck({ lesson, course }) {
         <div
           key={currentIndex}
           className={`w-full max-h-full flex flex-col bg-white dark:bg-slate-900 overflow-hidden transition-all duration-500 animate-in fade-in zoom-in-[0.98]
-          ${isDisplayMode ? 'h-full max-w-none rounded-none border-0' : `rounded-3xl lg:rounded-[2rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 h-full ${rightPanelExists ? 'max-w-7xl' : 'max-w-4xl'}`}`}
+          ${isDisplayMode ? 'h-full max-w-none rounded-none border-0' : `rounded-3xl lg:rounded-[2rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 h-full ${LayoutComp || rightPanelExists ? 'max-w-7xl' : 'max-w-4xl'}`}`}
         >
+          {/* Flexible layout (opt-in via slide.layout) */}
+          {LayoutComp && createElement(LayoutComp, { slide: s, ctx })}
+
           {/* INTRO */}
-          {s.type === 'intro' && (
+          {!LayoutComp && s.type === 'intro' && (
             <div className={`flex-1 flex flex-col items-center justify-center p-8 sm:p-12 text-center text-white ${s.color || 'bg-[#1cb0f6]'} overflow-y-auto min-h-0`}>
               <div className={`bg-white/20 mx-auto rounded-[2rem] flex items-center justify-center mb-8 shadow-inner border-4 border-white/30 ${isDisplayMode ? 'w-32 h-32' : 'w-24 h-24'}`}>
                 <BookOpen className={isDisplayMode ? 'w-16 h-16' : 'w-12 h-12'} strokeWidth={2.5} />
@@ -288,7 +294,7 @@ export default function Deck({ lesson, course }) {
           )}
 
           {/* CONCEPT */}
-          {s.type === 'concept' && (() => {
+          {!LayoutComp && s.type === 'concept' && (() => {
             const themeColor = s.color || 'bg-[#1cb0f6]'
             return (
               <>
@@ -353,7 +359,7 @@ export default function Deck({ lesson, course }) {
           })()}
 
           {/* WARMUP */}
-          {s.type === 'warmup' && (() => {
+          {!LayoutComp && s.type === 'warmup' && (() => {
             const themeColor = s.color || 'bg-[#ff9600]'
             return (
               <>
@@ -376,7 +382,7 @@ export default function Deck({ lesson, course }) {
           })()}
 
           {/* SUMMARY */}
-          {s.type === 'summary' && (
+          {!LayoutComp && s.type === 'summary' && (
             <div className={`flex-1 flex flex-col items-center justify-center p-8 sm:p-12 text-center text-white ${s.color || 'bg-[#58cc02]'} min-h-0 overflow-y-auto`}>
               <div className={`bg-white/20 mx-auto rounded-[2rem] flex items-center justify-center mb-8 shadow-inner border-4 border-white/30 ${isDisplayMode ? 'w-32 h-32' : 'w-24 h-24'}`}>
                 <CheckCircle2 className={isDisplayMode ? 'w-16 h-16' : 'w-12 h-12'} strokeWidth={3} />
@@ -449,6 +455,8 @@ export default function Deck({ lesson, course }) {
               <WidgetErrorBoundary><WidgetRenderer config={zoomedImage.config} /></WidgetErrorBoundary>
             ) : zoomedImage.type === 'svg' ? (
               <div className="w-full h-full flex items-center justify-center bg-white dark:bg-slate-800 rounded-xl shadow-sm" dangerouslySetInnerHTML={{ __html: zoomedImage.content }} />
+            ) : zoomedImage.type === 'img' ? (
+              <img src={zoomedImage.src} alt="Expanded" className="w-full h-full object-contain rounded-xl bg-white dark:bg-slate-800 p-4" draggable={false} />
             ) : (
               <iframe src={zoomedImage.src} title="Expanded" className="w-full h-full pointer-events-none rounded-xl bg-white dark:bg-slate-800" scrolling="no" />
             )}

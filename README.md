@@ -68,23 +68,51 @@ export default {
 
 ## Slide schema (`slides.js`)
 
-Each slide is an object. `type` is `intro` · `concept` · `warmup` · `summary`.
+Each slide is a plain object. Set **`layout`** to pick a shape. (Slides with no
+`layout` fall back to the legacy `type` renderer — `intro` · `concept` · `warmup`
+· `summary` — so old decks keep working unchanged.)
 
-| Field | Applies to | Purpose |
+### The layouts
+
+| `layout` | Shape | Key fields |
 |---|---|---|
-| `title` / `titleVn` | all | heading (Vn = Vietnamese) |
-| `subtitle` / `subtitleVn` | intro, summary | one supporting line |
-| `unit`, `objective` / `objectiveVn`, `warmUp` / `warmUpVn` | intro | rich title slide |
-| `content` / `contentVn` | concept, warmup | body (markdown-lite, see below) |
-| `example` / `exampleVn`, `exampleLabel` / `exampleLabelVn` | concept | worked example panel |
-| `icon` | concept | `BookOpen`, `Target`, `Scale`, `MessageSquare`, `ShieldCheck`, `AlertTriangle`, `Users`, `Equal`, `Repeat`, `HelpCircle`, … |
-| `color` | all | `bg-[#hex]` header/background |
-| `inlineSvg` | concept, warmup | a diagram from `diagrams.js` |
-| `widget` | concept | an interactive widget component |
-| `drawThis` | concept | amber "Draw This" badge on the diagram |
+| `hero` | Full-colour opener/closer | `color` (`bg-[#hex]`), `brand`, `eyebrow`, `date`, `icon`, `title`, `objective` **or** `subtitle`, `card` (white callout: `{icon,badge,text}`), `reveal` |
+| `statement` | Big centred definition on a theme canvas | `accent` (hex), `eyebrow`, `title`, `label` (chip), `text` (the big line), `sub`, `reveal`, `notes` |
+| `split` | Text + media panel | `accent`, `icon`, `title`, `content`, `notes`, `example`+`exampleLabel`, media (`widget`/`inlineSvg`/`image`), `side` (`'left'`\|`'right'`), `ratio` (40/45/50/55/60), `reveal`, `drawThis` |
+| `showcase` | One media, edge-to-edge | `accent`, `icon`, `title`, `eyebrow`, media, `caption`, `drawThis` |
+| `compare` | Two themeable columns | `title`, `columns: [{heading, accent, icon, content, notes, inlineSvg\|image, caption}]` |
+| `stack` | Grid of note cards / checklist | `accent`, `icon`, `title`, `content`, `columns` (1\|2), `notes` — or `variant:'checklist'` + `items` |
+| `steps` | Numbered sequence | `accent`, `icon`, `title`, `content`, `steps: [{text}]`, optional side media, `reveal` |
+| `callout` | Single accent "glass" card | `accent`, `icon`, `eyebrow`, `title`, `content`, `notes`, `reveal` |
 
-**Body markdown-lite:** `**bold**`, `$inline$` / `$$block$$` KaTeX math, and a line
-starting with `>` becomes an amber "write this down" note. Blank line = spacer.
+Any field can be suffixed `…Vn` for the Vietnamese version (e.g. `titleVn`,
+`contentVn`, and inside `notes`/`columns`/`card`/`reveal`: `textVn`, `headingVn`,
+`answerVn`, …). Missing `…Vn` falls back to English.
+
+### Shared pieces
+
+- **`accent`** — a raw hex (e.g. `'#14b8a6'`) used for chips, borders and icons;
+  theme-safe on light and dark. (`hero`/`showcase` title bars can also take a
+  `color` like `'bg-[#hex]'`.)
+- **`notes`** — typed "copy this" cards: `{ tone, text, badge?, icon? }`. Tones:
+  `write` (blue), `task` (orange), `plant` (green), `homework` (rose), `theory`
+  (violet), `info` (teal). `badge:false` hides the badge.
+- **`reveal`** — a click-to-reveal answer box: `{ label, prompt?, answer }`.
+- **media** — `inlineSvg` (from `diagrams.js`), `widget` (a component), or
+  `image` (import a file from the unit's `images/` folder so Vite hashes it and
+  respects the `/classroom/` base — don't hand-write `/public` paths). `drawThis`
+  adds the amber "Draw This" badge; a caption sits under `showcase`/`compare` media.
+- **`icon`** — a lucide name: `BookOpen`, `Microscope`, `Leaf`, `Boxes`, `Layers`,
+  `Target`, `Scale`, `Users`, `Equal`, `AlertTriangle`, `ShieldCheck`, `Zap`,
+  `Sparkles`, `CheckCircle2`, `GraduationCap`, `Telescope`, `ScanEye`, … (see
+  `src/components/layouts/primitives.jsx`).
+
+**Body markdown-lite** (`content`, note/step/reveal text): `**bold**`,
+`$inline$` / `$$block$$` KaTeX math, a line starting with `>` becomes an amber
+"write this down" note, blank line = spacer.
+
+Real photos live in the unit's `images/` folder with a `CREDITS.json` recording
+each source + licence (see `content/y7-science/U01_1/images/`).
 
 Run `npm run audit:svg` after editing any diagram — a lesson isn't done until it's
 clean.
