@@ -9,6 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "audit:svg": "node scripts/svg-audit.mjs",
+    "check:deck": "node scripts/deck-check.mjs",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

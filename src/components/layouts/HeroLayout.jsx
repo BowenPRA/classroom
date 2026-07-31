@@ -20,6 +20,14 @@ export default function HeroLayout({ slide: s, ctx }) {
   const cardText = card ? pick(card.text, card.textVn) : null
   const cardBadge = card ? pick(card.badge, card.badgeVn) : null
 
+  // Both surfaces on a hero are a FIXED colour that does not follow the theme:
+  // the callout card is always white, the field behind the title is always the
+  // hero colour. So the emphasis colour has to be pinned to the surface, not to
+  // the theme — the default `dark:text-slate-100` turns **bold** white-on-white
+  // on the card as soon as dark mode is on.
+  const STRONG_ON_CARD = 'font-black text-slate-900'
+  const STRONG_ON_FIELD = 'font-black text-white underline decoration-white/40 underline-offset-4'
+
   return (
     <div className="flex-1 flex flex-col items-center justify-center text-center text-white overflow-y-auto custom-scrollbar min-h-0 p-8 sm:p-12" style={bgStyle}>
       {(brand || s.date) && (
@@ -49,7 +57,7 @@ export default function HeroLayout({ slide: s, ctx }) {
           <p className={`font-bold opacity-95 drop-shadow-sm leading-snug ${isDisplayMode ? 'text-[clamp(1.4rem,2.6vw,2.6rem)]' : 'text-lg lg:text-2xl'}`}>{objective}</p>
         </div>
       ) : subtitle ? (
-        <p className={`font-bold opacity-90 drop-shadow-sm max-w-4xl mx-auto ${isDisplayMode ? 'text-[clamp(1.5rem,3vw,3rem)]' : 'text-xl lg:text-2xl'}`}>{parseInlineText(subtitle)}</p>
+        <p className={`font-bold opacity-90 drop-shadow-sm max-w-4xl mx-auto ${isDisplayMode ? 'text-[clamp(1.5rem,3vw,3rem)]' : 'text-xl lg:text-2xl'}`}>{parseInlineText(subtitle, { strongClass: STRONG_ON_FIELD })}</p>
       ) : null}
 
       {cardText && (
@@ -58,7 +66,7 @@ export default function HeroLayout({ slide: s, ctx }) {
             <Ic name={card.icon || 'Pencil'} className={isDisplayMode ? 'w-5 h-5' : 'w-4 h-4'} strokeWidth={3} />
             {cardBadge || (lang === 'vn' ? 'Nhiệm vụ' : 'Task')}
           </div>
-          <div className={`font-bold text-slate-800 leading-snug ${isDisplayMode ? 'text-[clamp(1.3rem,2.4vw,2.4rem)]' : 'text-lg lg:text-2xl'}`}>{parseInlineText(cardText)}</div>
+          <div className={`font-bold text-slate-800 leading-snug ${isDisplayMode ? 'text-[clamp(1.3rem,2.4vw,2.4rem)]' : 'text-lg lg:text-2xl'}`}>{parseInlineText(cardText, { strongClass: STRONG_ON_CARD })}</div>
         </div>
       )}
 

@@ -15,7 +15,14 @@ npm run dev        # local dev server
 npm run build      # production build → dist/
 npm run deploy     # build + publish dist/ to the gh-pages branch
 npm run audit:svg  # check every diagram's text fits its boxes
+npm run check:deck -- "http://localhost:5173/#/lesson/y7-science/U01_1"
+                   # walk every slide: overflow, broken images, console errors
 ```
+
+**Writing a lesson?** Read [docs/LESSON-PLAYBOOK.md](docs/LESSON-PLAYBOOK.md)
+first — the design principles, the build order, and the traps that pass lint and
+build while looking broken. This file is the field reference; that one is the
+method.
 
 Hosted on GitHub Pages at `/classroom/` (see `base` in `vite.config.js` — change it
 if you rename the repo).
