@@ -17,7 +17,6 @@ import { TeamActivityWidget, NumberLineWidget, TranslateWidget } from './widgets
 import liftPanel from './images/lift-panel.jpg'
 import piggyBank from './images/piggy-bank.jpg'
 import southPoleStation from './images/south-pole-station.jpg'
-import boomerangNebula from './images/boomerang-nebula.jpg'
 import snail from './images/snail.jpg'
 
 const TEAL = '#0087a8'
@@ -47,8 +46,8 @@ export const slides = [
       icon: 'Pencil',
       badge: 'Starter Task',
       badgeVn: 'Nhiệm vụ khởi động',
-      text: 'Write down **three things** that can be described with a **negative number**. A full sentence for each.',
-      textVn: 'Viết ra **ba thứ** có thể được mô tả bằng **số âm**. Mỗi thứ một câu hoàn chỉnh.',
+      text: 'Write down **three things** that can be described with a **negative number**. Write your list as a **full English sentence**.',
+      textVn: 'Viết ra **ba thứ** có thể được mô tả bằng **số âm**. Hãy viết danh sách của em thành một **câu tiếng Anh hoàn chỉnh**.',
     },
   },
   {
@@ -59,9 +58,9 @@ export const slides = [
     titleVn: 'Trò chơi đội: Kể tên số âm',
     ratio: 45,
     content:
-      'Play in **teams of two**, one whiteboard each. An idea only counts if you can say **where the negative number is**.',
+      'Play in **teams of two**, one whiteboard each.',
     contentVn:
-      'Chơi theo **đội hai người**, mỗi đội một bảng con. Một ý tưởng chỉ được tính nếu em nói được **số âm nằm ở đâu**.',
+      'Chơi theo **đội hai người**, mỗi đội một bảng con.',
     notes: [
       {
         tone: 'task',
@@ -102,8 +101,14 @@ export const slides = [
       },
       {
         tone: 'write',
-        text: '**Positive** integers sit to the **right** of zero. **Negative** integers sit to the **left**. **Zero** is neither.',
-        textVn: 'Số nguyên **dương** nằm bên **phải** số không. Số nguyên **âm** nằm bên **trái**. **Số không** không thuộc bên nào.',
+        text:
+          '**Positive integers** are to the **right** of zero.\n' +
+          '**Negative integers** are to the **left** of zero.\n' +
+          '**Zero** is in the middle.',
+        textVn:
+          '**Số nguyên dương** nằm bên **phải** số không.\n' +
+          '**Số nguyên âm** nằm bên **trái** số không.\n' +
+          '**Số không** nằm ở giữa.',
       },
     ],
   },
@@ -122,13 +127,6 @@ export const slides = [
     contentVn:
       'Nhiệt kế chính là trục số đó, dựng đứng lên. Từ ngữ thay đổi — phép toán thì không.\n\n' +
       'Cẩn thận: −8 **thấp hơn** −4, vì nó xa số không hơn về phía lạnh.',
-    notes: [
-      {
-        tone: 'write',
-        text: '**above / below zero · higher / lower · warmer / colder** — every one of these tells you **which side of zero** a number is on.',
-        textVn: '**above / below zero** (trên / dưới không) · **higher / lower** (cao hơn / thấp hơn) · **warmer / colder** (ấm hơn / lạnh hơn) — tất cả đều cho biết số đó nằm **phía nào của số không**.',
-      },
-    ],
   },
   {
     layout: 'split',
@@ -158,47 +156,6 @@ export const slides = [
     ],
   },
 
-  // ── Section 3: which way do you move? ────────────────────────────────────
-  {
-    layout: 'statement',
-    accent: PURPLE,
-    icon: 'HelpCircle',
-    eyebrow: 'In pairs — no numbers yet',
-    eyebrowVn: 'Theo cặp — chưa dùng số',
-    title: 'Which Way Do You Move?',
-    titleVn: 'Em di chuyển về phía nào?',
-    label: 'Discuss',
-    labelVn: 'Thảo luận',
-    labelIcon: 'MessageSquare',
-    text: 'The temperature **falls**. You pay back money you **owe**. The lift goes **down**.',
-    textVn: 'Nhiệt độ **giảm**. Em trả lại số tiền em **đang nợ**. Thang máy đi **xuống**.',
-    sub: 'For each one: do you move **left** or **right** along the number line? No calculations — just point, and be ready to say **why**.',
-    subVn: 'Với mỗi trường hợp: em đi sang **trái** hay **phải** trên trục số? Chưa tính toán — chỉ cần chỉ, và sẵn sàng giải thích **vì sao**.',
-  },
-  {
-    layout: 'split',
-    accent: ORANGE,
-    icon: 'ArrowRight',
-    title: 'Left or Right?',
-    titleVn: 'Trái hay Phải?',
-    ratio: 45,
-    content:
-      'Every add and every subtract is just a **move** along the line.\n\n' +
-      'Change **one thing at a time** and watch which way the arrow goes. Can you find the rule **before** you press the orange button?',
-    contentVn:
-      'Mỗi phép cộng và mỗi phép trừ chỉ là một **bước di chuyển** trên trục số.\n\n' +
-      'Hãy thay đổi **từng thứ một** và xem mũi tên đi về phía nào. Em có tìm ra quy tắc **trước khi** bấm nút màu cam không?',
-    notes: [
-      {
-        tone: 'task',
-        badge: 'Your job',
-        badgeVn: 'Nhiệm vụ của em',
-        text: 'Find **all four** rules: add a positive, add a negative, subtract a positive, subtract a negative.',
-        textVn: 'Tìm đủ **bốn** quy tắc: cộng số dương, cộng số âm, trừ số dương, trừ số âm.',
-      },
-    ],
-    widget: NumberLineWidget,
-  },
   {
     layout: 'split',
     accent: TEAL,
@@ -272,6 +229,30 @@ export const slides = [
   },
   {
     layout: 'split',
+    accent: ORANGE,
+    icon: 'ArrowRight',
+    title: 'Left or Right?',
+    titleVn: 'Trái hay Phải?',
+    ratio: 45,
+    content:
+      'Every add and every subtract is just a **move** along the line.\n\n' +
+      'Change **one thing at a time** and check that the arrow goes the way you expect. Press the orange button only to **check yourself**.',
+    contentVn:
+      'Mỗi phép cộng và mỗi phép trừ chỉ là một **bước di chuyển** trên trục số.\n\n' +
+      'Hãy thay đổi **từng thứ một** và kiểm tra xem mũi tên có đi đúng hướng em nghĩ không. Chỉ bấm nút màu cam để **tự kiểm tra**.',
+    notes: [
+      {
+        tone: 'task',
+        badge: 'Your job',
+        badgeVn: 'Nhiệm vụ của em',
+        text: 'Test **all four** rules: add a positive, add a negative, subtract a positive, subtract a negative.',
+        textVn: 'Thử đủ **bốn** quy tắc: cộng số dương, cộng số âm, trừ số dương, trừ số âm.',
+      },
+    ],
+    widget: NumberLineWidget,
+  },
+  {
+    layout: 'split',
     accent: GREEN,
     icon: 'ShieldCheck',
     eyebrow: 'The big rule of the lesson',
@@ -282,18 +263,24 @@ export const slides = [
     side: 'left',
     inlineSvg: DIAGRAMS.SUB_NEG,
     drawThis: true,
-    content: 'To subtract a negative, add its **inverse** instead. Think of a debt: if the bank **takes away** the 5 dollars you owe, you are **5 dollars richer**.',
-    contentVn: 'Để trừ một số âm, hãy cộng **số đối** của nó. Hãy nghĩ về nợ: nếu ngân hàng **xoá** khoản nợ 5 đô của em, em **giàu thêm 5 đô**.',
+    content: 'To subtract a negative, add its **inverse** instead. Take away a debt and you are richer.',
+    contentVn: 'Để trừ một số âm, hãy cộng **số đối** của nó. Xoá một khoản nợ thì em giàu thêm.',
     notes: [
       {
         tone: 'write',
-        text: '**Inverse:** the opposite of a number. The inverse of 5 is −5, and the inverse of −5 is 5.',
-        textVn: '**Số đối:** số ngược lại của một số. Số đối của 5 là −5, và số đối của −5 là 5.',
+        text:
+          '**Inverse:** the opposite of a number — the inverse of 5 is −5.\n' +
+          '**Minus a negative = plus:**  $a - (-b) = a + b$',
+        textVn:
+          '**Số đối:** số ngược lại của một số — số đối của 5 là −5.\n' +
+          '**Trừ số âm = cộng:**  $a - (-b) = a + b$',
       },
       {
-        tone: 'write',
-        text: '**Minus a negative = plus:**  $a - (-b) = a + b$',
-        textVn: '**Trừ số âm = cộng:**  $a - (-b) = a + b$',
+        tone: 'theory',
+        badge: 'Language note',
+        badgeVn: 'Ghi chú ngôn ngữ',
+        text: 'Saying **inverse**, and writing the rule with **$a$ and $b$** instead of numbers, is us using **algebra language**: a letter stands for any number.',
+        textVn: 'Dùng từ **inverse** (số đối) và viết quy tắc bằng **$a$ và $b$** chính là **ngôn ngữ đại số**: chữ cái thay cho một số bất kỳ.',
       },
     ],
   },
@@ -510,17 +497,15 @@ export const slides = [
     image: southPoleStation,
     content:
       'At 6 a.m. it is −11 °C at the research station. By noon the temperature has **risen 4 degrees**. By midnight it has **fallen 9 degrees**.\n\n' +
-      'There are 17 penguins and 3 scientists at the station.\n\n' +
       'What is the temperature at midnight?',
     contentVn:
       'Lúc 6 giờ sáng, trạm nghiên cứu ở −11 °C. Đến trưa, nhiệt độ đã **tăng 4 độ**. Đến nửa đêm, nhiệt độ đã **giảm 9 độ**.\n\n' +
-      'Ở trạm có 17 con chim cánh cụt và 3 nhà khoa học.\n\n' +
       'Nhiệt độ lúc nửa đêm là bao nhiêu?',
     reveal: {
       label: 'Check your answer',
       labelVn: 'Kiểm tra đáp án',
-      answer: '$-11 + 4 - 9 = -16$, so −16 °C. The penguins and the scientists are not part of the calculation — a question can contain numbers you do not need.',
-      answerVn: '$-11 + 4 - 9 = -16$, vậy là −16 °C. Chim cánh cụt và các nhà khoa học không tham gia vào phép tính — một câu hỏi có thể chứa những con số em không cần dùng.',
+      answer: '$-11 + 4 - 9 = -16$, so **−16 °C**. Work along the sentence in order: start, then the rise, then the fall.',
+      answerVn: '$-11 + 4 - 9 = -16$, vậy là **−16 °C**. Hãy làm theo đúng thứ tự trong câu: số ban đầu, rồi phần tăng, rồi phần giảm.',
     },
     caption: 'Amundsen–Scott Station at the South Pole.',
     captionVn: 'Trạm Amundsen–Scott ở Nam Cực.',
@@ -531,32 +516,6 @@ export const slides = [
     icon: 'Target',
     eyebrow: 'Problem 4',
     eyebrowVn: 'Bài 4',
-    title: 'The Soup',
-    titleVn: 'Bát súp',
-    ratio: 55,
-    side: 'left',
-    image: boomerangNebula,
-    content:
-      'Mr Bowen leaves a bowl of soup outside his spaceship. The soup is at 78 °C. Space is at −270 °C.\n\n' +
-      'How many degrees must the soup **fall** to reach the temperature of space?',
-    contentVn:
-      'Thầy Bowen để một bát súp bên ngoài phi thuyền. Bát súp ở 78 °C. Không gian vũ trụ ở −270 °C.\n\n' +
-      'Bát súp phải **giảm** bao nhiêu độ để bằng nhiệt độ của vũ trụ?',
-    reveal: {
-      label: 'Check your answer',
-      labelVn: 'Kiểm tra đáp án',
-      answer: '$78 - (-270) = 78 + 270 = 348$. It must fall **348 degrees** — that is the **difference** between the two temperatures.',
-      answerVn: '$78 - (-270) = 78 + 270 = 348$. Nó phải giảm **348 độ** — đó chính là **hiệu** giữa hai nhiệt độ.',
-    },
-    caption: 'The Boomerang Nebula, about −272 °C: the coldest place anyone has found.',
-    captionVn: 'Tinh vân Boomerang, khoảng −272 °C: nơi lạnh nhất từng được tìm thấy.',
-  },
-  {
-    layout: 'split',
-    accent: TEAL,
-    icon: 'Target',
-    eyebrow: 'Problem 5',
-    eyebrowVn: 'Bài 5',
     title: 'The Snail',
     titleVn: 'Con ốc sên',
     ratio: 55,
@@ -611,13 +570,13 @@ export const slides = [
     eyebrowVn: 'Bài tập về nhà',
     title: 'For Next Lesson',
     titleVn: 'Cho tiết học sau',
-    content: 'Take your **Exercise 1.1** sheet home. Show the **calculation** every time — not just the answer.',
-    contentVn: 'Mang phiếu **Exercise 1.1** về nhà. Luôn viết **phép tính** — không chỉ viết đáp án.',
+    content: 'You **must do Workbook Section 1.1, pages 7 and 8, at home**. Show the **calculation** every time — not just the answer.',
+    contentVn: 'Em **phải làm Sách bài tập Mục 1.1, trang 7 và 8, ở nhà**. Với mỗi câu hãy viết cả **phép tính** — không chỉ viết đáp án.',
     notes: [
       {
         tone: 'homework',
-        badge: 'Exercise 1.1',
-        badgeVn: 'Bài tập 1.1',
+        badge: 'Section 1.1 · pages 7–8',
+        badgeVn: 'Mục 1.1 · trang 7–8',
         icon: 'Pencil',
         text:
           '**Focus** — questions 1 to 5. Everybody.\n' +
