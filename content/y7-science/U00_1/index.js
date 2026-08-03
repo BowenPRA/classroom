@@ -2,9 +2,9 @@
 // A lesson module: default-exports { meta, slides, plan }. The registry
 // auto-discovers this file (content/<course>/<unit>/index.js).
 //
-// Day One covers homeroom, the science period and the maths period of Tue 4
-// Aug 2026. It is filed under Science because that is the period where most of
-// it is taught; `order: 0` keeps it ahead of Unit 1.1.
+// Day One covers homeroom and the science period of Tue 4 Aug 2026. The maths
+// period that day is the Stage 6 diagnostic, which needs no slides.
+// `order: 0` keeps this ahead of Unit 1.1.
 import { slides } from './slides.js'
 import { plan } from './plan.js'
 
@@ -14,9 +14,9 @@ export default {
     unit: 'Day 1',
     id: 'U00_1',
     title: 'Day One: Welcome to Year 7',
-    subtitle: 'Homeroom · Science · Mathematics — Tue 4 Aug 2026',
+    subtitle: 'Homeroom · Science — Tue 4 Aug 2026',
     objective:
-      'Get to know the class, walk through the expectation letter, set up binders and named Learner\'s Books, and sit the Stage 6 diagnostic.',
+      'Get to know the class, walk through the expectation letter, and set up binders and named Learner\'s Books.',
     order: 0,
   },
   slides,
