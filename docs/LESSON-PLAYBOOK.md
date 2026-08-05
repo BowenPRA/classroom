@@ -224,11 +224,37 @@ slide in headless Chrome and reports what the other three cannot see: content
 overflowing a slide, images that failed to load, and console errors. It found
 three real bugs that lint and build were happy with.
 
+### check:deck does not test the mode you teach in
+
+`check:deck` measures the deck **windowed, at 1440×900, in English**. The lesson
+is taught **fullscreen, in project mode**, where every layout swaps to `clamp()`
+type that is roughly 40% larger. A deck can be spotless in `check:deck` and still
+scroll on nine slides in front of the class.
+
+Check project mode separately, at the resolution the room actually has (1.2 was
+clean at 1920×1080 while still overflowing seven slides at 1366×768), and in
+**both languages** — Vietnamese runs longer and fails different slides than
+English does.
+
+Two things make that harder than it looks:
+
+- Project mode calls `requestFullscreen()`, which needs a **trusted user
+  gesture**. `element.click()` from injected JS is not one — drive it with CDP
+  `Input.dispatchMouseEvent` on the button's coordinates.
+- Headless Chrome **ignores `--window-size`** for this; it reports 800×600 and
+  every slide looks broken. Set the viewport with
+  `Emulation.setDeviceMetricsOverride`, and set it **again after** entering
+  fullscreen, which resets the override.
+
+Get a baseline from a deck that already teaches well before assuming a number is
+bad — 1.1 overflows one slide by 96px at 1366×768 and is fine in the room.
+
 Then check by eye, because these are visual artefacts:
 
 - [ ] **Dark mode**, not just light — especially any text on a *fixed*-colour surface
 - [ ] **Vietnamese** — toggle it and read a dense slide; VN runs longer than EN
-- [ ] **Project mode** (`F`) on the biggest slides
+- [ ] **Project mode** on the biggest slides (the Project button — the `F`
+      shortcut in its tooltip is not actually wired up)
 - [ ] Every **Draw This** slide is actually drawable in the time you'd allow
 - [ ] The **teacher plan** matches the deck you just built
 
