@@ -1,0 +1,696 @@
+% homework/hw02/hw02.tex
+% Year 7 - Homework Packet 2
+% Covers Mathematics 1.2 (Multiplying & Dividing Integers) and Science 1.2
+% (Animal Cells).
+%
+% Same house style as hw01: teal section headers, purple activities, orange for
+% anything the student must remember, blue for English help. The spine of both
+% sections is ENGLISH -- every question that hides a language trap gets a word
+% help box, and the science answers are asked for in full sentences.
+%
+% Nothing here is lifted from Workbook Exercise 1.2, which is set separately as
+% classwork/homework from the deck. In particular this packet deliberately
+% avoids the workbook's shapes -- no addition pyramids, no multiplication grids,
+% no product-circle diagrams -- and reuses the LANGUAGE traps from the lesson
+% instead: "divided by" versus "divided into", the false version of "two
+% negatives make a positive", brackets first, and estimating to check.
+%
+% The science section covers animal cells only. The cheek-cell practical from
+% the Learner's Book is not tested here -- the class has not run it yet, since
+% the microscope has not arrived.
+%
+% Build:  pdflatex hw02.tex   (run twice)
+% Teacher copy (adds the answer key):
+%   pdflatex -jobname=hw02-teacher "\def\TEACHER{}\input{hw02.tex}"
+
+\documentclass[12pt,a4paper]{article}
+
+% -- Answer key switch -------------------------------------------------------
+\newif\ifkey
+\ifdefined\TEACHER\keytrue\else
+  \keyfalse        % \keyfalse = student copy   |   \keytrue = teacher copy
+\fi
+
+% -- House style -------------------------------------------------------------
+% Shared by every packet. See homework/hw-style.tex.
+\input{../hw-style.tex}
+
+% -- Per-packet running head -------------------------------------------------
+\fancyhead[L]{\small\color{black!55}Year 7\sep Homework 2}
+
+\begin{document}
+
+% ===========================================================================
+% COVER BLOCK
+% ===========================================================================
+\thispagestyle{fancy}
+
+\begin{tcolorbox}[enhanced, colback=cbpurple!7, colframe=cbpurple!7, arc=7pt,
+                  borderline west={6pt}{0pt}{cbpurple},
+                  left=18pt, right=14pt, top=14pt, bottom=14pt]
+  {\color{cbpurple}\bfseries YEAR 7\sep UNIT 1\sep HOMEWORK 2}\\[6pt]
+  {\color{cbpurple}\Huge\bfseries Signs and Animal Cells}\\[10pt]
+  {\color{black!70}Mathematics 1.2 --- Multiplying \& Dividing Integers}\\
+  {\color{black!70}Science 1.2 --- Animal Cells}
+\end{tcolorbox}
+
+\vspace{10pt}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+  \textbf{Name:} \blank[5.6cm] & \textbf{Class:} \blank[5.6cm] \\
+  \textbf{Date given:} \blank[4.6cm] & \textbf{Date due:} \blank[5.0cm] \\
+\end{tabularx}
+
+\vspace{8pt}
+\begin{activity}
+  \begin{itemize}
+    \item Write your answers \textbf{on this sheet}, in the spaces given. If you need
+          more room, use the back of the page.
+    \item In maths, \key{write the calculation before the answer}. Work out the
+          \key{sign} first --- it is half of every answer on this sheet.
+    \item In science, answer in \key{full English sentences}. ``Nucleus'' is not a
+          sentence; ``The nucleus is the control centre of the cell'' is.
+    \item If a word is new to you, look for the blue \eng{Word help} box on that page
+          before you give up.
+  \end{itemize}
+\end{activity}
+
+% ===========================================================================
+% SECTION A -- MATHEMATICS
+% ===========================================================================
+\hwsection{Section A \textperiodcentered\ Mathematics 1.2 --- Multiplying and Dividing Integers}
+
+\begin{remember}
+  Dividing \key{undoes} multiplying, so \key{$\times$ and $\div$ obey the same four
+  rules}:
+
+  \medskip
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    \key{Same} signs      & the answer is \key{positive} \quad $-6\times-7=42$ \quad $-42\div-7=6$ \\
+    \key{Different} signs & the answer is \key{negative} \quad $-6\times7=-42$ \quad $-42\div7=-6$ \\
+  \end{tabularx}
+
+  \medskip
+  The \key{product} of two numbers is the answer when you \key{multiply} them. The
+  product of $2$ and $-9$ is $-18$.
+
+  \medskip
+  \textbf{Careful.} ``Two negatives make a positive'' is only true for
+  \key{$\times$ and $\div$}. For \key{adding} it is false: $-3+-4=-7$, because adding
+  a negative still sends you \key{left}.
+\end{remember}
+
+% -- A1 ---------------------------------------------------------------------
+\qhead{A1}{Get the sign first}
+
+\noindent\textbf{(a)} Complete the four rules. Write \textbf{positive} or
+\textbf{negative} in each gap.
+
+\vspace{6pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\roman*), itemsep=9pt]
+  \item positive $\times$ positive is \blank[2.4cm]
+  \item positive $\times$ negative is \blank[2.4cm]
+  \item negative $\times$ positive is \blank[2.4cm]
+  \item negative $\div$ negative is \blank[2.4cm]
+\end{enumerate}
+\end{multicols}
+
+\vspace{6pt}
+\noindent\textbf{(b)} \key{Do not work out the digits.} Write only $+$ or $-$ for the
+sign of each answer.
+
+\vspace{8pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*), itemsep=11pt]
+  \item $-13\times-8$ \; \blank[1.1cm]
+  \item $47\div-1$ \; \blank[1.1cm]
+  \item $-25\times16$ \; \blank[1.1cm]
+  \item $-144\div-12$ \; \blank[1.1cm]
+  \item $99\times-99$ \; \blank[1.1cm]
+  \item $-360\div9$ \; \blank[1.1cm]
+\end{enumerate}
+\end{multicols}
+
+% -- A2 ---------------------------------------------------------------------
+\qhead{A2}{Work them out}
+
+\noindent Now do the digits as well as the sign.
+
+\vspace{10pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*), itemsep=13pt]
+  \item $-7\times3 = \blank[1.5cm]$
+  \item $-8\times-4 = \blank[1.5cm]$
+  \item $9\times-6 = \blank[1.5cm]$
+  \item $-5\times-11 = \blank[1.5cm]$
+  \item $-10\times8 = \blank[1.5cm]$
+  \item $0\times-23 = \blank[1.5cm]$
+  \item $-45\div5 = \blank[1.5cm]$
+  \item $-36\div-6 = \blank[1.5cm]$
+  \item $56\div-7 = \blank[1.5cm]$
+  \item $-72\div-8 = \blank[1.5cm]$
+  \item $-100\div4 = \blank[1.5cm]$
+  \item $27\div-27 = \blank[1.5cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- A3 ---------------------------------------------------------------------
+\qhead{A3}{Say it, then write it}
+
+\begin{wordhelp}[Word help --- these words decide the order of your calculation]
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    \eng{multiply $-2$ by 5}    & $-2\times5$. \\
+    \eng{the product of}        & the answer you get when you \textbf{multiply}. The product of $-3$ and $-2$ is $6$. \\
+    \eng{divide $-18$ by 3}     & $-18\div3$. The number being \textbf{shared out} is $-18$. \\
+    \eng{3 divided into $-18$}  & the \textbf{same} calculation, $-18\div3$. The English swaps the two numbers round; the calculation does not. \\
+    \eng{share between}         & divide it out equally. \\
+    \eng{a debt}                & money you must pay back. It makes a total \textbf{negative}. \\
+    \eng{each} / \eng{every} / \eng{per} & one lot, repeated --- and repeated adding is \textbf{multiplying}. So \eng{falls by 4 every hour} means each hour the change is $-4$. \\
+  \end{tabularx}
+\end{wordhelp}
+
+\noindent Turn each English sentence into a calculation, then work out the answer.
+\key{Write the calculation first.}
+
+\vspace{6pt}
+\begin{enumerate}[label=\arabic*., itemsep=11pt]
+  \item Multiply $-6$ by 7. \\[4pt]
+        Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
+  \item Find the product of $-4$ and $-9$. \\[4pt]
+        Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
+  \item Divide $-56$ by 8. \\[4pt]
+        Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
+  \item Work out 5 divided into $-40$. \\[4pt]
+        Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
+  \item The temperature falls 4 degrees every hour for 7 hours. What is the total
+        change? \\[4pt]
+        Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
+  \item A debt of 60 dollars is shared equally between 4 people. Write the amount
+        \textbf{each} person owes as a negative number. \\[4pt]
+        Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
+\end{enumerate}
+
+% -- A4 ---------------------------------------------------------------------
+\qhead{A4}{Brackets first}
+
+\begin{remember}[Remember: the new rule does not live inside the bracket]
+  Work out \key{what is inside the bracket} first. Inside it you are often
+  \key{adding}, and adding a negative still sends you \key{left}: $(-3+-2)=-5$,
+  \textbf{not} $5$.
+\end{remember}
+
+\vspace{4pt}
+\noindent\textbf{(a)} Work these out. Show what is inside the bracket first.
+
+\vspace{8pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\roman*), itemsep=13pt]
+  \item $(-3+-5)\times4 = \blank[1.7cm]$
+  \item $(2-7)\times-6 = \blank[1.7cm]$
+  \item $(-4+-6)\div-5 = \blank[1.7cm]$
+  \item $(-9--3)\div2 = \blank[1.7cm]$
+  \item $-8\times(-2+2) = \blank[1.7cm]$
+  \item $(10+-4)\times-3 = \blank[1.7cm]$
+\end{enumerate}
+\end{multicols}
+
+\vspace{10pt}
+\noindent\textbf{(b)} A student wrote \quad $(-3+-5)\times4 = 32$.
+
+\vspace{4pt}
+\noindent In one full sentence, explain which rule they have used in the wrong place.
+\wlines{2}
+
+% -- A5 ---------------------------------------------------------------------
+% The four rounding drills that used to sit here have gone: Workbook Exercise
+% 1.2 Q8 and Q9 are exactly that, and are already set from the deck. What is
+% kept is the part the workbook does NOT ask -- using an estimate to catch a
+% wrong answer, which is the reason estimating is taught at all.
+\qhead{A5}{Catch it with an estimate}
+
+\begin{remember}[Remember: an estimate is a rough answer you work out first]
+  \key{Estimate:} round each number to something easy, then calculate. If your real
+  answer is nowhere near it, you have made a mistake. Example: $-4.1\times2.8$ rounds
+  to $-4\times3=-12$.
+\end{remember}
+
+\vspace{4pt}
+% Both parts and both writing lines have to sit on one page, so the stem is
+% folded into (a) rather than given its own line.
+\noindent\textbf{(a)} Mr Bowen works out $-4.9\times21$ and gets $102.9$. Estimate the
+answer by rounding both numbers. \hfill Estimate: \blank[3.0cm]
+
+\vspace{6pt}
+\noindent\textbf{(b)} His answer must be wrong. Say what he has forgotten.
+\wlines{2}
+
+% -- A6 ---------------------------------------------------------------------
+\qhead{A6}{Word problems}
+
+\noindent Read each one \key{all the way to the end} before you start writing. Show the
+calculation, then the answer.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=16pt]
+
+  \item \textbf{The quiz game.} In Mr Bowen's quiz game, every wrong answer scores
+        $-15$ points.
+        \begin{enumerate}[label=(\alph*)]
+          \item A student gets 6 answers wrong. What is the change to their score?
+          \item In a later game, a student's score changes by $-120$ points from wrong
+                answers alone. How many did they get wrong?
+        \end{enumerate}
+        \begin{workspace}[2.9cm]\end{workspace}
+
+  \item \textbf{Eight forgotten debts.} Mr Bowen owes 8 different friends 7 dollars
+        each.
+        \begin{enumerate}[label=(\alph*)]
+          \item Write his total debt as a negative number.
+          \item All 8 friends then tell him to forget the debt, so all 8 debts of $-7$
+                dollars are \textbf{taken away} from his total. Write this as a
+                multiplication and work out the change.
+          \item Is Mr Bowen better off or worse off than before? By how much?
+        \end{enumerate}
+        \begin{workspace}[3.1cm]\end{workspace}
+
+  \item \textbf{Mr Bowen sits his own quiz.} A correct answer scores $4$ points and a
+        wrong answer scores $-4$ points. Mr Bowen answers all 20 of his own questions.
+        He gets 10 right and 10 wrong.
+        \begin{enumerate}[label=(\alph*)]
+          \item How many points does he get from the correct answers?
+          \item How many points does he get from the wrong answers?
+          \item What is his total score?
+        \end{enumerate}
+        \begin{workspace}[2.9cm]\end{workspace}
+
+\end{enumerate}
+
+% -- A7 ---------------------------------------------------------------------
+\qhead[cbgreen]{A7}{Now you write the question}
+
+\begin{yourturn}[Your turn to be the teacher]
+  So far the questions have given you the English, and you have written the maths.
+  Now do it \textbf{backwards}. You are given the maths --- write the English.
+
+  \medskip
+  Your word problem must:
+  \begin{itemize}
+    \item be about something \textbf{real} --- money, temperature or points in a game;
+    \item use a word from the \eng{Word help} box, such as \eng{each}, \eng{every},
+          \eng{per}, \eng{shared between} or \eng{a debt};
+    \item be written in \textbf{full English sentences}, and end with a question;
+    \item have the answer that is already given to you.
+  \end{itemize}
+\end{yourturn}
+
+\noindent\textbf{(a)} Write a word problem for \quad \expr{5 \times -8 = -40}
+\wlines{4}
+
+\vspace{14pt}
+\noindent\textbf{(b)} Write a word problem for \quad \expr{-60 \div 12 = -5}
+\wlines{4}
+
+% ===========================================================================
+% SECTION B -- SCIENCE
+% ===========================================================================
+% The Remember box below is deliberately short. At six lines it split across the
+% page break and hyphenated "chloroplasts"; reserving space with needspace to
+% stop that pushed the whole block onto the next page and cost a page overall.
+% Shortening the box is the fix that costs nothing.
+\hwsection{Section B \textperiodcentered\ Science 1.2 --- Animal Cells}
+
+\begin{remember}
+  \key{You are an animal}. An animal cell has a \key{cell membrane},
+  \key{cytoplasm}, \key{mitochondria} and a \key{nucleus}. It has \key{no cell wall},
+  so it has \key{no fixed shape}. A plant cell has all of those \key{plus} a
+  \key{cell wall}, \key{chloroplasts} and a \key{sap vacuole}.
+\end{remember}
+
+% -- B1 ---------------------------------------------------------------------
+\qhead{B1}{The words for comparing two things}
+
+\begin{wordhelp}[Word help --- how to compare in English]
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    \eng{similar}        & alike in some ways, different in others. \\
+    \eng{the same}       & no differences at all. It is \textbf{stronger} than \eng{similar}. \\
+    \eng{Both A and B \ldots} & the thing that follows is true of \textbf{each} of them. \\
+    \eng{\ldots, but \ldots}   & joins two halves that \textbf{disagree}. \\
+    \eng{Unlike A, B \ldots}   & B is \textbf{different} from A in the way that follows. \\
+  \end{tabularx}
+\end{wordhelp}
+
+\noindent Fill each gap with one of: \eng{Both}, \eng{and}, \eng{but}, \eng{Unlike},
+\eng{have}, \eng{similar}, \eng{the same}. Each word is used once.
+
+\vspace{6pt}
+\begin{enumerate}[label=\arabic*., itemsep=11pt]
+  \item \blank[2.4cm] a plant cell \blank[2.4cm] an animal cell have a nucleus.
+  \item A plant cell has chloroplasts, \blank[2.4cm] an animal cell does not.
+  \item \blank[2.4cm] a plant cell, an animal cell has no fixed shape.
+  \item Both kinds of cell \blank[2.4cm] mitochondria.
+  \item An animal cell is \blank[2.4cm] to a plant cell, but the two are not
+        \blank[2.4cm].
+\end{enumerate}
+
+% -- B2 ---------------------------------------------------------------------
+\qhead{B2}{True or false?}
+
+\noindent Tick one box for each sentence. Then \key{rewrite each false sentence} on the
+lines below so that it becomes true.
+
+\vspace{10pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|>{\centering\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{2.0cm}|}
+  \hline
+  \textbf{Sentence} & \textbf{True} & \textbf{False} \\
+  \hline
+  1.\ Every animal cell has a nucleus. \rule{0pt}{1.9em} & & \\ \hline
+  2.\ An animal cell has a cell wall made of cellulose. \rule{0pt}{1.9em} & & \\ \hline
+  3.\ Mitochondria are found in plant cells and in animal cells. \rule{0pt}{1.9em} & & \\ \hline
+  4.\ An animal cell has no fixed shape because it has no cell wall. \rule{0pt}{1.9em} & & \\ \hline
+  5.\ A plant cell has three parts an animal cell has not. \rule{0pt}{1.9em} & & \\ \hline
+  6.\ Chloroplasts are green because they contain cellulose. \rule{0pt}{1.9em} & & \\ \hline
+\end{tabularx}
+
+\vspace{12pt}
+% Two lines, not three: there are exactly two false sentences, and a third line
+% orphaned onto the next page on its own.
+\noindent Rewrite the false sentences here, in full:
+\wlines{2}
+
+% -- B3 ---------------------------------------------------------------------
+\qhead{B3}{Answer in full sentences}
+
+\begin{wordhelp}[Sentence starters --- you may copy these]
+  ``Every animal cell has\ldots''\\
+  ``An animal cell has no fixed shape because\ldots''\\
+  ``Both a plant cell and an animal cell have\ldots, but only\ldots''\\
+  ``Unlike a plant cell, an animal cell\ldots''
+\end{wordhelp}
+
+\begin{enumerate}[label=\arabic*., itemsep=14pt]
+
+  \item Name the \textbf{four} parts that every animal cell has.
+        \wlines{2}
+
+  \item A plant stands still, but an animal moves --- it bends, squeezes and changes
+        shape all day. Explain why an animal cell has \textbf{no fixed shape}. Use the
+        word \key{because}.
+        \wlines{3}
+
+  \item Give \textbf{two} ways an animal cell is different from a plant cell. Write each
+        one as a full sentence, using \eng{but} or \eng{Unlike}.
+        \wlines{3}
+
+\end{enumerate}
+
+% -- B4 ---------------------------------------------------------------------
+\qhead{B4}{Two pictures down a microscope}
+
+\noindent Mr Bowen looks at two slides. \textbf{Picture 1} shows cells packed tightly
+together like bricks in a wall, each one with straight, stiff edges. \textbf{Picture 2}
+shows soft, rounded cells with no straight edges anywhere.
+
+\vspace{10pt}
+\noindent\textbf{(a)} For each picture, say whether it shows \textbf{plant} cells or
+\textbf{animal} cells, and say \textbf{how you know}. Use the word \key{because}.
+
+\vspace{4pt}
+\noindent Picture 1:
+\wlines{2}
+
+\vspace{6pt}
+\noindent Picture 2:
+\wlines{2}
+
+\vspace{12pt}
+\noindent\textbf{(b)} Neither picture has anything green in it. A student says:
+\emph{``There is no green, so both pictures must show animal cells.''}
+
+\vspace{4pt}
+% Three lines: this is the hardest question in Section B, and page 8 has the
+% room to spare.
+\noindent Explain in one full sentence why the student is wrong.
+{\small\color{black!60}(Hint: think about where an onion grows.)}
+\wlines{3}
+
+% -- B5 ---------------------------------------------------------------------
+\qhead{B5}{Label the animal cell}
+
+\noindent Write the name of each numbered part on the lines below the diagram.
+
+\vspace{10pt}
+\noindent\hfill
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}[x=1cm,y=1cm,
+    lbl/.style={circle, draw=cbteal, fill=white, line width=1.1pt,
+                inner sep=1.8pt, minimum size=8mm, font=\bfseries}]
+
+  % -- the cell itself. No straight edges anywhere, and no symmetry either: an
+  %    animal cell has no fixed shape, so the outline has to read as a soft
+  %    lopsided blob. A tidy ellipse would teach the opposite of the lesson,
+  %    which is exactly what the first draft of this diagram drew.
+  \draw[line width=1.6pt, cbred!70!black, fill=cbteal!10, rounded corners=0pt]
+    plot [smooth cycle, tension=0.7] coordinates {
+      (0.6,3.0) (1.5,5.2) (3.8,6.4) (6.9,6.2) (9.3,5.0)
+      (10.9,3.1) (9.9,1.3) (7.2,0.4) (4.3,0.8) (2.0,1.2)};
+
+  % -- nucleus --
+  \fill[cbpurple!30] (3.6,3.9) circle (0.95);
+  \draw[line width=0.9pt, cbpurple!80] (3.6,3.9) circle (0.95);
+  \fill[cbpurple!60] (3.6,3.9) circle (0.30);
+
+  % -- mitochondria. Kept well away from (5.8,3.2) so the cytoplasm leader has
+  %    a clear, empty patch of cytoplasm to land on, and away from the line it
+  %    travels out along.
+  \foreach \x/\y/\r in {2.4/2.2/25, 5.4/5.2/-14, 8.6/4.0/18, 6.4/1.5/-25}{
+    \begin{scope}[shift={(\x,\y)}, rotate=\r]
+      \fill[cborange!65] (0,0) ellipse (0.48 and 0.23);
+      \draw[line width=0.7pt, cborange!80!black] (0,0) ellipse (0.48 and 0.23);
+      \draw[line width=0.5pt, cborange!80!black] (-0.28,0.05) -- (-0.06,-0.07) -- (0.17,0.06);
+    \end{scope}}
+
+  % -- leader lines and numbers. Each ends on a dot so there is no doubt about
+  %    which structure it points at.
+  \foreach \sx/\sy/\ex/\ey/\lx/\ly/\n in {%
+      3.8/6.4/3.8/7.70/3.8/8.10/1,          % cell membrane (the outline itself)
+      5.8/3.2/12.7/2.0/13.1/1.95/2,         % cytoplasm (empty patch)
+      3.6/3.9/-2.1/5.0/-2.5/5.05/3,         % nucleus
+      8.6/4.0/12.7/5.6/13.1/5.70/4}{        % mitochondrion
+    \draw[line width=0.7pt, black!65] (\sx,\sy) -- (\ex,\ey);
+    \fill[black!65] (\sx,\sy) circle (0.085);
+    \node[lbl] at (\lx,\ly) {\n};}
+
+  % Keep the bounding box tight vertically -- the picture is scaled to the text
+  % width, so every empty unit of height above or below costs real page.
+  \path (-3.3,0.0) rectangle (14.0,8.6);
+\end{tikzpicture}}\hfill\mbox{}
+
+\vspace{12pt}
+
+% A tabular rather than multicols, so the answer lines can never be split across
+% a page break away from their diagram.
+\noindent
+\begin{tabular}{@{}p{0.48\textwidth} p{0.48\textwidth}@{}}
+  1.\ \blank[5.4cm] & 3.\ \blank[5.4cm] \\[26pt]
+  2.\ \blank[5.4cm] & 4.\ \blank[5.4cm] \\
+\end{tabular}
+
+\vspace{14pt}
+\noindent\textbf{(b)} Name the \textbf{three} parts you would have to \textbf{add} to
+this diagram to turn it into a \textbf{plant} cell.
+
+\vspace{16pt}
+\noindent\hspace*{1em}\blank[4.4cm] \hfill \blank[4.4cm] \hfill \blank[4.4cm]
+
+% ===========================================================================
+% ANSWER KEY (teacher copy only)
+% ===========================================================================
+\ifkey
+\newpage
+\hwsection[cbred]{Answer Key --- Teacher Copy}
+
+% The key is for an adult reading it at a desk, not a 12-year-old writing on it,
+% so tighten everything back up.
+\linespread{1.0}\selectfont
+\setlist[enumerate]{itemsep=2pt, topsep=3pt, leftmargin=*}
+\setlist[itemize]{itemsep=2pt, topsep=3pt, leftmargin=*}
+
+\qhead[cbred]{A1}{Get the sign first}
+\noindent (a) (i) positive \quad (ii) negative \quad (iii) negative \quad (iv) positive.\\
+(b) (a) $+$ \quad (b) $-$ \quad (c) $-$ \quad (d) $+$ \quad (e) $-$ \quad (f) $-$
+
+\smallskip
+\noindent{\small This is the easy question on purpose --- everybody should finish it.
+If a student is doing the arithmetic in (b), stop them: the instruction says not to.
+Getting the sign without the digits is the skill being tested.}
+
+\qhead[cbred]{A2}{Work them out}
+\noindent
+(a) $-21$ \quad (b) $32$ \quad (c) $-54$ \quad (d) $55$ \quad (e) $-80$ \quad (f) $0$ \\
+(g) $-9$ \quad (h) $6$ \quad (i) $-8$ \quad (j) $9$ \quad (k) $-25$ \quad (l) $-1$
+
+\smallskip
+\noindent{\small Watch (f): a few will write $-0$ or leave it blank because the rule
+does not seem to cover it. Zero has no sign, and anything times zero is zero.}
+
+\qhead[cbred]{A3}{Say it, then write it}
+\begin{enumerate}[label=\arabic*., itemsep=3pt]
+  \item $-6\times7=-42$
+  \item $-4\times-9=36$
+  \item $-56\div8=-7$
+  \item $-40\div5=-8$
+  \item $7\times-4=-28$
+  \item $-60\div4=-15$
+\end{enumerate}
+\noindent{\small Question 4 is the one that matters. ``5 divided into $-40$'' puts the
+5 first in the English and second in the calculation. A student who writes
+$5\div-40$ has made the \emph{English} error, not an arithmetic one --- make them read
+the sentence again and ask which number is being shared out. It is the same trap as
+``subtract 5 from 8'' in Homework 1, and it will come back every term.
+
+\smallskip
+Question 6: accept $-15$ or ``each person owes 15 dollars'', but the question asks for
+a negative number, so push for $-15$.}
+
+\qhead[cbred]{A4}{Brackets first}
+\noindent (a) (i) $-32$ \quad (ii) $30$ \quad (iii) $2$ \quad (iv) $-3$ \quad
+(v) $0$ \quad (vi) $-18$
+
+\smallskip
+\noindent (b) They have used the $\times$ and $\div$ rule inside a bracket that
+contains an \textbf{addition}. Two negatives only make a positive when you multiply or
+divide, so $-3+-5=-8$, not $8$, and the answer is $-32$.
+
+\smallskip
+\noindent{\small\textbf{This is the question of the sheet.} Expect a large part of the
+class to get (b) wrong, or to write ``they added instead of multiplying''. That is
+worth ten minutes of whole-class discussion rather than a red pen: the misconception is
+the sentence itself, not the sum. Ask them to say out loud which \emph{operation} the
+rule belongs to.}
+
+\qhead[cbred]{A5}{Catch it with an estimate}
+\noindent (a) $-5\times20=-100$, so the answer should be about $-100$.
+
+\smallskip
+\noindent (b) His answer is \emph{positive}, so he has forgotten the sign: a negative
+times a positive is negative. The digits were fine --- the true answer is $-102.9$.
+
+\smallskip
+\noindent{\small Accept any sensible rounding: $-5\times21=-105$ is just as good. Do
+not mark the estimate against the exact answer --- mark whether it was close enough to
+catch the error. That is the only reason estimating is on this sheet, and it is why the
+four rounding drills that would normally sit here are not: Workbook Exercise 1.2 Q8 and
+Q9 already set exactly those, so repeating them here would waste the homework.}
+
+\qhead[cbred]{A6}{Word problems}
+\begin{enumerate}[label=\arabic*., itemsep=3pt]
+  \item (a) $6\times-15=-90$ points. \; (b) $-120\div-15=8$ questions. \\
+        {\small Part (b) is the only place on this sheet where a negative divided by a
+        negative appears in a real context. The answer is a \emph{count}, so it has to
+        come out positive --- that is a good sanity check to point out.}
+  \item (a) $8\times-7=-56$ dollars. \; (b) $-8\times-7=+56$, so his total changes by
+        $+56$ dollars. \; (c) Better off, by 56 dollars --- he is back to zero. \\
+        {\small This is the honest real-world meaning of ``negative times negative'':
+        taking away 8 debts. If a student writes $8\times-7$ for (b) and gets $-56$
+        again, ask them whether cancelling a debt makes you richer or poorer. Most will
+        answer that correctly out loud and then see their own sign error.}
+  \item (a) $10\times4=40$. \; (b) $10\times-4=-40$. \; (c) $40+-40=0$. \\
+        {\small The deadpan one. Mr Bowen has scored zero on his own quiz and is very
+        pleased with himself. Part (c) is an \emph{addition}, so this is one more place
+        the false version of ``two negatives make a positive'' can be caught.}
+\end{enumerate}
+
+\qhead[cbred]{A7}{Now you write the question}
+\noindent There is no single right answer. Check the four conditions in the green box,
+in this order:
+\begin{enumerate}[label=\arabic*., itemsep=3pt]
+  \item \textbf{Is it a repeated lot, or a sharing out?} (a) must be \emph{five lots of
+        $-8$} --- five hours, five people, five wrong answers. (b) must be a total of
+        $-60$ \emph{split} into 12 equal parts. Turning (b) into a multiplication is
+        the most common miss.
+  \item \textbf{Does the signal word match?} (a) needs \eng{each}, \eng{every} or
+        \eng{per}. (b) needs \eng{shared between}, \eng{divided by} or an equal rate.
+  \item \textbf{Full sentences, ending in a question?}
+  \item \textbf{Does their own answer come out as $-40$, and as $-5$?}
+\end{enumerate}
+
+\smallskip
+\noindent{\small Two that work: (a) ``Mr Bowen loses 8 dollars every day for 5 days.
+What is the change to his money?'' (b) ``A diver goes down 60 metres in 12 minutes at a
+steady rate. What is the change in her depth each minute?'' \\
+Expect (b) to be harder than (a) by a distance, because a division story needs a
+\emph{rate} and most of them will write a subtraction instead. Discuss it as a class
+before marking it.}
+
+\qhead[cbred]{B1}{The words for comparing two things}
+\noindent 1.\ Both \ldots\ and \quad 2.\ but \quad 3.\ Unlike \quad 4.\ have \quad
+5.\ similar \ldots\ the same
+
+\smallskip
+\noindent{\small Sentence 4 catches the students who write ``has''. ``Both kinds of
+cell'' is plural, so the verb is \emph{have}. Worth saying once, clearly.}
+
+\qhead[cbred]{B2}{True or false?}
+\noindent 1.\ True \quad 2.\ \textbf{False} \quad 3.\ True \quad 4.\ True \quad
+5.\ True \quad 6.\ \textbf{False}
+
+\smallskip
+\noindent Rewrites: \; 2.\ ``An animal cell has \emph{no} cell wall.'' (Or: ``A
+\emph{plant} cell has a cell wall made of cellulose.'') \; 6.\ ``Chloroplasts are green
+because they contain \emph{chlorophyll}.''
+
+\smallskip
+\noindent{\small Sentence 6 is a vocabulary trap, not a biology one: \emph{cellulose}
+and \emph{chlorophyll} both begin with c-h/c-e and both belong to plants. If the class
+mixes them up, the fix is that cellulose is the \emph{building material of the wall}
+and chlorophyll is the \emph{green colour that catches sunlight}.}
+
+\qhead[cbred]{B3}{Answer in full sentences}
+\begin{enumerate}[label=\arabic*., itemsep=3pt]
+  \item Every animal cell has a cell membrane, cytoplasm, mitochondria and a nucleus.
+  \item An animal cell has no fixed shape because it has no cell wall to hold it
+        stiff, and an animal has to bend and move.
+  \item Any two, each a full sentence. For example: ``An animal cell has no cell wall,
+        but a plant cell has one.'' ``Unlike a plant cell, an animal cell has no
+        chloroplasts, so it cannot make its own food.'' ``A plant cell has a large sap
+        vacuole, but an animal cell does not.''
+\end{enumerate}
+\noindent{\small Mark the \emph{sentence}, not just the fact. A list of three words is
+not an answer to any of these, and saying so consistently is the only thing that
+changes it.}
+
+\qhead[cbred]{B4}{Two pictures down a microscope}
+\noindent (a) Picture 1 shows plant cells, because the cells have straight, stiff edges
+and are packed together like bricks --- that is a cell wall, and only plants have one.
+Picture 2 shows animal cells, because the cells are soft and rounded with no straight
+edges, which means there is no cell wall.
+
+\smallskip
+\noindent (b) The student is wrong because not every plant cell has chloroplasts: an
+onion bulb grows underground in the dark, so its cells are not green, and they are still
+plant cells. Green is a clue that can fail; the \emph{cell wall} is the clue that never
+does.
+
+\smallskip
+\noindent{\small (b) is the hardest question in Section B and the one most worth
+discussing. ``No green means animal'' is the misconception the class arrived at in the
+lesson, and it needs breaking twice before it goes.}
+
+\qhead[cbred]{B5}{Label the animal cell}
+\noindent 1 --- cell membrane \quad 2 --- cytoplasm \quad 3 --- nucleus \quad
+4 --- mitochondrion
+
+\smallskip
+\noindent (b) A cell wall, chloroplasts and a sap vacuole. Everything already on the
+diagram stays exactly where it is.
+
+\smallskip
+\noindent{\small Accept ``mitochondria'' for 4. Do not accept ``cell wall'' for 1: this
+cell has no wall, and the leader points at the thin outline, which is the membrane.
+That confusion is the reason the outline here is drawn as a single thin line with no
+green band around it.}
+
+\fi
+
+\end{document}
