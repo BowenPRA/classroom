@@ -15,6 +15,16 @@ A lesson is a folder — `content/<course>/<unit>/index.js`, default-exporting
 `{ meta, slides, plan }`. The registry discovers it automatically; there is no
 list to update.
 
+## Homework is a different artefact
+
+Printed packets live in `homework/<packet>/` as LaTeX compiled to PDF — no
+Vietnamese twins, no widgets, no dark mode. They have their own method: use the
+**`new-homework` skill**, not the lesson playbook. Shared house style is
+`homework/hw-style.tex`; `homework/hw01/` is the reference implementation.
+
+The rule that matters most there: **verify by rasterising the PDF and looking at
+every page.** A clean LaTeX log proves nothing about the layout.
+
 ## Think before building
 
 Surface the assumption instead of quietly picking one. If a request has two
