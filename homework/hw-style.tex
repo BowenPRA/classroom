@@ -1,0 +1,160 @@
+% homework/hw-style.tex
+% Shared house style for every Year 7 homework packet. \input this from the
+% packet file, right after \documentclass and the answer-key switch.
+%
+% Do not fork this file per packet. If a packet needs a different look, the
+% question is whether every packet should have it.
+%
+% The choices here are deliberate and were arrived at by printing and looking:
+%   * No solid dark banners. Every header is a light tint with a coloured spine
+%     on the left, so colour reads clearly without flooding a school printer.
+%   * No marks and no mark totals. These are practice, not exam papers.
+%   * Lato at 12pt with open leading, plus mathastext so inline maths is Lato
+%     too. Without mathastext every "-6 + 4" is Computer Modern serif and the
+%     sheet looks half-typeset.
+%   * Writing lines are spaced for Year 7 handwriting, not adult margin notes.
+%
+% Provides: \wlines \blank \tickbox \sep \qmk-free marks (none) \hwsection
+% \qhead \expr, the workspace box, and the remember / wordhelp / activity /
+% yourturn coloured boxes. Palette matches the lesson decks exactly.
+
+% -- Packages ----------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[default]{lato}
+\usepackage[a4paper,top=1.7cm,bottom=1.7cm,left=2.0cm,right=2.0cm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{needspace}
+\usepackage{graphicx}
+
+% Make maths use Lato too. Without this, every "-6 + 4" on the page is set in
+% Computer Modern serif and the sheet looks half-typeset. Must come last.
+\usepackage[italic]{mathastext}
+
+\linespread{1.06}\selectfont
+
+% -- The Learner's Book palette (same hex values as the lesson decks) ---------
+\definecolor{cbteal}{HTML}{0087A8}
+\definecolor{cbpurple}{HTML}{5C2483}
+\definecolor{cborange}{HTML}{C25E12}
+\definecolor{cbgreen}{HTML}{4A8B23}
+\definecolor{cbred}{HTML}{C8102E}
+\definecolor{cbblue}{HTML}{1A5FA8}
+\definecolor{rulegray}{HTML}{9AA5AD}
+
+% -- Answer lines and blanks -------------------------------------------------
+% \wlines{n} draws n ruled writing lines, spaced wide enough for Year 7
+% handwriting rather than for an adult with a fine pen.
+\makeatletter
+\newcommand{\wlines}[1]{%
+  \par\vspace{0.75em}%
+  \@tempcnta=0\relax
+  \@whilenum\@tempcnta<#1\do{%
+    \hbox to \linewidth{\color{rulegray}\leaders\hrule height 0.5pt\hfill}%
+    \vspace{1.5em}%
+    \advance\@tempcnta by 1\relax}%
+  \par\vspace{-0.8em}%
+}
+\makeatother
+
+% \blank[width] is an inline gap to write a short answer in.
+\newcommand{\blank}[1][2.6cm]{\underline{\hspace{#1}}}
+
+% A boxed space for showing working.
+\newtcolorbox{workspace}[1][3.4cm]{%
+  colback=white, colframe=rulegray, boxrule=0.5pt, arc=5pt,
+  height=#1, left=6pt, right=6pt, top=4pt, bottom=4pt,
+  before skip=9pt, after skip=11pt}
+
+% An empty tick box.
+\newcommand{\tickbox}{\fbox{\rule{0pt}{1.15em}\rule{1.15em}{0pt}}}
+
+% A middot separator.
+\newcommand{\sep}{\,\textperiodcentered\,}
+
+% -- Section and question headings -------------------------------------------
+% Light tint plus a fat coloured spine on the left. No solid dark banner: the
+% colour reads clearly but barely costs the printer anything.
+% needspace stops a heading stranding alone at the foot of a page. Kept modest:
+% too large and it pushes headings over, leaving a worse hole than it prevents.
+\newcommand{\hwsection}[2][cbteal]{%
+  \needspace{8\baselineskip}%
+  \par\vspace{13pt}%
+  \noindent
+  \begin{tcolorbox}[enhanced, nobeforeafter, width=\textwidth,
+      colback=#1!7, colframe=#1!7, arc=5pt,
+      borderline west={5pt}{0pt}{#1},
+      left=14pt, right=10pt, top=7pt, bottom=7pt]
+    {\large\bfseries\color{#1}#2}
+  \end{tcolorbox}%
+  \par\vspace{9pt}}
+
+% \qhead[colour]{A2}{Moving along the line} -- a question heading.
+\newcommand{\qhead}[3][cbteal]{%
+  \needspace{6\baselineskip}%
+  \par\vspace{11pt}%
+  \noindent{\large\bfseries\color{#1}#2}\quad{\large\bfseries #3}\par\vspace{4pt}}
+
+% -- Coloured boxes ----------------------------------------------------------
+% Shared look: rounded, light fill, coloured rule, coloured title text on a
+% pale title strip rather than a dark one.
+\tcbset{hwbox/.style={
+  enhanced, breakable, arc=6pt, boxrule=1pt,
+  left=11pt, right=11pt, top=8pt, bottom=8pt,
+  fonttitle=\bfseries, attach boxed title to top left={xshift=12pt, yshift=-8pt},
+  boxed title style={arc=4pt, boxrule=1pt, left=7pt, right=7pt, top=2pt, bottom=2pt},
+  top=13pt}}
+
+% Orange: things to remember. Matches the deck's "Write This Down".
+\newtcolorbox{remember}[1][Remember from the lesson]{hwbox,
+  colback=cborange!6, colframe=cborange, coltitle=cborange,
+  colbacktitle=white, title={#1}}
+
+% Blue: English help. The barrier in this class is the wording, not the maths.
+\newtcolorbox{wordhelp}[1][Word help]{hwbox,
+  colback=cbblue!6, colframe=cbblue, coltitle=cbblue,
+  colbacktitle=white, title={#1}}
+
+% Purple: an activity or instruction.
+\newtcolorbox{activity}[1][How to do this homework]{hwbox,
+  colback=cbpurple!6, colframe=cbpurple, coltitle=cbpurple,
+  colbacktitle=white, title={#1}}
+
+% Green: your turn / a friendly nudge.
+\newtcolorbox{yourturn}[1][Your turn]{hwbox,
+  colback=cbgreen!7, colframe=cbgreen, coltitle=cbgreen!75!black,
+  colbacktitle=white, title={#1}}
+
+% -- Shorthands --------------------------------------------------------------
+\newcommand{\dC}{\,^{\circ}\mathrm{C}}          % use inside maths: $-8\dC$
+\newcommand{\key}[1]{{\color{cborange}\textbf{#1}}}
+\newcommand{\eng}[1]{{\color{cbblue}\textbf{#1}}}
+
+\setlist[enumerate]{itemsep=8pt, topsep=5pt, leftmargin=*}
+\setlist[itemize]{itemsep=4pt, topsep=4pt, leftmargin=*}
+\renewcommand{\arraystretch}{1.45}
+
+% -- An expression the student is asked to work from -------------------------
+\newcommand{\expr}[1]{%
+  \tcbox[on line, colback=cbgreen!10, colframe=cbgreen!55, boxrule=1pt, arc=4pt,
+         left=9pt, right=9pt, top=4pt, bottom=4pt]{\large\bfseries $#1$}}
+
+% -- Running head and foot ---------------------------------------------------
+% The packet overrides \fancyhead[L] with its own title.
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{black!55}Year 7\sep Homework}
+\fancyhead[R]{\small\color{black!55}Name: \blank[3.4cm]}
+\fancyfoot[C]{\small\color{black!55}Page \thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrule}{\vspace{2pt}\hbox to\headwidth{\color{cbteal!45}\leaders\hrule height 1.2pt\hfill}}
+

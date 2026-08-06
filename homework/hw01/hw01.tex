@@ -1,0 +1,583 @@
+% homework/hw01/hw01.tex
+% Year 7 - Homework Packet 1
+% Covers Mathematics 1.1 (Adding & Subtracting Integers) and Science 1.1 (Cells).
+%
+% Styled after the Cambridge Lower Secondary Learner's Book, matching the lesson
+% decks: teal for section headers, purple for activities, orange for anything the
+% student must remember, blue for English help. The spine of both sections is
+% ENGLISH -- every question that hides a language trap gets a word-help box, and
+% the science answers are asked for in full sentences.
+%
+% Deliberate choices:
+%   * No solid dark banners. Every header is a light tint with a coloured rule,
+%     so the colour survives a cheap classroom printer without flooding it.
+%   * No marks anywhere. This is practice, not an exam paper.
+%   * Lato at 12pt with open leading -- this has to look like Year 7 homework,
+%     not a university problem sheet.
+%   * The source is pure ASCII: every typographic character goes through a
+%     LaTeX command, so no editor or shell can mangle the encoding.
+%
+% Build:  pdflatex hw01.tex   (run twice)
+% Teacher copy (adds the answer key):
+%   pdflatex -jobname=hw01-teacher "\def\TEACHER{}\input{hw01.tex}"
+
+\documentclass[12pt,a4paper]{article}
+
+% -- Answer key switch -------------------------------------------------------
+\newif\ifkey
+\ifdefined\TEACHER\keytrue\else
+  \keyfalse        % \keyfalse = student copy   |   \keytrue = teacher copy
+\fi
+
+% -- House style -------------------------------------------------------------
+% Shared by every packet. See homework/hw-style.tex.
+\input{../hw-style.tex}
+
+% -- Per-packet running head -------------------------------------------------
+\fancyhead[L]{\small\color{black!55}Year 7\sep Homework 1}
+
+\begin{document}
+
+% ===========================================================================
+% COVER BLOCK
+% ===========================================================================
+\thispagestyle{fancy}
+
+\begin{tcolorbox}[enhanced, colback=cbpurple!7, colframe=cbpurple!7, arc=7pt,
+                  borderline west={6pt}{0pt}{cbpurple},
+                  left=18pt, right=14pt, top=14pt, bottom=14pt]
+  {\color{cbpurple}\bfseries YEAR 7\sep UNIT 1\sep HOMEWORK 1}\\[6pt]
+  {\color{cbpurple}\Huge\bfseries Integers and Cells}\\[10pt]
+  {\color{black!70}Mathematics 1.1 --- Adding \& Subtracting Integers}\\
+  {\color{black!70}Science 1.1 --- Cells and Microscopes}
+\end{tcolorbox}
+
+\vspace{10pt}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+  \textbf{Name:} \blank[5.6cm] & \textbf{Class:} \blank[5.6cm] \\
+  \textbf{Date given:} \blank[4.6cm] & \textbf{Date due:} \blank[5.0cm] \\
+\end{tabularx}
+
+\vspace{8pt}
+\begin{activity}
+  \begin{itemize}
+    \item Write your answers \textbf{on this sheet}, in the spaces given. If you need
+          more room, use the back of the page.
+    \item In maths, \key{write the calculation before the answer}.
+    \item In science, answer in \key{full English sentences}. ``Chloroplast'' is not a
+          sentence; ``The green circles are chloroplasts'' is.
+    \item If a word is new to you, look for the blue \eng{Word help} box on that page
+          before you give up.
+  \end{itemize}
+\end{activity}
+
+% ===========================================================================
+% SECTION A -- MATHEMATICS
+% ===========================================================================
+\hwsection{Section A \textperiodcentered\ Mathematics 1.1 --- Adding and Subtracting Integers}
+
+\begin{remember}
+  An \key{integer} is a whole number that is positive, negative or zero --- never a
+  fraction. On the number line, \key{negative} integers sit to the \key{left} of zero
+  and \key{positive} integers to the \key{right}.
+
+  \medskip
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    Add a \key{positive}      & move \key{right} \\
+    Add a \key{negative}      & move \key{left} \\
+    Subtract a \key{positive} & move \key{left} \\
+    Subtract a \key{negative} & move \key{right} --- because $a-(-b)=a+b$ \\
+  \end{tabularx}
+
+  \medskip
+  Careful: only $-(-)$ becomes $+$. A single $+(-)$ still sends you left, so
+  $5+(-3)=2$, \textbf{not} $8$.
+\end{remember}
+
+% -- A1 ---------------------------------------------------------------------
+\qhead{A1}{Show it on the number line}
+
+\noindent\textbf{(a)} Show $4 + (-3)$ on the number line below. Put a cross on the
+number you \textbf{start} at, then draw an arrow for the move.
+
+\vspace{12pt}
+\noindent
+\resizebox{0.92\textwidth}{!}{%
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \draw[line width=1.1pt,cbteal,{Latex[length=3mm]}-{Latex[length=3mm]}] (-5.7,0) -- (8.7,0);
+  \foreach \n in {-5,...,8}{
+    \draw[line width=0.9pt,cbteal] (\n,-0.18) -- (\n,0.18);
+    \node[below=4pt,font=\small] at (\n,-0.18) {$\n$};
+  }
+\end{tikzpicture}}
+
+\vspace{10pt}
+\noindent\hspace*{0.5em}$4 + (-3) = \blank[2.2cm]$
+
+\vspace{12pt}
+\noindent\textbf{(b)} Complete each sentence with \eng{higher than}, \eng{lower than},
+\eng{warmer than} or \eng{colder than}.
+
+\begin{enumerate}[label=(\roman*)]
+  \item $-8$ is \blank[3.4cm] $-4$.
+  \item A temperature of $3\dC$ is \blank[3.4cm] a temperature of $-9\dC$.
+  \item Floor $-2$ of the car park is \blank[3.4cm] floor $1$.
+\end{enumerate}
+
+% -- A2 ---------------------------------------------------------------------
+\qhead{A2}{Moving along the line}
+
+\noindent Work these out. You may draw a small number line beside any of them.
+
+\vspace{10pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*), itemsep=13pt]
+  \item $-6+4 = \blank[1.6cm]$
+  \item $5+(-9) = \blank[1.6cm]$
+  \item $-3-5 = \blank[1.6cm]$
+  \item $-2-(-7) = \blank[1.6cm]$
+  \item $8+(-8) = \blank[1.6cm]$
+  \item $-10-(-4) = \blank[1.6cm]$
+  \item $0-(-6) = \blank[1.6cm]$
+  \item $-7+15 = \blank[1.6cm]$
+  \item $4-11 = \blank[1.6cm]$
+  \item $-5-(-5) = \blank[1.6cm]$
+  \item $6-8-(-5) = \blank[1.6cm]$
+  \item $-9-6+(-1) = \blank[1.6cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- A3 ---------------------------------------------------------------------
+\qhead{A3}{Say it, then write it}
+
+\begin{wordhelp}[Word help --- these words decide the order of your calculation]
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    \eng{subtract 5 from 8}   & you \textbf{start} at 8: $8-5$. The English gives the numbers in the \textbf{opposite order} to the calculation. \\
+    \eng{take 6 away from 2}  & the same trap: $2-6$. \\
+    \eng{7 less than 3}       & again the same trap: $3-7$. \\
+    \eng{rises by / falls by} & the temperature goes up / the temperature goes down. \\
+    \eng{deposit}             & to put money \textbf{into} an account $(+)$. \\
+    \eng{withdraw}            & to take money \textbf{out of} an account $(-)$. \\
+    \eng{owe} / \eng{a debt}  & money you must pay back. It makes your total \textbf{negative}. \\
+    \eng{descend}             & to go \textbf{down}. To go up is to \eng{ascend}. \\
+  \end{tabularx}
+\end{wordhelp}
+
+\noindent Turn each English sentence into a calculation, then work out the answer.
+\key{Write the calculation first.}
+
+\vspace{6pt}
+\begin{enumerate}[label=\arabic*., itemsep=11pt]
+  \item Subtract 9 from 4. \\[4pt]
+        Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
+  \item Take 6 away from $-2$. \\[4pt]
+        Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
+  \item What is 7 less than 3? \\[4pt]
+        Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
+  \item The temperature is $-8\dC$ and it rises by 5 degrees. \\[4pt]
+        Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
+  \item A submarine is at $-30$ m. It descends a further 12 m. \\[4pt]
+        Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
+  \item An account holds $-35$ dollars. The bank removes a debt of 20 dollars from it.
+        \\[4pt]
+        Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
+\end{enumerate}
+
+% -- A4 ---------------------------------------------------------------------
+\qhead{A4}{Difference}
+
+\begin{remember}[Remember: a difference is a gap]
+  The \key{difference} between two numbers is how far apart they are on the line.
+  Work it out with \key{bigger $-$ smaller}. A difference is \key{never negative}.
+  \eng{How much warmer}, \eng{how much colder}, \eng{how much higher} and
+  \eng{how many more} all ask for the same thing.
+\end{remember}
+
+\begin{enumerate}[label=\arabic*.]
+  \item Find the difference between $-6$ and $2$. \hfill Answer: \blank[2.8cm]
+  \item Find the difference between $-9$ and $-3$. \hfill Answer: \blank[2.8cm]
+  \item How much warmer is $4\dC$ than $-13\dC$? Show your calculation.
+        \wlines{1}
+  \item These two questions look almost the same. They are not.
+        \begin{enumerate}[label=(\alph*), itemsep=9pt]
+          \item Find the difference between $-5$ and $6$. \hfill Answer: \blank[2.8cm]
+          \item What is $-5$ minus $6$? \hfill Answer: \blank[2.8cm]
+          \item In one full sentence, explain why the two answers are different.
+                \wlines{2}
+        \end{enumerate}
+  \item One winter morning it is $18\dC$ in Ho Chi Minh City and $-24\dC$ in
+        Ulaanbaatar. How much colder is Ulaanbaatar? Show your calculation.
+        \wlines{1}
+\end{enumerate}
+
+% -- A5 ---------------------------------------------------------------------
+\qhead{A5}{Word problems}
+
+\noindent Read each one \key{all the way to the end} before you start writing.
+Show the calculation, then the answer.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=16pt]
+
+  \item \textbf{The office lift.} Mr Bowen gets into the lift on floor 7. He goes
+        \textbf{down} 11 floors, and then \textbf{up} 2 floors. Which floor is he on
+        now?
+        \begin{workspace}[2.8cm]\end{workspace}
+
+  \item \textbf{A day in Sa Pa.} At 6 a.m. the temperature is $-3\dC$. By noon it has
+        risen 11 degrees. By midnight it has fallen 14 degrees.
+        \begin{enumerate}[label=(\alph*)]
+          \item What is the temperature at midnight?
+          \item What is the \textbf{difference} between the warmest and the coldest
+                temperature of the day?
+        \end{enumerate}
+        \begin{workspace}[3.4cm]\end{workspace}
+
+  \item \textbf{Six weeks of saving.} Mr Bowen's account is at $-40$ dollars. Every
+        Monday he deposits 25 dollars. Every Friday he withdraws 25 dollars. How much is
+        in the account after 6 weeks? Explain your answer in one full sentence.
+        \begin{workspace}[3.1cm]\end{workspace}
+
+\end{enumerate}
+
+% -- A6 ---------------------------------------------------------------------
+\qhead[cbgreen]{A6}{Now you write the question}
+
+\begin{yourturn}[Your turn to be the teacher]
+  So far the questions have given you the English, and you have written the maths.
+  Now do it \textbf{backwards}. You are given the maths --- write the English.
+
+  \medskip
+  Your word problem must:
+  \begin{itemize}
+    \item be about something \textbf{real} --- money, temperature, floors in a
+          building, or depth under the sea;
+    \item use at least one word from the \eng{Word help} box on the earlier page,
+          such as \eng{rises by}, \eng{falls by}, \eng{deposits}, \eng{withdraws},
+          \eng{owes}, \eng{below} or \eng{descends};
+    \item be written in \textbf{full English sentences}, and end with a question;
+    \item have the answer that is already given to you.
+  \end{itemize}
+\end{yourturn}
+
+\noindent\textbf{(a)} Write a word problem for \quad \expr{-5 + 8 = 3}
+\wlines{4}
+
+\vspace{14pt}
+\noindent\textbf{(b)} Write a word problem for \quad \expr{12 - (-4) = 16}
+\wlines{4}
+
+% ===========================================================================
+% SECTION B -- SCIENCE
+% ===========================================================================
+\hwsection{Section B \textperiodcentered\ Science 1.1 --- Cells and Microscopes}
+
+\begin{remember}
+  A \key{cell} is the smallest basic unit of all living organisms. An \key{organelle}
+  is a tiny structure inside a cell that does one specific, important job to keep the
+  cell alive. Every cell has a \key{cell membrane}, \key{cytoplasm}, a \key{nucleus}
+  and \key{mitochondria}. A plant cell has all of those \key{plus} a \key{cell wall}
+  made of \key{cellulose}, \key{chloroplasts} containing \key{chlorophyll}, and a
+  \key{sap vacuole}.
+\end{remember}
+
+% -- B1 ---------------------------------------------------------------------
+\qhead{B1}{Match the word to its job}
+
+\noindent Write the correct letter in the box next to each word.
+
+\vspace{8pt}
+\noindent
+\begin{tabularx}{\textwidth}{@{}p{4.2cm} @{\hspace{6pt}} c @{\hspace{12pt}} X@{}}
+  \textbf{Word} & \textbf{Letter} & \textbf{Job} \\[2pt]
+  1.\ Cell            & \tickbox & \textbf{A} \; The control centre of the cell --- the ``boss''. \\
+  2.\ Organelle       & \tickbox & \textbf{B} \; A large space of sugars and water that keeps a plant cell firm. \\
+  3.\ Nucleus         & \tickbox & \textbf{C} \; Where energy is released from food. \\
+  4.\ Mitochondria    & \tickbox & \textbf{D} \; The smallest basic unit of all living organisms. \\
+  5.\ Cell wall       & \tickbox & \textbf{E} \; A tool that uses lenses to bend light and magnify an image. \\
+  6.\ Chloroplast     & \tickbox & \textbf{F} \; A tiny structure inside a cell that does one specific job. \\
+  7.\ Sap vacuole     & \tickbox & \textbf{G} \; A strong, stiff outer layer that holds a plant cell in shape. \\
+  8.\ Microscope      & \tickbox & \textbf{H} \; Where a plant makes its food, using sunlight. \\
+\end{tabularx}
+
+% -- B2 ---------------------------------------------------------------------
+\qhead{B2}{Animal, plant, or both?}
+
+\noindent Put a tick ($\checkmark$) in \textbf{one} column for each organelle.
+
+\vspace{8pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|>{\centering\arraybackslash}p{3.1cm}|>{\centering\arraybackslash}p{2.9cm}|>{\centering\arraybackslash}p{1.9cm}|}
+  \hline
+  \textbf{Organelle} & \textbf{Animal cells only} & \textbf{Plant cells only} & \textbf{Both} \\
+  \hline
+  Cell membrane & & & \\ \hline
+  Cytoplasm     & & & \\ \hline
+  Nucleus       & & & \\ \hline
+  Mitochondria  & & & \\ \hline
+  Cell wall     & & & \\ \hline
+  Chloroplast   & & & \\ \hline
+  Sap vacuole   & & & \\ \hline
+\end{tabularx}
+
+% -- B4 ---------------------------------------------------------------------
+\qhead{B3}{Answer in full sentences}
+
+\begin{wordhelp}[Sentence starters --- you may copy these]
+  ``A plant cell needs a cell wall because\ldots''\\
+  ``One difference is that\ldots\ Another difference is that\ldots''\\
+  ``A microscope is a tool that\ldots''
+\end{wordhelp}
+
+\begin{enumerate}[label=\arabic*., itemsep=14pt]
+
+  \item An animal has a skeleton to hold it up. A plant does not. Explain why every
+        plant cell needs a cell wall.
+        \wlines{2}
+
+  \item Give \textbf{two} ways a cell wall is different from a cell membrane.
+        Write each one as a full sentence.
+        \wlines{4}
+
+  \item Under the microscope, a leaf cell is full of small green circles. Name them,
+        and name the green substance inside them.
+        \wlines{2}
+
+  \item What does a microscope do? Use the words \key{lens} and \key{magnify} in your
+        answer.
+        \wlines{3}
+
+\end{enumerate}
+
+% -- B5 ---------------------------------------------------------------------
+\qhead{B4}{A model of a cell}
+
+\noindent Mr Bowen builds a model of an animal cell in his kitchen. He uses a clear
+plastic bag, filled with jelly, with a plum and four red beans pushed into the middle
+of it.
+
+\vspace{8pt}
+\noindent\textbf{(a)} Which organelle does each item represent?
+
+\vspace{6pt}
+\noindent
+\begin{tabularx}{\textwidth}{|p{5cm}|X|}
+  \hline
+  \textbf{Item in the model} & \textbf{Organelle it represents} \\
+  \hline
+  The plastic bag \rule{0pt}{1.9em} & \\ \hline
+  The jelly       \rule{0pt}{1.9em} & \\ \hline
+  The plum        \rule{0pt}{1.9em} & \\ \hline
+  The four beans  \rule{0pt}{1.9em} & \\ \hline
+\end{tabularx}
+
+\vspace{14pt}
+\noindent\textbf{(b)} Name \textbf{one} thing he could add to turn it into a model of a
+\textbf{plant} cell, and say which organelle it would represent.
+\wlines{2}
+
+% -- B3 ---------------------------------------------------------------------
+\qhead{B5}{Label the plant cell}
+
+\noindent Write the name of each numbered part on the lines below the diagram.
+
+\vspace{12pt}
+\noindent
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[x=1cm,y=1cm,
+    lbl/.style={circle, draw=cbteal, fill=white, line width=1.1pt,
+                inner sep=1.8pt, minimum size=8mm, font=\bfseries}]
+
+  % -- the cell itself. The wall band is deliberately 0.7 wide so that the
+  %    wall (1) and the membrane (3) are visibly two different things.
+  \fill[cbgreen!35, rounded corners=12pt] (0,0) rectangle (11,6.4);        % cell wall
+  \fill[cbteal!10, rounded corners=8pt]  (0.7,0.7) rectangle (10.3,5.7);   % cytoplasm
+  \draw[line width=1.2pt, black!60, rounded corners=8pt] (0.7,0.7) rectangle (10.3,5.7);
+  \draw[line width=1.6pt, cbgreen!70!black, rounded corners=12pt] (0,0) rectangle (11,6.4);
+
+  % -- sap vacuole --
+  \fill[cbblue!18] (5.5,2.95) ellipse (3.2 and 1.65);
+  \draw[line width=0.9pt, cbblue!60] (5.5,2.95) ellipse (3.2 and 1.65);
+
+  % -- nucleus --
+  \fill[cbpurple!30] (2.0,4.35) circle (0.85);
+  \draw[line width=0.9pt, cbpurple!80] (2.0,4.35) circle (0.85);
+  \fill[cbpurple!60] (2.0,4.35) circle (0.28);
+
+  % -- chloroplasts --
+  \foreach \x/\y/\r in {1.7/1.5/20, 3.2/1.15/-15, 5.0/1.05/10,
+                        6.8/1.15/-20, 8.5/1.5/15, 9.6/2.6/-10, 9.6/4.2/25}{
+    \begin{scope}[shift={(\x,\y)}, rotate=\r]
+      \fill[cbgreen!75] (0,0) ellipse (0.46 and 0.24);
+      \draw[line width=0.7pt, cbgreen!45!black] (0,0) ellipse (0.46 and 0.24);
+    \end{scope}}
+
+  % -- mitochondria. Kept away from x = 5.5 so the cytoplasm leader (2) has a
+  %    clear, empty patch of cytoplasm to land on.
+  \foreach \x/\y/\r in {3.3/5.1/-12, 8.4/5.1/16, 1.35/2.7/70}{
+    \begin{scope}[shift={(\x,\y)}, rotate=\r]
+      \fill[cborange!65] (0,0) ellipse (0.42 and 0.2);
+      \draw[line width=0.7pt, cborange!80!black] (0,0) ellipse (0.42 and 0.2);
+      \draw[line width=0.5pt, cborange!80!black] (-0.25,0.05) -- (-0.05,-0.06) -- (0.15,0.06);
+    \end{scope}}
+
+  % -- leader lines and numbers. Each one ends on a dot so there is no doubt
+  %    about which structure it is pointing at.
+  \foreach \sx/\sy/\ex/\ey/\lx/\ly/\n in {%
+      2.2/6.4/2.2/7.55/2.2/7.95/1,          % cell wall  (the green band)
+      5.5/5.35/7.9/7.55/8.0/7.95/2,         % cytoplasm  (empty patch)
+      0.7/4.9/-1.5/6.25/-1.9/6.4/3,         % cell membrane (the black line)
+      2.0/4.35/-1.5/4.05/-1.9/4.0/4,        % nucleus
+      5.5/2.95/12.6/3.3/13.0/3.35/5,        % sap vacuole
+      1.7/1.5/-1.5/1.1/-1.9/1.05/6,         % chloroplast
+      8.4/5.1/12.6/5.5/13.0/5.55/7}{        % mitochondrion
+    \draw[line width=0.7pt, black!65] (\sx,\sy) -- (\ex,\ey);
+    \fill[black!65] (\sx,\sy) circle (0.075);
+    \node[lbl] at (\lx,\ly) {\n};}
+
+  % keep the bounding box sensible
+  \path (-2.6,-0.5) rectangle (13.9,8.6);
+\end{tikzpicture}}
+
+\vspace{16pt}
+
+% A tabular rather than multicols, so the seven answer lines can never be split
+% across a page break away from their diagram.
+\noindent
+\begin{tabular}{@{}p{0.48\textwidth} p{0.48\textwidth}@{}}
+  1.\ \blank[5.4cm] & 5.\ \blank[5.4cm] \\[30pt]
+  2.\ \blank[5.4cm] & 6.\ \blank[5.4cm] \\[30pt]
+  3.\ \blank[5.4cm] & 7.\ \blank[5.4cm] \\[30pt]
+  4.\ \blank[5.4cm] &                   \\
+\end{tabular}
+
+\vspace{10pt}
+\noindent{\small\color{black!60}Hint: number 3 is the very thin layer just inside the
+outer green edge. Numbers 1 and 3 are easy to confuse --- one is thick and stiff, one is
+thin and flexible.}
+
+% ===========================================================================
+% ANSWER KEY (teacher copy only)
+% ===========================================================================
+\ifkey
+\newpage
+\hwsection[cbred]{Answer Key --- Teacher Copy}
+
+% The key is for an adult reading it at a desk, not a 12-year-old writing on it,
+% so tighten everything back up.
+\linespread{1.0}\selectfont
+\setlist[enumerate]{itemsep=2pt, topsep=3pt, leftmargin=*}
+\setlist[itemize]{itemsep=2pt, topsep=3pt, leftmargin=*}
+
+\qhead[cbred]{A1}{Show it on the number line}
+\noindent (a) Cross on $4$, arrow three steps \emph{left}, landing on $1$. So
+$4+(-3)=1$. The cross must be on 4, not on 3 --- adding a negative means starting at
+the first number and moving left.\\
+(b) (i) lower than \quad (ii) warmer than \quad (iii) lower than.
+{\small\ (``higher than'' is also acceptable in (iii) if the sentence is reversed ---
+mark the reasoning, not the word.)}
+
+\qhead[cbred]{A2}{Moving along the line}
+\noindent
+(a) $-2$ \quad (b) $-4$ \quad (c) $-8$ \quad (d) $5$ \quad (e) $0$ \quad (f) $-6$ \\
+(g) $6$ \quad (h) $8$ \quad (i) $-7$ \quad (j) $0$ \quad (k) $3$ \quad (l) $-16$
+
+\smallskip
+\noindent{\small Common errors: (d) and (f) --- students flip \emph{any} pair of signs
+to $+$. Only $-(-)$ becomes $+$. (b) $5+(-9)$ is a single $+(-)$, so it still goes
+left.}
+
+\qhead[cbred]{A3}{Say it, then write it}
+\begin{enumerate}[label=\arabic*., itemsep=3pt]
+  \item $4-9=-5$
+  \item $-2-6=-8$
+  \item $3-7=-4$
+  \item $-8+5=-3$
+  \item $-30-12=-42$
+  \item $-35-(-20)=-15$
+\end{enumerate}
+\noindent{\small Questions 1--3 are the ``reversed order'' trap; 6 is the ``removing a
+debt adds'' rule --- the only place it is tested now, so it is worth checking. If a student writes $9-4$, $6-(-2)$ or $7-3$, that is the English
+error, not an arithmetic one --- say so, and make them re-read the sentence.}
+
+\qhead[cbred]{A4}{Difference}
+\begin{enumerate}[label=\arabic*., itemsep=3pt]
+  \item $8$
+  \item $6$
+  \item $4-(-13)=17$ degrees
+  \item (a) $11$ \; (b) $-11$ \; (c) A difference is the gap between the numbers so it
+        is never negative, but $-5-6$ is an instruction to move 6 further left.
+  \item $18-(-24)=42$ degrees
+\end{enumerate}
+
+\qhead[cbred]{A5}{Word problems}
+\begin{enumerate}[label=\arabic*., itemsep=3pt]
+  \item $7-11+2=-2$. Floor $-2$ (B2).
+  \item (a) $-3+11-14=-6\dC$. \; (b) Warmest $8\dC$ at noon, coldest $-6\dC$:
+        $8-(-6)=14$ degrees.
+  \item Still $-40$ dollars. Each week $+25-25=0$, so six weeks change nothing. This one
+        rewards reading to the end before calculating.
+\end{enumerate}
+
+\qhead[cbred]{A6}{Now you write the question}
+\noindent There is no single right answer --- check the four conditions in the green
+box, in this order:
+\begin{enumerate}[label=\arabic*., itemsep=3pt]
+  \item \textbf{Does it start in the right place?} For (a) the story must \emph{begin}
+        at $-5$, not arrive there. This is the same ``which number comes first''
+        problem as A3, and it is the one most of them will get wrong.
+  \item \textbf{Does the signal word match the sign?} (a) needs an \emph{up} word
+        (rises, deposits, climbs) for the $+8$. (b) needs a \emph{removing a negative}
+        --- a debt cancelled, a weight taken off --- not simply ``adds 4''.
+  \item \textbf{Full sentences, ending in a question?}
+  \item \textbf{Does their own answer come out as 3, and as 16?}
+\end{enumerate}
+
+\smallskip
+\noindent{\small Two that work: (a) ``The temperature in Sa Pa was $-5\dC$ at
+midnight. By noon it had risen by 8 degrees. What was the temperature at noon?''
+(b) ``Mr Bowen had 12 dollars, and he also owed his brother 4 dollars. His brother told
+him to forget the debt. How much is Mr Bowen worth now?'' \\
+Part (b) is the harder one by a distance --- expect most of the class to write a plain
+addition. That is worth a whole-class discussion rather than a red pen: ask them what
+in real life makes you \emph{richer} when it is taken away.}
+
+\qhead[cbred]{B1}{Match the word to its job}
+\noindent 1--D \quad 2--F \quad 3--A \quad 4--C \quad 5--G \quad 6--H \quad 7--B \quad 8--E
+
+\qhead[cbred]{B2}{Animal, plant, or both?}
+\noindent Both: cell membrane, cytoplasm, nucleus, mitochondria. \\
+Plant only: cell wall, chloroplast, sap vacuole. \\
+{\small Nothing is animal-only. Expect some students to tick that column anyway ---
+it is worth saying out loud that a plant cell has everything an animal cell has,
+\emph{plus} extras.}
+
+\qhead[cbred]{B3}{Answer in full sentences}
+\begin{enumerate}[label=\arabic*., itemsep=3pt]
+  \item A plant has no skeleton, so each cell needs a stiff wall around it to hold its
+        shape and hold the plant up.
+  \item Any two: the wall is thick and stiff while the membrane is thin and flexible;
+        the wall is made of cellulose; the wall is only in plant cells while every cell
+        has a membrane; the membrane controls what enters and leaves, the wall does not.
+  \item They are chloroplasts, and the green substance inside them is chlorophyll.
+  \item A microscope is a tool that uses curved pieces of glass called lenses to bend
+        light and magnify an image, making it look much bigger than it really is.
+\end{enumerate}
+
+\qhead[cbred]{B4}{A model of a cell}
+\noindent (a) bag --- cell membrane; jelly --- cytoplasm; plum --- nucleus;
+beans --- mitochondria.
+
+\smallskip
+\noindent (b) Any one, with its organelle named: a shoebox or rigid container around the
+bag --- cell wall; a water balloon in the middle --- sap vacuole; green sweets ---
+chloroplasts.
+
+\qhead[cbred]{B5}{Label the plant cell}
+\noindent 1 --- cell wall \quad 2 --- cytoplasm \quad 3 --- cell membrane \quad
+4 --- nucleus \quad 5 --- sap vacuole \quad 6 --- chloroplast \quad
+7 --- mitochondrion
+
+\fi
+
+\end{document}
