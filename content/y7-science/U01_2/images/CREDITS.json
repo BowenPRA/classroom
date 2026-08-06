@@ -70,6 +70,42 @@
     "bytes": 192589
   },
   {
+    "name": "quiz-pondweed.jpg",
+    "title": "File:Canadian Pond Weed Leaf Tip.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Canadian_Pond_Weed_Leaf_Tip.jpg",
+    "license": "CC BY 4.0",
+    "artist": "KarlGaff",
+    "usage": "Plant or Animal quiz, photograph 1 - answer PLANT. Walls and chloroplasts both obvious.",
+    "bytes": 207430
+  },
+  {
+    "name": "quiz-muscle.jpg",
+    "title": "File:Skeletal striated muscle.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Skeletal_striated_muscle.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Nephron",
+    "usage": "Plant or Animal quiz, photograph 2 - answer ANIMAL. Long soft fibres, dark nuclei, no straight walls.",
+    "bytes": 258253
+  },
+  {
+    "name": "quiz-rhoeo.jpg",
+    "title": "File:Rhoeo Discolor epidermis.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Rhoeo_Discolor_epidermis.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Mnolf",
+    "usage": "Plant or Animal quiz, photograph 3 - answer PLANT. The trap: purple, no chloroplasts, but unmistakable straight walls. Kept at its native 795px; the original is no larger.",
+    "bytes": 38415
+  },
+  {
+    "name": "quiz-blood.jpg",
+    "title": "File:Red blood cells (RBCs), platelets and white blood cells or leukocyte (neutrophil) on PBS.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Red_blood_cells_(RBCs),_platelets_and_white_blood_cells_or_leukocyte_(neutrophil)_on_PBS.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Ajay Kumar Chaurasiya",
+    "usage": "Plant or Animal quiz, photograph 4 - answer ANIMAL. The big cell with the purple middle is a white blood cell.",
+    "bytes": 54962
+  },
+  {
     "name": "slide-coverslip.jpg",
     "title": "File:Microscope slide and cover slip.JPG",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Microscope_slide_and_cover_slip.JPG",

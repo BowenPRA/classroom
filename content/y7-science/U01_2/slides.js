@@ -16,7 +16,7 @@
 // see images/CREDITS.json. Everything else is drawn in diagrams.js or is an
 // openly-licensed photograph.
 import { DIAGRAMS } from './diagrams.js'
-import { CellCountWidget, PlantOrAnimalWidget } from './widgets.jsx'
+import { PlantOrAnimalWidget } from './widgets.jsx'
 import lbAnimalCell from './images/lb-animal-cell.jpg'
 import lbCellArtwork from './images/lb-cell-artwork.jpg'
 import milkyWay from './images/milky-way.jpg'
@@ -43,14 +43,16 @@ export const slides = [
     eyebrow: '1.2 Animal Cells',
     eyebrowVn: '1.2 Tế bào động vật',
     date: '10 Aug 2026',
-    title: 'Animal Cells: What You Are Made Of',
-    titleVn: 'Tế bào động vật: Em làm từ gì',
+    // The eyebrow above already says "1.2 Animal Cells", so the title does not
+    // need to repeat it — and this fits on one line at every projector size.
+    title: 'What You Are Made Of',
+    titleVn: 'Em được tạo nên từ gì',
     card: {
       icon: 'Hourglass',
       badge: 'Starter Task',
       badgeVn: 'Nhiệm vụ khởi động',
-      text: 'Several parts of a **plant cell** begin with **c**. List as many as you can. **Two minutes.**',
-      textVn: 'Nhiều bộ phận của **tế bào thực vật** bắt đầu bằng **c**. Liệt kê càng nhiều càng tốt. **Hai phút.**',
+      text: 'Several parts of a **plant cell** begin with **c**. How many can you list? **Write your answer as a full sentence.**',
+      textVn: 'Nhiều bộ phận của **tế bào thực vật** bắt đầu bằng **c**. Em kể được bao nhiêu? **Viết câu trả lời thành một câu hoàn chỉnh.**',
     },
   },
   {
@@ -58,27 +60,13 @@ export const slides = [
     accent: GREEN,
     eyebrow: 'Getting started · from the book',
     eyebrowVn: 'Khởi động · trong sách',
-    title: 'The C Words',
-    titleVn: 'Những từ bắt đầu bằng C',
     label: 'Check your list',
     labelVn: 'Kiểm tra danh sách',
     labelIcon: 'CheckCircle2',
-    text: 'The book asks for **five**. You found **six**.',
-    textVn: 'Sách hỏi **năm** từ. Em tìm ra **sáu**.',
-    sub: 'Read your list out loud. Which six?',
-    subVn: 'Đọc to danh sách của em. Sáu từ nào?',
-    reveal: {
-      label: 'So why does the book say five?',
-      labelVn: 'Vậy vì sao sách lại nói là năm?',
-      prompt: 'Two of your six are not **parts**. A part is something you can point to.',
-      promptVn: 'Hai trong sáu từ đó không phải là **bộ phận**. Bộ phận là thứ em chỉ vào được.',
-      answer:
-        '**The parts:** cell wall · cell membrane · cytoplasm · chloroplast.\n' +
-        '**The substances:** cellulose, which the cell wall is made of, and chlorophyll, which sits inside a chloroplast.',
-      answerVn:
-        '**Các bộ phận:** thành tế bào · màng tế bào · tế bào chất · lục lạp.\n' +
-        '**Các chất:** xenlulozơ, chất cấu tạo nên thành tế bào, và diệp lục, chất nằm bên trong lục lạp.',
-    },
+    text: 'The book asks for **five**. You found **six** — because two of them are not **organelles**.',
+    textVn: 'Sách hỏi **năm** từ. Em tìm ra **sáu** — vì hai trong số đó không phải là **bào quan**.',
+    sub: '**Organelles:** cell wall, cell membrane, cytoplasm, chloroplast.  **Substances:** cellulose and chlorophyll — the materials those organelles are made of.',
+    subVn: '**Bào quan:** thành tế bào, màng tế bào, tế bào chất, lục lạp.  **Chất:** xenlulozơ và diệp lục — vật liệu cấu tạo nên các bào quan đó.',
   },
 
   // ── Section 2: the hook — ask first, count afterwards ─────────────────────
@@ -102,23 +90,24 @@ export const slides = [
     subVn: 'Chưa ai từng đếm hết. Một nghìn? Một triệu? Một tỉ? Hãy thống nhất **một** con số.',
   },
   {
-    layout: 'split',
+    layout: 'statement',
     accent: PURPLE,
-    icon: 'Users',
-    title: 'Working It Out',
-    titleVn: 'Cùng tính toán',
-    ratio: 45,
-    content:
-      'Now the real answer. Press through it one step at a time — do each step on paper before the next one appears.\n\n' +
-      '> **1.** Scientists estimate about **100 trillion** cells in one person.\n' +
-      '> **2.** Imagine counting them: **one cell every second**.\n' +
-      '> **3.** How long would that take you?',
-    contentVn:
-      'Bây giờ là đáp án thật. Hãy bấm từng bước một — làm xong mỗi bước trên giấy rồi mới sang bước sau.\n\n' +
-      '> **1.** Các nhà khoa học ước tính một người có khoảng **100 nghìn tỉ** tế bào.\n' +
-      '> **2.** Hãy tưởng tượng em đếm chúng: **mỗi giây một tế bào**.\n' +
-      '> **3.** Việc đó sẽ mất bao lâu?',
-    widget: CellCountWidget,
+    eyebrow: 'The answer',
+    eyebrowVn: 'Đáp án',
+    text: 'About **100 trillion** cells.',
+    textVn: 'Khoảng **100 nghìn tỉ** tế bào.',
+    sub: '100 000 000 000 000 — in one person.',
+    subVn: '100 000 000 000 000 — trong một người.',
+    notes: [
+      {
+        tone: 'task',
+        badge: 'Discuss',
+        badgeVn: 'Thảo luận',
+        icon: 'MessageSquare',
+        text: 'How big is a trillion?\nHow long would it take you to count to a trillion?',
+        textVn: 'Một nghìn tỉ lớn đến mức nào?\nEm sẽ mất bao lâu để đếm đến một nghìn tỉ?',
+      },
+    ],
   },
   {
     layout: 'showcase',
@@ -345,11 +334,11 @@ export const slides = [
     titleVn: 'Thực vật hay động vật?',
     ratio: 40,
     content:
-      'Four real photographs, all taken down a microscope. For each one decide: **plant cell or animal cell** — and be ready to say **how you know**.\n\n' +
-      '> Answer in a full sentence: "Photograph A shows plant cells **because** ... "',
+      'Eight real photographs, all taken down a microscope. The **first four** we read together. The **next four** you decide: plant cell or animal cell — and say **how you know**.\n\n' +
+      '> Answer in a full sentence: "Photograph 1 shows plant cells **because** ... "',
     contentVn:
-      'Bốn tấm ảnh thật, đều chụp qua kính hiển vi. Với mỗi ảnh, hãy quyết định: **tế bào thực vật hay tế bào động vật** — và sẵn sàng nói **vì sao em biết**.\n\n' +
-      '> Trả lời bằng câu hoàn chỉnh: "Photograph A shows plant cells **because** ... "',
+      'Tám tấm ảnh thật, đều chụp qua kính hiển vi. **Bốn ảnh đầu** chúng ta cùng đọc. **Bốn ảnh sau** em tự quyết định: tế bào thực vật hay động vật — và nói **vì sao em biết**.\n\n' +
+      '> Trả lời bằng câu hoàn chỉnh: "Photograph 1 shows plant cells **because** ... "',
     widget: PlantOrAnimalWidget,
   },
 
@@ -365,8 +354,8 @@ export const slides = [
     ratio: 55,
     side: 'left',
     image: slideCoverslip,
-    content: 'The book asks you to take cells from **inside your own cheek** and look at them down a microscope.',
-    contentVn: 'Sách yêu cầu em lấy tế bào từ **mặt trong má của chính mình** và quan sát chúng qua kính hiển vi.',
+    content: 'The book asks you to take cells from **inside your own cheek** and look at them down a microscope. **We will do this lab when our microscope arrives** — today, learn the method.',
+    contentVn: 'Sách yêu cầu em lấy tế bào từ **mặt trong má của chính mình** và quan sát qua kính hiển vi. **Chúng ta sẽ làm bài thực hành này khi có kính hiển vi** — hôm nay hãy học cách làm.',
     notes: [
       {
         tone: 'task',
@@ -480,8 +469,8 @@ export const slides = [
     eyebrowVn: 'Bước 8 đến 10',
     title: 'Finding the Cells',
     titleVn: 'Tìm ra tế bào',
-    content: 'We will run all of this for real as soon as the lab kit arrives. Today, learn the order.',
-    contentVn: 'Chúng ta sẽ thực hành toàn bộ ngay khi có bộ dụng cụ thí nghiệm. Hôm nay, hãy học thuộc thứ tự.',
+    content: 'We will do this lab when our microscope arrives. Today, learn the order.',
+    contentVn: 'Chúng ta sẽ làm bài thực hành này khi có kính hiển vi. Hôm nay, hãy học thuộc thứ tự.',
     steps: [
       {
         text: 'Look down the eyepiece. Slowly turn the knob to move the lens **upwards**, and stop when you can see the cells.',
