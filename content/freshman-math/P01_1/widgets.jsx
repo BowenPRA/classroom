@@ -1,14 +1,14 @@
-// content/freshman-math/U01_1/widgets.jsx
-// One widget, on purpose.
+// content/freshman-math/P01_1/widgets.jsx
+// One widget, on purpose, and it lives in the SOLUTIONS half of the deck.
 //
-// Everything else in this deck is a definition, a diagram or a question, and
-// those belong on a static slide where they can be copied. What a static slide
-// CANNOT do is hold back a four-line calculation while the class does it on
-// paper — reveal it all and the work is spoiled, hide it all and it is
-// unusable. So the fly's flight is a stepper, teacher-paced, one line per
-// press, with a Back button and nothing else to fiddle with.
+// Everything else in this project is a task, a diagram or a question, and those
+// belong on a static slide the student can work from. What a static slide
+// CANNOT do is walk a marking class through a three-line calculation one press
+// at a time — reveal it all and there is nothing to talk about, hide it all and
+// it is unusable. So the fly's flight is a stepper, teacher-paced, with a Back
+// button and nothing else to fiddle with.
 //
-// The order of the steps is the argument of the lesson, not just arithmetic:
+// The order of the steps is the argument, not just arithmetic:
 //   1. across the floor      → the 9-12-15 triangle
 //   2. up to the far corner  → the 15-8-17 triangle
 //   3. BOTH AT ONCE          → √(12² + 9² + 8²) = 17, the same answer
@@ -16,9 +16,7 @@
 // all" is the moment the three-dimensional formula stops being something to
 // memorise. Steps 2 and 3 must be on screen TOGETHER for that comparison to
 // land, which is why there are only three of them and why the list scrolls
-// itself — a fourth step (the time) pushed step 1 off the top on a projector,
-// and dividing 17 by 3.4 never needed pacing anyway. It lives on the slide's
-// write-note instead.
+// itself: a fourth step pushed step 1 off the top on a projector.
 //
 // The course is flagged bilingual:false, so this widget takes no `lang` prop.
 import { useState, useRef, useEffect } from 'react'

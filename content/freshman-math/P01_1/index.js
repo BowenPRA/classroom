@@ -14,9 +14,10 @@ export default {
     id: 'P01_1',
     title: 'Project: The Flight of the Fly',
     objective:
-      'An assessed project following lesson 1.1. Students predict a 3D distance, build a scale model of a room by folding a notebook to 90° and measure the path with twine, ' +
-      'calculate the flight both by chaining two right triangles and in one step, then investigate the harder case — a spider that must walk the surfaces — by unfolding the room ' +
-      'into a flat net, comparing all three unfoldings and stating a general rule for a room a × b × c. They finish by measuring a real room and writing the work up. Marked out of 16.',
+      'An assessed project following lesson 1.1. Students find two distances between the same pair of opposite corners of a room: how far a fly FLIES through the air, and how far a spider WALKS ' +
+      'across the surfaces. They predict both, build a scale model by folding a notebook to 90° and test the flight with twine, calculate the flight by chaining two right triangles and again in ' +
+      'one step, then investigate the walk by unfolding the room into a flat net — comparing all three unfoldings and stating a general rule for a room a × b × c. They finish by measuring a real ' +
+      'room and writing the work up. Marked out of 16. The worked solutions sit behind a stop slide, for after the projects are collected.',
     order: 2,
   },
   slides,

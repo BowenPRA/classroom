@@ -65,9 +65,67 @@ const boxEdges = () => `
 
 export const DIAGRAMS = {
   // ───────────────────────────────────────────────────────────────────────────
-  // The room with the flight in it. Both routes to 17 ft are shown: the dashed
-  // orange floor diagonal (the two-triangle method) and the one-step formula
-  // underneath. This is the reference picture for the whole project.
+  // STUDENT-FACING. The room and the line, with the three side lengths and
+  // nothing else — no floor diagonal, no answer. This is the picture that sits
+  // beside the task, so it must not do the task. The answered twin is
+  // FLY_ROOM below, which lives in the solutions section.
+  // ───────────────────────────────────────────────────────────────────────────
+  FLY_ROOM_BLANK: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 430" class="w-full h-full">
+    ${plate(680, 430)}${MARKERS}
+
+    <text x="340" y="32" font-family="${FONT}" font-size="19" font-weight="bold" fill="${KEY}" text-anchor="middle">How far does the fly travel?</text>
+
+    ${boxEdges()}
+    <line x1="230" y1="362" x2="560" y2="108" stroke="${PURPLE}" stroke-width="5"/>
+
+    <circle cx="230" cy="362" r="8" fill="${GREEN}" stroke="#ffffff" stroke-width="2.5"/>
+    <circle cx="560" cy="108" r="8" fill="${RED}" stroke="#ffffff" stroke-width="2.5"/>
+
+    <text x="350" y="388" font-family="${FONT}" font-size="17" font-weight="900" fill="${RED}" text-anchor="middle">12 ft</text>
+    <text x="534" y="348" font-family="${FONT}" font-size="17" font-weight="900" fill="${BLUE}" text-anchor="middle">9 ft</text>
+    <text x="578" y="204" font-family="${FONT}" font-size="17" font-weight="900" fill="${GREEN}" text-anchor="start">8 ft</text>
+    <text x="340" y="246" font-family="${FONT}" font-size="26" font-weight="900" fill="${PURPLE}" text-anchor="middle">?</text>
+
+    <text x="216" y="382" font-family="${FONT}" font-size="14" font-weight="bold" fill="${GREEN}" text-anchor="end">fly starts</text>
+    <text x="572" y="96" font-family="${FONT}" font-size="14" font-weight="bold" fill="${RED}" text-anchor="start">fly lands</text>
+
+    <text x="340" y="418" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">one straight line, bottom corner to the opposite ceiling corner</text>
+  </svg>`,
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // STUDENT-FACING. The same two surfaces laid flat, with the fold shown and
+  // both end points marked — but NO diagonal and no answer. It gives away the
+  // method (flatten it) without giving away the work, which is the level of
+  // help this task needs to be attemptable rather than impossible.
+  // ───────────────────────────────────────────────────────────────────────────
+  ROOM_NET_BLANK: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 510" class="w-full h-full">
+    ${plate(680, 510)}${MARKERS}
+
+    <text x="340" y="32" font-family="${FONT}" font-size="19" font-weight="bold" fill="${KEY}" text-anchor="middle">The same two surfaces, laid out flat</text>
+
+    <rect x="210" y="252" width="288" height="216" fill="${BLUE_T}" stroke="${INK}" stroke-width="2.5"/>
+    <rect x="210" y="60" width="288" height="192" fill="${GREEN_T}" stroke="${INK}" stroke-width="2.5"/>
+    <line x1="210" y1="252" x2="498" y2="252" stroke="${KEY}" stroke-width="3" stroke-dasharray="8 5"/>
+
+    <circle cx="210" cy="468" r="9" fill="${GREEN}" stroke="#ffffff" stroke-width="2.5"/>
+    <circle cx="498" cy="60" r="9" fill="${RED}" stroke="#ffffff" stroke-width="2.5"/>
+
+    <text x="354" y="392" font-family="${FONT}" font-size="17" font-weight="900" fill="${BLUE}" text-anchor="middle">FLOOR</text>
+    <text x="354" y="150" font-family="${FONT}" font-size="17" font-weight="900" fill="${GREEN}" text-anchor="middle">WALL</text>
+
+    <text x="354" y="494" font-family="${FONT}" font-size="17" font-weight="900" fill="${RED}" text-anchor="middle">12 ft</text>
+    <text x="198" y="366" font-family="${FONT}" font-size="17" font-weight="900" fill="${BLUE}" text-anchor="end">9 ft</text>
+    <text x="198" y="162" font-family="${FONT}" font-size="17" font-weight="900" fill="${GREEN}" text-anchor="end">8 ft</text>
+    <text x="512" y="258" font-family="${FONT}" font-size="15" font-weight="900" fill="${KEY}" text-anchor="start">the fold</text>
+
+    <text x="512" y="66" font-family="${FONT}" font-size="14" font-weight="bold" fill="${RED}" text-anchor="start">ends</text>
+    <text x="204" y="490" font-family="${FONT}" font-size="14" font-weight="bold" fill="${GREEN}" text-anchor="end">starts</text>
+  </svg>`,
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // SOLUTION. The room with the flight worked out both ways: the dashed orange
+  // floor diagonal (the two-triangle method) and the one-step formula
+  // underneath. Shown only after the projects are handed in.
   // ───────────────────────────────────────────────────────────────────────────
   FLY_ROOM: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 440" class="w-full h-full">
     ${plate(680, 440)}${MARKERS}
@@ -106,46 +164,53 @@ export const DIAGRAMS = {
   </svg>`,
 
   // ───────────────────────────────────────────────────────────────────────────
-  // The physical model. A notebook opened to 90° IS a set of three axes: the
-  // flat page carries x and y, the fold line standing between the pages is z.
-  // Students who build this stop arguing about what the z-axis "means".
+  // The physical model, and the thing students get wrong: WHERE THE TWO ENDS GO.
+  //
+  // The notebook is folded to 90°. The flat page is the floor, the upright page
+  // is one wall, and the fold is where they meet. The room's floor is drawn on
+  // the flat page with one 9 ft edge ALONG the fold; that same wall (9 ft wide,
+  // 8 ft tall) is drawn on the upright page standing on it.
+  //
+  // The fly starts at the floor corner furthest from the fold and lands on the
+  // OPPOSITE TOP corner — which is on the UPRIGHT page. Both ends therefore sit
+  // on different pages, and the twine has to lift off the paper and cross the
+  // open air between them. If a student puts both ends on the flat page they
+  // have modelled a floor diagonal, not the flight, and will measure 15 ft.
+  //
+  //   start  = (12, 0, 0)  the near floor corner, away from the fold
+  //   finish = (0, 9, 8)   the top corner of the upright page, far end
   // ───────────────────────────────────────────────────────────────────────────
   NOTEBOOK_MODEL: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" class="w-full h-full">
     ${plate(680, 400)}${MARKERS}
 
-    <text x="340" y="32" font-family="${FONT}" font-size="19" font-weight="bold" fill="${KEY}" text-anchor="middle">Fold your notebook to 90° and it becomes 3D</text>
+    <text x="340" y="30" font-family="${FONT}" font-size="19" font-weight="bold" fill="${KEY}" text-anchor="middle">The string must run from one page to the other</text>
 
-    <path d="M 150 300 L 420 300 L 530 224 L 260 224 Z" fill="#f4f7fa" stroke="${INK}" stroke-width="2.5"/>
-    <path d="M 150 300 L 260 224 L 260 76 L 150 152 Z" fill="#fbfcfd" stroke="${INK}" stroke-width="2.5"/>
-    <line x1="150" y1="300" x2="150" y2="152" stroke="${INK}" stroke-width="3.5"/>
+    <path d="M 150 300 L 420 300 L 530 224 L 260 224 Z" fill="${BLUE_T}" stroke="${INK}" stroke-width="2.5"/>
+    <path d="M 150 300 L 260 224 L 260 76 L 150 152 Z" fill="${GREEN_T}" stroke="${INK}" stroke-width="2.5"/>
+    <line x1="150" y1="300" x2="260" y2="224" stroke="${KEY}" stroke-width="3.5" stroke-dasharray="8 5"/>
 
-    <path d="M 150 300 L 350 300 L 427 247 L 227 247 Z" fill="${ORANGE_T}" opacity="0.7" stroke="${KEY}" stroke-width="2" stroke-dasharray="6 4"/>
-    <line x1="427" y1="247" x2="427" y2="137" stroke="${KEY}" stroke-width="2" stroke-dasharray="6 4"/>
+    <line x1="420" y1="300" x2="260" y2="76" stroke="${PURPLE}" stroke-width="4.5"/>
+    <circle cx="420" cy="300" r="8" fill="${GREEN}" stroke="#ffffff" stroke-width="2.5"/>
+    <circle cx="260" cy="76" r="8" fill="${RED}" stroke="#ffffff" stroke-width="2.5"/>
 
-    <line x1="150" y1="300" x2="400" y2="300" stroke="${RED}" stroke-width="3" marker-end="url(#pj-red)"/>
-    <line x1="150" y1="300" x2="240" y2="238" stroke="${BLUE}" stroke-width="3" marker-end="url(#pj-blue)"/>
-    <line x1="150" y1="300" x2="150" y2="166" stroke="${GREEN}" stroke-width="3" marker-end="url(#pj-green)"/>
+    <text x="285" y="322" font-family="${FONT}" font-size="15" font-weight="900" fill="${RED}" text-anchor="middle">12 ft</text>
+    <text x="486" y="278" font-family="${FONT}" font-size="15" font-weight="900" fill="${BLUE}" text-anchor="start">9 ft</text>
+    <text x="138" y="232" font-family="${FONT}" font-size="15" font-weight="900" fill="${GREEN}" text-anchor="end">8 ft</text>
+    <text x="188" y="286" font-family="${FONT}" font-size="13" font-weight="900" fill="${KEY}" text-anchor="start">the fold</text>
 
-    <path d="M 150 276 L 174 276 L 174 300" fill="none" stroke="${INK}" stroke-width="1.8"/>
+    <text x="352" y="188" font-family="${FONT}" font-size="15" font-weight="900" fill="${PURPLE}" text-anchor="start">the twine</text>
 
-    <line x1="150" y1="300" x2="427" y2="137" stroke="${PURPLE}" stroke-width="4" stroke-dasharray="9 5"/>
-    <circle cx="150" cy="300" r="7" fill="${GREEN}" stroke="#ffffff" stroke-width="2"/>
-    <circle cx="427" cy="137" r="7" fill="${RED}" stroke="#ffffff" stroke-width="2"/>
+    <text x="430" y="322" font-family="${FONT}" font-size="13" font-weight="bold" fill="${GREEN}" text-anchor="start">tape it here</text>
+    <text x="272" y="60" font-family="${FONT}" font-size="13" font-weight="bold" fill="${RED}" text-anchor="start">cut it here</text>
 
-    <text x="412" y="308" font-family="${FONT}" font-size="17" font-weight="900" fill="${RED}" text-anchor="start">x</text>
-    <text x="250" y="252" font-family="${FONT}" font-size="17" font-weight="900" fill="${BLUE}" text-anchor="start">y</text>
-    <text x="134" y="172" font-family="${FONT}" font-size="17" font-weight="900" fill="${GREEN}" text-anchor="end">z</text>
-    <text x="286" y="174" font-family="${FONT}" font-size="15" font-weight="900" fill="${PURPLE}" text-anchor="middle">the twine</text>
+    <text x="330" y="292" font-family="${FONT}" font-size="13" font-weight="bold" fill="${RULE}" text-anchor="middle">flat page = the floor</text>
+    <line x1="112" y1="112" x2="180" y2="130" stroke="${RULE}" stroke-width="1.5"/>
+    <text x="26" y="98" font-family="${FONT}" font-size="13" font-weight="bold" fill="${RULE}" text-anchor="start">upright page</text>
+    <text x="26" y="116" font-family="${FONT}" font-size="13" font-weight="bold" fill="${RULE}" text-anchor="start">= the wall</text>
 
-    <line x1="144" y1="116" x2="172" y2="114" stroke="${RULE}" stroke-width="1.5"/>
-    <text x="140" y="106" font-family="${FONT}" font-size="14" font-weight="bold" fill="${RULE}" text-anchor="end">standing page</text>
-    <text x="140" y="124" font-family="${FONT}" font-size="14" font-weight="bold" fill="${RULE}" text-anchor="end">= the wall</text>
-    <text x="320" y="338" font-family="${FONT}" font-size="14" font-weight="bold" fill="${RULE}" text-anchor="middle">flat page = the floor</text>
-
-    <rect x="424" y="300" width="248" height="78" rx="10" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="2"/>
-    <text x="548" y="324" font-family="${FONT}" font-size="14" font-weight="900" fill="${KEY}" text-anchor="middle">draw the room to scale</text>
-    <text x="548" y="346" font-family="${FONT}" font-size="14" font-weight="bold" fill="${INK}" text-anchor="middle">tape the twine at the start,</text>
-    <text x="548" y="366" font-family="${FONT}" font-size="14" font-weight="bold" fill="${INK}" text-anchor="middle">cut it at the far corner</text>
+    <rect x="396" y="336" width="268" height="52" rx="10" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="2"/>
+    <text x="530" y="356" font-family="${FONT}" font-size="13" font-weight="900" fill="${KEY}" text-anchor="middle">both ends on the flat page</text>
+    <text x="530" y="376" font-family="${FONT}" font-size="13" font-weight="bold" fill="${INK}" text-anchor="middle">measures the floor, not the flight</text>
   </svg>`,
 
   // ───────────────────────────────────────────────────────────────────────────

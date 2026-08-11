@@ -1,26 +1,29 @@
 // content/freshman-math/P01_1/slides.js
 // Algebra Track · Project 1 — The Flight of the Fly.
 //
-// This was the closing activity of lesson 1.1 and has been pulled out into a
-// project in its own right. The difference is not length, it is FRAMING: a
-// project states its question up front, publishes how it will be marked before
-// any work starts, gives students the questions in writing so they can work
-// without the projector, and asks for something handed in at the end.
+// The deck is in TWO HALVES, and the split is the most important thing about
+// its structure:
 //
-// The structure borrowed from good project assessment, in plain words:
-//   · one driving question, asked before any method is given;
-//   · a physical model, so the answer can be checked against reality rather
-//     than against the back of a book;
-//   · an open investigation with a result the teacher does not simply hand
-//     over — here, the spider's walk and the rule for which unfolding is
-//     shortest;
-//   · transfer to a space the student measures themselves;
-//   · a published rubric, in student-facing language, shown BEFORE they start.
+//   Slides 1–16  THE PROJECT.  Everything the student needs to do the work and
+//                nothing else. No answers, no worked methods, no numbers that
+//                give the task away — the two room diagrams here are the
+//                deliberately blank FLY_ROOM_BLANK and ROOM_NET_BLANK.
+//   Slide 17     A STOP SLIDE.
+//   Slides 18–23 THE SOLUTIONS. Shown only once projects are handed in.
 //
-// The mathematics is the same 12 × 9 × 8 ft room from the lesson, chosen so the
-// flight chains two Pythagorean triples (9-12-15, then 15-8-17). The walk
-// deliberately does NOT come out whole: √433 ≈ 20.8 ft. That contrast is the
-// point of Part 4 — a tidy answer is a property of the question a teacher
+// An earlier version interleaved the two, so the slide posing "how far does the
+// fly travel?" carried a diagram with 15 ft and 17 ft printed on it. That is a
+// lesson's habit, not a project's, and it quietly removes the thing being
+// assessed.
+//
+// There is no time, speed or duration anywhere in this project. It asks for two
+// distances: how far the FLY flies, and how far the SPIDER walks. Everything
+// else was scope that made the brief harder to read without making it richer.
+//
+// The mathematics: a 12 × 9 × 8 ft room, chosen so the flight chains two
+// Pythagorean triples (9-12-15, then 15-8-17) and lands on exactly 17 ft. The
+// walk deliberately does NOT come out whole — √433 ≈ 20.8 ft. That contrast is
+// the point of Part 4: a tidy answer is a property of the question a teacher
 // picked, not of the world.
 //
 // The course is bilingual:false, so this deck is English-only and carries no
@@ -37,7 +40,9 @@ const RED = '#c8102e'
 const BLUE = '#1a5fa8'
 
 export const slides = [
-  // ══ The brief ═════════════════════════════════════════════════════════════
+  // ══════════════════════════════════════════════════════════════════════════
+  // THE PROJECT — slides 1 to 15. No answers anywhere in here.
+  // ══════════════════════════════════════════════════════════════════════════
   {
     layout: 'hero',
     color: PURPLE,
@@ -47,8 +52,8 @@ export const slides = [
     title: 'The Flight of the Fly',
     card: {
       icon: 'Target',
-      badge: 'What you will hand in',
-      text: 'One write-up: a **labelled diagram**, your **calculations**, your **measured model**, and your **conclusions in full sentences**. Marked out of **16**.',
+      badge: 'Your task',
+      text: 'Find **two distances**: how far a **fly flies** across a room, and how far a **spider walks** across the same room. Hand in one write-up. Marked out of **16**.',
     },
   },
   {
@@ -59,35 +64,34 @@ export const slides = [
     label: 'No method yet',
     labelIcon: 'MessageSquare',
     text: 'A fly can cross a room in a straight line. A spider has to **walk**.',
-    sub: 'How far does each of them travel — and **why is the spider\'s journey the harder question**? By the end you will have answered both, and checked one of them with a piece of string.',
+    sub: 'They start in the same corner and finish in the same corner. **Do they travel the same distance?** By the end you will have both answers, and you will have checked one of them with a piece of string.',
   },
   {
     layout: 'split',
     accent: PURPLE,
     icon: 'Bug',
     eyebrow: 'The brief',
-    title: 'The Room, and the Six Parts',
+    title: 'The Room',
     ratio: 45,
     image: housefly,
     content:
       'A fly starts in a **bottom corner** of a room and flies in a perfectly straight line to the **opposite corner of the ceiling**.\n\n' +
-      'The room is **12 ft** long, **9 ft** wide and **8 ft** high. The fly flies at **3.4 feet per second**.',
+      'The room is **12 ft** long, **9 ft** wide and **8 ft** high.',
     notes: [
       {
         tone: 'write',
-        badge: 'The six parts — copy this list',
+        badge: 'Copy this — the five parts',
         text:
           '**1. Predict** — before any maths.\n' +
           '**2. Model** — build the room and measure it.\n' +
-          '**3. The flight** — calculate it two ways.\n' +
-          '**4. The walk** — investigate the spider.\n' +
-          '**5. Your own room** — measure a real one.\n' +
-          '**6. Write it up.**',
+          '**3. The fly** — how far does it fly?\n' +
+          '**4. The spider** — how far does it walk?\n' +
+          '**5. Your own room**, then **write it up**.',
       },
     ],
   },
 
-  // ══ How it is marked — published before any work starts ═══════════════════
+  // ── How it is marked, published before any work starts ────────────────────
   {
     layout: 'stack',
     accent: ORANGE,
@@ -138,7 +142,7 @@ export const slides = [
     ],
   },
 
-  // ══ Part 1 · Predict ══════════════════════════════════════════════════════
+  // ── Part 1 · Predict ──────────────────────────────────────────────────────
   {
     layout: 'split',
     accent: TEAL,
@@ -149,9 +153,9 @@ export const slides = [
     ratio: 55,
     content:
       'Write these down **now**, while you still do not know. A wrong prediction costs you nothing.\n\n' +
-      '> **1.1** Estimate the fly\'s straight-line distance, in feet.\n' +
-      '> **1.2** The spider must walk on the surfaces. Is its shortest route longer? By a little, or a lot?\n' +
-      '> **1.3** Which do you expect to be harder to work out, and why?',
+      '> **1.1** Estimate how far the **fly** flies, in feet.\n' +
+      '> **1.2** Estimate how far the **spider** walks.\n' +
+      '> **1.3** Which will be harder to work out, and why?',
     notes: [
       {
         tone: 'task',
@@ -161,91 +165,80 @@ export const slides = [
     ],
   },
 
-  // ══ Part 2 · The model ════════════════════════════════════════════════════
+  // ── Part 2 · The model ────────────────────────────────────────────────────
   {
     layout: 'showcase',
     accent: GREEN,
     icon: 'Box',
     eyebrow: 'Part 2 · build it',
-    title: 'Your Notebook Is Already 3D',
+    title: 'Where the Two Ends of the String Go',
     inlineSvg: DIAGRAMS.NOTEBOOK_MODEL,
-    caption: 'Open a notebook to **90°** and you have built three perpendicular axes with your hands. The flat page carries **x** and **y**; the fold standing up between the pages is **z**. A calculation you cannot check is just a hope — so build the room, run the string, and measure it.',
+    caption: 'Fold a notebook to **90°** and you have a floor, a wall and the corner between them. Draw the room on it, then run the twine from the **start on the flat page** to the **finish on the upright page** — the string has to leave the paper and cross the open air. If both ends sit on the flat page you have measured the floor, not the flight.',
   },
   {
     layout: 'steps',
     accent: GREEN,
     icon: 'Hammer',
-    eyebrow: 'Part 2 · in pairs',
-    title: 'Build It and Measure It',
+    eyebrow: 'Part 2 · in pairs — first, draw the room',
+    title: 'Turn Your Notebook Into the Room',
     steps: [
-      { text: '**Fold your notebook to 90°** — flat page = **floor**, standing page = **wall**. Draw the **x and y axes** on the flat page; the fold line is the **z-axis**.' },
-      { text: '**Write down your scale** — 1 square = 1 foot. Draw the **12 by 9** floor.' },
-      { text: 'Mark the **start** at the origin; the **finish** is the opposite corner, 8 squares **up**.' },
-      { text: '**Tape, pull tight, cut, measure.** **2.1** Convert to feet, record with units, compare with your estimate.' },
+      { text: '**Fold your notebook to 90°.** The flat page is the **floor**; the upright page is one **wall**; the fold is where they meet.' },
+      { text: '**Write down your scale** — 1 square = 1 foot. On the flat page draw the **12 by 9** floor, with a **9 ft edge lying along the fold**.' },
+      { text: 'On the upright page, draw that wall standing on the fold: **9 ft wide and 8 ft tall**.' },
+    ],
+  },
+  {
+    layout: 'steps',
+    accent: GREEN,
+    icon: 'Ruler',
+    eyebrow: 'Part 2 · now run the string',
+    title: 'Measure the Flight',
+    steps: [
+      { text: 'Mark the **START** on the **flat page**, at the floor corner **furthest from the fold**.' },
+      { text: 'Mark the **FINISH** on the **upright page**, at its **top corner at the far end** — diagonally opposite the start.' },
+      { text: '**Tape** the twine at the start and pull it **tight** to the finish. It should lift clear of both pages and cross the open air. **Cut** it there.' },
+      { text: '**2.1** Measure the cut string, convert to feet using your scale, and record it **with units**. How close is it to your Part 1 estimate?' },
     ],
   },
 
-  // ══ Part 3 · The flight ═══════════════════════════════════════════════════
+  // ── Part 3 · The fly ──────────────────────────────────────────────────────
   {
     layout: 'split',
     accent: PURPLE,
     icon: 'Triangle',
-    eyebrow: 'Part 3 · both routes must agree — that agreement is a large part of the mark',
-    title: 'Calculate It Two Ways',
-    ratio: 40,
-    inlineSvg: DIAGRAMS.FLY_ROOM,
+    eyebrow: 'Part 3 · the fly',
+    title: 'How Far Does the Fly Fly?',
+    ratio: 45,
+    inlineSvg: DIAGRAMS.FLY_ROOM_BLANK,
     content:
-      '> **3.1** The diagonal **across the floor**. Draw it.\n' +
-      '> **3.2** Stand a second triangle on it; find the distance **to the ceiling corner**.\n' +
-      '> **3.3** Do it again in **one step**. Do the answers agree?\n' +
-      '> **3.4** Why does the one-step formula never need the floor diagonal?',
-  },
-  {
-    layout: 'split',
-    accent: TEAL,
-    icon: 'Calculator',
-    side: 'left',
-    eyebrow: 'Part 3 · check together',
-    title: 'The Flight, Step by Step',
-    ratio: 50,
-    content:
-      'Both routes land on **17 ft**, and the 15 ft floor diagonal never appears in the one-step version. The fly flies at **3.4 feet per second**.\n\n' +
-      '> **3.5** How long does the whole flight take?\n' +
-      '> **3.6** After **3 seconds**: how far, and what are the **x, y and z components**?\n' +
-      '> **3.7** Check 3.6 with the 3D distance formula.',
-    notes: [
-      {
-        tone: 'task',
-        badge: 'Before the button',
-        text: 'Nobody presses anything until every pair has a number on paper.',
-      },
-    ],
-    widget: FlyPathWidget,
+      'The fly goes straight through the air. Find that length **two different ways** and show they agree — the agreement is a large part of the mark.\n\n' +
+      '> **3.1** Find the diagonal **across the floor**. Draw the triangle you used.\n' +
+      '> **3.2** Stand a second triangle on that diagonal. Find the distance to the **ceiling corner**.\n' +
+      '> **3.3** Now do it in **one step** with the 3D distance formula. Do the answers agree?',
   },
 
-  // ══ Part 4 · The investigation ════════════════════════════════════════════
+  // ── Part 4 · The spider ───────────────────────────────────────────────────
   {
     layout: 'statement',
     accent: RED,
-    eyebrow: 'Part 4 · the investigation',
+    eyebrow: 'Part 4 · the spider',
     title: 'But a Spider Cannot Fly',
     label: 'Think before you calculate',
     labelIcon: 'MessageSquare',
-    text: 'It has to **walk** — across the floor, up a wall, over the ceiling.',
-    sub: 'It still goes from the same corner to the same corner. Its path is made of **straight lines on flat surfaces**. So what is the shortest walk, and how could you possibly find it?',
+    text: 'It has to **walk** — across the floor, and up the wall.',
+    sub: 'It starts and finishes at the same two corners as the fly. Its path is made of **straight lines on flat surfaces**, so it cannot cut through the air. What is its shortest route?',
   },
   {
     layout: 'split',
     accent: RED,
     icon: 'Layers',
-    eyebrow: 'Part 4 · the key idea',
+    eyebrow: 'Part 4 · the idea that makes it possible',
     title: 'Flatten the Room',
     ratio: 45,
-    inlineSvg: DIAGRAMS.ROOM_NET,
+    inlineSvg: DIAGRAMS.ROOM_NET_BLANK,
     content:
       'A cardboard box can be cut open and laid flat. Do that to the room and the spider\'s two surfaces become **one rectangle** — and on a flat rectangle the shortest route is a plain straight line.\n\n' +
-      'This is the lesson\'s move again: make the problem flat, then use Pythagoras.\n\n' +
-      '> **4.1** Unfold the floor and the far wall into one rectangle. What are its two side lengths?\n' +
+      '> **4.1** Unfold the floor and the wall into one rectangle. What are its two side lengths?\n' +
       '> **4.2** Find the length of the straight line across it.',
   },
   {
@@ -270,17 +263,8 @@ export const slides = [
       },
     ],
   },
-  {
-    layout: 'showcase',
-    accent: GREEN,
-    icon: 'CheckCircle2',
-    eyebrow: 'Only open this after you have hunted for your own',
-    title: 'Check: The Three Routes',
-    inlineSvg: DIAGRAMS.THREE_UNFOLDINGS,
-    caption: 'The shortest walk is about **20.8 ft** — over 3 ft further than the fly\'s 17 ft. Notice that none of these is a whole number. The flight came out at exactly 17 because the room was **chosen** to make it; the walk is what a real answer usually looks like.',
-  },
 
-  // ══ Part 5 · Transfer ═════════════════════════════════════════════════════
+  // ── Part 5 · Transfer and write-up ────────────────────────────────────────
   {
     layout: 'split',
     accent: BLUE,
@@ -291,8 +275,8 @@ export const slides = [
     content:
       'Pick a real room — this classroom, your bedroom, a lift.\n\n' +
       '> **5.1** Record **length, width and height** with units, and say **how** you measured.\n' +
-      '> **5.2** Find the straight-line corner-to-ceiling-corner distance.\n' +
-      '> **5.3** Find the shortest **walk**, using your rule from 4.5.\n' +
+      '> **5.2** How far would the **fly** fly in your room?\n' +
+      '> **5.3** How far would the **spider** walk, using your rule from 4.5?\n' +
       '> **5.4** Is your answer **reasonable**? What would make it wrong?',
     notes: [
       {
@@ -302,8 +286,6 @@ export const slides = [
       },
     ],
   },
-
-  // ══ Part 6 · Communicate ══════════════════════════════════════════════════
   {
     layout: 'split',
     accent: ORANGE,
@@ -337,12 +319,109 @@ export const slides = [
     items: [
       { text: 'Predictions written **before** calculating (1.1–1.3).' },
       { text: 'Scale **stated**, string measurement recorded (2.1).' },
-      { text: 'The flight found **both ways**, shown to agree (3.1–3.4).' },
-      { text: 'Time and the 3-second components **checked** (3.5–3.7).' },
-      { text: '**All three** unfoldings found and compared (4.1–4.4).' },
+      { text: 'The **fly** found two ways, shown to agree (3.1–3.3).' },
+      { text: 'The room unfolded flat, rectangle drawn (4.1–4.2).' },
+      { text: '**All three** unfoldings found and compared (4.3–4.4).' },
       { text: 'A **general rule**, tested on your own room (4.5–4.6).' },
       { text: 'A real room measured, with units and method (5.1–5.4).' },
       { text: 'A **labelled diagram** for every distance (6.1–6.3).' },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // THE STOP SLIDE. Everything past here is worked answers.
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    layout: 'statement',
+    accent: RED,
+    eyebrow: 'End of the project',
+    title: 'Stop Here',
+    label: 'Answers ahead',
+    labelIcon: 'AlertTriangle',
+    text: 'Everything after this slide is the **worked solution**.',
+    sub: 'Do not go past this point until your project is **finished and handed in**. If you are still working, the questions you need are on the slides before this one.',
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // SOLUTIONS — for after the projects are collected.
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    layout: 'split',
+    accent: PURPLE,
+    icon: 'Triangle',
+    eyebrow: 'Solution · Part 3',
+    title: 'The Fly Travels 17 ft',
+    ratio: 45,
+    inlineSvg: DIAGRAMS.FLY_ROOM,
+    content:
+      'Across the floor first: $\\sqrt{12^2 + 9^2} = \\sqrt{225} = 15$ ft, a 9-12-15 triangle.\n\n' +
+      'Then stand a second triangle on that diagonal, with the 8 ft height as its other leg: $\\sqrt{15^2 + 8^2} = \\sqrt{289} = 17$ ft.\n\n' +
+      'The one-step formula gives the same thing, and never mentions the 15.',
+    notes: [
+      {
+        tone: 'write',
+        text: '$d = \\sqrt{12^2 + 9^2 + 8^2} = \\sqrt{289} = 17$ ft.',
+      },
+    ],
+  },
+  {
+    layout: 'split',
+    accent: TEAL,
+    icon: 'Calculator',
+    side: 'left',
+    eyebrow: 'Solution · Part 3, one line at a time',
+    title: 'Why the Floor Diagonal Vanishes',
+    ratio: 50,
+    content:
+      'The floor triangle gives $f^2 = x^2 + y^2$. The upright triangle gives $d^2 = f^2 + z^2$.\n\n' +
+      'Substitute the first into the second and $f$ disappears: $d^2 = x^2 + y^2 + z^2$.\n\n' +
+      'You would have squared the floor diagonal immediately after taking its square root, so that root never needed doing at all.',
+    widget: FlyPathWidget,
+  },
+  {
+    layout: 'split',
+    accent: RED,
+    icon: 'Layers',
+    eyebrow: 'Solution · Part 4',
+    title: 'The Spider Walks About 20.8 ft',
+    ratio: 45,
+    inlineSvg: DIAGRAMS.ROOM_NET,
+    content:
+      'Unfolding the floor and the wall gives one rectangle **12 ft by 17 ft** — because the 9 ft of floor and the 8 ft of wall now lie end to end.\n\n' +
+      'On a flat rectangle the shortest route is the straight diagonal, so Pythagoras works again.',
+    notes: [
+      {
+        tone: 'write',
+        text: '$d = \\sqrt{12^2 + 17^2} = \\sqrt{433} \\approx 20.8$ ft.',
+      },
+    ],
+  },
+  {
+    layout: 'showcase',
+    accent: GREEN,
+    icon: 'CheckCircle2',
+    eyebrow: 'Solution · Part 4.3 and 4.4',
+    title: 'All Three Routes',
+    inlineSvg: DIAGRAMS.THREE_UNFOLDINGS,
+    caption: 'Three ways to unfold, three different walks — and the shortest is the **12 by 17** rectangle at about **20.8 ft**. Notice that none of them is a whole number. The fly came out at exactly 17 ft because the room was **chosen** to make it; the spider is what a real answer usually looks like.',
+  },
+  {
+    layout: 'split',
+    accent: PURPLE,
+    icon: 'Telescope',
+    side: 'left',
+    eyebrow: 'Solution · Part 4.5 and 4.6',
+    title: 'The Rule, and the Gap',
+    ratio: 55,
+    content:
+      'For a room $a$ by $b$ by $c$, **add the two smallest** dimensions and pair that sum against the largest. Here $8 + 9 = 17$, paired with 12.\n\n' +
+      'It falls out of the algebra: comparing $(a+b)^2 + c^2$ with $(a+c)^2 + b^2$ cancels down to comparing $2ab$ with $2ac$, so the **smaller** number belongs inside the bracket.\n\n' +
+      'And the gap: $20.8 - 17 = 3.8$ ft, so the spider walks about **22% further** than the fly flies.',
+    notes: [
+      {
+        tone: 'write',
+        text: 'Shortest walk $= \\sqrt{(\\text{two smallest added})^2 + (\\text{largest})^2}$',
+      },
     ],
   },
   {
@@ -350,7 +429,7 @@ export const slides = [
     color: TEAL,
     icon: 'CheckCircle2',
     brand: 'Algebra Track · Project 1',
-    title: 'Hand It In',
-    subtitle: 'You measured a distance nobody could reach with a ruler, checked it with a piece of string, and found a rule that works for any room. Build the model, do the mathematics, then ask whether the answer deserves to be believed.',
+    title: 'Two Corners, Two Answers',
+    subtitle: 'The fly flies 17 ft and the spider walks about 20.8 ft, between the very same pair of corners. You measured a distance nobody could reach with a ruler, checked it with a piece of string, and found a rule that works for any room — not just this one.',
   },
 ]
