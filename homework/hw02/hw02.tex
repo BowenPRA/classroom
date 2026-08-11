@@ -1,27 +1,13 @@
 % homework/hw02/hw02.tex
 % Year 7 - Homework Packet 2
-% Covers Mathematics 1.2 (Multiplying & Dividing Integers) and Science 1.2
-% (Animal Cells).
+% Covers Maths 1.2 (multiplying and dividing integers), Maths 1.3 (multiples
+% and the LCM), Science 1.2 (comparing plant and animal cells) and Science 1.3
+% (specialised cells).
 %
-% Same house style as hw01: teal section headers, purple activities, orange for
-% anything the student must remember, blue for English help. The spine of both
-% sections is ENGLISH -- every question that hides a language trap gets a word
-% help box, and the science answers are asked for in full sentences.
+% House style is shared: see homework/hw-style.tex. Method: the new-homework
+% skill. Source is pure ASCII on purpose.
 %
-% Nothing here is lifted from Workbook Exercise 1.2, which is set separately as
-% classwork/homework from the deck. In particular this packet deliberately
-% avoids the workbook's shapes -- no addition pyramids, no multiplication grids,
-% no product-circle diagrams -- and reuses the LANGUAGE traps from the lesson
-% instead: "divided by" versus "divided into", the false version of "two
-% negatives make a positive", brackets first, and estimating to check.
-%
-% The science section covers animal cells only. The cheek-cell practical from
-% the Learner's Book is not tested here -- the class has not run it yet, since
-% the microscope has not arrived.
-%
-% Build:  pdflatex hw02.tex   (run twice)
-% Teacher copy (adds the answer key):
-%   pdflatex -jobname=hw02-teacher "\def\TEACHER{}\input{hw02.tex}"
+% Build:  pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw02
 
 \documentclass[12pt,a4paper]{article}
 
@@ -32,7 +18,6 @@
 \fi
 
 % -- House style -------------------------------------------------------------
-% Shared by every packet. See homework/hw-style.tex.
 \input{../hw-style.tex}
 
 % -- Per-packet running head -------------------------------------------------
@@ -49,9 +34,11 @@
                   borderline west={6pt}{0pt}{cbpurple},
                   left=18pt, right=14pt, top=14pt, bottom=14pt]
   {\color{cbpurple}\bfseries YEAR 7\sep UNIT 1\sep HOMEWORK 2}\\[6pt]
-  {\color{cbpurple}\Huge\bfseries Signs and Animal Cells}\\[10pt]
-  {\color{black!70}Mathematics 1.2 --- Multiplying \& Dividing Integers}\\
-  {\color{black!70}Science 1.2 --- Animal Cells}
+  {\color{cbpurple}\Huge\bfseries Signs, Multiples and Cells}\\[10pt]
+  {\color{black!70}Mathematics 1.2 --- Multiplying \& Dividing Integers\sep
+   1.3 --- Multiples and the LCM}\\
+  {\color{black!70}Science 1.2 --- Plant \& Animal Cells\sep
+   1.3 --- Specialised Cells}
 \end{tcolorbox}
 
 \vspace{10pt}
@@ -66,227 +53,264 @@
   \begin{itemize}
     \item Write your answers \textbf{on this sheet}, in the spaces given. If you need
           more room, use the back of the page.
-    \item In maths, \key{write the calculation before the answer}. Work out the
-          \key{sign} first --- it is half of every answer on this sheet.
-    \item In science, answer in \key{full English sentences}. ``Nucleus'' is not a
-          sentence; ``The nucleus is the control centre of the cell'' is.
+    \item In maths, \key{write the calculation before the answer}.
+    \item In science, answer in \key{full English sentences}. ``Haemoglobin'' is not a
+          sentence; ``A red blood cell is full of haemoglobin'' is.
     \item If a word is new to you, look for the blue \eng{Word help} box on that page
           before you give up.
   \end{itemize}
 \end{activity}
 
 % ===========================================================================
-% SECTION A -- MATHEMATICS
+% SECTION A -- MATHS 1.2
 % ===========================================================================
 \hwsection{Section A \textperiodcentered\ Mathematics 1.2 --- Multiplying and Dividing Integers}
 
 \begin{remember}
-  Dividing \key{undoes} multiplying, so \key{$\times$ and $\div$ obey the same four
-  rules}:
+  \key{Same signs give a positive. Different signs give a negative.} The same four
+  rules work for \key{$\times$} and for \key{$\div$}, because dividing undoes
+  multiplying.
 
   \medskip
-  \begin{tabularx}{\linewidth}{@{}lX@{}}
-    \key{Same} signs      & the answer is \key{positive} \quad $-6\times-7=42$ \quad $-42\div-7=6$ \\
-    \key{Different} signs & the answer is \key{negative} \quad $-6\times7=-42$ \quad $-42\div7=-6$ \\
-  \end{tabularx}
-
-  \medskip
-  The \key{product} of two numbers is the answer when you \key{multiply} them. The
-  product of $2$ and $-9$ is $-18$.
-
-  \medskip
-  \textbf{Careful.} ``Two negatives make a positive'' is only true for
-  \key{$\times$ and $\div$}. For \key{adding} it is false: $-3+-4=-7$, because adding
-  a negative still sends you \key{left}.
+  A \key{product} is the answer when you multiply. The product of 2 and $-9$ is $-18$.
 \end{remember}
 
 % -- A1 ---------------------------------------------------------------------
-\qhead{A1}{Get the sign first}
+\qhead{A1}{The four rules}
 
-\noindent\textbf{(a)} Complete the four rules. Write \textbf{positive} or
-\textbf{negative} in each gap.
+\noindent\textbf{(a)} Fill in the sign that each rule gives you.
 
-\vspace{6pt}
-\begin{multicols}{2}
-\begin{enumerate}[label=(\roman*), itemsep=9pt]
-  \item positive $\times$ positive is \blank[2.4cm]
-  \item positive $\times$ negative is \blank[2.4cm]
-  \item negative $\times$ positive is \blank[2.4cm]
-  \item negative $\div$ negative is \blank[2.4cm]
-\end{enumerate}
-\end{multicols}
+\vspace{10pt}
+\noindent\hspace*{1em}
+\begin{tabular}{@{}l@{\hspace{1.4cm}}l@{\hspace{1.4cm}}l@{\hspace{1.4cm}}l@{}}
+  $+ \times + = \blank[1.1cm]$ &
+  $+ \times - = \blank[1.1cm]$ &
+  $- \times + = \blank[1.1cm]$ &
+  $- \times - = \blank[1.1cm]$ \\
+\end{tabular}
 
-\vspace{6pt}
-\noindent\textbf{(b)} \key{Do not work out the digits.} Write only $+$ or $-$ for the
-sign of each answer.
+\vspace{12pt}
+\noindent\textbf{(b)} Now work these out.
 
 \vspace{8pt}
 \begin{multicols}{3}
-\begin{enumerate}[label=(\alph*), itemsep=11pt]
-  \item $-13\times-8$ \; \blank[1.1cm]
-  \item $47\div-1$ \; \blank[1.1cm]
-  \item $-25\times16$ \; \blank[1.1cm]
-  \item $-144\div-12$ \; \blank[1.1cm]
-  \item $99\times-99$ \; \blank[1.1cm]
-  \item $-360\div9$ \; \blank[1.1cm]
+\begin{enumerate}[label=(\alph*), itemsep=13pt]
+  \item $-6 \times 4 = \blank[1.5cm]$
+  \item $7 \times -3 = \blank[1.5cm]$
+  \item $-5 \times -8 = \blank[1.5cm]$
+  \item $-36 \div 6 = \blank[1.5cm]$
+  \item $45 \div -9 = \blank[1.5cm]$
+  \item $-56 \div -7 = \blank[1.5cm]$
+  \item $-9 \times 0 = \blank[1.5cm]$
+  \item $-12 \div -12 = \blank[1.5cm]$
+  \item $8 \times -7 = \blank[1.5cm]$
+  \item $-3 \times -3 = \blank[1.5cm]$
+  \item $-100 \div 4 = \blank[1.5cm]$
+  \item $-60 \div -5 = \blank[1.5cm]$
 \end{enumerate}
 \end{multicols}
 
 % -- A2 ---------------------------------------------------------------------
-\qhead{A2}{Work them out}
+\qhead{A2}{Say it, then write it}
 
-\noindent Now do the digits as well as the sign.
-
-\vspace{10pt}
-\begin{multicols}{3}
-\begin{enumerate}[label=(\alph*), itemsep=13pt]
-  \item $-7\times3 = \blank[1.5cm]$
-  \item $-8\times-4 = \blank[1.5cm]$
-  \item $9\times-6 = \blank[1.5cm]$
-  \item $-5\times-11 = \blank[1.5cm]$
-  \item $-10\times8 = \blank[1.5cm]$
-  \item $0\times-23 = \blank[1.5cm]$
-  \item $-45\div5 = \blank[1.5cm]$
-  \item $-36\div-6 = \blank[1.5cm]$
-  \item $56\div-7 = \blank[1.5cm]$
-  \item $-72\div-8 = \blank[1.5cm]$
-  \item $-100\div4 = \blank[1.5cm]$
-  \item $27\div-27 = \blank[1.5cm]$
-\end{enumerate}
-\end{multicols}
-
-% -- A3 ---------------------------------------------------------------------
-\qhead{A3}{Say it, then write it}
-
-\begin{wordhelp}[Word help --- these words decide the order of your calculation]
+\begin{wordhelp}[Word help --- the English decides which number comes first]
   \begin{tabularx}{\linewidth}{@{}lX@{}}
-    \eng{multiply $-2$ by 5}    & $-2\times5$. \\
-    \eng{the product of}        & the answer you get when you \textbf{multiply}. The product of $-3$ and $-2$ is $6$. \\
-    \eng{divide $-18$ by 3}     & $-18\div3$. The number being \textbf{shared out} is $-18$. \\
-    \eng{3 divided into $-18$}  & the \textbf{same} calculation, $-18\div3$. The English swaps the two numbers round; the calculation does not. \\
-    \eng{share between}         & divide it out equally. \\
-    \eng{a debt}                & money you must pay back. It makes a total \textbf{negative}. \\
-    \eng{each} / \eng{every} / \eng{per} & one lot, repeated --- and repeated adding is \textbf{multiplying}. So \eng{falls by 4 every hour} means each hour the change is $-4$. \\
+    \eng{multiply $-7$ by 6}   & you \textbf{start} at $-7$: $-7 \times 6$. \\
+    \eng{divide $-40$ by 8}    & you start at $-40$: $-40 \div 8$. \\
+    \eng{5 divided into $-35$} & the same trap as last week --- it is $-35 \div 5$, not $5 \div -35$. \\
+    \eng{the product of}       & the answer when you \textbf{multiply}. \\
+    \eng{times}                & the everyday English word for multiply. \\
+    \eng{share equally between}& divide. \\
   \end{tabularx}
 \end{wordhelp}
 
-\noindent Turn each English sentence into a calculation, then work out the answer.
+\noindent Turn each sentence into a calculation, then work out the answer.
 \key{Write the calculation first.}
 
 \vspace{6pt}
 \begin{enumerate}[label=\arabic*., itemsep=11pt]
-  \item Multiply $-6$ by 7. \\[4pt]
+  \item Multiply $-7$ by 6. \\[4pt]
         Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
-  \item Find the product of $-4$ and $-9$. \\[4pt]
+  \item Divide $-40$ by 8. \\[4pt]
         Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
-  \item Divide $-56$ by 8. \\[4pt]
+  \item What is the product of $-9$ and $-4$? \\[4pt]
         Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
-  \item Work out 5 divided into $-40$. \\[4pt]
+  \item 5 divided into $-35$. \\[4pt]
         Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
-  \item The temperature falls 4 degrees every hour for 7 hours. What is the total
-        change? \\[4pt]
-        Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
-  \item A debt of 60 dollars is shared equally between 4 people. Write the amount
-        \textbf{each} person owes as a negative number. \\[4pt]
+  \item Mr Bowen shares a debt of 24 dollars equally between 6 people. Write each
+        person's share as a negative number. \\[4pt]
         Calculation: \blank[6.2cm] \quad Answer: \blank[2.4cm]
 \end{enumerate}
 
-% -- A4 ---------------------------------------------------------------------
-\qhead{A4}{Brackets first}
+% -- A3 ---------------------------------------------------------------------
+\qhead[cbgreen]{A3}{A sentence that is only half true}
 
-\begin{remember}[Remember: the new rule does not live inside the bracket]
-  Work out \key{what is inside the bracket} first. Inside it you are often
-  \key{adding}, and adding a negative still sends you \key{left}: $(-3+-2)=-5$,
-  \textbf{not} $5$.
+\begin{yourturn}[Think carefully about this one]
+  People often say: \textbf{``Two negatives make a positive.''}
+
+  \medskip
+  It is a useful sentence, but it is only true \emph{sometimes}. Test it yourself
+  before you decide.
+\end{yourturn}
+
+\noindent\textbf{(a)} Work out \quad \expr{-3 \times -4} \quad Answer: \blank[2.4cm]
+
+\vspace{8pt}
+\noindent\textbf{(b)} Work out \quad \expr{-3 + -4} \quad Answer: \blank[2.4cm]
+
+\vspace{10pt}
+\noindent\textbf{(c)} Is ``two negatives make a positive'' true for \textbf{both} of
+them? Answer in one full sentence.
+\wlines{2}
+
+\vspace{6pt}
+\noindent\textbf{(d)} Rewrite the sentence so that it is \textbf{always} true. You will
+need to say which operations it works for.
+\wlines{2}
+
+% -- A4 ---------------------------------------------------------------------
+\qhead{A4}{Brackets, and checking yourself}
+
+\begin{remember}[Two rules that save marks]
+  \key{Do the brackets first.} Work out what is inside, then multiply or divide.
+  Careful: if the bracket holds an \key{addition}, the sign rules above do
+  \key{not} apply inside it.
+
+  \medskip
+  \key{Estimate:} round each number to something easy, calculate, and check your real
+  answer is close to it.
 \end{remember}
 
+\noindent\textbf{(a)} Work these out. Show what the bracket comes to first.
+
+\vspace{6pt}
+\begin{enumerate}[label=(\roman*), itemsep=11pt]
+  \item $20 \div (-3 + -2) = \blank[2.4cm]$
+  \item $(-4 + 10) \times -3 = \blank[2.4cm]$
+  \item $-6 \times (2 - 9) = \blank[2.4cm]$
+\end{enumerate}
+
+\vspace{8pt}
+\noindent\textbf{(b)} \textbf{Estimate} each of these by rounding first. Write the
+rounded calculation as well as the answer.
+
+\vspace{6pt}
+\begin{enumerate}[label=(\roman*), itemsep=6pt, start=4]
+  \item $-6.2 \times 3.9$ \quad is about \blank[3.4cm] $= \blank[2.2cm]$
+  \item $62 \div -7.8$ \quad is about \blank[3.4cm] $= \blank[2.2cm]$
+\end{enumerate}
+
+% -- A5 ---------------------------------------------------------------------
+\qhead{A5}{Word problems}
+
+\noindent Read each one \key{all the way to the end} before you start writing.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=14pt]
+
+  \item \textbf{The monthly fee.} Mr Bowen's bank takes a 4-dollar fee out of his
+        account at the end of every month. He forgets about it for 7 months. What is
+        the total change to his balance?
+        \begin{workspace}[2.8cm]\end{workspace}
+
+  \item \textbf{The dive.} A submarine starts at the surface and descends steadily.
+        After 6 minutes it is at $-54$ m. How far does it travel each minute?
+        \begin{workspace}[2.8cm]\end{workspace}
+
+  \item \textbf{The market stall.} Mr Bowen takes 47 identical rubber ducks to the
+        market to sell. He plans to sell them for 3 dollars each, and the market
+        charges him a 2-dollar fee on every duck he sells, plus 15 dollars for the
+        stall. It rains all day and nobody comes, so he sells 0 ducks. How much money
+        does he make or lose that day?
+        \begin{workspace}[3.1cm]\end{workspace}
+
+\end{enumerate}
+
+% ===========================================================================
+% SECTION B -- MATHS 1.3
+% ===========================================================================
+\hwsection{Section B \textperiodcentered\ Mathematics 1.3 --- Multiples and the LCM}
+
+\begin{remember}
+  A \key{multiple} is the answer when you multiply a number by 1, 2, 3, 4, \ldots
+  The multiples of 4 are 4, 8, 12, 16, 20, \ldots
+
+  \medskip
+  In everyday English, \eng{common} means \emph{ordinary}. In maths it means
+  \key{shared}. A \key{common multiple} of two numbers is in \key{both} lists, and the
+  \key{lowest common multiple (LCM)} is the smallest of them. You already know this
+  idea in Vietnamese as \key{BCNN}.
+\end{remember}
+
+% -- B1 ---------------------------------------------------------------------
+\qhead{B1}{Build it from the lists}
+
+\noindent\textbf{(a)} Write the first six multiples of \textbf{8}.
 \vspace{4pt}
-\noindent\textbf{(a)} Work these out. Show what is inside the bracket first.
+
+\noindent\hspace*{1em}\blank[13cm]
+
+\vspace{10pt}
+\noindent\textbf{(b)} Write the first six multiples of \textbf{12}.
+\vspace{4pt}
+
+\noindent\hspace*{1em}\blank[13cm]
+
+\vspace{10pt}
+\noindent\textbf{(c)} Which numbers appear in \textbf{both} lists? These are the
+common multiples.
+\vspace{4pt}
+
+\noindent\hspace*{1em}\blank[13cm]
+
+\vspace{10pt}
+\noindent\textbf{(d)} So the \textbf{LCM} of 8 and 12 is \blank[3cm]
+
+% -- B2 ---------------------------------------------------------------------
+\qhead{B2}{Do not just multiply them}
+
+\begin{remember}[The trap in this topic]
+  The LCM is usually \key{smaller} than the two numbers multiplied together.
+  If one number \key{divides into} the other, the LCM is just the \key{bigger} number.
+  When you are not sure, \key{list them}.
+\end{remember}
+
+\noindent Find the LCM of each pair.
 
 \vspace{8pt}
 \begin{multicols}{2}
-\begin{enumerate}[label=(\roman*), itemsep=13pt]
-  \item $(-3+-5)\times4 = \blank[1.7cm]$
-  \item $(2-7)\times-6 = \blank[1.7cm]$
-  \item $(-4+-6)\div-5 = \blank[1.7cm]$
-  \item $(-9--3)\div2 = \blank[1.7cm]$
-  \item $-8\times(-2+2) = \blank[1.7cm]$
-  \item $(10+-4)\times-3 = \blank[1.7cm]$
+\begin{enumerate}[label=(\alph*), itemsep=12pt]
+  \item 3 and 7 \quad LCM $= \blank[2.2cm]$
+  \item 5 and 20 \quad LCM $= \blank[2.2cm]$
+  \item 6 and 8 \quad LCM $= \blank[2.2cm]$
+  \item 9 and 9 \quad LCM $= \blank[2.2cm]$
 \end{enumerate}
 \end{multicols}
 
-\vspace{10pt}
-\noindent\textbf{(b)} A student wrote \quad $(-3+-5)\times4 = 32$.
-
-\vspace{4pt}
-\noindent In one full sentence, explain which rule they have used in the wrong place.
-\wlines{2}
-
-% -- A5 ---------------------------------------------------------------------
-% The four rounding drills that used to sit here have gone: Workbook Exercise
-% 1.2 Q8 and Q9 are exactly that, and are already set from the deck. What is
-% kept is the part the workbook does NOT ask -- using an estimate to catch a
-% wrong answer, which is the reason estimating is taught at all.
-\qhead{A5}{Catch it with an estimate}
-
-\begin{remember}[Remember: an estimate is a rough answer you work out first]
-  \key{Estimate:} round each number to something easy, then calculate. If your real
-  answer is nowhere near it, you have made a mistake. Example: $-4.1\times2.8$ rounds
-  to $-4\times3=-12$.
-\end{remember}
-
-\vspace{4pt}
-% Both parts and both writing lines have to sit on one page, so the stem is
-% folded into (a) rather than given its own line.
-\noindent\textbf{(a)} Mr Bowen works out $-4.9\times21$ and gets $102.9$. Estimate the
-answer by rounding both numbers. \hfill Estimate: \blank[3.0cm]
-
 \vspace{6pt}
-\noindent\textbf{(b)} His answer must be wrong. Say what he has forgotten.
+\noindent\textbf{(e)} A student says the LCM of 5 and 20 is 100, because
+$5 \times 20 = 100$. In one full sentence, explain what they have got wrong.
 \wlines{2}
 
-% -- A6 ---------------------------------------------------------------------
-\qhead{A6}{Word problems}
+% -- B3 ---------------------------------------------------------------------
+\qhead{B3}{Word problems}
 
-\noindent Read each one \key{all the way to the end} before you start writing. Show the
-calculation, then the answer.
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=14pt]
 
-\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=16pt]
-
-  \item \textbf{The quiz game.} In Mr Bowen's quiz game, every wrong answer scores
-        $-15$ points.
-        \begin{enumerate}[label=(\alph*)]
-          \item A student gets 6 answers wrong. What is the change to their score?
-          \item In a later game, a student's score changes by $-120$ points from wrong
-                answers alone. How many did they get wrong?
-        \end{enumerate}
+  \item \textbf{The two lighthouses.} One lighthouse flashes every 6 seconds. The
+        other flashes every 10 seconds. They have just flashed at the same moment.
+        How many seconds until they next flash together?
         \begin{workspace}[2.9cm]\end{workspace}
 
-  \item \textbf{Eight forgotten debts.} Mr Bowen owes 8 different friends 7 dollars
-        each.
-        \begin{enumerate}[label=(\alph*)]
-          \item Write his total debt as a negative number.
-          \item All 8 friends then tell him to forget the debt, so all 8 debts of $-7$
-                dollars are \textbf{taken away} from his total. Write this as a
-                multiplication and work out the change.
-          \item Is Mr Bowen better off or worse off than before? By how much?
-        \end{enumerate}
-        \begin{workspace}[3.1cm]\end{workspace}
-
-  \item \textbf{Mr Bowen sits his own quiz.} A correct answer scores $4$ points and a
-        wrong answer scores $-4$ points. Mr Bowen answers all 20 of his own questions.
-        He gets 10 right and 10 wrong.
-        \begin{enumerate}[label=(\alph*)]
-          \item How many points does he get from the correct answers?
-          \item How many points does he get from the wrong answers?
-          \item What is his total score?
-        \end{enumerate}
-        \begin{workspace}[2.9cm]\end{workspace}
+  \item \textbf{The bread and the cheese.} Mr Bowen is making sandwiches. Bread rolls
+        come in packs of 8. Slices of cheese come in packs of 12. He wants one slice
+        of cheese in every roll, with nothing left over. What is the smallest number
+        of sandwiches he can make, and how many packs of each must he buy?
+        \begin{workspace}[3.3cm]\end{workspace}
 
 \end{enumerate}
 
-% -- A7 ---------------------------------------------------------------------
-\qhead[cbgreen]{A7}{Now you write the question}
+% -- B4 ---------------------------------------------------------------------
+\qhead[cbgreen]{B4}{Now you write the question}
 
 \begin{yourturn}[Your turn to be the teacher]
   So far the questions have given you the English, and you have written the maths.
@@ -295,213 +319,272 @@ calculation, then the answer.
   \medskip
   Your word problem must:
   \begin{itemize}
-    \item be about something \textbf{real} --- money, temperature or points in a game;
-    \item use a word from the \eng{Word help} box, such as \eng{each}, \eng{every},
-          \eng{per}, \eng{shared between} or \eng{a debt};
+    \item be about something \textbf{real};
     \item be written in \textbf{full English sentences}, and end with a question;
     \item have the answer that is already given to you.
   \end{itemize}
 \end{yourturn}
 
-\noindent\textbf{(a)} Write a word problem for \quad \expr{5 \times -8 = -40}
+\noindent\textbf{(a)} Write a word problem for \quad \expr{7 \times -4 = -28}
 \wlines{4}
 
-\vspace{14pt}
-\noindent\textbf{(b)} Write a word problem for \quad \expr{-60 \div 12 = -5}
+\vspace{12pt}
+\noindent\textbf{(b)} Write a word problem for \quad \expr{\text{LCM of 4 and 10} = 20}
+
+\vspace{2pt}
+{\small\color{black!60}This one must be about two things that keep repeating, and the
+question must ask when they next happen together.}
 \wlines{4}
 
 % ===========================================================================
-% SECTION B -- SCIENCE
+% SECTION C -- SCIENCE 1.2
 % ===========================================================================
-% The Remember box below is deliberately short. At six lines it split across the
-% page break and hyphenated "chloroplasts"; reserving space with needspace to
-% stop that pushed the whole block onto the next page and cost a page overall.
-% Shortening the box is the fix that costs nothing.
-\hwsection{Section B \textperiodcentered\ Science 1.2 --- Animal Cells}
+\hwsection{Section C \textperiodcentered\ Science 1.2 --- Comparing Plant and Animal Cells}
 
 \begin{remember}
-  \key{You are an animal}. An animal cell has a \key{cell membrane},
-  \key{cytoplasm}, \key{mitochondria} and a \key{nucleus}. It has \key{no cell wall},
-  so it has \key{no fixed shape}. A plant cell has all of those \key{plus} a
-  \key{cell wall}, \key{chloroplasts} and a \key{sap vacuole}.
+  An animal cell has a \key{cell membrane}, \key{cytoplasm}, \key{mitochondria} and a
+  \key{nucleus}. A plant cell has all four of those \key{plus} a \key{cell wall},
+  \key{chloroplasts} and a \key{sap vacuole}.
+
+  \medskip
+  The one clue that always works is the \key{cell wall} --- a straight, stiff edge,
+  with the cells packed together like bricks. \key{``Not green'' does not mean
+  animal.}
 \end{remember}
 
-% -- B1 ---------------------------------------------------------------------
-\qhead{B1}{The words for comparing two things}
+% -- C1 ---------------------------------------------------------------------
+\qhead{C1}{Match the word to its meaning}
 
-\begin{wordhelp}[Word help --- how to compare in English]
-  \begin{tabularx}{\linewidth}{@{}lX@{}}
-    \eng{similar}        & alike in some ways, different in others. \\
-    \eng{the same}       & no differences at all. It is \textbf{stronger} than \eng{similar}. \\
-    \eng{Both A and B \ldots} & the thing that follows is true of \textbf{each} of them. \\
-    \eng{\ldots, but \ldots}   & joins two halves that \textbf{disagree}. \\
-    \eng{Unlike A, B \ldots}   & B is \textbf{different} from A in the way that follows. \\
-  \end{tabularx}
+\noindent Write the correct letter in the box next to each word.
+
+\vspace{8pt}
+\noindent
+\begin{tabularx}{\textwidth}{@{}p{3.8cm} @{\hspace{6pt}} c @{\hspace{12pt}} X@{}}
+  \textbf{Word} & \textbf{Letter} & \textbf{Meaning} \\[2pt]
+  1.\ Stain          & \tickbox & \textbf{A} \; The job that a cell does. \\
+  2.\ Similar        & \tickbox & \textbf{B} \; The tough substance a cell wall is made of. \\
+  3.\ Function       & \tickbox & \textbf{C} \; A coloured dye added to a specimen to make its parts easier to see. \\
+  4.\ Specialised    & \tickbox & \textbf{D} \; The green substance inside a chloroplast. \\
+  5.\ Cellulose      & \tickbox & \textbf{E} \; Alike in some ways and different in others --- \textbf{not} the same. \\
+  6.\ Chlorophyll    & \tickbox & \textbf{F} \; The cell has a structure that helps it do its job really well. \\
+\end{tabularx}
+
+% -- C2 ---------------------------------------------------------------------
+\qhead{C2}{Plant or animal? And how do you know?}
+
+\noindent Mr Bowen looks at four slides down the microscope. For each one, write
+\textbf{plant} or \textbf{animal}, and then give the \textbf{one feature} that tells
+you.
+
+\vspace{8pt}
+\noindent
+\begin{tabularx}{\textwidth}{|c|>{\raggedright\arraybackslash}X|p{2.7cm}|p{4.3cm}|}
+  \hline
+  & \textbf{What Mr Bowen sees} & \textbf{Plant or animal?} & \textbf{The feature that tells you} \\
+  \hline
+  1 & Cells with straight, stiff edges, packed together like bricks, and full of small green discs. \rule[-1.1em]{0pt}{2.4em} & & \\ \hline
+  2 & Round, separate cells with no straight edges anywhere. \rule[-1.1em]{0pt}{2.4em} & & \\ \hline
+  3 & Purple cells with no green discs at all --- but every cell has straight sides. \rule[-1.1em]{0pt}{2.4em} & & \\ \hline
+  4 & Long, soft fibres with many dark nuclei, and no straight edges. \rule[-1.1em]{0pt}{2.4em} & & \\ \hline
+\end{tabularx}
+
+\vspace{10pt}
+\noindent{\small\color{black!60}One of these four catches almost everybody. Read the
+orange box at the top of this section again before you answer.}
+
+% -- C3 ---------------------------------------------------------------------
+\qhead{C3}{Similar is not the same}
+
+\begin{wordhelp}[Word help --- three patterns for comparing]
+  ``A and B are \eng{similar because} both of them \ldots''\\
+  ``They are \eng{different because} A has \ldots, \eng{but} B \ldots''\\
+  ``\eng{Unlike} an animal cell, a plant cell \ldots''
 \end{wordhelp}
 
-\noindent Fill each gap with one of: \eng{Both}, \eng{and}, \eng{but}, \eng{Unlike},
-\eng{have}, \eng{similar}, \eng{the same}. Each word is used once.
-
-\vspace{6pt}
-\begin{enumerate}[label=\arabic*., itemsep=11pt]
-  \item \blank[2.4cm] a plant cell \blank[2.4cm] an animal cell have a nucleus.
-  \item A plant cell has chloroplasts, \blank[2.4cm] an animal cell does not.
-  \item \blank[2.4cm] a plant cell, an animal cell has no fixed shape.
-  \item Both kinds of cell \blank[2.4cm] mitochondria.
-  \item An animal cell is \blank[2.4cm] to a plant cell, but the two are not
-        \blank[2.4cm].
+\begin{enumerate}[label=\arabic*., itemsep=12pt]
+  \item Finish this sentence: ``A plant cell and an animal cell are
+        \textbf{similar because} both of them \ldots''
+        \wlines{1}
+  \item Finish this one: ``They are \textbf{different because} a plant cell has
+        \ldots, \textbf{but} an animal cell \ldots''
+        \wlines{1}
+  \item An animal cell has no fixed shape. Explain why, in one full sentence.
+        \wlines{2}
 \end{enumerate}
 
-% -- B2 ---------------------------------------------------------------------
-\qhead{B2}{True or false?}
+% -- C4 ---------------------------------------------------------------------
+\qhead{C4}{Put the method in order}
 
-\noindent Tick one box for each sentence. Then \key{rewrite each false sentence} on the
-lines below so that it becomes true.
+\noindent These are the steps for making a stained slide of your own cheek cells, but
+they are in the wrong order. Number them \textbf{1} to \textbf{6}.
 
 \vspace{10pt}
 \noindent
-\begin{tabularx}{\textwidth}{|X|>{\centering\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{2.0cm}|}
+\begin{tabularx}{\textwidth}{|c|X|}
   \hline
-  \textbf{Sentence} & \textbf{True} & \textbf{False} \\
-  \hline
-  1.\ Every animal cell has a nucleus. \rule{0pt}{1.9em} & & \\ \hline
-  2.\ An animal cell has a cell wall made of cellulose. \rule{0pt}{1.9em} & & \\ \hline
-  3.\ Mitochondria are found in plant cells and in animal cells. \rule{0pt}{1.9em} & & \\ \hline
-  4.\ An animal cell has no fixed shape because it has no cell wall. \rule{0pt}{1.9em} & & \\ \hline
-  5.\ A plant cell has three parts an animal cell has not. \rule{0pt}{1.9em} & & \\ \hline
-  6.\ Chloroplasts are green because they contain cellulose. \rule{0pt}{1.9em} & & \\ \hline
+  \tickbox \rule{0pt}{1.6em} & Add one drop of methylene blue stain to the sample. \\ \hline
+  \tickbox \rule{0pt}{1.6em} & Looking \textbf{from the side}, move the lens down close to the slide. \\ \hline
+  \tickbox \rule{0pt}{1.6em} & Rub the inside of your cheek gently with a clean cotton bud. \\ \hline
+  \tickbox \rule{0pt}{1.6em} & Look down the eyepiece and turn the focus so the lens moves \textbf{away}, until the cells are sharp. \\ \hline
+  \tickbox \rule{0pt}{1.6em} & Lower a cover slip onto the drop slowly, so that no air bubbles are trapped. \\ \hline
+  \tickbox \rule{0pt}{1.6em} & Wipe the cotton bud onto the middle of a clean glass slide. \\ \hline
 \end{tabularx}
 
 \vspace{12pt}
-% Two lines, not three: there are exactly two false sentences, and a third line
-% orphaned onto the next page on its own.
-\noindent Rewrite the false sentences here, in full:
+\noindent Why must you look \textbf{from the side} in one of those steps? Answer in one
+full sentence.
 \wlines{2}
 
-% -- B3 ---------------------------------------------------------------------
-\qhead{B3}{Answer in full sentences}
+% ===========================================================================
+% SECTION D -- SCIENCE 1.3
+% ===========================================================================
+\hwsection{Section D \textperiodcentered\ Science 1.3 --- Specialised Cells}
 
-\begin{wordhelp}[Sentence starters --- you may copy these]
-  ``Every animal cell has\ldots''\\
-  ``An animal cell has no fixed shape because\ldots''\\
-  ``Both a plant cell and an animal cell have\ldots, but only\ldots''\\
-  ``Unlike a plant cell, an animal cell\ldots''
-\end{wordhelp}
+\begin{remember}
+  A cell's \key{function} is the job it does. A \key{specialised} or \key{adapted}
+  cell has a structure that helps it do that job really well.
 
-\begin{enumerate}[label=\arabic*., itemsep=14pt]
+  \medskip
+  The sentence to use every time:\quad
+  A [cell] is \key{adapted to} [its job] \key{because it has} [its special feature].
+\end{remember}
 
-  \item Name the \textbf{four} parts that every animal cell has.
+% -- D1 ---------------------------------------------------------------------
+\qhead{D1}{Finish the table}
+
+\noindent The first row is done for you. Fill in the other four.
+
+\vspace{8pt}
+\noindent\small
+\begin{tabularx}{\textwidth}{|p{2.5cm}|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}X|}
+  \hline
+  \textbf{Name} & \textbf{Function (its job)} & \textbf{Special structure} &
+  \textbf{How this helps} \\
+  \hline
+  Red blood cell \rule[-0.5em]{0pt}{1.6em} & Carries oxygen around the body. &
+  Full of haemoglobin, and no nucleus. &
+  Haemoglobin holds the oxygen, and losing the nucleus leaves more room for it. \\
+  \hline
+  Neurone \rule[-2.6em]{0pt}{3.6em} & & & \\
+  \hline
+  Ciliated cell \rule[-2.6em]{0pt}{3.6em} & & & \\
+  \hline
+  Root hair cell \rule[-2.6em]{0pt}{3.6em} & & & \\
+  \hline
+  Palisade cell \rule[-2.6em]{0pt}{3.6em} & & & \\
+  \hline
+\end{tabularx}
+\normalsize
+
+% -- D2 ---------------------------------------------------------------------
+\qhead{D2}{Use the sentence, and think}
+
+\begin{enumerate}[label=\arabic*., itemsep=12pt]
+
+  \item Write the full sentence for the \textbf{root hair cell}, using
+        \key{adapted to} and \key{because it has}.
         \wlines{2}
 
-  \item A plant stands still, but an animal moves --- it bends, squeezes and changes
-        shape all day. Explain why an animal cell has \textbf{no fixed shape}. Use the
-        word \key{because}.
-        \wlines{3}
+  \item Write the full sentence for the \textbf{palisade cell}.
+        \wlines{2}
 
-  \item Give \textbf{two} ways an animal cell is different from a plant cell. Write each
-        one as a full sentence, using \eng{but} or \eng{Unlike}.
-        \wlines{3}
+  \item A red blood cell, a neurone and a ciliated cell are all animal cells. Name
+        \textbf{two} things that all three of them have.\\
+        {\small\color{black!60}Careful. Check each one before you write.}
+        \wlines{2}
+
+  \item Root hair cells have \textbf{no} chloroplasts. Suggest why not.
+        \wlines{2}
 
 \end{enumerate}
 
-% -- B4 ---------------------------------------------------------------------
-\qhead{B4}{Two pictures down a microscope}
+% -- D3 ---------------------------------------------------------------------
+\qhead{D3}{Name the cell}
 
-\noindent Mr Bowen looks at two slides. \textbf{Picture 1} shows cells packed tightly
-together like bricks in a wall, each one with straight, stiff edges. \textbf{Picture 2}
-shows soft, rounded cells with no straight edges anywhere.
-
-\vspace{10pt}
-\noindent\textbf{(a)} For each picture, say whether it shows \textbf{plant} cells or
-\textbf{animal} cells, and say \textbf{how you know}. Use the word \key{because}.
-
-\vspace{4pt}
-\noindent Picture 1:
-\wlines{2}
-
-\vspace{6pt}
-\noindent Picture 2:
-\wlines{2}
-
-\vspace{12pt}
-\noindent\textbf{(b)} Neither picture has anything green in it. A student says:
-\emph{``There is no green, so both pictures must show animal cells.''}
-
-\vspace{4pt}
-% Three lines: this is the hardest question in Section B, and page 8 has the
-% room to spare.
-\noindent Explain in one full sentence why the student is wrong.
-{\small\color{black!60}(Hint: think about where an onion grows.)}
-\wlines{3}
-
-% -- B5 ---------------------------------------------------------------------
-\qhead{B5}{Label the animal cell}
-
-\noindent Write the name of each numbered part on the lines below the diagram.
+\noindent Each drawing is one of the five specialised cells. Write its name and its
+job in the table below.
 
 \vspace{10pt}
-\noindent\hfill
-\resizebox{0.95\textwidth}{!}{%
-\begin{tikzpicture}[x=1cm,y=1cm,
-    lbl/.style={circle, draw=cbteal, fill=white, line width=1.1pt,
-                inner sep=1.8pt, minimum size=8mm, font=\bfseries}]
-
-  % -- the cell itself. No straight edges anywhere, and no symmetry either: an
-  %    animal cell has no fixed shape, so the outline has to read as a soft
-  %    lopsided blob. A tidy ellipse would teach the opposite of the lesson,
-  %    which is exactly what the first draft of this diagram drew.
-  \draw[line width=1.6pt, cbred!70!black, fill=cbteal!10, rounded corners=0pt]
-    plot [smooth cycle, tension=0.7] coordinates {
-      (0.6,3.0) (1.5,5.2) (3.8,6.4) (6.9,6.2) (9.3,5.0)
-      (10.9,3.1) (9.9,1.3) (7.2,0.4) (4.3,0.8) (2.0,1.2)};
-
-  % -- nucleus --
-  \fill[cbpurple!30] (3.6,3.9) circle (0.95);
-  \draw[line width=0.9pt, cbpurple!80] (3.6,3.9) circle (0.95);
-  \fill[cbpurple!60] (3.6,3.9) circle (0.30);
-
-  % -- mitochondria. Kept well away from (5.8,3.2) so the cytoplasm leader has
-  %    a clear, empty patch of cytoplasm to land on, and away from the line it
-  %    travels out along.
-  \foreach \x/\y/\r in {2.4/2.2/25, 5.4/5.2/-14, 8.6/4.0/18, 6.4/1.5/-25}{
-    \begin{scope}[shift={(\x,\y)}, rotate=\r]
-      \fill[cborange!65] (0,0) ellipse (0.48 and 0.23);
-      \draw[line width=0.7pt, cborange!80!black] (0,0) ellipse (0.48 and 0.23);
-      \draw[line width=0.5pt, cborange!80!black] (-0.28,0.05) -- (-0.06,-0.07) -- (0.17,0.06);
-    \end{scope}}
-
-  % -- leader lines and numbers. Each ends on a dot so there is no doubt about
-  %    which structure it points at.
-  \foreach \sx/\sy/\ex/\ey/\lx/\ly/\n in {%
-      3.8/6.4/3.8/7.70/3.8/8.10/1,          % cell membrane (the outline itself)
-      5.8/3.2/12.7/2.0/13.1/1.95/2,         % cytoplasm (empty patch)
-      3.6/3.9/-2.1/5.0/-2.5/5.05/3,         % nucleus
-      8.6/4.0/12.7/5.6/13.1/5.70/4}{        % mitochondrion
-    \draw[line width=0.7pt, black!65] (\sx,\sy) -- (\ex,\ey);
-    \fill[black!65] (\sx,\sy) circle (0.085);
-    \node[lbl] at (\lx,\ly) {\n};}
-
-  % Keep the bounding box tight vertically -- the picture is scaled to the text
-  % width, so every empty unit of height above or below costs real page.
-  \path (-3.3,0.0) rectangle (14.0,8.6);
-\end{tikzpicture}}\hfill\mbox{}
-
-\vspace{12pt}
-
-% A tabular rather than multicols, so the answer lines can never be split across
-% a page break away from their diagram.
 \noindent
-\begin{tabular}{@{}p{0.48\textwidth} p{0.48\textwidth}@{}}
-  1.\ \blank[5.4cm] & 3.\ \blank[5.4cm] \\[26pt]
-  2.\ \blank[5.4cm] & 4.\ \blank[5.4cm] \\
-\end{tabular}
+% Two rows on purpose. The neurone and the root hair cell are the two long
+% cells; on a single row of five they shrink until the axon reads as an arrow.
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[x=1cm,y=1cm,
+    num/.style={circle, draw=cbteal, fill=white, line width=1.4pt,
+                inner sep=2.4pt, minimum size=11mm, font=\bfseries\large}]
 
-\vspace{14pt}
-\noindent\textbf{(b)} Name the \textbf{three} parts you would have to \textbf{add} to
-this diagram to turn it into a \textbf{plant} cell.
+  % ================= row 1: the three compact cells =================
+
+  % ---- 1. red blood cell: a disc seen at an angle, dipped in the middle ----
+  \fill[cbred!45] (4,9) ellipse (2.5 and 1.75);
+  \draw[line width=1.4pt, cbred!70!black] (4,9) ellipse (2.5 and 1.75);
+  \fill[cbred!22] (4,9) ellipse (1.3 and 0.8);
+  \draw[line width=1.1pt, cbred!60] (4,9) ellipse (1.3 and 0.8);
+  \node[num] at (4,6.1) {1};
+
+  % ---- 2. ciliated cell: a block with moving hairs along the top ----
+  \fill[cbteal!22, rounded corners=5pt] (9.9,7.2) rectangle (14.1,10.5);
+  \draw[line width=1.4pt, cbteal!75!black, rounded corners=5pt] (9.9,7.2) rectangle (14.1,10.5);
+  \foreach \x in {10.2,10.6,...,13.9}{
+    \draw[line width=1.2pt, cbteal!75!black]
+      (\x,10.5) .. controls (\x+0.25,11.1) .. (\x+0.12,11.6);}
+  \fill[cbpurple!45] (12,8.2) circle (0.5);
+  \draw[line width=1pt, cbpurple!80] (12,8.2) circle (0.5);
+  \node[num] at (12,6.1) {2};
+
+  % ---- 3. palisade cell: a tall box packed with chloroplasts ----
+  \fill[cbgreen!14, rounded corners=4pt] (18.4,6.7) rectangle (21.6,11.7);
+  \draw[line width=1.6pt, cbgreen!60!black, rounded corners=4pt] (18.4,6.7) rectangle (21.6,11.7);
+  \foreach \x/\y/\r in {19.1/7.4/15, 20.8/7.8/-20, 19.2/8.7/-10, 20.9/9.2/20,
+                        19.1/10.1/25, 20.8/10.6/-15, 19.6/11.2/10}{
+    \begin{scope}[shift={(\x,\y)}, rotate=\r]
+      \fill[cbgreen!75] (0,0) ellipse (0.52 and 0.27);
+      \draw[line width=0.8pt, cbgreen!45!black] (0,0) ellipse (0.52 and 0.27);
+    \end{scope}}
+  \node[num] at (20,6.1) {3};
+
+  % ================= row 2: the two long cells =================
+
+  % ---- 4. neurone: body with dendrites, then one long thick axon ----
+  \foreach \a in {105,145,185,225,265}{
+    \draw[line width=1.3pt, cborange!80!black] (3,2.4) -- ++(\a:1.9);
+    \draw[line width=1.1pt, cborange!80!black] (\a:1.9) ++(3,2.4) -- ++(\a+22:0.8);
+    \draw[line width=1.1pt, cborange!80!black] (\a:1.9) ++(3,2.4) -- ++(\a-22:0.8);}
+  \fill[cborange!45] (3,2.4) circle (1.15);
+  \draw[line width=1.4pt, cborange!80!black] (3,2.4) circle (1.15);
+  \fill[cborange!85!black] (3,2.4) circle (0.34);
+  \draw[line width=3.2pt, cborange!80!black, line cap=round] (4.15,2.4) -- (9.6,2.4);
+  \foreach \a in {40,0,-40}{
+    \draw[line width=1.3pt, cborange!80!black] (9.6,2.4) -- ++(\a:1.1);
+    \fill[cborange!80!black] (\a:1.1) ++(9.6,2.4) circle (0.16);}
+  \node[num] at (6.4,-0.4) {4};
+
+  % ---- 5. root hair cell: drawn as ONE outline, so the box and the hair
+  %         join with no seam down the middle ----
+  \def\roothair{(14.6,0.9) -- (17.6,0.9) -- (17.6,1.9) --
+                (22.9,2.05) -- (22.9,2.95) -- (17.6,3.1) --
+                (17.6,4.1) -- (14.6,4.1) -- cycle}
+  \fill[cbgreen!16] \roothair;
+  \draw[line width=1.4pt, cbgreen!60!black] \roothair;
+  \fill[cbpurple!45] (15.9,3.1) circle (0.48);
+  \draw[line width=1pt, cbpurple!80] (15.9,3.1) circle (0.48);
+  \node[num] at (18.7,-0.4) {5};
+
+  \path (-0.4,-1.6) rectangle (23.6,12.6);
+\end{tikzpicture}}
 
 \vspace{16pt}
-\noindent\hspace*{1em}\blank[4.4cm] \hfill \blank[4.4cm] \hfill \blank[4.4cm]
+\noindent
+\begin{tabularx}{\textwidth}{|c|p{4.4cm}|X|}
+  \hline
+  \textbf{No.} & \textbf{Name of the cell} & \textbf{Its job} \\
+  \hline
+  1 \rule[-2.6em]{0pt}{3.5em} & & \\ \hline
+  2 \rule[-2.6em]{0pt}{3.5em} & & \\ \hline
+  3 \rule[-2.6em]{0pt}{3.5em} & & \\ \hline
+  4 \rule[-2.6em]{0pt}{3.5em} & & \\ \hline
+  5 \rule[-2.6em]{0pt}{3.5em} & & \\ \hline
+\end{tabularx}
 
 % ===========================================================================
 % ANSWER KEY (teacher copy only)
@@ -510,186 +593,215 @@ this diagram to turn it into a \textbf{plant} cell.
 \newpage
 \hwsection[cbred]{Answer Key --- Teacher Copy}
 
-% The key is for an adult reading it at a desk, not a 12-year-old writing on it,
-% so tighten everything back up.
+% The key is for an adult at a desk, not a 12-year-old writing on it.
 \linespread{1.0}\selectfont
 \setlist[enumerate]{itemsep=2pt, topsep=3pt, leftmargin=*}
 \setlist[itemize]{itemsep=2pt, topsep=3pt, leftmargin=*}
 
-\qhead[cbred]{A1}{Get the sign first}
-\noindent (a) (i) positive \quad (ii) negative \quad (iii) negative \quad (iv) positive.\\
-(b) (a) $+$ \quad (b) $-$ \quad (c) $-$ \quad (d) $+$ \quad (e) $-$ \quad (f) $-$
+\qhead[cbred]{A1}{The four rules}
+\noindent (a) $+$, $-$, $-$, $+$. Same signs positive, different signs negative.\\
+(b) (a) $-24$ \quad (b) $-21$ \quad (c) $40$ \quad (d) $-6$ \quad (e) $-5$ \quad (f) $8$ \\
+\hspace*{1.15em} (g) $0$ \quad (h) $1$ \quad (i) $-56$ \quad (j) $9$ \quad (k) $-25$ \quad (l) $12$
 
 \smallskip
-\noindent{\small This is the easy question on purpose --- everybody should finish it.
-If a student is doing the arithmetic in (b), stop them: the instruction says not to.
-Getting the sign without the digits is the skill being tested.}
+\noindent{\small (g) catches people who reach for a sign rule: zero has no sign, and
+anything times zero is zero. (h) is worth a comment too --- a negative divided by
+itself is $1$, not $-1$.}
 
-\qhead[cbred]{A2}{Work them out}
-\noindent
-(a) $-21$ \quad (b) $32$ \quad (c) $-54$ \quad (d) $55$ \quad (e) $-80$ \quad (f) $0$ \\
-(g) $-9$ \quad (h) $6$ \quad (i) $-8$ \quad (j) $9$ \quad (k) $-25$ \quad (l) $-1$
-
-\smallskip
-\noindent{\small Watch (f): a few will write $-0$ or leave it blank because the rule
-does not seem to cover it. Zero has no sign, and anything times zero is zero.}
-
-\qhead[cbred]{A3}{Say it, then write it}
-\begin{enumerate}[label=\arabic*., itemsep=3pt]
-  \item $-6\times7=-42$
-  \item $-4\times-9=36$
-  \item $-56\div8=-7$
-  \item $-40\div5=-8$
-  \item $7\times-4=-28$
-  \item $-60\div4=-15$
+\qhead[cbred]{A2}{Say it, then write it}
+\begin{enumerate}[label=\arabic*., itemsep=2pt]
+  \item $-7 \times 6 = -42$
+  \item $-40 \div 8 = -5$
+  \item $-9 \times -4 = 36$
+  \item $-35 \div 5 = -7$
+  \item $-24 \div 6 = -4$ dollars each
 \end{enumerate}
-\noindent{\small Question 4 is the one that matters. ``5 divided into $-40$'' puts the
-5 first in the English and second in the calculation. A student who writes
-$5\div-40$ has made the \emph{English} error, not an arithmetic one --- make them read
-the sentence again and ask which number is being shared out. It is the same trap as
-``subtract 5 from 8'' in Homework 1, and it will come back every term.
+\noindent{\small Question 4 is the reversed-order trap carried over from Homework 1:
+``5 divided into $-35$'' is $-35 \div 5$. A student who writes $5 \div -35$ has made
+the English error, not an arithmetic one --- make them re-read the sentence rather
+than re-do the sum.}
+
+\qhead[cbred]{A3}{A sentence that is only half true}
+\noindent (a) $12$ \quad (b) $-7$
 
 \smallskip
-Question 6: accept $-15$ or ``each person owes 15 dollars'', but the question asks for
-a negative number, so push for $-15$.}
-
-\qhead[cbred]{A4}{Brackets first}
-\noindent (a) (i) $-32$ \quad (ii) $30$ \quad (iii) $2$ \quad (iv) $-3$ \quad
-(v) $0$ \quad (vi) $-18$
+\noindent (c) No. It is true for $-3 \times -4$ but false for $-3 + -4$, which is
+still negative.
 
 \smallskip
-\noindent (b) They have used the $\times$ and $\div$ rule inside a bracket that
-contains an \textbf{addition}. Two negatives only make a positive when you multiply or
-divide, so $-3+-5=-8$, not $8$, and the answer is $-32$.
+\noindent (d) Anything that attaches the operation, e.g. ``Two negatives make a
+positive when you \emph{multiply} or \emph{divide}, but not when you add.''
 
 \smallskip
-\noindent{\small\textbf{This is the question of the sheet.} Expect a large part of the
-class to get (b) wrong, or to write ``they added instead of multiplying''. That is
-worth ten minutes of whole-class discussion rather than a red pen: the misconception is
-the sentence itself, not the sum. Ask them to say out loud which \emph{operation} the
-rule belongs to.}
+\noindent{\small This is the whole point of Maths 1.2 and the question most worth
+marking properly. Accept any wording that names multiplying and dividing and excludes
+adding; reject a (d) that just repeats the original sentence more loudly. If most of
+the class gets (c) right and (d) vague, that is a five-minute discussion, not a pile
+of red pen.}
 
-\qhead[cbred]{A5}{Catch it with an estimate}
-\noindent (a) $-5\times20=-100$, so the answer should be about $-100$.
+\qhead[cbred]{A4}{Brackets, and checking yourself}
+\noindent (i) $-3 + -2 = -5$, so $20 \div -5 = -4$ \\
+(ii) $-4 + 10 = 6$, so $6 \times -3 = -18$ \\
+(iii) $2 - 9 = -7$, so $-6 \times -7 = 42$ \\
+(iv) about $-6 \times 4 = -24$ \\
+(v) about $64 \div -8 = -8$
 
 \smallskip
-\noindent (b) His answer is \emph{positive}, so he has forgotten the sign: a negative
-times a positive is negative. The digits were fine --- the true answer is $-102.9$.
+\noindent{\small The classic error in (i) is applying the new sign rule inside the
+bracket and getting $+5$. The bracket holds an \emph{addition}: two negatives added
+stay negative. Watch for it specifically.}
+
+\qhead[cbred]{A5}{Word problems}
+\begin{enumerate}[label=\arabic*., itemsep=2pt]
+  \item $7 \times -4 = -28$. His balance goes down by 28 dollars.
+  \item $-54 \div 6 = -9$, so 9 m downwards each minute.
+  \item He loses \textbf{15 dollars}. He sells 0 ducks, so $0 \times 3 = 0$ income and
+        $0 \times -2 = 0$ in selling fees --- but the 15-dollar stall fee is charged
+        anyway. The 47 and the 3 and the 2 are all decoration.
+\end{enumerate}
+\noindent{\small Problem 3 is the deadpan one and should be read completely straight.
+It is a harder trick than last week's: most of the numbers cancel to zero, but not
+\emph{all} of them, so a student who answers ``0'' has stopped one step early. Expect
+both ``0'' and ``$-15$'' in the room and make them argue it out.}
+
+\qhead[cbred]{B1}{Build it from the lists}
+\noindent (a) 8, 16, 24, 32, 40, 48 \\
+(b) 12, 24, 36, 48, 60, 72 \\
+(c) 24 and 48 \\
+(d) 24
+
+\qhead[cbred]{B2}{Do not just multiply them}
+\noindent (a) 21 \quad (b) 20 \quad (c) 24 \quad (d) 9
 
 \smallskip
-\noindent{\small Accept any sensible rounding: $-5\times21=-105$ is just as good. Do
-not mark the estimate against the exact answer --- mark whether it was close enough to
-catch the error. That is the only reason estimating is on this sheet, and it is why the
-four rounding drills that would normally sit here are not: Workbook Exercise 1.2 Q8 and
-Q9 already set exactly those, so repeating them here would waste the homework.}
+\noindent (e) 5 divides into 20, so the LCM is just the bigger number, 20. Multiplying
+only gives the right answer when the two numbers share no factor --- as in (a), where
+$3 \times 7 = 21$ happens to be correct.
 
-\qhead[cbred]{A6}{Word problems}
-\begin{enumerate}[label=\arabic*., itemsep=3pt]
-  \item (a) $6\times-15=-90$ points. \; (b) $-120\div-15=8$ questions. \\
-        {\small Part (b) is the only place on this sheet where a negative divided by a
-        negative appears in a real context. The answer is a \emph{count}, so it has to
-        come out positive --- that is a good sanity check to point out.}
-  \item (a) $8\times-7=-56$ dollars. \; (b) $-8\times-7=+56$, so his total changes by
-        $+56$ dollars. \; (c) Better off, by 56 dollars --- he is back to zero. \\
-        {\small This is the honest real-world meaning of ``negative times negative'':
-        taking away 8 debts. If a student writes $8\times-7$ for (b) and gets $-56$
-        again, ask them whether cancelling a debt makes you richer or poorer. Most will
-        answer that correctly out loud and then see their own sign error.}
-  \item (a) $10\times4=40$. \; (b) $10\times-4=-40$. \; (c) $40+-40=0$. \\
-        {\small The deadpan one. Mr Bowen has scored zero on his own quiz and is very
-        pleased with himself. Part (c) is an \emph{addition}, so this is one more place
-        the false version of ``two negatives make a positive'' can be caught.}
+\smallskip
+\noindent{\small (d) is the deadpan one: both numbers are 9, so there is nothing to
+work out. Expect someone to list the multiples of 9 twice before noticing.}
+
+\qhead[cbred]{B3}{Word problems}
+\begin{enumerate}[label=\arabic*., itemsep=2pt]
+  \item LCM$(6,10) = 30$, so 30 seconds. Not 60 --- 6 and 10 share the factor 2.
+  \item LCM$(8,12) = 24$. So 24 sandwiches: \textbf{3 packs of rolls} and
+        \textbf{2 packs of cheese}. Students who stop at 24 have done the maths but
+        not answered the question; the packs are the point.
 \end{enumerate}
 
-\qhead[cbred]{A7}{Now you write the question}
-\noindent There is no single right answer. Check the four conditions in the green box,
-in this order:
-\begin{enumerate}[label=\arabic*., itemsep=3pt]
-  \item \textbf{Is it a repeated lot, or a sharing out?} (a) must be \emph{five lots of
-        $-8$} --- five hours, five people, five wrong answers. (b) must be a total of
-        $-60$ \emph{split} into 12 equal parts. Turning (b) into a multiplication is
-        the most common miss.
-  \item \textbf{Does the signal word match?} (a) needs \eng{each}, \eng{every} or
-        \eng{per}. (b) needs \eng{shared between}, \eng{divided by} or an equal rate.
+\qhead[cbred]{B4}{Now you write the question}
+\noindent No single right answer. Check, in this order:
+\begin{enumerate}[label=\arabic*., itemsep=2pt]
+  \item \textbf{Does it repeat?} (a) needs something happening 7 times, each time
+        costing 4 --- a fee, a drop in temperature, a debt. A one-off ``he lost 28
+        dollars'' is not a multiplication.
+  \item \textbf{Is the sign right?} The $-4$ must be a loss, a fall or a descent, not
+        a gain.
+  \item \textbf{For (b), are the two things independent and repeating?} Buses, lights,
+        alarms, taps, machines. The question must ask when they \emph{next coincide},
+        not how many of each.
   \item \textbf{Full sentences, ending in a question?}
-  \item \textbf{Does their own answer come out as $-40$, and as $-5$?}
+  \item \textbf{Does their own answer come out as $-28$, and as 20?}
 \end{enumerate}
+\noindent{\small One that works for (b): ``One machine in a factory stamps a box every
+4 seconds. Another wraps a box every 10 seconds. They have just both finished a box at
+the same moment. How many seconds until they finish together again?'' \\
+Expect (b) to be much weaker than (a) --- writing a repeating-events story is harder
+than writing a repeated-loss one. Worth doing one aloud on the board.}
 
-\smallskip
-\noindent{\small Two that work: (a) ``Mr Bowen loses 8 dollars every day for 5 days.
-What is the change to his money?'' (b) ``A diver goes down 60 metres in 12 minutes at a
-steady rate. What is the change in her depth each minute?'' \\
-Expect (b) to be harder than (a) by a distance, because a division story needs a
-\emph{rate} and most of them will write a subtraction instead. Discuss it as a class
-before marking it.}
+\qhead[cbred]{C1}{Match the word to its meaning}
+\noindent 1--C \quad 2--E \quad 3--A \quad 4--F \quad 5--B \quad 6--D
 
-\qhead[cbred]{B1}{The words for comparing two things}
-\noindent 1.\ Both \ldots\ and \quad 2.\ but \quad 3.\ Unlike \quad 4.\ have \quad
-5.\ similar \ldots\ the same
-
-\smallskip
-\noindent{\small Sentence 4 catches the students who write ``has''. ``Both kinds of
-cell'' is plural, so the verb is \emph{have}. Worth saying once, clearly.}
-
-\qhead[cbred]{B2}{True or false?}
-\noindent 1.\ True \quad 2.\ \textbf{False} \quad 3.\ True \quad 4.\ True \quad
-5.\ True \quad 6.\ \textbf{False}
-
-\smallskip
-\noindent Rewrites: \; 2.\ ``An animal cell has \emph{no} cell wall.'' (Or: ``A
-\emph{plant} cell has a cell wall made of cellulose.'') \; 6.\ ``Chloroplasts are green
-because they contain \emph{chlorophyll}.''
-
-\smallskip
-\noindent{\small Sentence 6 is a vocabulary trap, not a biology one: \emph{cellulose}
-and \emph{chlorophyll} both begin with c-h/c-e and both belong to plants. If the class
-mixes them up, the fix is that cellulose is the \emph{building material of the wall}
-and chlorophyll is the \emph{green colour that catches sunlight}.}
-
-\qhead[cbred]{B3}{Answer in full sentences}
-\begin{enumerate}[label=\arabic*., itemsep=3pt]
-  \item Every animal cell has a cell membrane, cytoplasm, mitochondria and a nucleus.
-  \item An animal cell has no fixed shape because it has no cell wall to hold it
-        stiff, and an animal has to bend and move.
-  \item Any two, each a full sentence. For example: ``An animal cell has no cell wall,
-        but a plant cell has one.'' ``Unlike a plant cell, an animal cell has no
-        chloroplasts, so it cannot make its own food.'' ``A plant cell has a large sap
-        vacuole, but an animal cell does not.''
+\qhead[cbred]{C2}{Plant or animal?}
+\begin{enumerate}[label=\arabic*., itemsep=2pt]
+  \item \textbf{Plant} --- straight, stiff cell walls (and chloroplasts).
+  \item \textbf{Animal} --- no cell wall, so no straight edges.
+  \item \textbf{Plant} --- every cell has a straight-sided \emph{cell wall}. This is
+        the trap. It is Rhoeo leaf epidermis: purple, with no chloroplasts at all,
+        because it is not a photosynthesising layer.
+  \item \textbf{Animal} --- no cell walls; these are muscle fibres.
 \end{enumerate}
-\noindent{\small Mark the \emph{sentence}, not just the fact. A list of three words is
-not an answer to any of these, and saying so consistently is the only thing that
-changes it.}
+\noindent{\small Number 3 catches almost everybody, because they have quietly replaced
+``has a cell wall'' with ``is green''. Do not mark it as a careless slip --- it is the
+misconception the whole lesson was built to break. Ask them what the onion looked
+like: also a plant, also no chloroplasts.}
 
-\qhead[cbred]{B4}{Two pictures down a microscope}
-\noindent (a) Picture 1 shows plant cells, because the cells have straight, stiff edges
-and are packed together like bricks --- that is a cell wall, and only plants have one.
-Picture 2 shows animal cells, because the cells are soft and rounded with no straight
-edges, which means there is no cell wall.
+\qhead[cbred]{C3}{Similar is not the same}
+\begin{enumerate}[label=\arabic*., itemsep=2pt]
+  \item \ldots both of them have a cell membrane, cytoplasm, a nucleus and
+        mitochondria. (Any of those four.)
+  \item \ldots a plant cell has a cell wall (or chloroplasts, or a sap vacuole), but
+        an animal cell does not.
+  \item An animal cell has no cell wall, so there is nothing stiff to hold it in a
+        fixed shape --- only the thin, flexible cell membrane.
+\end{enumerate}
+\noindent{\small The word to police here is \emph{similar}. A student who writes ``they
+are the same'' has lost the distinction the lesson taught, even if the rest of the
+sentence is right.}
 
-\smallskip
-\noindent (b) The student is wrong because not every plant cell has chloroplasts: an
-onion bulb grows underground in the dark, so its cells are not green, and they are still
-plant cells. Green is a clue that can fail; the \emph{cell wall} is the clue that never
-does.
-
-\smallskip
-\noindent{\small (b) is the hardest question in Section B and the one most worth
-discussing. ``No green means animal'' is the misconception the class arrived at in the
-lesson, and it needs breaking twice before it goes.}
-
-\qhead[cbred]{B5}{Label the animal cell}
-\noindent 1 --- cell membrane \quad 2 --- cytoplasm \quad 3 --- nucleus \quad
-4 --- mitochondrion
+\qhead[cbred]{C4}{Put the method in order}
+\noindent Reading down the table as printed: \textbf{3, 5, 1, 6, 4, 2}.
 
 \smallskip
-\noindent (b) A cell wall, chloroplasts and a sap vacuole. Everything already on the
-diagram stays exactly where it is.
+\noindent In order: (1) rub the inside of your cheek with a cotton bud; (2) wipe it
+onto the middle of a clean slide; (3) add a drop of methylene blue stain; (4) lower a
+cover slip slowly to avoid bubbles; (5) looking from the side, move the lens down
+close to the slide; (6) look down the eyepiece and focus by moving the lens away.
 
 \smallskip
-\noindent{\small Accept ``mitochondria'' for 4. Do not accept ``cell wall'' for 1: this
-cell has no wall, and the leader points at the thin outline, which is the membrane.
-That confusion is the reason the outline here is drawn as a single thin line with no
-green band around it.}
+\noindent Why from the side: with your eye at the eyepiece you cannot judge the gap,
+so looking from the side is the only way to avoid driving the lens through the slide.
+
+\smallskip
+\noindent{\small Focusing \emph{away} from the slide, never towards it, is the same
+safety point said twice. Accept either the safety answer or ``so you do not break the
+slide or the lens''.}
+
+\qhead[cbred]{D1}{Finish the table}
+\noindent
+\begin{tabularx}{\linewidth}{@{}p{2.4cm}p{3.4cm}p{3.6cm}X@{}}
+  \textbf{Neurone} & carries electrical signals & a very long axon; short dendrites &
+  signals travel far and fast; dendrites collect them \\
+  \textbf{Ciliated} & sweeps mucus away from the lungs & tiny moving hairs (cilia) &
+  they sweep the mucus, with its trapped dust and germs, along \\
+  \textbf{Root hair} & absorbs water from the soil & a long, thin extension &
+  a big surface area, so water moves in easily \\
+  \textbf{Palisade} & makes food by photosynthesis & packed with chloroplasts, near
+  the top of the leaf & catches as much sunlight as possible \\
+\end{tabularx}
+
+\qhead[cbred]{D2}{Use the sentence, and think}
+\begin{enumerate}[label=\arabic*., itemsep=2pt]
+  \item ``A root hair cell is adapted to absorb water because it has a long, thin
+        extension that gives it a big surface area.''
+  \item ``A palisade cell is adapted to make food by photosynthesis because it has
+        many chloroplasts.''
+  \item \textbf{Cytoplasm} and a \textbf{cell membrane}. \emph{Not} a nucleus --- the
+        red blood cell has none. Accept ``they are all specialised'' as a third.
+  \item Roots are underground in the dark, and chloroplasts need sunlight to make
+        food, so they would be useless there.
+\end{enumerate}
+\noindent{\small Question 3 is the precision point of Science 1.3, and nearly everyone
+writes ``a nucleus''. Let them, then ask what a red blood cell gave up to fit more
+haemoglobin in. In 1 and 2, mark the \emph{frame} as much as the content: if
+``adapted to'' and ``because it has'' are both missing, the science may be right but
+the sentence is not the one being taught.}
+
+\qhead[cbred]{D3}{Name the cell}
+\noindent 1 --- red blood cell (carries oxygen) \\
+2 --- ciliated cell (sweeps mucus away from the lungs) \\
+3 --- palisade cell (makes food by photosynthesis) \\
+4 --- neurone (carries electrical signals) \\
+5 --- root hair cell (absorbs water from the soil)
+
+\smallskip
+\noindent{\small 2 and 5 are the pair most often swapped: both are drawn as a box with
+something sticking out of it. The cilia are \emph{many} short hairs on the top; the
+root hair is \emph{one} long extension from the side. \\
+If anyone labels the pale middle of 1 as a nucleus, that is the misconception from
+D2.3 showing up again --- a red blood cell has no nucleus, and the pale patch is the
+dip in the disc.}
 
 \fi
 

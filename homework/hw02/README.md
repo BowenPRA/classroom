@@ -1,7 +1,7 @@
 # Year 7 · Homework Packet 2
 
-`hw02.tex` — Mathematics 1.2 (Multiplying & Dividing Integers) and Science 1.2
-(Animal Cells).
+`hw02.tex` — Maths 1.2 (multiplying & dividing integers), Maths 1.3 (multiples and the
+LCM), Science 1.2 (comparing plant and animal cells), Science 1.3 (specialised cells).
 
 ## Building
 
@@ -9,88 +9,40 @@
 pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw02
 ```
 
-Builds both copies, reports errors and overfull boxes, and rasterises every page to
-`.preview/` so the layout can be checked by eye — which is the only way it gets
-checked. Or by hand, twice (the second pass settles the TikZ bounding boxes):
+House style is shared, in `../hw-style.tex`. Method is the `new-homework` skill.
 
-```bash
-pdflatex hw02.tex && pdflatex hw02.tex
-```
-
-House style is shared, in `../hw-style.tex`. No shell-escape, no bibliography, no
-external images — the diagram is inline TikZ, so the two `.tex` files are the whole
-document and it compiles unchanged on Overleaf.
-
-Built and verified with MiKTeX 25.12: 8 pages, no errors, no overfull boxes.
-
-## Student copy vs teacher copy
-
-`hw02.pdf` is the student copy. For the teacher copy — same packet with an answer key
-appended — build it without editing anything:
-
-```bash
-pdflatex -jobname=hw02-teacher "\def\TEACHER{}\input{hw02.tex}"
-```
-
-That produces `hw02-teacher.pdf` (11 pages). Alternatively flip `\keyfalse` to
-`\keytrue` near the top of `hw02.tex`.
+Built and verified with MiKTeX 25.12: 10 pages, no errors, no overfull boxes.
+Teacher copy is 14 pages.
 
 ## What's in it
 
-**Section A — Mathematics**
+Four sections, one per lesson, maths first.
 
 | | |
 | --- | --- |
-| A1 | Complete the four sign rules; then give only the **sign** of six answers, no digits |
-| A2 | Twelve calculations, × and ÷, covering all four rules |
-| A3 | Six English → calculation translations, with a Word help box |
-| A4 | Brackets first, plus a student's wrong answer to diagnose in a sentence |
-| A5 | Use an estimate to catch a wrong answer |
-| A6 | Three word problems (Mr Bowen throughout), the last one deadpan |
-| A7 | **Backwards:** given an expression, write the word problem that matches it |
+| A1–A5 | Sign rules and 12 calculations · English → calculation · **"two negatives make a positive" tested on both `×` and `+`** · brackets and estimating · three word problems |
+| B1–B4 | Multiples → common multiples → LCM from the lists · the don't-just-multiply trap · two word problems · **write the question** for an integer product and for an LCM |
+| C1–C4 | Vocabulary · plant-or-animal with a reason · *similar* is not *the same* · order the slide-preparation steps |
+| D1–D3 | The structure–function table · the `adapted to … because it has …` frame · name the five specialised cells |
 
-**Section B — Science**
+Nothing is lifted from the workbook. The traps are the deck's, with new numbers:
 
-| | |
-| --- | --- |
-| B1 | The comparing words — *both / and / but / Unlike / similar / the same* |
-| B2 | True or false, then rewrite the false ones so they become true |
-| B3 | Three full-sentence questions, with sentence starters |
-| B4 | Two microscope pictures — plant or animal, and the onion that breaks "no green means animal" |
-| B5 | Label the animal cell (TikZ diagram, four leader lines) |
+- **A3** is the spine of Maths 1.2 — the sentence is true for `×` and `÷` and false for
+  `+`, and part (d) makes them repair it.
+- **A5.3** is the deadpan one, and it is a harder trick than Homework 1's: he sells zero
+  ducks, so most of the numbers vanish — but the stall fee does not. Expect both "0" and
+  "−15" in the room.
+- **C2 row 3** is the Rhoeo trap: purple, no chloroplasts at all, still a plant, because
+  every cell has a straight-sided wall. It catches students who have quietly replaced
+  "has a cell wall" with "is green".
+- **D2.3** is the nucleus trap — the three animal cells share cytoplasm and a membrane,
+  but *not* a nucleus.
 
-The label-the-diagram question sits **last** on purpose. It is a full-page block that
-cannot be broken, so putting it anywhere else leaves a third of a page empty above it.
+## Layout notes
 
-## What is deliberately *not* in it
-
-Workbook Exercise 1.2 is already set as homework from the lesson deck, so nothing here
-duplicates it. In particular the packet avoids the workbook's shapes entirely — no
-addition pyramids, no multiplication grids, no product-circle diagrams — and the four
-rounding drills that would naturally sit in A5 are gone, because Q8 and Q9 of that
-exercise are exactly those. A5 keeps only the part the workbook does not ask: using an
-estimate to *catch* a wrong answer.
-
-Section A reuses the *language* traps from the deck with new numbers and new contexts:
-`divided by` versus `divided into`, "two negatives make a positive" being false for
-`+`, brackets first, and which number is the one being shared out.
-
-The science section covers animal cells only. The Learner's Book cheek-cell practical
-is not tested — the class has not run it, because the microscope has not arrived.
-
-## Layout notes worth keeping
-
-Everything below was found by rasterising the PDF and looking, not by reading the log.
-
-- The cell outline is a **lopsided blob**, not an ellipse. The first draft used
-  near-symmetric coordinates and TikZ's smoothing turned them into a tidy oval, which
-  teaches the opposite of "an animal cell has no fixed shape".
-- The Section B **Remember box is kept to three lines** so it fits on the page it
-  starts on. At six lines it split across the page break and hyphenated
-  "chloroplasts"; reserving space with `needspace` to prevent that pushed the whole
-  block onto the next page and cost a page overall. Shortening the box costs nothing.
-- The **A3 Word help box uses different numbers** from the questions it supports.
-  Matching numbers would hand over three of the six answers.
-- `needspace` around A5 was tried and removed. One reservation of 5 baselineskips
-  there was enough to push the packet from 8 pages to 9. Folding the question stem
-  into part (a) achieved the same thing for free.
+- The specialised-cell drawing is in **two rows**, not one. The neurone and the root
+  hair cell are the long ones; on a single row of five they shrink until the axon reads
+  as an arrow rather than a cell.
+- The root hair cell is drawn as a **single outline path**, so the box and the hair join
+  with no seam down the middle.
+- `D3` is the unbreakable full-page block, so it sits last in its section.
