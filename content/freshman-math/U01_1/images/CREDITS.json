@@ -1,0 +1,22 @@
+{
+  "unit": "freshman-math / U01_1 — The Cartesian Plane and Distance",
+  "note": "Only two photographs are used. Everything else in this deck is authored SVG in diagrams.js, because the ideas (components, quadrants, the space diagonal) are diagrams, not photographs. Both files below are openly licensed; there are no textbook scans in this unit.",
+  "images": [
+    {
+      "name": "descartes.jpg",
+      "title": "Portrait of René Descartes",
+      "descUrl": "https://commons.wikimedia.org/wiki/File:Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg",
+      "license": "Public domain (artist died 1666; faithful photographic reproduction of a 2D public-domain work)",
+      "artist": "After Frans Hals (1580–1666)",
+      "usage": "The slide naming the Cartesian plane after Descartes."
+    },
+    {
+      "name": "housefly.jpg",
+      "title": "Common housefly (Musca domestica)",
+      "descUrl": "https://commons.wikimedia.org/wiki/File:Musca_domestica_September_2007-1.jpg",
+      "license": "CC BY-SA 3.0",
+      "artist": "Alvesgaspar",
+      "usage": "The fly project: the straight-line flight across the room."
+    }
+  ]
+}

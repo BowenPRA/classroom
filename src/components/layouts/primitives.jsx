@@ -10,6 +10,9 @@ import {
   Building2, Dna, Atom, ScanEye, Telescope, GraduationCap, Beaker, TestTube,
   Layers, ArrowRight, Target, Users, MessageSquare, Scale, Equal, AlertTriangle,
   ShieldCheck, Repeat, HelpCircle, ChevronDown, Sun, Droplet,
+  // Added for the Algebra Track (coordinate geometry).
+  Sigma, Grid3x3, LayoutGrid, RotateCcw, Move, PenLine, Box, Triangle, Bug,
+  Calculator, Timer, Hammer, ArrowLeftRight, Spline,
 } from 'lucide-react'
 import WidgetRenderer, { WidgetErrorBoundary } from '../WidgetRenderer.jsx'
 import { parseInlineText, renderContent, NOTE_TONES } from './helpers.jsx'
@@ -21,6 +24,8 @@ const ICONS = {
   Dna, Atom, ScanEye, Telescope, GraduationCap, Beaker, TestTube, Layers,
   ArrowRight, Target, Users, MessageSquare, Scale, Equal, AlertTriangle,
   ShieldCheck, Repeat, HelpCircle, Sun, Droplet,
+  Sigma, Grid3x3, LayoutGrid, RotateCcw, Move, PenLine, Box, Triangle, Bug,
+  Calculator, Timer, Hammer, ArrowLeftRight, Spline,
 }
 
 /** Render a lucide icon by name (falls back to Info). */
