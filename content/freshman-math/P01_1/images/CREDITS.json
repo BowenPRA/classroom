@@ -1,0 +1,14 @@
+{
+  "unit": "freshman-math / P01_1 — Project: The Flight of the Fly",
+  "note": "One photograph. Everything else in this project is authored SVG in diagrams.js — the room, the folded-notebook model and the unfolded net are all diagrams, not photographs.",
+  "images": [
+    {
+      "name": "housefly.jpg",
+      "title": "Common housefly (Musca domestica)",
+      "descUrl": "https://commons.wikimedia.org/wiki/File:Musca_domestica_September_2007-1.jpg",
+      "license": "CC BY-SA 3.0",
+      "artist": "Alvesgaspar",
+      "usage": "The project brief: the fly that crosses the room in a straight line."
+    }
+  ]
+}

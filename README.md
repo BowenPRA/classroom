@@ -124,8 +124,14 @@ Any field can be suffixed `…Vn` for the Vietnamese version (e.g. `titleVn`,
   `src/components/layouts/primitives.jsx`).
 
 **Body markdown-lite** (`content`, note/step/reveal text): `**bold**`,
-`$inline$` / `$$block$$` KaTeX math, a line starting with `>` becomes an amber
-"write this down" note, blank line = spacer.
+`$inline$` KaTeX math, a line starting with `>` becomes an amber "write this
+down" note, blank line = spacer.
+
+> **`$$block$$` math only works in a slide's `content`.** That field goes
+> through `renderContent`, which understands it; note, step and reveal text go
+> through `parseInlineText`, which does **not** — a `$$…$$` formula there prints
+> as raw LaTeX on the slide, and nothing in `lint`, `build`, `audit:svg` or
+> `check:deck` will notice. Use single `$…$` inside notes.
 
 Real photos live in the unit's `images/` folder with a `CREDITS.json` recording
 each source + licence (see `content/y7-science/U01_1/images/`).

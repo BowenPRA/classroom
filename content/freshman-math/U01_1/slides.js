@@ -22,18 +22,17 @@
 // The house rule holds: anything a student must copy is in an orange "Write
 // This Down" panel or an orange `>` bumper, and nothing else is.
 //
-// Numbers were chosen so the arithmetic never competes with the idea:
-//   · the plane worked pair A(−4, −2), B(4, 4) gives components 8 and 6,
-//     distance 10, midpoint (0, 1) — which lands on the y-axis, so "is that
-//     really halfway?" can be checked by eye;
-//   · the project room 12 × 9 × 8 ft chains two Pythagorean triples,
-//     9-12-15 then 15-8-17, so both steps land on whole numbers;
-//   · the fly's speed 3.4 ft/s makes the flight exactly 5 seconds, so
-//     "the first 3 seconds" is a clean 0.6 of the trip.
+// Numbers were chosen so the arithmetic never competes with the idea: the
+// plane worked pair A(−4, −2), B(4, 4) gives components 8 and 6, distance 10,
+// and midpoint (0, 1) — which lands on the y-axis, so "is that really halfway?"
+// can be checked by eye rather than taken on trust.
+//
+// The fly used to close this deck. It is now Project 1 (content/freshman-math/
+// P01_1), which is where the twine, the folded-notebook model and the spider
+// investigation live. This lesson teaches the mathematics that project needs
+// and hands over on the last slide — run it first.
 import { DIAGRAMS } from './diagrams.js'
-import { FlyPathWidget } from './widgets.jsx'
 import descartes from './images/descartes.jpg'
-import housefly from './images/housefly.jpg'
 
 const TEAL = '#0087a8'
 const PURPLE = '#5c2483'
@@ -50,7 +49,6 @@ export const slides = [
     icon: 'Sigma',
     brand: 'Algebra Track',
     eyebrow: 'Unit 1 · 1.1',
-    date: '11 Aug 2026',
     title: 'The Cartesian Plane and Distance',
     card: {
       icon: 'Pencil',
@@ -548,103 +546,6 @@ export const slides = [
     ],
   },
 
-  // ══ Part 6 · The project ══════════════════════════════════════════════════
-  {
-    layout: 'statement',
-    accent: PURPLE,
-    eyebrow: 'The project',
-    title: 'A Fly Crosses the Room',
-    label: 'Guess first',
-    labelIcon: 'MessageSquare',
-    text: 'Floor corner to the **opposite ceiling corner**, in a straight line.',
-    sub: 'The room is **12 ft** long, **9 ft** wide and **8 ft** high. **How far does the fly travel?** Guess before you calculate — every guess goes on the board.',
-  },
-  {
-    layout: 'split',
-    accent: PURPLE,
-    icon: 'Bug',
-    eyebrow: 'Question 1',
-    title: 'How Far Does It Fly?',
-    ratio: 50,
-    image: housefly,
-    content:
-      'Work it out in your notebook, using the two-triangle method:\n\n' +
-      '> **1.** the diagonal across the **floor**\n' +
-      '> **2.** then up to the **ceiling corner**\n\n' +
-      'Then do it again in **one step** with the 3D formula. Do they agree?',
-    notes: [
-      {
-        tone: 'task',
-        badge: 'Before the button',
-        text: 'Nobody presses anything until every pair has a number on paper. Compare it with your guess — most come in low.',
-      },
-    ],
-  },
-  {
-    layout: 'split',
-    accent: TEAL,
-    icon: 'Calculator',
-    side: 'left',
-    eyebrow: 'Check it together',
-    title: 'The Flight, Step by Step',
-    ratio: 50,
-    content:
-      'Both routes land on **17 ft**. The floor diagonal is 15 ft, but notice that the one-step formula never needed it.\n\n' +
-      'The fly flies at **3.4 feet per second**.',
-    notes: [
-      {
-        tone: 'write',
-        text: '**Distance** $= \\sqrt{12^2 + 9^2 + 8^2} = \\sqrt{289} = 17$ ft.\n\n**Time** $=$ distance $\\div$ speed $= 17 \\div 3.4 = 5$ seconds.',
-      },
-    ],
-    widget: FlyPathWidget,
-  },
-  {
-    layout: 'split',
-    accent: ORANGE,
-    icon: 'Timer',
-    eyebrow: 'Question 3 — the hard one',
-    title: 'Where Is It After 3 Seconds?',
-    ratio: 55,
-    inlineSvg: DIAGRAMS.FLY_ROOM,
-    content:
-      'The whole flight takes 5 seconds. So after **3 seconds** the fly has flown **three fifths** of the way.\n\n' +
-      '> **A)** How far has it travelled?\n' +
-      '> **B)** What are the **x, y and z components** of that part of the flight?\n' +
-      '> **C)** Check your three components with the 3D distance formula. Do you get your answer to **A** back?',
-    reveal: {
-      label: 'Check your answers',
-      answer:
-        '**A)** $3 \\times 3.4 = 10.2$ ft. (Or: $\\frac{3}{5}$ of 17 ft $= 10.2$ ft.)\n\n' +
-        '**B)** Every component shrinks by the same fraction, $\\frac{3}{5} = 0.6$:\n' +
-        'x $= 0.6 \\times 12 = 7.2$ ft, y $= 0.6 \\times 9 = 5.4$ ft, z $= 0.6 \\times 8 = 4.8$ ft.\n\n' +
-        '**C)** $\\sqrt{7.2^2 + 5.4^2 + 4.8^2} = \\sqrt{51.84 + 29.16 + 23.04} = \\sqrt{104.04} = 10.2$ ✓',
-    },
-  },
-  {
-    layout: 'showcase',
-    accent: GREEN,
-    icon: 'Box',
-    eyebrow: 'Build it — the rest of the lesson',
-    title: 'Your Notebook Is Already 3D',
-    inlineSvg: DIAGRAMS.NOTEBOOK_MODEL,
-    caption: 'Open a notebook to **90°** and you have built three perpendicular axes with your hands. The flat page carries **x** and **y**; the fold line standing up between the pages is **z**. Model the room on it, run twine from corner to corner, and measure whether 17 ft was right — a calculation you cannot check is just a hope.',
-  },
-  {
-    layout: 'steps',
-    accent: GREEN,
-    icon: 'Hammer',
-    eyebrow: 'In pairs',
-    title: 'Build It and Measure It',
-    steps: [
-      { text: '**Fold your notebook to 90°.** Flat page = the **floor**, standing page = the **wall**.' },
-      { text: 'Draw the **x and y axes** on the flat page. The fold line is the **z-axis**.' },
-      { text: 'Scale: **1 square = 1 foot**. Draw the **12 by 9** floor.' },
-      { text: 'Mark the **start** at the origin; the **finish** is the opposite corner, 8 squares **up**.' },
-      { text: '**Tape** the twine at the start, pull it **tight**, **cut**, **measure**. Is it 17 ft?' },
-    ],
-  },
-
   // ══ Part 7 · Recap ════════════════════════════════════════════════════════
   {
     layout: 'stack',
@@ -654,7 +555,7 @@ export const slides = [
     columns: 2,
     eyebrow: 'Before you leave',
     title: 'Can You Do All Eight?',
-    content: '> Your notebook should now have **16 written items** and **5 labelled drawings**. Check.',
+    content: '> Your notebook should now have **15 written items** and **5 labelled drawings**. Check.',
     items: [
       { text: 'Find a **distance** with $|a - b|$.' },
       { text: 'Say what **absolute value** means.' },
@@ -682,6 +583,23 @@ export const slides = [
           '**2.** Distance from $(1, 2, 2)$ to $(4, 6, 14)$.\n' +
           '**3.** A cupboard 6 ft by 6 ft by 7 ft: corner to opposite ceiling corner?\n' +
           '**4.** Find $x$ and $y$ making $\\sqrt{x^2 + y^2} = x + y$ **true** — why does that not rescue the rule?',
+      },
+    ],
+  },
+  {
+    layout: 'callout',
+    accent: PURPLE,
+    icon: 'Hammer',
+    eyebrow: 'What happens next',
+    title: 'You Are About to Need All of This',
+    content:
+      'Next lesson this stops being an exercise. You will be given a room, a fly that crosses it in a straight line, and a **project** — with a mark scheme.\n\n' +
+      'Everything you copied down today is the toolkit for it, so bring your notebook.',
+    notes: [
+      {
+        tone: 'theory',
+        badge: 'Bring to the next lesson',
+        text: 'Your **notebook** (it becomes the 3D model — you will fold it), a **ruler**, and a **calculator**. Some of the answers stop being whole numbers.',
       },
     ],
   },

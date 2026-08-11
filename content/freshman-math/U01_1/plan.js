@@ -1,18 +1,15 @@
 // content/freshman-math/U01_1/plan.js
 // One-page teacher lesson plan, rendered by src/pages/Plan.jsx.
 export const plan = {
-  duration: '90 minutes (or two 45-minute periods — break after slide 20, the practice pair)',
+  duration: '75 minutes (or two 45-minute periods — break after slide 20, the practice pair). The fly project that used to close this lesson is now Project 1 and runs separately.',
   objective:
     'Students can find the distance between two numbers as |a − b| and a midpoint as their average; plot ordered pairs on the Cartesian plane and name the four quadrants; ' +
     'split a slanted line into its x and y components and use those components to find both the midpoint and the distance between two points; define a dimension as the number ' +
-    'of mutually perpendicular axes; derive the 3D distance formula by chaining two right triangles; and explain why √(x² + y²) ≠ x + y. They then test the 3D result physically ' +
-    'by modelling a room in a folded notebook and measuring a length of twine against their calculation.',
+    'of mutually perpendicular axes; derive the 3D distance formula by chaining two right triangles; and explain why √(x² + y²) ≠ x + y. The fly project that tests this ' +
+    'physically is now a separate unit (Project 1), which this lesson feeds directly.',
   materials: [
     'Projector / TV for the lesson deck',
-    'Student notebooks (one per student — the notebook IS the 3D model in the project)',
-    'Twine or string, about 60 cm per pair',
-    'Scissors and sticky tape (one set per pair)',
-    'Rulers — 30 cm, with millimetres',
+    'Student notebooks',
     'Mini whiteboards + markers (one per pair)',
   ],
   vocab: [
@@ -36,7 +33,6 @@ export const plan = {
     { time: '26–44 min', phase: 'The plane', detail: 'Slide 10 asks how many numbers pin a point on the floor. Then: cross two number lines at 90° (copy, Draw This); ordered pairs and (4,3) ≠ (3,4) (copy); Descartes and the three names — xy-plane, Cartesian plane, coordinate plane — plus "I think, therefore I am"; the four quadrants (copy, Draw This); then the anticlockwise sweep from (1, 0). Flag the unit circle as a promise about trigonometry, and move on — do NOT teach angles today.' },
     { time: '44–60 min', phase: 'Components, midpoint, distance', detail: 'Slide 16 poses the slanted line with no formula. The key move is slide 17: you cannot measure the slant, but you CAN measure across and up, and those are number-line distances. Drop the corner in and a right triangle appears (copy, Draw This). Then midpoint by averaging each component (copy), then distance as the hypotenuse (copy). Slide 20 is the practice pair P(1,2), Q(7,10) — all three parts before anyone speaks. Natural break point here if splitting over two periods.' },
     { time: '60–75 min', phase: 'Dimensions and 3D', detail: 'Slide 21 asks students to define "dimension" — most cannot, which is the point. Then dimension = count of perpendicular axes (copy), the axis/axes plural, then the z-axis (copy). Slide 24 is the two-triangle method (Draw This): the first hypotenuse becomes a LEG of the second. Slide 25 is the payoff — substituting makes the root of f vanish and the formula just grows a square. Then the 3D formula (copy) and the freshman\'s dream (copy). Over-teach the last one; every class tries it.' },
-    { time: '75–90 min', phase: 'The project', detail: 'Slide 28: guesses for the fly BEFORE any calculation, on the board — most come in low. Pairs compute 17 ft both ways, then the stepper widget checks it (nobody presses until every pair has a number). Time = 5 s. Then the 3-second question. Finally the notebook model: fold to 90°, draw the room to scale, tape and cut the twine, measure it against the calculation.' },
   ],
   answers: [
     { q: 'Starter / slide 2: distance from −3 to 5', a: '8. Either 5 − (−3) = 8, or |−3 − 5| = |−8| = 8.' },
@@ -51,10 +47,6 @@ export const plan = {
     { q: 'Slide 20: P(1, 2) and Q(7, 10)', a: 'Components 6 and 8. Midpoint (4, 6). Distance √(36 + 64) = 10.' },
     { q: 'Slide 21: what is a dimension?', a: 'The number of axes — independent directions — you can move along. Accept anything that gets at "directions that cannot be built from the others".' },
     { q: 'Slide 26 check: (0,0,0) to (2, 3, 6)', a: '√(4 + 9 + 36) = √49 = 7.' },
-    { q: 'Project Q1: how far does the fly travel?', a: '17 ft. Floor diagonal √(12² + 9²) = 15, then √(15² + 8²) = 17. One step: √(144 + 81 + 64) = √289 = 17.' },
-    { q: 'Project Q2: how long does the flight take?', a: '17 ÷ 3.4 = 5 seconds.' },
-    { q: 'Project Q3: the first 3 seconds', a: 'Distance 3 × 3.4 = 10.2 ft (three fifths of 17). Components 0.6 × (12, 9, 8) = (7.2, 5.4, 4.8). Check: √(51.84 + 29.16 + 23.04) = √104.04 = 10.2 ✓' },
-    { q: 'Project: what should the twine measure?', a: 'At 1 square = 1 ft on standard 5 mm squares, 17 ft = 8.5 cm. Anything within about 3 mm is a good result; short usually means a sagging string.' },
     { q: 'Homework 1', a: 'All three pairs are 6-8-10, so every distance is 10. Midpoints: (6, 8); (1, 1); (−4, −3).' },
     { q: 'Homework 2', a: 'Components 3, 4, 12. √(9 + 16 + 144) = √169 = 13.' },
     { q: 'Homework 3: the 6 × 6 × 7 cupboard', a: '√(36 + 36 + 49) = √121 = 11 ft.' },
@@ -71,9 +63,8 @@ export const plan = {
     'terminology is not. Watch two specific traps: "axises" for axes, and reading |a| as brackets. ' +
     'The freshman\'s dream (slide 27) deserves more time than it looks like it needs. Every algebra class Mr Bowen has taught has tried to split that root, and the 3-4-5 counterexample is ' +
     'the fastest cure — if it were true, the hypotenuse would equal the other two sides added together. ' +
-    'The project is the assessment. A calculation students cannot check is just a hope; the twine is what turns 17 ft into something they believe. Expect the notebook not to stay at 90° on ' +
-    'its own — that is why it is a pair task. Numbers throughout were chosen so the arithmetic never competes with the idea: the plane example is a 6-8-10, and the room chains 9-12-15 into ' +
-    '15-8-17, so both steps land on whole numbers. ' +
+    'The last slide hands over to Project 1 (content/freshman-math/P01_1), where the fly, the twine and the spider investigation now live. Tell them to bring a notebook, a ruler and a calculator. ' +
+    'Numbers throughout this lesson were chosen so the arithmetic never competes with the idea — the plane example is a 6-8-10 triangle, so nothing here needs a calculator at all. ' +
     'The course is flagged bilingual:false in content/courses.js, so this deck is English-only and the EN/VN toggle is hidden. ' +
     'Image sources and licences are in content/freshman-math/U01_1/images/CREDITS.json — both openly licensed (public domain and CC BY-SA).',
 }
