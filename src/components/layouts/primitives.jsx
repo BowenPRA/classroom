@@ -13,6 +13,8 @@ import {
   // Added for the Algebra Track (coordinate geometry).
   Sigma, Grid3x3, LayoutGrid, RotateCcw, Move, PenLine, Box, Triangle, Bug,
   Calculator, Timer, Hammer, ArrowLeftRight, Spline,
+  // Added for slides built around a film clip (Y7 Maths 1.3).
+  Clapperboard,
 } from 'lucide-react'
 import WidgetRenderer, { WidgetErrorBoundary } from '../WidgetRenderer.jsx'
 import { parseInlineText, renderContent, NOTE_TONES } from './helpers.jsx'
@@ -25,7 +27,7 @@ const ICONS = {
   ArrowRight, Target, Users, MessageSquare, Scale, Equal, AlertTriangle,
   ShieldCheck, Repeat, HelpCircle, Sun, Droplet,
   Sigma, Grid3x3, LayoutGrid, RotateCcw, Move, PenLine, Box, Triangle, Bug,
-  Calculator, Timer, Hammer, ArrowLeftRight, Spline,
+  Calculator, Timer, Hammer, ArrowLeftRight, Spline, Clapperboard,
 }
 
 /** Render a lucide icon by name (falls back to Info). */

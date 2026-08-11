@@ -18,7 +18,7 @@
 // = 18) is the book's own. Nothing from Exercise 1.3 is used in class, because
 // that exercise is the homework — the in-class questions are original.
 import { DIAGRAMS } from './diagrams.js'
-import { LcmFinderWidget } from './widgets.jsx'
+import { LcmFinderWidget, HotDogClipWidget } from './widgets.jsx'
 import bus from './images/bus.jpg'
 import hotdog from './images/hotdog.jpg'
 import tap from './images/tap.jpg'
@@ -286,18 +286,34 @@ export const slides = [
     image: bus,
     content:
       'Two buses leave Mr Bowen’s stop at exactly **7:00**.\n\n' +
-      'Bus A leaves every **8 minutes**. Bus B leaves every **12 minutes**.\n\n' +
+      'Bus A leaves every **10 minutes**. Bus B leaves every **15 minutes**.\n\n' +
       'At what time do they next leave **together**?',
     contentVn:
       'Hai chuyến xe buýt rời trạm của thầy Bowen đúng lúc **7:00**.\n\n' +
-      'Xe A chạy mỗi **8 phút**. Xe B chạy mỗi **12 phút**.\n\n' +
+      'Xe A chạy mỗi **10 phút**. Xe B chạy mỗi **15 phút**.\n\n' +
       'Lúc mấy giờ chúng lại cùng rời trạm **một lúc**?',
     reveal: {
       label: 'Check your answer',
       labelVn: 'Kiểm tra đáp án',
-      answer: 'The LCM of 8 and 12 is $24$, so they leave together again **24 minutes** later — at **7:24**.',
-      answerVn: 'BCNN của 8 và 12 là $24$, vậy chúng lại cùng rời trạm sau **24 phút** — lúc **7:24**.',
+      answer: 'The LCM of 10 and 15 is $30$, so they leave together again **30 minutes** later — at **7:30**.',
+      answerVn: 'BCNN của 10 và 15 là $30$, vậy chúng lại cùng rời trạm sau **30 phút** — lúc **7:30**.',
     },
+  },
+  // The clip first, with NO numbers on the slide. George's rage is the hook;
+  // the arithmetic is the next slide. Same move as the flashing lights.
+  // `showcase`, not `split`: the clip is a vertical Short, and a split's media
+  // panel is landscape — it squeezes the video to about 100px wide.
+  {
+    layout: 'showcase',
+    accent: PURPLE,
+    icon: 'Clapperboard',
+    eyebrow: 'Father of the Bride (1991) · George is buying food for his daughter’s wedding',
+    eyebrowVn: 'Cha của cô dâu (1991) · ông George mua đồ ăn cho đám cưới con gái',
+    title: 'Why Is This Man So Angry?',
+    titleVn: 'Vì sao ông ấy tức giận đến vậy?',
+    widget: HotDogClipWidget,
+    caption: 'Not the price — the **packs**. Tell your partner: **what is his problem?**',
+    captionVn: 'Không phải giá tiền — mà là các **gói hàng**. Nói với bạn: **vấn đề của ông ấy là gì?**',
   },
   {
     layout: 'split',
@@ -305,24 +321,36 @@ export const slides = [
     icon: 'Target',
     eyebrow: 'Problem 2',
     eyebrowVn: 'Bài 2',
-    title: 'The Class Barbecue',
-    titleVn: 'Buổi tiệc nướng của lớp',
+    title: 'George’s Hot Dog Problem',
+    titleVn: 'Bài toán xúc xích của ông George',
     ratio: 55,
     side: 'left',
     image: hotdog,
     content:
-      'Mr Bowen buys bread rolls in packs of **6** and sausages in packs of **8**.\n\n' +
-      'He wants the **same number** of each, with **none left over**.\n\n' +
+      'Hot dogs are sold in packs of **8**. Buns are sold in packs of **12**.\n\n' +
+      'George wants the **same number** of each, with **none left over**.\n\n' +
       'What is the **smallest** number of each he can buy — and how many packs is that?',
     contentVn:
-      'Thầy Bowen mua bánh mì theo gói **6 cái** và xúc xích theo gói **8 cái**.\n\n' +
-      'Thầy muốn **số lượng bằng nhau**, và **không thừa cái nào**.\n\n' +
-      'Số **nhỏ nhất** mỗi loại thầy có thể mua là bao nhiêu — và bằng mấy gói?',
+      'Xúc xích bán theo gói **8 cái**. Bánh mì bán theo gói **12 cái**.\n\n' +
+      'Ông George muốn **số lượng bằng nhau**, **không thừa cái nào**.\n\n' +
+      'Số **nhỏ nhất** mỗi loại ông có thể mua là bao nhiêu — và bằng mấy gói?',
+    notes: [
+      {
+        tone: 'info',
+        badge: false,
+        text: '**left over** = extra, with nothing to go with it',
+        textVn: '**left over** = thừa ra, không có thứ đi kèm',
+      },
+    ],
     reveal: {
       label: 'Check your answer',
       labelVn: 'Kiểm tra đáp án',
-      answer: 'The LCM of 6 and 8 is $24$. So **24 of each**: $24 ÷ 6 = 4$ packs of rolls and $24 ÷ 8 = 3$ packs of sausages.',
-      answerVn: 'BCNN của 6 và 8 là $24$. Vậy **24 cái mỗi loại**: $24 ÷ 6 = 4$ gói bánh mì và $24 ÷ 8 = 3$ gói xúc xích.',
+      answer:
+        'The LCM of 8 and 12 is $24$. So **24 of each**: $24 ÷ 8 = 3$ packs of hot dogs and $24 ÷ 12 = 2$ packs of buns.\n\n' +
+        'George does it the other way — he opens a pack and takes buns **out**. That is why he gets arrested.',
+      answerVn:
+        'BCNN của 8 và 12 là $24$. Vậy **24 cái mỗi loại**: $24 ÷ 8 = 3$ gói xúc xích và $24 ÷ 12 = 2$ gói bánh mì.\n\n' +
+        'Ông George thì làm ngược lại — ông xé gói và lấy bớt bánh mì **ra**. Thế nên ông bị bắt.',
     },
   },
   {

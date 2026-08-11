@@ -11,6 +11,7 @@ export const plan = {
     'Mini whiteboards + markers (one per pair)',
     'Student notebooks',
     'Workbook Section 1.3 (pages 12–13) for the homework',
+    'Internet + sound for the Father of the Bride clip on Problem 2 — check it plays BEFORE the lesson. If YouTube is blocked the frame goes blank; the problem slide still has its photograph, so just tell the story.',
   ],
   vocab: [
     { term: 'Multiple', def: 'the answer when you multiply a number by 1, 2, 3, 4, … The multiples of 4 are 4, 8, 12, 16, … (Vietnamese: bội số)' },
@@ -26,7 +27,7 @@ export const plan = {
     { time: '16–24 min', phase: 'Build the definition', detail: 'Common multiples = numbers in both lists (copy). Then lowest common multiple = the smallest of them (copy), flagged as the same idea as BCNN they already know. Then slide 7 pays off the flashing lights: they meet at 12 because 12 is the LCM of 4 and 6.' },
     { time: '24–32 min', phase: 'Method + drill', detail: 'Mr Bowen\'s method on the book\'s example, LCM of 6 and 9 = 18 — this is the Draw This, so budget copying time. Then the LCM-finder widget: five pairs, everyone writes the LCM before the reveal. Pairs chosen to cover the whole shape (two matches; coprime; one-divides-the-other; the book example; a plain search).' },
     { time: '32–36 min', phase: 'The trap', detail: 'Do not just multiply the two numbers. LCM of 4 and 8 is 8 (not 32) because 4 divides 8; LCM of 3 and 5 is 15 because they share no factor — multiplying is a lucky shortcut, not the rule. When in doubt, list them.' },
-    { time: '36–46 min', phase: 'Word problems', detail: 'Run as many of the four as time allows, whiteboards, LCM before answer: the two buses (8, 12 → 24, so 7:24); the barbecue packs (6, 8 → 24, so 4 packs and 3 packs); the two taps (4, 12 → 12, the trap again); the two alarms (15 and 15 → 15, the deadpan one).' },
+    { time: '36–46 min', phase: 'Word problems', detail: 'Run as many as time allows, whiteboards, LCM before answer: the two buses (10, 15 → 30, so 7:30); then the film clip — play it, ask "what is his problem?", take answers in English, THEN turn the page to the numbers (8, 12 → 24, so 3 packs and 2 packs); the two taps (4, 12 → 12, the trap again); the two alarms (15 and 15 → 15, the deadpan one). The clip plus discussion costs about three minutes — if you are behind, drop Problem 3, not Problem 2.' },
     { time: '46–50 min', phase: 'Recap + homework', detail: 'Five-point checklist and the copy-count. Set Workbook Section 1.3, pages 12–13. Exit question: LCM of 5 and 10 is 10, not 50, because 5 divides 10.' },
   ],
   answers: [
@@ -38,8 +39,9 @@ export const plan = {
     { q: 'Widget pairs', a: 'LCM(4,6)=12  ·  LCM(3,5)=15  ·  LCM(4,8)=8  ·  LCM(6,9)=18  ·  LCM(8,12)=24' },
     { q: 'Trap A: LCM of 4 and 8', a: '8 (not 32) — 4 divides into 8, so the LCM is the bigger number.' },
     { q: 'Trap B: LCM of 3 and 5', a: '15 — here 3 × 5 works because 3 and 5 share no factor.' },
-    { q: 'Problem 1, the two buses', a: 'LCM(8, 12) = 24, so 24 minutes later — 7:24.' },
-    { q: 'Problem 2, the barbecue', a: 'LCM(6, 8) = 24. 24 of each: 4 packs of rolls, 3 packs of sausages.' },
+    { q: 'Problem 1, the two buses', a: 'LCM(10, 15) = 30, so 30 minutes later — 7:30.' },
+    { q: 'Clip: what is George’s problem?', a: 'Hot dogs come 8 to a pack, buns come 12 to a pack, so buying one pack of each leaves 4 buns with no hot dog. The answer in English is the goal here, not the number.' },
+    { q: 'Problem 2, George’s hot dogs', a: 'LCM(8, 12) = 24. 24 of each: 3 packs of hot dogs, 2 packs of buns. (George instead opens a pack and removes buns — hence the arrest.)' },
     { q: 'Problem 3, the two taps', a: 'LCM(4, 12) = 12 (not 48), because 4 divides 12. Every 12 seconds.' },
     { q: 'Problem 4, the two alarms', a: 'LCM(15, 15) = 15. The numbers are equal, so they always ring together. A reading trap.' },
     { q: 'Exit question: LCM of 5 and 10', a: '10, not 50 — 5 divides into 10, so the LCM is the bigger number.' },
@@ -50,6 +52,7 @@ export const plan = {
     'The list method on slide 8 (LCM of 6 and 9 = 18) is the Draw This and matches the book\'s worked example exactly — make them copy it properly. ' +
     'The recurring trap is multiplying the two numbers. It is worth over-teaching: the LCM is usually smaller, it equals the product only when the numbers share no factor, and it equals the bigger number when one divides the other. Problems 3 and 4 exist to catch the careless version. ' +
     'Problem 4 (the two alarms) is the deadpan one and should be read completely straight — both numbers are 15, so there is nothing to compute. Expect someone to try to "find the LCM" before they notice. ' +
+    'Problem 2 is now built on the supermarket scene from Father of the Bride (1991) — Steve Martin, not Martin Short, who is elsewhere in that film. The clip slide carries NO numbers on purpose: play it, get "he has four buns left over" said OUT LOUD in English, and only then show the arithmetic. That sentence is the real target of the slide; LCM(8, 12) = 24 is the easy half. Buses were moved to 10 and 15 so that 8 and 12 belongs to the hot dogs alone. ' +
     'Anything students must copy is in an orange "Write This Down" panel; everything else is discussion. ' +
     'Image sources and licences are in content/y7-math/U01_3/images/CREDITS.json — all openly licensed (CC0 / CC BY / CC BY-SA).',
 }

@@ -1,14 +1,17 @@
 // content/y7-math/U01_3/widgets.jsx
-// Interactive tool for 1.3 Lowest Common Multiples.
+// Two widgets for 1.3 Lowest Common Multiples, and no more than two.
 //
-// One widget only, on purpose. The sign tables and definitions of this unit are
-// things students copy into a notebook, not things to click. What a static
-// slide CANNOT do is run six examples on demand at the teacher's pace — so the
-// LCM finder does exactly that and nothing else: reveal the multiples of the
-// first number, then the second, then ring the matches, then box the lowest.
+// The sign tables and definitions of this unit are things students copy into a
+// notebook, not things to click. What a static slide CANNOT do is (a) run six
+// examples on demand at the teacher's pace, and (b) play a film clip. So:
 //
-// It reuses the 1.1/1.2 Stage/Controls shell so no class time is spent learning
-// an interface, and takes the deck's `lang` so its own text is bilingual.
+//  · LcmFinderWidget  — reveal the multiples of the first number, then the
+//    second, then ring the matches, then box the lowest. Nothing else.
+//  · HotDogClipWidget — a frame around one YouTube Short. No controls of our
+//    own; YouTube's player already has them.
+//
+// Both reuse the 1.1/1.2 Stage/Controls shell so no class time is spent
+// learning an interface, and take the deck's `lang` so their text is bilingual.
 import { useState } from 'react'
 
 const TEAL = '#0087a8'
@@ -29,6 +32,47 @@ const Stage = ({ children, className = '' }) => (
 const Controls = ({ children }) => (
   <div className="w-full bg-white dark:bg-slate-800 p-3 sm:p-4 rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-700 mt-2 flex-shrink-0">
     {children}
+  </div>
+)
+
+/* ============================================================= *
+ * WIDGET — THE HOT DOG CLIP
+ *
+ * George Banks in the supermarket, Father of the Bride (1991): hot dogs come
+ * 8 to a pack, buns come 12 to a pack, and he will not accept it. That is
+ * LCM(8, 12) played as farce, and it sets up Problem 2.
+ *
+ * Deliberately dumb: an iframe, a caption, no play/pause of our own. It uses
+ * youtube-nocookie.com so nothing is written to a student-facing machine, and
+ * `loading="lazy"` so the other slides do not pay for it.
+ *
+ * NEEDS THE INTERNET. If the room's network blocks YouTube this frame goes
+ * blank — the problem slide that follows keeps its photograph, so the lesson
+ * still runs; just tell the story instead.
+ * ============================================================= */
+const CLIP_ID = '8yAVlsmpw1I'
+
+// No Stage, no header strip, no controls — deliberately. `showcase` already
+// wraps the media in a padded white panel, and every nested border and padding
+// here is height stolen from a 9:16 video on a landscape slide. Nesting a Stage
+// inside cost ~90px of frame at 1366x768. The film title lives in the slide's
+// eyebrow instead.
+export const HotDogClipWidget = ({ lang = 'en' }) => (
+  <div className="w-full h-full flex items-center justify-center select-none">
+    {/* Sized from the HEIGHT it is given, centred in the width that is left. */}
+    <div
+      className="h-full rounded-xl overflow-hidden border-2 border-slate-200 dark:border-slate-700 bg-black"
+      style={{ aspectRatio: '9 / 16' }}>
+      <iframe
+        className="w-full h-full"
+        src={`https://www.youtube-nocookie.com/embed/${CLIP_ID}?rel=0&modestbranding=1`}
+        title={pick(lang, 'Steve Martin’s hot dog bun meltdown', 'Cảnh Steve Martin nổi giận vì bánh mì xúc xích')}
+        loading="lazy"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
+        allowFullScreen
+      />
+    </div>
   </div>
 )
 
