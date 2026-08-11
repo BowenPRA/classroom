@@ -11,7 +11,9 @@
     "audit:svg": "node scripts/svg-audit.mjs",
     "check:deck": "node scripts/deck-check.mjs",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run deploy:primary && npm run deploy:mirror",
+    "deploy:primary": "gh-pages -d dist -r https://BowenPRA@github.com/BowenPRA/classroom.git",
+    "deploy:mirror": "gh-pages -d dist -r https://sbowen209@github.com/sbowen209/classroom.git"
   },
   "dependencies": {
     "katex": "^0.17.0",

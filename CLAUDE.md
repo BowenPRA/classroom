@@ -74,4 +74,7 @@ the room's real resolution. See LESSON-PLAYBOOK §6 for why that check is
 awkward to automate.
 
 Then commit to `main`, run `npm run deploy`, and confirm the live site is
-serving the new bundle before calling it done.
+serving the new bundle before calling it done. Both `git push` and
+`npm run deploy` fan out to two GitHub accounts — see README "Hosting". Confirm
+https://bowenpra.github.io/classroom/ ; the mirror gets the identical bundle
+from the same command.

@@ -13,7 +13,7 @@ Adding a lesson means adding one folder of data — it inherits all the polish.
 npm install
 npm run dev        # local dev server
 npm run build      # production build → dist/
-npm run deploy     # build + publish dist/ to the gh-pages branch
+npm run deploy     # build once + publish dist/ to both gh-pages branches
 npm run audit:svg  # check every diagram's text fits its boxes
 npm run check:deck -- "http://localhost:5173/#/lesson/y7-science/U01_1"
                    # walk every slide: overflow, broken images, console errors
@@ -24,8 +24,22 @@ first — the design principles, the build order, and the traps that pass lint a
 build while looking broken. This file is the field reference; that one is the
 method.
 
-Hosted on GitHub Pages at `/classroom/` (see `base` in `vite.config.js` — change it
-if you rename the repo).
+## Hosting
+
+The site is published twice, from two GitHub accounts, to the same path:
+
+- https://bowenpra.github.io/classroom/ — `BowenPRA/classroom`
+- https://sbowen209.github.io/classroom/ — `sbowen209/classroom`
+
+Both repos are named `classroom` on purpose. `base` in `vite.config.js` is
+`/classroom/`, so one build serves both URLs; renaming either repo means
+changing `base` and building separately for each.
+
+`origin` has two push URLs, so a plain `git push` mirrors the source to both
+accounts, and `npm run deploy` builds once and publishes `dist/` to both
+`gh-pages` branches. Nothing extra to run — but note that if the first push
+fails the second is skipped, so read the output rather than assuming both
+landed.
 
 ## How it's organised
 
