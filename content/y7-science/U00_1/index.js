@@ -18,6 +18,10 @@ export default {
     objective:
       'Get to know the class, walk through the expectation letter, and set up binders and named Learner\'s Books.',
     order: 0,
+    // Delisted — Day One is taught and done. It no longer shows on the home
+    // page or the Science course page, but nothing is deleted: the deck still
+    // opens at #/lesson/y7-science/U00_1. Remove this line to bring it back.
+    hidden: true,
   },
   slides,
   plan,

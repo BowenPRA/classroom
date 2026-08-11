@@ -22,6 +22,10 @@ const lessons = Object.entries(modules).map(([path, mod]) => {
     subtitle: meta.subtitle || '',
     objective: meta.objective || '',
     order: meta.order ?? 999,
+    // `hidden: true` delists a lesson: it disappears from the home page and
+    // its course page, but stays reachable at its direct URL. Use it to retire
+    // a lesson without deleting it — see content/y7-science/U00_1.
+    hidden: meta.hidden === true,
     slides: data.slides || [],
     plan: data.plan || null,
   }
@@ -33,7 +37,9 @@ const byOrder = (a, b) => a.order - b.order || a.slug.localeCompare(b.slug)
 export function getCatalog() {
   return COURSES.map((course) => ({
     ...course,
-    lessons: lessons.filter((l) => l.course === course.id).sort(byOrder),
+    lessons: lessons
+      .filter((l) => l.course === course.id && !l.hidden)
+      .sort(byOrder),
   }))
 }
 
