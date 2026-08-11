@@ -28,3 +28,25 @@ body {
 .dark .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: rgba(71, 85, 105, 0.4);
 }
+
+/* "That guess was wrong" nudge, used by the Word Wall tiles. Kept here because
+   tailwindcss-animate has no shake and a keyframe cannot live in a class list. */
+@keyframes wall-shake {
+  10%,
+  90% {
+    transform: translate3d(-3px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(5px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-7px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(7px, 0, 0);
+  }
+}

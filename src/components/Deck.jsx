@@ -87,18 +87,23 @@ export default function Deck({ lesson, course }) {
     if (currentIndex > 0) setCurrentIndex((i) => i - 1)
   }, [currentIndex])
 
+  // A `game` slide owns the keyboard: Enter and the arrows belong to the game,
+  // and on a one-slide game deck Enter would otherwise walk straight out of the
+  // lesson mid-round. Project mode (`f`) and the on-screen controls still work.
+  const navLocked = slides[currentIndex]?.layout === 'game'
+
   useEffect(() => {
     const onKey = (e) => {
       const tag = document.activeElement?.tagName
       if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return
-      if (e.key === 'ArrowRight' || e.key === 'Enter') { e.preventDefault(); handleNext() }
-      else if (e.key === 'ArrowLeft') { e.preventDefault(); handlePrev() }
+      if (e.key === 'ArrowRight' || e.key === 'Enter') { if (navLocked) return; e.preventDefault(); handleNext() }
+      else if (e.key === 'ArrowLeft') { if (navLocked) return; e.preventDefault(); handlePrev() }
       else if (e.key === 'Escape' && zoomedImage) setZoomedImage(null)
       else if (e.key.toLowerCase() === 'f') { e.preventDefault(); toggleDisplayMode() }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [handleNext, handlePrev, toggleDisplayMode, zoomedImage])
+  }, [handleNext, handlePrev, toggleDisplayMode, zoomedImage, navLocked])
 
   if (!slides.length) {
     return (

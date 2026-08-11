@@ -91,6 +91,7 @@ Each slide is a plain object. Set **`layout`** to pick a shape. (Slides with no
 | `stack` | Grid of note cards / checklist | `accent`, `icon`, `title`, `content`, `columns` (1\|2), `notes` — or `variant:'checklist'` + `items` |
 | `steps` | Numbered sequence | `accent`, `icon`, `title`, `content`, `steps: [{text}]`, optional side media, `reveal` |
 | `callout` | Single accent "glass" card | `accent`, `icon`, `eyebrow`, `title`, `content`, `notes`, `reveal` |
+| `game` | Full-bleed game board — no header, no padding | `widget` (gets `lang` **and** `isDisplayMode`) |
 | `gallery` | Grid of picture + key word cards | `accent`, `icon`, `title`, `eyebrow`, `content`, `tone`, `columns` (2\|3\|4), `copy`/`copyLabel`, `items: [{inlineSvg\|image, term, text, tag}]` |
 
 Any field can be suffixed `…Vn` for the Vietnamese version (e.g. `titleVn`,
@@ -128,6 +129,14 @@ Any field can be suffixed `…Vn` for the Vietnamese version (e.g. `titleVn`,
 
 Real photos live in the unit's `images/` folder with a `CREDITS.json` recording
 each source + licence (see `content/y7-science/U01_1/images/`).
+
+### Games
+
+The `games` course works the same way, except a "unit" is one game rather than a
+sequence of slides: a single `layout: 'game'` slide handing the whole slide to a
+widget. On a game slide the deck's Enter/arrow navigation is switched off, so
+the keyboard belongs to the game — leave via **Back** or **Finish**. See
+[`content/games/G01_word-wall/`](content/games/G01_word-wall/).
 
 ### Drawing diagrams
 

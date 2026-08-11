@@ -19,6 +19,14 @@ export const COURSES = [
     bilingual: true,
   },
   {
+    id: 'games',
+    title: 'Classroom Games',
+    subtitle: 'Play-to-learn · Kindergarten to Year 7',
+    color: '#f59e0b',
+    icon: 'Gamepad2',
+    bilingual: true, // the game's own interface toggles EN/VN
+  },
+  {
     id: 'freshman-math',
     title: 'Freshman Mathematics',
     subtitle: 'High School',
