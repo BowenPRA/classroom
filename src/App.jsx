@@ -1,6 +1,7 @@
 import { Routes, Route, useParams, useNavigate, Navigate } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import CoursePage from './pages/CoursePage.jsx'
+import HomeworkPage from './pages/HomeworkPage.jsx'
 import Plan from './pages/Plan.jsx'
 import Deck from './components/Deck.jsx'
 import { getCourse, getLesson } from '../content/registry.js'
@@ -29,6 +30,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/homework" element={<HomeworkPage />} />
       <Route path="/course/:courseId" element={<CoursePage />} />
       <Route path="/lesson/:courseId/:slug" element={<LessonView />} />
       <Route path="/plan/:courseId/:slug" element={<PlanView />} />

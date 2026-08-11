@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, Printer } from 'lucide-react'
 import SiteHeader from '../components/SiteHeader.jsx'
 import { getCatalog } from '../../content/registry.js'
+import { HOMEWORK } from '../../content/homework.js'
 import { CourseIcon } from '../lib/courseIcons.js'
+
+// The Homework button uses the packets' own orange, and is rendered as one more
+// card in the course grid — but it links to /homework, not a lesson course.
+const HW_COLOR = '#c25e12'
 
 export default function Home() {
   const catalog = getCatalog()
@@ -43,6 +48,26 @@ export default function Home() {
               </Link>
             )
           })}
+
+          <Link
+            to="/homework"
+            className="group relative flex items-center gap-4 p-5 sm:p-6 rounded-3xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
+          >
+            <span
+              className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl text-white shadow-sm shrink-0"
+              style={{ backgroundColor: HW_COLOR }}
+            >
+              <Printer className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.5} />
+            </span>
+            <div className="min-w-0 flex-1">
+              <h2 className="font-black text-lg sm:text-xl tracking-tight truncate">Homework</h2>
+              <p className="text-slate-500 dark:text-slate-400 font-bold text-sm truncate">Printable packets</p>
+              <p className="mt-1 text-xs font-black uppercase tracking-widest" style={{ color: HW_COLOR }}>
+                {`${HOMEWORK.length} packet${HOMEWORK.length === 1 ? '' : 's'}`}
+              </p>
+            </div>
+            <ChevronRight className="w-6 h-6 text-slate-300 dark:text-slate-600 group-hover:text-slate-500 transition-colors shrink-0" strokeWidth={2.5} />
+          </Link>
         </div>
       </main>
     </div>
