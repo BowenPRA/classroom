@@ -8,15 +8,29 @@
 // bumper — never plain body text.
 //
 // The spine is one idea, and it is both the science and the English: STRUCTURE
-// FITS FUNCTION. A cell's shape is the reason it can do its job. Every cell in
-// the lesson is taught the same way — name the job, name the special feature,
-// then join them with the sentence frame "adapted to ___ because it has ___".
-// The class already met the cell PARTS in 1.1 and 1.2; here those parts get a
-// purpose. Each drawn diagram is paired with the real cell under a microscope.
+// FITS FUNCTION. A cell's shape is the reason it can do its job. The class
+// already met the cell PARTS in 1.1 and 1.2; here those parts get a purpose.
 //
-// Source: Learner's Book Unit 1.3, pages 17–21. The structure-function table on
-// the Draw This slide is the book's own Activity 1.3.1. Figures are drawn in
-// diagrams.js; photographs are openly licensed (see images/CREDITS.json).
+// THE COPY-DOWN PLAN, because this is what keeps the lesson from drowning.
+// An earlier version of this deck gave each of the five cells its own prose
+// "write" panel AND finished with a table containing the same five facts AND
+// set that table again for homework — every fact written three times. Now there
+// is exactly one artefact per activity in the book:
+//   · two short definitions (function; specialised/adapted),
+//   · the ANIMAL table (Activity 1.3.1), ruled up right after the first cell and
+//     filled in a row at a time as each cell is taught — each cell slide carries
+//     an orange `>` bumper that IS its row, dictated,
+//   · the PLANT table (Activity 1.3.2), which the book asks for separately,
+//   · the sentence frame.
+// Nothing else is copied. That is three short notes and two tables in 50 minutes.
+//
+// Ask-before-tell runs the opening: slide 3 shows three cells from one body with
+// no names and no answer on it, and slide 4 pays it off with the number. Each
+// drawn diagram is paired with the real cell under a microscope.
+//
+// Source: Learner's Book Unit 1.3, pages 17-21. Questions 1-4 and Activities
+// 1.3.1 / 1.3.2 (including its peer assessment) are the book's own. Figures are
+// drawn in diagrams.js; photographs are openly licensed (see images/CREDITS.json).
 import { DIAGRAMS } from './diagrams.js'
 import { SpecialisedCellWidget } from './widgets.jsx'
 import blood from './images/blood.jpg'
@@ -24,6 +38,7 @@ import neuron from './images/neuron.jpg'
 import trachea from './images/trachea.jpg'
 import roothair from './images/roothair.jpg'
 import leaf from './images/leaf.jpg'
+import capillary from './images/capillary.jpg'
 
 const TEAL = '#0087a8'
 const PURPLE = '#5c2483'
@@ -66,46 +81,66 @@ export const slides = [
     sub: 'A cell **membrane** controls what goes in and out. A cell **wall** holds a plant cell in shape. A **nucleus** controls the cell. **Chloroplasts** make food. Today: whole cells with jobs.',
     subVn: '**Màng** tế bào kiểm soát những gì ra vào. **Thành** tế bào giữ hình dạng cho tế bào thực vật. **Nhân** điều khiển tế bào. **Lục lạp** tạo thức ăn. Hôm nay: cả những tế bào có nhiệm vụ riêng.',
   },
+  // The hook. No names, no numbers, no answer anywhere on this slide — the
+  // picture is three bare silhouettes and the caption is a question. Take wild
+  // guesses and put a few on the board before moving on; the gap between their
+  // guess and slide 4 is the lesson.
+  {
+    layout: 'showcase',
+    accent: PURPLE,
+    icon: 'Users',
+    eyebrow: 'In pairs — two minutes, and no calling out',
+    eyebrowVn: 'Theo cặp — hai phút, không nói to đáp án',
+    title: 'Why Are These Not the Same?',
+    titleVn: 'Vì sao chúng không giống nhau?',
+    inlineSvg: DIAGRAMS.THREE_SHAPES,
+    caption: 'All three of these came out of **one body** — and every one of them was built from the **same set of instructions**. So why do they look nothing alike? Agree on a reason with your partner.',
+    captionVn: 'Cả ba đều lấy ra từ **một cơ thể** — và mỗi cái đều được tạo nên từ **cùng một bộ chỉ dẫn**. Vậy vì sao chúng trông chẳng giống nhau chút nào? Hãy cùng bạn thống nhất một lý do.',
+  },
   {
     layout: 'statement',
     accent: PURPLE,
-    icon: 'Users',
-    eyebrow: 'In pairs — no answer yet, just think',
-    eyebrowVn: 'Theo cặp — chưa cần đáp án, chỉ suy nghĩ',
-    title: 'Are All Your Cells the Same?',
-    titleVn: 'Tất cả tế bào của em có giống nhau không?',
-    text: 'Last lesson you learned you are built from about **100 trillion cells**.',
-    textVn: 'Tiết trước em đã biết mình được tạo nên từ khoảng **100 nghìn tỉ tế bào**.',
-    sub: 'Are they **all the same**? Name **three different jobs** a cell might do.',
-    subVn: 'Chúng có **giống hệt nhau** không? Kể **ba nhiệm vụ khác nhau** mà một tế bào có thể làm.',
-  },
-  {
-    layout: 'split',
-    accent: TEAL,
-    icon: 'Boxes',
-    eyebrow: 'The big idea',
-    eyebrowVn: 'Ý tưởng lớn',
-    title: 'Different Jobs, Different Shapes',
-    titleVn: 'Nhiệm vụ khác nhau, hình dạng khác nhau',
-    ratio: 50,
-    inlineSvg: DIAGRAMS.THREE_SHAPES,
-    content:
-      'No — your cells are **not** all the same. There are many kinds, and each kind has a different **function**: the job it does.\n\n' +
-      'Each one is **specialised** — its shape is built to do that job really well. We say the cell is **adapted** to its function.',
-    contentVn:
-      'Không — tế bào của em **không** giống hệt nhau. Có rất nhiều loại, và mỗi loại có một **chức năng** khác nhau: nhiệm vụ nó làm.\n\n' +
-      'Mỗi loại đều **chuyên hoá** — hình dạng của nó được tạo ra để làm tốt nhiệm vụ đó. Ta nói tế bào **thích nghi** với chức năng của nó.',
+    eyebrow: 'The answer',
+    eyebrowVn: 'Đáp án',
+    text: 'Your body builds about **200 different kinds** of cell.',
+    textVn: 'Cơ thể em tạo ra khoảng **200 loại tế bào** khác nhau.',
+    sub: 'Last lesson you learned you are about **100 trillion cells**. They are not 100 trillion copies of one thing — they come in about **200 kinds**, and each kind is a different shape, because each kind has a different **job**. Today you meet **five** of them.',
+    subVn: 'Tiết trước em đã biết mình có khoảng **100 nghìn tỉ tế bào**. Đó không phải 100 nghìn tỉ bản sao của một thứ — chúng có khoảng **200 loại**, mỗi loại một hình dạng khác nhau, vì mỗi loại có một **nhiệm vụ** khác nhau. Hôm nay em sẽ gặp **năm** loại.',
     notes: [
       {
         tone: 'write',
-        text:
-          '**Function:** the job a cell does.\n' +
-          '**Specialised / adapted:** the cell has a structure that helps it do its function really well.',
-        textVn:
-          '**Chức năng (function):** nhiệm vụ mà tế bào làm.\n' +
-          '**Chuyên hoá / thích nghi (specialised / adapted):** tế bào có cấu trúc giúp nó làm tốt chức năng của mình.',
+        text: '**Function:** the job a cell does, or the role it plays.',
+        textVn: '**Chức năng (function):** nhiệm vụ mà tế bào làm, hay vai trò nó đảm nhận.',
       },
     ],
+  },
+  // The unit's big word gets its own slide, the way "Stain" does in 1.2 — and it
+  // earns a second job: "specialist" is a word the class already owns in English,
+  // and it explains, before they meet it, why a red blood cell throws away its
+  // own nucleus.
+  {
+    layout: 'callout',
+    accent: ORANGE,
+    icon: 'Target',
+    eyebrow: 'Key word',
+    eyebrowVn: 'Từ khoá',
+    title: 'Specialised',
+    titleVn: 'Specialised — Chuyên hoá',
+    content: 'Each of those 200 kinds is **specialised**. Its structure is built for its own job — so it does that one job extremely well, and it cannot do the others.',
+    contentVn: 'Mỗi loại trong số 200 loại đó đều **chuyên hoá**. Cấu trúc của nó được tạo ra cho nhiệm vụ riêng — nên nó làm nhiệm vụ đó cực kỳ tốt, và không làm được những việc khác.',
+    notes: [
+      {
+        tone: 'write',
+        text: '**Specialised / adapted:** the cell has a structure that helps it carry out its function really well.',
+        textVn: '**Chuyên hoá / thích nghi (specialised / adapted):** tế bào có cấu trúc giúp nó thực hiện chức năng của mình thật tốt.',
+      },
+    ],
+    reveal: {
+      label: 'English class: what is a specialist?',
+      labelVn: 'Tiếng Anh: "specialist" là gì?',
+      answer: 'A **specialist** is a person who does **one** job very well — an eye doctor, a heart doctor. You would not go to an eye doctor for a broken leg. A **specialised cell** is exactly that: brilliant at one job, and no use at all for the rest. Watch what the first one gives up to be good at its job.',
+      answerVn: '**Specialist** (chuyên gia) là người làm **một** việc rất giỏi — bác sĩ mắt, bác sĩ tim. Em sẽ không đến bác sĩ mắt để chữa gãy chân. **Tế bào chuyên hoá** đúng là như vậy: xuất sắc ở một nhiệm vụ, và vô dụng với mọi việc khác. Hãy xem tế bào đầu tiên đã từ bỏ thứ gì để giỏi nhiệm vụ của nó.',
+    },
   },
 
   // ── Section 2: three specialised animal cells ────────────────────────────
@@ -121,23 +156,56 @@ export const slides = [
     inlineSvg: DIAGRAMS.RED_BLOOD_CELL,
     content:
       'Its **function** is to carry **oxygen** around your body.\n\n' +
-      'Its cytoplasm is full of a red **pigment** (a colour) called **haemoglobin**, and haemoglobin is what carries the oxygen.',
+      'Two things make it good at that. Its cytoplasm is full of a red **pigment** (a colour) called **haemoglobin**, and haemoglobin is what actually holds the oxygen. And it is **smaller than almost every other cell** in you, so it fits through the very narrowest blood vessels — the **capillaries**.',
     contentVn:
       '**Chức năng** của nó là vận chuyển **oxy** đi khắp cơ thể.\n\n' +
-      'Tế bào chất của nó chứa đầy một **sắc tố** đỏ tên là **haemoglobin**, và chính haemoglobin vận chuyển oxy.',
+      'Hai điều giúp nó làm tốt việc đó. Tế bào chất của nó chứa đầy một **sắc tố** (màu) đỏ tên là **haemoglobin**, và chính haemoglobin giữ lấy oxy. Và nó **nhỏ hơn hầu hết mọi tế bào khác** trong cơ thể, nên đi lọt qua những mạch máu hẹp nhất — các **mao mạch (capillary)**.',
+    reveal: {
+      label: 'And why has it got no nucleus?',
+      labelVn: 'Còn vì sao nó không có nhân?',
+      answer: 'Almost every other cell keeps its nucleus. This one **throws its own away** — that is its third adaptation, and it leaves **more room inside for haemoglobin**, so it can carry even more oxygen. A specialist gives things up to be better at one job.',
+      answerVn: 'Gần như mọi tế bào khác đều giữ nhân. Tế bào này **vứt bỏ nhân của chính mình** — đó là đặc điểm thích nghi thứ ba, và nó để lại **nhiều chỗ hơn cho haemoglobin**, nhờ đó chở được nhiều oxy hơn. Một chuyên gia phải từ bỏ vài thứ để giỏi hơn ở một việc.',
+    },
+  },
+  {
+    layout: 'showcase',
+    accent: CRIMSON,
+    icon: 'ScanEye',
+    eyebrow: 'The real thing',
+    eyebrowVn: 'Vật thật',
+    title: 'Small Enough to Bend Through',
+    titleVn: 'Đủ nhỏ để lách qua',
+    image: capillary,
+    caption: 'One red blood cell, photographed inside a **capillary**. The vessel is so narrow that the cell has had to **bend in half** to get through it — and it can, because it is tiny, floppy, and has no nucleus in the way. That is structure fitting function, in one photograph.',
+    captionVn: 'Một tế bào hồng cầu, chụp bên trong một **mao mạch**. Mạch hẹp đến mức tế bào phải **gập đôi lại** mới qua được — và nó làm được, vì nó nhỏ, mềm, và không có nhân cản đường. Đó chính là cấu trúc phù hợp với chức năng, gói trong một bức ảnh.',
+  },
+  // The Draw This, placed here rather than at the end on purpose. The table is
+  // the ONE place the animal cells get written down, so it is ruled up now, with
+  // the worked row already in it, and filled a row at a time as the lesson runs.
+  {
+    layout: 'split',
+    accent: ORANGE,
+    icon: 'Grid3x3',
+    eyebrow: 'Learner’s Book, page 19 · Activity 1.3.1',
+    eyebrowVn: 'Sách học sinh, trang 19 · Hoạt động 1.3.1',
+    title: 'Rule Up the Table',
+    titleVn: 'Kẻ bảng',
+    ratio: 40,
+    inlineSvg: DIAGRAMS.ANIMAL_TABLE,
+    drawThis: true,
+    content:
+      'This table is where the three animal cells go — **instead of** notes, not as well as them. Rule it up now, and we will fill in a row as we meet each cell.\n\n' +
+      'The red blood cell is done for you, and it gets **three** lines, because you have just found all three of its adaptations.',
+    contentVn:
+      'Bảng này là nơi ghi ba tế bào động vật — **thay cho** ghi chép, chứ không phải ghi thêm. Hãy kẻ bảng ngay bây giờ, và ta sẽ điền từng dòng khi gặp từng tế bào.\n\n' +
+      'Tế bào hồng cầu đã được làm sẵn, và nó có **ba** dòng, vì em vừa tìm ra đủ ba đặc điểm thích nghi của nó.',
     notes: [
       {
         tone: 'write',
-        text: '**Red blood cell:** carries oxygen. It is full of the red pigment **haemoglobin** and has **no nucleus**, leaving more room for it.',
-        textVn: '**Tế bào hồng cầu:** vận chuyển oxy. Nó chứa đầy sắc tố đỏ **haemoglobin** và **không có nhân**, để có nhiều chỗ hơn cho haemoglobin.',
+        text: 'Copy the table. Give it a **title** and use a **ruler**. Leave the red blood cell **three** lines: haemoglobin · small enough for a capillary · no nucleus.',
+        textVn: 'Chép bảng. Đặt **tiêu đề** và dùng **thước**. Chừa cho tế bào hồng cầu **ba** dòng: haemoglobin · đủ nhỏ để qua mao mạch · không có nhân.',
       },
     ],
-    reveal: {
-      label: 'Why has it got no nucleus?',
-      labelVn: 'Vì sao nó không có nhân?',
-      answer: 'Almost every other cell keeps its nucleus. The red blood cell gives its up so there is **more room inside for haemoglobin** — so it can carry even more oxygen. The structure fits the job.',
-      answerVn: 'Gần như mọi tế bào khác đều giữ nhân. Tế bào hồng cầu bỏ nhân đi để có **nhiều chỗ hơn cho haemoglobin** — nhờ đó chở được nhiều oxy hơn. Cấu trúc phù hợp với nhiệm vụ.',
-    },
   },
   {
     layout: 'split',
@@ -151,23 +219,18 @@ export const slides = [
     side: 'left',
     inlineSvg: DIAGRAMS.NEURONE,
     content:
-      'Its **function** is to carry **electrical signals** from one part of the body to another — for example, from your brain to a muscle, to make it move.\n\n' +
-      'The **axon** is a very long strand, so a signal can travel a long way, very fast. The short **dendrites** collect signals from nearby cells.',
+      'Its **function** is to carry **electrical signals** around the body — from your brain to a muscle, to make it move.\n\n' +
+      'The **axon** is a very long strand; the short **dendrites** collect signals from nearby cells. The longest neurone in you runs from the bottom of your back to your big toe — about **one metre**, all of it one cell.\n\n' +
+      '> **Row 2 — Neurone.** Function: carries electrical signals. Structure: a very long **axon**. How this helps: signals travel far, and fast.',
     contentVn:
-      '**Chức năng** của nó là truyền **tín hiệu điện** từ bộ phận này sang bộ phận khác — ví dụ, từ não đến một cơ, để làm cơ cử động.\n\n' +
-      '**Sợi trục (axon)** là một sợi rất dài, nên tín hiệu truyền được rất xa và rất nhanh. Các **sợi nhánh (dendrite)** ngắn thu tín hiệu từ các tế bào lân cận.',
-    notes: [
-      {
-        tone: 'write',
-        text: '**Neurone:** carries electrical signals. It has a very long **axon**, so signals travel far and fast, and short **dendrites** to collect them.',
-        textVn: '**Tế bào thần kinh:** truyền tín hiệu điện. Nó có **sợi trục** rất dài để tín hiệu đi xa và nhanh, và các **sợi nhánh** ngắn để thu tín hiệu.',
-      },
-    ],
+      '**Chức năng** của nó là truyền **tín hiệu điện** đi khắp cơ thể — từ não đến một cơ, để làm cơ cử động.\n\n' +
+      '**Sợi trục (axon)** là một sợi rất dài; các **sợi nhánh (dendrite)** ngắn thu tín hiệu từ tế bào lân cận. Tế bào thần kinh dài nhất trong cơ thể em chạy từ cuối lưng xuống ngón chân cái — khoảng **một mét**, tất cả chỉ là một tế bào.\n\n' +
+      '> **Dòng 2 — Tế bào thần kinh.** Chức năng: truyền tín hiệu điện. Cấu trúc: một **sợi trục** rất dài. Điều này giúp: tín hiệu đi xa, và nhanh.',
   },
   {
     layout: 'split',
     accent: CRIMSON,
-    icon: 'Wind',
+    icon: 'Move',
     eyebrow: 'Animal cell 3',
     eyebrowVn: 'Tế bào động vật 3',
     title: 'Ciliated Cell',
@@ -175,18 +238,17 @@ export const slides = [
     ratio: 48,
     inlineSvg: DIAGRAMS.CILIATED_CELL,
     content:
-      'These cells line the tubes from your mouth down to your lungs. Along the top edge they have tiny hairs called **cilia**, and the cilia can **move**.\n\n' +
-      'Other cells there make sticky **mucus** that traps dust and germs from the air. The cilia sweep the mucus up to the back of your mouth, and you swallow it.',
+      'These cells line the tubes from your mouth down to your lungs, and along the top edge they have tiny moving hairs called **cilia**. Other cells there make sticky **mucus**, which traps dust and germs from the air — and the cilia sweep it up towards your mouth.\n\n' +
+      '> **Row 3 — Ciliated cell.** Function: sweeps mucus out of the airways. Structure: moving **cilia** along the top. How this helps: dust and germs are carried away from the lungs.',
     contentVn:
-      'Những tế bào này lót các ống từ miệng xuống phổi. Ở mép trên chúng có những sợi lông nhỏ gọi là **lông rung (cilia)**, và lông rung biết **chuyển động**.\n\n' +
-      'Các tế bào khác ở đó tạo ra **chất nhầy (mucus)** dính, giữ lại bụi và vi khuẩn trong không khí. Lông rung quét chất nhầy lên cuối miệng, và em nuốt nó xuống.',
-    notes: [
-      {
-        tone: 'write',
-        text: '**Ciliated cell:** has tiny moving hairs called **cilia** on top. They sweep **mucus** — with its trapped dust and germs — away from the lungs.',
-        textVn: '**Tế bào có lông rung:** có những sợi lông nhỏ biết chuyển động gọi là **lông rung** ở phía trên. Chúng quét **chất nhầy** — cùng bụi và vi khuẩn bị giữ lại — ra khỏi phổi.',
-      },
-    ],
+      'Những tế bào này lót các ống từ miệng xuống phổi, và ở mép trên chúng có những sợi lông nhỏ biết chuyển động gọi là **lông rung (cilia)**. Các tế bào khác ở đó tạo ra **chất nhầy (mucus)** dính, giữ lại bụi và vi khuẩn trong không khí — và lông rung quét nó lên phía miệng.\n\n' +
+      '> **Dòng 3 — Tế bào có lông rung.** Chức năng: quét chất nhầy ra khỏi đường thở. Cấu trúc: **lông rung** biết chuyển động ở mép trên. Điều này giúp: bụi và vi khuẩn bị đưa ra xa khỏi phổi.',
+    reveal: {
+      label: 'So where does all that mucus go?',
+      labelVn: 'Vậy tất cả chất nhầy đó đi đâu?',
+      answer: 'You **swallow** it. About **a litre of it, every day**. The cilia beat roughly **twelve times a second**, all day and all night, pushing the mucus and everything stuck in it up to the back of your mouth — and down it goes, without you ever noticing. That is what keeps the dust out of your lungs.',
+      answerVn: 'Em **nuốt** nó xuống. Khoảng **một lít mỗi ngày**. Lông rung đập khoảng **mười hai lần một giây**, suốt ngày lẫn đêm, đẩy chất nhầy cùng mọi thứ dính trong đó lên cuối miệng — rồi trôi xuống, mà em chẳng hề hay biết. Chính điều đó giữ cho bụi không vào phổi.',
+    },
   },
   {
     layout: 'gallery',
@@ -198,8 +260,8 @@ export const slides = [
     eyebrowVn: 'Chính ba loại đó, ngoài đời thực',
     title: 'Down a Real Microscope',
     titleVn: 'Nhìn qua kính hiển vi thật',
-    content: 'Every cell you have just drawn is a real thing. Here they are down a microscope — match each photograph to the drawing you copied.',
-    contentVn: 'Mỗi tế bào em vừa vẽ đều là vật thật. Đây là chúng qua kính hiển vi — hãy ghép mỗi bức ảnh với hình em đã chép.',
+    content: 'Every cell in your table is a real thing. Here they are down a microscope — match each photograph to the drawing beside it.',
+    contentVn: 'Mỗi tế bào trong bảng của em đều là vật thật. Đây là chúng qua kính hiển vi — hãy ghép mỗi bức ảnh với hình vẽ bên cạnh.',
     items: [
       {
         image: blood,
@@ -263,18 +325,13 @@ export const slides = [
     side: 'left',
     inlineSvg: DIAGRAMS.ROOT_HAIR_CELL,
     content:
-      'Root hair cells are found on the outside of a plant’s **roots**. Their **function** is to **absorb** — soak up — water from the soil.\n\n' +
-      'Each cell has a long, thin **extension** that pushes out between the soil grains, giving a big surface for water to move in through.',
+      'Root hair cells grow on the outside of a plant’s **roots**. Their **function** is to **absorb** — soak up — water from the soil.\n\n' +
+      'Each one has a long, thin **extension** pushing out between the soil grains — a big surface for water to move in through.\n\n' +
+      '> **Root hair cell.** Function: absorbs water from the soil. Structure: a long, thin **root hair**. How this helps: a big surface, so water moves in easily.',
     contentVn:
-      'Tế bào lông hút nằm ở mặt ngoài **rễ** cây. **Chức năng** của chúng là **hấp thụ** — hút — nước từ đất.\n\n' +
-      'Mỗi tế bào có một phần **kéo dài** dài và mảnh, đẩy ra giữa các hạt đất, tạo bề mặt lớn để nước đi vào.',
-    notes: [
-      {
-        tone: 'write',
-        text: '**Root hair cell:** absorbs water from the soil. Its long, thin **root hair** gives a big surface, so water moves in easily.',
-        textVn: '**Tế bào lông hút:** hấp thụ nước từ đất. **Lông hút** dài và mảnh tạo bề mặt lớn, nên nước đi vào dễ dàng.',
-      },
-    ],
+      'Tế bào lông hút mọc ở mặt ngoài **rễ** cây. **Chức năng** của chúng là **hấp thụ** — hút — nước từ đất.\n\n' +
+      'Mỗi tế bào có một phần **kéo dài** dài và mảnh, đẩy ra giữa các hạt đất — một bề mặt lớn để nước đi vào.\n\n' +
+      '> **Tế bào lông hút.** Chức năng: hấp thụ nước từ đất. Cấu trúc: một **lông hút** dài và mảnh. Điều này giúp: bề mặt lớn, nên nước đi vào dễ dàng.',
     reveal: {
       label: 'Page 20, Question 4 — which parts does the water pass through?',
       labelVn: 'Trang 20, Câu hỏi 4 — nước đi qua những bộ phận nào?',
@@ -286,8 +343,8 @@ export const slides = [
     layout: 'statement',
     accent: GREEN,
     icon: 'Lightbulb',
-    eyebrow: 'Think about it',
-    eyebrowVn: 'Hãy suy nghĩ',
+    eyebrow: 'Page 20 · Question 3 — think about it',
+    eyebrowVn: 'Trang 20 · Câu hỏi 3 — hãy suy nghĩ',
     title: 'Why No Chloroplasts?',
     titleVn: 'Vì sao không có lục lạp?',
     text: 'A root hair cell is a **plant** cell — but it has **no chloroplasts**. Why not?',
@@ -310,18 +367,19 @@ export const slides = [
     ratio: 48,
     inlineSvg: DIAGRAMS.PALISADE_CELL,
     content:
-      'Palisade cells are found in the **leaves** of a plant. Their **function** is to make food by **photosynthesis**.\n\n' +
-      'They are packed with **chloroplasts**, which contain the green **chlorophyll** that absorbs energy from sunlight. They sit near the top of the leaf, closest to the light.',
+      'Palisade cells are found in the **leaves**. Their **function** is to make food by **photosynthesis**.\n\n' +
+      'They are packed with **chloroplasts**, which hold the green **chlorophyll** that absorbs energy from sunlight.\n\n' +
+      '> **Palisade cell.** Function: makes food by photosynthesis. Structure: packed with **chloroplasts**, and tall. How this helps: it catches as much sunlight as possible.',
     contentVn:
       'Tế bào mô giậu nằm trong **lá** cây. **Chức năng** của chúng là tạo thức ăn bằng **quang hợp**.\n\n' +
-      'Chúng chứa đầy **lục lạp**, bên trong có **diệp lục** màu xanh hấp thụ năng lượng từ ánh sáng mặt trời. Chúng nằm gần mặt trên của lá, gần ánh sáng nhất.',
-    notes: [
-      {
-        tone: 'write',
-        text: '**Palisade cell:** makes food by photosynthesis. It is packed with **chloroplasts**, near the top of the leaf where the sunlight is.',
-        textVn: '**Tế bào mô giậu:** tạo thức ăn bằng quang hợp. Nó chứa đầy **lục lạp**, nằm gần mặt trên của lá nơi có ánh sáng.',
-      },
-    ],
+      'Chúng chứa đầy **lục lạp**, bên trong có **diệp lục** màu xanh hấp thụ năng lượng từ ánh sáng mặt trời.\n\n' +
+      '> **Tế bào mô giậu.** Chức năng: quang hợp tạo thức ăn. Cấu trúc: chứa đầy **lục lạp**, và cao. Điều này giúp: bắt được nhiều ánh sáng nhất có thể.',
+    reveal: {
+      label: 'Why tall — and why at the top of the leaf?',
+      labelVn: 'Vì sao lại cao — và vì sao nằm ở mặt trên của lá?',
+      answer: '**Tall** means one cell can stack more chloroplasts one above another, so it catches more light. At the **top** means the light reaches it **first**, before any other cell can shade it. The shape and the position were both chosen by the same job.',
+      answerVn: '**Cao** nghĩa là một tế bào xếp được nhiều lục lạp chồng lên nhau, nên bắt được nhiều ánh sáng hơn. Ở **mặt trên** nghĩa là ánh sáng đến với nó **trước tiên**, trước khi có tế bào nào che mất. Cả hình dạng lẫn vị trí đều do cùng một nhiệm vụ quyết định.',
+    },
   },
   {
     layout: 'gallery',
@@ -329,12 +387,13 @@ export const slides = [
     icon: 'Microscope',
     tone: 'plant',
     columns: 2,
+    copy: false,
     eyebrow: 'The plant cells, for real',
     eyebrowVn: 'Tế bào thực vật, ngoài đời thực',
     title: 'Down a Real Microscope',
     titleVn: 'Nhìn qua kính hiển vi thật',
-    content: 'And the two plant cells, as they really look. Match each one to the drawing you copied.',
-    contentVn: 'Và hai tế bào thực vật, đúng như chúng trông thật. Hãy ghép mỗi cái với hình em đã chép.',
+    content: 'And the two plant cells, as they really look. Match each one to the drawing you have just seen.',
+    contentVn: 'Và hai tế bào thực vật, đúng như chúng trông thật. Hãy ghép mỗi cái với hình vẽ em vừa xem.',
     items: [
       {
         image: roothair,
@@ -350,8 +409,85 @@ export const slides = [
       },
     ],
   },
+  // The bookend: the opening question, now answerable. Same plant, same set of
+  // parts available to both, opposite jobs — so opposite shapes. Media-only
+  // columns, so each shape gets the full height of its panel.
+  {
+    layout: 'compare',
+    accent: GREEN,
+    icon: 'Scale',
+    eyebrow: 'One plant, two cells',
+    eyebrowVn: 'Một cái cây, hai tế bào',
+    title: 'Same Plant. Opposite Shapes.',
+    titleVn: 'Cùng một cây. Hình dạng trái ngược.',
+    columns: [
+      {
+        heading: 'Down in the dark',
+        headingVn: 'Dưới lòng đất tối',
+        accent: '#a3762f',
+        icon: 'Droplet',
+        inlineSvg: DIAGRAMS.SHAPE_ROOTHAIR,
+        caption: 'Job: **soak up water**. So it grows **long and thin**, out between the grains of soil — and builds **no chloroplasts**, because there is no light to use.',
+        captionVn: 'Nhiệm vụ: **hút nước**. Nên nó mọc **dài và mảnh**, len ra giữa các hạt đất — và **không tạo lục lạp**, vì ở đó không có ánh sáng để dùng.',
+      },
+      {
+        heading: 'Up in the light',
+        headingVn: 'Trên cao trong ánh sáng',
+        accent: GREEN,
+        icon: 'Sun',
+        inlineSvg: DIAGRAMS.SHAPE_PALISADE,
+        caption: 'Job: **catch sunlight**. So it grows **tall and packed with chloroplasts**, standing at the very top of the leaf where the light arrives first.',
+        captionVn: 'Nhiệm vụ: **bắt ánh sáng**. Nên nó mọc **cao và chứa đầy lục lạp**, đứng ngay mặt trên của lá nơi ánh sáng đến đầu tiên.',
+      },
+    ],
+  },
 
-  // ── Section 4: the English, the table, the drill ─────────────────────────
+  // ── Section 4: the second table, the English, the drill ──────────────────
+  // Activity 1.3.2 is a SEPARATE table in the book, with its own peer assessment
+  // — so it is a separate task here, and the peer assessment is the checking.
+  {
+    layout: 'steps',
+    accent: PURPLE,
+    icon: 'Grid3x3',
+    eyebrow: 'Learner’s Book, page 21 · Activity 1.3.2',
+    eyebrowVn: 'Sách học sinh, trang 21 · Hoạt động 1.3.2',
+    title: 'Now the Plant Cells — On Your Own',
+    titleVn: 'Giờ đến tế bào thực vật — em tự làm',
+    inlineSvg: DIAGRAMS.PLANT_TABLE,
+    drawThis: true,
+    content: 'A **second** table, the same four columns. This time nothing is filled in for you — you already have both rows in your notes.',
+    contentVn: 'Một bảng **thứ hai**, vẫn bốn cột như vậy. Lần này không có gì làm sẵn — em đã có sẵn cả hai dòng trong vở rồi.',
+    steps: [
+      {
+        text: 'Rule up the four columns again, and give this table a **title** too.',
+        textVn: 'Kẻ lại bốn cột, và cũng đặt **tiêu đề** cho bảng này.',
+      },
+      {
+        text: 'Fill in the **root hair cell** row, then the **palisade cell** row.',
+        textVn: 'Điền dòng **tế bào lông hút**, rồi dòng **tế bào mô giậu**.',
+      },
+      {
+        text: 'Swap notebooks with your partner and check theirs against the four points below.',
+        textVn: 'Đổi vở với bạn và kiểm tra bài của bạn theo bốn điểm dưới đây.',
+      },
+    ],
+    reveal: {
+      label: 'Peer assessment — what you are checking for',
+      labelVn: 'Đánh giá bạn — em cần kiểm tra những gì',
+      answer:
+        'Give your partner a tick for each one:\n\n' +
+        '**1.** The lines are **ruled**, not drawn freehand.\n' +
+        '**2.** Every **column has a heading**, and the table has a title.\n' +
+        '**3.** Each **row is named** with one of the two plant cells.\n' +
+        '**4.** The descriptions are **short and clear** — not copied sentences from the book.',
+      answerVn:
+        'Cho bạn một dấu tích ở mỗi mục:\n\n' +
+        '**1.** Các đường kẻ được **kẻ bằng thước**, không vẽ tay.\n' +
+        '**2.** Mỗi **cột đều có tiêu đề**, và bảng có tên.\n' +
+        '**3.** Mỗi **dòng được đặt tên** bằng một trong hai tế bào thực vật.\n' +
+        '**4.** Phần mô tả **ngắn gọn và rõ ràng** — không chép nguyên câu từ sách.',
+    },
+  },
   {
     layout: 'split',
     accent: TEAL,
@@ -363,10 +499,10 @@ export const slides = [
     ratio: 45,
     content:
       'Every cell today told the **same kind of story**: it has a job, and a special feature that helps it do that job.\n\n' +
-      'There is one English sentence that says it every time. Learn the frame and you can describe **any** specialised cell.',
+      'There is one English sentence that says it every time. Learn the frame and you can describe **any** specialised cell — including ones you have never met.',
     contentVn:
       'Mọi tế bào hôm nay đều kể **cùng một kiểu câu chuyện**: nó có một nhiệm vụ, và một đặc điểm đặc biệt giúp nó làm nhiệm vụ đó.\n\n' +
-      'Có một câu tiếng Anh nói điều đó mỗi lần. Học mẫu câu này thì em mô tả được **bất kỳ** tế bào chuyên hoá nào.',
+      'Có một câu tiếng Anh nói điều đó mỗi lần. Học mẫu câu này thì em mô tả được **bất kỳ** tế bào chuyên hoá nào — kể cả loại em chưa từng gặp.',
     notes: [
       {
         tone: 'write',
@@ -388,27 +524,6 @@ export const slides = [
       answer: 'A palisade cell is adapted to **make food by photosynthesis** because it has **lots of chloroplasts near the top of the leaf**.',
       answerVn: 'A palisade cell is adapted to **make food by photosynthesis** because it has **lots of chloroplasts near the top of the leaf**. (Tế bào mô giậu thích nghi để quang hợp vì nó có nhiều lục lạp gần mặt trên của lá.)',
     },
-  },
-  {
-    layout: 'split',
-    accent: ORANGE,
-    icon: 'Table',
-    eyebrow: 'Learner’s Book, Activity 1.3.1',
-    eyebrowVn: 'Sách học sinh, Hoạt động 1.3.1',
-    title: 'Build the Table',
-    titleVn: 'Lập bảng',
-    ratio: 52,
-    inlineSvg: DIAGRAMS.SF_TABLE,
-    drawThis: true,
-    content: 'Copy this table into your notebook. The **red blood cell** row is done for you as an example. Fill in the **neurone** and the **ciliated cell**, then add a row for each **plant** cell.',
-    contentVn: 'Chép bảng này vào vở. Dòng **tế bào hồng cầu** đã được làm sẵn làm ví dụ. Hãy điền **tế bào thần kinh** và **tế bào có lông rung**, rồi thêm một dòng cho mỗi **tế bào thực vật**.',
-    notes: [
-      {
-        tone: 'write',
-        text: 'Give your table a **title**, and use a **ruler** for the lines. Four columns: **Name · Function · Special structure · How this helps.**',
-        textVn: 'Đặt **tiêu đề** cho bảng, và dùng **thước** kẻ dòng. Bốn cột: **Tên · Chức năng · Cấu trúc đặc biệt · Điều này giúp ích thế nào.**',
-      },
-    ],
   },
   {
     layout: 'split',
@@ -440,18 +555,19 @@ export const slides = [
     columns: 2,
     eyebrow: 'Before you leave',
     eyebrowVn: 'Trước khi ra về',
-    title: 'Can You Do All Five?',
-    titleVn: 'Em làm được cả năm điều này chứ?',
+    title: 'Can You Do All Six?',
+    titleVn: 'Em làm được cả sáu điều này chứ?',
     content:
-      '> Your notebook should now have the **key words**, **five cells described**, and the **structure-function table** started. Check.',
+      '> Your notebook should now have **2 definitions**, the **sentence frame**, and **2 tables** — 3 animal rows and 2 plant rows. Check.',
     contentVn:
-      '> Trong vở của em bây giờ phải có các **từ khoá**, **năm tế bào được mô tả**, và **bảng cấu trúc–chức năng** đã bắt đầu. Hãy kiểm tra.',
+      '> Trong vở của em bây giờ phải có **2 định nghĩa**, **mẫu câu**, và **2 bảng** — 3 dòng động vật và 2 dòng thực vật. Hãy kiểm tra.',
     items: [
       { text: 'Say what **function** and **specialised** mean.', textVn: 'Nói được **chức năng** và **chuyên hoá** nghĩa là gì.' },
       { text: 'Name the **three** specialised animal cells and each one’s job.', textVn: 'Kể **ba** tế bào động vật chuyên hoá và nhiệm vụ của từng cái.' },
       { text: 'Name the **two** specialised plant cells and each one’s job.', textVn: 'Kể **hai** tế bào thực vật chuyên hoá và nhiệm vụ của từng cái.' },
       { text: 'Use the frame: **adapted to ___ because it has ___**.', textVn: 'Dùng mẫu câu: **adapted to ___ because it has ___**.' },
       { text: 'Explain why a root hair cell has **no chloroplasts**.', textVn: 'Giải thích vì sao tế bào lông hút **không có lục lạp**.' },
+      { text: 'Build a clear **table** with ruled lines and column headings.', textVn: 'Lập được một **bảng** rõ ràng, kẻ thước và có tiêu đề cột.' },
     ],
   },
   {
@@ -478,8 +594,8 @@ export const slides = [
         badge: 'Writing Task',
         badgeVn: 'Bài viết',
         icon: 'Pencil',
-        text: 'Finish the **structure-function table** for all five cells (Activities 1.3.1 and 1.3.2). Then answer **Questions 1 to 4** (pages 19–20) in **full English sentences**.',
-        textVn: 'Hoàn thành **bảng cấu trúc–chức năng** cho cả năm tế bào (Hoạt động 1.3.1 và 1.3.2). Rồi trả lời **Câu hỏi 1 đến 4** (trang 19–20) bằng **câu tiếng Anh đầy đủ**.',
+        text: 'Neaten up **both tables** if you did not finish them. Then answer **Questions 1 to 4** (pages 19–20) in **full English sentences** — the word **because** should appear at least three times.',
+        textVn: 'Hoàn thiện **cả hai bảng** nếu em chưa xong. Rồi trả lời **Câu hỏi 1 đến 4** (trang 19–20) bằng **câu tiếng Anh đầy đủ** — từ **because** phải xuất hiện ít nhất ba lần.',
       },
     ],
   },
@@ -491,7 +607,7 @@ export const slides = [
     brandVn: 'Khoa học Lớp 7',
     title: 'Lesson Complete!',
     titleVn: 'Hoàn thành bài học!',
-    subtitle: 'You can name five specialised cells and explain how each one’s structure fits its function. Exit question: a **sperm cell** has a long **tail**. What do you think its job is — and how does the tail help it?',
-    subtitleVn: 'Em có thể kể năm tế bào chuyên hoá và giải thích cấu trúc của mỗi cái phù hợp với chức năng ra sao. Câu hỏi ra về: một **tế bào tinh trùng** có một cái **đuôi** dài. Em nghĩ nhiệm vụ của nó là gì — và cái đuôi giúp gì cho nó?',
+    subtitle: 'You can name five specialised cells and explain how each one’s structure fits its function. Exit question: that small purple **white blood cell** in the blood photograph chases germs and swallows them whole. Why would a **fixed** shape be no good for that job?',
+    subtitleVn: 'Em có thể kể năm tế bào chuyên hoá và giải thích cấu trúc của mỗi cái phù hợp với chức năng ra sao. Câu hỏi ra về: con **bạch cầu** nhỏ màu tím trong bức ảnh máu đuổi theo vi khuẩn và nuốt trọn chúng. Vì sao một hình dạng **cố định** lại không phù hợp với nhiệm vụ đó?',
   },
 ]

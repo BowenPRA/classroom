@@ -24,6 +24,9 @@ const VAC_F = '#dbeafe', VAC_S = '#7ba7d4'
 const NUC_F = '#9b7fc4', NUC_S = '#6f52a0'
 const CHL_F = '#5aab4e', CHL_S = '#3a7d31'
 const RBC_F = '#eda6a2', RBC_S = '#c2185b', RBC_PALE = '#f7d2cf'
+const SOIL_F = '#e2d3b8', SOIL_S = '#a3762f' // soil grains round a root hair
+const WATER = '#2f7fc4' // water moving in from the soil
+const SUN = '#e8a33d' // sunlight falling on a leaf
 
 const FONT = "Inter, 'Segoe UI', system-ui, sans-serif"
 
@@ -45,28 +48,29 @@ const chloro = (x, y, vertical = true) => {
 
 export const DIAGRAMS = {
   // ───────────────────────────────────────────────────────────────────────────
-  // The hook picture: three animal cells as bare silhouettes, no labels. Same
-  // body, three completely different shapes — which is the question the whole
-  // lesson answers. Labels would give the game away, so there are none.
+  // The hook picture: three animal cells as bare silhouettes. It carries NO
+  // title and no cell names on purpose — this is the slide where the class is
+  // asked why three cells out of one body look nothing alike, and a title
+  // stating "three different shapes" would answer the question before they do.
+  // The three descriptors stay: they are the English words the class needs to
+  // describe what they can see, and they name no cell and explain nothing.
   // ───────────────────────────────────────────────────────────────────────────
-  THREE_SHAPES: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" class="w-full h-full">
-    ${plate(700, 280)}
+  THREE_SHAPES: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 250" class="w-full h-full">
+    ${plate(700, 250)}
 
-    <text x="350" y="36" font-family="${FONT}" font-size="20" font-weight="bold" fill="${KEY}" text-anchor="middle">One body — three completely different shapes</text>
+    <circle cx="130" cy="124" r="66" fill="${RBC_F}" stroke="${RBC_S}" stroke-width="3.5"/>
+    <ellipse cx="130" cy="124" rx="30" ry="26" fill="${RBC_PALE}"/>
 
-    <circle cx="130" cy="150" r="66" fill="${RBC_F}" stroke="${RBC_S}" stroke-width="3.5"/>
-    <ellipse cx="130" cy="150" rx="30" ry="26" fill="${RBC_PALE}"/>
+    <ellipse cx="360" cy="124" rx="34" ry="30" fill="${CYTO_F}" stroke="${RBC_S}" stroke-width="3"/>
+    <path d="M 330 106 L 300 82 M 332 124 L 296 124 M 332 144 L 302 170 M 352 96 L 340 66 M 388 112 L 430 94 M 392 132 L 560 142 M 388 148 L 430 174" fill="none" stroke="${RBC_S}" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 560 142 l -12 -6 M 560 142 l -12 7" fill="none" stroke="${RBC_S}" stroke-width="3" stroke-linecap="round"/>
 
-    <ellipse cx="360" cy="150" rx="34" ry="30" fill="${CYTO_F}" stroke="${RBC_S}" stroke-width="3"/>
-    <path d="M 330 132 L 300 108 M 332 150 L 296 150 M 332 170 L 302 196 M 352 122 L 340 92 M 388 138 L 430 120 M 392 158 L 560 168 M 388 174 L 430 200" fill="none" stroke="${RBC_S}" stroke-width="3" stroke-linecap="round"/>
-    <path d="M 560 168 l -12 -6 M 560 168 l -12 7" fill="none" stroke="${RBC_S}" stroke-width="3" stroke-linecap="round"/>
+    <rect x="596" y="60" width="70" height="128" rx="14" fill="${CYTO_F}" stroke="${RBC_S}" stroke-width="3"/>
+    <path d="M 600 60 l -6 -16 M 612 60 l -3 -18 M 624 60 l 0 -19 M 636 60 l 3 -18 M 648 60 l 6 -16 M 660 60 l 8 -15" fill="none" stroke="${RBC_S}" stroke-width="2.5" stroke-linecap="round"/>
 
-    <rect x="596" y="86" width="70" height="128" rx="14" fill="${CYTO_F}" stroke="${RBC_S}" stroke-width="3"/>
-    <path d="M 600 86 l -6 -16 M 612 86 l -3 -18 M 624 86 l 0 -19 M 636 86 l 3 -18 M 648 86 l 6 -16 M 660 86 l 8 -15" fill="none" stroke="${RBC_S}" stroke-width="2.5" stroke-linecap="round"/>
-
-    <text x="130" y="250" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">a flat disc</text>
-    <text x="360" y="250" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">long arms</text>
-    <text x="631" y="250" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">tiny hairs</text>
+    <text x="130" y="224" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">a flat disc</text>
+    <text x="360" y="224" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">long arms</text>
+    <text x="631" y="224" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">tiny hairs</text>
   </svg>`,
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -194,41 +198,156 @@ export const DIAGRAMS = {
   </svg>`,
 
   // ───────────────────────────────────────────────────────────────────────────
-  // The structure-and-function table (Learner's Book Activity 1.3.1). The red
-  // blood cell row is filled in as the worked example; the rest is for the class
-  // to complete. This is the Draw This.
+  // The two plant cells as bare shapes, drawn to the SAME viewBox so they can sit
+  // side by side in a `compare` and be read at one scale. They carry no text at
+  // all: every word on that slide is bilingual slide data, and a label baked into
+  // an SVG would be stuck in English.
+  //
+  // Each one shows the cell AND where it lives, because the environment is the
+  // reason for the shape — soil grains and water going in for the root hair,
+  // sunlight coming down for the palisade. That contrast is the whole lesson in
+  // one picture: same plant, same parts available, opposite jobs, opposite shapes.
   // ───────────────────────────────────────────────────────────────────────────
-  SF_TABLE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" class="w-full h-full">
-    ${plate(720, 300)}
+  SHAPE_ROOTHAIR: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" class="w-full h-full">
+    ${plate(420, 300)}
 
-    <rect x="20" y="20" width="680" height="46" fill="#0087a8"/>
-    <line x1="20" y1="66" x2="700" y2="66" stroke="${INK}" stroke-width="2"/>
-    <line x1="20" y1="150" x2="700" y2="150" stroke="${LEAD}" stroke-width="1.5"/>
-    <line x1="20" y1="224" x2="700" y2="224" stroke="${LEAD}" stroke-width="1.5"/>
-    <rect x="20" y="20" width="680" height="260" fill="none" stroke="${INK}" stroke-width="2"/>
-    <line x1="180" y1="20" x2="180" y2="280" stroke="${LEAD}" stroke-width="1.5"/>
-    <line x1="350" y1="20" x2="350" y2="280" stroke="${LEAD}" stroke-width="1.5"/>
-    <line x1="520" y1="20" x2="520" y2="280" stroke="${LEAD}" stroke-width="1.5"/>
+    <ellipse cx="200" cy="92" rx="28" ry="20" fill="${SOIL_F}" stroke="${SOIL_S}" stroke-width="2"/>
+    <ellipse cx="276" cy="80" rx="24" ry="18" fill="${SOIL_F}" stroke="${SOIL_S}" stroke-width="2"/>
+    <ellipse cx="348" cy="100" rx="26" ry="19" fill="${SOIL_F}" stroke="${SOIL_S}" stroke-width="2"/>
+    <ellipse cx="210" cy="246" rx="28" ry="20" fill="${SOIL_F}" stroke="${SOIL_S}" stroke-width="2"/>
+    <ellipse cx="288" cy="258" rx="23" ry="17" fill="${SOIL_F}" stroke="${SOIL_S}" stroke-width="2"/>
+    <ellipse cx="356" cy="236" rx="26" ry="19" fill="${SOIL_F}" stroke="${SOIL_S}" stroke-width="2"/>
 
-    <text x="100" y="49" font-family="${FONT}" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Name of cell</text>
-    <text x="265" y="49" font-family="${FONT}" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Its function</text>
-    <text x="435" y="49" font-family="${FONT}" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Special structure</text>
-    <text x="610" y="49" font-family="${FONT}" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">How this helps</text>
+    <path d="M 54 118 h 66 q 20 0 30 30 l 180 8 q 20 2 20 12 q 0 10 -20 12 l -180 8 q -10 30 -30 30 h -66 q -14 0 -14 -14 v -72 q 0 -14 14 -14 Z" fill="${WALL_F}" stroke="${WALL_S}" stroke-width="4"/>
+    <path d="M 65 130 h 55 q 14 0 22 22 l 186 8 q 13 2 13 8 q 0 6 -13 8 l -186 8 q -8 22 -22 22 h -55 q -9 0 -9 -9 v -58 q 0 -9 9 -9 Z" fill="${VAC_F}" stroke="${VAC_S}" stroke-width="2.5"/>
+    <circle cx="88" cy="168" r="17" fill="${NUC_F}" stroke="${NUC_S}" stroke-width="2.5"/>
 
-    <text x="100" y="112" font-family="${FONT}" font-size="14" font-weight="bold" fill="${RBC_S}" text-anchor="middle">Red blood cell</text>
-    <text x="265" y="112" font-family="${FONT}" font-size="13" fill="${INK}" text-anchor="middle">carries oxygen</text>
-    <text x="435" y="105" font-family="${FONT}" font-size="13" fill="${INK}" text-anchor="middle">full of haemoglobin,</text>
-    <text x="435" y="123" font-family="${FONT}" font-size="13" fill="${INK}" text-anchor="middle">no nucleus</text>
-    <text x="610" y="105" font-family="${FONT}" font-size="13" fill="${INK}" text-anchor="middle">haemoglobin</text>
-    <text x="610" y="123" font-family="${FONT}" font-size="13" fill="${INK}" text-anchor="middle">carries the oxygen</text>
+    <path d="M 206 118 l 12 24" fill="none" stroke="${WATER}" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 218 142 l -10 -4 M 218 142 l 1 -10" fill="none" stroke="${WATER}" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 280 106 l 6 36" fill="none" stroke="${WATER}" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 286 142 l -8 -8 M 286 142 l 7 -9" fill="none" stroke="${WATER}" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 232 222 l 10 -26" fill="none" stroke="${WATER}" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 242 196 l -9 7 M 242 196 l 4 11" fill="none" stroke="${WATER}" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 330 212 l -8 -20" fill="none" stroke="${WATER}" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 322 192 l -3 11 M 322 192 l 9 6" fill="none" stroke="${WATER}" stroke-width="3.5" stroke-linecap="round"/>
+  </svg>`,
 
-    <text x="100" y="192" font-family="${FONT}" font-size="14" font-weight="bold" fill="${LEAD}" text-anchor="middle">Neurone</text>
-    <text x="100" y="256" font-family="${FONT}" font-size="14" font-weight="bold" fill="${LEAD}" text-anchor="middle">Ciliated cell</text>
-    <text x="435" y="192" font-family="${FONT}" font-size="22" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
-    <text x="435" y="256" font-family="${FONT}" font-size="22" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
-    <text x="610" y="192" font-family="${FONT}" font-size="22" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
-    <text x="610" y="256" font-family="${FONT}" font-size="22" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
-    <text x="265" y="192" font-family="${FONT}" font-size="22" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
-    <text x="265" y="256" font-family="${FONT}" font-size="22" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+  SHAPE_PALISADE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" class="w-full h-full">
+    ${plate(420, 300)}
+
+    <path d="M 74 20 l 0 30 M 142 20 l 0 30 M 210 20 l 0 30 M 278 20 l 0 30 M 346 20 l 0 30" fill="none" stroke="${SUN}" stroke-width="5" stroke-linecap="round"/>
+    <path d="M 74 50 l -8 -10 M 74 50 l 8 -10 M 142 50 l -8 -10 M 142 50 l 8 -10 M 210 50 l -8 -10 M 210 50 l 8 -10 M 278 50 l -8 -10 M 278 50 l 8 -10 M 346 50 l -8 -10 M 346 50 l 8 -10" fill="none" stroke="${SUN}" stroke-width="5" stroke-linecap="round"/>
+
+    <rect x="34" y="62" width="352" height="26" rx="8" fill="${CYTO_F}" stroke="${MEMB_S}" stroke-width="3"/>
+
+    <rect x="60" y="100" width="72" height="168" rx="16" fill="${WALL_F}" stroke="${WALL_S}" stroke-width="4"/>
+    <rect x="70" y="110" width="52" height="148" rx="10" fill="${CYTO_F}" stroke="${MEMB_S}" stroke-width="2"/>
+    ${chloro(84, 132)}${chloro(84, 178)}${chloro(84, 224)}${chloro(110, 152)}${chloro(110, 200)}${chloro(110, 244)}
+
+    <rect x="174" y="100" width="72" height="168" rx="16" fill="${WALL_F}" stroke="${WALL_S}" stroke-width="4"/>
+    <rect x="184" y="110" width="52" height="148" rx="10" fill="${CYTO_F}" stroke="${MEMB_S}" stroke-width="2"/>
+    ${chloro(198, 132)}${chloro(198, 178)}${chloro(198, 224)}${chloro(224, 152)}${chloro(224, 200)}${chloro(224, 244)}
+
+    <rect x="288" y="100" width="72" height="168" rx="16" fill="${WALL_F}" stroke="${WALL_S}" stroke-width="4"/>
+    <rect x="298" y="110" width="52" height="148" rx="10" fill="${CYTO_F}" stroke="${MEMB_S}" stroke-width="2"/>
+    ${chloro(312, 132)}${chloro(312, 178)}${chloro(312, 224)}${chloro(338, 152)}${chloro(338, 200)}${chloro(338, 244)}
+  </svg>`,
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // Activity 1.3.1 — the animal-cell table, and the deck's Draw This. It is the
+  // ONLY place the three animal cells get copied down, so it is introduced right
+  // after the first cell and filled in a row at a time as the lesson goes.
+  //
+  // Laid out exactly as the book prints it on p.19: the red blood cell row is
+  // three sub-rows deep with only the FIRST one filled in. That is deliberate —
+  // it tells the class, without a word of prose, that one cell can have more
+  // than one adaptation and that two of them are still to find.
+  // ───────────────────────────────────────────────────────────────────────────
+  ANIMAL_TABLE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" class="w-full h-full">
+    ${plate(760, 340)}
+
+    <rect x="20" y="24" width="720" height="44" fill="#0087a8"/>
+    <rect x="20" y="24" width="720" height="276" fill="none" stroke="${INK}" stroke-width="2"/>
+    <line x1="20" y1="68" x2="740" y2="68" stroke="${INK}" stroke-width="2"/>
+
+    <line x1="330" y1="116" x2="740" y2="116" stroke="${LEAD}" stroke-width="1.2"/>
+    <line x1="330" y1="146" x2="740" y2="146" stroke="${LEAD}" stroke-width="1.2"/>
+    <line x1="20" y1="176" x2="740" y2="176" stroke="${LEAD}" stroke-width="1.5"/>
+    <line x1="20" y1="238" x2="740" y2="238" stroke="${LEAD}" stroke-width="1.5"/>
+
+    <line x1="168" y1="24" x2="168" y2="300" stroke="${LEAD}" stroke-width="1.5"/>
+    <line x1="330" y1="24" x2="330" y2="300" stroke="${LEAD}" stroke-width="1.5"/>
+    <line x1="520" y1="24" x2="520" y2="300" stroke="${LEAD}" stroke-width="1.5"/>
+
+    <text x="94" y="53" font-family="${FONT}" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Name of cell</text>
+    <text x="249" y="53" font-family="${FONT}" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Function of cell</text>
+    <text x="425" y="53" font-family="${FONT}" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Specialised structure</text>
+    <text x="630" y="53" font-family="${FONT}" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">How this helps</text>
+
+    <text x="94" y="128" font-family="${FONT}" font-size="13" font-weight="bold" fill="${RBC_S}" text-anchor="middle">Red blood cell</text>
+    <text x="249" y="128" font-family="${FONT}" font-size="12" fill="${INK}" text-anchor="middle">transports oxygen</text>
+    <text x="425" y="90" font-family="${FONT}" font-size="12" fill="${INK}" text-anchor="middle">has haemoglobin in</text>
+    <text x="425" y="107" font-family="${FONT}" font-size="12" fill="${INK}" text-anchor="middle">its cytoplasm</text>
+    <text x="630" y="90" font-family="${FONT}" font-size="12" fill="${INK}" text-anchor="middle">haemoglobin carries</text>
+    <text x="630" y="107" font-family="${FONT}" font-size="12" fill="${INK}" text-anchor="middle">the oxygen</text>
+
+    <text x="425" y="138" font-family="${FONT}" font-size="18" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+    <text x="630" y="138" font-family="${FONT}" font-size="18" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+    <text x="425" y="168" font-family="${FONT}" font-size="18" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+    <text x="630" y="168" font-family="${FONT}" font-size="18" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+
+    <text x="94" y="212" font-family="${FONT}" font-size="13" font-weight="bold" fill="${LEAD}" text-anchor="middle">Neurone</text>
+    <text x="249" y="212" font-family="${FONT}" font-size="18" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+    <text x="425" y="212" font-family="${FONT}" font-size="18" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+    <text x="630" y="212" font-family="${FONT}" font-size="18" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+
+    <text x="94" y="274" font-family="${FONT}" font-size="13" font-weight="bold" fill="${LEAD}" text-anchor="middle">Ciliated cell</text>
+    <text x="249" y="274" font-family="${FONT}" font-size="18" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+    <text x="425" y="274" font-family="${FONT}" font-size="18" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+    <text x="630" y="274" font-family="${FONT}" font-size="18" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+
+    <text x="380" y="322" font-family="${FONT}" font-size="13" font-weight="bold" fill="${KEY}" text-anchor="middle">Give your table a title. Use a ruler.</text>
+  </svg>`,
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // Activity 1.3.2 — the plant-cell table. The book asks for a SECOND, separate
+  // table rather than two more rows on the first one, so that is what this is:
+  // the same four columns, ruled again, both rows empty. Nothing is filled in
+  // here — by this point in the lesson the class can do a row unaided, and the
+  // peer assessment on the same slide is what checks it.
+  // ───────────────────────────────────────────────────────────────────────────
+  // Narrower than the animal table, with the two long headings set on two lines.
+  // That is not a style choice: `steps` gives its media a fixed panel, so a very
+  // wide table renders small in it — squaring the aspect up is what makes this
+  // one readable from the back of the room.
+  PLANT_TABLE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 250" class="w-full h-full">
+    ${plate(560, 250)}
+
+    <rect x="20" y="24" width="520" height="52" fill="${CHL_S}"/>
+    <rect x="20" y="24" width="520" height="208" fill="none" stroke="${INK}" stroke-width="2"/>
+    <line x1="20" y1="76" x2="540" y2="76" stroke="${INK}" stroke-width="2"/>
+    <line x1="20" y1="154" x2="540" y2="154" stroke="${LEAD}" stroke-width="1.5"/>
+
+    <line x1="150" y1="24" x2="150" y2="232" stroke="${LEAD}" stroke-width="1.5"/>
+    <line x1="270" y1="24" x2="270" y2="232" stroke="${LEAD}" stroke-width="1.5"/>
+    <line x1="400" y1="24" x2="400" y2="232" stroke="${LEAD}" stroke-width="1.5"/>
+
+    <text x="85" y="55" font-family="${FONT}" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Name of cell</text>
+    <text x="210" y="46" font-family="${FONT}" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Function</text>
+    <text x="210" y="64" font-family="${FONT}" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">of cell</text>
+    <text x="335" y="46" font-family="${FONT}" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Specialised</text>
+    <text x="335" y="64" font-family="${FONT}" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">structure</text>
+    <text x="470" y="46" font-family="${FONT}" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">How this</text>
+    <text x="470" y="64" font-family="${FONT}" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">helps</text>
+
+    <text x="85" y="120" font-family="${FONT}" font-size="12" font-weight="bold" fill="${CHL_S}" text-anchor="middle">Root hair cell</text>
+    <text x="210" y="120" font-family="${FONT}" font-size="16" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+    <text x="335" y="120" font-family="${FONT}" font-size="16" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+    <text x="470" y="120" font-family="${FONT}" font-size="16" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+
+    <text x="85" y="198" font-family="${FONT}" font-size="12" font-weight="bold" fill="${CHL_S}" text-anchor="middle">Palisade cell</text>
+    <text x="210" y="198" font-family="${FONT}" font-size="16" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+    <text x="335" y="198" font-family="${FONT}" font-size="16" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
+    <text x="470" y="198" font-family="${FONT}" font-size="16" font-weight="bold" fill="#cbd5e1" text-anchor="middle">. . .</text>
   </svg>`,
 }
