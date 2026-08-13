@@ -25,6 +25,7 @@ import {
   Wand2, Trees, Cat, Link as LinkIcon, Gamepad2, Heart, Shuffle, Eraser,
   ArrowLeft, Lightbulb, Eye, EyeOff, Infinity as InfinityIcon, PartyPopper,
   RotateCcw, CircleCheck, CircleX, Star,
+  CookingPot, Carrot, Sprout, Sigma, Dna, Puzzle, Languages,
 } from 'lucide-react'
 
 import { LEVELS, BANDS } from './levels.js'
@@ -33,6 +34,7 @@ import { PICS } from './images.js'
 const ICONS = {
   Images, BookOpenText, Ear, Apple, Hand, Smile, Shapes, Music, School,
   Wand2, Trees, Cat, Link: LinkIcon,
+  CookingPot, Carrot, Sprout, Sigma, Dna, Puzzle, Languages,
 }
 
 const pick = (lang, en, vn) => (lang === 'vn' ? (vn ?? en) : en)
@@ -110,62 +112,96 @@ const buildTiles = (level) =>
 
 // ── Menu ────────────────────────────────────────────────────────────────────
 
+// Each band gets its own accent so the teacher finds the right shelf at a
+// glance: amber for the youngest, sky for the middle years, violet for Year 7.
+const BAND_ACCENT = {
+  early: { card: 'hover:border-[#f59e0b] dark:hover:border-amber-500', chip: 'bg-amber-100 dark:bg-amber-500/20 text-[#b45309] dark:text-amber-300' },
+  words: { card: 'hover:border-[#1cb0f6] dark:hover:border-sky-500', chip: 'bg-sky-100 dark:bg-sky-500/20 text-[#0369a1] dark:text-sky-300' },
+  y7: { card: 'hover:border-[#8b5cf6] dark:hover:border-violet-500', chip: 'bg-violet-100 dark:bg-violet-500/20 text-[#6d28d9] dark:text-violet-300' },
+}
+
 function LevelCard({ level, lang, onPick }) {
   const picture = level.groups.some((g) => g.items.some((i) => typeof i !== 'string' && i.img))
+  const accent = BAND_ACCENT[level.band] || BAND_ACCENT.early
   return (
     <button
       onClick={onPick}
-      className="group text-left rounded-2xl bg-white dark:bg-slate-900 border-2 border-b-[6px] border-slate-200 dark:border-slate-700 hover:border-[#f59e0b] dark:hover:border-amber-500 active:border-b-2 active:translate-y-1 transition-all p-3 sm:p-4 flex items-center gap-3"
+      className={`w-full text-left rounded-xl bg-white dark:bg-slate-900 border-2 border-b-[5px] border-slate-200 dark:border-slate-700 active:border-b-2 active:translate-y-[3px] transition-all p-2 flex items-center gap-2.5 ${accent.card}`}
     >
-      <span className="w-11 h-11 shrink-0 rounded-xl bg-amber-100 dark:bg-amber-500/20 text-[#b45309] dark:text-amber-300 flex items-center justify-center">
-        {createElement(ICONS[level.icon] || Gamepad2, { className: 'w-6 h-6', strokeWidth: 2.5 })}
+      <span className={`w-8 h-8 shrink-0 rounded-lg flex items-center justify-center ${accent.chip}`}>
+        {createElement(ICONS[level.icon] || Gamepad2, { className: 'w-[18px] h-[18px]', strokeWidth: 2.5 })}
       </span>
-      <span className="min-w-0">
-        <span className="block font-black tracking-tight leading-tight text-slate-800 dark:text-slate-100">
-          {pick(lang, level.title, level.titleVn)}
-        </span>
-        <span className="block text-xs font-bold text-slate-400 dark:text-slate-500">
-          {picture
-            ? pick(lang, 'With pictures', 'Có hình ảnh')
-            : pick(lang, 'Words only', 'Chỉ có chữ')}
-        </span>
+      <span className="flex-1 min-w-0 font-black text-sm leading-tight tracking-tight text-slate-800 dark:text-slate-100">
+        {pick(lang, level.title, level.titleVn)}
       </span>
+      {picture && (
+        <span className="shrink-0 px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 text-[9px] font-black uppercase tracking-widest">
+          {pick(lang, 'pics', 'tranh')}
+        </span>
+      )}
     </button>
   )
 }
 
 function Menu({ lang, onPick }) {
   return (
-    <div className="h-full min-h-0 overflow-y-auto custom-scrollbar px-4 sm:px-8 py-6 flex flex-col justify-center">
-      <div className="w-full max-w-5xl mx-auto">
-        <div className="flex items-center gap-3 mb-1">
-          <span className="w-12 h-12 rounded-2xl bg-[#f59e0b] text-white flex items-center justify-center shadow-sm">
-            <Gamepad2 className="w-7 h-7" strokeWidth={2.5} />
+    // One column per band, side by side, so the Year 7 shelf is visible without
+    // scrolling. Stacked in a single list all twenty-one cards run ~220px past
+    // the bottom of the slide and Year 7 is invisible on a projector.
+    <div className="h-full min-h-0 overflow-y-auto custom-scrollbar px-4 sm:px-6 py-4">
+      <div className="w-full max-w-6xl mx-auto">
+        <div className="flex items-baseline gap-3 mb-4">
+          <span className="self-center w-9 h-9 rounded-xl bg-[#f59e0b] text-white flex items-center justify-center shadow-sm shrink-0">
+            <Gamepad2 className="w-5 h-5" strokeWidth={2.5} />
           </span>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-800 dark:text-slate-100">
+          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-800 dark:text-slate-100">
             {t(lang, 'brand')}
           </h1>
+          <p className="font-bold text-slate-400 dark:text-slate-500 text-sm hidden sm:block">{t(lang, 'choose')}</p>
         </div>
-        <p className="font-bold text-slate-400 dark:text-slate-500 mb-6 ml-1">{t(lang, 'choose')}</p>
 
-        {Object.entries(BANDS).map(([band, meta]) => (
-          <section key={band} className="mb-5">
-            <h2 className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500 mb-2">
-              {pick(lang, meta.label, meta.labelVn)}
-            </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5">
-              {LEVELS.map((level, i) => level.band === band && (
-                <LevelCard key={level.id} level={level} lang={lang} onPick={() => onPick(i)} />
-              ))}
-            </div>
-          </section>
-        ))}
+        {/* Four column-widths, not three: the Year 1–4 shelf holds eleven walls
+            and in a single column it alone is taller than the slide, so it gets
+            a double-width section and splits into two. */}
+        <div className="grid gap-x-4 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+          {Object.entries(BANDS).map(([band, meta]) => {
+            const levels = LEVELS.map((level, i) => ({ level, i })).filter(({ level }) => level.band === band)
+            const wide = levels.length > 8
+            return (
+              <section key={band} className={wide ? 'lg:col-span-2' : ''}>
+                <h2 className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500 mb-1.5">
+                  {pick(lang, meta.label, meta.labelVn)}
+                </h2>
+                <div className={`grid gap-1.5 ${wide ? 'lg:grid-cols-2' : 'grid-cols-1'}`}>
+                  {levels.map(({ level, i }) => (
+                    <LevelCard key={level.id} level={level} lang={lang} onPick={() => onPick(i)} />
+                  ))}
+                </div>
+              </section>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
 }
 
 // ── Board pieces ────────────────────────────────────────────────────────────
+
+// A word tile has to fit its word. MITOCHONDRIA is twice the length of CAT and
+// will not wrap (it is one word), so the size comes off the character count
+// rather than one clamp for everything — otherwise the long Year 7 science
+// words are simply sliced off at the tile edge.
+const WORD_SIZE = [
+  { max: 5, cls: 'text-[clamp(0.9rem,1.9vw,1.6rem)]', big: 'text-[clamp(1.2rem,2.2vw,2.2rem)]' },
+  { max: 8, cls: 'text-[clamp(0.8rem,1.6vw,1.35rem)]', big: 'text-[clamp(1.05rem,1.9vw,1.9rem)]' },
+  { max: 11, cls: 'text-[clamp(0.65rem,1.25vw,1.05rem)]', big: 'text-[clamp(0.85rem,1.5vw,1.5rem)]' },
+  { max: Infinity, cls: 'text-[clamp(0.55rem,1.05vw,0.9rem)]', big: 'text-[clamp(0.7rem,1.25vw,1.25rem)]' },
+]
+const wordSize = (word, big) => {
+  const tier = WORD_SIZE.find((t) => word.length <= t.max)
+  return big ? tier.big : tier.cls
+}
 
 function Tile({ tile, selected, wrong, showWords, big, onClick }) {
   const label = tile.word
@@ -199,7 +235,7 @@ function Tile({ tile, selected, wrong, showWords, big, onClick }) {
           )}
         </>
       ) : (
-        <span className={`px-1.5 font-black uppercase tracking-wide leading-tight break-words ${big ? 'text-[clamp(1.1rem,2vw,2rem)]' : 'text-[clamp(0.75rem,1.6vw,1.35rem)]'}`}>
+        <span className={`w-full px-1.5 font-black uppercase tracking-wide leading-tight break-words ${wordSize(label, big)}`}>
           {label}
         </span>
       )}

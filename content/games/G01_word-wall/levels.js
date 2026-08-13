@@ -16,7 +16,9 @@
 // point — those glosses print on the solved row in VN mode.
 //
 // `band` splits the level menu: 'early' is Kindergarten–Year 1 (pictures and
-// three-letter words), 'words' is the Year 1–4 word puzzles.
+// three-letter words), 'words' is the Year 1–4 word puzzles, 'y7' is the Year 7
+// set — curriculum vocabulary and NYT-Connections-style wordplay, where at
+// least one tile in every wall is deliberately baited into the wrong group.
 
 export const LEVELS = [
   // ── Kindergarten / Year 1 ────────────────────────────────────────────────
@@ -181,6 +183,172 @@ export const LEVELS = [
           { img: 'milk', word: 'MILK', vn: 'sữa' },
           { word: 'MAP', vn: 'bản đồ' },
           { word: 'MAT', vn: 'tấm thảm' },
+        ],
+      },
+    ],
+  },
+
+  {
+    id: 'in-the-kitchen',
+    band: 'early',
+    icon: 'CookingPot',
+    title: 'In the Kitchen',
+    titleVn: 'Trong Nhà Bếp',
+    hint: 'All pictures. Everything here lives in a kitchen — but what do we DO with each one?',
+    hintVn: 'Toàn tranh. Mọi thứ ở đây đều có trong bếp — nhưng ta DÙNG mỗi thứ để làm gì?',
+    groups: [
+      {
+        name: 'We Cook With These', nameVn: 'Dùng Để Nấu',
+        note: 'These go on the hot stove. Never touch them without a grown-up!',
+        noteVn: 'Những thứ này đặt lên bếp nóng. Đừng bao giờ chạm vào khi không có người lớn!',
+        items: [
+          { img: 'pan', word: 'PAN', vn: 'cái chảo' },
+          { img: 'pot', word: 'POT', vn: 'cái nồi' },
+          { img: 'wok', word: 'WOK', vn: 'cái chảo lớn' },
+          { img: 'kettle', word: 'KETTLE', vn: 'ấm đun nước' },
+        ],
+      },
+      {
+        name: 'We Eat With These', nameVn: 'Dùng Để Ăn',
+        note: 'We pick these up at dinner time and put the food in our mouth.',
+        noteVn: 'Chúng ta cầm những thứ này vào bữa ăn để đưa thức ăn vào miệng.',
+        items: [
+          { img: 'spoon', word: 'SPOON', vn: 'cái thìa' },
+          { img: 'fork', word: 'FORK', vn: 'cái nĩa' },
+          { img: 'chopsticks', word: 'CHOPSTICKS', vn: 'đôi đũa' },
+          { img: 'bowl', word: 'BOWL', vn: 'cái bát' },
+        ],
+      },
+      {
+        name: 'Big Kitchen Machines', nameVn: 'Máy Móc Lớn Trong Bếp',
+        note: 'The big ones that plug in. Three make food hot and one keeps it cold.',
+        noteVn: 'Những thứ to phải cắm điện. Ba cái làm nóng thức ăn, một cái giữ lạnh.',
+        items: [
+          { img: 'fridge', word: 'FRIDGE', vn: 'tủ lạnh' },
+          { img: 'oven', word: 'OVEN', vn: 'lò nướng' },
+          { img: 'microwave', word: 'MICROWAVE', vn: 'lò vi sóng' },
+          { img: 'toaster', word: 'TOASTER', vn: 'máy nướng bánh mì' },
+        ],
+      },
+      {
+        name: 'Things We Drink', nameVn: 'Đồ Uống',
+        note: 'We pour all of these into a cup or a glass.',
+        noteVn: 'Chúng ta rót tất cả những thứ này vào cốc hoặc ly.',
+        items: [
+          { img: 'tea', word: 'TEA', vn: 'trà' },
+          { img: 'coffee', word: 'COFFEE', vn: 'cà phê' },
+          { img: 'water', word: 'WATER', vn: 'nước' },
+          { img: 'juice', word: 'JUICE', vn: 'nước ép' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'good-food',
+    band: 'early',
+    icon: 'Carrot',
+    title: 'Good Food',
+    titleVn: 'Thức Ăn Ngon',
+    hint: 'All pictures. Four kinds of food. Which four go on the same shelf?',
+    hintVn: 'Toàn tranh. Bốn loại thức ăn. Bốn thứ nào cùng nằm trên một kệ?',
+    groups: [
+      {
+        name: 'Fruit', nameVn: 'Trái Cây',
+        note: 'Sweet food that grows on a tree or a vine.',
+        noteVn: 'Thức ăn ngọt mọc trên cây hoặc dây leo.',
+        items: [
+          { img: 'apple', word: 'APPLE', vn: 'quả táo' },
+          { img: 'banana', word: 'BANANA', vn: 'quả chuối' },
+          { img: 'orange', word: 'ORANGE', vn: 'quả cam' },
+          { img: 'grapes', word: 'GRAPES', vn: 'chùm nho' },
+        ],
+      },
+      {
+        name: 'Vegetables', nameVn: 'Rau Củ',
+        note: 'These grow in a garden. They keep us strong and healthy.',
+        noteVn: 'Những thứ này mọc trong vườn. Chúng giúp ta khoẻ mạnh.',
+        items: [
+          { img: 'carrot', word: 'CARROT', vn: 'củ cà rốt' },
+          { img: 'potato', word: 'POTATO', vn: 'củ khoai tây' },
+          { img: 'broccoli', word: 'BROCCOLI', vn: 'bông cải xanh' },
+          { img: 'onion', word: 'ONION', vn: 'củ hành' },
+        ],
+      },
+      {
+        name: 'Sweet Treats', nameVn: 'Món Ngọt',
+        note: 'Full of sugar. Lovely — but only sometimes!',
+        noteVn: 'Rất nhiều đường. Ngon đấy — nhưng thỉnh thoảng thôi nhé!',
+        items: [
+          { img: 'cake', word: 'CAKE', vn: 'bánh ngọt' },
+          { img: 'icecream', word: 'ICE CREAM', vn: 'kem' },
+          { img: 'biscuit', word: 'BISCUIT', vn: 'bánh quy' },
+          { img: 'chocolate', word: 'CHOCOLATE', vn: 'sô cô la' },
+        ],
+      },
+      {
+        name: 'Food from the Sea', nameVn: 'Hải Sản',
+        note: 'All four of these swim in the sea before they come to the market.',
+        noteVn: 'Cả bốn thứ này bơi dưới biển trước khi ra chợ.',
+        items: [
+          { img: 'fish', word: 'FISH', vn: 'con cá' },
+          { img: 'prawn', word: 'PRAWN', vn: 'con tôm' },
+          { img: 'crab', word: 'CRAB', vn: 'con cua' },
+          { img: 'squid', word: 'SQUID', vn: 'con mực' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'where-food-comes-from',
+    band: 'early',
+    icon: 'Sprout',
+    title: 'Where Food Comes From',
+    titleVn: 'Thức Ăn Từ Đâu Đến',
+    hint: 'All pictures. Not what it tastes like — where it came from BEFORE the shop.',
+    hintVn: 'Toàn tranh. Không phải mùi vị — mà là nơi nó đến TRƯỚC khi ra cửa hàng.',
+    groups: [
+      {
+        name: 'Grows on a Tree', nameVn: 'Mọc Trên Cây',
+        note: 'We pick all four of these down off a tall tree.',
+        noteVn: 'Cả bốn thứ này được hái xuống từ cây cao.',
+        items: [
+          { img: 'apple', word: 'APPLE', vn: 'quả táo' },
+          { img: 'orange', word: 'ORANGE', vn: 'quả cam' },
+          { img: 'banana', word: 'BANANA', vn: 'quả chuối' },
+          { img: 'coconut', word: 'COCONUT', vn: 'quả dừa' },
+        ],
+      },
+      {
+        name: 'Grows Under the Ground', nameVn: 'Mọc Dưới Đất',
+        note: 'You cannot see these growing. We have to dig them up out of the soil.',
+        noteVn: 'Ta không nhìn thấy chúng lớn lên. Phải đào lên từ trong đất.',
+        items: [
+          { img: 'carrot', word: 'CARROT', vn: 'củ cà rốt' },
+          { img: 'potato', word: 'POTATO', vn: 'củ khoai tây' },
+          { img: 'onion', word: 'ONION', vn: 'củ hành' },
+          { img: 'ginger', word: 'GINGER', vn: 'củ gừng' },
+        ],
+      },
+      {
+        name: 'From a Cow or a Hen', nameVn: 'Từ Con Bò Hoặc Con Gà',
+        note: 'An animal made all four of these for us. Butter and cheese both start as milk.',
+        noteVn: 'Cả bốn thứ này do con vật cho ta. Bơ và phô mai đều làm từ sữa.',
+        items: [
+          { img: 'milk', word: 'MILK', vn: 'sữa' },
+          { img: 'cheese', word: 'CHEESE', vn: 'phô mai' },
+          { img: 'egg', word: 'EGG', vn: 'quả trứng' },
+          { img: 'butter', word: 'BUTTER', vn: 'bơ' },
+        ],
+      },
+      {
+        name: 'Baked in an Oven', nameVn: 'Nướng Trong Lò',
+        note: 'These do not grow anywhere. Somebody mixed them and baked them.',
+        noteVn: 'Những thứ này không mọc ở đâu cả. Có người trộn bột rồi đem nướng.',
+        items: [
+          { img: 'bread', word: 'BREAD', vn: 'bánh mì' },
+          { img: 'cake', word: 'CAKE', vn: 'bánh ngọt' },
+          { img: 'biscuit', word: 'BISCUIT', vn: 'bánh quy' },
+          { img: 'doughnut', word: 'DOUGHNUT', vn: 'bánh vòng' },
         ],
       },
     ],
@@ -572,9 +740,157 @@ export const LEVELS = [
       },
     ],
   },
+
+  // ── Year 7 ───────────────────────────────────────────────────────────────
+  // Built the way a Connections wall is built: one group that anchors the
+  // board, one that needs the curriculum, one pure wordplay, and at least one
+  // tile that fits two groups and only resolves once the others are full. The
+  // hint says which tile is baited, because the point is to argue about it, not
+  // to be ambushed by it.
+  {
+    id: 'number-words',
+    band: 'y7',
+    icon: 'Sigma',
+    title: 'Talking About Number',
+    titleVn: 'Nói Về Con Số',
+    hint: 'Two groups are the words a question uses. Two are the maths itself. SQUARE and CUBE belong to only one of them.',
+    hintVn: 'Hai nhóm là từ ngữ trong đề bài. Hai nhóm là bản thân toán học. SQUARE và CUBE chỉ thuộc về một nhóm thôi.',
+    groups: [
+      {
+        name: 'This Means Add', nameVn: 'Nghĩa Là Cộng',
+        note: 'Every one of these in a question tells you to add: "find the sum", "the total", "8 more than 5".',
+        noteVn: 'Tất cả những từ này trong đề bài đều bảo em cộng: "find the sum", "the total", "8 more than 5".',
+        items: ['SUM', 'TOTAL', 'PLUS', 'MORE'],
+      },
+      {
+        name: 'This Means Subtract', nameVn: 'Nghĩa Là Trừ',
+        note: 'And these tell you to subtract. Careful with the order: "subtract 5 from 8" is 8 − 5.',
+        noteVn: 'Còn những từ này bảo em trừ. Cẩn thận thứ tự: "subtract 5 from 8" là 8 − 5.',
+        items: ['MINUS', 'LESS', 'TAKE', 'DIFFERENCE'],
+      },
+      {
+        name: 'Kinds of Number', nameVn: 'Các Loại Số',
+        note: '4 is a square number, 8 is a cube number, 7 is prime, 10 is triangular. SQUARE and CUBE are numbers here, not shapes.',
+        noteVn: '4 là số chính phương, 8 là số lập phương, 7 là số nguyên tố, 10 là số tam giác. Ở đây SQUARE và CUBE là SỐ, không phải hình.',
+        items: ['PRIME', 'SQUARE', 'CUBE', 'TRIANGULAR'],
+      },
+      {
+        name: 'Solid Shapes', nameVn: 'Hình Khối',
+        note: 'The 3D shapes — and not one of them is also the name of a kind of number, which is how you knew.',
+        noteVn: 'Các hình khối 3D — và không hình nào trong số này là tên một loại số, đó chính là manh mối.',
+        items: ['PRISM', 'SPHERE', 'CONE', 'PYRAMID'],
+      },
+    ],
+  },
+  {
+    id: 'cells-and-life',
+    band: 'y7',
+    icon: 'Dna',
+    title: 'Cells and Life',
+    titleVn: 'Tế Bào và Sự Sống',
+    hint: 'Straight from Unit 1. Two groups are parts of a cell, one is whole cells, one is what every living thing does.',
+    hintVn: 'Lấy thẳng từ Bài 1. Hai nhóm là bộ phận của tế bào, một nhóm là tế bào hoàn chỉnh, một nhóm là điều mọi sinh vật đều làm.',
+    groups: [
+      {
+        name: 'In Every Cell', nameVn: 'Có Trong Mọi Tế Bào',
+        note: 'Animal and plant cells both have all four of these.',
+        noteVn: 'Cả tế bào động vật và thực vật đều có đủ bốn thứ này.',
+        items: ['NUCLEUS', 'MEMBRANE', 'CYTOPLASM', 'MITOCHONDRIA'],
+      },
+      {
+        name: 'Plant Cells Only', nameVn: 'Chỉ Có Ở Tế Bào Thực Vật',
+        note: 'An animal cell has none of these. The wall is why a plant stands up; the chloroplast is why it is green.',
+        noteVn: 'Tế bào động vật không có thứ nào trong số này. Vách tế bào giúp cây đứng vững; lục lạp làm cây có màu xanh.',
+        items: ['CELL WALL', 'CHLOROPLAST', 'VACUOLE', 'CHLOROPHYLL'],
+      },
+      {
+        name: 'Specialised Cells', nameVn: 'Tế Bào Chuyên Hoá',
+        note: 'Whole cells, not parts — each one shaped for the job it does.',
+        noteVn: 'Là tế bào hoàn chỉnh, không phải bộ phận — mỗi loại có hình dạng phù hợp với nhiệm vụ của nó.',
+        items: ['NEURONE', 'PALISADE', 'CILIATED', 'ROOT HAIR'],
+      },
+      {
+        name: 'What Living Things Do', nameVn: 'Điều Sinh Vật Sống Làm',
+        note: 'Four of the seven life processes. If it does all seven, it is alive.',
+        noteVn: 'Bốn trong bảy quá trình sống. Nếu làm được cả bảy thì đó là vật sống.',
+        items: ['GROWTH', 'MOVEMENT', 'EXCRETION', 'NUTRITION'],
+      },
+    ],
+  },
+  {
+    id: 'hidden-words',
+    band: 'y7',
+    icon: 'Puzzle',
+    title: 'Stick a Word on the End',
+    titleVn: 'Ghép Thêm Một Từ',
+    hint: 'Three groups need a word added to the end. FIRE fits all three — so it belongs to the one the others cannot fill.',
+    hintVn: 'Ba nhóm cần ghép thêm một từ vào cuối. FIRE hợp với cả ba — nên nó thuộc về nhóm mà các từ khác không lấp được.',
+    groups: [
+      {
+        name: 'Add BALL', nameVn: 'Ghép Thêm BALL',
+        note: 'football, baseball, eyeball, snowball. Fireball is real too — but FIRE was needed elsewhere.',
+        noteVn: 'football, baseball, eyeball, snowball. Fireball cũng có thật — nhưng FIRE cần cho nhóm khác.',
+        items: ['FOOT', 'BASE', 'EYE', 'SNOW'],
+      },
+      {
+        name: 'Add WORK', nameVn: 'Ghép Thêm WORK',
+        note: 'homework, network, teamwork, paperwork. Firework is real too. Same trick, same answer.',
+        noteVn: 'homework, network, teamwork, paperwork. Firework cũng có thật. Cùng một mẹo, cùng một đáp án.',
+        items: ['HOME', 'NET', 'TEAM', 'PAPER'],
+      },
+      {
+        name: 'Add LIGHT', nameVn: 'Ghép Thêm LIGHT',
+        note: 'daylight, moonlight, highlight, firelight. FIRE lands here because BALL and WORK were already full.',
+        noteVn: 'daylight, moonlight, highlight, firelight. FIRE về đây vì nhóm BALL và WORK đã đủ bốn từ rồi.',
+        items: ['DAY', 'MOON', 'HIGH', 'FIRE'],
+      },
+      {
+        name: 'Parts of a River', nameVn: 'Các Phần Của Con Sông',
+        note: 'A river has a source, a bed, banks and a mouth. Four ordinary words doing a geography job.',
+        noteVn: 'Con sông có nguồn, lòng sông, bờ sông và cửa sông. Bốn từ thường ngày mang nghĩa địa lý.',
+        items: ['SOURCE', 'BED', 'BANK', 'MOUTH'],
+      },
+    ],
+  },
+  {
+    id: 'every-class-english',
+    band: 'y7',
+    icon: 'Languages',
+    title: 'Every Class Is an English Class',
+    titleVn: 'Giờ Nào Cũng Là Giờ Tiếng Anh',
+    hint: 'Every tile is a normal English word that school has stolen and given a second meaning. Which subject stole it?',
+    hintVn: 'Mỗi ô là một từ tiếng Anh thường ngày đã bị nhà trường "mượn" và gán cho nghĩa thứ hai. Môn nào đã mượn nó?',
+    groups: [
+      {
+        name: 'In a Maths Lesson', nameVn: 'Trong Giờ Toán',
+        note: 'A times table, a power of 2, a square root, the volume of a cuboid. Not furniture, electricity, a plant or a radio.',
+        noteVn: 'Bảng cửu chương, luỹ thừa của 2, căn bậc hai, thể tích hình hộp. Không phải cái bàn, điện, rễ cây hay âm lượng.',
+        items: ['TABLE', 'POWER', 'ROOT', 'VOLUME'],
+      },
+      {
+        name: 'In a Science Lesson', nameVn: 'Trong Giờ Khoa Học',
+        note: 'A cell under a microscope, an electric current, the mass of an object, salt dissolved in water.',
+        noteVn: 'Tế bào dưới kính hiển vi, dòng điện, khối lượng của vật, muối hoà tan trong nước.',
+        items: ['CELL', 'CURRENT', 'MASS', 'SOLUTION'],
+      },
+      {
+        name: 'What the Question Tells You to Do', nameVn: 'Việc Đề Bài Yêu Cầu',
+        note: 'Command words. STATE wants one line; EXPLAIN wants a reason; COMPARE wants both things in one sentence.',
+        noteVn: 'Từ lệnh trong đề. STATE cần một câu; EXPLAIN cần lý do; COMPARE cần cả hai vế trong một câu.',
+        items: ['STATE', 'EXPLAIN', 'DESCRIBE', 'COMPARE'],
+      },
+      {
+        name: 'Everyday Words for "a lot"', nameVn: 'Từ Thường Ngày Nghĩa Là "rất nhiều"',
+        note: 'The easy group — and the reason MASS could not sit here, however much it sounded like it belonged.',
+        noteVn: 'Nhóm dễ nhất — và là lý do MASS không thể ở đây, dù nghe rất giống.',
+        items: ['LOADS', 'HEAPS', 'TONS', 'PILES'],
+      },
+    ],
+  },
 ]
 
 export const BANDS = {
   early: { label: 'Kindergarten – Year 1', labelVn: 'Mẫu giáo – Lớp 1' },
   words: { label: 'Year 1 – Year 4', labelVn: 'Lớp 1 – Lớp 4' },
+  y7: { label: 'Year 7', labelVn: 'Lớp 7' },
 }
