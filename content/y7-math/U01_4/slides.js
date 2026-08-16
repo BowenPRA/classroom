@@ -19,8 +19,10 @@
 //     1, which tells you nothing. This is the question every class half-asks
 //     and nobody answers.
 //
-// The packing hook is posed on slide 2 with no method, and paid off on slide 9
-// once the class can answer it — on the book's own numbers, 24 and 80.
+// The packing hook is posed on slide 2 with no method (24 pencils and 40
+// stickers), and paid off on slide 9 once the class can answer it. Its HCF is
+// 8, the same answer as the book's worked example on slide 8 — but a different
+// pair, so nobody gets there by recognising the numbers.
 //
 // Source: Workbook Section 1.4, pages 14–15. The worked example (HCF of 24 and
 // 80 = 8) is the book's own. Nothing from Exercise 1.4 is used in class,
@@ -67,8 +69,8 @@ export const slides = [
     label: 'Best guess',
     labelVn: 'Đoán thử',
     labelIcon: 'MessageSquare',
-    text: 'Mr Bowen has **24 pencils** and **80 sheets of paper**.',
-    textVn: 'Thầy Bowen có **24 cây bút chì** và **80 tờ giấy**.',
+    text: 'Mr Bowen has **24 pencils** and **40 stickers**.',
+    textVn: 'Thầy Bowen có **24 cây bút chì** và **40 cái sticker**.',
     sub: 'He makes **identical packs** for the class — every pack exactly the same, and **nothing left over**. What is the **greatest number of packs** he can make? Write your best guess.',
     subVn: 'Thầy chia thành các **gói giống hệt nhau** cho lớp — mỗi gói y như nhau, và **không thừa thứ gì**. **Số gói nhiều nhất** thầy có thể chia là bao nhiêu? Hãy viết dự đoán của em.',
   },
@@ -256,13 +258,13 @@ export const slides = [
     layout: 'showcase',
     accent: PURPLE,
     icon: 'Boxes',
-    eyebrow: 'Back to the pencils and the paper',
-    eyebrowVn: 'Quay lại chỗ bút chì và giấy',
+    eyebrow: 'Back to the pencils and the stickers',
+    eyebrowVn: 'Quay lại chỗ bút chì và sticker',
     title: 'That Is Why He Can Make 8 Packs',
     titleVn: 'Đó là lý do thầy chia được 8 gói',
-    inlineSvg: DIAGRAMS.PACKS_24_80,
-    caption: '8 is the **HCF of 24 and 80**, so 8 is the greatest number of identical packs. Each pack gets $24 ÷ 8 = 3$ pencils and $80 ÷ 8 = 10$ sheets, with nothing left over. How close was your guess?',
-    captionVn: '8 là **ƯCLN của 24 và 80**, nên 8 là số gói giống hệt nhau nhiều nhất. Mỗi gói có $24 ÷ 8 = 3$ cây bút chì và $80 ÷ 8 = 10$ tờ giấy, không thừa gì. Dự đoán của em gần đến đâu?',
+    inlineSvg: DIAGRAMS.PACKS_24_40,
+    caption: '8 is the **HCF of 24 and 40**, so 8 is the greatest number of identical packs. Each pack gets $24 ÷ 8 = 3$ pencils and $40 ÷ 8 = 5$ stickers, with nothing left over. How close was your guess?',
+    captionVn: '8 là **ƯCLN của 24 và 40**, nên 8 là số gói giống hệt nhau nhiều nhất. Mỗi gói có $24 ÷ 8 = 3$ cây bút chì và $40 ÷ 8 = 5$ cái sticker, không thừa gì. Dự đoán của em gần đến đâu?',
   },
   {
     layout: 'split',

@@ -282,14 +282,14 @@ export const DIAGRAMS = {
   </svg>`,
 
   // ───────────────────────────────────────────────────────────────────────────
-  // The payoff for the opening question: 8 identical packs, 3 pencils and 10
-  // sheets in every one. Eight boxes saying the same thing is the point —
+  // The payoff for the opening question: 8 identical packs, 3 pencils and 5
+  // stickers in every one. Eight boxes saying the same thing is the point —
   // "identical" is the word the problem turns on.
   // ───────────────────────────────────────────────────────────────────────────
-  PACKS_24_80: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 292" class="w-full h-full">
+  PACKS_24_40: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 292" class="w-full h-full">
     ${plate(680, 292)}
 
-    <text x="340" y="34" font-family="${FONT}" font-size="20" font-weight="bold" fill="${KEY}" text-anchor="middle">8 packs — 3 pencils and 10 sheets in each</text>
+    <text x="340" y="34" font-family="${FONT}" font-size="20" font-weight="bold" fill="${KEY}" text-anchor="middle">8 packs — 3 pencils and 5 stickers in each</text>
 
     <rect x="30" y="56" width="140" height="76" rx="10" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="2.5"/>
     <rect x="190" y="56" width="140" height="76" rx="10" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="2.5"/>
@@ -299,10 +299,10 @@ export const DIAGRAMS = {
     <text x="260" y="88" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">3 pencils</text>
     <text x="420" y="88" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">3 pencils</text>
     <text x="580" y="88" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">3 pencils</text>
-    <text x="100" y="114" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">10 sheets</text>
-    <text x="260" y="114" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">10 sheets</text>
-    <text x="420" y="114" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">10 sheets</text>
-    <text x="580" y="114" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">10 sheets</text>
+    <text x="100" y="114" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">5 stickers</text>
+    <text x="260" y="114" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">5 stickers</text>
+    <text x="420" y="114" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">5 stickers</text>
+    <text x="580" y="114" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">5 stickers</text>
 
     <rect x="30" y="146" width="140" height="76" rx="10" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="2.5"/>
     <rect x="190" y="146" width="140" height="76" rx="10" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="2.5"/>
@@ -312,12 +312,12 @@ export const DIAGRAMS = {
     <text x="260" y="178" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">3 pencils</text>
     <text x="420" y="178" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">3 pencils</text>
     <text x="580" y="178" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">3 pencils</text>
-    <text x="100" y="204" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">10 sheets</text>
-    <text x="260" y="204" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">10 sheets</text>
-    <text x="420" y="204" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">10 sheets</text>
-    <text x="580" y="204" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">10 sheets</text>
+    <text x="100" y="204" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">5 stickers</text>
+    <text x="260" y="204" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">5 stickers</text>
+    <text x="420" y="204" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">5 stickers</text>
+    <text x="580" y="204" font-family="${FONT}" font-size="15" font-weight="bold" fill="${INK}" text-anchor="middle">5 stickers</text>
 
-    <text x="340" y="256" font-family="${FONT}" font-size="16" font-weight="bold" fill="${INK}" text-anchor="middle">24 ÷ 8 = 3 pencils and 80 ÷ 8 = 10 sheets</text>
+    <text x="340" y="256" font-family="${FONT}" font-size="16" font-weight="bold" fill="${INK}" text-anchor="middle">24 ÷ 8 = 3 pencils and 40 ÷ 8 = 5 stickers</text>
     <text x="340" y="280" font-family="${FONT}" font-size="16" font-weight="bold" fill="${GREEN}" text-anchor="middle">with nothing left over</text>
   </svg>`,
 
