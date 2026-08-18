@@ -1,0 +1,15 @@
+{
+  "unit": "freshman-math / U01_3 — Circles, Compasses and the Three-Point Rule",
+  "note": "One image only. Everything else in this deck is authored SVG in diagrams.js, because compass constructions are diagrams, not photographs. The same PNG is used by the printed handout (homework/alg13/), so the two show the class the identical map.",
+  "images": [
+    {
+      "name": "europe-map.png",
+      "title": "Equidistant cylindrical blank map of Europe (cropped)",
+      "descUrl": "https://commons.wikimedia.org/wiki/File:Equidistant_cylindrical_blank_map_of_Europe.png",
+      "license": "Public domain (own work, generated from public-domain vector data via GMT)",
+      "artist": "Wikimedia Commons user Anameofmyveryown",
+      "usage": "The map mystery hook, the class activity, and the printed handout. Cropped from the 2250x1650 original to longitude 12W-30E, latitude 36N-64N.",
+      "projection": "Equirectangular (equidistant cylindrical), a uniform 30 pixels per degree in BOTH directions. So the crop is 1260x840 and a city sits at x = (longitude + 12) * 30, y = (64 - latitude) * 30. That uniform scale is what makes a circumcircle on this image an actual circle rather than an ellipse, and it is why this map was chosen over the prettier relief and conic ones."
+    }
+  ]
+}

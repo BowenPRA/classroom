@@ -108,6 +108,7 @@ export const plan = {
     'There are also no photographs — two Wikimedia candidates were tried for slide 16 and both were rejected (one illegible at projector size, one showing an identifiable person ' +
     'rather than a gradient), so SLOPE_AS_RATE draws the road sign instead and the hill is drawn to scale against its own number. ' +
     'The course is flagged bilingual:false in content/courses.js, so this deck is English-only and the EN/VN toggle is hidden. ' +
-    'WHAT COMES NEXT: this lesson stops deliberately at slope as a number. The y-intercept and y = mx + b are lesson 1.3, and slide 8 ("two points determine a line") is the hinge ' +
-    'that sets it up — if two points fix a line completely, an equation with two parameters is exactly what is needed to write it down.',
+    'WHAT COMES NEXT: this lesson stops deliberately at slope as a number, and the equation of a line (y = mx + b) is still ahead. Lesson 1.3 goes to CIRCLES instead, and it picks up two ' +
+    'threads from here: slide 8 ("two points determine a line") becomes "three points determine a circle", and the mirror task\'s perpendicular bisector gets rebuilt with a compass and no ' +
+    'arithmetic at all. 1.3 also answers a question this deck leaves open — the centres of every circle through two points lie on their perpendicular bisector.',
 }

@@ -1,0 +1,200 @@
+% homework/alg13/alg13.tex
+% Algebra Track 1.3 - The Circle Map.
+%
+% NOT a Year 7 packet. This is a ONE-PAGE, LANDSCAPE handout for the high-school
+% Algebra Track, used in class during lesson 1.3 and printed from the site's
+% Homework shelf. It has no sections, no marks, no answer lines to speak of --
+% the whole page exists to give a student a map with room to swing a compass on.
+%
+% Landscape is not decoration. The sheet is worked on with a compass, and the
+% arcs of a perpendicular-bisector construction run well outside the circle they
+% produce, so the binding constraint is drawing room. Landscape puts the map at
+% 18.6 cm wide against 17 cm in portrait, and moves the instructions into a side
+% column instead of stealing height from the map.
+%
+% The two tasks mirror the lesson deliberately. Task 1 is done BY EYE, before the
+% construction has been taught (deck slides 6-7): everyone succeeds roughly and
+% nobody succeeds exactly, which is what makes the compass worth learning. Task 2
+% is the same sheet after the construction (deck slide 23), and the comparison
+% between the two circles is the assessment.
+%
+% THE CITY COORDINATES ARE NOT EYEBALLED. europe-map.png is an equirectangular
+% crop at a uniform 30 px/degree covering 12W-30E and 36N-64N, so it is 1260x840
+% and a city sits at x = (longitude + 12) * 30, y = (64 - latitude) * 30. The
+% \city macro takes those figures normalised to the 0..1 box that TikZ overlays
+% on the image, i.e. (x/1260, 1 - y/840). Same numbers as the deck's widget --
+% see content/freshman-math/U01_3/images/CREDITS.json.
+%
+% The source is pure ASCII: every typographic character goes through a LaTeX
+% command, so no editor or shell can mangle the encoding.
+%
+% Build:  pdflatex alg13.tex   (run twice, for the TikZ bounding box)
+
+\documentclass[12pt,a4paper]{article}
+
+% -- Answer key switch -------------------------------------------------------
+% There is no answer key for this sheet -- there is no single right answer, and
+% the teacher notes live in the lesson plan. The switch is kept so the shared
+% build script can run its teacher pass without failing.
+\newif\ifkey
+\ifdefined\TEACHER\keytrue\else
+  \keyfalse
+\fi
+
+% -- House style -------------------------------------------------------------
+\input{../hw-style.tex}
+
+% Landscape, with tighter margins than a packet: this page is a drawing surface.
+% includeheadfoot is load-bearing -- without it geometry measures `top` to the
+% top of the BODY and hangs the running head above it, off the top of the sheet.
+\geometry{landscape, top=1.0cm, bottom=0.8cm, left=1.3cm, right=1.3cm,
+          includeheadfoot, headsep=7pt}
+
+\fancyhead[L]{\small\color{black!55}Algebra Track\sep 1.3 The Circle Map}
+% The shared style puts a Name rule in the right of the running head. This sheet
+% has one in its title block, and two on one page looks like a mistake.
+\fancyhead[R]{}
+\fancyfoot[C]{\scriptsize\color{black!40}Map: equidistant cylindrical blank map
+  of Europe, public domain (Wikimedia Commons, user Anameofmyveryown)}
+
+% -- The map overlay ---------------------------------------------------------
+% \city{x}{y}{anchor}{name} -- x and y are fractions of the image box, anchor is
+% the side of the DOT the label sits on (east = label to the left of the dot).
+% The white fill behind the label is not decoration: without it a name landing
+% on a coastline is unreadable, and half of these do (Copenhagen sits on the
+% Danish islands, Stockholm on the Baltic, Athens in the Aegean).
+\newcommand{\city}[4]{%
+  \node[anchor=#3, inner sep=2.4pt, font=\sffamily\bfseries\footnotesize,
+        text=black, fill=white, fill opacity=0.82, text opacity=1,
+        rounded corners=1pt] at (#1,#2) {#4};
+  \fill[cbred] (#1,#2) circle (1.7pt);}
+
+\begin{document}
+\thispagestyle{fancy}
+
+% ===========================================================================
+% TITLE
+% ===========================================================================
+\noindent
+\begin{tcolorbox}[enhanced, nobeforeafter, width=\textwidth,
+                  colback=cbpurple!7, colframe=cbpurple!7, arc=6pt,
+                  borderline west={6pt}{0pt}{cbpurple},
+                  left=16pt, right=12pt, top=6pt, bottom=6pt]
+  {\color{cbpurple}\bfseries ALGEBRA TRACK\sep UNIT 1\sep LESSON 1.3}\quad
+  {\color{cbpurple}\LARGE\bfseries The Circle Map}\hfill
+  {\color{black!70}\bfseries Name: \blank[4.4cm]}
+\end{tcolorbox}
+
+\vspace{4pt}
+
+% ===========================================================================
+% MAP + INSTRUCTIONS
+% ===========================================================================
+% Both minipages open with \vspace{0pt} so [t] aligns their TOPS rather than the
+% first baseline -- without it the tikzpicture's baseline sits at the foot of the
+% image and the side column starts level with the bottom of the map.
+%
+% The widths have 0.5 cm of slack in them on purpose. City labels can stick a
+% few points past the image edge, and at 18.6 cm + 7.5 cm the row came out
+% 2.05 pt too wide, which silently wrapped the side column onto its own line and
+% turned a one-page handout into three.
+\noindent
+\begin{minipage}[t]{17.2cm}
+  \vspace{0pt}
+  \begin{tikzpicture}
+    \node[anchor=south west, inner sep=0, draw=rulegray, line width=0.5pt]
+      % Reached across to the lesson unit rather than copied in beside this
+      % file, so the sheet and the projector can never drift apart.
+      (map) at (0,0) {\includegraphics[width=17.2cm]%
+        {../../content/freshman-math/U01_3/images/europe-map.png}};
+    \begin{scope}[x={(map.south east)}, y={(map.north west)}]
+      \city{0.0681}{0.0973}{north}{Lisbon}
+      \city{0.1975}{0.1577}{west}{Madrid}
+      \city{0.3374}{0.1924}{west}{Barcelona}
+      \city{0.5833}{0.2108}{west}{Rome}
+      \city{0.8506}{0.0708}{east}{Athens}
+      \city{0.3418}{0.4592}{east}{Paris}
+      \city{0.6756}{0.4360}{west}{Vienna}
+      \city{0.2827}{0.5538}{east}{London}
+      \city{0.4025}{0.5845}{south}{Amsterdam}
+      \city{0.6049}{0.5900}{west}{Berlin}
+      \city{0.7860}{0.5796}{west}{Warsaw}
+      \city{0.1367}{0.6196}{east}{Dublin}
+      \city{0.5849}{0.7028}{west}{Copenhagen}
+      \city{0.7160}{0.8332}{west}{Stockholm}
+    \end{scope}
+  \end{tikzpicture}
+\end{minipage}%
+\hfill
+% The side column has to stay SHORTER THAN THE MAP (12.0 cm), or the whole row
+% grows to fit it and the sheet spills onto a second page. At \small with the
+% default hwbox padding these three boxes came out 15.6 cm; \footnotesize,
+% tighter padding, small skips and fewer words bring them to about 11.5 cm.
+\begin{minipage}[t]{8.2cm}
+  \vspace{0pt}
+  \tcbset{sidebox/.style={hwbox, fontupper=\footnotesize, breakable=false,
+      left=7pt, right=7pt, top=9pt, bottom=5pt,
+      before skip=0pt, after skip=5pt, colbacktitle=white}}
+
+  \begin{tcolorbox}[sidebox, colback=cbpurple!6, colframe=cbpurple,
+                    coltitle=cbpurple, title={Task 1 \textemdash{} by eye}]
+    Pick any \textbf{three} cities that are not in a straight line, and write
+    them in the table.
+
+    Find the circle through all three: guess the centre, swing, adjust, swing
+    again. \textbf{Three times, in three colours.}
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[sidebox, colback=cborange!6, colframe=cborange,
+                    coltitle=cborange, title={Task 2 \textemdash{} properly}]
+    Now \key{construct} one instead of guessing.
+
+    \textbf{1.} Perpendicular bisector of one pair.\\
+    \textbf{2.} Perpendicular bisector of another pair.\\
+    \textbf{3.} They cross at the \key{centre}.\\
+    \textbf{4.} Needle there, pencil on a city, swing.
+
+    \textbf{Leave every arc on the page.}
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[sidebox, colback=cbgreen!7, colframe=cbgreen,
+                    coltitle=cbgreen!75!black, title={Challenge}]
+    Find three cities you \textbf{cannot} draw a circle through. Name them, and
+    say why in one sentence.
+
+    \vspace{1pt}
+    \blank[7.1cm]
+
+    \vspace{3pt}
+    \blank[7.1cm]
+  \end{tcolorbox}
+\end{minipage}
+
+\vspace{6pt}
+
+% ===========================================================================
+% RECORDING TABLE
+% ===========================================================================
+% The shared style sets \arraystretch to 1.45, which is right for a Year 7
+% answer table and wrong here: at four rows it cost 1.4 cm and pushed the sheet
+% onto a second page. Row height is set explicitly with \rule instead, so the
+% writing space is chosen rather than inherited.
+\noindent
+\renewcommand{\arraystretch}{1.0}
+% tabularx sizes X to make the CONTENT total \textwidth and then adds the five
+% vertical rules on top, so a plain \textwidth here overfills by 2.05 pt every
+% time. Take the rules off the target width instead.
+\begin{tabularx}{\dimexpr\textwidth-5\arrayrulewidth\relax}{|p{1.7cm}|X|X|p{3.0cm}|}
+  \hline
+  \rule[-0.4em]{0pt}{1.6em}\textbf{Circle} & \textbf{The three cities} &
+  \textbf{The centre landed in / near} & \textbf{Radius (cm)} \\
+  \hline
+  \rule[-0.55em]{0pt}{1.75em}1 & & & \\
+  \hline
+  \rule[-0.55em]{0pt}{1.75em}2 & & & \\
+  \hline
+  \rule[-0.55em]{0pt}{1.75em}3 & & & \\
+  \hline
+\end{tabularx}
+
+\end{document}

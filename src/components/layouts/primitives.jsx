@@ -15,6 +15,8 @@ import {
   Calculator, Timer, Hammer, ArrowLeftRight, Spline,
   // Added for slides built around a film clip (Y7 Maths 1.3).
   Clapperboard,
+  // Added for circles and constructions (Algebra Track 1.3).
+  Compass, Globe, Circle, MapPin,
 } from 'lucide-react'
 import WidgetRenderer, { WidgetErrorBoundary } from '../WidgetRenderer.jsx'
 import { parseInlineText, renderContent, NOTE_TONES } from './helpers.jsx'
@@ -28,6 +30,7 @@ const ICONS = {
   ShieldCheck, Repeat, HelpCircle, Sun, Droplet,
   Sigma, Grid3x3, LayoutGrid, RotateCcw, Move, PenLine, Box, Triangle, Bug,
   Calculator, Timer, Hammer, ArrowLeftRight, Spline, Clapperboard,
+  Compass, Globe, Circle, MapPin,
 }
 
 /** Render a lucide icon by name (falls back to Info). */
