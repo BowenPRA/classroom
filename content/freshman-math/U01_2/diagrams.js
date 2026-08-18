@@ -486,4 +486,129 @@ export const DIAGRAMS = {
     <text x="350" y="412" font-family="${FONT}" font-size="14" font-weight="bold" fill="${INK}" text-anchor="middle">a slope can be a fraction, a decimal or a percentage</text>
   </svg>`,
 
+  // ═══════════════════════════════════════════════════════════════════════════
+  // THE MIRROR TASK. Three diagrams for the hands-on activity that closes this
+  // lesson. Students draw a right triangle on a classroom mirror in dry-erase
+  // marker, measure it, find the slope of the hypotenuse, and then construct the
+  // perpendicular bisector of that hypotenuse.
+  //
+  // The two team triangles are drawn TO THE SAME SCALE (7px per inch) so the
+  // difference in shape is visible rather than asserted — a scaled 3-4-5 is
+  // chunky, a scaled 5-12-13 is long and low, and their hypotenuse slopes (3/4
+  // against 5/12) are correspondingly different.
+  //
+  //   Team Louis   3-4-5   × 6 inches  →  18, 24, 30 in   slope 18/24 = 3/4
+  //   Team Chris   5-12-13 × 3 inches  →  15, 36, 39 in   slope 15/36 = 5/12
+  //
+  // Both scalings were chosen so every leg clears the 1-foot minimum (Louis's
+  // shortest is 18 in, Chris's is 15 in) and so both slopes come out as clean
+  // fractions with clean negative reciprocals (−4/3 and −12/5).
+  //
+  // PERP_BISECTOR carries NO numbers on purpose. It shows the construction and
+  // states the rule; each team has to produce its own arithmetic.
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // What the finished drawing looks like on the glass. Generic — no lengths, so
+  // it cannot be copied by either team.
+  // ───────────────────────────────────────────────────────────────────────────
+  MIRROR_SETUP: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 430" class="w-full h-full">
+    ${plate(640, 430)}${MARKERS}
+
+    <text x="320" y="30" font-family="${FONT}" font-size="19" font-weight="bold" fill="${KEY}" text-anchor="middle">What goes on the mirror</text>
+
+    <rect x="60" y="48" width="520" height="300" rx="8" fill="#eef3f7" stroke="#94a3b8" stroke-width="5"/>
+    <path d="M 80 348 L 200 48 L 250 48 L 130 348 Z" fill="#ffffff" opacity="0.45"/>
+
+    <path d="M 140 292 L 440 292 L 440 92 Z" fill="${ORANGE_T}" opacity="0.8"/>
+    <line x1="140" y1="292" x2="440" y2="292" stroke="${RED}" stroke-width="5"/>
+    <line x1="440" y1="292" x2="440" y2="92" stroke="${BLUE}" stroke-width="5"/>
+    <line x1="140" y1="292" x2="440" y2="92" stroke="${PURPLE}" stroke-width="5"/>
+    <path d="M 422 292 L 422 274 L 440 274" fill="none" stroke="${INK}" stroke-width="2.5"/>
+
+    <circle cx="140" cy="292" r="7" fill="${INK}" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="440" cy="292" r="7" fill="${INK}" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="440" cy="92" r="7" fill="${INK}" stroke="#ffffff" stroke-width="2"/>
+
+    <text x="290" y="320" font-family="${FONT}" font-size="16" font-weight="900" fill="${RED}" text-anchor="middle">flat base</text>
+    <text x="452" y="200" font-family="${FONT}" font-size="16" font-weight="900" fill="${BLUE}" text-anchor="start">height</text>
+    <text x="230" y="190" font-family="${FONT}" font-size="16" font-weight="900" fill="${PURPLE}" text-anchor="middle">hypotenuse</text>
+
+    <rect x="60" y="366" width="520" height="48" rx="10" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="2.5"/>
+    <text x="320" y="388" font-family="${FONT}" font-size="16" font-weight="900" fill="${KEY}" text-anchor="middle">every leg at least 1 foot (12 inches)</text>
+    <text x="320" y="407" font-family="${FONT}" font-size="14" font-weight="bold" fill="${INK}" text-anchor="middle">and the base must be level</text>
+  </svg>`,
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // The two team triangles, drawn to the SAME scale so the shapes can be
+  // compared honestly. Lengths are given because they are the specification of
+  // what to draw; the slopes are not, because finding those is the task.
+  // ───────────────────────────────────────────────────────────────────────────
+  TEAM_TRIANGLES: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" class="w-full h-full">
+    ${plate(700, 400)}${MARKERS}
+
+    <text x="350" y="30" font-family="${FONT}" font-size="19" font-weight="bold" fill="${KEY}" text-anchor="middle">One team each — and they are not the same shape</text>
+
+    <text x="134" y="76" font-family="${FONT}" font-size="17" font-weight="900" fill="${GREEN}" text-anchor="middle">TEAM LOUIS</text>
+    <path d="M 50 250 L 218 250 L 218 124 Z" fill="${GREEN_T}" stroke="${GREEN}" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M 204 250 L 204 236 L 218 236" fill="none" stroke="${INK}" stroke-width="2.5"/>
+    <text x="134" y="274" font-family="${FONT}" font-size="15" font-weight="900" fill="${INK}" text-anchor="middle">24 in</text>
+    <text x="228" y="192" font-family="${FONT}" font-size="15" font-weight="900" fill="${INK}" text-anchor="start">18 in</text>
+    <text x="108" y="176" font-family="${FONT}" font-size="15" font-weight="900" fill="${GREEN}" text-anchor="middle">30 in</text>
+
+    <text x="426" y="76" font-family="${FONT}" font-size="17" font-weight="900" fill="${BLUE}" text-anchor="middle">TEAM CHRIS</text>
+    <path d="M 300 250 L 552 250 L 552 145 Z" fill="${BLUE_T}" stroke="${BLUE}" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M 538 250 L 538 236 L 552 236" fill="none" stroke="${INK}" stroke-width="2.5"/>
+    <text x="426" y="274" font-family="${FONT}" font-size="15" font-weight="900" fill="${INK}" text-anchor="middle">36 in</text>
+    <text x="562" y="202" font-family="${FONT}" font-size="15" font-weight="900" fill="${INK}" text-anchor="start">15 in</text>
+    <text x="396" y="178" font-family="${FONT}" font-size="15" font-weight="900" fill="${BLUE}" text-anchor="middle">39 in</text>
+
+    <rect x="40" y="296" width="240" height="62" rx="10" fill="${GREEN_T}" stroke="${GREEN}" stroke-width="2.5"/>
+    <text x="160" y="320" font-family="${FONT}" font-size="15" font-weight="900" fill="${GREEN}" text-anchor="middle">a 3-4-5 triangle</text>
+    <text x="160" y="344" font-family="${FONT}" font-size="15" font-weight="900" fill="${INK}" text-anchor="middle">every unit = 6 inches</text>
+
+    <rect x="300" y="296" width="260" height="62" rx="10" fill="${BLUE_T}" stroke="${BLUE}" stroke-width="2.5"/>
+    <text x="430" y="320" font-family="${FONT}" font-size="15" font-weight="900" fill="${BLUE}" text-anchor="middle">a 5-12-13 triangle</text>
+    <text x="430" y="344" font-family="${FONT}" font-size="15" font-weight="900" fill="${INK}" text-anchor="middle">every unit = 3 inches</text>
+
+    <text x="350" y="384" font-family="${FONT}" font-size="14" font-weight="bold" fill="${INK}" text-anchor="middle">drawn at the same scale — so the shapes really are that different</text>
+  </svg>`,
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // The construction, with no numbers anywhere. It shows WHAT to build and
+  // states the rule you need; the arithmetic belongs to each team.
+  // ───────────────────────────────────────────────────────────────────────────
+  PERP_BISECTOR: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 370" class="w-full h-full">
+    ${plate(660, 370)}${MARKERS}
+
+    <text x="330" y="30" font-family="${FONT}" font-size="19" font-weight="bold" fill="${KEY}" text-anchor="middle">Cut the hypotenuse in half, at a right angle</text>
+
+    <path d="M 70 270 L 310 270 L 310 90 Z" fill="${ORANGE_T}" opacity="0.7"/>
+    <line x1="70" y1="270" x2="310" y2="270" stroke="${RULE}" stroke-width="3"/>
+    <line x1="310" y1="270" x2="310" y2="90" stroke="${RULE}" stroke-width="3"/>
+    <line x1="70" y1="270" x2="310" y2="90" stroke="${PURPLE}" stroke-width="6"/>
+    <path d="M 292 270 L 292 252 L 310 252" fill="none" stroke="${INK}" stroke-width="2.5"/>
+
+    <line x1="130" y1="100" x2="250" y2="260" stroke="${RED}" stroke-width="5"/>
+    <path d="M 203 170 L 212 183 L 200 193" fill="none" stroke="${INK}" stroke-width="2.5"/>
+
+    <circle cx="70" cy="270" r="6" fill="${INK}" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="310" cy="270" r="6" fill="${INK}" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="310" cy="90" r="6" fill="${INK}" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="190" cy="180" r="9" fill="${GREEN}" stroke="#ffffff" stroke-width="3"/>
+
+    <rect x="370" y="96" width="260" height="168" rx="12" fill="#f8fafc" stroke="${GRID}" stroke-width="2"/>
+    <line x1="386" y1="119" x2="414" y2="119" stroke="${PURPLE}" stroke-width="6"/>
+    <text x="424" y="124" font-family="${FONT}" font-size="15" font-weight="900" fill="${PURPLE}" text-anchor="start">the hypotenuse</text>
+    <line x1="386" y1="161" x2="414" y2="161" stroke="${RED}" stroke-width="6"/>
+    <text x="424" y="166" font-family="${FONT}" font-size="15" font-weight="900" fill="${RED}" text-anchor="start">the perpendicular</text>
+    <text x="424" y="188" font-family="${FONT}" font-size="15" font-weight="900" fill="${RED}" text-anchor="start">bisector</text>
+    <circle cx="400" cy="222" r="8" fill="${GREEN}" stroke="#ffffff" stroke-width="2"/>
+    <text x="424" y="228" font-family="${FONT}" font-size="15" font-weight="900" fill="${GREEN}" text-anchor="start">M, the midpoint</text>
+
+    <rect x="60" y="292" width="540" height="60" rx="12" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="3"/>
+    <text x="330" y="316" font-family="${FONT}" font-size="17" font-weight="900" fill="${KEY}" text-anchor="middle">perpendicular slopes multiply to −1</text>
+    <text x="330" y="340" font-family="${FONT}" font-size="14" font-weight="bold" fill="${INK}" text-anchor="middle">flip the fraction over, then change the sign</text>
+  </svg>`,
+
 }

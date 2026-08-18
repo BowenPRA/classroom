@@ -17,7 +17,7 @@ export default {
       'Re-derive the distance between two points by drawing the right triangle rather than recalling the formula; define a line, a line segment and a ray, and know that any two ' +
       'different points determine exactly one line; define slope as rise over run and know it is the same wherever it is measured on a line; use m = (y₂ − y₁)/(x₂ − x₁) with a ' +
       'consistent direction of travel; classify a slope as positive, negative, zero or undefined, distinguishing zero slope from no slope; and read a slope as a rate — a fraction, ' +
-      'a decimal or a percentage gradient.',
+      'a decimal or a percentage gradient. The lesson closes with a hands-on team task: students draw a scaled right triangle on a classroom mirror, measure it, find the slope of its hypotenuse, and construct and justify the perpendicular bisector of that hypotenuse.',
     order: 3,
   },
   slides,

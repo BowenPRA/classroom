@@ -499,7 +499,209 @@ export const slides = [
     },
   },
 
-  // ══ Part 5 · Recap ════════════════════════════════════════════════════════
+  // ══ Part 5 · The mirror task ══════════════════════════════════════════════
+  // A hands-on class task that closes the lesson. Students draw a right triangle
+  // on a classroom mirror in dry-erase marker, measure it, find the slope of the
+  // hypotenuse, and construct the perpendicular bisector of that hypotenuse.
+  //
+  // TWO TEAMS, TWO SHAPES, SO THE ANSWERS CANNOT BE COPIED ACROSS THE ROOM:
+  //   Team Louis   3-4-5   × 6 in  →  24 base, 18 height, 30 hyp   m = 3/4
+  //   Team Chris   5-12-13 × 3 in  →  36 base, 15 height, 39 hyp   m = 5/12
+  // Both scalings clear the 1-foot-per-leg rule and both slopes cancel to clean
+  // fractions with clean negative reciprocals (−4/3 and −12/5).
+  //
+  // NOTE ON SCOPE: this lesson stops at slope as a number and does NOT teach the
+  // perpendicular rule, so the task hands it over directly in a `write` note on
+  // "Now Cut It in Half, Squarely". That is deliberate — the task needs it — but
+  // it does mean Project 2, which is built to have students DISCOVER the same
+  // rule by turning a cut-out triangle, should be taught before this task rather
+  // than after it, or its discovery is spoiled.
+  {
+    layout: 'split',
+    accent: PURPLE,
+    icon: 'Hammer',
+    eyebrow: 'Class task · in your teams',
+    title: 'Take It to the Mirrors',
+    ratio: 45,
+    inlineSvg: DIAGRAMS.MIRROR_SETUP,
+    content:
+      'You are going to draw a **right triangle** on one of the classroom mirrors, measure it, and find the slope of its longest side.\n\n' +
+      'Then you will draw a second line that cuts that side exactly in half at a **right angle** — and prove it really is a right angle.',
+    notes: [
+      {
+        tone: 'write',
+        badge: 'The three rules',
+        text:
+          '**1.** The **base must be flat** — level, straight across.\n' +
+          '**2.** Both legs at least **1 foot (12 inches)** long.\n' +
+          '**3.** The **right angle** is where the base meets the upright side.',
+      },
+    ],
+  },
+  {
+    layout: 'split',
+    accent: GREEN,
+    icon: 'Users',
+    side: 'left',
+    eyebrow: 'Class task · check which team you are in',
+    title: 'Your Team, Your Triangle',
+    ratio: 45,
+    inlineSvg: DIAGRAMS.TEAM_TRIANGLES,
+    content:
+      'Each team builds a **scaled copy** of a famous right triangle — the same shape, blown up bigger.\n\n' +
+      '**Team Louis** builds a **3-4-5**. **Team Chris** builds a **5-12-13**.\n\n' +
+      'Different shapes, so you cannot copy the team next to you.',
+    notes: [
+      {
+        tone: 'write',
+        badge: 'Draw exactly these',
+        text:
+          '**Team Louis** — base **24 in**, height **18 in**, hypotenuse **30 in**.\n' +
+          '**Team Chris** — base **36 in**, height **15 in**, hypotenuse **39 in**.',
+      },
+    ],
+  },
+  {
+    layout: 'steps',
+    accent: GREEN,
+    icon: 'Ruler',
+    eyebrow: 'Class task · dry-erase marker only',
+    title: 'Draw It on the Glass',
+    content: 'You need a **dry-erase marker**, a **tape measure**, and a **book corner** to keep your angles square.',
+    steps: [
+      { text: '**Base first.** Draw it flat across the mirror at your team’s length. Check it is level.' },
+      { text: '**Right angle.** At the **right-hand end** of the base, go straight up, square to it.' },
+      { text: '**Height.** Mark your team’s height up that line, then join the top back to the left end.' },
+      { text: '**Check.** Measure the sloping side. It should equal your team’s hypotenuse.' },
+    ],
+  },
+  {
+    layout: 'split',
+    accent: TEAL,
+    icon: 'PenLine',
+    eyebrow: 'Class task · into your notebook',
+    title: 'Write Down Your Three Sides',
+    ratio: 55,
+    content:
+      '**Measure** all three sides on the mirror. Do not just copy the numbers you were given — measuring is the point.\n\n' +
+      'Then check your own numbers: does $a^2 + b^2$ really come out equal to $c^2$?',
+    notes: [
+      {
+        tone: 'write',
+        badge: 'Copy this and fill it in',
+        text:
+          '**base** (the run) = ______ inches\n' +
+          '**height** (the rise) = ______ inches\n' +
+          '**hypotenuse** = ______ inches',
+      },
+    ],
+  },
+  {
+    layout: 'split',
+    accent: ORANGE,
+    icon: 'Spline',
+    side: 'left',
+    eyebrow: 'Class task · use your own measurements',
+    title: 'Find the Slope of Your Hypotenuse',
+    ratio: 55,
+    content:
+      'The hypotenuse is a straight line, so it has a slope — and both numbers you need are already in your table.\n\n' +
+      '> slope of the hypotenuse = **rise ÷ run** = **height ÷ base**\n\n' +
+      'Write it as a fraction, then cancel it down as far as it will go.',
+    reveal: {
+      label: 'Check your fraction',
+      answer:
+        '**Team Louis:** $\\frac{18}{24} = \\frac{3}{4}$\n\n' +
+        '**Team Chris:** $\\frac{15}{36} = \\frac{5}{12}$\n\n' +
+        'If yours does not cancel to one of these, re-measure — your triangle is not quite the right shape.',
+    },
+  },
+  {
+    layout: 'split',
+    accent: RED,
+    icon: 'Equal',
+    eyebrow: 'Class task · the new bit',
+    title: 'Now Cut It in Half, Squarely',
+    ratio: 45,
+    inlineSvg: DIAGRAMS.PERP_BISECTOR,
+    content:
+      'Measure **half** your hypotenuse from one end and mark that point **M**.\n\n' +
+      'Now draw a line through M that crosses the hypotenuse at a **right angle**. That line has a proper name: the **perpendicular bisector**.',
+    notes: [
+      {
+        tone: 'write',
+        badge: 'The slope fact you need',
+        text: 'Two lines are **perpendicular** when their slopes **multiply to −1**.\n\nTo find it: **turn the fraction upside down, then change the sign.**',
+      },
+    ],
+  },
+  {
+    layout: 'split',
+    accent: PURPLE,
+    icon: 'ShieldCheck',
+    side: 'left',
+    eyebrow: 'Class task · this is the marked part',
+    title: 'Prove It — Do Not Just Say It',
+    ratio: 55,
+    content:
+      '"It looks like a right angle" is not a proof. Write these three lines.\n\n' +
+      '> **1.** The slope of my hypotenuse is ______\n' +
+      '> **2.** The slope of my bisector is ______\n' +
+      '> **3.** Multiplied together they give **−1**',
+    notes: [
+      {
+        tone: 'task',
+        badge: 'Drawing it accurately',
+        text: 'From M, step your bisector slope out — count **across**, then **down**, and mark a point. Repeat until the line is long enough to see.',
+      },
+    ],
+    reveal: {
+      label: 'Check your proof',
+      answer:
+        '**Team Louis:** $\\frac{3}{4} \\times \\left(-\\frac{4}{3}\\right) = -1$. From M, step **3 in across and 4 in down**.\n\n' +
+        '**Team Chris:** $\\frac{5}{12} \\times \\left(-\\frac{12}{5}\\right) = -1$. From M, step **5 in across and 12 in down**.',
+    },
+  },
+  {
+    layout: 'split',
+    accent: BLUE,
+    icon: 'Sparkles',
+    eyebrow: 'Class task · one last measurement',
+    title: 'Something Worth Noticing',
+    ratio: 55,
+    content:
+      'Your point **M** sits halfway along the hypotenuse. Now measure from **M to the square corner** of your triangle.\n\n' +
+      'Compare that with **half your hypotenuse**. Notice anything?',
+    reveal: {
+      label: 'What you should find',
+      answer:
+        'They are **the same length**.\n\n' +
+        '**Team Louis:** both **15 in**. **Team Chris:** both **19.5 in**.\n\n' +
+        'The middle of the hypotenuse is exactly the same distance from **all three corners** — and that is true of every right triangle, not just yours.',
+    },
+  },
+  {
+    layout: 'stack',
+    variant: 'checklist',
+    accent: GREEN,
+    icon: 'CheckCircle2',
+    columns: 2,
+    eyebrow: 'Class task · before Mr Bowen signs it off',
+    title: 'Is Your Mirror Finished?',
+    content: '> Everything on this list, or it is not done.',
+    items: [
+      { text: 'Base **flat**, both legs at least **1 foot**.' },
+      { text: 'All three sides **measured**, not copied.' },
+      { text: '$a^2 + b^2 = c^2$ **checked** on your own numbers.' },
+      { text: 'Slope of the hypotenuse, **cancelled down**.' },
+      { text: 'Midpoint **M** marked on the hypotenuse.' },
+      { text: 'The **perpendicular bisector** drawn through M.' },
+      { text: 'The multiplication giving **−1**, written out.' },
+      { text: 'Mirror **wiped clean** before you leave.' },
+    ],
+  },
+
+  // ══ Part 6 · Recap ════════════════════════════════════════════════════════
   {
     layout: 'stack',
     variant: 'checklist',
@@ -508,7 +710,7 @@ export const slides = [
     columns: 2,
     eyebrow: 'Before you leave',
     title: 'Can You Do All Eight?',
-    content: '> Your notebook should now have **12 written items** and **4 labelled drawings**. Check.',
+    content: '> Your notebook should now have **16 written items** and **4 labelled drawings**. Check.',
     items: [
       { text: 'Find a distance by **drawing the triangle**, not by recalling a formula.' },
       { text: 'Say what a **line** is, and how a **segment** and a **ray** differ from it.' },

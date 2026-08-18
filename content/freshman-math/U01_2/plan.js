@@ -1,17 +1,22 @@
 // content/freshman-math/U01_2/plan.js
 // One-page teacher lesson plan, rendered by src/pages/Plan.jsx.
 export const plan = {
-  duration: '75 minutes (or two 45-minute periods — break after slide 11, "Measure It Anywhere", which is the end of the conceptual half).',
+  duration: 'Two periods. Period 1 is the lesson (about 75 minutes of material, or split after slide 11, "Measure It Anywhere"). Period 2 is the MIRROR TASK, slides 22–30, which needs a full 45 minutes and access to the mirrors.',
   objective:
     'Students can find the distance between two points by drawing the right triangle rather than recalling the formula; define a line, a line segment and a ray, and state that ' +
     'any two different points determine exactly one line; define slope as rise over run and explain why a straight line has the same slope wherever it is measured; use ' +
     'm = (y₂ − y₁)/(x₂ − x₁) with a consistent direction of travel; classify a slope as positive, negative, zero or undefined and explain why zero slope is not the same as no ' +
-    'slope; and convert a slope between a fraction, a decimal and a percentage gradient.',
+    'slope; convert a slope between a fraction, a decimal and a percentage gradient; and, in the mirror task, construct a right triangle to a given scale, find the slope of its hypotenuse, and construct and JUSTIFY the perpendicular bisector of that hypotenuse using the fact that perpendicular slopes multiply to −1.',
   materials: [
     'Projector / TV for the lesson deck',
     'Student notebooks — squared paper for the sketches',
     'Rulers (one each; the two-points-one-line demonstration needs them)',
     'Mini whiteboards + markers (one per pair)',
+    '— for the mirror task, slides 22–30 —',
+    'DRY-ERASE markers, one per team — they wipe straight off glass',
+    'A tape measure or metre stick per team, marked in INCHES',
+    'A hardback book or set square, to keep the right angle square',
+    'A cloth and glass spray for wiping the mirrors down afterwards',
   ],
   vocab: [
     { term: 'Line', def: 'perfectly straight, no thickness, and never ending — it runs on for ever in BOTH directions. The arrowheads on the diagram are not decoration; they are the definition' },
@@ -25,6 +30,9 @@ export const plan = {
     { term: 'Delta (Δ)', def: 'the Greek capital letter used to mean "the change in". Δy is the rise, Δx is the run' },
     { term: 'Undefined', def: 'what a vertical line\'s slope is. Not infinite, not zero, not very large — there is NO number that answers the question, because the run is 0' },
     { term: 'Rate', def: 'so much of one thing per one of another. A slope is a rate: metres up per metre across' },
+    { term: 'Perpendicular bisector', def: 'a line that cuts a segment exactly in half AND crosses it at 90°. Both halves of the name are doing work: bisector means halves it, perpendicular means squarely. Introduced in the mirror task' },
+    { term: 'Negative reciprocal', def: 'turn the fraction upside down and change its sign. The perpendicular of 3/4 is −4/3. Also introduced in the mirror task, because this lesson otherwise stops short of it' },
+    { term: 'Scaled copy', def: 'the same shape made bigger, with every length multiplied by the same number. Team Louis scales a 3-4-5 by 6, Team Chris scales a 5-12-13 by 3' },
   ],
   timeline: [
     { time: '0–6 min', phase: 'Starter', detail: 'Title slide. Students plot A(−4, −2) and B(4, 4), join them, and draw the right triangle underneath. This is the SAME pair as lesson 1.1, and that is deliberate — the whole deck is built on asking a second question of one triangle. Slide 2 then removes the formula and asks whether they can still do it. Collect the word "triangle" from the room before moving on.' },
@@ -32,7 +40,11 @@ export const plan = {
     { time: '20–34 min', phase: 'What a line is', detail: 'Slide 6 asks students to define "line" and most cannot, which is the point; the lunch-queue comparison is there to make the everyday meaning visible so it can be set aside. Then line / segment / ray (copy, Draw This) — over-teach SEGMENT, because that is what they have always drawn and called a line. Slide 8 needs rulers ON DESKS: one dot, spin the ruler, infinitely many; add a second dot, it locks. Say "two points determine a line" and copy it. This is the fact the rest of the course runs on.' },
     { time: '34–52 min', phase: 'Slope', detail: 'Slide 9 poses the ramp-versus-cliff question with no numbers. Slide 10 redraws the SAME triangle and throws the hypotenuse away: slope compares the two legs (copy, Draw This). Slide 11 is the one to protect time for — two identical 4-across-3-up steps land on the line, so 3/4 and 6/8 are the same answer, and a straight line has ONE slope. That is what "straight" means. Then the symbols: subscripts, Δ, and m (copy). Slide 13 is the consistency rule (copy) — either order is fine, mixing them is not.' },
     { time: '52–64 min', phase: 'The four kinds, and slope as a rate', detail: 'Slide 14: predict the sign by eye, reading left to right (copy, Draw This). Slide 15 separates ZERO from UNDEFINED and both columns get copied — this is the confusion that costs the most marks, so do not rush it. Say explicitly that 8 ÷ 0 is not a big number, it is not a number. Slide 16 takes slope outside: a 25% road sign is a fraction (copy). Slide 17 is the engagement beat — order three real slopes by instinct first, then by decimal. Most classes rank 12% as the steepest because 12 is the biggest number on the slide; it is the gentlest.' },
-    { time: '64–75 min', phase: 'Scaffolded practice', detail: 'Slide 18 is the four-move procedure (copy). Slide 19 is Mr Bowen\'s worked example, P(−2, 5) and Q(4, −4) — make them commit to "negative" from the sketch BEFORE the arithmetic. Slide 20 is the drill, with a horizontal and a vertical hidden in it. Slide 21 is the find-the-mistake slide; the answer they must give is a line NUMBER plus the sketch-based reason, not just a corrected value. Finish on the checklist and the exit question.' },
+    { time: '64–75 min', phase: 'Scaffolded practice', detail: 'Slide 18 is the four-move procedure (copy). Slide 19 is Mr Bowen\'s worked example, P(−2, 5) and Q(4, −4) — make them commit to "negative" from the sketch BEFORE the arithmetic. Slide 20 is the drill, with a horizontal and a vertical hidden in it. Slide 21 is the find-the-mistake slide; the answer they must give is a line NUMBER plus the sketch-based reason, not just a corrected value. That is the end of the taught material; the mirror task follows in period 2, and the recap, homework and exit question close the deck after it.' },
+    { time: 'Period 2 · 0–8 min', phase: 'Mirror task · brief', detail: 'Slides 22–23. Split into Team Louis and Team Chris and show the two triangles side by side — they are drawn to the SAME scale, so the class can see that a 3-4-5 and a 5-12-13 really are different shapes. The teams get different triangles on purpose, so no answer can be copied across the room.' },
+    { time: 'Period 2 · 8–22 min', phase: 'Mirror task · draw and measure', detail: 'Slides 24–25. Dry-erase markers only. THE ERROR TO WATCH FOR: a base that is not level, which quietly ruins every slope that follows — make them check it before anything else goes on the glass. Second error: putting the upright at the LEFT end, which flips the sign of the slope; the brief puts it on the RIGHT so both teams get a positive one. Then all three sides get MEASURED rather than copied, and Pythagoras checked on their own numbers.' },
+    { time: 'Period 2 · 22–34 min', phase: 'Mirror task · slope and bisector', detail: 'Slides 26–27. The slope comes straight off their own table: 18/24 for Louis, 15/36 for Chris, both of which must cancel. If a fraction will not cancel to 3/4 or 5/12 the triangle is out of shape and needs redrawing — that is the built-in check, so do not let them skip it. Slide 27 hands over the perpendicular rule, which this lesson has NOT otherwise taught (see the note below).' },
+    { time: 'Period 2 · 34–45 min', phase: 'Mirror task · prove it, then clean up', detail: 'Slides 28–30. The proof is three written lines and it is the marked part; "it looks square" earns nothing. Slide 29 is the bonus worth doing if there is time: measuring from M to the square corner gives exactly half the hypotenuse (15 in for Louis, 19.5 in for Chris). Leave five minutes for wiping the mirrors — slide 30 puts it on the checklist.' },
   ],
   answers: [
     { q: 'Starter / slide 3: distance from A(−4, −2) to B(4, 4)', a: 'Legs 8 across and 6 up, so d = √(64 + 36) = √100 = 10. Same pair, same answer as lesson 1.1.' },
@@ -57,8 +69,27 @@ export const plan = {
     { q: 'Homework 3: the 1 in 12 ramp', a: 'rise ÷ run = 1/12, and the rise is 40 cm, so the run is 40 × 12 = 480 cm = 4.8 m. Worth pausing on: this is a real building regulation, and it is why ramps take up so much space.' },
     { q: 'Homework 4: slope 2/3 through (1, 2)', a: 'Step 3 right and 2 up repeatedly: (4, 4), (7, 6), (10, 8). Going backwards works too — 3 left and 2 down gives (−2, 0). Any answer is acceptable if they can say which step they used and why.' },
     { q: 'Exit question: a line through (2, 3) with slope 5', a: 'Slope 5 is 5/1, so step 1 right and 5 up: (3, 8), then (4, 13). Backwards gives (1, −2). No formula required — that is the whole point of the question.' },
+    { q: 'Mirror task — Team Louis side lengths', a: 'A 3-4-5 scaled by 6 inches: base 24 in, height 18 in, hypotenuse 30 in. Check: 24² + 18² = 576 + 324 = 900 = 30².' },
+    { q: 'Mirror task — Team Chris side lengths', a: 'A 5-12-13 scaled by 3 inches: base 36 in, height 15 in, hypotenuse 39 in. Check: 36² + 15² = 1296 + 225 = 1521 = 39².' },
+    { q: 'Mirror task — slope of the hypotenuse', a: 'Louis: 18/24 = 3/4. Chris: 15/36 = 5/12. Both must be cancelled down. A fraction that will not cancel to these means the triangle was drawn out of shape.' },
+    { q: 'Mirror task — slope of the perpendicular bisector', a: 'Louis: −4/3. Chris: −12/5. Turn the fraction over, then change the sign.' },
+    { q: 'Mirror task — the proof', a: 'Louis: 3/4 × (−4/3) = −12/12 = −1. Chris: 5/12 × (−12/5) = −60/60 = −1. Insist it is written out — the multiplication IS the proof.' },
+    { q: 'Mirror task — where to mark M', a: 'Half the hypotenuse from either end: 15 in along for Louis, 19.5 in for Chris.' },
+    { q: 'Mirror task — drawing the bisector accurately', a: 'From M, step the perpendicular slope out: Louis 3 in across and 4 in down; Chris 5 in across and 12 in down. Repeat the step two or three times so the line is long enough to see.' },
+    { q: 'Mirror task — the bonus on slide 29', a: 'The distance from M to the square corner equals half the hypotenuse: 15 in for Louis, 19.5 in for Chris. The midpoint of the hypotenuse of ANY right triangle is the same distance from all three corners. They can check it with a tape measure, which is what makes it land.' },
   ],
   notes:
+    'SEQUENCING WARNING — READ BEFORE PLANNING THE UNIT. The mirror task needs the perpendicular rule (slopes multiply to −1), and this lesson does not teach it: 1.2 deliberately stops at ' +
+    'slope as a number, so slide 27 HANDS the rule over in a write note. That is fine for the task, but Project 2 (The Rectangle That Is Not) is built so that students DISCOVER the same rule ' +
+    'for themselves, by cutting out a slope triangle and turning it. So either teach Project 2 BEFORE running the mirror task, or accept that Project 2 Part 3 becomes confirmation rather than ' +
+    'discovery. Teaching Project 2 first also lets the mirror task drop the note on slide 27 and simply ask the class to recall the rule instead. ' +
+    'ON THE MIRROR TASK ITSELF: the two teams get different triangles so nothing can be copied across the room, and both scalings clear the one-foot-per-leg rule — the shortest leg is 18 in for ' +
+    'Louis and 15 in for Chris. Both slopes cancel to clean fractions with clean negative reciprocals, so a fraction that refuses to cancel is a reliable sign the triangle was drawn out of ' +
+    'shape. That is the built-in check, so do not let anyone skip the cancelling. Confirm the mirrors take dry-erase marker before the lesson, and budget five minutes at the end for cleaning. ' +
+    'CHECK THE MIRROR IS WIDE ENOUGH BEFORE THE LESSON. Team Chris needs about 3 feet of width for a 36 in base. This is forced, not a choice: a 5-12-13 whose short leg is at least 1 foot has a ' +
+    'long leg of at least 28.8 in, so there is no scaling that makes it narrow. If the mirrors are smaller, drop Team Chris to 2.5 inches per unit — 12.5 in, 30 in, 32.5 in — which still clears ' +
+    'the one-foot rule and still gives a slope of 5/12, because scaling a shape does not change its slope. That last point is worth saying out loud to the class. If there is only one usable ' +
+    'mirror, run the teams in turn and give the waiting team the Part 4 practice slides, or use a window or a spare whiteboard instead — nothing about the task needs a mirror specifically. ' +
     'THE ARCHITECTURE: one triangle, two questions. A(−4, −2) and B(4, 4) is the exact pair from lesson 1.1, so the class draws a triangle they have drawn before and then asks it ' +
     'something new — the hypotenuse is a distance (10), the two legs are a slope (3/4). Say that out loud at slide 10 and again at the closing slide. If the retread runs long, cut ' +
     'slide 5, not slide 3: the third-corner idea is what makes the rest work. ' +
