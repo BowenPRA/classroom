@@ -12,6 +12,7 @@
 import hw01 from '../homework/hw01/hw01.pdf?url'
 import hw02 from '../homework/hw02/hw02.pdf?url'
 import alg13 from '../homework/alg13/alg13.pdf?url'
+import alg13p3 from '../homework/alg13p3/alg13p3.pdf?url'
 
 export const HOMEWORK = [
   {
@@ -38,5 +39,15 @@ export const HOMEWORK = [
     title: 'The Circle Map',
     subtitle: 'Algebra Track 1.3 · one per student, in class',
     pdf: alg13,
+  },
+  // The Project 3 working sheet. Two sides: the Hoi An map at 1 cm = 250 m on
+  // the front, the write-up and the Early Years clue card on the back. Print
+  // double-sided, one per student.
+  {
+    id: 'alg13p3',
+    label: 'P3',
+    title: 'Somebody Is 2.7 km Away',
+    subtitle: 'Algebra Track Project 3 · print double-sided',
+    pdf: alg13p3,
   },
 ]

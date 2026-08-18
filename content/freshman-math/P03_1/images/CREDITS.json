@@ -1,0 +1,20 @@
+{
+  "unit": "freshman-math / P03_1 — Project 3: Somebody Is 2.7 Kilometres Away",
+  "note": "One image, and it is not a downloaded map — it is generated from OpenStreetMap data by build-hoi-an-map.py, which sits beside it. The script is NOT part of the site build (nothing imports it and Vite never sees it); it is kept so the map can be rebuilt, re-scaled or re-anchored without guesswork. It needs a network connection and caches the Overpass responses next to itself.",
+  "images": [
+    {
+      "name": "hoi-an-map.png",
+      "title": "Hoi An, Quang Nam — street map at 1:25 000, generated for this project",
+      "descUrl": "https://www.openstreetmap.org/copyright",
+      "license": "ODbL 1.0 — Open Database License. Map data (c) OpenStreetMap contributors.",
+      "artist": "OpenStreetMap contributors (data); rendered for this project by build-hoi-an-map.py",
+      "attribution": "The credit line is BURNED INTO the image, bottom right, and must stay there. ODbL requires attribution wherever the map is shown, and this map is shown on a projector and on a printed sheet that leaves the building — a line in this file would not travel with it.",
+      "usage": "The whole of Project 3: the projected slides, the solution widget's base layer, and the printed handout (homework/alg13p3). One file for all three, so the map on the desk is the map on the wall.",
+      "frame": "Bottom-left corner of the frame is longitude 108.316231 E, latitude 15.873640 N. The frame is 6400 m wide by 3600 m tall, rendered at 0.2 px per metre and then rasterised at 2x, so the file is 2560 x 1440 px.",
+      "projection": "Local equirectangular about the frame's centre latitude (15.88992 N): 110600 m per degree of latitude, 111320 * cos(15.88992) = 107065 m per degree of longitude. Over 6.4 km the error against a proper geodesic is a few metres — far inside a pencil line. Crucially the scale is the SAME on both axes, which is what makes a circle of constant distance draw as a circle rather than an ellipse.",
+      "scale": "Printed at 25.6 cm wide the map is exactly 1 cm = 250 m, so 1 km = 4 cm and the 2.7 km reading is a 10.8 cm radius. The scale bar drawn on the map is 200 px = 1 km and is the authority: if the sheet is ever printed at a different width, students measure off the bar and the arithmetic still works.",
+      "anchors": "A Japanese Bridge (15.87712, 108.32601) at px (209.4, 643.0); B Tra Que Herb Village (15.90271, 108.33602) at px (423.7, 77.0); C Cua Dai Beach (15.89806, 108.36623) at px (1070.6, 179.8). All three are real OSM features at their real positions — nothing has been nudged to make the numbers work.",
+      "answer": "The target is the cafe named Classic Coffee (15.89282, 108.34518) at px (619.9, 295.7). True distances 2688.4 m, 1469.1 m and 2327.1 m, which round to the 2.7 / 1.5 / 2.3 km the app reports. Do not mark it on the map."
+    }
+  ]
+}

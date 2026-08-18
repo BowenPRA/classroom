@@ -1,0 +1,199 @@
+% homework/alg13p3/alg13p3.tex
+% Algebra Track - Project 3 - Somebody Is 2.7 Kilometres Away.
+%
+% NOT a Year 7 packet. This is the TWO-SIDED, LANDSCAPE working sheet for the
+% high-school Algebra Track project in content/freshman-math/P03_1/, printed
+% from the site's Homework shelf. One sheet, one student.
+%
+%   FRONT  the three app readings, then the Hoi An map at exactly 1 cm = 250 m.
+%          Almost the whole side is map, because the side is a drawing surface:
+%          the 2.7 km arc alone has a 10.8 cm radius.
+%   BACK   Q1-Q5, the privacy question, and the planning grid plus tear-off clue
+%          card for the Early Years treasure hunt.
+%
+% THE SCALE IS LOad-BEARING AND MUST NOT BE "TIDIED". The map is included at
+% exactly 25.6 cm wide, which makes it 1 cm = 250 m and 1 km = 4 cm, and the
+% deck tells students to convert 2.7 km to a 10.8 cm radius on that basis. If
+% anybody ever rescales the \includegraphics, the slides become wrong. The scale
+% BAR drawn on the map is the fallback authority, and it is why it is there.
+%
+% The map file is not copied in beside this one - the \includegraphics reaches
+% across to content/freshman-math/P03_1/images/hoi-an-map.png so that the sheet
+% on the desk and the map on the projector cannot drift apart. Its licence is
+% ODbL and the "Map data (c) OpenStreetMap contributors" credit is burned into
+% the image itself, bottom right, which is exactly why it is burned in: this
+% sheet leaves the building.
+%
+% The source is pure ASCII: every typographic character goes through a LaTeX
+% command, so no editor or shell can mangle the encoding.
+%
+% Build:  pdflatex alg13p3.tex   (run twice)
+
+\documentclass[12pt,a4paper]{article}
+
+% -- Answer key switch -------------------------------------------------------
+% There is no answer key PDF for this sheet - the marking guidance is in the
+% lesson plan, and half the sheet has no single right answer. The switch is kept
+% so the shared build script's teacher pass does not fail.
+\newif\ifkey
+\ifdefined\TEACHER\keytrue\else
+  \keyfalse
+\fi
+
+% -- House style -------------------------------------------------------------
+\input{../hw-style.tex}
+
+% Landscape, tight margins: both sides are working surfaces.
+% includeheadfoot is load-bearing - without it geometry measures `top` to the
+% top of the BODY and hangs the running head off the top of the sheet.
+\geometry{landscape, top=1.0cm, bottom=0.8cm, left=1.3cm, right=1.3cm,
+          includeheadfoot, headsep=7pt}
+
+% Kept short: the full lesson title here ran straight into the scale note on the
+% right and the two overprinted each other.
+\fancyhead[L]{\small\color{black!55}Algebra Track\sep Project 3}
+% The scale lives in the running head rather than in a banner on the back. As a
+% banner it cost 1.5 cm at the top of page 2, which was exactly enough to push
+% the two-column row onto a third page and leave page 2 holding nothing but the
+% banner. Here it is on both sides, where it is wanted, and costs nothing.
+\fancyhead[R]{\small\color{black!55}1 cm on the map = 250 m}
+\fancyfoot[C]{\small\color{black!40}Page \thepage\ of 2}
+
+% A reading chip: letter, place, distance.
+\newcommand{\reading}[3]{%
+  \begin{tcolorbox}[enhanced, nobeforeafter, width=8.1cm, colback=cborange!7,
+      colframe=cborange!7, arc=5pt, borderline west={4pt}{0pt}{cborange},
+      left=9pt, right=8pt, top=5pt, bottom=5pt]
+    {\color{cborange}\bfseries #1}\quad #2\hfill{\bfseries\large #3}
+  \end{tcolorbox}}
+
+\begin{document}
+
+% ===========================================================================
+% FRONT - THE MAP
+% ===========================================================================
+\thispagestyle{fancy}
+
+\noindent
+\begin{tcolorbox}[enhanced, nobeforeafter, width=\textwidth,
+                  colback=cbpurple!7, colframe=cbpurple!7, arc=6pt,
+                  borderline west={6pt}{0pt}{cbpurple},
+                  left=16pt, right=12pt, top=5pt, bottom=5pt]
+  {\color{cbpurple}\bfseries PROJECT 3}\quad
+  {\color{cbpurple}\large\bfseries Somebody Is 2.7 Kilometres Away}\quad
+  {\color{black!60}\small Neary says: \textit{"We never share your location."}}\hfill
+  {\color{black!70}\bfseries Name: \blank[4.2cm]}
+\end{tcolorbox}
+
+\vspace{3pt}
+
+\noindent
+\reading{A}{Japanese Bridge}{2.7 km}\hfill
+\reading{B}{Tra Que Herb Village}{1.5 km}\hfill
+\reading{C}{Cua Dai Beach}{2.3 km}
+
+\vspace{3pt}
+
+\noindent
+\begin{tikzpicture}
+  \node[anchor=south west, inner sep=0, draw=rulegray, line width=0.5pt] (map) at (0,0)
+    {\includegraphics[width=25.6cm]{../../content/freshman-math/P03_1/images/hoi-an-map.png}};
+\end{tikzpicture}
+
+\newpage
+
+% ===========================================================================
+% BACK - THE WRITE-UP AND THE TREASURE GRID
+% ===========================================================================
+\noindent
+\begin{minipage}[t]{13.1cm}
+  \vspace{0pt}
+
+  \qhead[cborange]{Q1}{Two answers before one}
+  \vspace{-3pt}
+  {\small Using only readings \textbf{A} and \textbf{B}, mark \emph{both} places the two
+  arcs cross. Name them.}
+  \vspace{2pt}
+
+  {\small First crossing:} \blank[8.3cm]\\[7pt]
+  {\small Second crossing:} \blank[8.0cm]
+
+  \qhead[cborange]{Q2}{Where is he?}
+  \vspace{-3pt}
+  {\small Now bring in reading \textbf{C}. One crossing survives. Finish the sentence.}
+  \vspace{4pt}
+
+  {\small Mr Bowen is at} \blank[9.6cm]
+
+  \qhead[cbgreen]{Q3}{How sure are you, in metres?}
+  \vspace{-3pt}
+  {\small Your three arcs will not meet at a point --- they bound a small patch.
+  Measure it, then convert it.}
+  \vspace{3pt}
+
+  \begin{tabularx}{\dimexpr\linewidth-3\arrayrulewidth\relax}{|X|p{3.1cm}|p{3.1cm}|}
+    \hline
+    \rule[-0.35em]{0pt}{1.5em} & \textbf{across (mm)} & \textbf{in metres} \\
+    \hline
+    \rule[-0.5em]{0pt}{1.7em}widest way across the patch & & \\
+    \hline
+  \end{tabularx}
+  \vspace{2pt}
+
+  {\small Show the conversion:}
+  \begin{workspace}[1.6cm]\end{workspace}
+
+  % The bottom of this column was empty, and the hunt downstairs needs a thing
+  % to physically hand over. A dashed border because it gets torn off.
+  \vspace{4pt}
+  {\small\bfseries\color{cbpurple}Tear this off and hand it to the Early Years team.}
+  \vspace{3pt}
+
+  \begin{tcolorbox}[enhanced, nobeforeafter, width=\linewidth, colback=white,
+      boxrule=0pt, arc=4pt, borderline={1pt}{0pt}{cbpurple, dashed},
+      left=10pt, right=10pt, top=7pt, bottom=7pt, fontupper=\small]
+    {\color{cbpurple}\bfseries TREASURE CLUE CARD}\hfill Team: \blank[3.4cm]\\[6pt]
+    From \textbf{P} (\blank[3.1cm]) it is \blank[1.7cm] m\\[4pt]
+    From \textbf{Q} (\blank[3.1cm]) it is \blank[1.7cm] m\\[4pt]
+    From \textbf{R} (\blank[3.1cm]) it is \blank[1.7cm] m
+  \end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{13.1cm}
+  \vspace{0pt}
+
+  \qhead[cbred]{Q4}{What this means for your phone}
+  \vspace{-3pt}
+  {\small An app shows only how far away you are, to the nearest 0.1 km. Why is
+  that still worth being careful about? Name one thing you would check in its
+  settings.}
+  \vspace{-2pt}
+  \wlines{4}
+
+  \qhead[cbpurple]{Part 2}{The treasure hunt --- planning grid}
+  \vspace{-3pt}
+  {\small Three fixed points, \key{not in a straight line}. Describe each one well
+  enough for a stranger to stand on it. Distances to the nearest 10 cm.}
+  \vspace{3pt}
+
+  \begin{tabularx}{\dimexpr\linewidth-4\arrayrulewidth\relax}{|p{1.0cm}|X|p{3.0cm}|}
+    \hline
+    \rule[-0.35em]{0pt}{1.5em}\textbf{} & \textbf{What it is, exactly} & \textbf{Distance (m)} \\
+    \hline
+    \rule[-0.5em]{0pt}{1.8em}\textbf{P} & & \\
+    \hline
+    \rule[-0.5em]{0pt}{1.8em}\textbf{Q} & & \\
+    \hline
+    \rule[-0.5em]{0pt}{1.8em}\textbf{R} & & \\
+    \hline
+  \end{tabularx}
+
+  \qhead[cbteal]{Q5}{What actually happened}
+  \vspace{-3pt}
+  {\small Did your clues work first time? If they went to the wrong place first,
+  \emph{which} wrong place --- and why would two distances allow it?}
+  \vspace{-2pt}
+  \wlines{3}
+\end{minipage}
+
+\end{document}
