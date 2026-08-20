@@ -1,0 +1,399 @@
+% homework/hw03x/hw03x.tex
+% Year 7 - Extra Homework: multiplication and division.
+%
+% Goes out alongside Homework 3, for students who will get more out of Unit 1
+% with more practice on the two operations the whole unit runs on. The framing
+% matters and is deliberate: this is not presented as catch-up work, because it
+% is not. Factors, the HCF and the divisibility tests are all built on
+% multiplying and dividing, so the cover says exactly that -- these are the two
+% skills that make the rest faster, and this is extra practice on them.
+%
+% Nothing in here is labelled easy, basic or extra help, and no question is
+% marked as being for anybody in particular. The sequence goes tables ->
+% multiplication -> division -> division with remainders -> missing numbers ->
+% "use it" (which lands straight back on Homework 3's factor questions) ->
+% word problems. E6 deliberately re-uses two divisions the student has already
+% done in E3 and E4, so the last section rewards looking back.
+%
+% House style is shared: see homework/hw-style.tex. Method: the new-homework
+% skill. Source is pure ASCII on purpose.
+%
+% Build:  pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw03x
+
+\documentclass[12pt,a4paper]{article}
+
+% -- Answer key switch -------------------------------------------------------
+\newif\ifkey
+\ifdefined\TEACHER\keytrue\else
+  \keyfalse        % \keyfalse = student copy   |   \keytrue = teacher copy
+\fi
+
+% -- House style -------------------------------------------------------------
+\input{../hw-style.tex}
+
+% -- Per-packet running head -------------------------------------------------
+\fancyhead[L]{\small\color{black!55}Year 7\sep Extra Homework}
+
+\begin{document}
+
+% ===========================================================================
+% COVER BLOCK
+% ===========================================================================
+\thispagestyle{fancy}
+
+\begin{tcolorbox}[enhanced, colback=cbgreen!8, colframe=cbgreen!8, arc=7pt,
+                  borderline west={6pt}{0pt}{cbgreen},
+                  left=18pt, right=14pt, top=14pt, bottom=14pt]
+  {\color{cbgreen!75!black}\bfseries YEAR 7\sep UNIT 1\sep EXTRA HOMEWORK}\\[6pt]
+  {\color{cbgreen!70!black}\Huge\bfseries The Two That Do the Work}\\[10pt]
+  {\color{black!70}Multiplication and division\sep the engine room of Unit 1}
+\end{tcolorbox}
+
+\vspace{10pt}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+  \textbf{Name:} \blank[5.6cm] & \textbf{Class:} \blank[5.6cm] \\
+  \textbf{Date given:} \blank[4.6cm] & \textbf{Date due:} \blank[5.0cm] \\
+\end{tabularx}
+
+\vspace{8pt}
+\begin{activity}[Why this sheet exists]
+  Everything in Unit 1 sits on top of two operations. A \key{factor} is found by
+  \key{dividing}, factor \key{pairs} by \key{multiplying}, and the \key{HCF}
+  simplifies a fraction by \key{dividing} top and bottom. So the faster and more
+  surely you can multiply and divide, the easier the whole unit gets. That is all
+  this sheet is: \key{extra practice on the two operations that do the work.}
+
+  \medskip
+  \eng{Do it without a calculator}, and show your working --- working you can see
+  is working you can check.
+\end{activity}
+
+% ===========================================================================
+% E1 -- TABLES
+% ===========================================================================
+\hwsection[cbgreen]{Part 1 \textperiodcentered\ The facts worth knowing by heart}
+
+\qhead[cbgreen]{E1}{Fill in the missing number}
+
+\noindent These are the ones that come up again and again in factors and
+divisibility. Aim to know them without counting.
+
+\vspace{10pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*), itemsep=9pt]
+  \item $6 \times 7 = \blank[1.3cm]$
+  \item $7 \times 8 = \blank[1.3cm]$
+  \item $8 \times 9 = \blank[1.3cm]$
+  \item $9 \times 6 = \blank[1.3cm]$
+  \item $7 \times 7 = \blank[1.3cm]$
+  \item $8 \times 8 = \blank[1.3cm]$
+  \item $12 \times 7 = \blank[1.3cm]$
+  \item $11 \times 9 = \blank[1.3cm]$
+  \item $9 \times 9 = \blank[1.3cm]$
+  \item $12 \times 12 = \blank[1.3cm]$
+  \item $8 \times 12 = \blank[1.3cm]$
+  \item $9 \times 12 = \blank[1.3cm]$
+  \item $7 \times 9 = \blank[1.3cm]$
+  \item $11 \times 11 = \blank[1.3cm]$
+  \item $7 \times 11 = \blank[1.3cm]$
+\end{enumerate}
+\end{multicols}
+
+% ===========================================================================
+% E2 -- MULTIPLICATION
+% ===========================================================================
+\qhead[cbgreen]{E2}{Multiply}
+
+\noindent Set each one out properly and show your working in the box.
+
+\vspace{6pt}
+\noindent\textbf{(a)} Two digits by one digit.
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+  \hline
+  $34 \times 6$ & $47 \times 8$ & $58 \times 7$ & $93 \times 4$ \\
+  \rule[-2.5em]{0pt}{3.1em} & & & \\
+  \hline
+\end{tabularx}
+
+\vspace{12pt}
+\noindent\textbf{(b)} Three digits by one digit.
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  $236 \times 7$ & $418 \times 6$ & $364 \times 8$ \\
+  \rule[-3.0em]{0pt}{3.8em} & & \\
+  \hline
+\end{tabularx}
+
+\vspace{12pt}
+\noindent\textbf{(c)} Two digits by two digits.
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  $23 \times 14$ & $36 \times 25$ & $48 \times 17$ \\
+  \rule[-3.6em]{0pt}{4.4em} & & \\
+  \hline
+\end{tabularx}
+
+% ===========================================================================
+% E3 -- DIVISION, EXACT
+% ===========================================================================
+\hwsection[cbgreen]{Part 2 \textperiodcentered\ Division}
+
+\qhead[cbgreen]{E3}{Divide --- these all come out exactly}
+
+\begin{remember}[A check that costs five seconds]
+  When you finish a division, \key{multiply your answer back}. If
+  $72 \div 6 = 12$, then $12 \times 6$ must come to 72. If it does not, you have
+  just caught your own mistake.
+\end{remember}
+
+\vspace{4pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=13pt]
+  \item $72 \div 6 = \blank[2.2cm]$
+  \item $96 \div 4 = \blank[2.2cm]$
+  \item $91 \div 7 = \blank[2.2cm]$
+  \item $126 \div 9 = \blank[2.2cm]$
+  \item $156 \div 12 = \blank[2.2cm]$
+  \item $245 \div 5 = \blank[2.2cm]$
+  \item $372 \div 4 = \blank[2.2cm]$
+  \item $651 \div 3 = \blank[2.2cm]$
+\end{enumerate}
+\end{multicols}
+
+% ===========================================================================
+% E4 -- DIVISION WITH REMAINDERS
+% ===========================================================================
+\qhead[cbgreen]{E4}{Divide --- these do not}
+
+\begin{wordhelp}[Word help --- the words that describe what is left]
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{1.4em}}X@{}}
+    \eng{exactly}          & nothing is left over. $72 \div 6 = 12$ exactly. \\
+    \eng{remainder}        & what is left over when it does not come out exactly.
+                             We write $53 \div 6 = 8$ r 5. \\
+    \eng{goes into}        & ``6 goes into 24 four times'' means $24 \div 6 = 4$. \\
+    \eng{left over}        & the everyday English for a remainder. \\
+  \end{tabularx}
+\end{wordhelp}
+
+\noindent Write each answer as a whole number and a remainder, like this:
+\quad $53 \div 6 = 8$ r 5.
+
+\vspace{8pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=13pt]
+  \item $74 \div 8 = \blank[2.8cm]$
+  \item $100 \div 7 = \blank[2.8cm]$
+  \item $85 \div 9 = \blank[2.8cm]$
+  \item $137 \div 5 = \blank[2.8cm]$
+  \item $191 \div 6 = \blank[2.8cm]$
+  \item $250 \div 8 = \blank[2.8cm]$
+\end{enumerate}
+\end{multicols}
+
+% ===========================================================================
+% E5 -- FACT FAMILIES
+% ===========================================================================
+\hwsection[cbgreen]{Part 3 \textperiodcentered\ Putting them together}
+
+\qhead[cbgreen]{E5}{Find the missing number}
+
+\begin{remember}[Multiplying and dividing undo each other]
+  If $7 \times 9 = 63$, then $63 \div 7 = 9$ \key{and} $63 \div 9 = 7$. Every
+  multiplication fact is also \key{two} division facts --- which is why Part 1 is
+  worth knowing by heart.
+\end{remember}
+
+\vspace{4pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=12pt]
+  \item $7 \times \blank[1.4cm] = 63$
+  \item $\blank[1.4cm] \times 8 = 96$
+  \item $54 \div \blank[1.4cm] = 6$
+  \item $\blank[1.4cm] \div 7 = 8$
+  \item $6 \times \blank[1.4cm] = 84$
+  \item $\blank[1.4cm] \times 9 = 117$
+  \item $132 \div \blank[1.4cm] = 11$
+  \item $\blank[1.4cm] \div 4 = 25$
+\end{enumerate}
+\end{multicols}
+
+% ===========================================================================
+% E6 -- USE IT
+% ===========================================================================
+\qhead[cbgreen]{E6}{Use it: is it a factor?}
+
+\begin{remember}[Straight out of Homework 3]
+  A number is a \key{factor} of another if it divides into it \key{exactly}.
+  So the way to find out is to \key{do the division and look at the remainder}.
+\end{remember}
+
+\noindent Do each division, then circle \textbf{yes} or \textbf{no}.
+\key{Two of these you have already worked out on this sheet} --- look back rather
+than starting again.
+
+\vspace{10pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|p{4.4cm}|p{3.4cm}|}
+  \hline
+  \textbf{Question} & \textbf{The division} & \textbf{Is it a factor?} \\
+  \hline
+  Is 6 a factor of 84?  \rule[-0.8em]{0pt}{2.3em} & & yes \quad / \quad no \\ \hline
+  Is 8 a factor of 92?  \rule[-0.8em]{0pt}{2.3em} & & yes \quad / \quad no \\ \hline
+  Is 9 a factor of 126? \rule[-0.8em]{0pt}{2.3em} & & yes \quad / \quad no \\ \hline
+  Is 7 a factor of 100? \rule[-0.8em]{0pt}{2.3em} & & yes \quad / \quad no \\ \hline
+\end{tabularx}
+
+% ===========================================================================
+% E7 -- WORD PROBLEMS
+% ===========================================================================
+\qhead[cbgreen]{E7}{Word problems}
+
+\begin{wordhelp}[Word help --- which operation does the sentence want?]
+  {\renewcommand{\arraystretch}{1.15}%
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{1.4em}}X@{}}
+    \eng{each} / \eng{every}        & usually multiply. 6 boxes with 24 in
+                                      \textbf{each} is $6 \times 24$. \\
+    \eng{share equally between}     & divide. \\
+    \eng{how many are left}         & the remainder. \\
+    \eng{altogether} / \eng{in total} & the whole amount, once you have finished. \\
+  \end{tabularx}}
+\end{wordhelp}
+
+\noindent Write the calculation first, then the answer.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=11pt]
+
+  \item \textbf{The markers.} Mr Bowen buys \textbf{6 boxes} of markers. There are
+        \textbf{24 markers} in each box. How many markers does he have altogether?
+        \begin{workspace}[2.5cm]\end{workspace}
+
+  \item \textbf{The paper.} Mr Bowen shares \textbf{96 sheets of paper} equally
+        between \textbf{8 students}. How many sheets does each student get?
+        \begin{workspace}[2.5cm]\end{workspace}
+
+  \item \textbf{The pizzas.} Mr Bowen orders \textbf{8 identical pizzas} for the
+        class. Each pizza is cut into \textbf{12 slices}. There are \textbf{29
+        students}. Every student gets the same whole number of slices, and Mr Bowen
+        eats the rest. How many slices does each student get, and how many does
+        Mr Bowen eat?
+        % The two-step one, and the last thing on the sheet: spend the leftover
+        % space at the foot of the page on room to write rather than on nothing.
+        \begin{workspace}[4.2cm]\end{workspace}
+
+\end{enumerate}
+
+% ===========================================================================
+% ANSWER KEY (teacher copy only)
+% ===========================================================================
+\ifkey
+\newpage
+\hwsection[cbred]{Answer Key --- Teacher Copy}
+
+\linespread{1.0}\selectfont
+\setlist[enumerate]{itemsep=2pt, topsep=3pt, leftmargin=*}
+\setlist[itemize]{itemsep=2pt, topsep=3pt, leftmargin=*}
+
+\qhead[cbred]{E1}{Fill in the missing number}
+\noindent (a) 42 \quad (b) 56 \quad (c) 72 \quad (d) 54 \quad (e) 49 \quad (f) 64
+\quad (g) 84 \quad (h) 99 \\
+(i) 81 \quad (j) 144 \quad (k) 96 \quad (l) 108 \quad (m) 63 \quad (n) 121
+\quad (o) 77
+
+\smallskip
+\noindent{\small Time this one rather than marking it: if a student can do all
+fifteen in under two minutes, the tables are not what is slowing them down in
+Unit 1 and Part 2 is where to look instead. The three worth re-drilling if they
+go wrong are (b) $7 \times 8$, (c) $8 \times 9$ and (m) $7 \times 9$ --- those
+three account for most of the errors in factor lists.}
+
+\qhead[cbred]{E2}{Multiply}
+\noindent (a) $34 \times 6 = 204$ \quad $47 \times 8 = 376$ \quad
+$58 \times 7 = 406$ \quad $93 \times 4 = 372$ \\
+(b) $236 \times 7 = 1652$ \quad $418 \times 6 = 2508$ \quad $364 \times 8 = 2912$ \\
+(c) $23 \times 14 = 322$ \quad $36 \times 25 = 900$ \quad $48 \times 17 = 816$
+
+\smallskip
+\noindent{\small The error to look for is carrying, not the tables: in (b),
+$418 \times 6$ needs a carry at every column. In (c), check they have written
+\emph{two} rows of working and added them --- a single row means they have
+multiplied by the units digit only, and that shows up as an answer roughly a tenth
+of the right size.}
+
+\qhead[cbred]{E3}{Divide --- these all come out exactly}
+\noindent (a) 12 \quad (b) 24 \quad (c) 13 \quad (d) 14 \quad (e) 13 \quad
+(f) 49 \quad (g) 93 \quad (h) 217
+
+\smallskip
+\noindent{\small (c) $91 \div 7$ is the one that surprises people --- 91 looks
+prime and is not. (h) $651 \div 3$ is the longest and is a good one to do at the
+board. If a student's answers are right but slow, the multiply-back check in the
+orange box is what to insist on next time, not more questions.}
+
+\qhead[cbred]{E4}{Divide --- these do not}
+\noindent (a) $74 \div 8 = 9$ r 2 \quad (b) $100 \div 7 = 14$ r 2 \quad
+(c) $85 \div 9 = 9$ r 4 \\
+(d) $137 \div 5 = 27$ r 2 \quad (e) $191 \div 6 = 31$ r 5 \quad
+(f) $250 \div 8 = 31$ r 2
+
+\smallskip
+\noindent{\small Two errors to separate here. A remainder \emph{bigger than the
+divisor} (writing $74 \div 8 = 8$ r 10) means the quotient is one too small and
+they have stopped early --- that is a method error. A remainder that is simply
+wrong by one or two is arithmetic. Only the first needs re-teaching. \\
+Nobody should be writing a decimal here; if they do, it is worth saying that the
+remainder is the useful form in this unit, because the remainder is what decides
+whether something is a factor.}
+
+\qhead[cbred]{E5}{Find the missing number}
+\noindent (a) 9 \quad (b) 12 \quad (c) 9 \quad (d) 56 \quad (e) 14 \quad
+(f) 13 \quad (g) 12 \quad (h) 100
+
+\smallskip
+\noindent{\small The four with the gap on the left of a division --- (d) and (h)
+--- are the hard ones, because the missing number is the \emph{big} one and you
+have to multiply to find it. Expect students to divide out of habit and get
+$8 \div 7$. The fix is the orange box: say the fact family out loud. \\
+(f) $13 \times 9 = 117$ is outside the tables on purpose; it is there to be worked
+out rather than recalled.}
+
+\qhead[cbred]{E6}{Use it: is it a factor?}
+\noindent $84 \div 6 = 14$ --- \textbf{yes} \\
+$92 \div 8 = 11$ r 4 --- \textbf{no} \\
+$126 \div 9 = 14$ --- \textbf{yes} (already done in E3d) \\
+$100 \div 7 = 14$ r 2 --- \textbf{no} (already done in E4b)
+
+\smallskip
+\noindent{\small The two repeats are deliberate. A student who does all four from
+scratch has not read the instruction; a student who spots them has done the thing
+this sheet is really for, which is noticing that the same division keeps turning
+up. Ask who found them before you give the answers. \\
+Note that rows 3 and 4 both give 14 --- one with nothing left over and one with a
+remainder of 2. That pair is the whole idea of a factor in two lines, and it is
+worth pointing at.}
+
+\qhead[cbred]{E7}{Word problems}
+\begin{enumerate}[label=\arabic*., itemsep=2pt]
+  \item $6 \times 24 = \mathbf{144}$ markers.
+  \item $96 \div 8 = \mathbf{12}$ sheets each.
+  \item $8 \times 12 = 96$ slices altogether. $96 \div 29 = 3$ r 9, so each student
+        gets \textbf{3 slices} and Mr Bowen eats \textbf{9}.
+\end{enumerate}
+\noindent{\small Problem 3 is the deadpan one. Read it completely straight and do
+not explain the joke --- the maths is correct, which is the point. It is also the
+only two-step question on the sheet: multiply first to find the total, then divide
+with a remainder. A student who divides 8 by 29, or 12 by 29, has missed the first
+step; send them back to the first sentence rather than to the arithmetic.}
+
+\fi
+
+\end{document}
