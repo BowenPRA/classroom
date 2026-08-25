@@ -36,21 +36,23 @@ import {
 
 import { BOARDS } from './boards.js'
 
-// Thinking music. Five free tracks — four CC0, one CC BY — with licences and
-// sources in audio/CREDITS.json. Game music and phonk rather than an
-// orchestra, because the room is twelve years old.
+// Thinking music. Six free tracks — lofi first, because that is what the room
+// responds to — with licences and sources in audio/CREDITS.json.
 //
 // What is NOT here, and cannot be: the television show's countdown cue. It is
 // still in copyright, and so is a re-recorded "free version" of it, which is a
-// cover of a protected tune rather than a way round it. Chiptune boss music is
-// the honest substitute — it does the same job in the room.
+// cover of a protected tune rather than a way round it. Lift Motif is the
+// honest substitute — forty-four seconds of waiting music, an original
+// composition, doing the job the cue does in the room rather than repeating
+// the tune it does it with.
 //
 // Vite fingerprints these like any other asset, so they are imported rather
 // than written as paths.
+import studyAndRelax from './audio/study-and-relax.ogg'
+import lofi from './audio/lofi.mp3'
+import liftMotif from './audio/lift-motif.ogg'
 import bossBattle from './audio/boss-battle.opus'
-import slayTheEvil from './audio/slay-the-evil.opus'
 import timeAttack from './audio/time-attack.ogg'
-import r2d2Bass from './audio/r2d2-bass.ogg'
 import phonk from './audio/phonk.opus'
 
 const ICONS = { Calculator, FlaskConical, Trophy, Sparkles }
@@ -65,10 +67,11 @@ const TRACKS = [
   // The descriptor line has about twenty characters before it truncates at
   // three cards across. The longer advice — which track suits which row of the
   // board — lives in the teacher plan, where there is room to say it properly.
+  { id: 'study-and-relax', src: studyAndRelax, name: 'Study And Relax', nameVn: 'Study And Relax', by: 'lofi · warped tape', byVn: 'lofi · băng cũ' },
+  { id: 'lofi', src: lofi, name: 'Lofi', nameVn: 'Lofi', by: 'lofi · straight up', byVn: 'lofi · thuần chất' },
+  { id: 'lift-motif', src: liftMotif, name: 'Lift Motif', nameVn: 'Lift Motif', by: 'the thinking one', byVn: 'nhạc để suy nghĩ' },
   { id: 'boss-battle', src: bossBattle, name: 'Boss Battle', nameVn: 'Boss Battle', by: '8-bit · heavy', byVn: '8-bit · nặng đô' },
-  { id: 'slay-the-evil', src: slayTheEvil, name: 'Slay The Evil', nameVn: 'Slay The Evil', by: '8-bit · fast', byVn: '8-bit · nhanh' },
   { id: 'time-attack', src: timeAttack, name: 'Time Attack', nameVn: 'Time Attack', by: 'chiptune · 40s', byVn: 'chiptune · 40 giây' },
-  { id: 'r2d2-bass', src: r2d2Bass, name: 'R2D2 Plays Bass', nameVn: 'R2D2 Plays Bass', by: 'funk · groovy', byVn: 'funk · sôi động' },
   { id: 'phonk', src: phonk, name: 'Current', nameVn: 'Current', by: 'phonk · their music', byVn: 'phonk · gu các em' },
 ]
 
