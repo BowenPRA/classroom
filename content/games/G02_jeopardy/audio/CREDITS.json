@@ -1,42 +1,52 @@
 [
   {
-    "name": "mountain-king.ogg",
-    "title": "File:Musopen - In the Hall Of The Mountain King.ogg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Musopen_-_In_the_Hall_Of_The_Mountain_King.ogg",
-    "license": "Public domain",
-    "artist": "Edvard Grieg (composition, 1875); performed by the Czech National Symphony Orchestra as the Musopen Symphony Orchestra",
-    "source": "Musopen - https://musopen.org/music/777-peer-gynt-suite-no-1-op-46/ - released into the public domain by the Musopen Kickstarter project",
-    "usage": "Thinking music while the 30-second clue timer runs. The default track: it starts quiet and builds, so the room hears the time running out without anybody watching the number. Downloaded unedited; the widget only ever plays the opening 30 seconds and fades it out.",
-    "bytes": 2155317
-  },
-  {
-    "name": "nachtmusik.ogg",
-    "title": "File:Mozart K525 Serenade in G Major 1 - Allegro.ogg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Mozart_K525_Serenade_in_G_Major_1_-_Allegro.ogg",
-    "license": "Public domain",
-    "artist": "Wolfgang Amadeus Mozart (composition, 1787); performance credited on Musopen to the European Archive",
-    "source": "Musopen - https://musopen.org/music/28074-serenade-no-13-a-little-night-music-eine-kleine-nachtmusik-k-525/",
-    "usage": "Thinking music while the clue timer runs. Bright and familiar - the one to pick for the 100s and 200s, where the timer is about pace rather than pressure. Downloaded unedited.",
-    "bytes": 2003796
-  },
-  {
-    "name": "maple-leaf-rag.ogg",
-    "title": "File:Maple Leaf Rag - played by Scott Joplin 1916 sample.ogg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Maple_Leaf_Rag_-_played_by_Scott_Joplin_1916_sample.ogg",
-    "license": "Public domain",
-    "artist": "Scott Joplin (composition, 1899, and the 1916 piano roll performance); roll digitised by pianola.co.nz, re-recorded as audio by Wikimedia user Major Bloodnok",
-    "source": "https://commons.wikimedia.org/wiki/File:Maple_Leaf_Rag_-_played_by_Scott_Joplin_1916_sample.ogg - a 1916 piano roll, public domain in the United States",
-    "usage": "Thinking music while the clue timer runs. The cheerful one, and the one to use on the trivia categories. Downloaded unedited.",
-    "bytes": 1607177
-  },
-  {
-    "name": "badinerie.ogg",
-    "title": "File:Bach, Johann Sebastian - Suite No.2 in B Minor - X. Badinerie.ogg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Bach,_Johann_Sebastian_-_Suite_No.2_in_B_Minor_-_X._Badinerie.ogg",
+    "name": "boss-battle.opus",
+    "title": "File:8-bit Music for GameDev - 03. Boss Battle.opus",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:8-bit_Music_for_GameDev_-_03._Boss_Battle.opus",
     "license": "CC0",
-    "artist": "Johann Sebastian Bach (composition, BWV 1067); performance credited on Musopen to the European Archive",
-    "source": "Musopen - https://musopen.org/music/1005/johann-sebastian-bach/orchestral-suite-no2-in-b-minor-bwv-1067/",
-    "usage": "Thinking music while the clue timer runs. Fast and light, and the shortest file of the four. CC0 rather than public domain by age - the recording is dedicated to the public domain by its uploader, which is not the same thing, so it is recorded here as CC0.",
-    "bytes": 1300879
+    "artist": "HydroGene",
+    "source": "Wikimedia Commons - part of the artist's '8-bit Music for GameDev' set, dedicated to the public domain for use in games",
+    "usage": "Thinking music while the 30-second clue timer runs. The default track: chiptune boss music, which is the closest legitimate thing to a game-show countdown for a class this age. Downloaded unedited; the widget only ever plays the opening 30 seconds and fades it out.",
+    "bytes": 2033216
+  },
+  {
+    "name": "slay-the-evil.opus",
+    "title": "File:8-bit Music for GameDev - 01. Slay The Evil.opus",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:8-bit_Music_for_GameDev_-_01._Slay_The_Evil.opus",
+    "license": "CC0",
+    "artist": "HydroGene",
+    "source": "Wikimedia Commons - same '8-bit Music for GameDev' set as boss-battle.opus",
+    "usage": "Thinking music while the clue timer runs. Faster and brighter than Boss Battle, so it is the one for the 100s and 200s where the clock is about pace rather than pressure. Downloaded unedited.",
+    "bytes": 1545099
+  },
+  {
+    "name": "time-attack.ogg",
+    "title": "File:Komiku - 44 - Time Attack against the universe.ogg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Komiku_-_44_-_Time_Attack_against_the_universe.ogg",
+    "license": "CC0",
+    "artist": "Komiku",
+    "source": "Wikimedia Commons - from Komiku's public-domain game-music catalogue",
+    "usage": "Thinking music while the clue timer runs. Forty seconds long, which is the whole track and barely longer than the countdown itself. Downloaded unedited.",
+    "bytes": 882541
+  },
+  {
+    "name": "r2d2-bass.ogg",
+    "title": "File:Frederic Lardon - 03 - R2D2 needs to play bass with me.ogg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Frederic_Lardon_-_03_-_R2D2_needs_to_play_bass_with_me.ogg",
+    "license": "CC0",
+    "artist": "Frederic Lardon",
+    "source": "Wikimedia Commons - released into the public domain by the artist",
+    "usage": "Thinking music while the clue timer runs. The funk one, and the one for the trivia categories. Shown in the picker as 'R2D2 Plays Bass'; the artist's full title is longer. Downloaded unedited.",
+    "bytes": 1343532
+  },
+  {
+    "name": "phonk.opus",
+    "title": "File:WhiteWhyne - current (Phonk x Synthwave Instrumental, Dark & Atmospheric Beats).opus",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:WhiteWhyne_-_current_(Phonk_x_Synthwave_Instrumental,_Dark_%26_Atmospheric_Beats).opus",
+    "license": "CC BY 3.0",
+    "artist": "WhiteWhyne",
+    "source": "Wikimedia Commons - the only track here that is NOT public domain. CC BY 3.0 requires attribution, which is why the artist's name is carried in this file and in the teacher plan. Do not strip it.",
+    "usage": "Thinking music while the clue timer runs. Phonk and synthwave, which is the genre this age group actually listens to - the reason it is here at all. Downloaded unedited.",
+    "bytes": 2282187
   }
 ]

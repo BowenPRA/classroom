@@ -36,14 +36,22 @@ import {
 
 import { BOARDS } from './boards.js'
 
-// Thinking music. Four public-domain recordings, licences and sources in
-// audio/CREDITS.json — nothing here is the television show's cue, which is
-// very much still in copyright. Vite fingerprints these like any other asset,
-// so they are imported rather than written as paths.
-import mountainKing from './audio/mountain-king.ogg'
-import nachtmusik from './audio/nachtmusik.ogg'
-import mapleLeafRag from './audio/maple-leaf-rag.ogg'
-import badinerie from './audio/badinerie.ogg'
+// Thinking music. Five free tracks — four CC0, one CC BY — with licences and
+// sources in audio/CREDITS.json. Game music and phonk rather than an
+// orchestra, because the room is twelve years old.
+//
+// What is NOT here, and cannot be: the television show's countdown cue. It is
+// still in copyright, and so is a re-recorded "free version" of it, which is a
+// cover of a protected tune rather than a way round it. Chiptune boss music is
+// the honest substitute — it does the same job in the room.
+//
+// Vite fingerprints these like any other asset, so they are imported rather
+// than written as paths.
+import bossBattle from './audio/boss-battle.opus'
+import slayTheEvil from './audio/slay-the-evil.opus'
+import timeAttack from './audio/time-attack.ogg'
+import r2d2Bass from './audio/r2d2-bass.ogg'
+import phonk from './audio/phonk.opus'
 
 const ICONS = { Calculator, FlaskConical, Trophy, Sparkles }
 
@@ -54,10 +62,14 @@ const TIMER_SECONDS = 30
 const MUSIC_VOLUME = 0.35
 
 const TRACKS = [
-  { id: 'mountain-king', src: mountainKing, name: 'In the Hall of the Mountain King', nameVn: 'Trong hang Vua Núi', by: 'Grieg · builds and builds', byVn: 'Grieg · dồn dập dần lên' },
-  { id: 'badinerie', src: badinerie, name: 'Badinerie', nameVn: 'Badinerie', by: 'Bach · fast and light', byVn: 'Bach · nhanh và nhẹ' },
-  { id: 'nachtmusik', src: nachtmusik, name: 'Eine kleine Nachtmusik', nameVn: 'Eine kleine Nachtmusik', by: 'Mozart · bright, no pressure', byVn: 'Mozart · tươi sáng, không gây áp lực' },
-  { id: 'maple-leaf', src: mapleLeafRag, name: 'Maple Leaf Rag', nameVn: 'Maple Leaf Rag', by: 'Joplin · the cheerful one', byVn: 'Joplin · bản vui nhộn' },
+  // The descriptor line has about twenty characters before it truncates at
+  // three cards across. The longer advice — which track suits which row of the
+  // board — lives in the teacher plan, where there is room to say it properly.
+  { id: 'boss-battle', src: bossBattle, name: 'Boss Battle', nameVn: 'Boss Battle', by: '8-bit · heavy', byVn: '8-bit · nặng đô' },
+  { id: 'slay-the-evil', src: slayTheEvil, name: 'Slay The Evil', nameVn: 'Slay The Evil', by: '8-bit · fast', byVn: '8-bit · nhanh' },
+  { id: 'time-attack', src: timeAttack, name: 'Time Attack', nameVn: 'Time Attack', by: 'chiptune · 40s', byVn: 'chiptune · 40 giây' },
+  { id: 'r2d2-bass', src: r2d2Bass, name: 'R2D2 Plays Bass', nameVn: 'R2D2 Plays Bass', by: 'funk · groovy', byVn: 'funk · sôi động' },
+  { id: 'phonk', src: phonk, name: 'Current', nameVn: 'Current', by: 'phonk · their music', byVn: 'phonk · gu các em' },
 ]
 
 // Fade rather than cut. A clip that stops dead sounds like something broke,
@@ -213,6 +225,37 @@ function Setup({
   const remove = (i) => setNames(names.filter((_, j) => j !== i))
   const add = () => setNames([...names, ''])
 
+  // Tapping a track picks it AND plays it, so the choice can be made by ear at
+  // the desk before the class arrives rather than discovered in front of them.
+  // Tapping the one that is already playing stops it.
+  const previewRef = useRef(null)
+  const [previewing, setPreviewing] = useState(null)
+
+  const stopPreview = () => {
+    if (previewRef.current) fadeOutAndStop(previewRef.current, 250)
+    previewRef.current = null
+    setPreviewing(null)
+  }
+
+  const pickTrack = (i) => {
+    const wasPlaying = previewing === i
+    stopPreview()
+    setTrackIndex(i)
+    if (wasPlaying) return
+    const audio = new Audio(TRACKS[i].src)
+    audio.volume = MUSIC_VOLUME
+    audio.play().catch(() => {})
+    previewRef.current = audio
+    setPreviewing(i)
+  }
+
+  // Leaving Setup — by starting the game or by any other route — takes the
+  // preview with it. Music playing under the board that the countdown did not
+  // start would be a bug the teacher cannot explain to the room.
+  useEffect(() => () => {
+    if (previewRef.current) fadeOutAndStop(previewRef.current, 250)
+  }, [])
+
   return (
     <div className="h-full min-h-0 overflow-y-auto custom-scrollbar px-4 sm:px-6 py-4">
       <div className="w-full max-w-5xl mx-auto">
@@ -251,12 +294,15 @@ function Setup({
             <h2 className="mt-4 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500 mb-1.5">
               {t(lang, 'music')}
             </h2>
-            <div className="grid gap-1.5 sm:grid-cols-2">
+            {/* Three across, so five tracks are two rows and not three. Two
+                rows is what keeps Setup inside the frame at 1440×900 — the
+                fifth track is exactly what pushed it over. */}
+            <div className="grid gap-1.5 grid-cols-2 sm:grid-cols-3">
               {TRACKS.map((track, i) => (
                 <button
                   key={track.id}
                   type="button"
-                  onClick={() => setTrackIndex(i)}
+                  onClick={() => pickTrack(i)}
                   className={`text-left rounded-xl border-2 border-b-4 px-2.5 py-1.5 transition-all active:border-b-2 active:translate-y-0.5 ${
                     i === trackIndex
                       ? 'border-[#f59e0b] bg-amber-50 dark:bg-amber-500/15'
@@ -264,7 +310,9 @@ function Setup({
                   }`}
                 >
                   <span className="flex items-center gap-1.5">
-                    <Music className={`w-3.5 h-3.5 shrink-0 ${i === trackIndex ? 'text-[#f59e0b]' : 'text-slate-300 dark:text-slate-600'}`} strokeWidth={3} />
+                    {previewing === i
+                      ? <Pause className="w-3.5 h-3.5 shrink-0 text-[#f59e0b]" strokeWidth={3} />
+                      : <Music className={`w-3.5 h-3.5 shrink-0 ${i === trackIndex ? 'text-[#f59e0b]' : 'text-slate-300 dark:text-slate-600'}`} strokeWidth={3} />}
                     <span className="min-w-0 truncate font-black text-[11px] sm:text-xs text-slate-800 dark:text-slate-100">
                       {pick(lang, track.name, track.nameVn)}
                     </span>
