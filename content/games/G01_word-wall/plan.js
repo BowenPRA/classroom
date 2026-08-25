@@ -5,8 +5,9 @@ export const plan = {
   duration: '10–15 minutes (one puzzle), or a full 40 minutes across three',
   objective:
     'Students sort sixteen items into four hidden groups and say WHY the four belong together — building category vocabulary '
-    + '(farm animals, clothes, weather, the kitchen, where food comes from), initial sounds and rhyme lower down, and Cambridge '
-    + 'subject vocabulary plus deliberate wordplay traps at Year 7. Throughout: the habit of justifying a guess in English.',
+    + '(farm animals, clothes, weather, the kitchen, where food comes from), initial sounds and rhyme lower down, materials and '
+    + 'animal groups on the Year 1 science shelf, and Cambridge subject vocabulary plus deliberate wordplay traps at Year 7. '
+    + 'Throughout: the habit of justifying a guess in English.',
   materials: [
     'Projector / TV — press Project for the big version',
     'Mini whiteboards, or thumbs up / thumbs down for voting on a guess',
@@ -19,7 +20,7 @@ export const plan = {
     { term: 'I think… because…', def: 'the answer stem. Never accept a pointed finger; make them finish the sentence.' },
   ],
   timeline: [
-    { time: '0–1 min', phase: 'Choose', detail: 'Open the puzzle list and pick by band — amber is Kindergarten–Year 1 (six puzzles, four of them all pictures), sky is Year 1–4 (eleven word walls, roughly easiest first), violet is Year 7 (four walls, each with a baited tile).' },
+    { time: '0–1 min', phase: 'Choose', detail: 'Open the puzzle list and pick by band — amber is Kindergarten–Year 1 (six puzzles, four of them all pictures), emerald is Year 1 · Science and the World (four more walls, every one all pictures), sky is Year 1–4 (eleven word walls, roughly easiest first), violet is Year 7 (four walls, each with a baited tile).' },
     { time: '1–2 min', phase: 'Read the hint', detail: 'The amber line under the title says how this board sorts. Read it aloud twice. First Sounds is unfair without it — the pictures also group by meaning, and that is the trap.' },
     { time: '2–4 min', phase: 'Name everything', detail: 'Before any guessing, point at all sixteen tiles and have the class chorus each one. On a picture board this is the vocabulary lesson; the sorting is the check.' },
     { time: '4–10 min', phase: 'Play', detail: 'Take a guess from one child, then ask the class to vote before you press Check. Four hearts means four wrong guesses, so make them argue for it: "Why those four?" A wrong guess is the best moment in the game — the tiles shake, nobody is told off, and "so close, three of those go together" is a real clue.' },
@@ -34,6 +35,10 @@ export const plan = {
     { q: 'In the Kitchen', a: 'Cook with: pan, pot, wok, kettle · Eat with: spoon, fork, chopsticks, bowl · Machines: fridge, oven, microwave, toaster · Drinks: tea, coffee, water, juice' },
     { q: 'Good Food', a: 'Fruit: apple, banana, orange, grapes · Vegetables: carrot, potato, broccoli, onion · Sweet: cake, ice cream, biscuit, chocolate · From the sea: fish, prawn, crab, squid' },
     { q: 'Where Food Comes From', a: 'On a tree: apple, orange, banana, coconut · Under the ground: carrot, potato, onion, ginger · From a cow or hen: milk, cheese, egg, butter · Baked: bread, cake, biscuit, doughnut' },
+    { q: 'Y1 · What Is It Made Of?', a: 'Wood: pencil, chair, wooden spoon, chopsticks · Metal: key, spoon, coin, nail · Plastic: bottle, bucket, straw, comb · Glass: window, jar, light bulb, glasses. The two spoons are the whole lesson: the wooden one and the metal one do the same job and go in different groups.' },
+    { q: 'Y1 · Animal Groups', a: 'In the sea: whale, shark, turtle, octopus · Birds: owl, duck, penguin, parrot · Minibeasts: ant, bee, butterfly, spider · Big wild animals: elephant, tiger, monkey, giraffe. The penguin is the one they argue about — it swims, so half the class puts it in the sea.' },
+    { q: 'Y1 · Around the House', a: 'Bathroom: toothbrush, soap, towel, comb · Bedroom: bed, pillow, lamp, teddy · Living room: sofa, television, clock, rug · On the desk: pencil, crayon, scissors, glue' },
+    { q: 'Y1 · Out and About', a: 'Playground: slide, seesaw, sandpit, ball · Seaside: shell, starfish, crab, boat · Up in the sky: cloud, rainbow, kite, moon · Garden: flower, tree, grass, leaf' },
     { q: 'Y7 · Talking About Number', a: 'Add: sum, total, plus, more · Subtract: minus, less, take, difference · Kinds of number: prime, SQUARE, CUBE, triangular · Solid shapes: prism, sphere, cone, pyramid. The bait is SQUARE and CUBE, which everyone puts with the shapes.' },
     { q: 'Y7 · Cells and Life', a: 'Every cell: nucleus, membrane, cytoplasm, mitochondria · Plant only: cell wall, chloroplast, vacuole, chlorophyll · Specialised cells: neurone, palisade, ciliated, root hair · Life processes: growth, movement, excretion, nutrition' },
     { q: 'Y7 · Stick a Word on the End', a: '+BALL: foot, base, eye, snow · +WORK: home, net, team, paper · +LIGHT: day, moon, high, FIRE · River: source, bed, bank, mouth. FIRE makes a real word with all three (fireball, firework, firelight) and is only pinned down once BALL and WORK are full — the classic Connections move.' },
@@ -48,6 +53,11 @@ export const plan = {
     + 'finishes the board; nobody should leave a puzzle unsolved.\n\n'
     + 'Kindergarten and Year 1 sit on the floor and point. Do not let a child touch the board before the class has voted — '
     + 'the talking is the whole point, and a fast clicker ends the thinking.\n\n'
-    + 'The three early puzzles carry a Vietnamese gloss on every word: switch the deck to VN after solving, and the same '
-    + 'solved rows print "COW (con bò)". Sort in English, confirm in Vietnamese, never the other way round.',
+    + 'All ten puzzles on the amber and emerald shelves carry a Vietnamese gloss on every word: switch the deck to VN after '
+    + 'solving, and the same solved rows print "COW (con bò)". Sort in English, confirm in Vietnamese, never the other way '
+    + 'round.\n\n'
+    + 'The emerald shelf is Year 1 and every wall on it is all pictures. "What Is It Made Of?" is the Cambridge Primary '
+    + 'Science Stage 1 materials objective and it sorts on a rule the others do not: not what a thing is for, but what it is '
+    + 'made from. Say that twice before you start, and hold up a real wooden spoon and a real metal one — the board has both, '
+    + 'in different groups, and that pair is the whole idea.',
 }

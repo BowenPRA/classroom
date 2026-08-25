@@ -10,7 +10,7 @@ export default {
     unit: 'G1',
     id: 'G01',
     title: 'Word Wall',
-    objective: 'Sixteen tiles hide four groups of four. Sort pictures and words into categories, first sounds and rhymes — fourteen puzzles from Kindergarten picture sorting up to Year 4 wordplay.',
+    objective: 'Sixteen tiles hide four groups of four. Sort pictures and words into categories, first sounds and rhymes — twenty-five puzzles, from Kindergarten picture sorting through a Year 1 science-and-the-world set up to Year 7 wordplay.',
     order: 1,
   },
   slides,

@@ -16,7 +16,9 @@
 // point — those glosses print on the solved row in VN mode.
 //
 // `band` splits the level menu: 'early' is Kindergarten–Year 1 (pictures and
-// three-letter words), 'words' is the Year 1–4 word puzzles, 'y7' is the Year 7
+// three-letter words), 'y1' is a second all-picture set for Year 1 — materials,
+// animal groups, rooms and places, opening with a Cambridge Primary Science
+// Stage 1 wall — 'words' is the Year 1–4 word puzzles, and 'y7' is the Year 7
 // set — curriculum vocabulary and NYT-Connections-style wordplay, where at
 // least one tile in every wall is deliberately baited into the wrong group.
 
@@ -349,6 +351,232 @@ export const LEVELS = [
           { img: 'cake', word: 'CAKE', vn: 'bánh ngọt' },
           { img: 'biscuit', word: 'BISCUIT', vn: 'bánh quy' },
           { img: 'doughnut', word: 'DOUGHNUT', vn: 'bánh vòng' },
+        ],
+      },
+    ],
+  },
+
+  // ── Year 1 · science and the world ───────────────────────────────────────
+  // Four more all-picture walls, no reading anywhere on the board. The first
+  // is Cambridge Primary Science Stage 1 Chemistry — sorting objects by the
+  // material they are made from — and the other three widen the same skill to
+  // animals, rooms and places.
+  {
+    id: 'what-is-it-made-of',
+    band: 'y1',
+    icon: 'Blocks',
+    title: 'What Is It Made Of?',
+    titleVn: 'Làm Bằng Gì?',
+    hint: 'All pictures. Not what it DOES — what it is MADE OF.',
+    hintVn: 'Toàn tranh. Không phải công dụng — mà là VẬT LIỆU làm ra nó.',
+    groups: [
+      {
+        name: 'Made of Wood', nameVn: 'Làm Bằng Gỗ',
+        note: 'Wood comes from a tree. It is light, and it floats on water.',
+        noteVn: 'Gỗ lấy từ cây. Gỗ nhẹ và nổi trên mặt nước.',
+        items: [
+          { img: 'pencil', word: 'PENCIL', vn: 'bút chì' },
+          { img: 'chair', word: 'CHAIR', vn: 'cái ghế' },
+          { img: 'woodenspoon', word: 'WOODEN SPOON', vn: 'thìa gỗ' },
+          { img: 'chopsticks', word: 'CHOPSTICKS', vn: 'đôi đũa' },
+        ],
+      },
+      {
+        name: 'Made of Metal', nameVn: 'Làm Bằng Kim Loại',
+        note: 'Metal is hard, cold and shiny. It is the heaviest of the four.',
+        noteVn: 'Kim loại cứng, lạnh và sáng bóng. Nặng nhất trong bốn loại.',
+        items: [
+          { img: 'key', word: 'KEY', vn: 'chìa khoá' },
+          { img: 'spoon', word: 'SPOON', vn: 'cái thìa' },
+          { img: 'coin', word: 'COIN', vn: 'đồng xu' },
+          { img: 'nail', word: 'NAIL', vn: 'cái đinh' },
+        ],
+      },
+      {
+        name: 'Made of Plastic', nameVn: 'Làm Bằng Nhựa',
+        note: 'Plastic is light and bendy, and it can be any colour we like.',
+        noteVn: 'Nhựa nhẹ, dẻo và có thể làm thành bất kỳ màu nào.',
+        items: [
+          { img: 'bottle', word: 'BOTTLE', vn: 'chai nhựa' },
+          { img: 'bucket', word: 'BUCKET', vn: 'cái xô' },
+          { img: 'straw', word: 'STRAW', vn: 'ống hút' },
+          { img: 'comb', word: 'COMB', vn: 'cái lược' },
+        ],
+      },
+      {
+        name: 'Made of Glass', nameVn: 'Làm Bằng Thuỷ Tinh',
+        note: 'Glass lets the light straight through — and it breaks. Careful!',
+        noteVn: 'Thuỷ tinh cho ánh sáng đi xuyên qua — và dễ vỡ. Cẩn thận nhé!',
+        items: [
+          { img: 'windowpane', word: 'WINDOW', vn: 'cửa sổ' },
+          { img: 'jar', word: 'JAR', vn: 'lọ thuỷ tinh' },
+          { img: 'bulb', word: 'LIGHT BULB', vn: 'bóng đèn' },
+          { img: 'glasses', word: 'GLASSES', vn: 'kính mắt' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'animal-groups',
+    band: 'y1',
+    icon: 'Bird',
+    title: 'Animal Groups',
+    titleVn: 'Các Nhóm Động Vật',
+    hint: 'All pictures. Sort the animals by what they are and where they live.',
+    hintVn: 'Toàn tranh. Xếp con vật theo loại và nơi chúng sống.',
+    groups: [
+      {
+        name: 'In the Sea', nameVn: 'Sống Dưới Biển',
+        note: 'All four live in the sea. The whale and the turtle come up for air.',
+        noteVn: 'Cả bốn con sống ở biển. Cá voi và rùa phải ngoi lên thở.',
+        items: [
+          { img: 'whale', word: 'WHALE', vn: 'cá voi' },
+          { img: 'shark', word: 'SHARK', vn: 'cá mập' },
+          { img: 'turtle', word: 'TURTLE', vn: 'con rùa biển' },
+          { img: 'octopus', word: 'OCTOPUS', vn: 'bạch tuộc' },
+        ],
+      },
+      {
+        name: 'Birds', nameVn: 'Loài Chim',
+        note: 'Birds have feathers, two legs and a beak. The penguin cannot fly.',
+        noteVn: 'Chim có lông vũ, hai chân và mỏ. Chim cánh cụt không bay được.',
+        items: [
+          { img: 'owl', word: 'OWL', vn: 'con cú' },
+          { img: 'duck', word: 'DUCK', vn: 'con vịt' },
+          { img: 'penguin', word: 'PENGUIN', vn: 'chim cánh cụt' },
+          { img: 'parrot', word: 'PARROT', vn: 'con vẹt' },
+        ],
+      },
+      {
+        name: 'Minibeasts', nameVn: 'Côn Trùng Nhỏ',
+        note: 'Tiny animals with lots of legs. The spider has eight, the others six.',
+        noteVn: 'Những con vật tí hon nhiều chân. Nhện có tám chân, ba con kia sáu.',
+        items: [
+          { img: 'ant', word: 'ANT', vn: 'con kiến' },
+          { img: 'bee', word: 'BEE', vn: 'con ong' },
+          { img: 'butterfly', word: 'BUTTERFLY', vn: 'con bướm' },
+          { img: 'spider', word: 'SPIDER', vn: 'con nhện' },
+        ],
+      },
+      {
+        name: 'Big Wild Animals', nameVn: 'Thú Hoang Dã To Lớn',
+        note: 'Far too big and too wild to keep at home. They live in hot places.',
+        noteVn: 'Quá to và quá hoang dã để nuôi ở nhà. Chúng sống ở xứ nóng.',
+        items: [
+          { img: 'elephant', word: 'ELEPHANT', vn: 'con voi' },
+          { img: 'tiger', word: 'TIGER', vn: 'con hổ' },
+          { img: 'monkey', word: 'MONKEY', vn: 'con khỉ' },
+          { img: 'giraffe', word: 'GIRAFFE', vn: 'hươu cao cổ' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'around-the-house',
+    band: 'y1',
+    icon: 'House',
+    title: 'Around the House',
+    titleVn: 'Trong Ngôi Nhà',
+    hint: 'All pictures. Which room does each thing live in?',
+    hintVn: 'Toàn tranh. Mỗi thứ nằm ở phòng nào?',
+    groups: [
+      {
+        name: 'In the Bathroom', nameVn: 'Trong Phòng Tắm',
+        note: 'Every one of these helps us get clean.',
+        noteVn: 'Mỗi thứ ở đây đều giúp chúng ta sạch sẽ.',
+        items: [
+          { img: 'toothbrush', word: 'TOOTHBRUSH', vn: 'bàn chải đánh răng' },
+          { img: 'soap', word: 'SOAP', vn: 'xà phòng' },
+          { img: 'towel', word: 'TOWEL', vn: 'khăn tắm' },
+          { img: 'comb', word: 'COMB', vn: 'cái lược' },
+        ],
+      },
+      {
+        name: 'In the Bedroom', nameVn: 'Trong Phòng Ngủ',
+        note: 'This is where we sleep. Soft, warm and quiet.',
+        noteVn: 'Đây là nơi chúng ta ngủ. Mềm, ấm và yên tĩnh.',
+        items: [
+          { img: 'bed', word: 'BED', vn: 'cái giường' },
+          { img: 'pillow', word: 'PILLOW', vn: 'cái gối' },
+          { img: 'lamp', word: 'LAMP', vn: 'đèn ngủ' },
+          { img: 'teddy', word: 'TEDDY', vn: 'gấu bông' },
+        ],
+      },
+      {
+        name: 'In the Living Room', nameVn: 'Trong Phòng Khách',
+        note: 'The room where the whole family sits together in the evening.',
+        noteVn: 'Căn phòng cả nhà ngồi cùng nhau vào buổi tối.',
+        items: [
+          { img: 'sofa', word: 'SOFA', vn: 'ghế sô pha' },
+          { img: 'television', word: 'TELEVISION', vn: 'ti vi' },
+          { img: 'clock', word: 'CLOCK', vn: 'đồng hồ' },
+          { img: 'rug', word: 'RUG', vn: 'tấm thảm' },
+        ],
+      },
+      {
+        name: 'On the Desk', nameVn: 'Trên Bàn Học',
+        note: 'We pick these up to draw, to write and to cut.',
+        noteVn: 'Chúng ta cầm những thứ này để vẽ, để viết và để cắt.',
+        items: [
+          { img: 'pencil', word: 'PENCIL', vn: 'bút chì' },
+          { img: 'crayon', word: 'CRAYON', vn: 'bút sáp' },
+          { img: 'scissors', word: 'SCISSORS', vn: 'cái kéo' },
+          { img: 'glue', word: 'GLUE', vn: 'keo dán' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'out-and-about',
+    band: 'y1',
+    icon: 'Sun',
+    title: 'Out and About',
+    titleVn: 'Ra Ngoài Chơi',
+    hint: 'All pictures. Four places you go when you go outside.',
+    hintVn: 'Toàn tranh. Bốn nơi em đến khi ra ngoài chơi.',
+    groups: [
+      {
+        name: 'At the Playground', nameVn: 'Ở Sân Chơi',
+        note: 'We climb, slide and bounce on all of these at the park.',
+        noteVn: 'Chúng ta leo, trượt và chơi những thứ này ở công viên.',
+        items: [
+          { img: 'slide', word: 'SLIDE', vn: 'cầu trượt' },
+          { img: 'seesaw', word: 'SEESAW', vn: 'bập bênh' },
+          { img: 'sandpit', word: 'SANDPIT', vn: 'hố cát' },
+          { img: 'ball', word: 'BALL', vn: 'quả bóng' },
+        ],
+      },
+      {
+        name: 'At the Seaside', nameVn: 'Ở Bờ Biển',
+        note: 'You find all four of these where the sand meets the sea.',
+        noteVn: 'Em tìm thấy cả bốn thứ này nơi bãi cát gặp biển.',
+        items: [
+          { img: 'shell', word: 'SHELL', vn: 'vỏ sò' },
+          { img: 'starfish', word: 'STARFISH', vn: 'sao biển' },
+          { img: 'crab', word: 'CRAB', vn: 'con cua' },
+          { img: 'boat', word: 'BOAT', vn: 'chiếc thuyền' },
+        ],
+      },
+      {
+        name: 'Up in the Sky', nameVn: 'Trên Bầu Trời',
+        note: 'You have to look UP to see all four of these.',
+        noteVn: 'Em phải NGƯỚC LÊN mới thấy được cả bốn thứ này.',
+        items: [
+          { img: 'cloud', word: 'CLOUD', vn: 'đám mây' },
+          { img: 'rainbow', word: 'RAINBOW', vn: 'cầu vồng' },
+          { img: 'kite', word: 'KITE', vn: 'con diều' },
+          { img: 'moon', word: 'MOON', vn: 'mặt trăng' },
+        ],
+      },
+      {
+        name: 'In the Garden', nameVn: 'Trong Vườn',
+        note: 'All four of these grow bigger. They are alive!',
+        noteVn: 'Cả bốn thứ này đều lớn lên. Chúng đang sống!',
+        items: [
+          { img: 'flower', word: 'FLOWER', vn: 'bông hoa' },
+          { img: 'tree', word: 'TREE', vn: 'cái cây' },
+          { img: 'grass', word: 'GRASS', vn: 'cỏ' },
+          { img: 'leaf', word: 'LEAF', vn: 'chiếc lá' },
         ],
       },
     ],
@@ -891,6 +1119,7 @@ export const LEVELS = [
 
 export const BANDS = {
   early: { label: 'Kindergarten – Year 1', labelVn: 'Mẫu giáo – Lớp 1' },
+  y1: { label: 'Year 1 · Science and the World', labelVn: 'Lớp 1 · Khoa Học và Thế Giới' },
   words: { label: 'Year 1 – Year 4', labelVn: 'Lớp 1 – Lớp 4' },
   y7: { label: 'Year 7', labelVn: 'Lớp 7' },
 }

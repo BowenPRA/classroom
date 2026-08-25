@@ -26,6 +26,7 @@ import {
   ArrowLeft, Lightbulb, Eye, EyeOff, Infinity as InfinityIcon, PartyPopper,
   RotateCcw, CircleCheck, CircleX, Star,
   CookingPot, Carrot, Sprout, Sigma, Dna, Puzzle, Languages,
+  Blocks, Bird, House, Sun,
 } from 'lucide-react'
 
 import { LEVELS, BANDS } from './levels.js'
@@ -35,6 +36,7 @@ const ICONS = {
   Images, BookOpenText, Ear, Apple, Hand, Smile, Shapes, Music, School,
   Wand2, Trees, Cat, Link: LinkIcon,
   CookingPot, Carrot, Sprout, Sigma, Dna, Puzzle, Languages,
+  Blocks, Bird, House, Sun,
 }
 
 const pick = (lang, en, vn) => (lang === 'vn' ? (vn ?? en) : en)
@@ -113,9 +115,11 @@ const buildTiles = (level) =>
 // ── Menu ────────────────────────────────────────────────────────────────────
 
 // Each band gets its own accent so the teacher finds the right shelf at a
-// glance: amber for the youngest, sky for the middle years, violet for Year 7.
+// glance: amber for the youngest, emerald for the Year 1 picture walls, sky for
+// the middle years, violet for Year 7.
 const BAND_ACCENT = {
   early: { card: 'hover:border-[#f59e0b] dark:hover:border-amber-500', chip: 'bg-amber-100 dark:bg-amber-500/20 text-[#b45309] dark:text-amber-300' },
+  y1: { card: 'hover:border-[#10b981] dark:hover:border-emerald-500', chip: 'bg-emerald-100 dark:bg-emerald-500/20 text-[#047857] dark:text-emerald-300' },
   words: { card: 'hover:border-[#1cb0f6] dark:hover:border-sky-500', chip: 'bg-sky-100 dark:bg-sky-500/20 text-[#0369a1] dark:text-sky-300' },
   y7: { card: 'hover:border-[#8b5cf6] dark:hover:border-violet-500', chip: 'bg-violet-100 dark:bg-violet-500/20 text-[#6d28d9] dark:text-violet-300' },
 }
@@ -146,10 +150,10 @@ function LevelCard({ level, lang, onPick }) {
 function Menu({ lang, onPick }) {
   return (
     // One column per band, side by side, so the Year 7 shelf is visible without
-    // scrolling. Stacked in a single list all twenty-one cards run ~220px past
+    // scrolling. Stacked in a single list all twenty-five cards run well past
     // the bottom of the slide and Year 7 is invisible on a projector.
     <div className="h-full min-h-0 overflow-y-auto custom-scrollbar px-4 sm:px-6 py-4">
-      <div className="w-full max-w-6xl mx-auto">
+      <div className="w-full max-w-7xl mx-auto">
         <div className="flex items-baseline gap-3 mb-4">
           <span className="self-center w-9 h-9 rounded-xl bg-[#f59e0b] text-white flex items-center justify-center shadow-sm shrink-0">
             <Gamepad2 className="w-5 h-5" strokeWidth={2.5} />
@@ -160,10 +164,11 @@ function Menu({ lang, onPick }) {
           <p className="font-bold text-slate-400 dark:text-slate-500 text-sm hidden sm:block">{t(lang, 'choose')}</p>
         </div>
 
-        {/* Four column-widths, not three: the Year 1–4 shelf holds eleven walls
+        {/* Five column-widths, not four: the Year 1–4 shelf holds eleven walls
             and in a single column it alone is taller than the slide, so it gets
-            a double-width section and splits into two. */}
-        <div className="grid gap-x-4 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+            a double-width section and splits into two — and the Year 1 picture
+            shelf now takes a column of its own beside it. */}
+        <div className="grid gap-x-4 gap-y-3 sm:grid-cols-2 lg:grid-cols-5">
           {Object.entries(BANDS).map(([band, meta]) => {
             const levels = LEVELS.map((level, i) => ({ level, i })).filter(({ level }) => level.band === band)
             const wide = levels.length > 8
