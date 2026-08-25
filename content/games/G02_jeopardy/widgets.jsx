@@ -26,9 +26,6 @@ import {
   Play, Eye, Check, Timer, Flag, RotateCcw, Crown, Users, Sparkles,
 } from 'lucide-react'
 
-// The three boards this game ships with. They are the DEFAULT, not the only
-// ones: `JeopardyGame` takes a `boards` prop, so a second game unit can reuse
-// this engine with its own clues — see content/games/G03_jeopardy-finale.
 import { BOARDS } from './boards.js'
 
 const ICONS = { Calculator, FlaskConical, Trophy, Sparkles }
@@ -157,7 +154,7 @@ function BoardCard({ board, lang, selected, onPick }) {
 // A team name the teacher has not typed stays an empty string, and the default
 // is only ever a placeholder. That way "Team 3" becomes "Đội 3" when the deck
 // is switched to Vietnamese, instead of freezing an English name into state.
-function Setup({ lang, boards, boardIndex, setBoardIndex, names, setNames, onStart }) {
+function Setup({ lang, boardIndex, setBoardIndex, names, setNames, onStart }) {
   const rename = (i, value) => setNames(names.map((n, j) => (j === i ? value : n)))
   const remove = (i) => setNames(names.filter((_, j) => j !== i))
   const add = () => setNames([...names, ''])
@@ -183,7 +180,7 @@ function Setup({ lang, boards, boardIndex, setBoardIndex, names, setNames, onSta
               {t(lang, 'chooseBoard')}
             </h2>
             <div className="grid gap-2">
-              {boards.map((board, i) => (
+              {BOARDS.map((board, i) => (
                 <BoardCard
                   key={board.id}
                   board={board}
@@ -284,7 +281,7 @@ function Scoreboard({ teams, big, flash }) {
 
 // ── The game ────────────────────────────────────────────────────────────────
 
-export function JeopardyGame({ lang = 'en', isDisplayMode = false, boards = BOARDS }) {
+export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
   const [screen, setScreen] = useState('setup') // 'setup' | 'board' | 'final'
   const [boardIndex, setBoardIndex] = useState(0)
   const [names, setNames] = useState(['', '', ''])
@@ -298,7 +295,7 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false, boards = BOAR
   const canvasRef = useRef(null)
   const throwConfetti = useConfetti(canvasRef)
 
-  const board = boards[boardIndex]
+  const board = BOARDS[boardIndex]
   const big = isDisplayMode
   const total = board.categories.length * VALUES.length
   // Display list: an unnamed team is labelled in whatever language the deck is
@@ -385,7 +382,6 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false, boards = BOAR
     return (
       <Setup
         lang={lang}
-        boards={boards}
         boardIndex={boardIndex}
         setBoardIndex={setBoardIndex}
         names={names}
