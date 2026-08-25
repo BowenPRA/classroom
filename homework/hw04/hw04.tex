@@ -1,0 +1,528 @@
+% homework/hw04/hw04.tex
+% Year 7 - Homework Packet 4
+% Covers Maths 1.5 (tests for divisibility) and Maths 1.6 (square roots and
+% cube roots). No science this week: the packet is two sheets, and the End of
+% Unit 1 test is on Thursday, so the whole of it is maths revision.
+%
+% The spine of the packet is Section B, and it is the reason the two sections
+% are in the same packet at all. A square number is a PAIR -- 36 = 6 x 6 --
+% so every factor inside it turns up twice; a cube is three copies. That makes
+% the divisibility tests from 1.5 into a rule-out test for 1.6:
+%   * 3 divides but 9 does not  -> it cannot be a square number
+%   * 2 divides but 4 does not  -> it cannot be a square number
+%   * 2 divides but 8 does not  -> it cannot be a cube number
+% and then into a method: the test that says "9 divides this" is exactly how
+% you split 1296 into 9 x 144 and read off 3 x 12 = 36 without ever guessing.
+%
+% B1 deliberately contains 108, which passes every rule and is still not a
+% square. The rules can only say NO. B1(g) makes the student say so.
+%
+% B3 question 3 closes the loop with Homework 3: 5832 was a row in that
+% packet's tick grid. It passes every square rule here and is a cube.
+%
+% A1 is not decoration -- the two lists it makes the student write are the
+% tool that Section B runs on, which is why the orange box above it does not
+% print them.
+%
+% House style is shared: see homework/hw-style.tex. Method: the new-homework
+% skill. Source is pure ASCII on purpose.
+%
+% Build:  pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw04
+
+\documentclass[12pt,a4paper]{article}
+
+% -- Answer key switch -------------------------------------------------------
+\newif\ifkey
+\ifdefined\TEACHER\keytrue\else
+  \keyfalse        % \keyfalse = student copy   |   \keytrue = teacher copy
+\fi
+
+% -- House style -------------------------------------------------------------
+\input{../hw-style.tex}
+
+% -- Per-packet running head -------------------------------------------------
+\fancyhead[L]{\small\color{black!55}Year 7\sep Homework 4}
+
+\begin{document}
+
+% ===========================================================================
+% COVER BLOCK
+% ===========================================================================
+\thispagestyle{fancy}
+
+\begin{tcolorbox}[enhanced, colback=cbpurple!7, colframe=cbpurple!7, arc=7pt,
+                  borderline west={6pt}{0pt}{cbpurple},
+                  left=18pt, right=14pt, top=12pt, bottom=12pt]
+  {\color{cbpurple}\bfseries YEAR 7\sep UNIT 1\sep HOMEWORK 4}\\[6pt]
+  {\color{cbpurple}\Huge\bfseries Squares, Cubes and Roots}\\[10pt]
+  {\color{black!70}Mathematics 1.6 --- Square Roots and Cube Roots\sep
+   1.5 --- Tests for Divisibility}
+\end{tcolorbox}
+
+\vspace{8pt}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+  \textbf{Name:} \blank[5.6cm] & \textbf{Class:} \blank[5.6cm] \\
+  \textbf{Date given:} \blank[4.6cm] & \textbf{Date due:} \blank[5.0cm] \\
+\end{tabularx}
+
+\vspace{6pt}
+\begin{activity}
+  \begin{itemize}
+    \item Write your answers \textbf{on this sheet}. \key{No calculator.}
+    \item Always \key{write the calculation, not just the answer}.
+    \item Do \textbf{A1} first. You need those two lists for the whole packet.
+    \item In \textbf{Section B} you use last week's divisibility tests to find
+          roots.
+  \end{itemize}
+\end{activity}
+
+% ===========================================================================
+% SECTION A -- MATHS 1.6
+% ===========================================================================
+\hwsection{Section A \textperiodcentered\ Mathematics 1.6 --- Squares and Cubes}
+
+% This box carries the notation and the there-and-back idea only. It must NOT
+% print the two lists: A1 is the student writing them out.
+\begin{remember}
+  \key{$5^2$} means $5 \times 5 = 25$. We say \key{``five squared''}. The small 2
+  counts \textbf{how many fives}, so $5^2$ is \key{not} $5 \times 2$.
+  \key{$5^3$} means $5 \times 5 \times 5 = 125$. We say \key{``five cubed''}.
+
+  \smallskip
+  A \key{root} goes \key{backwards}. $5^2 = 25$, so the \key{square root} of 25 is
+  5. $5^3 = 125$, so the \key{cube root} of 125 is 5.
+\end{remember}
+
+% -- A1 ---------------------------------------------------------------------
+\qhead{A1}{The two lists}
+
+\noindent\textbf{(a)} Fill in the \textbf{twelve square numbers}. Use your notebook.
+
+\vspace{5pt}
+\noindent
+\begin{tabularx}{\textwidth}{|c|*{12}{>{\centering\arraybackslash}X|}}
+  \hline
+  $n$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+  \hline
+  $n^2$ \rule[-0.8em]{0pt}{2.3em} & & & & & & & & & & & & \\
+  \hline
+\end{tabularx}
+
+\vspace{10pt}
+\noindent\textbf{(b)} Now the \textbf{cube numbers}.
+
+\vspace{5pt}
+\noindent
+\begin{tabularx}{\textwidth}{|c|*{7}{>{\centering\arraybackslash}X|}}
+  \hline
+  $n$ & 1 & 2 & 3 & 4 & 5 & 6 & 10 \\
+  \hline
+  $n^3$ \rule[-0.8em]{0pt}{2.3em} & & & & & & & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent\textbf{(c)} One number is on \textbf{both} lists. Which one?
+\blank[3.2cm]
+
+% -- A2 ---------------------------------------------------------------------
+\qhead{A2}{Square it, cube it, root it}
+
+\noindent\textbf{(a)} Work out \textbf{both}. Then write which one is bigger.
+
+\vspace{4pt}
+\noindent\hspace*{1em}$7^2 = \blank[2.2cm]$ \hspace{1.4cm}
+$7 \times 2 = \blank[2.2cm]$ \hspace{1.4cm} Bigger: \blank[2.4cm]
+
+\vspace{10pt}
+\noindent\textbf{(b)} Use your lists from A1.
+
+\vspace{6pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\roman*), itemsep=9pt]
+  \item $11^2 = \blank[1.5cm]$
+  \item $12^2 = \blank[1.5cm]$
+  \item $4^3 = \blank[1.5cm]$
+  \item $10^3 = \blank[1.5cm]$
+  \item $\sqrt{81} = \blank[1.5cm]$
+  \item $\sqrt{144} = \blank[1.5cm]$
+  \item $\sqrt[3]{27} = \blank[1.5cm]$
+  \item $\sqrt[3]{216} = \blank[1.5cm]$
+  \item $\sqrt[3]{64} - \sqrt{100} = \blank[1.5cm]$
+\end{enumerate}
+\end{multicols}
+
+\vspace{2pt}
+\noindent\textbf{(c)} One answer in (b) is \textbf{negative}. Which one?
+\blank[3.2cm]
+
+% -- A3 ---------------------------------------------------------------------
+\qhead{A3}{Say it, then write it}
+
+\begin{wordhelp}[Word help --- these words tell you what to do]
+  {\renewcommand{\arraystretch}{1.16}%
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{1.4em}}X@{}}
+    \eng{square 9}              & $9^2 = 9 \times 9$ \\
+    \eng{the square of 9}       & the same thing: $9^2 = 81$ \\
+    \eng{the square root of 81} & 9, because $9 \times 9 = 81$ \\
+    \eng{cube 4}                & $4^3 = 4 \times 4 \times 4$ \\
+    \eng{the cube root of 64}   & 4, because $4 \times 4 \times 4 = 64$ \\
+    \eng{a square number}       & a number on your first list \\
+    \eng{consecutive}           & one after another, nothing missed out. 6 and 7 are
+                                  consecutive. 36 and 49 are consecutive
+                                  \textbf{square} numbers. \\
+  \end{tabularx}}
+\end{wordhelp}
+
+\noindent Write the calculation for each sentence, then work it out.
+\key{Calculation first.}
+
+% The calculation and answer go on their own line under the sentence. With
+% \hfill on the same line, the long sentences in 2 and 3 wrapped and left the
+% Answer blank stranded on a line of its own.
+\vspace{2pt}
+\begin{enumerate}[label=\arabic*., itemsep=5pt]
+  \item Square 11. \\[3pt]
+        Calculation: \blank[6.0cm] \quad Answer: \blank[2.4cm]
+  \item Find the square root of 121. \\[3pt]
+        Calculation: \blank[6.0cm] \quad Answer: \blank[2.4cm]
+  \item Subtract the cube root of 27 from the square of 8. \\[3pt]
+        Calculation: \blank[6.0cm] \quad Answer: \blank[2.4cm]
+\end{enumerate}
+
+% -- A4 ---------------------------------------------------------------------
+\qhead[cbgreen]{A4}{Trap the root}
+
+% Kept to two lines on purpose. At three it broke over the page and left the
+% words "whole numbers." stranded alone at the top of the next one.
+\begin{yourturn}[When the root is not a whole number]
+  45 is not a square number, so $\sqrt{45}$ is not whole. But 45 is between
+  \key{36} and \key{49}, and those two \textbf{are} on the list. So $\sqrt{45}$ is
+  between \key{6} and \key{7} --- two \key{consecutive} whole numbers.
+\end{yourturn}
+
+\noindent Write the two consecutive whole numbers each root is between.
+
+\vspace{8pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=11pt]
+  \item $\blank[1.1cm] < \sqrt{30} < \blank[1.1cm]$
+  \item $\blank[1.1cm] < \sqrt{70} < \blank[1.1cm]$
+  \item $\blank[1.1cm] < \sqrt{110} < \blank[1.1cm]$
+  \item $\blank[1.1cm] < \sqrt[3]{50} < \blank[1.1cm]$
+\end{enumerate}
+\end{multicols}
+
+\vspace{8pt}
+\noindent\textbf{(e)} Two \textbf{consecutive square numbers} add up to \textbf{85}.
+Which two? \blank[4.6cm]
+
+\vspace{6pt}
+\noindent\hspace*{1em}Their square roots are \blank[1.6cm] and \blank[1.6cm]
+
+% ===========================================================================
+% SECTION B -- 1.5 MEETS 1.6
+% ===========================================================================
+\hwsection{Section B \textperiodcentered\ Maths 1.5 and 1.6 --- Using the Tests on a Root}
+
+% "Screen" was the word here in the first draft. It is hard English for this
+% class and it is not in the book, so the rules are just called rules.
+\begin{remember}[A square is a pair. A cube is three copies.]
+  $36 = 6 \times 6$. Both numbers in the pair are the \textbf{same}, so every
+  factor inside one is inside the other as well. If \key{3} divides a square
+  number, then \key{9} divides it too.
+
+  \smallskip
+  A cube is \key{three} copies: $8 = 2 \times 2 \times 2$. So a factor is in there
+  \textbf{three times}. If \key{2} divides a cube number, then \key{8} divides it
+  too.
+
+  \smallskip
+  {\renewcommand{\arraystretch}{1.14}%
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{1.4em}}X@{}}
+    \key{Rule 1} & divides by 3 but \textbf{not} by 9 $\Rightarrow$ \textbf{not} a
+                   square number \\
+    \key{Rule 2} & divides by 2 but \textbf{not} by 4 $\Rightarrow$ \textbf{not} a
+                   square number \\
+    \key{Rule 3} & divides by 2 but \textbf{not} by 8 $\Rightarrow$ \textbf{not} a
+                   cube number \\
+  \end{tabularx}}
+
+  \smallskip
+  \key{Careful.} These rules can only say \key{NO}. If a number passes, that does
+  \textbf{not} prove it is a square.
+\end{remember}
+
+% -- B1 ---------------------------------------------------------------------
+\qhead{B1}{Can it be a square number?}
+
+\noindent Use the tests and fill in every box. In the last column write \textbf{NO}
+if a rule says no, or \textbf{maybe} if it passes. If the number is \textbf{odd},
+put a dash in the \textbf{by 2} and \textbf{by 4} columns.
+
+\vspace{8pt}
+\noindent
+\begin{tabularx}{\textwidth}{|p{1.7cm}|p{1.9cm}|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|p{2.6cm}|}
+  \hline
+  \textbf{Number} & \textbf{Digit sum} & \textbf{by 3?} & \textbf{by 9?} &
+  \textbf{by 2?} & \textbf{by 4?} & \textbf{Square?} \\
+  \hline
+  % 300 used to be a sixth row. It is ruled out by the same rule as 132
+  % (divides by 3, not by 9), so it cost a centimetre and taught nothing new.
+  \textbf{132}  \rule[-0.85em]{0pt}{2.3em} & & & & & & \\ \hline
+  \textbf{441}  \rule[-0.85em]{0pt}{2.3em} & & & & & & \\ \hline
+  \textbf{162}  \rule[-0.85em]{0pt}{2.3em} & & & & & & \\ \hline
+  \textbf{1296} \rule[-0.85em]{0pt}{2.3em} & & & & & & \\ \hline
+  \textbf{108}  \rule[-0.85em]{0pt}{2.3em} & & & & & & \\ \hline
+\end{tabularx}
+
+\vspace{9pt}
+% Was an abstract "write a sentence about what these rules can and cannot
+% prove" question -- too hard, and not concrete maths. Replaced with the
+% trap-the-root check from A4, a skill they already have.
+\noindent\textbf{(g)} One number passed \textbf{every} rule. Which one?
+\blank[3.0cm]
+
+\vspace{6pt}
+\noindent\hspace*{1em}Check it against your A1 list. It is between
+\blank[1.4cm] and \blank[1.4cm] --- two square numbers.
+
+\vspace{6pt}
+\noindent\hspace*{1em}So is it a square number? \blank[2.4cm] (yes or no)
+
+% -- B2 ---------------------------------------------------------------------
+\qhead{B2}{Split it, then find the root}
+
+\begin{remember}[Split the number into two pieces you know]
+  Split the number into two pieces. Find the root of each piece. Then
+  \key{multiply the two roots}. \key{Good pieces:} 9, 4 and 100 are squares (roots
+  3, 2, 10); 8 and 1000 are cubes (roots 2 and 10).
+
+  \smallskip
+  \key{Example.} $\sqrt{576}$. The digits add to $5 + 7 + 6 = 18$, so \key{9
+  divides it}. $576 \div 9 = 64$. Now $\sqrt{9} = 3$ and $\sqrt{64} = 8$, so
+  $\sqrt{576} = 3 \times 8 = \mathbf{24}$. Check: $24 \times 24 = 576$.
+\end{remember}
+
+% The "Divide by" column used to be blank -- find the right test yourself, THEN
+% do the split. That was two hard steps in a row. Now the divisor is given, so
+% the only jobs left are the division, the roots, and the multiplication.
+\noindent Now do these. The number to divide by is given. Fill in the rest.
+
+\vspace{8pt}
+\noindent
+\begin{tabularx}{\textwidth}{|p{2.2cm}|p{1.8cm}|X|X|p{1.9cm}|}
+  \hline
+  \textbf{Find} & \textbf{Divide by} & \textbf{Split it} &
+  \textbf{The two roots} & \textbf{Answer} \\
+  \hline
+  % 441 and 1296 are the two rows B1 left as "maybe" -- this is where they get
+  % settled, so neither of them can be the row that goes if space runs short.
+  $\sqrt{441}$    \rule[-0.75em]{0pt}{2.1em} & 9    & & & \\ \hline
+  $\sqrt{1296}$   \rule[-0.75em]{0pt}{2.1em} & 9    & & & \\ \hline
+  $\sqrt[3]{1728}$\rule[-0.75em]{0pt}{2.1em} & 8    & & & \\ \hline
+  $\sqrt[3]{8000}$\rule[-0.75em]{0pt}{2.1em} & 1000 & & & \\ \hline
+\end{tabularx}
+
+% -- B3 ---------------------------------------------------------------------
+% B3 and B4 are in this order on purpose, and it is what took the packet from
+% five pages to four. B3 is the big block that cannot break -- a box, four
+% steps and a workspace -- so wherever it sat mid-section it stranded a third
+% of a page. Last in the section it opened a hole; here it does not, and the
+% leftover space at the foot of the packet lands on B4's workspace instead of
+% on nothing. It also puts the deadpan line last, which is where it belongs.
+\qhead[cbgreen]{B3}{The challenge: 5832}
+
+\begin{yourturn}[5832, from Homework 3]
+  In Homework 3 you ticked \key{5832} for 2, 3, 4, 6, 8 and 9. So it passes
+  \key{every} rule in B1 --- but it is \key{not} a square number. It \key{is} a
+  cube number. Find its cube root.
+\end{yourturn}
+
+\noindent\textbf{Step 1.} 5832 divides by 8. Do the division.
+\eng{Tip: dividing by 8 is the same as halving three times.}
+\quad $5832 \div 8 = \blank[3.0cm]$
+
+\vspace{6pt}
+\noindent\textbf{Step 2.} Your answer to Step 1 is $9 \times 9 \times 9$, so its
+cube root is \blank[2.2cm]
+
+\vspace{6pt}
+\noindent\textbf{Step 3.} $\sqrt[3]{8} = \blank[1.6cm]$, so
+$\sqrt[3]{5832} = \blank[1.6cm] \times \blank[1.6cm] = \blank[2.0cm]$
+
+\vspace{6pt}
+% Was one open box asking students to "check by multiplying by itself twice" --
+% they had to invent their own two-step structure. Now the two multiplications
+% are given as separate blanks.
+\noindent\textbf{Step 4.} Check your answer.
+\quad $18 \times 18 = \blank[2.2cm]$ \quad then \quad
+$\blank[1.6cm] \times 18 = \blank[2.4cm]$
+
+% -- B4 ---------------------------------------------------------------------
+% One word problem, not two, and it is a SQUARE on purpose: cubes already have
+% two rows of B2 and the whole of B3, and this is the only place in the packet
+% where a square root has to be dug out of an English sentence. 400 also
+% exercises the one useful split that B2 never uses -- the test for 4.
+\qhead{B4}{Word problem}
+
+\noindent\textbf{The photograph.} Mr Bowen puts \textbf{400 students} in a
+\textbf{perfect square}. The photographer climbs onto the roof. How many students
+are in each row? Which test did you use to split 400?
+
+\begin{workspace}[2.8cm]\end{workspace}
+
+% ===========================================================================
+% ANSWER KEY (teacher copy only)
+% ===========================================================================
+\ifkey
+\newpage
+\hwsection[cbred]{Answer Key --- Teacher Copy}
+
+% The key is for an adult at a desk, not a 12-year-old writing on it.
+\linespread{1.0}\selectfont
+\setlist[enumerate]{itemsep=2pt, topsep=3pt, leftmargin=*}
+\setlist[itemize]{itemsep=2pt, topsep=3pt, leftmargin=*}
+
+\qhead[cbred]{A1}{The two lists}
+\noindent (a) 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144. \\
+(b) 1, 8, 27, 64, 125, 216, and $10^3 = 1000$. \\
+(c) \textbf{64} --- $8 \times 8$ and $4 \times 4 \times 4$.
+
+\smallskip
+\noindent{\small Mark this one first and mark it hard. A student who cannot fill
+these two rows cannot do Section B at all, because Section B is nothing but
+splitting a big number into two entries from these lists. If more than a few of the
+class leave gaps, re-copy the lists at the board before going through anything
+else in the packet.}
+
+\qhead[cbred]{A2}{Out, and back again}
+\noindent (a) $7^2 = 49$, \ $7 \times 2 = 14$. \ $7^2$ is bigger. \\
+(b) (i) 121 \quad (ii) 144 \quad (iii) 64 \quad (iv) 1000 \quad (v) 9 \quad
+(vi) 12 \quad (vii) 3 \quad (viii) 6 \quad (ix) $4 - 10 = -6$ \\
+(c) \textbf{(ix)}, which comes to $-6$.
+
+\smallskip
+\noindent{\small (a) is the whole reason this question exists. An answer of 14 for
+$7^2$ is the small-2-means-times-2 error and it is worth ten seconds at the board,
+not a red cross. In (b), (ix) is the one they will call wrong: the class has
+decided a root question cannot produce a negative, and $4 - 10$ says otherwise ---
+that is 1.1 arriving inside a 1.6 question. Part (c) exists to make them notice it
+rather than quietly change it to 6.}
+
+\qhead[cbred]{A3}{Say it, then write it}
+\begin{enumerate}[label=\arabic*., itemsep=2pt]
+  \item $11^2 = 11 \times 11 = 121$
+  \item $\sqrt{121} = 11$
+  \item $8^2 - \sqrt[3]{27} = 64 - 3 = 61$
+\end{enumerate}
+\noindent{\small Question 3 is the English question, not the arithmetic one.
+\emph{Subtract A from B} means $B - A$, so the calculation is $64 - 3$. A student
+who writes $3 - 64$ has read the sentence left to right and has made the same error
+they made with subtraction in 1.1 --- send them back to re-read the sentence rather
+than marking the arithmetic. Questions 1 and 2 are on the page next to each other
+on purpose: same numbers, opposite directions.}
+
+\qhead[cbred]{A4}{Trap the root}
+\noindent (a) $5 < \sqrt{30} < 6$ \quad (b) $8 < \sqrt{70} < 9$ \quad
+(c) $10 < \sqrt{110} < 11$ \quad (d) $3 < \sqrt[3]{50} < 4$ \\
+(e) \textbf{36 and 49}. Their roots are \textbf{6} and \textbf{7}.
+
+\smallskip
+\noindent{\small (d) is the one to check, because it is the only cube: they need
+$27 < 50 < 64$, and a student running on the square list will answer 7 and 8.
+(e) is the \emph{consecutive} question. Consecutive square numbers are 11 apart
+here, not 1 apart, and a student who reads consecutive as ``one apart'' will hunt
+for two numbers differing by 1 and give up. If several fail it, that is a
+vocabulary lesson for Monday, not a marking problem.}
+
+\qhead[cbred]{B1}{Can it be a square number?}
+\noindent
+\begin{tabularx}{\linewidth}{@{}p{1.6cm}p{1.7cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}X@{}}
+  \textbf{132}  & sum 6  & yes & no  & yes & no  & \textbf{NO} \\
+  \textbf{441}  & sum 9  & yes & yes & --- & --- & maybe (it is $21^2$) \\
+  \textbf{162}  & sum 9  & yes & yes & yes & no  & \textbf{NO} \\
+  \textbf{1296} & sum 18 & yes & yes & yes & yes & maybe (it is $36^2$) \\
+  \textbf{108}  & sum 9  & yes & yes & yes & yes & maybe --- but it is not \\
+\end{tabularx}
+
+\smallskip
+\noindent (g) \textbf{108}, between \textbf{100} and \textbf{121} ($10^2$ and
+$11^2$). Not a square number.
+
+\smallskip
+\noindent{\small The two rows that teach are \textbf{162} and \textbf{108}, and they
+teach opposite things. 162 passes the 3-and-9 rule and is killed by the 2-and-4
+one, so a student who only ran the digit sum gets it wrong --- both rules, every
+time. 108 is the honest one: it passes everything and is still not a square, which
+is the difference between a test and a proof. This used to be an open question
+asking students to explain that in their own words, which was too abstract for the
+class; it is now the same trap-the-root check as A4, applied to 108 instead of a
+root. If a student answers ``yes'' here, send them back to count: $10 \times 10 =
+100$ and $11 \times 11 = 121$, and 108 is neither. A ``maybe'' written for 441 and
+1296 in the table is the correct answer even though both really are squares --- do
+not accept ``yes'' for those two on the strength of the rules alone.}
+
+\qhead[cbred]{B2}{Split it, then find the root}
+\noindent
+\begin{tabularx}{\linewidth}{@{}p{2.3cm}p{1.4cm}p{2.6cm}p{2.6cm}X@{}}
+  $\sqrt{441}$     & $\div 9$    & $9 \times 49$   & 3 and 7  & \textbf{21} \\
+  $\sqrt{1296}$    & $\div 9$    & $9 \times 144$  & 3 and 12 & \textbf{36} \\
+  $\sqrt[3]{1728}$ & $\div 8$    & $8 \times 216$  & 2 and 6  & \textbf{12} \\
+  $\sqrt[3]{8000}$ & $\div 1000$ & $1000 \times 8$ & 10 and 2 & \textbf{20} \\
+\end{tabularx}
+
+\smallskip
+\noindent Divisions worth having to hand: $441 \div 9 = 49$, $1296 \div 9 = 144$,
+$1728 \div 8 = 216$, $8000 \div 1000 = 8$.
+
+\smallskip
+\noindent{\small The divisor is now printed for every row, which used to be the
+hardest part --- deciding whether to use 9, 8 or 1000 was one guess before the
+maths even started, and that made the question feel like four separate puzzles
+rather than one method practised four times. With the divisor given, this is the
+question the packet was built around: $\sqrt{1296}$ shows whether it has landed,
+since 1296 is nowhere near their A1 list and dividing by 9 is the only route to 36.
+The error to expect is \textbf{adding} the roots instead of multiplying them ---
+$3 + 12 = 15$; tell them to check by squaring, because $15^2 = 225$ and not 1296.}
+
+\qhead[cbred]{B3}{The challenge: 5832}
+\noindent Step 1: $5832 \div 8 = \mathbf{729}$ (halve three times: $5832 \to 2916
+\to 1458 \to 729$). \\
+Step 2: $\sqrt[3]{729} = \mathbf{9}$. \\
+Step 3: $\sqrt[3]{8} = 2$, so $\sqrt[3]{5832} = 2 \times 9 = \mathbf{18}$. \\
+Step 4: $18 \times 18 = \mathbf{324}$, and $324 \times 18 = \mathbf{5832}$.
+
+\smallskip
+\noindent{\small Worth doing at the board even if most of the class got it, because
+it is the entire unit in one question: a divisibility test from 1.5 picks the split,
+a division carries it out, a cube root from 1.6 finishes it, and the check in Step 4
+is two two-digit multiplications --- which is exactly what the extra sheet is for.
+The halving tip in Step 1 matters: $5832 \div 8$ by long division is the hardest
+single step in the packet, and most students have not thought to use $\div 2, \div
+2, \div 2$ instead. Step 4 is now two separate blanks rather than one open box, so
+a student who gets 324 but stalls on $324 \times 18$ has still shown the harder
+half of the check.
+
+\smallskip
+This question is also the answer to B1(g) arriving in a form nobody can argue with.
+5832 passed every rule and is not a square, so if the class was unconvinced
+earlier, come back to B1(g) after this rather than re-teaching it cold.}
+
+\qhead[cbred]{B4}{Word problem}
+\noindent $\sqrt{400} = 20$, so \textbf{20 students in each row}. The split: 400
+ends in 00, so $400 = 4 \times 100$, and $\sqrt{4} = 2$, $\sqrt{100} = 10$, giving
+$2 \times 10 = 20$.
+
+\smallskip
+\noindent{\small A student who simply knows that $20 \times 20 = 400$ has the right
+answer --- but the question asked which test they used, so ask for the split as
+well. This is the only place in the packet where a square root has to be dug out of
+an English sentence, so mark the reading as carefully as the arithmetic: the phrase
+doing the work is \emph{a perfect square}, and a student who multiplies $400 \times
+400$ has not found it. The photographer on the roof is the deadpan line. Read it
+straight and move on.}
+
+\fi
+\end{document}

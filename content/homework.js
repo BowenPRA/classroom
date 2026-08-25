@@ -13,6 +13,8 @@ import hw01 from '../homework/hw01/hw01.pdf?url'
 import hw02 from '../homework/hw02/hw02.pdf?url'
 import hw03 from '../homework/hw03/hw03.pdf?url'
 import hw03x from '../homework/hw03x/hw03x.pdf?url'
+import hw04 from '../homework/hw04/hw04.pdf?url'
+import hw04x from '../homework/hw04x/hw04x.pdf?url'
 import alg13 from '../homework/alg13/alg13.pdf?url'
 import alg13p3 from '../homework/alg13p3/alg13p3.pdf?url'
 
@@ -47,6 +49,22 @@ export const HOMEWORK = [
     title: 'The Two That Do the Work',
     subtitle: 'Extra · multiplication and division',
     pdf: hw03x,
+  },
+  {
+    id: 'hw04',
+    label: 'HW 4',
+    title: 'Squares, Cubes and Roots',
+    subtitle: 'Maths 1.5–1.6 · no science',
+    pdf: hw04,
+  },
+  // Goes out with HW 4. Two-digit multiplication is not beside Unit 1 — every
+  // square past 12 x 12 is one, and the check at the end of HW 4 is two of them.
+  {
+    id: 'hw04x',
+    label: 'EX 4',
+    title: 'Two Rows, Then Add',
+    subtitle: 'Extra · two-digit multiplication and division',
+    pdf: hw04x,
   },
   // Not a Year 7 packet: a single landscape sheet for the Algebra Track, handed
   // out DURING lesson 1.3 and used twice in it. It lives here because this is
