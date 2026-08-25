@@ -24,7 +24,7 @@ export const plan = {
     { time: '0–3 min', phase: 'Set up', detail: 'Choose a board — Mathematics 1.1–1.3, Science 1.1–1.3, the Revision board that runs one category per unit across all six, or the Unit 1 Finale (Maths 1.4–1.6, Science 1.4, and two rounds of trivia). Then type the team names. Two to six teams; four teams of six is about right for a class of 24.' },
     { time: '3–5 min', phase: 'The rules', detail: 'A team chooses a category and a value in English. EVERY team writes an answer on a whiteboard — that is what keeps the other twenty students in the game. Boards up together, then the answer is revealed. Any team that had it right gets the points, so several teams can score on one clue.' },
     { time: '5–10 min', phase: 'The 100s', detail: 'Start along the top row. The 100s are recall in one word; they exist to get every team on the scoreboard and to set the sentence frame before the questions get long.' },
-    { time: '10–40 min', phase: 'Play', detail: 'Work down the values. Use the 30-second timer once the class is warm — it is off by default and started by hand, because early on the thinking time matters more than the pressure. Read every clue aloud twice, and make the answering team read it back before they answer if the English is the problem.' },
+    { time: '10–40 min', phase: 'Play', detail: 'Work down the values. The 30-second timer starts by itself when a clue opens, with the music, so the room can hear the clock without watching it — tap the countdown to stop it whenever a clue needs more thinking than pressure. Read every clue aloud twice, and make the answering team read it back before they answer if the English is the problem.' },
     { time: 'each reveal', phase: 'Make them justify it', detail: 'Before pressing Show the answer, ask the room "why?" The revealed answer usually carries the reason as well as the fact — read that reason out, and have the class repeat it. The reason is the revision; the points are the excuse.' },
     { time: '40–47 min', phase: 'The 500s', detail: 'The bottom row is full-sentence work: prove that "two negatives make a positive" is only half true, explain why a root hair cell has no chloroplasts, say why the book wants the LOWEST multiple but the HIGHEST factor, give the two meanings of "tissue" in a sentence each. Slow down here — one 500 is worth five 100s in teaching value as well as in points.' },
     { time: '47–50 min', phase: 'Final scores', detail: 'Press Finish (or let the last clue run out) for the ranked scoreboard. Then ask the losing team for the one clue they wish they had taken, and re-ask it. Nobody leaves on a wrong answer.' },
@@ -42,6 +42,8 @@ export const plan = {
     { q: 'Finale board · Science 1.4', a: 'A tissue is SIMILAR cells; an organ is DIFFERENT tissues, which is why a leaf is an organ (four tissues in it) and the palisade layer is not. The ladder is cell → tissue → organ → organ system → organism, walked by one example: ciliated cell → ciliated epithelium → a lung → the breathing system → you.' },
     { q: 'Finale board · the trivia answers', a: 'Blue whale (largest ever, about 30 m) · peregrine falcon, about 390 km/h in a dive, with the cheetah only fastest on land · a giraffe has seven neck bones, the same as you · the octopus has three hearts and copper-based blue blood · the tardigrade survives freezing, drying out and open space. Then: 3600 seconds in an hour · 206 bones in an adult and about 300 in a newborn · sunlight takes about 8 minutes 20 seconds · a billion seconds is about 32 years · paper 0.1 mm thick folded 42 times passes the Moon.' },
     { q: 'Awarding points', a: 'Tap every team that had it right, then Confirm. Tap nobody and Confirm records that nobody got it — the clue is spent and no points move.' },
+    { q: 'Fixing a score', a: 'Edit scores, in the board header. Every team gets −500, −100, a typed box, +100 and +500. Negative totals are allowed, because a team that has been caught guessing usually deserves one.' },
+    { q: 'Turning the sound off', a: 'The speaker button beside Edit scores, at any time. To change which piece plays, or to stop the timer starting on its own, go back to Setup — both live there.' },
   ],
   notes:
     'This is a REVISION game, not new teaching. Run it the lesson before a test, or as the last twenty minutes of a Friday — the '
@@ -54,8 +56,18 @@ export const plan = {
     + 'answers everything in English while twenty-three quietly stop listening; mini whiteboards, boards up together, fixes it.\n\n'
     + 'Make them say the category and the value out loud in English to choose. It costs three seconds and it is the only part of '
     + 'the lesson where they produce language without being asked a question.\n\n'
-    + 'The timer is optional and starts by hand, so use it for the 100s and 200s and turn it off for the 500s. A 500 needs a '
-    + 'sentence, and thirty seconds is not long enough to build one in a second language.\n\n'
+    + 'THE TIMER NOW STARTS ITSELF, and so does the music. That is right for the 100s and 200s, where the clock is about pace. '
+    + 'It is wrong for the 500s: a 500 needs a sentence, and thirty seconds is not long enough to build one in a second '
+    + 'language. Tap the countdown to stop it — the music fades with it — or untick "The timer starts by itself" in Setup '
+    + 'before a lesson that is all bottom row. The speaker button in the board header kills the sound at any moment.\n\n'
+    + 'THE MUSIC IS FOUR PUBLIC-DOMAIN RECORDINGS, chosen in Setup: In the Hall of the Mountain King (it builds, so the room '
+    + 'hears the time running out), Bach\'s Badinerie (fast and light), Eine kleine Nachtmusik (bright, no pressure) and '
+    + 'Maple Leaf Rag (the cheerful one, and the one for the trivia categories). Only the first 30 seconds of any of them '
+    + 'ever plays. Licences are in content/games/G02_jeopardy/audio/CREDITS.json — the television show\'s own cue is still in '
+    + 'copyright and is deliberately not here.\n\n'
+    + 'SCORES CAN BE CORRECTED. Press Edit scores in the board header for a panel with every team on it: steps of 100 and 500, '
+    + 'or type the number straight in. Use it when you tap the wrong team, when the class argues you into a mark, or when a '
+    + 'team joins late — a scoreboard that cannot be fixed is a scoreboard the room stops believing in.\n\n'
     + 'Points can go to more than one team on the same clue. Do not turn this into a race for the buzzer — the game is about '
     + 'being right in English, not about being first.\n\n'
     + 'Switch the deck to Vietnamese only to unstick a team that is stuck on the WORDING, then switch straight back and make '

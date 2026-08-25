@@ -1,0 +1,42 @@
+[
+  {
+    "name": "mountain-king.ogg",
+    "title": "File:Musopen - In the Hall Of The Mountain King.ogg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Musopen_-_In_the_Hall_Of_The_Mountain_King.ogg",
+    "license": "Public domain",
+    "artist": "Edvard Grieg (composition, 1875); performed by the Czech National Symphony Orchestra as the Musopen Symphony Orchestra",
+    "source": "Musopen - https://musopen.org/music/777-peer-gynt-suite-no-1-op-46/ - released into the public domain by the Musopen Kickstarter project",
+    "usage": "Thinking music while the 30-second clue timer runs. The default track: it starts quiet and builds, so the room hears the time running out without anybody watching the number. Downloaded unedited; the widget only ever plays the opening 30 seconds and fades it out.",
+    "bytes": 2155317
+  },
+  {
+    "name": "nachtmusik.ogg",
+    "title": "File:Mozart K525 Serenade in G Major 1 - Allegro.ogg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Mozart_K525_Serenade_in_G_Major_1_-_Allegro.ogg",
+    "license": "Public domain",
+    "artist": "Wolfgang Amadeus Mozart (composition, 1787); performance credited on Musopen to the European Archive",
+    "source": "Musopen - https://musopen.org/music/28074-serenade-no-13-a-little-night-music-eine-kleine-nachtmusik-k-525/",
+    "usage": "Thinking music while the clue timer runs. Bright and familiar - the one to pick for the 100s and 200s, where the timer is about pace rather than pressure. Downloaded unedited.",
+    "bytes": 2003796
+  },
+  {
+    "name": "maple-leaf-rag.ogg",
+    "title": "File:Maple Leaf Rag - played by Scott Joplin 1916 sample.ogg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Maple_Leaf_Rag_-_played_by_Scott_Joplin_1916_sample.ogg",
+    "license": "Public domain",
+    "artist": "Scott Joplin (composition, 1899, and the 1916 piano roll performance); roll digitised by pianola.co.nz, re-recorded as audio by Wikimedia user Major Bloodnok",
+    "source": "https://commons.wikimedia.org/wiki/File:Maple_Leaf_Rag_-_played_by_Scott_Joplin_1916_sample.ogg - a 1916 piano roll, public domain in the United States",
+    "usage": "Thinking music while the clue timer runs. The cheerful one, and the one to use on the trivia categories. Downloaded unedited.",
+    "bytes": 1607177
+  },
+  {
+    "name": "badinerie.ogg",
+    "title": "File:Bach, Johann Sebastian - Suite No.2 in B Minor - X. Badinerie.ogg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Bach,_Johann_Sebastian_-_Suite_No.2_in_B_Minor_-_X._Badinerie.ogg",
+    "license": "CC0",
+    "artist": "Johann Sebastian Bach (composition, BWV 1067); performance credited on Musopen to the European Archive",
+    "source": "Musopen - https://musopen.org/music/1005/johann-sebastian-bach/orchestral-suite-no2-in-b-minor-bwv-1067/",
+    "usage": "Thinking music while the clue timer runs. Fast and light, and the shortest file of the four. CC0 rather than public domain by age - the recording is dedicated to the public domain by its uploader, which is not the same thing, so it is recorded here as CC0.",
+    "bytes": 1300879
+  }
+]

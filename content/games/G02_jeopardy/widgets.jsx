@@ -8,11 +8,18 @@
 // thirty of them. That is the whole widget — choose, wait, reveal, award.
 // There is nothing else to fiddle with: no sliders, no sound, no wagering.
 //
-// Three decisions worth knowing about:
+// Four decisions worth knowing about:
 //   · The teacher reveals. The answer never appears on a timer, because the
 //     value of the pause is the class arguing in English while it is hidden.
+//   · The COUNTDOWN, unlike the answer, starts on its own the moment a clue
+//     opens, and the music runs with it. One press instead of two, and the
+//     room hears that it is on the clock without anyone watching the number.
+//     A teacher who wants the thinking time back stops it with one tap, or
+//     turns the whole thing off in Setup before the game starts.
 //   · Points can go to more than one team, or to nobody. Both happen in a real
-//     room, and a game that cannot record "nobody got it" gets fudged.
+//     room, and a game that cannot record "nobody got it" gets fudged — and
+//     any score can be corrected by hand afterwards, because a scoreboard that
+//     cannot be fixed gets abandoned the first time the teacher mis-taps.
 //   · The board cells are Jeopardy navy and gold in BOTH themes. That is a
 //     fixed-colour surface on purpose, so every colour on it is written out
 //     explicitly rather than inherited from the theme — the trap that turned
@@ -23,12 +30,49 @@
 import { useState, useEffect, useRef, useCallback, createElement } from 'react'
 import {
   Calculator, FlaskConical, Trophy, Gamepad2, ArrowLeft, Plus, X,
-  Play, Eye, Check, Timer, Flag, RotateCcw, Crown, Users, Sparkles,
+  Play, Pause, Eye, Check, Timer, Flag, RotateCcw, Crown, Users, Sparkles,
+  Music, Volume2, VolumeX, Pencil,
 } from 'lucide-react'
 
 import { BOARDS } from './boards.js'
 
+// Thinking music. Four public-domain recordings, licences and sources in
+// audio/CREDITS.json — nothing here is the television show's cue, which is
+// very much still in copyright. Vite fingerprints these like any other asset,
+// so they are imported rather than written as paths.
+import mountainKing from './audio/mountain-king.ogg'
+import nachtmusik from './audio/nachtmusik.ogg'
+import mapleLeafRag from './audio/maple-leaf-rag.ogg'
+import badinerie from './audio/badinerie.ogg'
+
 const ICONS = { Calculator, FlaskConical, Trophy, Sparkles }
+
+// The clue countdown, and the music that runs with it.
+const TIMER_SECONDS = 30
+// Loud enough to be heard over a room of Year 7s arguing, quiet enough that
+// the teacher does not have to raise their voice to read the clue again.
+const MUSIC_VOLUME = 0.35
+
+const TRACKS = [
+  { id: 'mountain-king', src: mountainKing, name: 'In the Hall of the Mountain King', nameVn: 'Trong hang Vua Núi', by: 'Grieg · builds and builds', byVn: 'Grieg · dồn dập dần lên' },
+  { id: 'badinerie', src: badinerie, name: 'Badinerie', nameVn: 'Badinerie', by: 'Bach · fast and light', byVn: 'Bach · nhanh và nhẹ' },
+  { id: 'nachtmusik', src: nachtmusik, name: 'Eine kleine Nachtmusik', nameVn: 'Eine kleine Nachtmusik', by: 'Mozart · bright, no pressure', byVn: 'Mozart · tươi sáng, không gây áp lực' },
+  { id: 'maple-leaf', src: mapleLeafRag, name: 'Maple Leaf Rag', nameVn: 'Maple Leaf Rag', by: 'Joplin · the cheerful one', byVn: 'Joplin · bản vui nhộn' },
+]
+
+// Fade rather than cut. A clip that stops dead sounds like something broke,
+// and the teacher is usually still talking over the last second of it.
+function fadeOutAndStop(audio, ms = 450) {
+  const step = 40
+  const drop = audio.volume / Math.max(1, ms / step)
+  const id = setInterval(() => {
+    audio.volume = Math.max(0, audio.volume - drop)
+    if (audio.volume <= 0.001) {
+      clearInterval(id)
+      audio.pause()
+    }
+  }, step)
+}
 
 const pick = (lang, en, vn) => (lang === 'vn' ? (vn ?? en) : en)
 
@@ -51,7 +95,14 @@ const T = {
   points: ['points', 'điểm'],
   noPoints: ['Nobody — no points', 'Không đội nào — không cộng điểm'],
   startTimer: ['Start 30 seconds', 'Bấm giờ 30 giây'],
+  stopTimer: ['Stop the timer', 'Dừng đồng hồ'],
   timeUp: ['Time is up!', 'Hết giờ rồi!'],
+  music: ['Thinking music', 'Nhạc suy nghĩ'],
+  soundOff: ['Sound off', 'Tắt tiếng'],
+  soundOn: ['Sound on', 'Bật tiếng'],
+  autoTimer: ['The timer starts by itself', 'Đồng hồ tự chạy khi mở câu hỏi'],
+  editScores: ['Edit scores', 'Sửa điểm'],
+  done: ['Done', 'Xong'],
   finalTitle: ['Final scores', 'Điểm chung cuộc'],
   winner: ['Winner', 'Đội thắng'],
   tie: ['It is a tie!', 'Hoà nhau rồi!'],
@@ -154,7 +205,10 @@ function BoardCard({ board, lang, selected, onPick }) {
 // A team name the teacher has not typed stays an empty string, and the default
 // is only ever a placeholder. That way "Team 3" becomes "Đội 3" when the deck
 // is switched to Vietnamese, instead of freezing an English name into state.
-function Setup({ lang, boardIndex, setBoardIndex, names, setNames, onStart }) {
+function Setup({
+  lang, boardIndex, setBoardIndex, names, setNames, onStart,
+  trackIndex, setTrackIndex, autoTimer, setAutoTimer,
+}) {
   const rename = (i, value) => setNames(names.map((n, j) => (j === i ? value : n)))
   const remove = (i) => setNames(names.filter((_, j) => j !== i))
   const add = () => setNames([...names, ''])
@@ -190,6 +244,55 @@ function Setup({ lang, boardIndex, setBoardIndex, names, setNames, onStart }) {
                 />
               ))}
             </div>
+
+            {/* The music, and whether the countdown runs at all. Both live
+                here rather than on the board, because they are decisions made
+                once before the game and never mid-clue. */}
+            <h2 className="mt-4 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500 mb-1.5">
+              {t(lang, 'music')}
+            </h2>
+            <div className="grid gap-1.5 sm:grid-cols-2">
+              {TRACKS.map((track, i) => (
+                <button
+                  key={track.id}
+                  type="button"
+                  onClick={() => setTrackIndex(i)}
+                  className={`text-left rounded-xl border-2 border-b-4 px-2.5 py-1.5 transition-all active:border-b-2 active:translate-y-0.5 ${
+                    i === trackIndex
+                      ? 'border-[#f59e0b] bg-amber-50 dark:bg-amber-500/15'
+                      : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900'
+                  }`}
+                >
+                  <span className="flex items-center gap-1.5">
+                    <Music className={`w-3.5 h-3.5 shrink-0 ${i === trackIndex ? 'text-[#f59e0b]' : 'text-slate-300 dark:text-slate-600'}`} strokeWidth={3} />
+                    <span className="min-w-0 truncate font-black text-[11px] sm:text-xs text-slate-800 dark:text-slate-100">
+                      {pick(lang, track.name, track.nameVn)}
+                    </span>
+                  </span>
+                  <span className="block pl-5 truncate font-bold text-[10px] text-slate-400 dark:text-slate-500">
+                    {pick(lang, track.by, track.byVn)}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setAutoTimer(!autoTimer)}
+              className="mt-2 w-full flex items-center gap-2 rounded-xl border-2 border-b-4 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-2.5 py-2 active:border-b-2 active:translate-y-0.5 transition-all"
+            >
+              <span
+                className={`shrink-0 w-5 h-5 rounded-md border-2 flex items-center justify-center ${
+                  autoTimer ? 'bg-[#58cc02] border-[#46a302] text-white' : 'border-slate-300 dark:border-slate-600'
+                }`}
+              >
+                {autoTimer && <Check className="w-3.5 h-3.5" strokeWidth={4} />}
+              </span>
+              <span className="min-w-0 flex-1 text-left truncate font-black text-[11px] sm:text-xs text-slate-600 dark:text-slate-300">
+                {t(lang, 'autoTimer')}
+              </span>
+              <Timer className="w-4 h-4 shrink-0 text-slate-300 dark:text-slate-600" strokeWidth={3} />
+            </button>
           </section>
 
           <section>
@@ -292,6 +395,10 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
   const [picked, setPicked] = useState([]) // team indexes awarded this clue
   const [flash, setFlash] = useState(null)
   const [seconds, setSeconds] = useState(null) // null = timer not running
+  const [autoTimer, setAutoTimer] = useState(true) // the countdown starts itself
+  const [trackIndex, setTrackIndex] = useState(0)
+  const [muted, setMuted] = useState(false)
+  const [editing, setEditing] = useState(false) // the score editor is open
   const canvasRef = useRef(null)
   const throwConfetti = useConfetti(canvasRef)
 
@@ -306,14 +413,34 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
     colour: TEAM_COLOURS[i % TEAM_COLOURS.length],
   }))
 
-  // The clue timer. It only ever runs while a clue is open, and the teacher
-  // starts it — a countdown that began on its own would decide the pace of the
-  // discussion, which is the teacher's job.
+  // The clue timer. It only ever runs while a clue is open, and it starts by
+  // itself — one press to open a clue instead of two. It is still the
+  // teacher's pace to set: tapping the countdown stops it, and the Setup
+  // checkbox turns the automatic start off for a lesson where the thinking
+  // time matters more than the pressure.
   useEffect(() => {
     if (seconds === null || seconds <= 0) return undefined
     const id = setTimeout(() => setSeconds((s) => s - 1), 1000)
     return () => clearTimeout(id)
   }, [seconds])
+
+  // The music follows the countdown exactly: it starts when the clock starts
+  // and fades when the clock stops, so the sound in the room always means
+  // "you are on the clock" and never has to be explained.
+  //
+  // `running` is a boolean and not `seconds`, or this would tear the audio
+  // down and build it again on every tick.
+  const running = seconds !== null && seconds > 0
+  useEffect(() => {
+    const track = TRACKS[trackIndex]
+    if (!running || muted || !track?.src) return undefined
+    const audio = new Audio(track.src)
+    audio.volume = MUSIC_VOLUME
+    // A browser that refuses to autoplay simply stays quiet; the game does not
+    // depend on it, and there is nothing useful to say to the class about it.
+    audio.play().catch(() => {})
+    return () => fadeOutAndStop(audio)
+  }, [running, trackIndex, muted])
 
   const closeClue = useCallback(() => {
     setOpen(null)
@@ -341,7 +468,19 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
     setOpen({ c, r, category: board.categories[c], clue: board.categories[c].clues[r] })
     setRevealed(false)
     setPicked([])
-    setSeconds(null)
+    setSeconds(autoTimer ? TIMER_SECONDS : null)
+  }
+
+  // Correcting the scoreboard by hand. Points awarded to the wrong team, a
+  // clue the class talked you into after the event, a team that arrived late —
+  // all of it happens, and a scoreboard that cannot be fixed stops being used.
+  const adjustScore = (i, delta) => {
+    setTeams((cur) => cur.map((team, j) => (j === i ? { ...team, score: team.score + delta } : team)))
+  }
+
+  const setScore = (i, value) => {
+    const score = Number.parseInt(value, 10)
+    setTeams((cur) => cur.map((team, j) => (j === i ? { ...team, score: Number.isNaN(score) ? 0 : score } : team)))
   }
 
   const togglePick = (i) => {
@@ -387,6 +526,10 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
         names={names}
         setNames={setNames}
         onStart={startGame}
+        trackIndex={trackIndex}
+        setTrackIndex={setTrackIndex}
+        autoTimer={autoTimer}
+        setAutoTimer={setAutoTimer}
       />
     )
   }
@@ -486,6 +629,33 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
           </p>
         </div>
 
+        {/* Sound off is here rather than in Setup because it is the control a
+            teacher reaches for mid-game — the class next door, a fire drill,
+            a clue that needs reading three times. */}
+        <button
+          type="button"
+          onClick={() => setMuted(!muted)}
+          title={t(lang, muted ? 'soundOn' : 'soundOff')}
+          aria-label={t(lang, muted ? 'soundOn' : 'soundOff')}
+          className={`shrink-0 w-9 h-9 rounded-xl border-2 border-b-4 flex items-center justify-center active:border-b-2 active:translate-y-0.5 transition-all ${
+            muted
+              ? 'border-rose-300 dark:border-rose-800 bg-rose-50 dark:bg-rose-950 text-rose-500 dark:text-rose-300'
+              : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-300'
+          }`}
+        >
+          {muted ? <VolumeX className="w-4 h-4" strokeWidth={3} /> : <Volume2 className="w-4 h-4" strokeWidth={3} />}
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setEditing(true)}
+          title={t(lang, 'editScores')}
+          className="shrink-0 flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-xl border-2 border-b-4 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-300 hover:text-[#1cb0f6] font-black uppercase tracking-widest text-[10px] sm:text-xs active:border-b-2 active:translate-y-0.5 transition-all"
+        >
+          <Pencil className="w-4 h-4" strokeWidth={3} />
+          <span className="hidden lg:inline">{t(lang, 'editScores')}</span>
+        </button>
+
         <button
           type="button"
           onClick={finishNow}
@@ -569,26 +739,40 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
                   strip that exists only to hold one small button costs about
                   fifty pixels, and in a 768px-tall window that is the
                   difference between the question fitting and not. */}
-              {seconds === null ? (
+              {/* One control, three states: not running (press to start),
+                  running (press to stop — which also fades the music), and
+                  finished (press to run it again). */}
+              {seconds === null || seconds <= 0 ? (
                 <button
                   type="button"
-                  onClick={() => setSeconds(30)}
-                  className="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border-2 border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-500 hover:text-[#1cb0f6] font-black uppercase tracking-widest text-[10px] transition-colors"
+                  onClick={() => setSeconds(TIMER_SECONDS)}
+                  title={t(lang, 'startTimer')}
+                  className={`shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border-2 font-black uppercase tracking-widest text-[10px] transition-colors ${
+                    seconds === null
+                      ? 'border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-500 hover:text-[#1cb0f6]'
+                      : 'border-rose-400 bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-300'
+                  }`}
                 >
                   <Timer className="w-4 h-4" strokeWidth={3} />
-                  <span className="hidden sm:inline">{t(lang, 'startTimer')}</span>
+                  <span className="hidden sm:inline">
+                    {seconds === null ? t(lang, 'startTimer') : t(lang, 'timeUp')}
+                  </span>
                 </button>
               ) : (
-                <span
-                  className={`shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border-2 font-black tabular-nums ${
+                <button
+                  type="button"
+                  onClick={() => setSeconds(null)}
+                  title={t(lang, 'stopTimer')}
+                  aria-label={t(lang, 'stopTimer')}
+                  className={`shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border-2 font-black tabular-nums transition-colors ${
                     seconds > 5
                       ? 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
                       : 'border-rose-400 bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-300'
                   } ${big ? 'text-[clamp(1rem,1.4vw,1.5rem)]' : 'text-sm sm:text-base'}`}
                 >
-                  <Timer className="w-4 h-4" strokeWidth={3} />
-                  {seconds > 0 ? `${seconds}s` : t(lang, 'timeUp')}
-                </span>
+                  <Pause className="w-4 h-4" strokeWidth={3} />
+                  {`${seconds}s`}
+                </button>
               )}
               <button
                 type="button"
@@ -674,6 +858,84 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
                 </button>
               </>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* The score editor. Above the clue layer, because the correction a
+          teacher needs to make is usually the one they just noticed while a
+          clue was open. Steps of 100 and 500 match the values on the board,
+          and the box takes a typed number for anything else. */}
+      {editing && (
+        <div className="absolute inset-0 z-[60] flex items-center justify-center bg-slate-900/70 backdrop-blur-sm p-3 sm:p-5 animate-in fade-in duration-200">
+          <div className="w-full max-w-3xl max-h-full overflow-y-auto custom-scrollbar rounded-[1.5rem] bg-white dark:bg-slate-900 border-4 border-slate-100 dark:border-slate-800 shadow-2xl p-4 sm:p-6 animate-in zoom-in-95 duration-200">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-9 h-9 shrink-0 rounded-xl bg-[#1cb0f6] text-white flex items-center justify-center">
+                <Pencil className="w-4 h-4" strokeWidth={3} />
+              </span>
+              <h3 className="min-w-0 flex-1 font-black tracking-tight text-slate-800 dark:text-slate-100 text-lg sm:text-2xl">
+                {t(lang, 'editScores')}
+              </h3>
+              <button
+                type="button"
+                onClick={() => setEditing(false)}
+                aria-label={t(lang, 'close')}
+                className="shrink-0 w-8 h-8 rounded-lg border-2 border-slate-200 dark:border-slate-700 text-slate-400 hover:text-[#ff4b4b] flex items-center justify-center transition-colors"
+              >
+                <X className="w-4 h-4" strokeWidth={3} />
+              </button>
+            </div>
+
+            <div className="grid gap-2">
+              {named.map((team, i) => (
+                <div
+                  key={i}
+                  className="flex flex-wrap items-center gap-2 rounded-xl border-2 border-l-[6px] bg-white dark:bg-slate-900 px-2.5 py-2"
+                  style={{ borderColor: team.colour }}
+                >
+                  <span className="min-w-0 flex-1 truncate font-black tracking-tight text-slate-800 dark:text-slate-100 text-sm sm:text-base">
+                    {team.label}
+                  </span>
+                  {[-500, -100].map((delta) => (
+                    <button
+                      key={delta}
+                      type="button"
+                      onClick={() => adjustScore(i, delta)}
+                      className="shrink-0 px-2.5 py-1.5 rounded-lg border-2 border-b-4 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-black tabular-nums text-xs sm:text-sm active:border-b-2 active:translate-y-0.5 transition-all"
+                    >
+                      −{Math.abs(delta)}
+                    </button>
+                  ))}
+                  <input
+                    type="number"
+                    step="100"
+                    value={teams[i].score}
+                    onChange={(e) => setScore(i, e.target.value)}
+                    className="shrink-0 w-24 px-2 py-1.5 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-center font-black tabular-nums text-sm sm:text-base focus:outline-none focus:border-[#1cb0f6]"
+                    style={{ color: team.colour }}
+                  />
+                  {[100, 500].map((delta) => (
+                    <button
+                      key={delta}
+                      type="button"
+                      onClick={() => adjustScore(i, delta)}
+                      className="shrink-0 px-2.5 py-1.5 rounded-lg border-2 border-b-4 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-black tabular-nums text-xs sm:text-sm active:border-b-2 active:translate-y-0.5 transition-all"
+                    >
+                      +{delta}
+                    </button>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setEditing(false)}
+              className="mt-4 w-full flex items-center justify-center gap-2 py-3 rounded-2xl bg-[#58cc02] border-b-4 border-[#46a302] text-white font-black uppercase tracking-widest text-xs sm:text-base active:border-b-0 active:translate-y-1 transition-all"
+            >
+              <Check className="w-5 h-5" strokeWidth={3} />
+              {t(lang, 'done')}
+            </button>
           </div>
         </div>
       )}
