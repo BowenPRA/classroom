@@ -1118,4 +1118,320 @@ export const BOARDS = [
       },
     ],
   },
+  // ── 5 · KINDERGARTEN & YEAR 1 · COOKING AND FIRST SCIENCE ────────────────
+  // A board for a class that cannot read the clues. THE TEACHER READS EVERY
+  // ONE ALOUD, twice, which is why the questions are short spoken sentences
+  // rather than written ones, and why the answers are one or two words.
+  //
+  // Twenty-nine of the thirty clues carry an `aImage`, and every one is held
+  // back until the reveal. That is the engine of the whole board: the class
+  // says "chopsticks" in English, THEN the photograph comes up and confirms
+  // it. A five-year-old who has said a new English word out loud and then seen
+  // the thing has learnt it; one who has only seen the picture has not had to
+  // say anything.
+  //
+  // Three categories are cooking and three are Cambridge Primary Science
+  // Stage 1 — the senses, living and non-living, and reversible against
+  // irreversible change. "How Do We Cook It?" deliberately uses the same four
+  // methods as the Word Wall puzzle of that name, so play the wall first.
+  //
+  // The values still run 100–500 and the 500s are still the hard ones, but
+  // hard here means "say two things" or "say why", never a longer number.
+  {
+    id: 'kindy-cooking',
+    title: 'Kindergarten & Year 1 · Cooking and First Science',
+    titleVn: 'Mẫu giáo & Lớp 1 · Nấu ăn và Khoa học đầu tiên',
+    subtitle: 'The kitchen, how food gets hot, the five senses and living things',
+    subtitleVn: 'Nhà bếp, cách làm nóng thức ăn, năm giác quan và vật sống',
+    icon: 'CookingPot',
+    accent: '#ec4899',
+    categories: [
+      // ── Cooking · the kitchen ─────────────────────────────────────────────
+      {
+        name: 'In the Kitchen',
+        nameVn: 'Trong Nhà Bếp',
+        clues: [
+          {
+            value: 100,
+            q: 'We pick up our rice with these two little sticks. What are they?',
+            qVn: 'Chúng ta gắp cơm bằng hai chiếc que nhỏ này. Đó là gì?',
+            a: 'Chopsticks.',
+            aVn: 'Đôi đũa. (Tiếng Anh: chopsticks.)',
+            aImage: { src: IMAGES.chopsticks, alt: 'A pair of wooden chopsticks.', altVn: 'Một đôi đũa gỗ.' },
+          },
+          {
+            value: 200,
+            q: 'It is round and flat, and we fry an egg in it. What is it?',
+            qVn: 'Nó tròn và dẹt, chúng ta chiên trứng trong đó. Đó là cái gì?',
+            a: 'A pan.',
+            aVn: 'Cái chảo. (Tiếng Anh: a pan.)',
+            aImage: { src: IMAGES.pan, alt: 'A round frying pan with a long handle.', altVn: 'Một cái chảo tròn có tay cầm dài.' },
+          },
+          {
+            value: 300,
+            q: 'This big machine keeps our milk cold. What is it?',
+            qVn: 'Cái máy to này giữ cho sữa của chúng ta lạnh. Đó là cái gì?',
+            a: 'The fridge.',
+            aVn: 'Tủ lạnh. (Tiếng Anh: the fridge.)',
+            aImage: { src: IMAGES.fridge, alt: 'A tall kitchen fridge.', altVn: 'Một chiếc tủ lạnh cao trong bếp.' },
+          },
+          {
+            value: 400,
+            q: 'Bread goes in. It gets hot. Brown, crunchy bread comes out. What is it?',
+            qVn: 'Cho bánh mì vào. Nó nóng lên. Bánh mì vàng giòn đi ra. Đó là cái gì?',
+            a: 'A toaster.',
+            aVn: 'Máy nướng bánh mì. (Tiếng Anh: a toaster.)',
+            aImage: { src: IMAGES.toaster, alt: 'An electric toaster with two slots.', altVn: 'Một máy nướng bánh mì có hai khe.' },
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen is making soup for the whole class. Does he need a pan or a pot? Say why.',
+            qVn: 'Thầy Bowen đang nấu canh cho cả lớp. Thầy cần cái chảo hay cái nồi? Vì sao?',
+            a: 'A pot. A pot is deep, so it holds a lot of soup. A pan is flat.',
+            aVn: 'Cái nồi. Nồi sâu nên chứa được nhiều canh. Còn chảo thì dẹt.',
+            aImage: { src: IMAGES.pot, alt: 'A deep cooking pot with two handles and a lid.', altVn: 'Một cái nồi sâu có hai quai và nắp.' },
+          },
+        ],
+      },
+
+      // ── Cooking · the method, the same four as the Word Wall ──────────────
+      {
+        name: 'How Do We Cook It?',
+        nameVn: 'Nấu Bằng Cách Nào?',
+        clues: [
+          {
+            value: 100,
+            q: 'We cook it in a pot of hot water. We eat it every day in Vietnam. What is it?',
+            qVn: 'Chúng ta nấu nó trong nồi nước nóng. Ở Việt Nam ngày nào chúng ta cũng ăn. Đó là gì?',
+            a: 'Rice.',
+            aVn: 'Cơm. (Tiếng Anh: rice.)',
+            aImage: { src: IMAGES.rice, alt: 'A bowl of cooked white rice.', altVn: 'Một bát cơm trắng đã nấu chín.' },
+          },
+          {
+            value: 200,
+            q: 'We mix flour and water, then we bake it in the oven. We put butter on it. What is it?',
+            qVn: 'Chúng ta trộn bột với nước, rồi nướng trong lò. Chúng ta phết bơ lên. Đó là gì?',
+            a: 'Bread.',
+            aVn: 'Bánh mì. (Tiếng Anh: bread.)',
+            aImage: { src: IMAGES.bread, alt: 'A loaf of bread.', altVn: 'Một ổ bánh mì.' },
+          },
+          {
+            value: 300,
+            q: 'Hot oil in a pan makes this go golden and crispy. We eat it at Tet. What is it?',
+            qVn: 'Dầu nóng trong chảo làm món này vàng giòn. Chúng ta ăn nó vào dịp Tết. Đó là gì?',
+            a: 'A spring roll.',
+            aVn: 'Nem rán (chả giò). Tiếng Anh: a spring roll.',
+            aImage: { src: IMAGES.springroll, alt: 'Golden fried spring rolls on a plate.', altVn: 'Những chiếc nem rán vàng giòn trên đĩa.' },
+          },
+          {
+            value: 400,
+            q: 'Which one do we NOT cook at all — a pizza, a fried egg, or a banana?',
+            qVn: 'Món nào chúng ta KHÔNG nấu chút nào — bánh pizza, trứng ốp la, hay quả chuối?',
+            a: 'The banana. We peel it and eat it. The other two need heat.',
+            aVn: 'Quả chuối. Ta bóc vỏ rồi ăn luôn. Hai món kia đều cần làm nóng.',
+            aImage: { src: IMAGES.banana, alt: 'A ripe yellow banana.', altVn: 'Một quả chuối chín vàng.' },
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen has one egg. Name TWO different ways he could cook it.',
+            qVn: 'Thầy Bowen có một quả trứng. Hãy nêu HAI cách khác nhau để nấu nó.',
+            a: 'Fry it in a pan of hot oil, or boil it in a pot of water. (Also fine: scramble it, or bake it inside a cake.)',
+            aVn: 'Chiên trong chảo dầu nóng, hoặc luộc trong nồi nước. (Cũng được: đánh tan rán lên, hoặc cho vào bánh để nướng.)',
+            aImage: { src: IMAGES.friedegg, alt: 'A fried egg on a plate.', altVn: 'Một quả trứng ốp la trên đĩa.' },
+          },
+        ],
+      },
+
+      // ── Cooking · where the food starts ───────────────────────────────────
+      {
+        name: 'Where Does It Come From?',
+        nameVn: 'Thức Ăn Từ Đâu Đến?',
+        clues: [
+          {
+            value: 100,
+            q: 'Which animal gives us milk?',
+            qVn: 'Con vật nào cho chúng ta sữa?',
+            a: 'The cow.',
+            aVn: 'Con bò. (Tiếng Anh: the cow.)',
+            aImage: { src: IMAGES.cow, alt: 'A cow standing in a field.', altVn: 'Một con bò đứng trên đồng cỏ.' },
+          },
+          {
+            value: 200,
+            q: 'Which animal gives us eggs?',
+            qVn: 'Con vật nào cho chúng ta trứng?',
+            a: 'The hen.',
+            aVn: 'Con gà mái. (Tiếng Anh: the hen.)',
+            aImage: { src: IMAGES.hen, alt: 'A brown hen.', altVn: 'Một con gà mái màu nâu.' },
+          },
+          {
+            value: 300,
+            q: 'Rice does not grow in a shop. It grows in a big field full of water. What do we call that field?',
+            qVn: 'Cây lúa không mọc trong cửa hàng. Nó mọc trên một cánh đồng đầy nước. Cánh đồng đó gọi là gì?',
+            a: 'A rice field. In English we also say a paddy field.',
+            aVn: 'Cánh đồng lúa. Tiếng Anh: a rice field, hoặc a paddy field.',
+            aImage: { src: IMAGES.riceField, alt: 'Green rice fields full of water, with farmers working in them.', altVn: 'Những thửa ruộng lúa xanh ngập nước, có bà con đang làm việc.' },
+          },
+          {
+            value: 400,
+            q: 'Cheese and butter both start as the same white drink. What is it?',
+            qVn: 'Phô mai và bơ đều bắt đầu từ cùng một thức uống màu trắng. Đó là gì?',
+            a: 'Milk.',
+            aVn: 'Sữa. (Tiếng Anh: milk.)',
+            aImage: { src: IMAGES.milk, alt: 'A glass of milk.', altVn: 'Một ly sữa.' },
+          },
+          {
+            value: 500,
+            q: 'Honey is made by a tiny animal with wings. Which one?',
+            qVn: 'Mật ong do một con vật nhỏ có cánh làm ra. Con gì vậy?',
+            a: 'The bee. Bees take sweet juice from flowers and turn it into honey.',
+            aVn: 'Con ong. Ong lấy mật ngọt từ hoa rồi biến nó thành mật ong.',
+            aImage: { src: IMAGES.bee, alt: 'A bee on a flower.', altVn: 'Một con ong đậu trên bông hoa.' },
+          },
+        ],
+      },
+
+      // ── Science · Stage 1, the senses ─────────────────────────────────────
+      {
+        name: 'Our Five Senses',
+        nameVn: 'Năm Giác Quan',
+        clues: [
+          {
+            value: 100,
+            q: 'Which part of your body do you SEE with?',
+            qVn: 'Em NHÌN bằng bộ phận nào trên cơ thể?',
+            a: 'Your eyes.',
+            aVn: 'Đôi mắt. (Tiếng Anh: your eyes.)',
+            aImage: { src: IMAGES.eye, alt: 'A close-up of a human eye.', altVn: 'Cận cảnh một con mắt người.' },
+          },
+          {
+            value: 200,
+            q: 'Which part of your body do you HEAR with?',
+            qVn: 'Em NGHE bằng bộ phận nào trên cơ thể?',
+            a: 'Your ears.',
+            aVn: 'Đôi tai. (Tiếng Anh: your ears.)',
+            aImage: { src: IMAGES.ears, alt: 'A child holding both hands over his ears.', altVn: 'Một bạn nhỏ lấy hai tay bịt tai lại.' },
+          },
+          {
+            value: 300,
+            q: 'Mr Bowen is in the next room. He cannot see the kitchen, but he knows the cake is ready. Which part of his body told him?',
+            qVn: 'Thầy Bowen đang ở phòng bên. Thầy không nhìn thấy nhà bếp, nhưng thầy biết bánh đã chín. Bộ phận nào trên cơ thể đã báo cho thầy?',
+            a: 'His nose. He can SMELL it.',
+            aVn: 'Cái mũi. Thầy NGỬI thấy mùi bánh.',
+            aImage: { src: IMAGES.cake, alt: 'A cake.', altVn: 'Một chiếc bánh ngọt.' },
+          },
+          {
+            value: 400,
+            q: 'You put a piece of lemon on your tongue. Is it sweet, or is it sour?',
+            qVn: 'Em đặt một miếng chanh lên lưỡi. Nó ngọt hay chua?',
+            a: 'Sour! Your tongue is the part that tastes.',
+            aVn: 'Chua! Cái lưỡi là bộ phận nếm vị. (Tiếng Anh: sour.)',
+            aImage: { src: IMAGES.lemon, alt: 'A whole lemon and a lemon cut in half.', altVn: 'Một quả chanh nguyên và một quả chanh cắt đôi.' },
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen shuts his eyes. He puts his hand in a bowl. It feels cold, hard and wet. What is in the bowl?',
+            qVn: 'Thầy Bowen nhắm mắt lại. Thầy thò tay vào một cái bát. Thầy thấy lạnh, cứng và ướt. Trong bát có gì?',
+            a: 'Ice. He used TOUCH — his hands — because his eyes were shut.',
+            aVn: 'Nước đá. Thầy dùng xúc giác — đôi tay — vì mắt đang nhắm.',
+            aImage: { src: IMAGES.ice, alt: 'Ice cubes in a glass of water.', altVn: 'Những viên đá trong ly nước.' },
+          },
+        ],
+      },
+
+      // ── Science · Stage 1, living things ──────────────────────────────────
+      {
+        name: 'Living or Not Living?',
+        nameVn: 'Vật Sống Hay Không Sống?',
+        clues: [
+          {
+            value: 100,
+            q: 'Is a dog living, or not living?',
+            qVn: 'Con chó là vật sống hay không sống?',
+            a: 'Living. It eats, it moves and it grows.',
+            aVn: 'Vật sống. Nó ăn, nó di chuyển và nó lớn lên.',
+            aImage: { src: IMAGES.dog, alt: 'A dog.', altVn: 'Một chú chó.' },
+          },
+          {
+            value: 200,
+            q: 'Is a spoon living, or not living?',
+            qVn: 'Cái thìa là vật sống hay không sống?',
+            a: 'Not living. It has never been alive.',
+            aVn: 'Không sống. Nó chưa bao giờ sống cả.',
+            aImage: { src: IMAGES.spoon, alt: 'A metal spoon.', altVn: 'Một cái thìa kim loại.' },
+          },
+          {
+            value: 300,
+            q: 'Is a tree living, or not living? Say why.',
+            qVn: 'Cái cây là vật sống hay không sống? Vì sao?',
+            a: 'Living. It grows, and it needs water and light. Living does not mean it has to walk about.',
+            aVn: 'Vật sống. Nó lớn lên và nó cần nước với ánh sáng. Sống không có nghĩa là phải đi lại được.',
+            aImage: { src: IMAGES.tree, alt: 'A large green tree.', altVn: 'Một cái cây to xanh tốt.' },
+          },
+          {
+            value: 400,
+            q: 'There is a carrot in your soup. Is that carrot living NOW? Careful!',
+            qVn: 'Trong bát canh của em có một miếng cà rốt. Miếng cà rốt đó BÂY GIỜ có phải vật sống không? Cẩn thận nhé!',
+            a: 'Not living now. It WAS living when it was growing in the ground, but it is not living any more.',
+            aVn: 'Bây giờ không sống. Nó ĐÃ từng sống khi còn mọc dưới đất, nhưng bây giờ thì không còn sống nữa.',
+            aImage: { src: IMAGES.carrot, alt: 'Fresh carrots.', altVn: 'Những củ cà rốt tươi.' },
+          },
+          {
+            value: 500,
+            q: 'A little plant is pushing up out of the soil. Name TWO things it needs so it can keep growing.',
+            qVn: 'Một cây con đang nhú lên khỏi mặt đất. Hãy nêu HAI thứ nó cần để tiếp tục lớn lên.',
+            a: 'Water and light. (Also accept air, and soil to grow in.)',
+            aVn: 'Nước và ánh sáng. (Cũng chấp nhận: không khí, và đất để mọc.)',
+            aImage: { src: IMAGES.seedling, alt: 'A small green seedling pushing up out of the soil.', altVn: 'Một cây con màu xanh đang nhú lên khỏi mặt đất.' },
+          },
+        ],
+      },
+
+      // ── Science · Stage 1, change ─────────────────────────────────────────
+      {
+        name: 'Hot, Cold and Changing',
+        nameVn: 'Nóng, Lạnh và Thay Đổi',
+        clues: [
+          {
+            value: 100,
+            q: 'We put water in the freezer and leave it all night. What does it turn into?',
+            qVn: 'Chúng ta cho nước vào ngăn đá và để cả đêm. Nước biến thành gì?',
+            a: 'Ice. The cold made it hard.',
+            aVn: 'Nước đá. Cái lạnh đã làm nó cứng lại.',
+            aImage: { src: IMAGES.ice, alt: 'Ice cubes in a glass of water.', altVn: 'Những viên đá trong ly nước.' },
+          },
+          {
+            value: 200,
+            q: 'We leave an ice lolly outside in the hot sun. What happens to it?',
+            qVn: 'Chúng ta để một que kem ngoài trời nắng nóng. Chuyện gì sẽ xảy ra?',
+            a: 'It melts. It turns into a puddle of liquid.',
+            aVn: 'Nó tan chảy. Nó biến thành một vũng nước.',
+            aImage: { src: IMAGES.meltingIcecream, alt: 'An ice lolly melting into a coloured puddle on hot pavement, with only the stick left.', altVn: 'Một que kem đang tan thành vũng nước màu trên vỉa hè nóng, chỉ còn lại chiếc que.' },
+          },
+          {
+            value: 300,
+            q: 'The water in the pot is very hot. It is full of bubbles. What is the water doing?',
+            qVn: 'Nước trong nồi rất nóng. Nó sủi đầy bọt. Nước đang làm gì?',
+            a: 'Boiling.',
+            aVn: 'Đang sôi. (Tiếng Anh: boiling.)',
+            aImage: { src: IMAGES.boilingPot, alt: 'A pot of water boiling on a stove.', altVn: 'Một nồi nước đang sôi trên bếp.' },
+          },
+          {
+            value: 400,
+            q: 'Mr Bowen cracks an egg into a hot pan. Does it stay runny?',
+            qVn: 'Thầy Bowen đập một quả trứng vào chảo nóng. Trứng có còn lỏng không?',
+            a: 'No. It goes white and firm. The heat changed it.',
+            aVn: 'Không. Nó chuyển sang màu trắng và cứng lại. Sức nóng đã làm nó thay đổi.',
+            aImage: { src: IMAGES.friedegg, alt: 'A fried egg, white and firm, on a plate.', altVn: 'Một quả trứng ốp la, đã trắng và chín, trên đĩa.' },
+          },
+          {
+            value: 500,
+            q: 'Ice melts into water, and water freezes back into ice. Can Mr Bowen turn a cooked egg back into a runny one?',
+            qVn: 'Nước đá tan thành nước, rồi nước lại đông thành đá. Vậy thầy Bowen có thể biến quả trứng đã chín trở lại thành trứng lỏng không?',
+            a: 'No — never. Some changes can go back again, and some can never go back.',
+            aVn: 'Không — không bao giờ. Có những thay đổi quay lại được, và có những thay đổi thì không bao giờ quay lại được.',
+          },
+        ],
+      },
+    ],
+  },
 ]

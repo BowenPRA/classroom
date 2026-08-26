@@ -20,7 +20,7 @@ export const plan = {
     { term: 'I think… because…', def: 'the answer stem. Never accept a pointed finger; make them finish the sentence.' },
   ],
   timeline: [
-    { time: '0–1 min', phase: 'Choose', detail: 'Open the puzzle list and pick by band — amber is Kindergarten–Year 1 (six puzzles, four of them all pictures), emerald is Year 1 · Science and the World (four more walls, every one all pictures), sky is Year 1–4 (eleven word walls, roughly easiest first), violet is Year 7 (four walls, each with a baited tile).' },
+    { time: '0–1 min', phase: 'Choose', detail: 'Open the puzzle list and pick by band — amber is Kindergarten–Year 1 (seven puzzles, five of them all pictures), emerald is Year 1 · Science and the World (four more walls, every one all pictures), sky is Year 1–4 (eleven word walls, roughly easiest first), violet is Year 7 (four walls, each with a baited tile).' },
     { time: '1–2 min', phase: 'Read the hint', detail: 'The amber line under the title says how this board sorts. Read it aloud twice. First Sounds is unfair without it — the pictures also group by meaning, and that is the trap.' },
     { time: '2–4 min', phase: 'Name everything', detail: 'Before any guessing, point at all sixteen tiles and have the class chorus each one. On a picture board this is the vocabulary lesson; the sorting is the check.' },
     { time: '4–10 min', phase: 'Play', detail: 'Take a guess from one child, then ask the class to vote before you press Check. Four hearts means four wrong guesses, so make them argue for it: "Why those four?" A wrong guess is the best moment in the game — the tiles shake, nobody is told off, and "so close, three of those go together" is a real clue.' },
@@ -35,6 +35,7 @@ export const plan = {
     { q: 'In the Kitchen', a: 'Cook with: pan, pot, wok, kettle · Eat with: spoon, fork, chopsticks, bowl · Machines: fridge, oven, microwave, toaster · Drinks: tea, coffee, water, juice' },
     { q: 'Good Food', a: 'Fruit: apple, banana, orange, grapes · Vegetables: carrot, potato, broccoli, onion · Sweet: cake, ice cream, biscuit, chocolate · From the sea: fish, prawn, crab, squid' },
     { q: 'Where Food Comes From', a: 'On a tree: apple, orange, banana, coconut · Under the ground: carrot, potato, onion, ginger · From a cow or hen: milk, cheese, egg, butter · Baked: bread, cake, biscuit, doughnut' },
+    { q: 'How Do We Cook It?', a: 'In water: rice, noodles, soup, dumplings · In hot oil: spring rolls, fried egg, chips, pancakes · In the oven: bread, cake, pizza, biscuits · Never cooked: banana, milk, yoghurt, ice cream. The two eggs are the trap — the FRIED egg is here, and the class will hunt for a boiled one to put beside it. There isn\'t one; the rule is the heat, not the food.' },
     { q: 'Y1 · What Is It Made Of?', a: 'Wood: pencil, chair, wooden spoon, chopsticks · Metal: key, spoon, coin, nail · Plastic: bottle, bucket, straw, comb · Glass: window, jar, light bulb, glasses. The two spoons are the whole lesson: the wooden one and the metal one do the same job and go in different groups.' },
     { q: 'Y1 · Animal Groups', a: 'In the sea: whale, shark, turtle, octopus · Birds: owl, duck, penguin, parrot · Minibeasts: ant, bee, butterfly, spider · Big wild animals: elephant, tiger, monkey, giraffe. The penguin is the one they argue about — it swims, so half the class puts it in the sea.' },
     { q: 'Y1 · Around the House', a: 'Bathroom: toothbrush, soap, towel, comb · Bedroom: bed, pillow, lamp, teddy · Living room: sofa, television, clock, rug · On the desk: pencil, crayon, scissors, glue' },
@@ -53,9 +54,14 @@ export const plan = {
     + 'finishes the board; nobody should leave a puzzle unsolved.\n\n'
     + 'Kindergarten and Year 1 sit on the floor and point. Do not let a child touch the board before the class has voted — '
     + 'the talking is the whole point, and a fast clicker ends the thinking.\n\n'
-    + 'All ten puzzles on the amber and emerald shelves carry a Vietnamese gloss on every word: switch the deck to VN after '
+    + 'All eleven puzzles on the amber and emerald shelves carry a Vietnamese gloss on every word: switch the deck to VN after '
     + 'solving, and the same solved rows print "COW (con bò)". Sort in English, confirm in Vietnamese, never the other way '
     + 'round.\n\n'
+    + '"HOW DO WE COOK IT?" IS THE HARDEST WALL ON THE AMBER SHELF, and it is the last one for a reason: the other three food '
+    + 'walls ask what a thing IS, and this one asks what somebody DID to it. Say the four methods out loud before you start — '
+    + 'in water, in hot oil, in the oven, never cooked — and mime each one. Then the sixteen tiles are a listening exercise as '
+    + 'much as a sorting one. It pairs with the Kindergarten Jeopardy board, which uses the same four methods; play the wall '
+    + 'first and the board later in the week.\n\n'
     + 'The emerald shelf is Year 1 and every wall on it is all pictures. "What Is It Made Of?" is the Cambridge Primary '
     + 'Science Stage 1 materials objective and it sorts on a rule the others do not: not what a thing is for, but what it is '
     + 'made from. Say that twice before you start, and hold up a real wooden spoon and a real metal one — the board has both, '

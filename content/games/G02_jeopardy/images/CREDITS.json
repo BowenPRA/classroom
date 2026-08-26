@@ -1,5 +1,25 @@
 [
   {
+    "name": "banana.jpg",
+    "title": "File:HK food 生果 fruit yellow 香蕉 banana 梅花點 February 2021 SS2 03.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:HK_food_%E7%94%9F%E6%9E%9C_fruit_yellow_%E9%A6%99%E8%95%89_banana_%E6%A2%85%E8%8A%B1%E9%BB%9E_February_2021_SS2_03.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Schawhoi Kamnls",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/banana.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "How Do We Cook It? 400 — the ANSWER picture for the one food on the board that is never cooked. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 46811
+  },
+  {
+    "name": "bee.jpg",
+    "title": "File:The_Lone_Pollinator.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:The_Lone_Pollinator.jpg",
+    "license": "CC BY 4.0",
+    "artist": "Tanner Smida",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/bee.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "Where Does It Come From? 500 — the ANSWER picture for the animal that makes honey. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 21570
+  },
+  {
     "name": "blue-whale.jpg",
     "title": "File:Large Blue Whale Off Southern California Coast Photo Don Ramey Logan.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Large_Blue_Whale_Off_Southern_California_Coast_Photo_Don_Ramey_Logan.jpg",
@@ -10,14 +30,114 @@
     "bytes": 201233
   },
   {
-    "name": "peregrine-falcon.jpg",
-    "title": "File:Peregrine falcon (Falco peregrinus) in flight, Cape Baily, Kamay Botany Bay NSW Jun 2022.jpg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Peregrine_falcon_(Falco_peregrinus)_in_flight,_Cape_Baily,_Kamay_Botany_Bay_NSW_Jun_2022.jpg",
+    "name": "boiling-pot.jpg",
+    "title": "File:2008-07-05 Water boiling in cooking pot.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:2008-07-05_Water_boiling_in_cooking_pot.jpg",
     "license": "CC BY-SA 4.0",
-    "artist": "Kytabu",
-    "source": "Wikimedia Commons. CC BY-SA, not public domain - keep the attribution.",
-    "usage": "Unit 1 Finale, Animal Records 200 - the ANSWER picture for \"the fastest animal in the world\". Wings out against plain sky, which is what a bird has to be for a room to read it off a projector in one second. Downscaled to 1280px via the Commons thumbnailer; not otherwise altered.",
-    "bytes": 224987
+    "artist": "Ildar Sagdejev (Specious)",
+    "source": "Wikimedia Commons. CC BY(-SA), not public domain - the attribution has to travel with it.",
+    "usage": "Hot, Cold and Changing 300 — the ANSWER picture for BOILING. A domestic pot on a stove full of bubbles, not an industrial or laboratory shot. Downscaled to 1000px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 241338
+  },
+  {
+    "name": "bread.jpg",
+    "title": "File:Fresh made bread 05.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Fresh_made_bread_05.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "FranHogan",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/bread.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "How Do We Cook It? 200 — the ANSWER picture for bread, the food baked in an oven. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 50535
+  },
+  {
+    "name": "cake.jpg",
+    "title": "File:Italy - birthday cake with candles 1.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Italy_-_birthday_cake_with_candles_1.jpg",
+    "license": "CC BY-SA 3.0 it",
+    "artist": "Francesca Cesa Bianchi, Milano",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/cake.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "Our Five Senses 300 — the ANSWER picture for the cake Mr Bowen can SMELL from the next room. The picture is the thing he smelled, not the nose that smelled it: Commons has no clean photograph of a nose that is not medical. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 41707
+  },
+  {
+    "name": "carrot.jpg",
+    "title": "File:Carrots at Ljubljana Central Market.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Carrots_at_Ljubljana_Central_Market.JPG",
+    "license": "CC BY 4.0",
+    "artist": "domdomegg",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/carrot.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "Living or Not Living? 400 — the ANSWER picture for the carrot that WAS living in the ground and is not living now. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 33875
+  },
+  {
+    "name": "chopsticks.jpg",
+    "title": "File:Chopsticks (59810130).jpeg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Chopsticks_(59810130).jpeg",
+    "license": "CC BY 3.0",
+    "artist": "Jamie Hamel Smith",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/chopsticks.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "In the Kitchen 100 — the ANSWER picture for \"the two little sticks we pick up our rice with\". Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 24265
+  },
+  {
+    "name": "cow.jpg",
+    "title": "File:Grazing, Dierhagen ( 1100746).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Grazing,_Dierhagen_(_1100746).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Matti Blume",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/cow.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "Where Does It Come From? 100 — the ANSWER picture for the animal that gives us milk. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 42359
+  },
+  {
+    "name": "dog.jpg",
+    "title": "File:Golden-retriever-1827903 1920.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Golden-retriever-1827903_1920.jpg",
+    "license": "CC0",
+    "artist": "RetyiRetyi",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/dog.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "Living or Not Living? 100 — the ANSWER picture for a living thing. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 57035
+  },
+  {
+    "name": "ears.jpg",
+    "title": "File:180814-M-SQ016-854 (43272714645).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:180814-M-SQ016-854_(43272714645).jpg",
+    "license": "Public domain",
+    "artist": "U.S. Department of Defense Current Photos Lance Cpl. Harrison Rakhshani/III Marine Expeditionary Force",
+    "source": "Wikimedia Commons.",
+    "usage": "Our Five Senses 200 — the ANSWER picture for the ears. A child with both hands over his ears, because the class copies the gesture the moment it appears and that is the word learnt. Downscaled to 1000px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 108954
+  },
+  {
+    "name": "eye.jpg",
+    "title": "File:Auge iris braun brown eye human menschlich Bjoern markmann.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Auge_iris_braun_brown_eye_human_menschlich_Bjoern_markmann.JPG",
+    "license": "CC BY 3.0",
+    "artist": "Björn Markmann",
+    "source": "Wikimedia Commons. CC BY(-SA), not public domain - the attribution has to travel with it.",
+    "usage": "Our Five Senses 100 — the ANSWER picture for the eyes. Downscaled to 1000px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 231938
+  },
+  {
+    "name": "fridge.jpg",
+    "title": "File:Hisense, IFA 2018, Berlin (P1070179).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Hisense,_IFA_2018,_Berlin_(P1070179).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Matti Blume",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/fridge.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "In the Kitchen 300 — the ANSWER picture for the fridge. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 52408
+  },
+  {
+    "name": "friedegg.jpg",
+    "title": "File:Flickr - cyclonebill - Vagtel-spejlæg (1).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Flickr_-_cyclonebill_-_Vagtel-spejl%C3%A6g_(1).jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "cyclonebill",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/friedegg.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "How Do We Cook It? 500 and Hot, Cold and Changing 400 — the ANSWER picture for both egg clues. The same photograph twice on purpose: the second clue asks what the heat DID to the egg in the first. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 32267
   },
   {
     "name": "giraffe.jpg",
@@ -30,6 +150,66 @@
     "bytes": 283153
   },
   {
+    "name": "hen.jpg",
+    "title": "File:Hen on street.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Hen_on_street.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Just chaos",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/hen.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "Where Does It Come From? 200 — the ANSWER picture for the animal that gives us eggs. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 61425
+  },
+  {
+    "name": "ice.jpg",
+    "title": "File:Ice cubes on water.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Ice_cubes_on_water.jpg",
+    "license": "CC0",
+    "artist": "Cleiton Andrade Andrade from Alfenas, Brasil",
+    "source": "Wikimedia Commons.",
+    "usage": "Our Five Senses 500 and Hot, Cold and Changing 100 — the ANSWER picture for ice in both. Deliberately the same photograph: the ice they identified by touch is the ice the freezer made. Downscaled to 1000px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 315854
+  },
+  {
+    "name": "leaf-cross-section.jpg",
+    "title": "File:Angiosperm Morphology Mesophyll Arrangement in Syringa Leaf (36176478164).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Angiosperm_Morphology_Mesophyll_Arrangement_in_Syringa_Leaf_(36176478164).jpg",
+    "license": "CC0",
+    "artist": "Berkshire Community College Bioscience Image Library",
+    "source": "Wikimedia Commons. The identical file is content/y7-science/U01_4/images/leaf.jpg - copied rather than imported across units so each folder stays self-contained and carries its own licence.",
+    "usage": "Unit 1 Finale, Cells to Organisms 300 - the ANSWER picture for \"is a leaf a tissue or an organ?\". Deliberately the same photograph the class met in the Science 1.4 lesson: the four tissues are stacked in it in order - upper epidermis, palisade, spongy, lower epidermis - so the reveal is a recognition, not a new picture to decode. Downscaled to 1200px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 243557
+  },
+  {
+    "name": "lemon.jpg",
+    "title": "File:Lemon - whole and split.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Lemon_-_whole_and_split.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Ivar Leidus",
+    "source": "Wikimedia Commons. CC BY(-SA), not public domain - the attribution has to travel with it.",
+    "usage": "Our Five Senses 400 — the ANSWER picture for SOUR. Whole and cut, on black, so the fruit reads instantly at the back of the room. Downscaled to 1000px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 145153
+  },
+  {
+    "name": "melting-icecream.jpg",
+    "title": "File:Bombs Away^ A melting Bomb Pop on a sidewalk means one thing....hot weather^ And maybe also a crying child. - Flickr - Lorie Shaull.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Bombs_Away%5E_A_melting_Bomb_Pop_on_a_sidewalk_means_one_thing....hot_weather%5E_And_maybe_also_a_crying_child._-_Flickr_-_Lorie_Shaull.jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Lorie Shaull from St Paul, United States",
+    "source": "Wikimedia Commons. CC BY(-SA), not public domain - the attribution has to travel with it.",
+    "usage": "Hot, Cold and Changing 200 — the ANSWER picture for melting. An ice lolly gone to a coloured puddle on hot pavement with only the stick left, which says \"it melted\" faster than any words could. Downscaled to 1000px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 242720
+  },
+  {
+    "name": "milk.jpg",
+    "title": "File:Milk glass.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Milk_glass.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Stefan Kühn",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/milk.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "Where Does It Come From? 400 — the ANSWER picture for the white drink that cheese and butter both start as. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 17541
+  },
+  {
     "name": "octopus.jpg",
     "title": "File:Octopus2.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Octopus2.jpg",
@@ -38,6 +218,86 @@
     "source": "Wikimedia Commons. CC BY-SA, not public domain - keep the attribution. The same Commons file is the Word Wall's OCTOPUS tile; this is a larger copy of it, because a projected reveal needs more than a 500px thumbnail.",
     "usage": "Unit 1 Finale, Animal Records 400 - the ANSWER picture for \"three hearts and blue blood\". Whole animal, arms and eye visible, not camouflaged into the rock - most octopus photographs on Commons are, and are useless at the front of a room. Downscaled to 1280px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 258180
+  },
+  {
+    "name": "pan.jpg",
+    "title": "File:Hahn 29cm Frying Pan.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Hahn_29cm_Frying_Pan.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Cooks &amp; Kitchens from Darlington, UK",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/pan.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "In the Kitchen 200 — the ANSWER picture for the frying pan, and again on How Do We Cook It? where a pan is the thing that is not a pot. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 5470
+  },
+  {
+    "name": "peregrine-falcon.jpg",
+    "title": "File:Peregrine falcon (Falco peregrinus) in flight, Cape Baily, Kamay Botany Bay NSW Jun 2022.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Peregrine_falcon_(Falco_peregrinus)_in_flight,_Cape_Baily,_Kamay_Botany_Bay_NSW_Jun_2022.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Kytabu",
+    "source": "Wikimedia Commons. CC BY-SA, not public domain - keep the attribution.",
+    "usage": "Unit 1 Finale, Animal Records 200 - the ANSWER picture for \"the fastest animal in the world\". Wings out against plain sky, which is what a bird has to be for a room to read it off a projector in one second. Downscaled to 1280px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 224987
+  },
+  {
+    "name": "pot.jpg",
+    "title": "File:Pot with no background.png",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Pot_with_no_background.png",
+    "license": "CC BY-SA 4.0",
+    "artist": "Lightsnap",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/pot.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "In the Kitchen 500 — the ANSWER picture for \"pan or pot?\". Deep, with two handles, so the class can see why it holds more soup. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 14053
+  },
+  {
+    "name": "rice-field.jpg",
+    "title": "File:Traditional Rice Farming.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Traditional_Rice_Farming.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "RahmadHimawan Photography",
+    "source": "Wikimedia Commons. CC BY(-SA), not public domain - the attribution has to travel with it.",
+    "usage": "Where Does It Come From? 300 — the ANSWER picture for the paddy field. Green shoots, standing water and people working in it, so a five-year-old can see that rice is grown rather than bought. Downscaled to 1000px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 352537
+  },
+  {
+    "name": "rice.jpg",
+    "title": "File:A bowl of rice.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:A_bowl_of_rice.jpg",
+    "license": "CC0",
+    "artist": "Douglas Perkins",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/rice.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "How Do We Cook It? 100 — the ANSWER picture for rice, the food cooked in a pot of water. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 33416
+  },
+  {
+    "name": "seedling.jpg",
+    "title": "File:13 avril 2020 - Poncirus quadruple - 001 zoom.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:13_avril_2020_-_Poncirus_quadruple_-_001_zoom.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "FarceRéjeane",
+    "source": "Wikimedia Commons. CC BY(-SA), not public domain - the attribution has to travel with it.",
+    "usage": "Living or Not Living? 500 — the ANSWER picture for the little plant that needs water and light. Downscaled to 1000px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 286677
+  },
+  {
+    "name": "spoon.jpg",
+    "title": "File:Samuel Vernon (American, 1683-1737) - Teaspoon - 1940.278 - Cleveland Museum of Art.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Samuel_Vernon_(American,_1683-1737)_-_Teaspoon_-_1940.278_-_Cleveland_Museum_of_Art.jpg",
+    "license": "CC0",
+    "artist": "",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/spoon.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "Living or Not Living? 200 — the ANSWER picture for a thing that has never been alive. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 14667
+  },
+  {
+    "name": "springroll.jpg",
+    "title": "File:DFC 5092 Crispy golden spring rolls served hot with a tangy dipping sauce and fresh lettuce.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:DFC_5092_Crispy_golden_spring_rolls_served_hot_with_a_tangy_dipping_sauce_and_fresh_lettuce.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "PattayaPatrol",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/springroll.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "How Do We Cook It? 300 — the ANSWER picture for the spring roll, the food fried in hot oil. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 31410
   },
   {
     "name": "tardigrade.jpg",
@@ -50,13 +310,23 @@
     "bytes": 189760
   },
   {
-    "name": "leaf-cross-section.jpg",
-    "title": "File:Angiosperm Morphology Mesophyll Arrangement in Syringa Leaf (36176478164).jpg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Angiosperm_Morphology_Mesophyll_Arrangement_in_Syringa_Leaf_(36176478164).jpg",
-    "license": "CC0",
-    "artist": "Berkshire Community College Bioscience Image Library",
-    "source": "Wikimedia Commons. The identical file is content/y7-science/U01_4/images/leaf.jpg - copied rather than imported across units so each folder stays self-contained and carries its own licence.",
-    "usage": "Unit 1 Finale, Cells to Organisms 300 - the ANSWER picture for \"is a leaf a tissue or an organ?\". Deliberately the same photograph the class met in the Science 1.4 lesson: the four tissues are stacked in it in order - upper epidermis, palisade, spongy, lower epidermis - so the reveal is a recognition, not a new picture to decode. Downscaled to 1200px via the Commons thumbnailer; not otherwise altered.",
-    "bytes": 243557
+    "name": "toaster.jpg",
+    "title": "File:Tiffany toaster with intel inside sticker.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Tiffany_toaster_with_intel_inside_sticker.jpg",
+    "license": "Public domain",
+    "artist": "Leon Brooks",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/toaster.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "In the Kitchen 400 — the ANSWER picture for the toaster. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 22416
+  },
+  {
+    "name": "tree.jpg",
+    "title": "File:Usamljeni_jasen_-_panoramio_(cropped).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Usamljeni_jasen_-_panoramio_(cropped).jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "menergo",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/tree.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
+    "usage": "Living or Not Living? 300 — the ANSWER picture for the living thing that does not move about, which is the whole difficulty of the clue. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 116933
   }
 ]

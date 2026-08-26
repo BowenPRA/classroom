@@ -26,7 +26,7 @@ import {
   ArrowLeft, Lightbulb, Eye, EyeOff, Infinity as InfinityIcon, PartyPopper,
   RotateCcw, CircleCheck, CircleX, Star,
   CookingPot, Carrot, Sprout, Sigma, Dna, Puzzle, Languages,
-  Blocks, Bird, House, Sun,
+  Blocks, Bird, House, Sun, Flame,
 } from 'lucide-react'
 
 import { LEVELS, BANDS } from './levels.js'
@@ -36,7 +36,7 @@ const ICONS = {
   Images, BookOpenText, Ear, Apple, Hand, Smile, Shapes, Music, School,
   Wand2, Trees, Cat, Link: LinkIcon,
   CookingPot, Carrot, Sprout, Sigma, Dna, Puzzle, Languages,
-  Blocks, Bird, House, Sun,
+  Blocks, Bird, House, Sun, Flame,
 }
 
 const pick = (lang, en, vn) => (lang === 'vn' ? (vn ?? en) : en)

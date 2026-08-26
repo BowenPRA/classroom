@@ -28,9 +28,11 @@
 //     explicitly rather than inherited from the theme — the trap that turned
 //     bold text white-on-white in dark mode.
 //   · A clue's picture, where it has one, is held back with the answer unless
-//     the question names the thing already. Six clues on the Finale board have
-//     one and the other 114 do not, which is the right proportion: a photograph
-//     next to "What is 9²?" is decoration.
+//     the question names the thing already. How many clues want one depends
+//     entirely on who is in the room: six of the 120 Year 7 clues have a
+//     picture, because a photograph next to "What is 9²?" is decoration — and
+//     29 of the 30 Kindergarten clues do, because a five-year-old who has just
+//     said "chopsticks" has not finished the clue until they have seen a pair.
 //
 // The board is a grid whose rows divide whatever height the slide gives it, so
 // it fills a projector without ever growing a scrollbar.
@@ -38,7 +40,7 @@ import { useState, useEffect, useRef, useCallback, createElement } from 'react'
 import {
   Calculator, FlaskConical, Trophy, Gamepad2, ArrowLeft, Plus, X,
   Play, Pause, Eye, Check, Timer, Flag, RotateCcw, Crown, Users, Sparkles,
-  Music, Volume2, VolumeX, Pencil,
+  Music, Volume2, VolumeX, Pencil, CookingPot,
 } from 'lucide-react'
 
 import { BOARDS } from './boards.js'
@@ -75,7 +77,7 @@ import bossBattle from './audio/boss-battle.opus'
 import timeAttack from './audio/time-attack.ogg'
 import phonk from './audio/phonk.opus'
 
-const ICONS = { Calculator, FlaskConical, Trophy, Sparkles }
+const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot }
 
 // The clue countdown, and the music that runs with it.
 const TIMER_SECONDS = 30
@@ -203,12 +205,17 @@ function useConfetti(canvasRef) {
 
 // ── Setup ───────────────────────────────────────────────────────────────────
 
+// Padded p-2 rather than p-3, because the fifth board tipped the Setup column
+// 45px past a 1440×900 window and a Setup screen that scrolls is one the
+// teacher has to hunt around in with the class already watching. If a sixth
+// board is ever added, move the music picker into the right-hand column rather
+// than shaving this again.
 function BoardCard({ board, lang, selected, onPick }) {
   return (
     <button
       type="button"
       onClick={onPick}
-      className={`w-full text-left rounded-2xl bg-white dark:bg-slate-900 border-2 border-b-[6px] p-3 flex items-start gap-3 transition-all active:border-b-2 active:translate-y-[4px] ${
+      className={`w-full text-left rounded-2xl bg-white dark:bg-slate-900 border-2 border-b-[6px] p-2 flex items-start gap-2.5 transition-all active:border-b-2 active:translate-y-[4px] ${
         selected
           ? 'border-slate-800 dark:border-slate-200'
           : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600'
@@ -299,7 +306,7 @@ function Setup({
             <h2 className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500 mb-1.5">
               {t(lang, 'chooseBoard')}
             </h2>
-            <div className="grid gap-2">
+            <div className="grid gap-1.5">
               {BOARDS.map((board, i) => (
                 <BoardCard
                   key={board.id}

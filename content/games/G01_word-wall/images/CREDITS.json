@@ -207,6 +207,15 @@
     "bytes": 16441
   },
   {
+    "name": "chips.jpg",
+    "title": "File:Schale mit einer Portion Pommes frites.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Schale_mit_einer_Portion_Pommes_frites.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "4028mdk09",
+    "usage": "Word Wall picture tile \"CHIPS\", in \"How Do We Cook It?\" — the hot oil group. A portion on its own in a white dish, with nothing else on the plate to look at. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 48470
+  },
+  {
     "name": "chocolate.jpg",
     "title": "File:3-Musketeers-Broken.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:3-Musketeers-Broken.jpg",
@@ -333,6 +342,15 @@
     "bytes": 51463
   },
   {
+    "name": "dumpling.jpg",
+    "title": "File:Willow leaf steamed dumplings.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Willow_leaf_steamed_dumplings.jpg",
+    "license": "CC0",
+    "artist": "Fumikas Sagisavas",
+    "usage": "Word Wall picture tile \"DUMPLINGS\", in \"How Do We Cook It?\" — the water group. Shown in the steamer basket, which is the clue that they were cooked over water rather than fried. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 57403
+  },
+  {
     "name": "egg.jpg",
     "title": "File:Chicken eggs 20101113.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Chicken_eggs_20101113.jpg",
@@ -385,6 +403,15 @@
     "artist": "Matti Blume",
     "usage": "Word Wall picture tile \"FRIDGE\". Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 52408
+  },
+  {
+    "name": "friedegg.jpg",
+    "title": "File:Flickr - cyclonebill - Vagtel-spejlæg (1).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Flickr_-_cyclonebill_-_Vagtel-spejl%C3%A6g_(1).jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "cyclonebill",
+    "usage": "Word Wall picture tile \"FRIED EGG\", in \"How Do We Cook It?\" — the hot oil group. One egg on a plain plate. It is deliberately the only egg on the board. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 32267
   },
   {
     "name": "ginger.jpg",
@@ -576,6 +603,15 @@
     "bytes": 15752
   },
   {
+    "name": "noodles.jpg",
+    "title": "File:Phở bò, Cầu Giấy, Hà Nội.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Ph%E1%BB%9F_b%C3%B2,_C%E1%BA%A7u_Gi%E1%BA%A5y,_H%C3%A0_N%E1%BB%99i.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Codename5281",
+    "usage": "Word Wall picture tile \"NOODLES\", in \"How Do We Cook It?\" — the water group. Phở, photographed in Hà Nội, chosen over a generic bowl of pasta because it is the noodle dish this class actually knows. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 34150
+  },
+  {
     "name": "octopus.jpg",
     "title": "File:Octopus2.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Octopus2.jpg",
@@ -630,6 +666,15 @@
     "bytes": 5470
   },
   {
+    "name": "pancake.jpg",
+    "title": "File:PancakesWithSyrup.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:PancakesWithSyrup.jpg",
+    "license": "Public domain",
+    "artist": "Renee Comet (photographer)",
+    "usage": "Word Wall picture tile \"PANCAKES\", in \"How Do We Cook It?\" — the hot oil group. Pancakes are the argument on this wall: they are cooked in a pan with a little fat, not baked, and a child who says \"oven\" has reasoned well and is still wrong. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 42128
+  },
+  {
     "name": "parrot.jpg",
     "title": "File:Rainbow_lorikeet_(Trichoglossus_moluccanus_moluccanus)_Sydney.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Rainbow_lorikeet_(Trichoglossus_moluccanus_moluccanus)_Sydney.jpg",
@@ -675,6 +720,15 @@
     "bytes": 34825
   },
   {
+    "name": "pizza.jpg",
+    "title": "File:Whole Foods Kitchen Margherita Pizza 2 (15411931231).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Whole_Foods_Kitchen_Margherita_Pizza_2_(15411931231).jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Willis Lam",
+    "usage": "Word Wall picture tile \"PIZZA\", in \"How Do We Cook It?\" — the oven group. A whole margherita from above, so it reads as one round thing rather than as a slice of something. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 60265
+  },
+  {
     "name": "plane.jpg",
     "title": "File:Turkish Airlines A330-200 (TC-JIO) @ MAN, September 2015 (03).jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Turkish_Airlines_A330-200_(TC-JIO)_@_MAN,_September_2015_(03).jpg",
@@ -718,6 +772,15 @@
     "artist": "Eric Rolph at English Wikipedia",
     "usage": "Word Wall picture tile \"RAINBOW\". Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 46448
+  },
+  {
+    "name": "rice.jpg",
+    "title": "File:A bowl of rice.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:A_bowl_of_rice.jpg",
+    "license": "CC0",
+    "artist": "Douglas Perkins",
+    "usage": "Word Wall picture tile \"RICE\", in \"How Do We Cook It?\" — the water group. A plain bowl of cooked white rice, which is what the class eats every day and recognises instantly. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 33416
   },
   {
     "name": "rug.jpg",
@@ -846,6 +909,15 @@
     "bytes": 34798
   },
   {
+    "name": "soup.jpg",
+    "title": "File:Liat Portal for Foodie Disorder - Homemade minestrone soup.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Homemade_minestrone_soup.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "HaJunkiyada",
+    "usage": "Word Wall picture tile \"SOUP\", in \"How Do We Cook It?\" — the water group. A plain bowl of vegetable soup, top down, so the liquid is unmistakable. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 27099
+  },
+  {
     "name": "spider.jpg",
     "title": "File:Araneus_diadematus_(Clerck,_1757).JPG",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Araneus_diadematus_(Clerck%2C_1757).JPG",
@@ -862,6 +934,15 @@
     "artist": "",
     "usage": "Word Wall picture tile \"SPOON\". Cropped to the spoon and rotated a quarter turn so it lies across the tile; downscaled via the Commons thumbnailer.",
     "bytes": 14667
+  },
+  {
+    "name": "springroll.jpg",
+    "title": "File:DFC 5092 Crispy golden spring rolls served hot with a tangy dipping sauce and fresh lettuce.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:DFC_5092_Crispy_golden_spring_rolls_served_hot_with_a_tangy_dipping_sauce_and_fresh_lettuce.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "PattayaPatrol",
+    "usage": "Word Wall picture tile \"SPRING ROLLS\", in \"How Do We Cook It?\" — the hot oil group. Golden and crisp, so the frying shows. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 31410
   },
   {
     "name": "squid.jpg",
@@ -1033,5 +1114,14 @@
     "artist": "Donovan Govan.",
     "usage": "Word Wall picture tile \"WOODEN SPOON\". Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 75361
+  },
+  {
+    "name": "yoghurt.jpg",
+    "title": "File:Yoghurt and spoon.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Yoghurt_and_spoon.jpg",
+    "license": "CC0",
+    "artist": "Julikalucky",
+    "usage": "Word Wall picture tile \"YOGHURT\", in \"How Do We Cook It?\" — the never-cooked group. A glass bowl and a spoon; sữa chua is familiar here, which is why it is on the board rather than a cold pudding nobody eats. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 32206
   }
 ]

@@ -10,14 +10,15 @@
 // A note on language. Category names, notes and hints all carry a `…Vn` twin
 // like every other string in this repo. The TILES stay in English on purpose:
 // they are the vocabulary being taught, and half the levels are phonics puzzles
-// ("rhymes with cat", "starts with S") that a translation would destroy. The
-// three Kindergarten/Year 1 levels do carry a `vn` gloss per item, because
-// there the picture, the English word and the Vietnamese word together are the
-// point — those glosses print on the solved row in VN mode.
+// ("rhymes with cat", "starts with S") that a translation would destroy. Every
+// wall on the 'early' and 'y1' shelves DOES carry a `vn` gloss per item,
+// because there the picture, the English word and the Vietnamese word together
+// are the point — those glosses print on the solved row in VN mode.
 //
 // `band` splits the level menu: 'early' is Kindergarten–Year 1 (pictures and
-// three-letter words), 'y1' is a second all-picture set for Year 1 — materials,
-// animal groups, rooms and places, opening with a Cambridge Primary Science
+// three-letter words, ending with four walls about food and cooking), 'y1' is
+// a second all-picture set for Year 1 — materials, animal groups, rooms and
+// places, opening with a Cambridge Primary Science
 // Stage 1 wall — 'words' is the Year 1–4 word puzzles, and 'y7' is the Year 7
 // set — curriculum vocabulary and NYT-Connections-style wordplay, where at
 // least one tile in every wall is deliberately baited into the wrong group.
@@ -351,6 +352,71 @@ export const LEVELS = [
           { img: 'cake', word: 'CAKE', vn: 'bánh ngọt' },
           { img: 'biscuit', word: 'BISCUIT', vn: 'bánh quy' },
           { img: 'doughnut', word: 'DOUGHNUT', vn: 'bánh vòng' },
+        ],
+      },
+    ],
+  },
+
+  // The fourth food wall, and the only one that sorts on a VERB. "Good Food"
+  // and "Where Food Comes From" both ask what a thing IS; this one asks what
+  // somebody DID to it, which is a harder question and the reason it sits last
+  // on the amber shelf. It is also the wall that pairs with the Kindergarten
+  // Jeopardy board — the same four methods, the same four words.
+  //
+  // Every tile is a cooked dish, so the trap is real: half the class will try
+  // to group the two egg pictures together, or put the pizza with the bread
+  // because both are bread-ish. The rule is the heat, not the food.
+  {
+    id: 'how-do-we-cook-it',
+    band: 'early',
+    icon: 'Flame',
+    title: 'How Do We Cook It?',
+    titleVn: 'Nấu Món Này Bằng Cách Nào?',
+    hint: 'All pictures. Not what it tastes like — how did it get HOT?',
+    hintVn: 'Toàn tranh. Không phải mùi vị — mà là món đó được làm NÓNG bằng cách nào?',
+    groups: [
+      {
+        name: 'We Cook It in Water', nameVn: 'Nấu Trong Nước',
+        note: 'All four go into a pot of hot water on the stove.',
+        noteVn: 'Cả bốn món đều được cho vào nồi nước nóng trên bếp.',
+        items: [
+          { img: 'rice', word: 'RICE', vn: 'cơm' },
+          { img: 'noodles', word: 'NOODLES', vn: 'phở, bún' },
+          { img: 'soup', word: 'SOUP', vn: 'canh, súp' },
+          { img: 'dumpling', word: 'DUMPLINGS', vn: 'bánh bao, há cảo' },
+        ],
+      },
+      {
+        name: 'We Fry It in Hot Oil', nameVn: 'Chiên Trong Dầu Nóng',
+        note: 'These go in a pan of hot oil. That is what makes them crispy.',
+        noteVn: 'Những món này được cho vào chảo dầu nóng. Nhờ vậy chúng mới giòn.',
+        items: [
+          { img: 'springroll', word: 'SPRING ROLLS', vn: 'nem rán, chả giò' },
+          { img: 'friedegg', word: 'FRIED EGG', vn: 'trứng ốp la' },
+          { img: 'chips', word: 'CHIPS', vn: 'khoai tây chiên' },
+          { img: 'pancake', word: 'PANCAKES', vn: 'bánh kếp' },
+        ],
+      },
+      {
+        name: 'We Bake It in the Oven', nameVn: 'Nướng Trong Lò',
+        note: 'No water and no oil. The oven gets hot all around them.',
+        noteVn: 'Không nước, không dầu. Lò nóng bao quanh những món này.',
+        items: [
+          { img: 'bread', word: 'BREAD', vn: 'bánh mì' },
+          { img: 'cake', word: 'CAKE', vn: 'bánh ngọt' },
+          { img: 'pizza', word: 'PIZZA', vn: 'bánh pizza' },
+          { img: 'biscuit', word: 'BISCUITS', vn: 'bánh quy' },
+        ],
+      },
+      {
+        name: 'We Never Cook It', nameVn: 'Không Bao Giờ Nấu',
+        note: 'These never get hot at all. We eat and drink them cold.',
+        noteVn: 'Những thứ này không bao giờ được làm nóng. Ta ăn và uống chúng lạnh.',
+        items: [
+          { img: 'banana', word: 'BANANA', vn: 'quả chuối' },
+          { img: 'milk', word: 'MILK', vn: 'sữa' },
+          { img: 'yoghurt', word: 'YOGHURT', vn: 'sữa chua' },
+          { img: 'icecream', word: 'ICE CREAM', vn: 'kem' },
         ],
       },
     ],
