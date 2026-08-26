@@ -6,9 +6,12 @@
 // cannot do is let a room of teams choose which question to take, hold the
 // answer back until the class has argued, and keep score honestly across
 // thirty of them. That is the whole widget — choose, wait, reveal, award.
-// There is nothing else to fiddle with: no sliders, no sound, no wagering.
+// There is nothing else to fiddle with: no sliders, no wagering. The only two
+// things that are not text are there because the room needs them — thinking
+// music under the countdown, and a photograph on the handful of clues where
+// seeing the thing IS the answer.
 //
-// Four decisions worth knowing about:
+// Five decisions worth knowing about:
 //   · The teacher reveals. The answer never appears on a timer, because the
 //     value of the pause is the class arguing in English while it is hidden.
 //   · The COUNTDOWN, unlike the answer, starts on its own the moment a clue
@@ -24,6 +27,10 @@
 //     fixed-colour surface on purpose, so every colour on it is written out
 //     explicitly rather than inherited from the theme — the trap that turned
 //     bold text white-on-white in dark mode.
+//   · A clue's picture, where it has one, is held back with the answer unless
+//     the question names the thing already. Six clues on the Finale board have
+//     one and the other 114 do not, which is the right proportion: a photograph
+//     next to "What is 9²?" is decoration.
 //
 // The board is a grid whose rows divide whatever height the slide gives it, so
 // it fills a projector without ever growing a scrollbar.
@@ -35,6 +42,19 @@ import {
 } from 'lucide-react'
 
 import { BOARDS } from './boards.js'
+
+// Clue pictures. A clue may carry `qImage` (shown as soon as the clue opens,
+// because seeing the thing is part of understanding the question) and/or
+// `aImage` (held back until the teacher reveals, because the picture IS the
+// answer). Either is `{ src, alt, altVn }`; both are optional, and most clues
+// have neither — see images.js for why that is the default.
+//
+// The picture always lives in the flexible middle of the clue card, never in
+// the answer panel below it. That region already takes whatever height is left
+// over, so a photo shrinks the question text instead of pushing the award
+// buttons off the bottom of a 768px-tall window.
+const clueImage = (clue, revealed) =>
+  (revealed ? clue.aImage ?? clue.qImage : clue.qImage) ?? null
 
 // Thinking music. Six free tracks — lofi first, because that is what the room
 // responds to — with licences and sources in audio/CREDITS.json.
@@ -454,6 +474,9 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
   const throwConfetti = useConfetti(canvasRef)
 
   const board = BOARDS[boardIndex]
+  // The picture on the clue that is open, if it has one. Computed here rather
+  // than in the JSX because `revealed` decides which of the two it is.
+  const shownImage = open ? clueImage(open.clue, revealed) : null
   const big = isDisplayMode
   const total = board.categories.length * VALUES.length
   // Display list: an unnamed team is labelled in whatever language the deck is
@@ -492,6 +515,18 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
     audio.play().catch(() => {})
     return () => fadeOutAndStop(audio)
   }, [running, trackIndex, muted])
+
+  // Every picture on this board, pulled into the browser cache the moment the
+  // board is chosen. An answer image is by definition one nobody has seen yet,
+  // so without this the reveal is a blank rectangle for as long as the school
+  // wifi takes — at exactly the moment the room is looking hardest.
+  useEffect(() => {
+    board.categories.forEach((category) => category.clues.forEach((clue) => {
+      [clue.qImage, clue.aImage].forEach((image) => {
+        if (image?.src) Object.assign(new Image(), { src: image.src })
+      })
+    }))
+  }, [board])
 
   const closeClue = useCallback(() => {
     setOpen(null)
@@ -835,10 +870,32 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
               </button>
             </div>
 
-            <div className="flex-1 min-h-[2.5rem] flex items-center overflow-y-auto custom-scrollbar">
-              <p className={`w-full font-black tracking-tight leading-snug text-slate-800 dark:text-slate-100 ${big ? 'text-[clamp(1.5rem,2.8vw,3rem)]' : 'text-lg sm:text-2xl'}`}>
+            {/* Question, and the picture if this clue has one. Side by side,
+                because a photo stacked under the text is a photo two inches
+                tall on a projector. Two caps, and whichever bites first wins:
+                the height of this region, and 48% of its width. A wide shot on
+                a projector is stopped by the width; a portrait one, or any shot
+                in a small desk window, is stopped by the height. Neither can
+                produce a scrollbar, and 48% still leaves the question a
+                readable column beside it. */}
+            <div className="flex-1 min-h-[2.5rem] flex items-center gap-3 sm:gap-5 overflow-y-auto custom-scrollbar">
+              {/* A clue with a picture beside it has half the width for its
+                  words, so its words are set a notch smaller. Without this the
+                  longest clue on the board — the tardigrade, in Vietnamese —
+                  runs 22px past the bottom of the region and `items-center`
+                  clips the top of it where no scrollbar can reach. */}
+              <p className={`flex-1 min-w-0 font-black tracking-tight leading-snug text-slate-800 dark:text-slate-100 ${shownImage
+                ? (big ? 'text-[clamp(1.15rem,2.1vw,2.3rem)]' : 'text-base sm:text-xl')
+                : (big ? 'text-[clamp(1.5rem,2.8vw,3rem)]' : 'text-lg sm:text-2xl')}`}>
                 {pick(lang, open.clue.q, open.clue.qVn)}
               </p>
+              {shownImage && (
+                <img
+                  src={shownImage.src}
+                  alt={pick(lang, shownImage.alt, shownImage.altVn)}
+                  className="shrink-0 min-h-0 max-h-full w-auto max-w-[48%] object-contain rounded-2xl border-4 border-slate-100 dark:border-slate-800 animate-in fade-in duration-300"
+                />
+              )}
             </div>
 
             {/* The answer, and who gets the points */}

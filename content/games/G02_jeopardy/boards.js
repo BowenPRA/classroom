@@ -21,6 +21,19 @@
 // `parseInlineText` — the widget prints these as plain text — but the house
 // rule still holds: write "dollars", never a dollar sign, and use the Unicode
 // minus (−) so a negative number reads as a number and not as a hyphen.
+//
+// A clue MAY also carry a picture, and most do not:
+//
+//   qImage: { src, alt, altVn }   shown the moment the clue opens
+//   aImage: { src, alt, altVn }   held back until the teacher reveals
+//
+// Which of the two depends on one question: does seeing it give the answer
+// away? "Which animal has three hearts?" gets an aImage, because a photograph
+// of an octopus next to that sentence is not a clue any more. The giraffe is
+// named in its own question, so its photograph is a qImage and can sit there
+// while the teams argue. Only Board 4 uses pictures so far; the field works on
+// any board.
+import { IMAGES } from './images.js'
 
 export const BOARDS = [
   // ── 1 · MATHEMATICS ───────────────────────────────────────────────────────
@@ -964,6 +977,14 @@ export const BOARDS = [
             qVn: 'Lá cây là mô hay cơ quan? Vì sao?',
             a: 'An organ. One leaf holds four different tissues: upper epidermis, palisade layer, spongy layer, lower epidermis. Different tissues means organ.',
             aVn: 'Là cơ quan. Một chiếc lá chứa bốn loại mô khác nhau: biểu bì trên, mô giậu, mô xốp, biểu bì dưới. Nhiều loại mô khác nhau nghĩa là cơ quan.',
+            // The same photograph the class met in the Science 1.4 lesson, so
+            // the reveal is a recognition rather than a new picture to decode.
+            // Count the four layers off it while the answer is on screen.
+            aImage: {
+              src: IMAGES.leafCrossSection,
+              alt: 'A leaf cut across under a microscope: a flat top layer, tall column cells, loose round cells, then a flat bottom layer.',
+              altVn: 'Lát cắt ngang của lá dưới kính hiển vi: một lớp dẹt ở trên, các tế bào hình cột cao, các tế bào tròn xếp thưa, rồi một lớp dẹt ở dưới.',
+            },
           },
           {
             value: 400,
@@ -993,6 +1014,11 @@ export const BOARDS = [
             qVn: 'Loài động vật lớn nhất từng sống trên Trái Đất là loài nào?',
             a: 'The blue whale — about 30 metres long, and heavier than any dinosaur. It is alive today.',
             aVn: 'Cá voi xanh — dài khoảng 30 mét, nặng hơn bất kỳ loài khủng long nào. Và nó vẫn đang sống đến ngày nay.',
+            aImage: {
+              src: IMAGES.blueWhale,
+              alt: 'A blue whale seen from above, its whole body just under clear blue water.',
+              altVn: 'Một con cá voi xanh nhìn từ trên cao, toàn thân nằm ngay dưới mặt nước biển trong xanh.',
+            },
           },
           {
             value: 200,
@@ -1000,11 +1026,24 @@ export const BOARDS = [
             qVn: 'Loài động vật nhanh nhất thế giới là loài nào? Không phải báo săn đâu.',
             a: 'The peregrine falcon, which dives at about 390 km/h. The cheetah is the fastest on LAND, at about 110 km/h.',
             aVn: 'Chim cắt lớn, lao xuống với tốc độ khoảng 390 km/h. Báo săn chỉ nhanh nhất TRÊN CẠN, khoảng 110 km/h.',
+            aImage: {
+              src: IMAGES.peregrineFalcon,
+              alt: 'A peregrine falcon flying straight towards the camera, wings fully spread against a pale sky.',
+              altVn: 'Một con chim cắt lớn bay thẳng về phía máy ảnh, hai cánh dang rộng trên nền trời nhạt.',
+            },
           },
           {
             value: 300,
             q: 'A giraffe has a neck about two metres long. How many neck bones does it have — and how many have you got?',
             qVn: 'Hươu cao cổ có chiếc cổ dài khoảng hai mét. Nó có bao nhiêu đốt xương cổ — còn em có bao nhiêu?',
+            // On the QUESTION: the clue says the word "giraffe" itself, so the
+            // photograph gives nothing away. What it gives is two metres of
+            // neck to look at while the teams argue about the number.
+            qImage: {
+              src: IMAGES.giraffe,
+              alt: 'Two giraffes standing with their long necks crossed against a blue sky.',
+              altVn: 'Hai con hươu cao cổ đứng bắt chéo hai chiếc cổ dài trên nền trời xanh.',
+            },
             a: 'Seven each. The giraffe has exactly the same number as you; its bones are simply enormous.',
             aVn: 'Cả hai đều có bảy. Hươu cao cổ có đúng bằng số của em; chỉ là mỗi đốt xương của nó to khổng lồ.',
           },
@@ -1014,6 +1053,11 @@ export const BOARDS = [
             qVn: 'Loài vật nào có ba trái tim và máu màu xanh?',
             a: 'The octopus. Two hearts push blood through the gills and one pushes it round the body; its blood carries copper instead of iron, so it is blue, not red.',
             aVn: 'Bạch tuộc. Hai tim đẩy máu qua mang, một tim đẩy máu đi khắp cơ thể; máu của nó chứa đồng thay vì sắt, nên có màu xanh chứ không đỏ.',
+            aImage: {
+              src: IMAGES.octopus,
+              alt: 'A common octopus on the sea floor, its eye and all eight arms clearly visible.',
+              altVn: 'Một con bạch tuộc trên đáy biển, thấy rõ mắt và cả tám xúc tu.',
+            },
           },
           {
             value: 500,
@@ -1021,6 +1065,11 @@ export const BOARDS = [
             qVn: 'Có một loài vật sống sót qua cả việc bị đông cứng, khô kiệt hoàn toàn, và cả chân không ngoài vũ trụ — nhưng phải dùng kính hiển vi mới nhìn thấy nó. Đó là con gì?',
             a: 'The tardigrade, or water bear — under a millimetre long. Some were carried into orbit in 2007, exposed to open space, and came back alive.',
             aVn: 'Gấu nước (tardigrade) — dài chưa tới một milimét. Năm 2007 người ta đưa chúng lên quỹ đạo, phơi ra ngoài không gian, và chúng vẫn sống sót trở về.',
+            aImage: {
+              src: IMAGES.tardigrade,
+              alt: 'An electron microscope image of a tardigrade: a plump segmented body walking on eight stubby legs.',
+              altVn: 'Ảnh chụp gấu nước bằng kính hiển vi điện tử: thân mập chia đốt, đi trên tám chiếc chân ngắn.',
+            },
           },
         ],
       },

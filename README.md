@@ -158,6 +158,18 @@ widget. On a game slide the deck's Enter/arrow navigation is switched off, so
 the keyboard belongs to the game — leave via **Back** or **Finish**. See
 [`content/games/G01_word-wall/`](content/games/G01_word-wall/).
 
+**Pictures on a Jeopardy clue.** A clue in
+[`content/games/G02_jeopardy/boards.js`](content/games/G02_jeopardy/boards.js)
+may carry `qImage` (on screen the moment the clue opens) and/or `aImage` (held
+back until the teacher reveals), each `{ src, alt, altVn }` with `src` coming
+from `images.js`. Which one you use turns on a single question: *does seeing it
+give the answer away?* "Which animal has three hearts?" gets an `aImage` — a
+photograph of an octopus beside that sentence is not a clue any more. Most clues
+get neither, and that is the default, not an oversight: a photo next to
+`What is 9²?` is decoration, and decoration on a projector is one more thing
+between the class and the maths. Every board's images are preloaded when the
+board is chosen, so a reveal is never a blank rectangle waiting on school wifi.
+
 ### Drawing diagrams
 
 House style (see `content/y7-science/U01_1/diagrams.js`): open every diagram with

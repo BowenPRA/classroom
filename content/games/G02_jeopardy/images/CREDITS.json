@@ -1,0 +1,62 @@
+[
+  {
+    "name": "blue-whale.jpg",
+    "title": "File:Large Blue Whale Off Southern California Coast Photo Don Ramey Logan.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Large_Blue_Whale_Off_Southern_California_Coast_Photo_Don_Ramey_Logan.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Don Ramey Logan",
+    "source": "Wikimedia Commons. CC BY-SA, not public domain - the attribution travels with it, which is why it is written here.",
+    "usage": "Unit 1 Finale, Animal Records 100 - the ANSWER picture for \"the largest animal that has ever lived\". Shot from above with the whole animal under clear water, so the length the answer talks about is the thing you actually see. Downscaled to 1280px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 201233
+  },
+  {
+    "name": "peregrine-falcon.jpg",
+    "title": "File:Peregrine falcon (Falco peregrinus) in flight, Cape Baily, Kamay Botany Bay NSW Jun 2022.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Peregrine_falcon_(Falco_peregrinus)_in_flight,_Cape_Baily,_Kamay_Botany_Bay_NSW_Jun_2022.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Kytabu",
+    "source": "Wikimedia Commons. CC BY-SA, not public domain - keep the attribution.",
+    "usage": "Unit 1 Finale, Animal Records 200 - the ANSWER picture for \"the fastest animal in the world\". Wings out against plain sky, which is what a bird has to be for a room to read it off a projector in one second. Downscaled to 1280px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 224987
+  },
+  {
+    "name": "giraffe.jpg",
+    "title": "File:Giraffe Ithala KZN South Africa Luca Galuzzi 2004.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Giraffe_Ithala_KZN_South_Africa_Luca_Galuzzi_2004.JPG",
+    "license": "CC BY-SA 2.5",
+    "artist": "Luca Galuzzi (Lucag)",
+    "source": "Wikimedia Commons. CC BY-SA, not public domain - keep the attribution.",
+    "usage": "Unit 1 Finale, Animal Records 300 - the QUESTION picture, not the answer one: the clue already names the giraffe, so the photo is there to make two metres of neck vivid while the teams argue about how many bones are in it. Two animals with their necks crossed, which shows the length better than one standing straight. Downscaled to 1280px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 283153
+  },
+  {
+    "name": "octopus.jpg",
+    "title": "File:Octopus2.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Octopus2.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "albert kok",
+    "source": "Wikimedia Commons. CC BY-SA, not public domain - keep the attribution. The same Commons file is the Word Wall's OCTOPUS tile; this is a larger copy of it, because a projected reveal needs more than a 500px thumbnail.",
+    "usage": "Unit 1 Finale, Animal Records 400 - the ANSWER picture for \"three hearts and blue blood\". Whole animal, arms and eye visible, not camouflaged into the rock - most octopus photographs on Commons are, and are useless at the front of a room. Downscaled to 1280px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 258180
+  },
+  {
+    "name": "tardigrade.jpg",
+    "title": "File:SEM image of Milnesium tardigradum in active state - journal.pone.0045682.g001-2.png",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:SEM_image_of_Milnesium_tardigradum_in_active_state_-_journal.pone.0045682.g001-2.png",
+    "license": "CC BY 2.5",
+    "artist": "Schokraie E, Warnken U, Hotz-Wagenblatt A, Grohme MA, Hengherr S, et al. (2012)",
+    "source": "Wikimedia Commons, from the PLoS ONE paper 10.1371/journal.pone.0045682. CC BY, not public domain - keep the attribution.",
+    "usage": "Unit 1 Finale, Animal Records 500 - the ANSWER picture for the tardigrade. A scanning electron micrograph, which is the only way to answer the class's first question after the reveal, namely what does it actually look like. Downscaled to 1280px via the Commons thumbnailer and re-encoded from PNG to JPEG at quality 85 to keep the bundle down; not otherwise altered.",
+    "bytes": 189760
+  },
+  {
+    "name": "leaf-cross-section.jpg",
+    "title": "File:Angiosperm Morphology Mesophyll Arrangement in Syringa Leaf (36176478164).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Angiosperm_Morphology_Mesophyll_Arrangement_in_Syringa_Leaf_(36176478164).jpg",
+    "license": "CC0",
+    "artist": "Berkshire Community College Bioscience Image Library",
+    "source": "Wikimedia Commons. The identical file is content/y7-science/U01_4/images/leaf.jpg - copied rather than imported across units so each folder stays self-contained and carries its own licence.",
+    "usage": "Unit 1 Finale, Cells to Organisms 300 - the ANSWER picture for \"is a leaf a tissue or an organ?\". Deliberately the same photograph the class met in the Science 1.4 lesson: the four tissues are stacked in it in order - upper epidermis, palisade, spongy, lower epidermis - so the reveal is a recognition, not a new picture to decode. Downscaled to 1200px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 243557
+  }
+]
