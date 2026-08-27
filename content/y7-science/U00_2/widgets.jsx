@@ -36,6 +36,7 @@ const writeJSON = (key, value) => {
 
 const ROUND_MS = 20 * 60 * 1000
 const PREDICT_MS = 2 * 60 * 1000
+const EXTENSION_MS = 5 * 60 * 1000
 const GROUP_LETTERS = ['A', 'B', 'C']
 const GROUP_COLORS = [TEAL, PURPLE, ORANGE]
 
@@ -143,6 +144,10 @@ const RT_T = {
   of3: ['of 3', 'trên 3'],
   predict: ['PREDICT', 'DỰ ĐOÁN'],
   measure: ['MEASURE', 'ĐO'],
+  extend: ['EXTEND', 'NÂNG CAO'],
+  predictLabel: ['Predict', 'Dự đoán'],
+  nowLabel: ['Now', 'Bây giờ'],
+  extraLabel: ['Extra', 'Nâng cao'],
   start: ['Start', 'Bắt đầu'],
   pause: ['Pause', 'Tạm dừng'],
   resume: ['Resume', 'Tiếp tục'],
@@ -155,10 +160,42 @@ const RT_T = {
 }
 const rt = (lang, key) => RT_T[key][lang === 'vn' ? 1 : 0]
 
+// Every station carries three stages, read in order as the round's clock
+// runs: `predict` (first 2 minutes, no task shown yet), `task` (the base
+// instruction, minutes 2–15), and `extension` (minutes 15–20, a bonus
+// challenge for a group that finished early — never previewed on the station
+// briefing slides, so it lands as a surprise for whoever gets there).
 const STATIONS = [
-  { name: 'Perimeter', nameVn: 'Chu vi phòng', task: 'Measure every wall, then add them up.', taskVn: 'Đo từng bức tường, rồi cộng lại.', icon: Ruler, color: TEAL },
-  { name: 'Folding Paper', nameVn: 'Gấp giấy', task: 'Fold as many times as you can, then measure the stack.', taskVn: 'Gấp càng nhiều lần càng tốt, rồi đo xấp giấy.', icon: Layers, color: PURPLE },
-  { name: 'Ramp Race', nameVn: 'Đua đường dốc', task: '10 times each ball, then find the average.', taskVn: '10 lần mỗi quả bóng, rồi tính trung bình.', icon: Timer, color: ORANGE },
+  {
+    name: 'Perimeter', nameVn: 'Chu vi phòng',
+    predict: 'What will the final perimeter of the room be?',
+    predictVn: 'Chu vi cuối cùng của phòng sẽ là bao nhiêu?',
+    task: 'Measure the length of every wall.',
+    taskVn: 'Đo chiều dài của từng bức tường.',
+    extension: 'Add up your wall lengths by hand — decimal addition. Then check your total with a calculator.',
+    extensionVn: 'Cộng các chiều dài bức tường bằng tay — cộng số thập phân. Sau đó dùng máy tính để kiểm tra lại.',
+    icon: Ruler, color: TEAL,
+  },
+  {
+    name: 'Folding Paper', nameVn: 'Gấp giấy',
+    predict: 'How many times can you fold the paper, and how thick will the stack be?',
+    predictVn: 'Em có thể gấp tờ giấy bao nhiêu lần, và xấp giấy sẽ dày bao nhiêu?',
+    task: 'Fold the paper in half, again and again, as a group — as many times as you actually can. Then measure the width of the folded stack.',
+    taskVn: 'Cùng nhóm gấp đôi tờ giấy, gấp đi gấp lại — càng nhiều lần càng tốt. Sau đó đo bề rộng của xấp giấy đã gấp.',
+    extension: 'Make a table of the stack\'s thickness at your last 3 folds. Mr Bowen is 180 cm tall — how many folds until the stack is as tall as him?',
+    extensionVn: 'Lập bảng ghi độ dày của xấp giấy ở 3 lần gấp cuối. Thầy Bowen cao 180 cm — cần gấp bao nhiêu lần để xấp giấy cao bằng thầy?',
+    icon: Layers, color: PURPLE,
+  },
+  {
+    name: 'Ramp Race', nameVn: 'Đua đường dốc',
+    predict: 'Which ball will be faster, and by how much?',
+    predictVn: 'Quả bóng nào sẽ nhanh hơn, và nhanh hơn bao nhiêu?',
+    task: 'Time each ball down the 1 metre track, 10 times each. Write down all 20 times.',
+    taskVn: 'Bấm giờ mỗi quả bóng chạy hết đường dốc dài 1 mét, 10 lần mỗi quả. Ghi lại cả 20 lần đo.',
+    extension: 'Find the average time for each ball, then calculate the difference between them — that answers "by how much".',
+    extensionVn: 'Tính thời gian trung bình của mỗi quả bóng, rồi tính hiệu giữa hai số đó — đó là câu trả lời cho "nhanh hơn bao nhiêu".',
+    icon: Timer, color: ORANGE,
+  },
 ]
 const PLACEHOLDER_GROUPS = [['—'], ['—'], ['—']]
 
@@ -230,6 +267,9 @@ export const StationRotationWidget = ({ lang = 'en' }) => {
   const resetLab = () => goToRound(0)
 
   const predicting = remaining > ROUND_MS - PREDICT_MS
+  const extending = !predicting && remaining <= EXTENSION_MS
+  const phase = predicting ? 'predict' : extending ? 'extend' : 'measure'
+  const phaseColor = predicting ? PURPLE : extending ? GREEN : TEAL
 
   return (
     <div className="w-full h-full flex flex-col gap-2 sm:gap-3 select-none">
@@ -244,12 +284,12 @@ export const StationRotationWidget = ({ lang = 'en' }) => {
           {rt(lang, 'round')} {round + 1} {rt(lang, 'of3')}
         </div>
         <div className="px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-widest text-white"
-          style={{ backgroundColor: predicting ? PURPLE : TEAL }}>
-          {predicting ? rt(lang, 'predict') : rt(lang, 'measure')}
+          style={{ backgroundColor: phaseColor }}>
+          {rt(lang, phase)}
         </div>
       </div>
 
-      <div className="text-center font-mono font-black tabular-nums text-5xl sm:text-6xl lg:text-7xl flex-shrink-0"
+      <div className="text-center font-mono font-black tabular-nums text-4xl sm:text-5xl lg:text-6xl flex-shrink-0"
         style={{ color: status === 'done' ? RED : INK }}>
         {fmt(remaining)}
       </div>
@@ -259,27 +299,39 @@ export const StationRotationWidget = ({ lang = 'en' }) => {
         </div>
       )}
 
-      <div className="grid grid-cols-3 gap-2 flex-1 min-h-0">
+      <div className="grid grid-cols-3 grid-rows-1 gap-2 flex-1 min-h-0">
         {STATIONS.map((st, stationIndex) => {
           const groupIndex = (stationIndex - round + 3) % 3
           const members = displayGroups[groupIndex] || []
           const Icon = st.icon
           return (
-            <div key={stationIndex} className="rounded-xl border-2 p-2 flex flex-col bg-white dark:bg-slate-900 shadow-sm" style={{ borderColor: st.color }}>
-              <div className="flex items-center gap-1.5 mb-1">
+            <div key={stationIndex} className="rounded-xl border-2 p-2 flex flex-col min-h-0 bg-white dark:bg-slate-900 shadow-sm overflow-hidden" style={{ borderColor: st.color }}>
+              <div className="flex items-center gap-1.5 mb-1 flex-shrink-0">
                 <Icon className="w-4 h-4 shrink-0" style={{ color: st.color }} strokeWidth={2.5} />
                 <span className="text-[11px] sm:text-xs font-black" style={{ color: st.color }}>
                   {lang === 'vn' ? st.nameVn : st.name}
                 </span>
               </div>
-              <div className="text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-400 mb-1.5 leading-snug">
-                {lang === 'vn' ? st.taskVn : st.task}
+
+              <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar space-y-1 mb-1.5 pr-0.5">
+                <div className="text-[9px] sm:text-[10px] font-bold italic text-slate-400 dark:text-slate-500 leading-snug">
+                  {rt(lang, 'predictLabel')}: {lang === 'vn' ? st.predictVn : st.predict}
+                </div>
+                {!predicting && (
+                  <div className="text-[10px] sm:text-[11px] font-bold leading-snug text-slate-600 dark:text-slate-300">
+                    <span className="uppercase tracking-wide" style={{ color: extending ? GREEN : st.color }}>
+                      {extending ? rt(lang, 'extraLabel') : rt(lang, 'nowLabel')}:{' '}
+                    </span>
+                    {extending ? (lang === 'vn' ? st.extensionVn : st.extension) : (lang === 'vn' ? st.taskVn : st.task)}
+                  </div>
+                )}
               </div>
-              <div className="mt-auto rounded-lg px-2 py-1 text-center font-black text-xs sm:text-sm text-white" style={{ backgroundColor: st.color }}>
+
+              <div className="mt-auto rounded-lg px-2 py-1 text-center font-black text-xs sm:text-sm text-white flex-shrink-0" style={{ backgroundColor: st.color }}>
                 {rt(lang, 'group')} {GROUP_LETTERS[groupIndex]}
               </div>
               {hasGroups && (
-                <div className="mt-1 text-[9px] sm:text-[10px] font-bold text-slate-400 text-center truncate">
+                <div className="mt-1 text-[9px] sm:text-[10px] font-bold text-slate-400 text-center truncate flex-shrink-0">
                   {members.join(', ')}
                 </div>
               )}

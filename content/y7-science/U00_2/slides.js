@@ -5,9 +5,12 @@
 // for a prediction with no measuring yet.
 //
 // The class only ever looks at one shared projector, so the rotation-timer
-// slide (widget) carries the live schedule and a short task reminder for all
-// three stations at once — the three station-briefing slides before it are
-// where the full instructions and the prediction questions actually live.
+// slide (widget) carries the live schedule for all three stations at once,
+// staged with the clock: each station's prediction question (minutes 0–2),
+// then its base task (minutes 2–15), then a bonus extension question
+// (minutes 15–20) — see STATIONS in widgets.jsx. The extension is never
+// previewed on the station-briefing slides below, so it lands as a surprise
+// for whichever group gets there early.
 import { GroupMakerWidget, StationRotationWidget } from './widgets.jsx'
 
 const TEAL = '#0087a8'
@@ -74,8 +77,8 @@ export const slides = [
         tone: 'task',
         badge: 'Predict first — 2 minutes, no measuring yet',
         badgeVn: 'Dự đoán trước — 2 phút, chưa được đo',
-        text: 'How many metres do you think it is, all the way around this room? Every person in the group writes down their own guess.',
-        textVn: 'Em nghĩ đi hết một vòng quanh phòng này dài bao nhiêu mét? Mỗi người trong nhóm tự ghi lại dự đoán của mình.',
+        text: 'What will the final perimeter of the room be? Every person in the group writes down their own guess, in metres.',
+        textVn: 'Chu vi cuối cùng của phòng sẽ là bao nhiêu? Mỗi người trong nhóm tự ghi lại dự đoán của mình, theo mét.',
       },
       {
         tone: 'write',
@@ -100,8 +103,8 @@ export const slides = [
         tone: 'task',
         badge: 'Predict first — 2 minutes, no folding yet',
         badgeVn: 'Dự đoán trước — 2 phút, chưa được gấp',
-        text: 'How many times do you think your group can fold one sheet of A3 paper in half? Everybody writes down a number.',
-        textVn: 'Em nghĩ nhóm mình có thể gấp đôi một tờ giấy A3 được bao nhiêu lần? Mỗi người tự ghi lại một con số.',
+        text: 'How many times can your group fold one sheet of A3 paper in half, and how thick will the folded stack be? Everybody writes down both numbers.',
+        textVn: 'Nhóm em có thể gấp đôi một tờ giấy A3 được bao nhiêu lần, và xấp giấy gấp lại sẽ dày bao nhiêu? Mỗi người tự ghi lại cả hai con số.',
       },
       {
         tone: 'write',
@@ -126,8 +129,8 @@ export const slides = [
         tone: 'task',
         badge: 'Predict first — 2 minutes, no racing yet',
         badgeVn: 'Dự đoán trước — 2 phút, chưa được đua',
-        text: 'One metre down the ramp: the plastic ball or the wooden ball — which do you think will win? Everybody writes down a guess and a reason.',
-        textVn: 'Trên đoạn đường dốc dài một mét: quả bóng nhựa hay quả bóng gỗ — em nghĩ quả nào sẽ thắng? Mỗi người ghi lại dự đoán và lý do.',
+        text: 'One metre down the ramp: the plastic ball or the wooden ball — which will be faster, and by how much? Everybody writes down a guess, a reason, and a rough time gap.',
+        textVn: 'Trên đoạn đường dốc dài một mét: quả bóng nhựa hay quả bóng gỗ — quả nào sẽ nhanh hơn, và nhanh hơn bao nhiêu? Mỗi người ghi lại dự đoán, lý do, và ước lượng chênh lệch thời gian.',
       },
       {
         tone: 'write',
