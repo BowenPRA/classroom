@@ -34,4 +34,12 @@ export const COURSES = [
     icon: 'Sigma',
     bilingual: false,
   },
+  {
+    id: 'coord-science',
+    title: 'Coordinated Science',
+    subtitle: 'Cambridge IGCSE',
+    color: '#4338ca',
+    icon: 'Zap',
+    bilingual: false, // English-only one-on-one lessons — EN/VN toggle hidden
+  },
 ]
