@@ -15,6 +15,8 @@ import hw03 from '../homework/hw03/hw03.pdf?url'
 import hw03x from '../homework/hw03x/hw03x.pdf?url'
 import hw04 from '../homework/hw04/hw04.pdf?url'
 import hw04x from '../homework/hw04x/hw04x.pdf?url'
+import hw05 from '../homework/hw05/hw05.pdf?url'
+import hw05x from '../homework/hw05x/hw05x.pdf?url'
 import alg13 from '../homework/alg13/alg13.pdf?url'
 import alg13p3 from '../homework/alg13p3/alg13p3.pdf?url'
 
@@ -65,6 +67,26 @@ export const HOMEWORK = [
     title: 'Two Rows, Then Add',
     subtitle: 'Extra · two-digit multiplication and division',
     pdf: hw04x,
+  },
+  // The whole of Unit 1 in one packet, and the only one that leads with science —
+  // the maths runs to five of its eight pages, and opening on the long section
+  // makes a review packet look unfinishable.
+  {
+    id: 'hw05',
+    label: 'HW 5',
+    title: 'Unit 1, All of It',
+    subtitle: 'Science 1.1–1.4 · Maths 1.1–1.6',
+    pdf: hw05,
+  },
+  // Goes out with HW 5. The sequel to EX 4: that sheet divided by counting up in
+  // multiples, this one is the written long division, which is what a four-digit
+  // dividend needs.
+  {
+    id: 'hw05x',
+    label: 'EX 5',
+    title: 'Bring Down the Next Digit',
+    subtitle: 'Extra · two-digit multiplication and long division',
+    pdf: hw05x,
   },
   // Not a Year 7 packet: a single landscape sheet for the Algebra Track, handed
   // out DURING lesson 1.3 and used twice in it. It lives here because this is

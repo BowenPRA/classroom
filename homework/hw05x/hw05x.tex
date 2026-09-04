@@ -1,0 +1,807 @@
+% homework/hw05x/hw05x.tex
+% Year 7 - Extra Homework: two-digit multiplication, and long division.
+%
+% Goes out alongside Homework 5. Same framing rule as hw03x and hw04x: nothing
+% on the sheet says easy, basic, extra help, catch-up or revision, and no
+% question is marked as being for anybody in particular. The cover states a
+% fact, and it is a true one -- every method in Unit 1 ends in a multiplication
+% or a division. Factors are found by dividing. The HCF is a division. A square
+% past 12 x 12 is a two-digit multiplication and a cube is two of them. So the
+% two operations on this sheet are not beside Unit 1; they are what Unit 1 is
+% made of.
+%
+% This is the sequel to hw04x and picks up exactly where it stopped:
+%   * hw04x taught two rows, then add, and divided by a two-digit number by
+%     counting up in multiples. This sheet teaches the WRITTEN long division --
+%     divide, multiply, subtract, bring down -- which is the method that does
+%     not fall over on a four-digit dividend.
+%   * The multiplication here goes one step further too: three digits by two,
+%     which is what a cube is.
+%
+% It is a drill sheet on purpose. Long stretches of the same operation, working
+% boxes big enough to set the sum out properly, and a check -- multiply back --
+% attached to every division section.
+%
+% House style is shared: see homework/hw-style.tex. Method: the new-homework
+% skill. Source is pure ASCII on purpose.
+%
+% Build:  pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw05x
+
+\documentclass[12pt,a4paper]{article}
+
+% -- Answer key switch -------------------------------------------------------
+\newif\ifkey
+\ifdefined\TEACHER\keytrue\else
+  \keyfalse        % \keyfalse = student copy   |   \keytrue = teacher copy
+\fi
+
+% -- House style -------------------------------------------------------------
+\input{../hw-style.tex}
+
+% -- Per-packet running head -------------------------------------------------
+\fancyhead[L]{\small\color{black!55}Year 7\sep Extra Homework}
+
+\begin{document}
+
+% ===========================================================================
+% COVER BLOCK
+% ===========================================================================
+\thispagestyle{fancy}
+
+\begin{tcolorbox}[enhanced, colback=cbgreen!8, colframe=cbgreen!8, arc=7pt,
+                  borderline west={6pt}{0pt}{cbgreen},
+                  left=18pt, right=14pt, top=11pt, bottom=11pt]
+  {\color{cbgreen!75!black}\bfseries YEAR 7\sep UNIT 1\sep EXTRA HOMEWORK}\\[6pt]
+  {\color{cbgreen!70!black}\Huge\bfseries Bring Down the Next Digit}\\[10pt]
+  {\color{black!70}Two-digit multiplication\sep and long division, written out}
+\end{tcolorbox}
+
+\vspace{7pt}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+  \textbf{Name:} \blank[5.6cm] & \textbf{Class:} \blank[5.6cm] \\
+  \textbf{Date given:} \blank[4.6cm] & \textbf{Date due:} \blank[5.0cm] \\
+\end{tabularx}
+
+\vspace{5pt}
+\begin{activity}[Why this sheet exists]
+  Every method in Unit 1 finishes in one of \key{two} operations. You find a
+  factor by \key{dividing}. You find the HCF by dividing twice. You check a
+  square past $12 \times 12$ by \key{multiplying}, and a cube by multiplying
+  twice.
+
+  \medskip
+  Last time you divided by counting up in multiples. That works until the number
+  gets big. This sheet is the \key{written method} --- the one that does not fall
+  over on 4 digits.
+
+  \medskip
+  \eng{No calculator}, and show your working. Working you can see is working you
+  can check.
+\end{activity}
+
+% ===========================================================================
+% PART 1 -- THE FACTS
+% ===========================================================================
+\hwsection[cbgreen]{Part 1 \textperiodcentered\ The facts both methods run on}
+
+\qhead[cbgreen]{E1}{Fill in the missing number}
+
+\noindent Every long multiplication and every long division is these facts, one
+after another. Aim to know them without counting.
+
+\vspace{7pt}
+\begin{multicols}{4}
+\begin{enumerate}[label=(\alph*), itemsep=9pt]
+  \item $7 \times 6 = \blank[1.1cm]$
+  \item $8 \times 7 = \blank[1.1cm]$
+  \item $9 \times 6 = \blank[1.1cm]$
+  \item $6 \times 8 = \blank[1.1cm]$
+  \item $9 \times 8 = \blank[1.1cm]$
+  \item $7 \times 7 = \blank[1.1cm]$
+  \item $4 \times 9 = \blank[1.1cm]$
+  \item $8 \times 8 = \blank[1.1cm]$
+  \item $9 \times 7 = \blank[1.1cm]$
+  \item $6 \times 6 = \blank[1.1cm]$
+  \item $9 \times 9 = \blank[1.1cm]$
+  \item $8 \times 4 = \blank[1.1cm]$
+  \item $12 \times 7 = \blank[1.1cm]$
+  \item $11 \times 8 = \blank[1.1cm]$
+  \item $12 \times 9 = \blank[1.1cm]$
+  \item $7 \times 4 = \blank[1.1cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- E2 ---------------------------------------------------------------------
+\qhead[cbgreen]{E2}{Multiply by a ten}
+
+\begin{remember}[The second row is always a ten]
+  To multiply by \key{20}: multiply by \key{2}, then \key{put a zero on the end}.
+  $34 \times 2 = 68$, so $34 \times 20 = 680$. That is the whole trick, and it is
+  what the second row of a long multiplication is.
+\end{remember}
+
+\vspace{2pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*), itemsep=9pt]
+  \item $26 \times 10 = \blank[1.6cm]$
+  \item $26 \times 30 = \blank[1.6cm]$
+  \item $47 \times 20 = \blank[1.6cm]$
+  \item $52 \times 40 = \blank[1.6cm]$
+  \item $18 \times 60 = \blank[1.6cm]$
+  \item $73 \times 50 = \blank[1.6cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- E3 ---------------------------------------------------------------------
+\qhead[cbgreen]{E3}{Count up in a two-digit number}
+
+\begin{remember}[Do this before you divide]
+  Before dividing by 23, write out the first few multiples of 23. Then the
+  division is only \key{reading your own list}. This is two minutes that saves
+  ten.
+\end{remember}
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|p{1.5cm}|X|X|X|X|X|X|}
+  \hline
+  \textbf{$\times$} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} \\
+  \hline
+  $23$ \rule[-0.7em]{0pt}{2.2em} & & & & & & \\ \hline
+  $16$ \rule[-0.7em]{0pt}{2.2em} & & & & & & \\ \hline
+  $24$ \rule[-0.7em]{0pt}{2.2em} & & & & & & \\ \hline
+  $37$ \rule[-0.7em]{0pt}{2.2em} & & & & & & \\ \hline
+\end{tabularx}
+
+% ===========================================================================
+% PART 2 -- MULTIPLICATION
+% ===========================================================================
+\hwsection[cbgreen]{Part 2 \textperiodcentered\ Two rows, then add}
+
+\begin{remember}[The method, once, in full]
+  \noindent
+  \begin{minipage}[t]{0.28\linewidth}
+    \vspace{2pt}
+    {\renewcommand{\arraystretch}{1.05}%
+    \begin{tabular}{r@{\ }r@{\ }r@{\ }r}
+              &   & 5 & 8 \\
+      $\times$&   & 3 & 4 \\[1pt]
+      \hline
+              & 2 & 3 & 2 \\
+      1       & 7 & 4 & 0 \\[1pt]
+      \hline
+      1       & 9 & 7 & 2 \\[1pt]
+      \hline
+    \end{tabular}}
+  \end{minipage}%
+  \begin{minipage}[t]{0.72\linewidth}
+    \vspace{2pt}
+    \key{Row 1:} $58 \times 4 = 232$. \\
+    \key{Row 2:} $58 \times 30 = 1740$ --- multiply by 3, put the zero on. \\
+    \key{Add them:} $232 + 1740 = 1972$. \\[4pt]
+    \eng{One row means you forgot the tens.} Your answer comes out about ten times
+    too small. \textbf{Two rows, every time.}
+  \end{minipage}
+\end{remember}
+
+% -- E4 ---------------------------------------------------------------------
+\qhead[cbgreen]{E4}{Warm up: two digits by one digit}
+
+\vspace{2pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+  \hline
+  $53 \times 7$ & $68 \times 6$ & $87 \times 9$ & $76 \times 8$ \\
+  \rule[-2.6em]{0pt}{3.2em} & & & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+  \hline
+  $94 \times 4$ & $47 \times 8$ & $65 \times 7$ & $89 \times 6$ \\
+  \rule[-2.6em]{0pt}{3.2em} & & & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+  \hline
+  $58 \times 9$ & $73 \times 6$ & $96 \times 7$ & $84 \times 5$ \\
+  \rule[-2.6em]{0pt}{3.2em} & & & \\
+  \hline
+\end{tabularx}
+
+% -- E5 ---------------------------------------------------------------------
+\qhead[cbgreen]{E5}{Two digits by two digits}
+
+\noindent \key{Two rows, then add.} Show both rows every time.
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  $32 \times 14$ & $45 \times 23$ & $28 \times 36$ \\
+  \rule[-3.3em]{0pt}{4.1em} & & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  $57 \times 42$ & $63 \times 27$ & $86 \times 35$ \\
+  \rule[-3.3em]{0pt}{4.1em} & & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  $74 \times 58$ & $49 \times 61$ & $95 \times 24$ \\
+  \rule[-3.3em]{0pt}{4.1em} & & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  $38 \times 47$ & $84 \times 73$ & $66 \times 52$ \\
+  \rule[-3.3em]{0pt}{4.1em} & & \\
+  \hline
+\end{tabularx}
+
+% -- E6 ---------------------------------------------------------------------
+\qhead[cbgreen]{E6}{Three digits by two digits}
+
+\begin{remember}[Nothing new here]
+  Three digits by two is still \key{two rows}. Row 1 is the whole number times the
+  units. Row 2 is the whole number times the tens. It is only longer, not harder.
+\end{remember}
+
+\vspace{2pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  $124 \times 32$ & $236 \times 18$ & $407 \times 25$ \\
+  \rule[-3.7em]{0pt}{4.5em} & & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  $318 \times 46$ & $529 \times 37$ & $324 \times 18$ \\
+  \rule[-3.7em]{0pt}{4.5em} & & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent\textbf{Look back.} The last one, $324 \times 18$, is the second half of a
+cube root: $18 \times 18 = 324$, and then $324 \times 18$. So
+$\sqrt[3]{\blank[2.2cm]} = 18$.
+
+% ===========================================================================
+% PART 3 -- LONG DIVISION
+% ===========================================================================
+\hwsection[cbgreen]{Part 3 \textperiodcentered\ Long division: bring down the next digit}
+
+\begin{wordhelp}[Word help --- the words in a division]
+  {\renewcommand{\arraystretch}{1.15}%
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{1.4em}}X@{}}
+    \eng{divisor}     & the number you are dividing \textbf{by}. In $966 \div 23$ it is 23. \\
+    \eng{goes into}   & ``23 goes into 96 four times'' means $96 \div 23 = 4$, with some left over. \\
+    \eng{bring down}  & take the next digit of the big number and write it beside what is left. \\
+    \eng{remainder}   & what is left at the very end. We write $75 \div 8 = 9$ r 3. \\
+  \end{tabularx}}
+\end{wordhelp}
+
+\begin{remember}[Divide, multiply, subtract, bring down --- then start again]
+  \noindent
+  \begin{minipage}[t]{0.30\linewidth}
+    \vspace{4pt}
+    {\renewcommand{\arraystretch}{1.15}%
+    \begin{tabular}{r@{}c@{\;}c@{\;}c}
+                        &   & 4 & 2 \\ \cline{2-4}
+      $23\,\big)$       & 9 & 6 & 6 \\
+                        & 9 & 2 &   \\ \cline{2-3}
+                        &   & 4 & 6 \\
+                        &   & 4 & 6 \\ \cline{3-4}
+                        &   &   & 0 \\
+    \end{tabular}}
+  \end{minipage}%
+  \begin{minipage}[t]{0.70\linewidth}
+    \vspace{2pt}
+    \key{Divide:} 23 goes into 96 \textbf{four} times. Write the 4 on top, above the 6. \\
+    \key{Multiply:} $4 \times 23 = 92$. Write it underneath. \\
+    \key{Subtract:} $96 - 92 = 4$. \\
+    \key{Bring down} the next digit, the 6, to make \textbf{46}. \\[3pt]
+    Now start again: 23 goes into 46 \textbf{twice}, $2 \times 23 = 46$,
+    $46 - 46 = 0$. Nothing is left, so $966 \div 23 = \mathbf{42}$.
+  \end{minipage}
+\end{remember}
+
+% -- E7 ---------------------------------------------------------------------
+\qhead[cbgreen]{E7}{Warm up: one-digit divisors, no remainder}
+
+\vspace{2pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=12pt]
+  \item $252 \div 6 = \blank[2.2cm]$
+  \item $469 \div 7 = \blank[2.2cm]$
+  \item $584 \div 8 = \blank[2.2cm]$
+  \item $765 \div 9 = \blank[2.2cm]$
+  \item $1344 \div 4 = \blank[2.2cm]$
+  \item $2016 \div 6 = \blank[2.2cm]$
+  \item $3528 \div 7 = \blank[2.2cm]$
+  \item $5832 \div 8 = \blank[2.2cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- E8 ---------------------------------------------------------------------
+\qhead[cbgreen]{E8}{One-digit divisors, with a remainder}
+
+\noindent Write each answer as a whole number and a remainder, like this:
+\quad $75 \div 8 = 9$ r 3.
+
+\vspace{5pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=12pt]
+  \item $437 \div 6 = \blank[2.8cm]$
+  \item $529 \div 7 = \blank[2.8cm]$
+  \item $815 \div 9 = \blank[2.8cm]$
+  \item $1000 \div 7 = \blank[2.8cm]$
+  \item $2345 \div 8 = \blank[2.8cm]$
+  \item $4567 \div 9 = \blank[2.8cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- E9 ---------------------------------------------------------------------
+\qhead[cbgreen]{E9}{Two-digit divisors --- set it out properly}
+
+% The one-line instruction goes BEFORE the box, not after it. This heading lands at
+% the foot of a page and one line fits there; the box does not, so leading with the
+% box left the heading stranded on its own.
+\noindent These all come out exactly. Show the full method in each box.
+
+\begin{remember}[Write the list first]
+  Before you start, write the first six multiples of the divisor in the corner of
+  the box. Then every ``how many times does it go in'' is \key{reading}, not
+  guessing.
+\end{remember}
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+  \hline
+  $768 \div 16$ & $851 \div 23$ \\
+  \rule[-4.0em]{0pt}{4.8em} & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+  \hline
+  $1224 \div 24$ & $2072 \div 37$ \\
+  \rule[-4.0em]{0pt}{4.8em} & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+  \hline
+  $4212 \div 18$ & $3375 \div 15$ \\
+  \rule[-4.0em]{0pt}{4.8em} & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+  \hline
+  $1088 \div 32$ & $1222 \div 47$ \\
+  \rule[-4.0em]{0pt}{4.8em} & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+  \hline
+  $986 \div 29$ & $2408 \div 43$ \\
+  \rule[-4.0em]{0pt}{4.8em} & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+  \hline
+  $1872 \div 26$ & $2940 \div 35$ \\
+  \rule[-4.0em]{0pt}{4.8em} & \\
+  \hline
+\end{tabularx}
+
+% -- E10 --------------------------------------------------------------------
+\qhead[cbgreen]{E10}{Two-digit divisors, with a remainder}
+
+% A one-line instruction rather than a remember box. The box made this question a
+% 10cm atom that would not start at the foot of a page, and stranded a third of
+% one every time.
+\noindent The remainder is always \key{smaller than the divisor}. Left with 30 after
+dividing by 24? Then 24 goes in \key{one more time} --- go back.
+
+\vspace{6pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+  \hline
+  $1000 \div 24$ & $875 \div 32$ \\
+  \rule[-3.4em]{0pt}{4.2em} & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+  \hline
+  $2500 \div 36$ & $1500 \div 45$ \\
+  \rule[-3.6em]{0pt}{4.4em} & \\
+  \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+  \hline
+  $3000 \div 28$ & $1800 \div 26$ \\
+  \rule[-3.6em]{0pt}{4.4em} & \\
+  \hline
+\end{tabularx}
+
+% -- E11 --------------------------------------------------------------------
+\qhead[cbgreen]{E11}{Find the missing number}
+
+\begin{remember}[Every multiplication is two divisions]
+  If $24 \times 51 = 1224$, then $1224 \div 24 = 51$ \key{and} $1224 \div 51 = 24$.
+  Look at \key{which} number is missing before you decide what to do: if the
+  \textbf{big} number is missing, you \key{multiply}.
+\end{remember}
+
+\vspace{2pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=12pt]
+  \item $24 \times \blank[1.8cm] = 1224$
+  \item $\blank[1.8cm] \times 16 = 768$
+  \item $2072 \div \blank[1.8cm] = 56$
+  \item $\blank[1.8cm] \div 18 = 234$
+  \item $37 \times \blank[1.8cm] = 851$
+  \item $\blank[1.8cm] \times 18 = 324$
+  \item $3375 \div \blank[1.8cm] = 225$
+  \item $\blank[1.8cm] \div 8 = 729$
+  \item $43 \times \blank[1.8cm] = 2408$
+  \item $\blank[1.8cm] \times 26 = 1872$
+  \item $2940 \div \blank[1.8cm] = 84$
+  \item $\blank[1.8cm] \div 29 = 34$
+  \item $47 \times \blank[1.8cm] = 1222$
+  \item $\blank[1.8cm] \times 32 = 1088$
+  \item $4212 \div \blank[1.8cm] = 234$
+  \item $\blank[1.8cm] \div 15 = 225$
+\end{enumerate}
+\end{multicols}
+
+% -- E12 --------------------------------------------------------------------
+% No boxes on this one on purpose. Everything here can be done in the head or in
+% the margin, and the point is speed and choosing the method, not setting it out.
+\qhead[cbgreen]{E12}{Mixed drill --- no boxes, no help}
+
+\noindent Both operations, mixed up. Work down the columns as fast as you can be
+accurate. \key{Two pairs of these have the same answer --- find both pairs.}
+
+% A tabular, not multicols. Twenty-four items in three columns will not fit in the
+% tail of a page, and multicols splits itself across the break and then refuses to
+% let anything follow it -- which stranded a whole page. A tabular moves whole.
+\vspace{8pt}
+\noindent
+\begin{tabular}{@{}p{0.32\textwidth}p{0.32\textwidth}p{0.30\textwidth}@{}}
+  1.\ $480 \div 6 = \blank[1.4cm]$   & 11.\ $936 \div 12 = \blank[1.4cm]$  & 21.\ $999 \div 3 = \blank[1.4cm]$ \\[12pt]
+  2.\ $24 \times 30 = \blank[1.4cm]$ & 12.\ $18 \times 15 = \blank[1.4cm]$ & 22.\ $44 \times 25 = \blank[1.4cm]$ \\[12pt]
+  3.\ $3600 \div 9 = \blank[1.4cm]$  & 13.\ $2400 \div 16 = \blank[1.3cm]$ & 23.\ $864 \div 12 = \blank[1.4cm]$ \\[12pt]
+  4.\ $45 \times 12 = \blank[1.4cm]$ & 14.\ $27 \times 40 = \blank[1.4cm]$ & 24.\ $125 \times 8 = \blank[1.4cm]$ \\[12pt]
+  5.\ $720 \div 8 = \blank[1.4cm]$   & 15.\ $546 \div 7 = \blank[1.4cm]$   & 25.\ $756 \div 7 = \blank[1.4cm]$ \\[12pt]
+  6.\ $16 \times 25 = \blank[1.4cm]$ & 16.\ $23 \times 30 = \blank[1.4cm]$ & 26.\ $48 \times 25 = \blank[1.4cm]$ \\[12pt]
+  7.\ $1000 \div 8 = \blank[1.4cm]$  & 17.\ $1250 \div 25 = \blank[1.3cm]$ & 27.\ $630 \div 15 = \blank[1.4cm]$ \\[12pt]
+  8.\ $60 \times 14 = \blank[1.4cm]$ & 18.\ $19 \times 21 = \blank[1.4cm]$ & 28.\ $26 \times 40 = \blank[1.4cm]$ \\[12pt]
+  9.\ $812 \div 4 = \blank[1.4cm]$   & 19.\ $4000 \div 25 = \blank[1.3cm]$ & 29.\ $1440 \div 12 = \blank[1.3cm]$ \\[12pt]
+  10.\ $35 \times 11 = \blank[1.4cm]$ & 20.\ $32 \times 15 = \blank[1.4cm]$ & 30.\ $55 \times 12 = \blank[1.4cm]$ \\
+\end{tabular}
+
+% ===========================================================================
+% PART 4 -- USE IT
+% ===========================================================================
+\hwsection[cbgreen]{Part 4 \textperiodcentered\ Use it}
+
+\begin{wordhelp}[Word help --- which operation does the sentence want?]
+  \eng{each} / \eng{every} --- usually multiply. 32 boxes with 124 in \textbf{each} is
+  $32 \times 124$. \\
+  \eng{in rows of} \sep \eng{shared equally between} --- divide.
+  \quad \eng{how many are left over} --- the remainder.
+\end{wordhelp}
+
+\noindent Write the calculation first, then the answer.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=11pt]
+
+  \item \textbf{The hall.} There are \textbf{1224 chairs} in the hall, set out in
+        rows of \textbf{24}. How many rows are there?
+        \begin{workspace}[3.0cm]\end{workspace}
+
+  \item \textbf{The books.} Mr Bowen orders \textbf{32 boxes} of books with
+        \textbf{124 books} in each box. How many books is that altogether?
+        \begin{workspace}[3.0cm]\end{workspace}
+
+  \item \textbf{The pencils.} Mr Bowen has \textbf{1000 pencils} and shares them
+        equally between \textbf{24 classes}. How many does each class get, and how
+        many are left over?
+        \begin{workspace}[3.2cm]\end{workspace}
+
+  \item \textbf{The order.} The school orders \textbf{18 packs} of pens with
+        \textbf{236 pens} in each pack. The pens are then shared equally between
+        \textbf{24 classrooms}. How many pens does each classroom get?
+        \begin{workspace}[3.6cm]\end{workspace}
+
+  % The round-up question. 61 r 2 boxes is not an answer -- you cannot buy part of
+  % a box -- and this is the only place on the sheet where the remainder makes the
+  % answer go UP.
+  \item \textbf{The tiles.} Mr Bowen tiles a floor with \textbf{47 rows} of
+        \textbf{26 tiles}. The tiles come in boxes of \textbf{20}. How many tiles
+        does he need, and how many boxes must he buy?
+        \begin{workspace}[3.6cm]\end{workspace}
+
+  % The deadpan one, and the last thing on the sheet: two steps, and the leftover
+  % space at the foot of the page belongs to the student, not to the margin.
+  \item \textbf{The stickers.} Mr Bowen has \textbf{4212 stickers} and sticks
+        \textbf{18} of them on every page of a sticker book. Each book has
+        \textbf{50 pages}. How many pages does he fill, and how many \textbf{whole
+        books} is that?
+        \begin{workspace}[4.4cm]\end{workspace}
+
+\end{enumerate}
+
+% ===========================================================================
+% ANSWER KEY (teacher copy only)
+% ===========================================================================
+\ifkey
+\newpage
+\hwsection[cbred]{Answer Key --- Teacher Copy}
+
+\linespread{1.0}\selectfont
+\setlist[enumerate]{itemsep=2pt, topsep=3pt, leftmargin=*}
+\setlist[itemize]{itemsep=2pt, topsep=3pt, leftmargin=*}
+
+\qhead[cbred]{E1}{Fill in the missing number}
+\noindent (a) 42 \quad (b) 56 \quad (c) 54 \quad (d) 48 \quad (e) 72 \quad (f) 49
+\quad (g) 36 \quad (h) 64 \\
+(i) 63 \quad (j) 36 \quad (k) 81 \quad (l) 32 \quad (m) 84 \quad (n) 88 \quad
+(o) 108 \quad (p) 28
+
+\smallskip
+\noindent{\small Time this one rather than marking it. Under two minutes for all
+sixteen and the tables are not what is slowing them down --- look at Part 3 instead.
+The three worth re-drilling are (b) $8 \times 7$, (e) $9 \times 8$ and (i)
+$9 \times 7$: they turn up in both rows of a long multiplication \emph{and} in every
+long division by 7, 8 or 9, so an error there is paid for three times.}
+
+\qhead[cbred]{E2}{Multiply by a ten}
+\noindent (a) 260 \quad (b) 780 \quad (c) 940 \quad (d) 2080 \quad (e) 1080
+\quad (f) 3650
+
+\smallskip
+\noindent{\small This is the second row of E5 taken out and practised alone, which is
+why it comes before the method. The error to look for is a \textbf{missing zero} ---
+78 instead of 780 in (b). A student who makes it here makes it in every question in
+E5, and it is far faster to catch on this line than inside a four-line sum.}
+
+\qhead[cbred]{E3}{Count up in a two-digit number}
+\noindent
+\begin{tabularx}{\linewidth}{@{}p{1.2cm}X@{}}
+  $23$ & 23, 46, 69, 92, 115, 138 \\
+  $16$ & 16, 32, 48, 64, 80, 96 \\
+  $24$ & 24, 48, 72, 96, 120, 144 \\
+  $37$ & 37, 74, 111, 148, 185, 222 \\
+\end{tabularx}
+
+\smallskip
+\noindent{\small This question is the whole sheet in miniature and it is the one to
+insist on. A student who writes the list before dividing is \emph{reading} at every
+step of a long division; a student who does not is guessing, rubbing out and
+guessing again. Note that these four are exactly the divisors in E9 --- 23 and 16 and
+24 --- so a student who does this table properly has already done half of E9.}
+
+\qhead[cbred]{E4}{Warm up: two digits by one digit}
+\noindent $53 \times 7 = 371$ \quad $68 \times 6 = 408$ \quad $87 \times 9 = 783$
+\quad $76 \times 8 = 608$ \\
+$94 \times 4 = 376$ \quad $47 \times 8 = 376$ \quad $65 \times 7 = 455$ \quad
+$89 \times 6 = 534$ \\
+$58 \times 9 = 522$ \quad $73 \times 6 = 438$ \quad $96 \times 7 = 672$ \quad
+$84 \times 5 = 420$
+
+\smallskip
+\noindent{\small The error here is carrying, not the tables. $87 \times 9$ carries at
+both columns and is the one to check. \\
+$94 \times 4$ and $47 \times 8$ both come to \textbf{376}, and that is not a
+coincidence: halving one number and doubling the other leaves the answer alone. A
+student who spots it has found a genuinely useful shortcut --- $16 \times 25$ in E12
+is the same trick, and becomes $8 \times 50$, then $4 \times 100$.}
+
+\qhead[cbred]{E5}{Two digits by two digits}
+\noindent
+\begin{tabularx}{\linewidth}{@{}p{4.4cm}p{4.4cm}X@{}}
+  $32 \times 14 = 448$  & $45 \times 23 = 1035$ & $28 \times 36 = 1008$ \\
+  $57 \times 42 = 2394$ & $63 \times 27 = 1701$ & $86 \times 35 = 3010$ \\
+  $74 \times 58 = 4292$ & $49 \times 61 = 2989$ & $95 \times 24 = 2280$ \\
+  $38 \times 47 = 1786$ & $84 \times 73 = 6132$ & $66 \times 52 = 3432$ \\
+\end{tabularx}
+
+\smallskip
+\noindent{\small Mark the \emph{working}, not just the answer. \textbf{One row of
+working is the whole diagnosis}: the student multiplied by the units digit and
+stopped, so the answer is roughly a tenth of the right size --- 448 becomes 128. That
+is a method error and needs re-teaching. An answer out by a small amount with two
+rows present is arithmetic, and needs a re-check, not a re-teach.}
+
+\qhead[cbred]{E6}{Three digits by two digits}
+\noindent $124 \times 32 = 3968$ \quad $236 \times 18 = 4248$ \quad
+$407 \times 25 = 10175$ \\
+$318 \times 46 = 14628$ \quad $529 \times 37 = 19573$ \quad
+$324 \times 18 = 5832$
+
+\smallskip
+\noindent \textbf{Look back:} $\sqrt[3]{5832} = 18$.
+
+\smallskip
+\noindent{\small $407 \times 25$ is the one with the \textbf{zero in the middle} and
+it is the interesting failure: students skip the zero column and shorten the row by a
+digit. \\
+$324 \times 18$ is not decoration. $18 \times 18 = 324$, so this multiplication
+\emph{is} the second half of proving a cube root by hand, and a student who reaches
+5832 has done something worth saying out loud. It also reappears as E7(h),
+$5832 \div 8$, from the other direction.}
+
+\qhead[cbred]{E7}{One-digit divisors, no remainder}
+\noindent (a) 42 \quad (b) 67 \quad (c) 73 \quad (d) 85 \quad (e) 336 \quad
+(f) 336 \quad (g) 504 \quad (h) 729
+
+\smallskip
+\noindent{\small (e) and (f) both come to 336 --- if a student notices, that is a good
+sign and worth a word. (h) $5832 \div 8 = 729$ is the same number as E6's last
+multiplication seen from the other end, and 729 is $9^3$; a class that spots that has
+understood something about Unit 1 that no exercise can be set for.}
+
+\qhead[cbred]{E8}{One-digit divisors, with a remainder}
+\noindent (a) 72 r 5 \quad (b) 75 r 4 \quad (c) 90 r 5 \quad (d) 142 r 6 \quad
+(e) 293 r 1 \quad (f) 507 r 4
+
+\smallskip
+\noindent{\small The diagnosis is in the remainder. A remainder \textbf{bigger than
+the divisor} is a method error --- the student stopped dividing too early --- and
+needs re-teaching. A remainder wrong by one or two is arithmetic and needs a
+re-check. Only the first is worth class time. \\
+(c) and (f) are the two with a \textbf{zero in the answer}: 815 divided by 9 gives 9,
+then nothing, then 0 --- and the zero must be written. A student who answers ``9 r 5''
+has dropped a digit, and that is the single most common long-division error there is.}
+
+\qhead[cbred]{E9}{Two-digit divisors --- set it out properly}
+\noindent $768 \div 16 = \mathbf{48}$ \quad $851 \div 23 = \mathbf{37}$ \quad
+$1224 \div 24 = \mathbf{51}$ \\
+$2072 \div 37 = \mathbf{56}$ \quad $4212 \div 18 = \mathbf{234}$ \\
+$3375 \div 15 = \mathbf{225}$ \quad $1088 \div 32 = \mathbf{34}$ \\
+$1222 \div 47 = \mathbf{26}$ \quad $986 \div 29 = \mathbf{34}$ \\
+$2408 \div 43 = \mathbf{56}$ \quad $1872 \div 26 = \mathbf{72}$ \quad
+$2940 \div 35 = \mathbf{84}$
+
+\smallskip
+\noindent{\small Look in the corner of the box before you look at the answer. A
+student who wrote the multiples list first and got it wrong has made an arithmetic
+slip; a student with no list who got it wrong has been guessing, and telling them the
+answer teaches them nothing. \\
+$1224 \div 24$ has a \textbf{zero step} in the middle of the method --- 24 does not go
+into 12, so you take 122 --- and it is the one that stalls people. $3375 \div 15$ is
+the hardest, and 225 is $15^2$, which is the patio from the lesson.}
+
+\qhead[cbred]{E10}{Two-digit divisors, with a remainder}
+\noindent $1000 \div 24 = \mathbf{41}$ r $\mathbf{16}$ \quad
+$875 \div 32 = \mathbf{27}$ r $\mathbf{11}$ \quad
+$2500 \div 36 = \mathbf{69}$ r $\mathbf{16}$ \\
+$1500 \div 45 = \mathbf{33}$ r $\mathbf{15}$ \quad
+$3000 \div 28 = \mathbf{107}$ r $\mathbf{4}$ \quad
+$1800 \div 26 = \mathbf{69}$ r $\mathbf{6}$
+
+\smallskip
+\noindent{\small Check the remainders first: any remainder of 24 or more in the first
+one is a stopped-too-early error, and the student can find it themselves if you ask
+``can 24 go in again?''. That question is worth more than the correction. \\
+$3000 \div 28$ is the hard one, and it is hard for a reason worth naming: 28 does not
+go into 30 twice, it goes once, and the second digit of the answer is a \textbf{0}.
+Expect ``17 r 4''. \\
+$1000 \div 24$ is the same division as Part 4 question 3, so a student who has done it
+here has done it there.}
+
+\qhead[cbred]{E11}{Find the missing number}
+\noindent (a) 51 \quad (b) 48 \quad (c) 37 \quad (d) 4212 \quad (e) 23 \quad
+(f) 18 \quad (g) 15 \quad (h) 5832 \\
+(i) 56 \quad (j) 72 \quad (k) 35 \quad (l) 986 \quad (m) 26 \quad (n) 34 \quad
+(o) 18 \quad (p) 3375
+
+\smallskip
+\noindent{\small (d), (h), (l) and (p) are the hard ones, because the missing number is
+the \emph{big} one and the student has to \textbf{multiply} rather than divide:
+$234 \times 18$, $729 \times 8$, $34 \times 29$, $225 \times 15$. A student who tries
+to divide there has not looked at which number is missing, and that is a reading error,
+not an arithmetic one. \\
+Every number in this question appears somewhere else on the sheet, so it is also a
+check on whether the earlier work was done or copied --- a student who did E9 properly
+can fill in half of this from memory.}
+
+\qhead[cbred]{E12}{Mixed drill --- no boxes, no help}
+\noindent 1.\ 80 \quad 2.\ 720 \quad 3.\ 400 \quad 4.\ 540 \quad 5.\ 90 \quad
+6.\ 400 \quad 7.\ 125 \quad 8.\ 840 \quad 9.\ 203 \quad 10.\ 385 \\
+11.\ 78 \quad 12.\ 270 \quad 13.\ 150 \quad 14.\ 1080 \quad 15.\ 78 \quad
+16.\ 690 \quad 17.\ 50 \quad 18.\ 399 \quad 19.\ 160 \quad 20.\ 480 \\
+21.\ 333 \quad 22.\ 1100 \quad 23.\ 72 \quad 24.\ 1000 \quad 25.\ 108 \quad
+26.\ 1200 \quad 27.\ 42 \quad 28.\ 1040 \quad 29.\ 120 \quad 30.\ 660
+
+\smallskip
+\noindent \textbf{The two pairs:} 3 and 6 both make \textbf{400}; 11 and 15 both make
+\textbf{78}.
+
+\smallskip
+\noindent{\small Time this one and mark it as a block --- it is a speed question, not
+a method question, and the whole diagnosis is \emph{where they slowed down}. A student
+who is fast on the multiplications and slow on the divisions has the tables but not
+the division method, which is the opposite way round from what most people assume. \\
+9 ($812 \div 4 = 203$) and 25 ($756 \div 7 = 108$) are the \textbf{zero in the answer}
+again, and 7 ($1000 \div 8 = 125$) is the one they will want a calculator for. The
+pairs are there to make them look back over their own work, which is the check they
+never do voluntarily.}
+
+\qhead[cbred]{E13}{Use it}
+\begin{enumerate}[label=\arabic*., itemsep=2pt]
+  \item $1224 \div 24 = \mathbf{51}$ rows.
+  \item $32 \times 124 = \mathbf{3968}$ books.
+  \item $1000 \div 24 = 41$ r 16: \textbf{41 pencils} each, with \textbf{16 left
+        over}.
+  \item $18 \times 236 = 4248$ pens, then $4248 \div 24 = \mathbf{177}$ pens each.
+  \item $47 \times 26 = \mathbf{1222}$ tiles. $1222 \div 20 = 61$ r 2, so he must buy
+        \textbf{62 boxes}.
+  \item $4212 \div 18 = 234$ pages. Then $234 \div 50 = 4$ r 34, so \textbf{234
+        pages}, which is \textbf{4 whole books} (with 34 pages of a fifth).
+\end{enumerate}
+\noindent{\small 1 and 2 are E9 and E6 wearing a story, so a student who can do those
+and not these has a reading gap, not an arithmetic one --- read the sentence back to
+them rather than reworking the sum. \\
+3 is the sentence test: ``41.67'' is a correct division answering a question nobody
+asked, because you cannot give a class two-thirds of a pencil. \\
+4 is $236 \times 18$ from E6 followed by a division, and it comes out \emph{exactly},
+which is the reward for getting the multiplication right. A student who reaches 4248
+and then a messy remainder has an error in step one, not step two --- send them back
+to the multiplication rather than to the division. \\
+\textbf{5 is the one to spend time on.} $47 \times 26 = 1222$ is E9 seen from the
+other side, but the second half is the only place on the sheet where the remainder
+makes the answer go \textbf{up}: 61 boxes is not enough, because the last 2 tiles
+still have to come in a box. Expect ``61'' and ``61 r 2'' from most of the class, and
+treat it as a discussion rather than a cross --- the arithmetic is right and the
+reading is not. \\
+6 is the last thing on the sheet and the only one where the remainder has to be
+\emph{read} rather than reported: 4 r 34 means four full books and part of a fifth,
+not ``4.68 books''. The common failure is stopping at 234 and calling those books.}
+
+\fi
+\end{document}
