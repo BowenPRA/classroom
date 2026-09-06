@@ -26,7 +26,7 @@ import {
   ArrowLeft, Lightbulb, Eye, EyeOff, Infinity as InfinityIcon, PartyPopper,
   RotateCcw, CircleCheck, CircleX, Star,
   CookingPot, Carrot, Sprout, Sigma, Dna, Puzzle, Languages,
-  Blocks, Bird, House, Sun, Flame,
+  Blocks, Bird, House, Sun, Flame, Droplets,
 } from 'lucide-react'
 
 import { LEVELS, BANDS } from './levels.js'
@@ -36,7 +36,7 @@ const ICONS = {
   Images, BookOpenText, Ear, Apple, Hand, Smile, Shapes, Music, School,
   Wand2, Trees, Cat, Link: LinkIcon,
   CookingPot, Carrot, Sprout, Sigma, Dna, Puzzle, Languages,
-  Blocks, Bird, House, Sun, Flame,
+  Blocks, Bird, House, Sun, Flame, Droplets,
 }
 
 const pick = (lang, en, vn) => (lang === 'vn' ? (vn ?? en) : en)
@@ -150,7 +150,7 @@ function LevelCard({ level, lang, onPick }) {
 function Menu({ lang, onPick }) {
   return (
     // One column per band, side by side, so the Year 7 shelf is visible without
-    // scrolling. Stacked in a single list all twenty-five cards run well past
+    // scrolling. Stacked in a single list all twenty-seven cards run well past
     // the bottom of the slide and Year 7 is invisible on a projector.
     <div className="h-full min-h-0 overflow-y-auto custom-scrollbar px-4 sm:px-6 py-4">
       <div className="w-full max-w-7xl mx-auto">
@@ -336,9 +336,27 @@ function useConfetti(canvasRef) {
 
 // ── The game ────────────────────────────────────────────────────────────────
 
+// A lesson deck can hand the class one puzzle instead of a menu of twenty-seven:
+//   #/lesson/games/G01_word-wall?level=solid-liquid-gas
+// opens that wall straight away. (Y7 Science 2.1a ends on a button that does
+// exactly this — see content/y7-science/U02_1a/widgets.jsx.) Read from the hash
+// rather than useSearchParams so the widget stays a plain component with no
+// router dependency, and fall through to the menu on anything unrecognised.
+function requestedLevelIndex() {
+  const query = (typeof window === 'undefined' ? '' : window.location.hash).split('?')[1]
+  if (!query) return null
+  const id = new URLSearchParams(query).get('level')
+  if (!id) return null
+  const i = LEVELS.findIndex((l) => l.id === id)
+  return i >= 0 ? i : null
+}
+
 export function WordWallGame({ lang = 'en', isDisplayMode = false }) {
-  const [levelIndex, setLevelIndex] = useState(null)
-  const [tiles, setTiles] = useState([])
+  const [levelIndex, setLevelIndex] = useState(requestedLevelIndex)
+  const [tiles, setTiles] = useState(() => {
+    const i = requestedLevelIndex()
+    return i === null ? [] : buildTiles(LEVELS[i])
+  })
   const [selected, setSelected] = useState([])
   const [solved, setSolved] = useState([])
   const [mistakes, setMistakes] = useState(0)

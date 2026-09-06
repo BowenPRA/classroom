@@ -1181,6 +1181,48 @@ export const LEVELS = [
       },
     ],
   },
+  // The end-of-lesson wall for Y7 Science 2.1a, linked to directly from that
+  // deck (#/lesson/games/G01_word-wall?level=solid-liquid-gas). It tests the one
+  // sentence the whole lesson is built on — sort by what a substance DOES, not
+  // by what it is made of — so the two baited tiles are the two the deck spends
+  // a slide on each: ICE (water, and a solid) and MERCURY (a metal, and a
+  // liquid). The fourth group is the lesson's hook: things that pour like a
+  // liquid and are made of millions of tiny solids.
+  {
+    id: 'solid-liquid-gas',
+    band: 'y7',
+    icon: 'Droplets',
+    title: 'Solid, Liquid or Gas?',
+    titleVn: 'Rắn, Lỏng hay Khí?',
+    hint: 'Two of these groups are both solids — the difference is whether you can pour them. ICE and MERCURY are not in the group you first think.',
+    hintVn: 'Hai trong các nhóm này đều là chất rắn — khác nhau ở chỗ có rót được hay không. ICE và MERCURY không nằm ở nhóm em nghĩ đầu tiên.',
+    groups: [
+      {
+        name: 'Solids You Cannot Pour', nameVn: 'Chất Rắn Không Rót Được',
+        note: 'Each one keeps its own shape and its own volume. ICE is the trap: it is made of water, but frozen water keeps its shape and cannot be squashed, so it is a solid.',
+        noteVn: 'Mỗi thứ đều giữ hình dạng riêng và thể tích riêng. ICE là cái bẫy: nó làm từ nước, nhưng nước đóng băng thì giữ nguyên hình dạng và không nén được, nên nó là chất rắn.',
+        items: ['ICE', 'WOOD', 'GLASS', 'IRON'],
+      },
+      {
+        name: 'Solids You Can Pour', nameVn: 'Chất Rắn Rót Được',
+        note: 'They flow out of a cup like a liquid — but look closer. Every single grain keeps its own shape and cannot be squashed. What is flowing is millions of tiny solids rolling over each other.',
+        noteVn: 'Chúng chảy ra khỏi cốc như chất lỏng — nhưng hãy nhìn kỹ. Từng hạt một đều giữ hình dạng riêng và không nén được. Thứ đang chảy là hàng triệu chất rắn tí hon lăn lên nhau.',
+        items: ['SAND', 'SUGAR', 'SALT', 'RICE'],
+      },
+      {
+        name: 'Liquids', nameVn: 'Chất Lỏng',
+        note: 'All four take the shape of the container, keep the same volume, and cannot be compressed. MERCURY is the second trap: it is a metal, and it is still a liquid.',
+        noteVn: 'Cả bốn đều mang hình dạng vật chứa, giữ nguyên thể tích, và không nén được. MERCURY là cái bẫy thứ hai: nó là kim loại, mà vẫn là chất lỏng.',
+        items: ['MILK', 'OIL', 'MERCURY', 'PETROL'],
+      },
+      {
+        name: 'Gases', nameVn: 'Chất Khí',
+        note: 'No shape of their own, they fill any container they are put in, and they are the only ones here that can be compressed. You cannot see a single one of them.',
+        noteVn: 'Không có hình dạng riêng, chúng lấp đầy mọi vật chứa, và là nhóm duy nhất ở đây có thể bị nén. Em không nhìn thấy được thứ nào trong số chúng.',
+        items: ['AIR', 'OXYGEN', 'HELIUM', 'NITROGEN'],
+      },
+    ],
+  },
 ]
 
 export const BANDS = {
