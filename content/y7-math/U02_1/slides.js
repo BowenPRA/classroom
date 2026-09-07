@@ -6,47 +6,63 @@
 // Anything they must write goes in an orange "Write This Down" panel or an
 // orange `>` bumper — never plain body text.
 //
-// THREE THINGS SHAPE THIS DECK.
+// FOUR THINGS SHAPE THIS DECK.
 //
-// 1. IT IS THE FIRST ALGEBRA LESSON, so it is built as thin as 1.6 and thinner
-//    than 1.5. There is exactly ONE key word in the book's margin — expression
-//    — and four copy-down panels in the whole deck. Every slide carries one
-//    picture, two or three lines of prose, and at most one panel. The arithmetic
-//    never goes past 5 × 2, on purpose: the moment a student is busy computing,
-//    they have stopped reading the sentence, and the sentence is the lesson.
+// 1. IT IS BUILT ON THE SCIENCE UNIT. Science 2.1 (U02_1a, U02_1b) taught this
+//    class that matter is made of PARTICLES, and left them holding a quantity
+//    that is unarguably real and unarguably uncountable. That is the perfect
+//    door into algebra, so the deck walks through it: the drop of water on
+//    slide 2, salt dissolving on slide 9, beakers on slide 11, and the sealed
+//    syringe from their own practical on slide 20. A letter is not a new kind
+//    of object — it is the number they already met last week and could not
+//    write down. Say "particle", "dissolve" and "compress" out loud; they are
+//    words this class owns, and they carry the maths for free.
 //
-// 2. THE WALL IS SLIDE 4, NOT THE NOTATION. Every year the sticking point is
-//    not "what does b mean", it is "b + 2 doesn't equal anything, so I must be
-//    wrong". BAG_PLUS_TWO exists only to say: the last row does not go
-//    anywhere, and leaving it alone IS the answer. Slide 5 then gives that
-//    unfinished-looking thing its name. If the class believes slide 4, the rest
-//    of the unit is bookkeeping.
+// 2. THE VOCABULARY IS THE WORKBOOK'S, NOT MINE. The definition on slide 5 is
+//    Cambridge's own sentence, including the clause the Tip leaves out and the
+//    2.2 intro supplies: "but has no = sign". The verb throughout is the book's
+//    verb, REPRESENT — Q10 marks students on writing what their letters
+//    represent, so the deck uses that word from slide 3 and never says
+//    "stands for" instead. Total and difference (slide 11) are Q13's words,
+//    used there without definition. The notation slide is the book's two Tips
+//    ("2m means 2 × m", "w over 2 means w ÷ 2") promoted to a slide, because
+//    Q11d and Q12d are unanswerable without them.
 //
-// 3. THE ENGLISH IS THE MATHS HERE. Slides 10–13 are the spine of the lesson
-//    and they contain no new arithmetic at all: "h less than t" is written
-//    t − h with the words reversed, and "subtract 4" against "subtract from 4"
-//    is one preposition that flips the answer from 6 to −6. Exercise 2.1 Q9 and
-//    Q11 are built on precisely these two, and a class that can do the algebra
-//    still loses those marks on the reading. Do not compress this section to
-//    save time; compress the word problems instead.
+// 3. THE WALL IS SLIDE 4. Every year the sticking point is not "what does c
+//    mean", it is that c − 50 does not equal anything, so students assume they
+//    have failed and either invent a number or leave it blank. COFFEE_WALL
+//    exists only to say: the last row does not go anywhere, and leaving it IS
+//    the answer. If the class believes slide 4, the rest of Unit 2 is
+//    bookkeeping.
 //
-// Ask-before-you-tell is used four times — slides 2, 7, 10 and 12 — and each is
+// 4. THE ENGLISH IS THE MATHS. Slides 12–19 add no new arithmetic at all:
+//    "h less than t" is written t − h with the words reversed; one preposition
+//    turns 5x − 4 into 4 − 5x; and "subtract the result from 25" is 25 − 3n,
+//    which needs the order of operations AND the flip at the same time. Those
+//    are Exercise 2.1 Q7f, Q9 and Q11 — the questions this class loses on the
+//    reading while doing the algebra correctly. Slide 19 runs the translation
+//    BACKWARDS (expression to English), which is Q12 and which nothing else in
+//    the deck rehearses.
+//
+// Ask-before-you-tell is used four times — slides 2, 8, 12 and 15 — and each is
 // a question slide with NO answer anywhere on it. The guesses are the lesson.
 //
-// Source: Workbook Unit 2, Section 2.1, pages 20–23. The bags on slide 2 are the
-// book's own opening picture and Q9 is slide 13, because those two are the
-// section. Everything else in class is original, since Exercise 2.1 is the
-// homework and should not be spent in advance.
+// Source: Workbook Unit 2, Section 2.1, pages 20–23 (Exercise 2.1 is Q1–14:
+// Focus 1–5, Practice 6–10, Challenge 11–14). Slide 16 is the picture of Q9 and
+// slide 18 is the picture of Q7f, because those two questions ARE the section.
+// Every other number in class is original — the exercise is the homework and
+// should not be spent in advance.
 import { DIAGRAMS } from './diagrams.js'
 
 const TEAL = '#0087a8'
 const PURPLE = '#5c2483'
 const ORANGE = '#c25e12'
 const GREEN = '#4a8b23'
+const BLUE = '#1a5fa8'
 const RED = '#c8102e'
 
 export const slides = [
-  // ── Section 1: a number you cannot see ────────────────────────────────────
+  // ── Section 1: a real number nobody can count ─────────────────────────────
   {
     layout: 'hero',
     color: PURPLE,
@@ -62,80 +78,80 @@ export const slides = [
       icon: 'Pencil',
       badge: 'Starter Task',
       badgeVn: 'Nhiệm vụ khởi động',
-      text: 'Mr Bowen has **7 pens**. He buys **2 more**. How many now? Write the calculation, not just the answer.',
-      textVn: 'Thầy Bowen có **7 cái bút**. Thầy mua thêm **2 cái**. Bây giờ có bao nhiêu? Hãy viết cả phép tính, đừng chỉ viết đáp án.',
+      text: 'In **Science** you learned that everything is made of **particles**. On your whiteboard, write how many particles are in one drop of water. You have 30 seconds.',
+      textVn: 'Trong giờ **Khoa học**, em đã học rằng mọi vật đều được tạo nên từ các **hạt (particles)**. Hãy viết lên bảng con: một giọt nước có bao nhiêu hạt? Em có 30 giây.',
     },
   },
   {
-    // The hook, and the book's own opening picture. QUESTION ONLY. Nobody can
-    // answer for the third bag, and being stuck there is the point — the letter
-    // arrives on the next slide as the way out, not as a new rule to learn.
+    // The hook, and the bridge from Science 2.1. QUESTION ONLY. Nobody can
+    // answer, and being stuck there is the point — the letter arrives on the
+    // next slide as the way out, not as a new rule to learn.
     layout: 'split',
     accent: TEAL,
-    icon: 'ShoppingBag',
+    icon: 'Droplet',
     side: 'left',
-    eyebrow: 'In pairs — two minutes',
-    eyebrowVn: 'Theo cặp — hai phút',
-    title: 'Three Bags',
-    titleVn: 'Ba cái túi',
-    ratio: 55,
-    inlineSvg: DIAGRAMS.THREE_BAGS,
+    eyebrow: 'Science 2.1 — particle theory',
+    eyebrowVn: 'Khoa học 2.1 — thuyết hạt',
+    title: 'Count Them',
+    titleVn: 'Hãy đếm chúng',
+    ratio: 50,
+    inlineSvg: DIAGRAMS.PARTICLE_DROP,
     content:
-      'You can see inside the first two bags.\n\n' +
-      'The third bag is closed. Nobody in this room can see inside it.\n\n' +
-      '**How many balls are in the third bag?**',
+      'Nobody wrote a number. That is not because you are bad at Science.\n\n' +
+      'The particles are **really there**, and there is a **real number** of them.\n\n' +
+      '**So how do we write about a number nobody can count?**',
     contentVn:
-      'Em nhìn thấy bên trong hai cái túi đầu tiên.\n\n' +
-      'Cái túi thứ ba đóng kín. Không ai trong phòng này nhìn thấy bên trong nó.\n\n' +
-      '**Trong túi thứ ba có bao nhiêu quả bóng?**',
+      'Không ai viết ra được con số nào. Đó không phải vì em học Khoa học kém.\n\n' +
+      'Các hạt **thật sự có ở đó**, và số lượng của chúng là một **con số có thật**.\n\n' +
+      '**Vậy làm sao để viết về một con số mà không ai đếm được?**',
   },
   {
     layout: 'statement',
     accent: ORANGE,
     eyebrow: 'The way out',
     eyebrowVn: 'Lối ra',
-    title: 'Give It a Name',
-    titleVn: 'Hãy đặt tên cho nó',
+    title: 'Give It a Letter',
+    titleVn: 'Hãy đặt cho nó một chữ cái',
     label: 'Key idea',
     labelVn: 'Ý chính',
     labelIcon: 'Sparkles',
-    text: '**b**',
-    textVn: '**b**',
-    sub: 'We cannot count the balls, so we call the number **b** and carry on.',
-    subVn: 'Không đếm được số bóng, nên ta gọi số đó là **b**.',
+    text: '**n**',
+    textVn: '**n**',
+    sub: 'We cannot count them, so we let **n** be that number.',
+    subVn: 'Ta không đếm được, nên cho **n** là con số đó.',
     notes: [
       {
         tone: 'write',
         text:
-          '**Letter:** in algebra a letter stands for **a number we do not know yet**.\n' +
-          'b means **the number of balls**, not **a ball**.',
+          '**Represent:** in algebra we choose a letter to **represent** a number we do not know.\n' +
+          'n represents **the number of particles**, not a particle.',
         textVn:
-          '**Chữ cái (letter):** trong đại số, chữ cái đại diện cho **một số mà ta chưa biết**.\n' +
-          'b nghĩa là **số lượng quả bóng**, không phải **một quả bóng**.',
+          '**Represent (đại diện cho):** trong đại số, ta chọn một chữ cái để **đại diện cho** một số mà ta chưa biết.\n' +
+          'n đại diện cho **số lượng hạt**, không phải một cái hạt.',
       },
     ],
   },
   {
     // THE WALL. Rows one and two finish; row three does not, and the class must
-    // be told out loud that this is allowed before the word "expression" is
-    // worth anything to them.
+    // hear out loud that this is allowed before the word "expression" is worth
+    // anything to them.
     layout: 'split',
     accent: PURPLE,
-    icon: 'Plus',
-    eyebrow: 'Now add two balls to every bag',
-    eyebrowVn: 'Bây giờ thêm hai quả bóng vào mỗi túi',
+    icon: 'Coffee',
+    eyebrow: 'Three cups, one rule',
+    eyebrowVn: 'Ba cốc, một quy tắc',
     title: 'The Row That Will Not Finish',
     titleVn: 'Dòng không thể tính xong',
-    ratio: 55,
-    inlineSvg: DIAGRAMS.BAG_PLUS_TWO,
+    ratio: 50,
+    inlineSvg: DIAGRAMS.COFFEE_WALL,
     content:
-      'The first two rows finish neatly: 4 and 6.\n\n' +
-      'The last row will not. There is no number to write, because we still do not know **b**.\n\n' +
-      'So we stop, and we leave it as **b + 2**. That is not giving up — that is the answer.',
+      'The first two rows finish neatly: **150** and **250**.\n\n' +
+      'The last row will not. There is no number to write, because nobody has told us **c**.\n\n' +
+      'So we stop, and we leave it as **c − 50**. That is not giving up — that is the answer.',
     contentVn:
-      'Hai dòng đầu tính xong gọn gàng: 4 và 6.\n\n' +
-      'Dòng cuối thì không. Không có con số nào để viết, vì ta vẫn chưa biết **b**.\n\n' +
-      'Vậy nên ta dừng lại và để nguyên **b + 2**. Đó không phải là bỏ cuộc — đó chính là đáp án.',
+      'Hai dòng đầu tính xong gọn gàng: **150** và **250**.\n\n' +
+      'Dòng cuối thì không. Không có con số nào để viết, vì chưa ai cho ta biết **c**.\n\n' +
+      'Vậy nên ta dừng lại và để nguyên **c − 50**. Đó không phải là bỏ cuộc — đó chính là đáp án.',
   },
   {
     layout: 'statement',
@@ -147,53 +163,91 @@ export const slides = [
     label: 'Copy this',
     labelVn: 'Chép lại',
     labelIcon: 'Pencil',
-    text: 'b + 2',
-    textVn: 'b + 2',
+    text: 'c − 50',
+    textVn: 'c − 50',
     sub: 'What you are left with has a name.',
-    subVn: 'Thứ còn lại đó cũng có một cái tên.',
+    subVn: 'Thứ còn lại đó có một cái tên.',
     notes: [
       {
         tone: 'write',
         text:
-          '**Expression:** letters, and sometimes numbers, joined by operations — for example $n + 7$, $3s$ or $t − 6$.\n' +
-          'It has **no equals sign** and does not have to be worked out.',
+          '**Expression:** a statement that contains letters and sometimes numbers, but has **no = sign**.\n' +
+          'For example $n + 7$, $4m$, $x + 2$, $c − 50$.',
         textVn:
-          '**Biểu thức (expression):** các chữ cái, đôi khi có cả số, nối với nhau bằng các phép tính — ví dụ $n + 7$, $3s$ hoặc $t − 6$.\n' +
-          'Nó **không có dấu bằng** và không cần tính ra kết quả.',
+          '**Biểu thức (expression):** một mệnh đề chứa chữ cái và đôi khi có cả số, nhưng **không có dấu =**.\n' +
+          'Ví dụ $n + 7$, $4m$, $x + 2$, $c − 50$.',
       },
     ],
   },
   {
     layout: 'split',
     accent: GREEN,
-    icon: 'Boxes',
+    icon: 'ListChecks',
     side: 'left',
-    eyebrow: 'Try three',
-    eyebrowVn: 'Thử ba câu',
-    title: 'Mr Bowen’s Box of Toys',
-    titleVn: 'Hộp đồ chơi của thầy Bowen',
+    eyebrow: 'Check you have it',
+    eyebrowVn: 'Kiểm tra xem em đã hiểu chưa',
+    title: 'Which Are Expressions?',
+    titleVn: 'Cái nào là biểu thức?',
     ratio: 50,
     content:
-      'There are **t toys** in the box. Write an expression for the number of toys after each move.\n\n' +
-      '**a** He puts in four more toys.\n' +
-      '**b** He takes out two toys.\n' +
-      '**c** He takes out half of the toys.',
+      'Three of these five are expressions. Which three?\n\n' +
+      '**A** $4m$      **B** $7 + 2 = 9$      **C** $x + 2$\n' +
+      '**D** $n − 3$      **E** $y = 5x$',
     contentVn:
-      'Trong hộp có **t món đồ chơi**. Hãy viết biểu thức cho số đồ chơi sau mỗi lần thay đổi.\n\n' +
-      '**a** Thầy bỏ thêm bốn món vào.\n' +
-      '**b** Thầy lấy ra hai món.\n' +
-      '**c** Thầy lấy ra một nửa số đồ chơi.',
+      'Ba trong năm cái này là biểu thức. Ba cái nào?\n\n' +
+      '**A** $4m$      **B** $7 + 2 = 9$      **C** $x + 2$\n' +
+      '**D** $n − 3$      **E** $y = 5x$',
     reveal: {
-      label: 'Check your answers',
+      label: 'Check your answer',
       labelVn: 'Kiểm tra đáp án',
-      answer: '**a** $t + 4$  **b** $t − 2$  **c** $t ÷ 2$.\n\nEvery answer still starts from **t**, because every question started from the same box.',
-      answerVn: '**a** $t + 4$  **b** $t − 2$  **c** $t ÷ 2$.\n\nMọi đáp án đều bắt đầu từ **t**, vì mọi câu hỏi đều bắt đầu từ chính cái hộp đó.',
+      answer:
+        '**A, C and D.**\n\n' +
+        'B and E both have an **= sign**, so neither is an expression. B has no letter either.',
+      answerVn:
+        '**A, C và D.**\n\n' +
+        'B và E đều có **dấu =**, nên cả hai đều không phải biểu thức. B cũng không có chữ cái nào.',
     },
   },
 
-  // ── Section 2: the four English phrases of change ─────────────────────────
+  // ── Section 2: how algebra writes it down ─────────────────────────────────
   {
-    // QUESTION ONLY. No expressions on this slide.
+    layout: 'split',
+    accent: ORANGE,
+    icon: 'PenTool',
+    eyebrow: 'The book assumes this from page 21 onwards',
+    eyebrowVn: 'Sách mặc định em biết điều này từ trang 21',
+    title: 'The Short Way of Writing It',
+    titleVn: 'Cách viết ngắn gọn',
+    ratio: 50,
+    inlineSvg: DIAGRAMS.NOTATION,
+    content: 'Algebra drops the multiplication sign — and only the multiplication sign.',
+    contentVn: 'Đại số lược bỏ dấu nhân — và chỉ lược bỏ dấu nhân mà thôi.',
+    notes: [
+      {
+        tone: 'write',
+        text:
+          '$3s$ means $3 × s$ · $ab$ means $a × b$ · $\\frac{s}{2}$ means $s ÷ 2$\n' +
+          'The number is written **in front** of the letter: $3s$, never $s3$.',
+        textVn:
+          '$3s$ nghĩa là $3 × s$ · $ab$ nghĩa là $a × b$ · $\\frac{s}{2}$ nghĩa là $s ÷ 2$\n' +
+          'Số được viết **đứng trước** chữ cái: $3s$, không bao giờ viết $s3$.',
+      },
+    ],
+    reveal: {
+      label: 'Try four',
+      labelVn: 'Thử bốn câu',
+      answer:
+        'Write the short way: **a** $7 × k$  **b** $m × n$  **c** $4 × a × b$  **d** $p ÷ 3$\n\n' +
+        '**a** $7k$  **b** $mn$  **c** $4ab$  **d** $\\frac{p}{3}$',
+      answerVn:
+        'Viết theo cách ngắn: **a** $7 × k$  **b** $m × n$  **c** $4 × a × b$  **d** $p ÷ 3$\n\n' +
+        '**a** $7k$  **b** $mn$  **c** $4ab$  **d** $\\frac{p}{3}$',
+    },
+  },
+
+  // ── Section 3: the English words that choose the operation ────────────────
+  {
+    // QUESTION ONLY. No expression appears on this slide.
     layout: 'statement',
     accent: PURPLE,
     eyebrow: 'On your whiteboard — no talking yet',
@@ -203,12 +257,12 @@ export const slides = [
     label: 'Write it',
     labelVn: 'Hãy viết',
     labelIcon: 'MessageSquare',
-    text: 'Mr Bowen has **s stickers**.',
-    textVn: 'Thầy Bowen có **s cái sticker**.',
-    sub: 'Lan has **two more stickers than Mr Bowen**. How many stickers does Lan have?',
-    subVn: 'Lan có **nhiều hơn thầy Bowen hai cái sticker**. Lan có bao nhiêu cái sticker?',
+    text: 'Mr Bowen dissolves **s grams** of salt.',
+    textVn: 'Thầy Bowen hoà tan **s gam** muối.',
+    sub: 'Lan dissolves **two grams more than Mr Bowen**. How much salt does Lan use?',
+    subVn: 'Lan hoà tan **nhiều hơn thầy Bowen hai gam**. Lan dùng bao nhiêu?',
     content: '> Show me your board. One expression, nothing else.',
-    contentVn: '> Giơ bảng con lên cho thầy xem. Chỉ một biểu thức, không cần gì thêm.',
+    contentVn: '> Giơ bảng con lên. Chỉ một biểu thức.',
   },
   {
     layout: 'split',
@@ -216,57 +270,87 @@ export const slides = [
     icon: 'Languages',
     eyebrow: 'Four phrases, four operations',
     eyebrowVn: 'Bốn cụm từ, bốn phép tính',
-    title: 'The Words That Tell You What To Do',
-    titleVn: 'Những từ cho em biết phải làm phép gì',
-    ratio: 55,
+    title: 'The Words Do the Choosing',
+    titleVn: 'Chính từ ngữ quyết định phép tính',
+    ratio: 50,
     inlineSvg: DIAGRAMS.FOUR_PHRASES,
-    content: 'The English phrase decides the operation. Learn the phrase and the maths follows.',
-    contentVn: 'Cụm từ tiếng Anh quyết định phép tính. Thuộc cụm từ thì phần toán sẽ theo sau.',
+    content:
+      'The salt dissolves and disappears. It is still **s grams** — you just cannot see it.\n\n' +
+      'That is exactly what a letter does.',
+    contentVn:
+      'Muối tan ra và biến mất. Nó vẫn là **s gam** — chỉ là em không nhìn thấy nữa.\n\n' +
+      'Chữ cái trong đại số cũng hoạt động đúng như vậy.',
     notes: [
       {
         tone: 'write',
         text:
-          '**more than** → add · **fewer than** / **less than** → subtract\n' +
-          '**times as many** → multiply · **half as many** → divide by 2\n' +
-          'We write $3 × s$ as **3s**. The multiplication sign is dropped.',
+          '**more than** → add · **less than** / **fewer than** → subtract\n' +
+          '**times as many / as much** → multiply · **half as much** → divide by 2',
         textVn:
-          '**more than** (nhiều hơn) → cộng · **fewer than / less than** (ít hơn) → trừ\n' +
-          '**times as many** (gấp … lần) → nhân · **half as many** (bằng một nửa) → chia cho 2\n' +
-          'Ta viết $3 × s$ thành **3s**. Dấu nhân được lược bỏ.',
+          '**more than** (nhiều hơn) → cộng · **less than / fewer than** (ít hơn) → trừ\n' +
+          '**times as many / as much** (gấp … lần) → nhân · **half as much** (bằng một nửa) → chia cho 2',
       },
     ],
   },
   {
     layout: 'split',
     accent: GREEN,
-    icon: 'ListChecks',
+    icon: 'Beaker',
     side: 'left',
     eyebrow: 'Quick fire — thirty seconds each',
     eyebrowVn: 'Nhanh — mỗi câu ba mươi giây',
-    title: 'Your Turn',
-    titleVn: 'Đến lượt em',
+    title: 'Four Beakers',
+    titleVn: 'Bốn cái cốc',
     ratio: 50,
     content:
-      'Mr Bowen has **c chairs** in his classroom.\n\n' +
-      '**a** The room next door has five more chairs than Mr Bowen.\n' +
-      '**b** The library has four times as many chairs as Mr Bowen.\n' +
-      '**c** The office has ten fewer chairs than Mr Bowen.',
+      'The first beaker holds **w ml** of water. Write an expression for each of the others.\n\n' +
+      '**a** The second holds 30 ml more than the first.\n' +
+      '**b** The third holds five times as much as the first.\n' +
+      '**c** The fourth holds 40 ml less than the first.\n' +
+      '**d** The fifth holds half as much as the first.',
     contentVn:
-      'Thầy Bowen có **c cái ghế** trong lớp.\n\n' +
-      '**a** Phòng bên cạnh có nhiều hơn thầy Bowen năm cái ghế.\n' +
-      '**b** Thư viện có số ghế gấp bốn lần thầy Bowen.\n' +
-      '**c** Văn phòng có ít hơn thầy Bowen mười cái ghế.',
+      'Cốc thứ nhất chứa **w ml** nước. Hãy viết biểu thức cho từng cốc còn lại.\n\n' +
+      '**a** Cốc thứ hai chứa nhiều hơn cốc thứ nhất 30 ml.\n' +
+      '**b** Cốc thứ ba chứa gấp năm lần cốc thứ nhất.\n' +
+      '**c** Cốc thứ tư chứa ít hơn cốc thứ nhất 40 ml.\n' +
+      '**d** Cốc thứ năm chứa bằng một nửa cốc thứ nhất.',
     reveal: {
       label: 'Check your answers',
       labelVn: 'Kiểm tra đáp án',
-      answer: '**a** $c + 5$  **b** $4c$  **c** $c − 10$.\n\nIf you wrote $c4$ for **b**, the number always goes in front: $4c$.',
-      answerVn: '**a** $c + 5$  **b** $4c$  **c** $c − 10$.\n\nNếu em viết $c4$ ở câu **b**, hãy nhớ số luôn đứng trước: $4c$.',
+      answer: '**a** $w + 30$  **b** $5w$  **c** $w − 40$  **d** $\\frac{w}{2}$\n\nEvery answer starts from **w**, because every sentence did.',
+      answerVn: '**a** $w + 30$  **b** $5w$  **c** $w − 40$  **d** $\\frac{w}{2}$\n\nMọi đáp án đều bắt đầu từ **w**, vì mọi câu hỏi đều bắt đầu từ đó.',
+    },
+  },
+  {
+    layout: 'split',
+    accent: TEAL,
+    icon: 'Scale',
+    eyebrow: 'Two words the exercise uses without explaining',
+    eyebrowVn: 'Hai từ mà bài tập dùng nhưng không giải thích',
+    title: 'Total and Difference',
+    titleVn: 'Tổng và hiệu',
+    ratio: 50,
+    inlineSvg: DIAGRAMS.TOTAL_DIFFERENCE,
+    content: 'When a question gives you **two** letters, these are the two words it will use.',
+    contentVn: 'Khi một câu hỏi cho em **hai** chữ cái, đây chính là hai từ nó sẽ dùng.',
+    notes: [
+      {
+        tone: 'write',
+        text: '**Total** → add them: $a + b$ · **Difference** → subtract them: $a − b$',
+        textVn: '**Total (tổng)** → cộng lại: $a + b$ · **Difference (hiệu)** → trừ đi: $a − b$',
+      },
+    ],
+    reveal: {
+      label: 'One more',
+      labelVn: 'Thêm một câu',
+      answer: 'Mr Bowen pours **three** large beakers and **five** small ones into a bowl. Write an expression for the total.\n\n$3a + 5b$. Two different sizes, so two different letters.',
+      answerVn: 'Thầy Bowen đổ **ba** cốc lớn và **năm** cốc nhỏ vào một cái tô. Hãy viết biểu thức cho tổng lượng nước.\n\n$3a + 5b$. Hai cỡ cốc khác nhau nên phải dùng hai chữ cái khác nhau.',
     },
   },
 
-  // ── Section 3: the word order flips ───────────────────────────────────────
+  // ── Section 4: the word order flips ───────────────────────────────────────
   {
-    // QUESTION ONLY. Both candidates are on the slide; neither is marked.
+    // QUESTION ONLY. Both candidates are shown; neither is marked.
     layout: 'statement',
     accent: PURPLE,
     eyebrow: 'Discuss in pairs — do not write yet',
@@ -277,9 +361,9 @@ export const slides = [
     labelVn: 'Thảo luận',
     labelIcon: 'MessageSquare',
     text: '**h less than t**',
-    textVn: '**h less than t** (t ít hơn h đơn vị)',
+    textVn: '**h less than t**',
     sub: 'Is this written $h − t$, or is it written $t − h$? They are not the same.',
-    subVn: 'Câu này viết là $h − t$, hay viết là $t − h$? Hai cái đó không giống nhau.',
+    subVn: 'Câu này viết là $h − t$, hay là $t − h$? Hai cái đó không giống nhau.',
   },
   {
     layout: 'split',
@@ -289,46 +373,70 @@ export const slides = [
     eyebrowVn: 'Hãy thử bằng số trước',
     title: 'The Words Come Backwards',
     titleVn: 'Thứ tự từ ngữ bị đảo ngược',
-    ratio: 55,
+    ratio: 50,
     inlineSvg: DIAGRAMS.ORDER_FLIP,
     content:
-      'You already know that **5 less than 12** is 7 — nobody says it is −7.\n\n' +
-      'So you already know the rule. The letters do not change it.',
+      'You already know that **5 less than 12** is 7. Nobody says it is −7.\n\n' +
+      'So you already know this rule. Putting letters in it changes nothing.',
     contentVn:
-      'Em vốn đã biết **5 less than 12** (12 bớt đi 5) bằng 7 — không ai nói là −7 cả.\n\n' +
-      'Vậy là em đã biết quy tắc rồi. Có chữ cái thì quy tắc vẫn thế.',
+      'Em vốn đã biết **5 less than 12** (12 bớt đi 5) bằng 7. Không ai nói là −7 cả.\n\n' +
+      'Vậy là em đã biết quy tắc này rồi. Thay số bằng chữ cái cũng không đổi gì.',
     notes: [
       {
         tone: 'write',
         text:
-          '**Watch the order.** In English the amount is often said **first**, but in maths the starting number is written **first**.\n' +
+          '**Watch the order.** English often says the amount **first**, but we write the starting number **first**.\n' +
           '**h less than t** is $t − h$ · **k more than g** is $g + k$.',
         textVn:
-          '**Chú ý thứ tự.** Trong tiếng Anh, phần thêm/bớt thường được nói **trước**, nhưng trong toán, số ban đầu lại được viết **trước**.\n' +
+          '**Chú ý thứ tự.** Tiếng Anh thường nói phần thêm/bớt **trước**, nhưng ta lại viết số ban đầu **trước**.\n' +
           '**h less than t** là $t − h$ · **k more than g** là $g + k$.',
       },
     ],
   },
-
-  // ── Section 4: one preposition, a different answer ────────────────────────
   {
-    // QUESTION ONLY. The two sentences differ by the single word "from", and
-    // `compare` is used rather than `statement` so the class sees them as two
-    // separate objects to hold side by side — `statement` runs its `text`
-    // together into one flowing paragraph, which hides the very thing the
-    // slide is asking them to find. Neither column carries an expression.
+    layout: 'split',
+    accent: GREEN,
+    icon: 'ListChecks',
+    side: 'left',
+    eyebrow: 'Three to try',
+    eyebrowVn: 'Ba câu để thử',
+    title: 'Your Turn',
+    titleVn: 'Đến lượt em',
+    ratio: 50,
+    content:
+      'Write an expression for each of these.\n\n' +
+      '**a** 9 less than m\n' +
+      '**b** d more than f\n' +
+      '**c** p more than six times q',
+    contentVn:
+      'Hãy viết biểu thức cho mỗi câu sau.\n\n' +
+      '**a** 9 less than m\n' +
+      '**b** d more than f\n' +
+      '**c** p more than six times q',
+    reveal: {
+      label: 'Check your answers',
+      labelVn: 'Kiểm tra đáp án',
+      answer: '**a** $m − 9$  **b** $f + d$  **c** $6q + p$\n\nIn **c**, "six times q" is $6q$ — build that first, then add p to it.',
+      answerVn: '**a** $m − 9$  **b** $f + d$  **c** $6q + p$\n\nỞ câu **c**, "six times q" là $6q$ — hãy dựng phần đó trước, rồi cộng thêm p.',
+    },
+  },
+
+  // ── Section 5: one preposition, a different answer ────────────────────────
+  {
+    // QUESTION ONLY. `compare` rather than `statement`, because statement runs
+    // its text into one paragraph and hides the single word that differs.
     layout: 'compare',
     accent: PURPLE,
     icon: 'MessageSquare',
-    eyebrow: 'Discuss in pairs — do A and B mean the same thing?',
-    eyebrowVn: 'Thảo luận theo cặp — A và B có cùng nghĩa không?',
+    eyebrow: 'Read both out loud — do A and B mean the same thing?',
+    eyebrowVn: 'Đọc to cả hai câu — A và B có cùng nghĩa không?',
     title: 'Spot the Difference',
     titleVn: 'Tìm điểm khác nhau',
     columns: [
       {
         heading: 'Sentence A',
         headingVn: 'Câu A',
-        accent: '#1a5fa8',
+        accent: BLUE,
         icon: 'MessageSquare',
         content: 'Multiply x by 5 and **subtract 4**.',
         contentVn: 'Multiply x by 5 and **subtract 4**.',
@@ -355,14 +463,14 @@ export const slides = [
     eyebrowVn: 'Chỗ này năm nào cũng bị mất điểm',
     title: 'Subtract 4, or Subtract From 4?',
     titleVn: 'Trừ đi 4, hay lấy 4 trừ đi?',
-    ratio: 55,
+    ratio: 50,
     inlineSvg: DIAGRAMS.SUBTRACT_VS_FROM,
     content:
-      'Same numbers. Same letter. Opposite answers — 6 and −6.\n\n' +
-      'The word **from** tells you which number you are starting at.',
+      'Same numbers. Same letter. Opposite answers — **6** and **−6**.\n\n' +
+      'One word did that.',
     contentVn:
-      'Cùng những con số. Cùng chữ cái. Đáp án ngược nhau — 6 và −6.\n\n' +
-      'Từ **from** cho em biết em bắt đầu đếm ngược từ số nào.',
+      'Cùng những con số. Cùng chữ cái. Đáp án ngược nhau — **6** và **−6**.\n\n' +
+      'Chỉ một từ đã làm nên điều đó.',
     notes: [
       {
         tone: 'write',
@@ -377,9 +485,37 @@ export const slides = [
   },
   {
     layout: 'split',
+    accent: RED,
+    icon: 'Layers',
+    side: 'left',
+    eyebrow: 'Both traps in one question',
+    eyebrowVn: 'Cả hai cái bẫy trong cùng một câu',
+    title: 'The Result',
+    titleVn: 'Kết quả',
+    ratio: 50,
+    inlineSvg: DIAGRAMS.ORDER_OF_OPS,
+    content:
+      'Build the multiplication first and give it a name: **3n is "the result"**.\n\n' +
+      'Then the sentence is easy: subtract that result **from 25**.',
+    contentVn:
+      'Hãy dựng phép nhân trước và đặt tên cho nó: **3n chính là "kết quả"**.\n\n' +
+      'Rồi câu văn trở nên dễ: lấy **25** trừ đi kết quả đó.',
+    notes: [
+      {
+        tone: 'write',
+        text:
+          '**Order of operations:** do the **× and ÷ first**, then the + and −.\n' +
+          'Multiply n by 3, then subtract the result from 25 → $25 − 3n$.',
+        textVn:
+          '**Thứ tự phép tính:** làm **nhân và chia trước**, rồi mới cộng và trừ.\n' +
+          'Nhân n với 3, rồi lấy 25 trừ đi kết quả → $25 − 3n$.',
+      },
+    ],
+  },
+  {
+    layout: 'split',
     accent: TEAL,
     icon: 'MessageSquare',
-    side: 'left',
     eyebrow: 'Someone else’s answer',
     eyebrowVn: 'Đáp án của một bạn khác',
     title: 'Is Marcus Right?',
@@ -398,65 +534,102 @@ export const slides = [
       labelVn: 'Kiểm tra đáp án',
       answer:
         '**No.** What Marcus wrote describes $5x − 5$, which starts at $5x$.\n\n' +
-        'The expression $5 − 5x$ starts at 5, so it needs one more word: **multiply x by 5 and subtract FROM 5**.',
+        'The expression $5 − 5x$ starts at 5, so it needs one more word: **subtract FROM 5**.',
       answerVn:
         '**Không.** Câu Marcus viết mô tả biểu thức $5x − 5$, tức là bắt đầu từ $5x$.\n\n' +
-        'Biểu thức $5 − 5x$ bắt đầu từ 5, nên cần thêm một từ: **multiply x by 5 and subtract FROM 5**.',
+        'Biểu thức $5 − 5x$ bắt đầu từ 5, nên cần thêm một từ: **subtract FROM 5**.',
+    },
+  },
+  {
+    layout: 'split',
+    accent: PURPLE,
+    icon: 'ArrowLeftRight',
+    side: 'left',
+    eyebrow: 'Now go the other way',
+    eyebrowVn: 'Bây giờ làm ngược lại',
+    title: 'From Algebra Back Into English',
+    titleVn: 'Từ đại số dịch ngược về tiếng Anh',
+    ratio: 50,
+    content:
+      'So far you turned English into algebra. Now write a **description in words** for each of these.\n\n' +
+      '**a** $w + 5$      **b** $6k$      **c** $8 − y$      **d** $4pq$',
+    contentVn:
+      'Đến giờ em đã dịch tiếng Anh sang đại số. Bây giờ hãy viết **mô tả bằng lời** cho mỗi biểu thức sau.\n\n' +
+      '**a** $w + 5$      **b** $6k$      **c** $8 − y$      **d** $4pq$',
+    reveal: {
+      label: 'Check your answers',
+      labelVn: 'Kiểm tra đáp án',
+      answer:
+        '**a** Add 5 to w.  **b** Multiply k by 6.\n' +
+        '**c** Subtract y **from** 8 — not "8 less than y".\n' +
+        '**d** Multiply p by q, then multiply by 4.',
+      answerVn:
+        '**a** Cộng 5 vào w.  **b** Nhân k với 6.\n' +
+        '**c** Lấy 8 trừ đi y — **from** 8, không phải "8 less than y".\n' +
+        '**d** Nhân p với q, rồi nhân với 4.',
     },
   },
 
-  // ── Section 5: two word problems, read completely straight ────────────────
+  // ── Section 6: two problems from the science lab, read straight ───────────
   {
     layout: 'split',
     accent: GREEN,
-    icon: 'Users',
-    eyebrow: 'Problem 1',
-    eyebrowVn: 'Bài 1',
-    title: 'Lunch for the Whole Trip',
-    titleVn: 'Bữa trưa cho cả chuyến đi',
+    icon: 'Wind',
+    eyebrow: 'Problem 1 — from your own Science practical',
+    eyebrowVn: 'Bài 1 — từ chính buổi thực hành Khoa học của em',
+    title: 'The Sealed Syringe',
+    titleVn: 'Ống tiêm bịt kín',
     ratio: 50,
     content:
-      'At the restaurant an adult meal costs **a dollars** and a child’s meal costs **c dollars**.\n\n' +
-      'Mr Bowen arrives with **four adults and five children**.\n\n' +
-      'Write an expression for the total cost.',
+      'In Science you pushed the plunger of a sealed syringe. A gas can be **compressed**; a liquid cannot.\n\n' +
+      'The syringe holds **v ml** of air.\n\n' +
+      '**a** Mr Bowen pushes until only half is left. Write an expression.\n' +
+      '**b** He pushes 20 ml further. Write an expression now.',
     contentVn:
-      'Ở nhà hàng, một suất ăn người lớn giá **a đô la** và một suất ăn trẻ em giá **c đô la**.\n\n' +
-      'Thầy Bowen đến cùng **bốn người lớn và năm trẻ em**.\n\n' +
-      'Hãy viết biểu thức cho tổng số tiền.',
+      'Trong giờ Khoa học em đã đẩy pít-tông của một ống tiêm bịt kín. Chất khí có thể bị **nén (compressed)**; chất lỏng thì không.\n\n' +
+      'Ống tiêm chứa **v ml** không khí.\n\n' +
+      '**a** Thầy Bowen đẩy đến khi chỉ còn một nửa. Hãy viết biểu thức.\n' +
+      '**b** Thầy đẩy thêm 20 ml nữa. Bây giờ hãy viết biểu thức.',
     reveal: {
       label: 'Check your answer',
       labelVn: 'Kiểm tra đáp án',
-      answer: '$4a + 5c$.\n\nTwo different prices, so two different letters. You cannot add them together into one term.',
-      answerVn: '$4a + 5c$.\n\nHai mức giá khác nhau nên phải dùng hai chữ cái khác nhau. Không thể gộp chúng thành một số hạng.',
+      answer: '**a** $\\frac{v}{2}$  **b** $\\frac{v}{2} − 20$\n\nIf the syringe held water instead, neither answer would exist — you cannot compress a liquid.',
+      answerVn: '**a** $\\frac{v}{2}$  **b** $\\frac{v}{2} − 20$\n\nNếu trong ống tiêm là nước thì không có đáp án nào cả — chất lỏng không nén được.',
     },
   },
   {
     layout: 'split',
     accent: GREEN,
-    icon: 'Bug',
+    icon: 'Snowflake',
     side: 'left',
     eyebrow: 'Problem 2',
     eyebrowVn: 'Bài 2',
-    title: 'The Crickets',
-    titleVn: 'Những con dế',
+    title: 'The Ice Cube Incident',
+    titleVn: 'Sự cố viên đá',
     ratio: 50,
     content:
-      'Mr Bowen keeps **p pet crickets** in a box under his desk. Every cricket has six legs.\n\n' +
-      '**a** Write an expression for the total number of legs in the box.\n' +
-      '**b** Two crickets escape. Write an expression for the number of legs still in the box.',
+      'Mr Bowen puts **n ice cubes** into a glass for his lesson on melting, then goes to answer the door.\n\n' +
+      '**a** A helpful student adds three more. Write an expression for the number of ice cubes.\n' +
+      '**b** Mr Bowen comes back forty minutes later. Write an expression for the number of ice cubes now.',
     contentVn:
-      'Thầy Bowen nuôi **p con dế** trong một cái hộp dưới bàn làm việc. Mỗi con dế có sáu chân.\n\n' +
-      '**a** Hãy viết biểu thức cho tổng số chân trong hộp.\n' +
-      '**b** Hai con dế trốn thoát. Hãy viết biểu thức cho số chân còn lại trong hộp.',
+      'Thầy Bowen bỏ **n viên đá** vào một cái cốc cho bài học về sự nóng chảy, rồi đi ra mở cửa.\n\n' +
+      '**a** Một bạn học sinh tốt bụng bỏ thêm ba viên nữa. Hãy viết biểu thức cho số viên đá.\n' +
+      '**b** Bốn mươi phút sau thầy Bowen quay lại. Bây giờ hãy viết biểu thức cho số viên đá.',
     reveal: {
       label: 'Check your answer',
       labelVn: 'Kiểm tra đáp án',
-      answer: '**a** $6p$  **b** $6p − 12$, because two crickets take twelve legs with them.\n\nMr Bowen would like them back.',
-      answerVn: '**a** $6p$  **b** $6p − 12$, vì hai con dế mang theo mười hai cái chân.\n\nThầy Bowen mong chúng quay về.',
+      answer:
+        '**a** $n + 3$.\n\n' +
+        '**b** **Zero.** They melted. The water is all still there — but melted ice cubes are not ice cubes.\n\n' +
+        'Mr Bowen taught the lesson without them.',
+      answerVn:
+        '**a** $n + 3$.\n\n' +
+        '**b** **Bằng không.** Chúng đã tan hết. Nước thì vẫn còn nguyên — nhưng đá đã tan thì không còn là viên đá nữa.\n\n' +
+        'Thầy Bowen đành dạy bài đó mà không có viên đá nào.',
     },
   },
 
-  // ── Section 6: recap and homework ─────────────────────────────────────────
+  // ── Section 7: recap and homework ─────────────────────────────────────────
   {
     layout: 'stack',
     variant: 'checklist',
@@ -465,17 +638,19 @@ export const slides = [
     columns: 2,
     eyebrow: 'Before you leave',
     eyebrowVn: 'Trước khi ra về',
-    title: 'Can You Do All Four?',
-    titleVn: 'Em làm được cả bốn điều này chứ?',
+    title: 'Can You Do All Six?',
+    titleVn: 'Em làm được cả sáu điều này chứ?',
     content:
-      '> Your notebook should now have **4 written panels** — the letter, the expression, the four phrases, and subtract-from. Check that none is missing.',
+      '> Your notebook should now have **8 written panels**. Count them. If one is missing, copy it from your partner before you go.',
     contentVn:
-      '> Trong vở của em bây giờ phải có **4 khung ghi chép** — chữ cái, biểu thức, bốn cụm từ, và subtract-from. Hãy kiểm tra xem có thiếu khung nào không.',
+      '> Trong vở của em bây giờ phải có **8 khung ghi chép**. Hãy đếm lại. Nếu thiếu khung nào, hãy chép của bạn bên cạnh trước khi ra về.',
     items: [
-      { text: 'Say what an **expression** is, and why it does not need an equals sign.', textVn: 'Nói được **biểu thức** là gì, và vì sao nó không cần dấu bằng.' },
-      { text: 'Leave $b + 2$ alone without thinking you got it wrong.', textVn: 'Để yên $b + 2$ mà không nghĩ là mình làm sai.' },
-      { text: 'Turn **more than**, **fewer than**, **times as many** and **half as many** into $+$, $−$, $×$ and $÷$.', textVn: 'Chuyển **more than**, **fewer than**, **times as many** và **half as many** thành $+$, $−$, $×$ và $÷$.' },
-      { text: 'Write **h less than t** as $t − h$, and tell **subtract 4** apart from **subtract from 4**.', textVn: 'Viết **h less than t** thành $t − h$, và phân biệt **subtract 4** với **subtract from 4**.' },
+      { text: 'Say what an **expression** is, and why it has **no = sign**.', textVn: 'Nói được **biểu thức** là gì, và vì sao nó **không có dấu =**.' },
+      { text: 'Choose a letter to **represent** a number, and say what it represents.', textVn: 'Chọn được một chữ cái để **đại diện cho** một số, và nói rõ nó đại diện cho cái gì.' },
+      { text: 'Leave $c − 50$ alone without thinking you got it wrong.', textVn: 'Để yên $c − 50$ mà không nghĩ là mình làm sai.' },
+      { text: 'Write $3 × s$ as $3s$ and $a × b$ as $ab$.', textVn: 'Viết $3 × s$ thành $3s$ và $a × b$ thành $ab$.' },
+      { text: 'Turn **more / less / times / half**, **total** and **difference** into operations.', textVn: 'Chuyển **more / less / times / half**, **total** và **difference** thành phép tính.' },
+      { text: 'Write **h less than t** as $t − h$, and tell **subtract 4** from **subtract from 4**.', textVn: 'Viết **h less than t** thành $t − h$, và phân biệt **subtract 4** với **subtract from 4**.' },
     ],
   },
   {
@@ -486,8 +661,8 @@ export const slides = [
     eyebrowVn: 'Bài tập về nhà',
     title: 'For Next Lesson',
     titleVn: 'Cho tiết học sau',
-    content: 'Read every question twice before you write. In this exercise the reading is the hard part, not the maths.',
-    contentVn: 'Hãy đọc mỗi câu hỏi hai lần trước khi viết. Trong bài tập này, phần khó là đọc hiểu, không phải phần toán.',
+    content: 'Read every question **twice** before you write. In this exercise the reading is the hard part, not the maths.',
+    contentVn: 'Hãy đọc mỗi câu hỏi **hai lần** trước khi viết. Trong bài tập này, phần khó là đọc hiểu, không phải phần toán.',
     notes: [
       {
         tone: 'homework',
@@ -496,12 +671,12 @@ export const slides = [
         icon: 'Pencil',
         text:
           '**Focus** — Q1 to 5. Everybody.\n' +
-          '**Practice** — Q6 to 10.\n' +
-          '**Challenge** — Q11 and 12. An attempt beats a blank.',
+          '**Practice** — Q6 to 10. Q9 is the one from today.\n' +
+          '**Challenge** — Q11 to 14. An attempt beats a blank.',
         textVn:
           '**Focus** — câu 1 đến 5. Tất cả các em.\n' +
-          '**Practice** — câu 6 đến 10.\n' +
-          '**Challenge** — câu 11 và 12. Làm sai vẫn hơn bỏ trống.',
+          '**Practice** — câu 6 đến 10. Câu 9 chính là câu hôm nay đã học.\n' +
+          '**Challenge** — câu 11 đến 14. Làm sai vẫn hơn bỏ trống.',
       },
     ],
   },
@@ -513,7 +688,7 @@ export const slides = [
     brandVn: 'Toán Lớp 7',
     title: 'Lesson Complete!',
     titleVn: 'Hoàn thành bài học!',
-    subtitle: 'A letter is just a number you have not met yet. Exit question: **Mr Bowen has $n$ pens and gives away three. Write the expression.**',
-    subtitleVn: 'Chữ cái chỉ là một con số em chưa gặp mà thôi. Câu hỏi ra về: **Thầy Bowen có $n$ cái bút và cho đi ba cái. Hãy viết biểu thức.**',
+    subtitle: 'A letter is just a number you have not been told yet. Exit question: **a beaker holds $p$ ml. Mr Bowen pours out 60 ml. Write the expression.**',
+    subtitleVn: 'Chữ cái chỉ là một con số chưa ai nói cho em biết. Câu hỏi ra về: **một cốc chứa $p$ ml. Thầy Bowen rót ra 60 ml. Hãy viết biểu thức.**',
   },
 ]

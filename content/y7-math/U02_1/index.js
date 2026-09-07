@@ -10,7 +10,7 @@ export default {
     id: 'U02_1',
     title: 'Constructing Expressions',
     objective:
-      'Use a letter for a number you do not know, leave an expression such as b + 2 unfinished without thinking it is wrong, and read the English that decides the answer — "h less than t" is written t − h, and "subtract 4" is not "subtract from 4".',
+      'Choose a letter to represent a number you cannot count, leave an expression such as c − 50 unfinished without thinking it is wrong, write 3 × s as 3s, and read the English that decides the answer — "h less than t" is written t − h, "subtract 4" is not "subtract from 4", and "subtract the result from 25" is 25 − 3n.',
     order: 7,
   },
   slides,
