@@ -17,6 +17,10 @@ import {
   Clapperboard,
   // Added for circles and constructions (Algebra Track 1.3).
   Compass, Globe, Circle, MapPin,
+  // Added for changes of state and measuring (Y7 Science 2.2). Several of these
+  // (Droplets, Wind, Flame, Snowflake) were already referenced by 2.1a's slides
+  // and were silently falling back to the Info circle until now.
+  Thermometer, Droplets, Wind, Flame, Snowflake, Waves, CloudFog, Gauge,
 } from 'lucide-react'
 import WidgetRenderer, { WidgetErrorBoundary } from '../WidgetRenderer.jsx'
 import { parseInlineText, renderContent, NOTE_TONES } from './helpers.jsx'
@@ -31,6 +35,7 @@ const ICONS = {
   Sigma, Grid3x3, LayoutGrid, RotateCcw, Move, PenLine, Box, Triangle, Bug,
   Calculator, Timer, Hammer, ArrowLeftRight, Spline, Clapperboard,
   Compass, Globe, Circle, MapPin,
+  Thermometer, Droplets, Wind, Flame, Snowflake, Waves, CloudFog, Gauge,
 }
 
 /** Render a lucide icon by name (falls back to Info). */
