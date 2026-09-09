@@ -17,6 +17,8 @@ import hw04 from '../homework/hw04/hw04.pdf?url'
 import hw04x from '../homework/hw04x/hw04x.pdf?url'
 import hw05 from '../homework/hw05/hw05.pdf?url'
 import hw05x from '../homework/hw05x/hw05x.pdf?url'
+import hw06 from '../homework/hw06/hw06.pdf?url'
+import hw06x from '../homework/hw06x/hw06x.pdf?url'
 import alg13 from '../homework/alg13/alg13.pdf?url'
 import alg13p3 from '../homework/alg13p3/alg13p3.pdf?url'
 
@@ -87,6 +89,27 @@ export const HOMEWORK = [
     title: 'Bring Down the Next Digit',
     subtitle: 'Extra · two-digit multiplication and long division',
     pdf: hw05x,
+  },
+  // Unit 2, both subjects, and the place they meet. Section C is the reason this
+  // packet exists: volume is the one quantity Maths and Science handed the class
+  // in the same week, from opposite ends, so the packet ends by putting them
+  // together on cm, cm2 and cm3.
+  {
+    id: 'hw06',
+    label: 'HW 6',
+    title: 'Letters and Particles',
+    subtitle: 'Maths 2.1–2.2 · Science 2.1–2.2 · volume',
+    pdf: hw06,
+  },
+  // Goes out with HW 6. Built on the scaffolds in the workbook's own Focus pages:
+  // fill-in-the-box part-sentences, the first one done for you, and the middle
+  // line printed as a skeleton so it cannot be skipped.
+  {
+    id: 'hw06x',
+    label: 'EX 6',
+    title: 'One Letter at a Time',
+    subtitle: 'Extra · expressions, substituting, volume',
+    pdf: hw06x,
   },
   // Not a Year 7 packet: a single landscape sheet for the Algebra Track, handed
   // out DURING lesson 1.3 and used twice in it. It lives here because this is
