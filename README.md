@@ -55,6 +55,10 @@ content/
     plan.js               the printable teacher lesson plan (optional)
 src/
   components/Deck.jsx     the slide renderer (schema below)
+  components/RandomStudent.jsx
+                          the one-press Pick button and the roster manager
+  lib/useStudentPicker.js roster (per-device) and no-repeats round state
+  lib/recentLessons.js    the home page's "recently opened" strip (per-device)
   pages/                  Home (courses) · CoursePage (lessons) · Plan (printable)
 ```
 

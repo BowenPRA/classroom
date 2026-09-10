@@ -1,93 +1,96 @@
 // src/components/RandomStudent.jsx
 // The "call on a random student" tool. It is deliberately NOT a lesson widget:
-// the roster belongs to the room, not to one deck, so it is a single modal owned
-// by Deck and reachable from every lesson — the bottom bar when previewing, and
-// the projector dock when actually teaching.
+// the roster belongs to the room, not to one deck, so it is owned by Deck and
+// reachable from every lesson — the bottom bar when previewing, and the
+// projector dock when actually teaching.
 //
-// The roster is saved on THIS DEVICE (localStorage) and nowhere else, so the
-// classroom machine keeps Mr Bowen's list and it never leaves the room. Every
-// read and write is wrapped, because localStorage throws in private windows and
-// in the thumbnail/preview contexts, and a picker that crashes the deck is worse
-// than one that forgets the list.
-//
-// "No repeats" is the point of the tool over a mental coin-flip: it draws
-// without replacement until everyone has had a turn, so the quiet students get
-// called on as often as the loud ones. That round-state is in-memory only —
-// reloading starts a fresh round, which is the right behaviour for a new lesson.
+// The teaching-time shape matters most: ONE press on the Pick button draws a
+// name and shows it right beside the button. No modal to open first, no second
+// button to find. The modal below is the roster manager — editing the list,
+// the no-repeats toggle, starting a new round — and the place to show a name
+// large if Mr Bowen wants the class to see it. Both read the same state, from
+// `useStudentPicker` (src/lib/useStudentPicker.js) owned by Deck, so a pick
+// from the bar and a pick from the modal count towards the same round. The
+// roster storage and the no-repeats rule are documented there.
 //
 // Bilingual like the rest of the deck: it takes the deck's `lang` prop.
-import { useState, useEffect, useCallback, useRef } from 'react'
-import { Users, X, Shuffle, Pencil, Check, RotateCcw } from 'lucide-react'
-
-const STORAGE_KEY = 'classroom:student-roster'
+import { useState, useEffect, useRef } from 'react'
+import { Users, X, Shuffle, Pencil, Check, RotateCcw, ListChecks } from 'lucide-react'
 
 const pick = (lang, en, vn) => (lang === 'vn' ? vn : en)
 
-/** Read the saved roster. Never throws; returns [] when storage is unavailable. */
-function loadRoster() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    if (!raw) return []
-    return JSON.parse(raw).filter((n) => typeof n === 'string' && n.trim())
-  } catch {
-    return []
+/**
+ * The one-press trigger for the bottom bar and the projector dock. Left half
+ * draws a student and shows the name beside it; the small right half opens the
+ * roster manager. `tone` picks the light (bar) or dark (dock) styling.
+ */
+export function PickButton({ picker, lang = 'en', onManage, tone = 'light', large = false }) {
+  const { names, current, justReset, pickCount, draw } = picker
+  const onPick = () => {
+    // Nothing to draw from yet: go straight to the editor rather than doing
+    // nothing, so a fresh machine still has a one-click route to a name.
+    if (!draw()) onManage()
   }
-}
-
-/** Persist the roster. Never throws. */
-function saveRoster(names) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(names))
-  } catch {
-    /* private window / storage blocked — the list simply won't persist */
-  }
+  const light = tone === 'light'
+  const shell = light
+    ? 'bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-500'
+    : 'bg-white/10 border border-white/15 text-white'
+  const divider = light ? 'border-slate-200 dark:border-slate-700' : 'border-white/15'
+  const hover = light ? 'hover:text-[#1cb0f6]' : 'hover:bg-white/20'
+  return (
+    <div className={`flex items-stretch rounded-xl overflow-hidden ${shell}`}>
+      <button
+        onClick={onPick}
+        className={`flex items-center gap-2 px-3 sm:px-4 py-2 transition-colors active:scale-95 ${hover}`}
+        title={pick(lang, 'Pick a random student (R)', 'Chọn ngẫu nhiên một học sinh (R)')}
+      >
+        <Shuffle className="w-5 h-5 shrink-0" strokeWidth={2.5} />
+        {current ? (
+          <span
+            key={pickCount}
+            className={`font-black tracking-tight whitespace-nowrap max-w-[10rem] sm:max-w-[16rem] truncate animate-in zoom-in-95 fade-in duration-300 ${light ? 'text-slate-900 dark:text-white' : 'text-white'} ${large ? 'text-lg' : 'text-sm sm:text-base'}`}
+          >
+            {current}
+            {justReset && <span className="ml-1.5 text-[10px] uppercase tracking-widest text-[#ffc800] align-middle">{pick(lang, 'new round', 'vòng mới')}</span>}
+          </span>
+        ) : (
+          <span className="hidden sm:inline text-xs font-black uppercase tracking-widest">
+            {names.length ? pick(lang, 'Pick', 'Chọn') : pick(lang, 'Class list', 'Danh sách lớp')}
+          </span>
+        )}
+      </button>
+      <button
+        onClick={onManage}
+        className={`flex items-center px-2 border-l-2 transition-colors ${divider} ${hover}`}
+        title={pick(lang, 'Class list, rounds and repeats', 'Danh sách lớp, vòng và lặp lại')}
+      >
+        <ListChecks className="w-4 h-4" strokeWidth={2.5} />
+      </button>
+    </div>
+  )
 }
 
 /**
- * The trigger buttons live in Deck; this is the modal. `open` / `onClose` are
- * controlled by Deck so the two triggers (bar + projector dock) share one modal.
- * The body is mounted fresh on each open (below) so it re-reads the roster from
- * storage via its state initialisers — no effect has to sync it.
+ * The roster manager. `open` / `onClose` are controlled by Deck so the two
+ * triggers share one modal; the picker state comes from `useStudentPicker`.
+ * The body mounts fresh on each open so it can decide from the roster whether
+ * to open in the editor.
  */
-export function RandomStudentModal({ open, onClose, lang = 'en' }) {
+export function RandomStudentModal({ open, onClose, lang = 'en', picker }) {
   if (!open) return null
-  return <PickerBody onClose={onClose} lang={lang} />
+  return <PickerBody onClose={onClose} lang={lang} picker={picker} />
 }
 
-function PickerBody({ onClose, lang }) {
-  // Read the roster once, as the modal opens. Empty roster opens straight into
-  // the editor — there is nothing to pick from yet.
-  const initial = loadRoster()
-  const [names, setNames] = useState(initial)
-  const [editing, setEditing] = useState(initial.length === 0)
+function PickerBody({ onClose, lang, picker }) {
+  const { names, current, pickedThisRound, noRepeat, justReset, pickCount, remaining, draw, newRound, replaceRoster, toggleNoRepeat } = picker
+  // Empty roster opens straight into the editor — there is nothing to pick from yet.
+  const [editing, setEditing] = useState(names.length === 0)
   const [draft, setDraft] = useState('')
-  const [current, setCurrent] = useState(null)
-  const [pickedThisRound, setPickedThisRound] = useState([])
-  const [noRepeat, setNoRepeat] = useState(true)
-  const [justReset, setJustReset] = useState(false)
   const textareaRef = useRef(null)
 
   useEffect(() => {
     if (editing && textareaRef.current) textareaRef.current.focus()
   }, [editing])
-
-  const drawStudent = useCallback(() => {
-    if (!names.length) return
-    let pool = names
-    let resetting = false
-    if (noRepeat) {
-      pool = names.filter((n) => !pickedThisRound.includes(n))
-      if (!pool.length) {
-        // Everyone has had a turn — start a new round this same press.
-        pool = names
-        resetting = true
-      }
-    }
-    const choice = pool[Math.floor(Math.random() * pool.length)]
-    setCurrent(choice)
-    setPickedThisRound(resetting ? [choice] : [...new Set([...pickedThisRound, choice])])
-    setJustReset(resetting)
-  }, [names, noRepeat, pickedThisRound])
 
   const startEditing = () => {
     setDraft(names.join('\n'))
@@ -99,18 +102,8 @@ function PickerBody({ onClose, lang }) {
       .split('\n')
       .map((n) => n.trim())
       .filter(Boolean)
-    setNames(next)
-    saveRoster(next)
-    setPickedThisRound([])
-    setCurrent(null)
-    setJustReset(false)
+    replaceRoster(next)
     setEditing(next.length === 0)
-  }
-
-  const newRound = () => {
-    setPickedThisRound([])
-    setCurrent(null)
-    setJustReset(false)
   }
 
   // Escape closes; handled here so it works in fullscreen (project) mode too.
@@ -122,7 +115,6 @@ function PickerBody({ onClose, lang }) {
     return () => window.removeEventListener('keydown', onKey, true)
   }, [onClose])
 
-  const remaining = noRepeat ? names.length - pickedThisRound.length : names.length
   const allDone = noRepeat && names.length > 0 && remaining === 0
 
   return (
@@ -199,7 +191,7 @@ function PickerBody({ onClose, lang }) {
             <div className="min-h-[9rem] sm:min-h-[11rem] flex flex-col items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 px-4 py-8 text-center">
               {current ? (
                 <div
-                  key={current + pickedThisRound.length}
+                  key={pickCount}
                   className="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 dark:text-white animate-in zoom-in-95 fade-in duration-300 break-words"
                 >
                   {current}
@@ -217,7 +209,7 @@ function PickerBody({ onClose, lang }) {
             </div>
 
             <button
-              onClick={drawStudent}
+              onClick={draw}
               className="mt-6 w-full flex items-center justify-center gap-3 px-6 py-5 rounded-2xl bg-[#1cb0f6] border-b-4 border-[#1899d6] text-white font-black uppercase tracking-widest text-lg sm:text-xl active:border-b-0 active:translate-y-1 transition-all"
             >
               <Shuffle className="w-6 h-6" strokeWidth={3} />
@@ -231,7 +223,7 @@ function PickerBody({ onClose, lang }) {
                 <input
                   type="checkbox"
                   checked={noRepeat}
-                  onChange={(e) => { setNoRepeat(e.target.checked); newRound() }}
+                  onChange={(e) => toggleNoRepeat(e.target.checked)}
                   className="w-4 h-4 accent-[#1cb0f6]"
                 />
                 {pick(lang, 'No repeats until everyone’s had a turn', 'Không lặp lại cho đến khi cả lớp đã được gọi')}

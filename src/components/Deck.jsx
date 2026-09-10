@@ -10,7 +10,9 @@ import {
 import { SafeInlineMath, SafeBlockMath } from '../lib/SafeMath.jsx'
 import { dashboardUnitUrl } from '../lib/dashboardLink.js'
 import WidgetRenderer, { WidgetErrorBoundary } from './WidgetRenderer.jsx'
-import { RandomStudentModal } from './RandomStudent.jsx'
+import { RandomStudentModal, PickButton } from './RandomStudent.jsx'
+import { useStudentPicker } from '../lib/useStudentPicker.js'
+import { recordRecent } from '../lib/recentLessons.js'
 import { useDarkMode } from '../lib/useDarkMode.js'
 import { getLayout } from './layouts/index.js'
 
@@ -28,6 +30,7 @@ export default function Deck({ lesson, course }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [zoomedImage, setZoomedImage] = useState(null)
   const [pickerOpen, setPickerOpen] = useState(false)
+  const picker = useStudentPicker()
   const [lang, setLang] = useState('en')
   const [isDisplayMode, setIsDisplayMode] = useState(false)
   const [isIdle, setIsIdle] = useState(false)
@@ -37,6 +40,9 @@ export default function Deck({ lesson, course }) {
     if (document.fullscreenElement) document.exitFullscreen()
     navigate(`/course/${course.id}`)
   }, [navigate, course.id])
+
+  // Remember this lesson for the home page's "recently opened" strip.
+  useEffect(() => { recordRecent(course, lesson) }, [course, lesson])
 
   useEffect(() => {
     const onFsChange = () => { if (!document.fullscreenElement) setIsDisplayMode(false) }
@@ -106,10 +112,16 @@ export default function Deck({ lesson, course }) {
       else if (e.key === 'ArrowLeft') { if (navLocked) return; e.preventDefault(); handlePrev() }
       else if (e.key === 'Escape' && zoomedImage) setZoomedImage(null)
       else if (e.key.toLowerCase() === 'f') { e.preventDefault(); toggleDisplayMode() }
+      // R draws a random student, same as the Pick button; a fresh machine
+      // with no list yet opens the editor instead.
+      else if (e.key.toLowerCase() === 'r' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        e.preventDefault()
+        if (!picker.draw()) setPickerOpen(true)
+      }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [handleNext, handlePrev, toggleDisplayMode, zoomedImage, navLocked, pickerOpen])
+  }, [handleNext, handlePrev, toggleDisplayMode, zoomedImage, navLocked, pickerOpen, picker])
 
   if (!slides.length) {
     return (
@@ -416,7 +428,7 @@ export default function Deck({ lesson, course }) {
               ))}
             </div>
           )}
-          <button onClick={() => setPickerOpen(true)} className="p-2 rounded-xl bg-white/10 text-white hover:bg-white/20" title="Pick a random student"><Users className="w-5 h-5" strokeWidth={2.5} /></button>
+          <PickButton picker={picker} lang={lang} onManage={() => setPickerOpen(true)} tone="dark" large />
           <button onClick={toggleDisplayMode} className="p-2 rounded-xl bg-white/10 text-slate-300 hover:bg-rose-500 hover:text-white" title="Exit (Esc)"><Minimize2 className="w-5 h-5" strokeWidth={2.5} /></button>
           <button onClick={handleNext} className="p-2 rounded-xl bg-[#58cc02] text-white hover:bg-[#46a802] ml-0.5"><ChevronRight className="w-5 h-5" strokeWidth={3} /></button>
         </div>
@@ -436,18 +448,15 @@ export default function Deck({ lesson, course }) {
             </button>
             <div className="flex items-center gap-2 sm:gap-4">
               {langToggle(false)}
-              <button onClick={() => setPickerOpen(true)} className="flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 hover:text-[#1cb0f6] transition-all border-2 border-slate-200 dark:border-slate-700 active:scale-95" title="Pick a random student">
-                <Users className="w-5 h-5 sm:mr-2" strokeWidth={2.5} />
-                <span className="hidden sm:inline text-xs font-black uppercase tracking-widest">Pick</span>
-              </button>
+              <PickButton picker={picker} lang={lang} onManage={() => setPickerOpen(true)} />
               <button onClick={toggleDisplayMode} className="hidden md:flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 hover:text-[#1cb0f6] transition-all border-2 border-slate-200 dark:border-slate-700 active:scale-95" title="Project to TV (F)">
                 <MonitorPlay className="w-5 h-5 mr-2" strokeWidth={2.5} />
-                <span className="text-xs font-black uppercase tracking-widest">Project</span>
+                <span className="text-xs font-black uppercase tracking-widest whitespace-nowrap">Project</span>
               </button>
               {lesson.plan && (
                 <button onClick={() => navigate(`/plan/${course.id}/${lesson.slug}`)} className="hidden lg:flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 hover:text-[#8b5cf6] transition-all border-2 border-slate-200 dark:border-slate-700 active:scale-95" title="Teacher lesson plan">
                   <FileText className="w-5 h-5 mr-2" strokeWidth={2.5} />
-                  <span className="text-xs font-black uppercase tracking-widest">Plan</span>
+                  <span className="text-xs font-black uppercase tracking-widest whitespace-nowrap">Plan</span>
                 </button>
               )}
               {/* The self-study twin on the Dashboard. Hidden in project mode
@@ -456,7 +465,7 @@ export default function Deck({ lesson, course }) {
               {dashboardUnitUrl(lesson.dashboard) && (
                 <a href={dashboardUnitUrl(lesson.dashboard)} target="_blank" rel="noopener noreferrer" className="hidden lg:flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 hover:text-[#58cc02] transition-all border-2 border-slate-200 dark:border-slate-700 active:scale-95" title="Self-study version on the Dashboard">
                   <Rocket className="w-5 h-5 mr-2" strokeWidth={2.5} />
-                  <span className="text-xs font-black uppercase tracking-widest">Self-study</span>
+                  <span className="text-xs font-black uppercase tracking-widest whitespace-nowrap">Self-study</span>
                 </a>
               )}
             </div>
@@ -470,7 +479,7 @@ export default function Deck({ lesson, course }) {
       )}
 
       {/* Random-student picker (roster saved per-device; works in project mode) */}
-      <RandomStudentModal open={pickerOpen} onClose={() => setPickerOpen(false)} lang={lang} />
+      <RandomStudentModal open={pickerOpen} onClose={() => setPickerOpen(false)} lang={lang} picker={picker} />
 
       {/* Zoom modal */}
       {zoomedImage && (
