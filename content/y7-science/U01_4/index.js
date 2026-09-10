@@ -12,6 +12,8 @@ export default {
     title: 'Cells, Tissues and Organs',
     objective: 'Explain the words tissue, organ, organ system and organism, and put a real example on every rung of the ladder from a single cell up to a whole living thing.',
     order: 4,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_SCI', unit: 'U01_4' },
   },
   slides,
   plan,

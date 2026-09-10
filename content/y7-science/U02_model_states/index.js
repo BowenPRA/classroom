@@ -15,6 +15,8 @@ export default {
     title: 'Heating & Cooling: A Particle Model',
     objective: 'An interactive model for section 2.2: change the temperature of ice, mercury, oxygen or iron and watch it melt, evaporate, boil, condense and freeze — with the particle arrangement shown beside the beaker, and every transition temperature marked on a temperature axis.',
     order: 8.5,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_SCI', unit: 'U02_2' },
   },
   slides,
   plan,

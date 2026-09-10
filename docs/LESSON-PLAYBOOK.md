@@ -324,3 +324,31 @@ mid-deck and crashing when the second deck was shorter. Fixed with a `key` on
 - [ ] Every image is in `CREDITS.json` with an honest licence
 - [ ] `plan.js` matches the deck
 - [ ] Committed to `main`; deployed; **live URL confirmed serving the new bundle**
+
+
+## 9. The Dashboard twin
+
+Every Year 7 lesson here has (or will have) a self-study twin in the Dashboard
+repo (`C:\Users\bowen\Dashboard`, live at bowenpra.github.io/Dashboard): the
+same section rebuilt for a student working alone, with scored check questions,
+vocabulary audio, a cloze reading, marked questions and a quiz. The classroom
+deck is the source; the Dashboard unit is its reduction, built once the deck has
+survived a lesson.
+
+The two are linked in both directions, and the link is added on both sides in
+the same commit or on neither:
+
+- **Here:** `meta.dashboard: { track: 'Y7_SCI', unit: 'U02_1' }` in the
+  lesson's `index.js`. The course page and the deck toolbar render it as a
+  **Self-study** link (`src/lib/dashboardLink.js`). A lesson that two Dashboard
+  units share does not exist; a Dashboard unit that absorbs two lessons
+  (Science 2.1 = `U02_1a` + `U02_1b`) is pointed to by both.
+- **There:** `meta.classroom: [{ course, slug, title }]` in the unit's
+  `data.js`, rendered on the unit card as "From the classroom".
+
+Keep the sequences within one section of each other: teach the deck, build the
+unit, then write the next deck. The rules for the reduction — what folds, what
+moves to the workbook, what goes, why Learner's Book scans never ship — are in
+the Dashboard repo: `docs/classroom-dashboard-pairing.md`. A bare section
+number in a request means a *lesson* here when a deck is being asked for and a
+*unit* there when a task is; if it could be either, say which reading you took.

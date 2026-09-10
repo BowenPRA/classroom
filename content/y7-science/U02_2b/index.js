@@ -16,6 +16,8 @@ export default {
     title: 'Measuring, and Heating Water',
     objective: 'Measure the volume of a liquid with a measuring cylinder (read the bottom of the meniscus at eye level) and a temperature with a thermometer (read the top of the liquid at eye level); plan and carry out the heating-water investigation safely; plot temperature against time; and describe the result — the temperature rises, then stays the same at the boiling point.',
     order: 8,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_SCI', unit: 'U02_2' },
   },
   slides,
   plan,

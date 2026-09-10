@@ -12,6 +12,8 @@ export default {
     objective:
       'Choose a letter to represent a number you cannot count, leave an expression such as c − 50 unfinished without thinking it is wrong, write 3 × s as 3s, and read the English that decides the answer — "h less than t" is written t − h, "subtract 4" is not "subtract from 4", and "subtract the result from 25" is 25 − 3n.',
     order: 7,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_MATH', unit: 'U02_1' },
   },
   slides,
   plan,

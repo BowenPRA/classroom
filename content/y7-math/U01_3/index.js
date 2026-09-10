@@ -12,6 +12,8 @@ export default {
     title: 'Lowest Common Multiples',
     objective: 'Find the common multiples and the lowest common multiple (LCM) of two numbers by listing, and know that "common" in maths means shared, not ordinary — and that the LCM is usually smaller than the two numbers multiplied together.',
     order: 3,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_MATH', unit: 'U01_3' },
   },
   slides,
   plan,

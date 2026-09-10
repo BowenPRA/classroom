@@ -12,6 +12,8 @@ export default {
     title: 'Multiplying & Dividing Integers',
     objective: 'Multiply and divide integers using the four sign rules, and know why "two negatives make a positive" is true for × and ÷ but not for +.',
     order: 2,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_MATH', unit: 'U01_2' },
   },
   slides,
   plan,

@@ -12,6 +12,8 @@ export default {
     title: 'Cells: The Building Blocks of Life',
     objective: 'Define a cell and its organelles, compare animal and plant cells, and explain how microscopes let us see them.',
     order: 1,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_SCI', unit: 'U01_1' },
   },
   slides,
   plan,

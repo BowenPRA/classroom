@@ -26,6 +26,9 @@ const lessons = Object.entries(modules).map(([path, mod]) => {
     // its course page, but stays reachable at its direct URL. Use it to retire
     // a lesson without deleting it — see content/y7-science/U00_1.
     hidden: meta.hidden === true,
+    // The self-study twin on the Dashboard, `{ track, unit }` — see
+    // src/lib/dashboardLink.js. Null for a lesson with no unit built yet.
+    dashboard: meta.dashboard || null,
     slides: data.slides || [],
     plan: data.plan || null,
   }

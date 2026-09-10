@@ -17,6 +17,8 @@ export default {
     title: 'Changes of State',
     objective: 'Name the five changes of state (melting, freezing, evaporation, boiling and condensation), say each as a journey from one state to another, use the doing word (verb) and naming word (noun) for each, distinguish evaporating from boiling, and give the melting point and boiling point of water.',
     order: 7,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_SCI', unit: 'U02_2' },
   },
   slides,
   plan,

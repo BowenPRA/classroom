@@ -16,6 +16,8 @@ export default {
     title: 'Particle Theory',
     objective: 'Describe how particles are arranged in solids, liquids and gases, and use that one idea to explain why a liquid pours and a solid does not, why only a gas can be compressed, and what a vacuum is — then find a real weakness in the theory.',
     order: 6,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_SCI', unit: 'U02_1' },
   },
   slides,
   plan,

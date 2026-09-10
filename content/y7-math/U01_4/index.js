@@ -12,6 +12,8 @@ export default {
     title: 'Highest Common Factors',
     objective: 'Find the common factors and the highest common factor (HCF) of two numbers by listing, tell a factor apart from a multiple, and know why the book asks for the highest factor but the lowest multiple — one list stops and the other never does.',
     order: 4,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_MATH', unit: 'U01_4' },
   },
   slides,
   plan,

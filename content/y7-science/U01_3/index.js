@@ -12,6 +12,8 @@ export default {
     title: 'Specialised Cells: Built for the Job',
     objective: 'Name three specialised animal cells and two specialised plant cells, and explain how the structure of each is adapted to carry out its function — the idea that a cell\'s shape fits its job.',
     order: 3,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_SCI', unit: 'U01_3' },
   },
   slides,
   plan,

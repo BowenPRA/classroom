@@ -1,8 +1,9 @@
 import { Link, useParams, Navigate } from 'react-router-dom'
-import { ArrowLeft, ChevronRight, FileText, Presentation } from 'lucide-react'
+import { ArrowLeft, ChevronRight, FileText, Presentation, Rocket } from 'lucide-react'
 import SiteHeader from '../components/SiteHeader.jsx'
 import { getCourse } from '../../content/registry.js'
 import { CourseIcon } from '../lib/courseIcons.js'
+import { dashboardUnitUrl } from '../lib/dashboardLink.js'
 
 export default function CoursePage() {
   const { courseId } = useParams()
@@ -54,6 +55,13 @@ export default function CoursePage() {
                     <Link to={`/plan/${course.id}/${lesson.slug}`} title="Teacher lesson plan" className="flex items-center px-4 border-l-2 border-slate-100 dark:border-slate-800 text-slate-400 hover:text-[#8b5cf6] hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
                       <FileText className="w-5 h-5" strokeWidth={2.5} />
                     </Link>
+                  )}
+                  {/* The self-study twin: the same section on the Dashboard,
+                      for a student catching up or practising at home. */}
+                  {dashboardUnitUrl(lesson.dashboard) && (
+                    <a href={dashboardUnitUrl(lesson.dashboard)} target="_blank" rel="noopener noreferrer" title="Self-study version on the Dashboard" className="flex items-center px-4 border-l-2 border-slate-100 dark:border-slate-800 text-slate-400 hover:text-[#58cc02] hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                      <Rocket className="w-5 h-5" strokeWidth={2.5} />
+                    </a>
                   )}
                 </div>
               </li>

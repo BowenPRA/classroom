@@ -16,6 +16,8 @@ export default {
     title: 'Solids, Liquids and Gases',
     objective: 'Sort any substance into solid, liquid or gas by testing its properties rather than by how it looks, list the properties of each state, and use the words hypothesis and theory the way a scientist does.',
     order: 5,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_SCI', unit: 'U02_1' },
   },
   slides,
   plan,

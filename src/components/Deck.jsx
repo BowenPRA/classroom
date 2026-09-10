@@ -4,10 +4,11 @@ import {
   ChevronRight, ChevronLeft, BookOpen, Scale, Target, MessageSquare,
   ShieldCheck, CheckCircle2, Maximize2, X, Pencil, MonitorPlay, Minimize2,
   Repeat, AlertTriangle, UserCheck, HelpCircle, Equal, Scissors, Users,
-  Sun, Moon, ArrowLeft, FileText,
+  Sun, Moon, ArrowLeft, FileText, Rocket,
 } from 'lucide-react'
 
 import { SafeInlineMath, SafeBlockMath } from '../lib/SafeMath.jsx'
+import { dashboardUnitUrl } from '../lib/dashboardLink.js'
 import WidgetRenderer, { WidgetErrorBoundary } from './WidgetRenderer.jsx'
 import { RandomStudentModal } from './RandomStudent.jsx'
 import { useDarkMode } from '../lib/useDarkMode.js'
@@ -448,6 +449,15 @@ export default function Deck({ lesson, course }) {
                   <FileText className="w-5 h-5 mr-2" strokeWidth={2.5} />
                   <span className="text-xs font-black uppercase tracking-widest">Plan</span>
                 </button>
+              )}
+              {/* The self-study twin on the Dashboard. Hidden in project mode
+                  with the rest of the toolbar; a teacher-side shortcut, and the
+                  place to send a student who missed the lesson. */}
+              {dashboardUnitUrl(lesson.dashboard) && (
+                <a href={dashboardUnitUrl(lesson.dashboard)} target="_blank" rel="noopener noreferrer" className="hidden lg:flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 hover:text-[#58cc02] transition-all border-2 border-slate-200 dark:border-slate-700 active:scale-95" title="Self-study version on the Dashboard">
+                  <Rocket className="w-5 h-5 mr-2" strokeWidth={2.5} />
+                  <span className="text-xs font-black uppercase tracking-widest">Self-study</span>
+                </a>
               )}
             </div>
             <button onClick={handleNext} className={`flex items-center px-5 sm:px-8 py-3 sm:py-4 rounded-xl font-black text-sm sm:text-lg tracking-widest uppercase transition-all border-b-4 active:border-b-0 active:translate-y-1 ${currentIndex === slides.length - 1 ? 'bg-[#58cc02] border-[#58a700] text-white hover:bg-[#46a802]' : 'bg-[#1cb0f6] border-[#1899d6] text-white hover:bg-[#159bd9]'}`}>

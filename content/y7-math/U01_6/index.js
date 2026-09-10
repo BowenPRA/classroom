@@ -12,6 +12,8 @@ export default {
     title: 'Square Roots & Cube Roots',
     objective: 'Square and cube a number, find square roots and cube roots from a learned list, and know that rooting is squaring or cubing run backwards — one idea, taught twice — plus the word "consecutive", which the exercise uses without ever explaining it.',
     order: 6,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_MATH', unit: 'U01_6' },
   },
   slides,
   plan,
