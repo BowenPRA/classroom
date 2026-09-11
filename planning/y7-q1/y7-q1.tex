@@ -1,0 +1,1497 @@
+% planning/y7-q1/y7-q1.tex
+%
+% Year 7 Mathematics & Science -- lesson plan, Quarter 1 (from 4 August 2026).
+% One week block is appended each Friday; Week 6 is the latest.
+% Build with:  pwsh .claude/skills/weekly-plan/scripts/build-plan.ps1 y7-q1
+%
+% Structure, and it is the same for every week:
+%   week overview page   -- at a glance, plus every live link for the week
+%   parent update page   -- the Friday post, as it went out
+%   one page per weekday -- the four-column table, one day per page, always
+%
+% Weeks 1 and 2 were transcribed from the Word plan; every week since was
+% written here first, from the lessons' own plan.js files. Keep the ASCII rule: no literal
+% en dashes, curly quotes, minus signs or times signs in this file. Use --,
+% `` '', \tminus and \ttimes. See ../plan-style.tex.
+
+\documentclass[11pt]{article}
+\input{../plan-style.tex}
+
+\hypersetup{
+  pdftitle={Year 7 Mathematics and Science -- Lesson Plan, Quarter 1},
+  pdfauthor={Mr Bowen},
+  pdfsubject={Cambridge Lower Secondary Stage 7 -- weekly lesson plan},
+}
+
+\begin{document}
+
+% =============================================================================
+% TITLE
+% =============================================================================
+\thispagestyle{empty}
+\pdfbookmark[0]{Title}{title}
+\vspace*{1.6cm}
+\begin{center}
+  {\Huge\bfseries\color{cbteal}Year 7 Mathematics \& Science}\par\vspace{10pt}
+  {\LARGE\bfseries\color{black!70}Lesson Plan \sep Quarter 1, Weeks 1--6}\par\vspace{6pt}
+  {\Large\color{black!55}4 August -- 11 September 2026}\par\vspace{22pt}
+  \hbox to 12cm{\color{cbteal!40}\leaders\hrule height 1.6pt\hfill}\par\vspace{20pt}
+  {\large\color{black!70}Mr Bowen \sep Cambridge Lower Secondary, Stage 7}\par
+\end{center}
+
+\vspace{20pt}
+\begin{center}
+\begin{minipage}{17cm}
+\small
+{\bfseries\color{cborange}\ding{228}~How to use this document}\par\vspace{6pt}
+Every coloured entry is a live link. The contents page jumps to any week or
+day; \textcolor{cbblue}{blue} links open the deployed site --- the slides the
+class saw, the one-page teacher plan, or the homework shelf.\par\vspace{5pt}
+Each week is one overview page (the week at a glance, every link, and the
+Friday parent update as it went out) followed by one page per teaching day,
+so a single day can be printed and written on. Orange boxes are notes to the
+teacher, never part of a post.\par\vspace{5pt}
+Timetable: Science 8:45--9:35, Mathematics 10:45--11:35.
+\end{minipage}
+\end{center}
+
+% =============================================================================
+% CONTENTS
+% =============================================================================
+\clearpage
+\phantomsection\label{toc}
+\pdfbookmark[0]{Contents}{contents}
+\planheading{cbteal}{Contents}
+
+\begin{multicols}{2}
+\small
+
+\tocweek{w1}{Week 1 \sep 4--7 August 2026}
+\tocline{w1}{Overview and links}
+\tocline{w1ann}{Parent update -- Friday 7 August}
+\tocline{w1d1}{Tuesday 4 August}
+\tocline{w1d2}{Wednesday 5 August}
+\tocline{w1d3}{Thursday 6 August}
+\tocline{w1d4}{Friday 7 August}
+
+\tocweek{w2}{Week 2 \sep 10--14 August 2026}
+\tocline{w2}{Overview and links}
+\tocline{w2ann}{Parent update -- Friday 14 August}
+\tocline{w2d1}{Monday 10 August}
+\tocline{w2d2}{Tuesday 11 August}
+\tocline{w2d3}{Wednesday 12 August}
+\tocline{w2d4}{Thursday 13 August}
+\tocline{w2d5}{Friday 14 August}
+
+\tocweek{w3}{Week 3 \sep 17--21 August 2026}
+\tocline{w3}{Overview and links}
+\tocline{w3ann}{Parent update -- Friday 21 August}
+\tocline{w3d1}{Monday 17 August}
+\tocline{w3d2}{Tuesday 18 August}
+\tocline{w3d3}{Wednesday 19 August}
+\tocline{w3d4}{Thursday 20 August}
+\tocline{w3d5}{Friday 21 August}
+
+\tocweek{w4}{Week 4 \sep 24--28 August 2026}
+\tocline{w4}{Overview and links}
+\tocline{w4ann}{Parent update -- Friday 28 August}
+\tocline{w4d1}{Monday 24 August}
+\tocline{w4d2}{Tuesday 25 August}
+\tocline{w4d3}{Wednesday 26 August}
+\tocline{w4d4}{Thursday 27 August}
+\tocline{w4d5}{Friday 28 August}
+
+\tocweek{w5}{Week 5 \sep 31 August--4 September 2026}
+\tocline{w5}{Overview and links}
+\tocline{w5ann}{Parent update -- Friday 4 September}
+\tocline{w5d1}{Thursday 3 September}
+\tocline{w5d2}{Friday 4 September}
+
+\tocweek{w6}{Week 6 \sep 7--11 September 2026}
+\tocline{w6}{Overview and links}
+\tocline{w6ann}{Parent update -- Friday 11 September}
+\tocline{w6d1}{Monday 7 September}
+\tocline{w6d2}{Tuesday 8 September}
+\tocline{w6d3}{Wednesday 9 September}
+\tocline{w6d4}{Thursday 10 September}
+\tocline{w6d5}{Friday 11 September}
+
+\end{multicols}
+
+% #############################################################################
+% WEEK 1
+% #############################################################################
+\clearpage
+\renewcommand{\currentweek}{Week 1 \sep 4--7 August}
+
+\begin{weekoverview}{w1}{Week 1}{4--7 August 2026}
+\glancerow{w1d1}{Tuesday 4}
+  {Day One. Stage 6 topics that return in Stage 7; using a Table of Contents.}
+  {Day One. Class expectations, the weekly schedule, setting up equipment.}
+\glancerow{w1d2}{Wednesday 5}
+  {Unit 1.1 Plant cells, Part 1 --- cell, organelle, and the scale of a cell.}
+  {Stage 6 diagnostic --- baseline of what carries over from Year 6.}
+\glancerow{w1d3}{Thursday 6}
+  {Unit 1.1 Plant cells, Part 2 --- the organelles, and what a microscope does.}
+  {Unit 1.1 Adding and subtracting integers.}
+\glancerow{w1d4}{Friday 7}
+  {Consolidating 1.1 --- Workbook, and the scale-of-a-cell video.}
+  {Consolidating 1.1 --- Workbook, then Around the World.}
+\end{weekoverview}
+
+\begin{weeklinks}
+\linkline{\slidelink{y7-science/U00_1}{Day One: Welcome to Year 7}}
+\linkline{\slidelink{y7-science/U01_1}{Science 1.1 Cells}}
+\linkline{\planlink{y7-science/U01_1}{Science 1.1}}
+\linkline{\slidelink{y7-math/U01_1}{Maths 1.1 Adding \& Subtracting Integers}}
+\linkline{\planlink{y7-math/U01_1}{Maths 1.1}}
+\linkline{Homework: \hwlink{Packet 1 \sep Integers and Cells} --- out Thursday
+  6 August, due Monday 10 August.}
+\end{weeklinks}
+
+\annstart{w1ann}{Friday 7 August}
+\begin{annbody}
+
+Welcome to our Google Classroom! I'll post a short update here every Friday, so
+you always know what we covered that week, what's coming up next, and what
+homework is due --- all in the post itself, so there's nothing else to open.
+
+\annsec{Family notebooks}
+
+Every student carries a Family Notebook home. It holds their homework and any
+notes from me, so please look through it with your child each week and sign it.
+The Friday post and the notebook say the same thing --- just one on the screen
+and one on paper.
+
+\annsec{This week}
+
+\annsub{Science --- Unit 1.1: Cells, The Building Blocks of Life}
+We learned that every living thing is made of cells, that cells are too small to
+see without a microscope, and the names of the main parts inside one.\par
+\vspace{3pt}\slidelinkfull{y7-science/U01_1}{Science 1.1 Cells}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-science/U01\_1}
+
+\annsub{Maths --- Unit 1.1: Adding and Subtracting Integers}
+We added and subtracted positive and negative numbers on a number line, and
+practised turning an English sentence into a calculation.\par
+\vspace{3pt}\slidelinkfull{y7-math/U01_1}{Maths 1.1 Adding \& Subtracting Integers}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-math/U01\_1}
+
+\vspace{5pt}
+These links open the same slides we used in class. Students can click through
+them at home to review.
+
+\annsec{Next week}
+
+\annsub{Science}
+Animal cells, then specialised cells --- cells with a special shape for a
+special job, like a red blood cell or a root hair cell.
+
+\annsub{Maths}
+Multiplying and dividing negative numbers (the sign rules), then factors ---
+the numbers that divide exactly into another number.
+
+\vspace{5pt}
+I'll post these links in next Friday's update.
+
+\annsec{Homework}
+
+Every student was given a paper homework packet on Thursday. It is due
+\textbf{Monday}, at the start of class.
+\par\vspace{4pt}
+\hwlink{Packet 1 \sep Integers and Cells}
+\par\vspace{4pt}
+The packet has short notes at the top of each section to remind students what
+to do, and students can take their notebooks home too if they want extra help
+--- our class notes cover everything in the packet. Please make sure it comes
+back to school on Monday, and if your child has lost theirs, just let me know
+and I'll print another one.
+
+\vspace{8pt}
+Thank you,\par
+Mr Bowen
+
+\end{annbody}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w1d1}{Tuesday}{4 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Recognising Stage 6 topics that return in Stage 7.}
+   \li{Using a Table of Contents to find a topic in the Learner's Book.}}
+  {\li{Model reading the Contents page from the front --- unit, topic, page
+      number.}
+   \li{Groups scan the Year 7 Contents and pick out topics they already met in
+      Year 6.}
+   \li{Poster: the topic name, its page number, and what they already know
+      about it.}
+   \li{Posters shared with the room at the end.}}
+  {\li{Poster gives a correct topic with its correct page number.}
+   \li{Students can open the book to a named topic without help.}
+   \li{Prior knowledge is written in full sentences.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Class expectations, the weekly schedule, and setting up equipment.}
+   \li{Students can explain the expectations at home.}}
+  {\li{\slidelink{y7-science/U00_1}{Day One, from ``Your Week, Every Week''}}
+   \li{Timetable slide --- class reads the four times back: 8:00 arrival, 8:30
+      homeroom, 8:45 Science, 10:45 Mathematics.}
+   \li{Expectation letter, seven sections, students following on their own
+      printed copy.}
+   \li{Distribute supplies: binder, folder, three sleeves, Learner's Book.}
+   \li{Set up: names on binder and folder; sleeves labelled Maths / Science /
+      English; letter at the very front; taped name on the Learner's Book.}}
+  {\li{Hold-it-up check --- all six items correct, checked from the front of
+      the room.}
+   \li{Students can state their two lesson times and where the phone goes on
+      arrival.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w1d2}{Wednesday}{5 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Unit 1.1 Plant cells, Part 1.}
+   \li{Define a cell and an organelle, and describe how small a cell is.}}
+  {\li{\slidelink{y7-science/U01_1}{Unit 1.1 Cells, Part 1, up to ``Parts of a
+      Plant Cell''}}
+   \li{Starter: one full sentence describing how small a cell is.}
+   \li{Soda Can Challenge --- guesses first, then the numbers: 0.02\,mm to
+      120\,mm, scale factor 6000, Mr Bowen at 10.68\,km against Everest at
+      8.85\,km.}
+   \li{Copy the definition of ``cell''; Latin \textit{cella}, the prison cell,
+      Hooke's cork drawing.}
+   \li{Leaf micrograph --- what are the little green circles?}
+   \li{Organelle analogy, then the interactive cell diagram.}
+   \li{Draw This: the plant cell from p.\,9, all seven labels.}}
+  {\li{Scale factor and the 10.68\,km answer worked out correctly on paper.}
+   \li{Definitions of ``cell'' and ``organelle'' copied into notebooks.}
+   \li{Labelled plant-cell drawing with all seven labels.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Stage 6 diagnostic --- baseline of what students carry over from
+      Year 6.}}
+  {\li{Papers face down, 40 minutes, silence.}
+   \li{Hands up to have a word READ aloud --- never explained.}
+   \li{Students who finish early return to yesterday's science posters.}
+   \li{Marked tonight so Thursday can be pitched to it.}}
+  {\li{Marked diagnostic paper for every student.}
+   \li{Gaps recorded by strand; used to set the pace for Quarter 1.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w1d3}{Thursday}{6 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Unit 1.1 Plant cells, Part 2.}
+   \li{Name the shared and plant-only organelles and their jobs; explain what a
+      microscope does and what a model cannot show.}}
+  {\li{\slidelink{y7-science/U01_1}{Unit 1.1 Cells, Part 2, from ``Every Cell
+      Has These Four''}}
+   \li{The four organelles every cell has.}
+   \li{Plant-only extras: cell wall, cellulose and sap vacuole; then chloroplast
+      and chlorophyll, with real onion and pondweed.}
+   \li{Plant and animal cells side by side.}
+   \li{Draw This: the labelled microscope from p.\,10; copy ``microscope'' and
+      walk the light path.}
+   \li{The electron microscope; models and their limitations.}
+   \li{Begin Workbook 1.1, pages 2--3.}}
+  {\li{13 definitions and 2 labelled drawings in the notebook.}
+   \li{Students can say which organelles only plants have.}
+   \li{Workbook 1.1 pp.\,2--3 started.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 1.1 Adding and subtracting integers.}
+   \li{Move both ways along the number line, including subtracting a negative,
+      and turn an English sentence into a calculation.}}
+  {\li{\slidelink{y7-math/U01_1}{Maths 1.1 Adding \& Subtracting Integers}}
+   \li{Team game: name the negatives against a 2-minute timer, duplicates
+      crossed off both lists.}
+   \li{Draw This: the number line. Copy ``integer'' and ``inverse''.}
+   \li{``Negative five'' against ``minus five'' --- the same dash doing two
+      jobs.}
+   \li{Jumper widget: pairs say which way the arrow will go before the button
+      is pressed.}
+   \li{Up-words and down-words, with the sentence patterns.}
+   \li{``Subtract 5 from 8'' and ``the difference between \tminus3 and 4'' ---
+      hint, wrong answers out loud, then reveal.}
+   \li{Word problems on mini-whiteboards: car park, bank account, research
+      station, snail.}}
+  {\li{8 \tminus\ 5 = 3 given with the reason --- ``from'' marks the number you
+      start at.}
+   \li{Difference between \tminus3 and 4 is 7, while \tminus3 \tminus\ 4 is
+      \tminus7.}
+   \li{Calculation written down before the answer on every word problem.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w1d4}{Friday}{7 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Consolidating Unit 1.1 independently.}
+   \li{Picturing the scale of a cell.}}
+  {\li{Workbook 1.1 --- continue and complete, circulating and supporting.}
+   \li{Kurzgesagt video: what a cell would be like scaled up enormously.}
+   \li{Link the video back to Wednesday's soda-can number.}}
+  {\li{Completed Workbook 1.1 section, marked.}
+   \li{Students describe one thing the video showed that a drawing cannot.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Consolidating adding and subtracting integers.}
+   \li{Recall at speed.}}
+  {\li{Workbook 1.1 --- pages taken from the class folders, worked
+      independently.}
+   \li{``Around the World'' with integer questions if time allows.}}
+  {\li{Completed Workbook 1.1 pages.}
+   \li{Correct answers at speed in Around the World.}}
+\end{daypage}
+
+% #############################################################################
+% WEEK 2
+% #############################################################################
+% \clearpage before the \renewcommand, always: the header is read at shipout,
+% so renewing the week name while the previous page is still open stamps the
+% NEXT week's name on it.
+\clearpage
+\renewcommand{\currentweek}{Week 2 \sep 10--14 August}
+
+\begin{weekoverview}{w2}{Week 2}{10--14 August 2026}
+\glancerow{w2d1}{Monday 10}
+  {Peer-review Homework Packet 1 --- marking a classmate's work.}
+  {Unit 1.2 Multiplying \& Dividing Integers, Day 1 --- the four sign rules.}
+\glancerow{w2d2}{Tuesday 11}
+  {Unit 1.2 Animal Cells --- and how they differ from plant cells.}
+  {Unit 1.2, Day 2 --- brackets first, and estimating.}
+\glancerow{w2d3}{Wednesday 12}
+  {Unit 1.3 Specialised Cells, Day 1 --- the three animal cells.}
+  {Unit 1.3 Lowest Common Multiples, Day 1.}
+\glancerow{w2d4}{Thursday 13}
+  {Unit 1.3, Day 2 --- the two plant cells; the structure--function table.}
+  {Unit 1.3, Day 2 --- the ``don't just multiply'' trap; word problems.}
+\glancerow{w2d5}{Friday 14}
+  {Consolidating 1.2 and 1.3 --- Workbook, independent practice.}
+  {Jeopardy review game --- Unit 1.1 to 1.3 in teams.}
+\end{weekoverview}
+
+\begin{weeklinks}
+\linkline{\slidelink{y7-science/U01_2}{Science 1.2 Animal Cells}}
+\linkline{\planlink{y7-science/U01_2}{Science 1.2}}
+\linkline{\slidelink{y7-science/U01_3}{Science 1.3 Specialised Cells}}
+\linkline{\planlink{y7-science/U01_3}{Science 1.3}}
+\linkline{\slidelink{y7-math/U01_2}{Maths 1.2 Multiplying \& Dividing Integers}}
+\linkline{\planlink{y7-math/U01_2}{Maths 1.2}}
+\linkline{\slidelink{y7-math/U01_3}{Maths 1.3 Lowest Common Multiples}}
+\linkline{\planlink{y7-math/U01_3}{Maths 1.3}}
+\linkline{\slidelink{games/G02_jeopardy}{Jeopardy --- Friday's review game}}
+\linkline{Homework: \hwlink{Packet 2 \sep Signs, Multiples and Cells} --- out
+  Thursday 13 August, due Monday 17 August.}
+\end{weeklinks}
+
+\annstart{w2ann}{Friday 14 August}
+
+\begin{annbody}
+
+\annsec{This week}
+
+\annsub{Science --- Unit 1.2: Animal Cells, What You Are Made Of}
+We named the parts of an animal cell and compared them with plant cells. The
+main thing to remember: animal cells have no cell wall and no chloroplasts, so
+they're soft and can't make their own food.\par
+\vspace{3pt}\slidelinkfull{y7-science/U01_2}{Science 1.2 Animal Cells}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-science/U01\_2}
+
+\annsub{Science --- Unit 1.3: Specialised Cells, Built for the Job}
+We looked at cells with a special shape for a special job --- red blood cells,
+nerve cells, root hair cells --- and practised saying why the shape helps:
+``It is adapted to \ldots\ because it has \ldots''\par
+\vspace{3pt}\slidelinkfull{y7-science/U01_3}{Science 1.3 Specialised Cells}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-science/U01\_3}
+
+\annsub{Maths --- Unit 1.2: Multiplying \& Dividing Integers}
+We learned the four sign rules. The trap we spent time on: two negatives make a
+positive when you multiply or divide, but not when you add. \tminus3 +
+\tminus4 is \tminus7, not 7.\par
+\vspace{3pt}\slidelinkfull{y7-math/U01_2}{Maths 1.2 Multiplying \& Dividing Integers}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-math/U01\_2}
+
+\annsub{Maths --- Unit 1.3: Lowest Common Multiples}
+We listed multiples, found the ones two numbers share, and picked the lowest.
+``Common'' in maths means shared, not ordinary.\par
+\vspace{3pt}\slidelinkfull{y7-math/U01_3}{Maths 1.3 Lowest Common Multiples}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-math/U01\_3}
+
+\vspace{5pt}
+These links open the same slides we used in class. Students can click through
+them at home to review.
+
+\annsec{New: labs start Thursday}
+
+Starting Thursday 20 August, Year 7 will have a science lab every Thursday
+morning.
+
+\vspace{4pt}
+Our first lab is a Safety and Skills Lab. Before we do any real experiments,
+students need to know the rules of the room and how to handle the equipment, so
+we'll go through the safety rules, what to do if something spills or breaks, and
+how to measure accurately.
+
+\annsec{Next week}
+
+\annsub{Science}
+Cells, tissues and organs (1.4). How cells of the same kind group into tissues,
+tissues into organs, and organs into systems --- the heart, the lungs, the
+stomach. This finishes Unit 1, so we will also review the whole unit before the
+Unit 1 check.
+
+\annsub{Maths}
+Highest common factors (1.4), then tests for divisibility (1.5). Factors are the
+numbers that divide exactly into another number. Then some quick tricks for
+checking whether a big number divides by 3, 4, 9 or 11 without doing the
+division.
+
+\vspace{5pt}
+I'll post these links in next Friday's update.
+
+\annsec{Homework}
+
+Homework Packet 2 went home on Thursday. It is due \textbf{Monday}, at the start
+of class, and covers everything above --- the sign rules, multiples and the LCM,
+plant and animal cells, and specialised cells.
+\par\vspace{4pt}
+\hwlink{Packet 2 \sep Signs, Multiples and Cells}
+\par\vspace{4pt}
+Each section has short notes at the top to remind students what to do. Students
+can take their notebooks home for extra help too --- our class notes cover
+everything in the packet. If your child has lost theirs, let me know and I'll
+print another one.
+
+\annsec{Family notebooks}
+
+Please look through the notebook with your child this week and sign it. The
+Friday post and the notebook say the same thing, just one on the screen and one
+on paper.
+
+\vspace{8pt}
+Thank you,\par
+Mr Bowen
+
+\end{annbody}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w2d1}{Monday}{10 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Peer-review Homework Packet 1 (Cells).}
+   \li{Give accurate, kind feedback on another student's work.}}
+  {\li{Hand the packets out so each student marks a classmate's copy --- never
+      their own.}
+   \li{Mark in coloured pencil against the answer key on the board, question by
+      question.}
+   \li{Tick correct answers; write the correction, not just a cross, where the
+      answer is wrong.}
+   \li{Total the score, initial the bottom, and return the packet to its owner
+      to read.}
+   \li{Class tally of the two questions missed most often; reteach those on the
+      board.}}
+  {\li{Each packet is marked in coloured pencil with corrections, a score and
+      the marker's initials.}
+   \li{Students can name the two questions the class found hardest.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 1.2 Multiplying \& Dividing Integers, Day 1.}
+   \li{Multiply and divide integers; begin the ``two negatives''
+      distinction.}}
+  {\li{\slidelink{y7-math/U01_2}{Maths 1.2 Multiplying \& Dividing Integers}}
+   \li{Starter: work out \tminus3 + \tminus4 and \tminus3 \tminus\
+      (\tminus4).}
+   \li{Multiplying as repeated adding; the pattern ladder (question only, in
+      pairs).}
+   \li{Draw This: copy the four sign rules and the \ttimes\ / \textdiv\ sign
+      table.}}
+  {\li{The four sign rules and the sign table copied into notebooks.}
+   \li{Students can explain why a negative \ttimes\ a negative is positive.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w2d2}{Tuesday}{11 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Unit 1.2 Animal Cells.}
+   \li{Name the parts of an animal cell and how it differs from a plant cell;
+      learn the microscope method.}}
+  {\li{\slidelink{y7-science/U01_2}{Science 1.2 Animal Cells}}
+   \li{Starter: parts of a plant cell beginning with ``c'' (organelles vs
+      substances).}
+   \li{Parts of an animal cell (Draw This); spot the difference, plant vs
+      animal.}
+   \li{``Similar is not the same''; Plant-or-Animal photographs; the stain and
+      slide-prep method.}}
+  {\li{7 written items and 1 labelled drawing in the notebook.}
+   \li{Students decide plant vs animal from a photograph, with a reason.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 1.2, Day 2.}
+   \li{Consolidate multiplying and dividing; brackets first; estimating.}}
+  {\li{Team game: pairs of integers with a product of \tminus24.}
+   \li{Work-backwards questions; brackets first, and the addition-inside-brackets
+      trap.}
+   \li{Estimating by rounding; word problems (the bank fee, the dive, the
+      durian).}}
+  {\li{Students work the brackets first and estimate to check.}
+   \li{Homework set: Workbook 1.1 \& 1.2, pp.\,7--11.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w2d3}{Wednesday}{12 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Unit 1.3 Specialised Cells, Day 1.}
+   \li{Function, specialised and adapted; the three specialised animal cells.}}
+  {\li{\slidelink{y7-science/U01_3}{Science 1.3 Specialised Cells}}
+   \li{Starter: finish the four sentences (cell membranes\ldots, a
+      nucleus\ldots).}
+   \li{Key words: function, specialised, adapted.}
+   \li{Red blood cell, neurone and ciliated cell --- drawn diagrams paired with
+      real micrographs; Questions 1 and 2.}}
+  {\li{Key words copied and the three animal cells described.}
+   \li{Students notice that a red blood cell has no nucleus.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 1.3 Lowest Common Multiples, Day 1.}
+   \li{Multiple, common multiple, LCM; ``common'' means shared.}}
+  {\li{\slidelink{y7-math/U01_3}{Maths 1.3 Lowest Common Multiples}}
+   \li{Starter: the multiples of 4 and of 6; the flashing-lights hook.}
+   \li{``Common'' means shared, not ordinary; common multiples lead to the
+      lowest common multiple.}
+   \li{Draw This: Mr Bowen's list method, the LCM of 6 and 9.}}
+  {\li{Three definitions and the LCM method copied.}
+   \li{Students find the LCM of two numbers by listing.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w2d4}{Thursday}{13 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Unit 1.3, Day 2.}
+   \li{The two specialised plant cells; structure fits function; build the
+      summary table.}}
+  {\li{Root hair cell (absorbs water; why it has no chloroplasts) and palisade
+      cell (photosynthesis); real plant micrographs.}
+   \li{Drill the sentence frame: ``adapted to \rule{1cm}{0.4pt}\ because it has
+      \rule{1cm}{0.4pt}.''}
+   \li{Draw This: the structure--function table; recall quiz across the five
+      cells.}}
+  {\li{All five cells entered in the structure--function table.}
+   \li{Students use the ``adapted because'' frame in full sentences.}
+   \li{Homework: read pp.\,17--21; finish the table; Questions 1--4.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 1.3, Day 2.}
+   \li{Consolidate LCM; the ``don't just multiply'' trap; word problems.}}
+  {\li{LCM-finder drill; the trap that the LCM of 4 and 8 is 8, not 32.}
+   \li{Word problems: the two buses, the barbecue packs, the two taps, the two
+      alarms.}}
+  {\li{Students know the LCM is usually smaller than the product.}
+   \li{Homework set: Exercise 1.3, pp.\,12--13.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w2d5}{Friday}{14 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Consolidating Units 1.2 and 1.3 independently.}
+   \li{Recall at speed.}}
+  {\li{Workbook 1.2 \& 1.3 --- continue and complete, circulating and
+      supporting.}}
+  {\li{Completed Workbook 1.2 \& 1.3 pages.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Jeopardy review game.}
+   \li{Review Unit 1 (integers and multiples, 1.1--1.3) in teams.}}
+  {\li{\slidelink{games/G02_jeopardy}{Jeopardy --- Mathematics 1.1--1.3 board}}
+   \li{Teams of 3--4. Categories: Adding \& Subtracting, Multiplying \&
+      Dividing, Word Problems, Lowest Common Multiple, and ``The English of the
+      Question.''}
+   \li{A team must show the calculation, not just the answer, to score; point
+      values rise down each column.}
+   \li{Mr Bowen hosts; a scorekeeper each round; a wagered final question.}
+   \li{Close by recapping the two ideas that caught teams out.}}
+  {\li{Teams show the calculation, not just the answer.}
+   \li{Every student contributes at least one answer.}
+   \li{The class can state the sign rules and how to find an LCM.}}
+\end{daypage}
+
+% #############################################################################
+% WEEK 3
+% #############################################################################
+\clearpage
+\renewcommand{\currentweek}{Week 3 \sep 17--21 August}
+
+\begin{weekoverview}{w3}{Week 3}{17--21 August 2026}
+\glancerow{w3d1}{Monday 17}
+  {Jeopardy review of Unit 1.1--1.3, before starting 1.4.}
+  {Unit 1.4 Highest Common Factors, Day 1.}
+\glancerow{w3d2}{Tuesday 18}
+  {Unit 1.4 Cells, Tissues and Organs --- the five-level ladder.}
+  {Unit 1.4, Day 2 --- the consecutive-numbers investigation.}
+\glancerow{w3d3}{Wednesday 19}
+  {Unit 1.4, Day 2 --- the organ relay; completing the ladder.}
+  {Unit 1.5 Tests for Divisibility, Day 1 --- the nine tests.}
+\glancerow{w3d4}{Thursday 20}
+  {\textbf{Lab:} safety and skills --- estimating, weighing, and the scalpel.}
+  {Unit 1.5, Day 2 --- the shuffle investigation.}
+\glancerow{w3d5}{Friday 21}
+  {Jeopardy review across Unit 1.1--1.4.}
+  {Consolidating 1.5 --- Workbook, then Around the World.}
+\end{weekoverview}
+
+\begin{weeklinks}
+\linkline{\slidelink{y7-science/U01_4}{Science 1.4 Cells, Tissues and Organs}}
+\linkline{\planlink{y7-science/U01_4}{Science 1.4}}
+\linkline{\slidelink{y7-math/U01_4}{Maths 1.4 Highest Common Factors}}
+\linkline{\planlink{y7-math/U01_4}{Maths 1.4}}
+\linkline{\slidelink{y7-math/U01_5}{Maths 1.5 Tests for Divisibility}}
+\linkline{\planlink{y7-math/U01_5}{Maths 1.5}}
+\linkline{\slidelink{games/G02_jeopardy}{Jeopardy --- Monday and Friday}}
+\linkline{Homework: \hwlink{Packet 3 \sep Factors, Tests and Tissues} --- due
+  Monday 24 August.}
+\linkline{Homework: \hwlink{Extra sheet 3 \sep The Two That Do the Work} ---
+  goes out with Packet 3.}
+\end{weeklinks}
+
+\annstart{w3ann}{Friday 21 August}
+
+\begin{annbody}
+
+\annsec{This week}
+
+\annsub{Science --- Unit 1.4: Tissues \& Our First Lab}
+We wrapped up Unit 1 looking at how cells group into tissues, then ran our first
+lab of the year to test our lab safety and measuring skills. Students carefully
+measured out the most vital powder in science (coffee), then practised safely
+slicing the thinnest possible layers of onion epidermis. We closed out the week
+with a round of Review Jeopardy.\par
+\vspace{3pt}\slidelinkfull{y7-science/U01_4}{Science 1.4 Cells, Tissues and Organs}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-science/U01\_4}
+
+\annsub{Maths --- Highest Common Factors \& Tests for Divisibility}
+We worked through factors, finding Highest Common Factors, and practised quick
+shortcut rules to test if large numbers divide cleanly by 3, 4, 9, or 11.\par
+\vspace{3pt}\slidelinkfull{y7-math/U01_4}{Maths 1.4 Highest Common Factors}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-math/U01\_4}\par
+\vspace{3pt}\slidelinkfull{y7-math/U01_5}{Maths 1.5 Tests for Divisibility}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-math/U01\_5}
+
+\vspace{5pt}
+These links open the same slides we used in class. Students can click through
+them at home to review.
+
+\annsec{New: the reading challenge}
+
+We're launching our reading challenge! Every completed book gets added to our
+classroom reading wall. Encourage your child to pick books they actually want to
+read --- building the habit of finishing matters more than the title.
+
+\annsec{Next week}
+
+\annsub{Science}
+Unit 1 review, followed by a lab exploring the practical difference between
+accuracy and precision.
+
+\annsub{Maths}
+Finishing Unit 1 with exponents, then moving directly into our whole-unit
+review.
+
+\annsec{Homework}
+
+Homework Packet 3 covers our work with factors, divisibility tests, and cell
+tissues. Due \textbf{Monday} at the start of class.
+\par\vspace{4pt}
+\hwlink{Packet 3 \sep Factors, Tests and Tissues}\par
+\vspace{3pt}\hwlink{Extra sheet 3 \sep The Two That Do the Work}
+\par\vspace{4pt}
+If a student doesn't finish the packet, they may get an additional fundamentals
+packet for extra practice.
+
+\vspace{8pt}
+Thank you,\par
+Mr Bowen
+
+\end{annbody}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w3d1}{Monday}{17 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Consolidating Unit 1 (1.1--1.3) before starting 1.4.}}
+  {\li{\slidelink{games/G02_jeopardy}{Jeopardy --- Science 1.1--1.3 board}}
+   \li{Teams of 3--4; categories drawn from cells, specialised cells, and the
+      vocabulary from each lesson.}
+   \li{Mr Bowen hosts; a scorekeeper each round.}}
+  {\li{Teams answer correctly across all three specialised-cell topics.}
+   \li{The class can name the two ideas the game caught them out on.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 1.4 Highest Common Factors, Day 1.}
+   \li{Find the factors of a number and the highest common factor of two
+      numbers by listing; tell a factor apart from a multiple.}}
+  {\li{\slidelink{y7-math/U01_4}{Maths 1.4 Highest Common Factors}}
+   \li{Starter: pairs multiplying to 12 and to 18, building the two factor
+      lists.}
+   \li{Hook: 24 pencils and 40 stickers into identical packs --- guesses only,
+      answered later in the lesson.}
+   \li{Factor vs multiple --- the distinction this lesson turns on.}
+   \li{Draw This: HCF of 24 and 80 by listing, Mr Bowen's method.}
+   \li{The ``never none'' trap: HCF(8,\,9) is 1, not none; HCF(6,\,18) is 6,
+      not 1.}}
+  {\li{Common factors and the HCF found correctly by listing.}
+   \li{Students can say a factor ``divides in and the list stops'' while a
+      multiple ``is landed on and never stops.''}
+   \li{Both trap questions answered correctly on mini-whiteboards.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w3d2}{Tuesday}{18 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Unit 1.4 Cells, Tissues and Organs.}}
+  {\li{\slidelink{y7-science/U01_4}{Science 1.4 Cells, Tissues and Organs}}
+   \li{Starter: draw and label a body outline --- brain, heart, stomach,
+      intestines, lungs --- then stand and point to each on themselves.}
+   \li{Hook: could one ciliated cell alone keep your lungs clean? Paired
+      guesses, then the reveal --- millions, joined edge to edge.}
+   \li{Copy the definitions of tissue and organ; everyday ``tissue'' vs the
+      scientific word.}
+   \li{Draw This: the five-level ladder, cell to tissue to organ to organ
+      system to organism, one example carried all the way up.}}
+  {\li{Tissue and organ defined correctly, including the students' own ``a
+      tissue'' vs ``tissue'' sentence pair.}
+   \li{Five-level ladder completed with a consistent example.}
+   \li{Fingers-up drill: correct answers on the two deliberate traps (a leaf is
+      an organ, not a tissue; the palisade layer is a tissue, not an organ).}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 1.4, Day 2.}
+   \li{Consolidating factors and the highest common factor.}}
+  {\li{Team game: HCF-finder pairs against the clock.}
+   \li{Workbook 1.4, pp.\,14--15 --- the ribbons, the bookshelf, and the
+      consecutive-numbers investigation.}
+   \li{Recap the ``never none'' trap before independent work begins.}}
+  {\li{HCF found by listing without prompting.}
+   \li{Conjecture stated correctly: the HCF of two consecutive numbers is
+      always 1.}
+   \li{Homework set: Workbook 1.4, pp.\,14--15.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w3d3}{Wednesday}{19 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Unit 1.4, Day 2.}
+   \li{Consolidating tissues, organs, organ systems and organisms.}}
+  {\li{Organ relay in groups of four: one organ each, out loud, in English, no
+      repeats.}
+   \li{Workbook 1.4 --- complete the five-level ladder; Question 3 run as a hunt
+      through the notebook.}
+   \li{Recap the breathing and digestive systems, and the organs each shares.}}
+  {\li{Organ relay: at least ten organs named correctly as a class.}
+   \li{Completed Workbook 1.4 pages.}
+   \li{Students can place one example correctly on all five rungs of the
+      ladder.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 1.5 Tests for Divisibility, Day 1.}
+   \li{Test a number for divisibility by 2, 3, 4, 5, 6, 8, 9, 10 and 11 without
+      dividing.}}
+  {\li{\slidelink{y7-math/U01_5}{Maths 1.5 Tests for Divisibility}}
+   \li{Starter: which of 24, 35, 90, 91 divide by 2? By 5? --- noticing they
+      already know two tests.}
+   \li{Hook: 3960 against every number from 2 to 11 --- guesses only, paid back
+      one test at a time.}
+   \li{``6 is a factor of 24'', ``24 is divisible by 6'', ``24 is a multiple
+      of 6'' --- one fact, three sentences.}
+   \li{The nine tests, copied one at a time, each checked against 3960.}
+   \li{Where is 7? --- the number with no easy test, and why.}
+   \li{Factor Hunt widget: 1908, 2530, 7128, calling out which test to run.}}
+  {\li{All nine tests copied and correctly applied to 3960.}
+   \li{Students turn one division fact into all three sentences (factor of /
+      divisible by / multiple of).}
+   \li{Students can explain why 7 has no test, rather than assuming their notes
+      are incomplete.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w3d4}{Thursday}{20 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{\textbf{Lab: safety and skills.}}
+   \li{Practising measuring and cutting safely --- two techniques used all
+      year.}}
+  {\li{Measuring coffee grounds: eyeball and estimate 10\,g first, then weigh
+      accurately on a scale and compare.}
+   \li{Scalpel technique: cut the thinnest possible layer of onion epidermis,
+      safe hand position, blade always cutting away from fingers.}}
+  {\li{Estimated mass compared honestly against the measured mass, in a full
+      sentence.}
+   \li{Onion epidermis cut thin enough to see through, using correct scalpel
+      grip.}
+   \li{Every student can state the two safety rules from memory.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 1.5, Day 2.}
+   \li{Consolidating the nine divisibility tests.}}
+  {\li{Rapid-fire test drill: a number on the board, hands up with the test
+      that applies.}
+   \li{Workbook 1.4 \& 1.5, independent practice.}
+   \li{The shuffle investigation: an arrangement of 8, 3, 6, 1 that fails
+      divisibility by 9 --- there isn't one, and why.}}
+  {\li{Students say the test out loud, not just the answer --- ``the digits add
+      to 18, so it divides by 9.''}
+   \li{Completed Workbook 1.4 \& 1.5 pages.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w3d5}{Friday}{21 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Consolidating Unit 1 (1.1--1.4) --- recall at speed.}}
+  {\li{\slidelink{games/G02_jeopardy}{Jeopardy --- Science 1.1--1.3, with 1.4
+      recap questions added}}
+   \li{Teams of 3--4; Mr Bowen hosts; a wagered final question.}
+   \li{Close by recapping the two ideas that caught teams out.}}
+  {\li{Teams show correct answers across cells, specialised cells, and
+      tissues/organs.}
+   \li{The class can state the five-level ladder from memory.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Consolidating tests for divisibility.}
+   \li{Recall at speed.}}
+  {\li{Workbook 1.5 --- pages taken from the class folders, worked
+      independently.}
+   \li{``Around the World'' with divisibility questions if time allows.}}
+  {\li{Completed Workbook 1.5 pages.}
+   \li{Correct answers at speed in Around the World.}}
+\end{daypage}
+
+% #############################################################################
+% WEEK 4
+% #############################################################################
+\clearpage
+\renewcommand{\currentweek}{Week 4 \sep 24--28 August}
+
+\begin{weekoverview}{w4}{Week 4}{24--28 August 2026}
+\glancerow{w4d1}{Monday 24}
+  {Unit 1 test prep --- building the class list of sticking points.}
+  {Unit 1.6 Square Roots \& Cube Roots, Day 1.}
+\glancerow{w4d2}{Tuesday 25}
+  {\textbf{End-of-Unit 1 Test} (1.1--1.4).}
+  {Unit 1.6, Day 2 --- trapping a root between two whole numbers.}
+\glancerow{w4d3}{Wednesday 26}
+  {Independent review practice; the five key words on a poster.}
+  {Consolidating 1.6 --- Workbook, then recall at speed.}
+\glancerow{w4d4}{Thursday 27}
+  {\textbf{Lab:} accuracy vs precision.}
+  {\textbf{End-of-Unit 1 Test} (1.1--1.6).}
+\glancerow{w4d5}{Friday 28}
+  {Plant a seedling; build the classroom planter.}
+  {Around the World across the whole of Unit 1.}
+\end{weekoverview}
+
+\begin{weeklinks}
+\linkline{\slidelink{y7-science/U00_2}{Science: Accuracy and Precision Lab}}
+\linkline{\slidelink{y7-math/U01_5}{Maths 1.5 Tests for Divisibility}}
+\linkline{\slidelink{y7-math/U01_6}{Maths 1.6 Square Roots \& Cube Roots}}
+\linkline{\planlink{y7-math/U01_6}{Maths 1.6}}
+\linkline{Homework: \hwlink{Packet 4 \sep Divisibility and Roots} --- due
+  Thursday 3 September, at the start of class.}
+\end{weeklinks}
+
+\annstart{w4ann}{Friday 28 August}
+
+\begin{annbody}
+
+\annsec{This week}
+
+\annsub{Science --- Unit 1 Review \& Accuracy Precision Lab}
+We finished Unit 1 with a short Cambridge assessment covering cells, tissue,
+and specializations! Additionally, students did three stations during lab
+time to test their ability to measure with both accuracy and precision. Then
+on Friday, we made our hanging classroom garden.\par
+\vspace{3pt}\slidelinkfull{y7-science/U00_2}{Science: Accuracy and Precision Lab}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-science/U00\_2}
+
+\annsub{Mathematics --- Unit 1 Review \& Cubes and Squares}
+We explored squares, cubes, and roots. Then we ended the week with a Cambridge
+assessment.\par
+\vspace{3pt}\slidelinkfull{y7-math/U01_5}{Maths 1.5 Tests for Divisibility}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-math/U01\_5}\par
+\vspace{3pt}\slidelinkfull{y7-math/U01_6}{Maths 1.6 Square Roots \& Cube Roots}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-math/U01\_6}
+
+\vspace{5pt}
+These links open the same slides we used in class. Students can click through
+them at home to review.
+
+\annsec{The reading challenge update}
+
+Every student in the class has finished at least one book since our challenge
+started last week. We are quickly decorating our wall with all the books
+finished!
+
+\annsec{Homework Packet 4}
+
+Due \textbf{Thursday}, at the start of class. Please note: any student who
+does not complete the packet may receive an additional fundamentals packet
+for extra practice. This week's packet is shorter due to the class
+participation in the reading challenge.
+\par\vspace{4pt}
+\hwlink{Packet 4 \sep Divisibility and Roots}
+
+\annsec{Next week (no school Monday, Tuesday, \& Wednesday)}
+
+We have three days holiday this week. Due to the extended time off, I have
+made online work for the students to do, reviewing the first mathematics
+unit. This is entirely optional as some students have asked for extra
+review. Every student has already signed in to this online portal, but
+please reach out if you need help.
+\par\vspace{4pt}
+\href{https://bowenpra.github.io/Dashboard/}{bowenpra.github.io/Dashboard}
+\par\vspace{4pt}
+Login: Student Name\par
+Code: Last 3 Digits of Student Email
+
+\vspace{8pt}
+Thank you,\par
+Mr Bowen
+
+\end{annbody}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w4d1}{Monday}{24 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Unit 1 test prep --- getting ready for tomorrow's test.}}
+  {\li{Students revisit notebooks and workbook pages from 1.1--1.4.}
+   \li{Build a class list of the five key words that come up most (cell,
+      organelle, tissue, organ, organism) and one sticking point each.}
+   \li{Pairs quiz each other from their own notes.}}
+  {\li{A class-generated list of sticking points to target on Tuesday.}
+   \li{Students can define at least three of the five key words unprompted.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 1.6 Square Roots \& Cube Roots, Day 1.}
+   \li{Square and cube a number, and find a square root and cube root from two
+      learned lists.}}
+  {\li{\slidelink{y7-math/U01_6}{Maths 1.6 Square Roots \& Cube Roots}}
+   \li{Starter: 7 \ttimes\ 7 and 2 \ttimes\ 2 \ttimes\ 2 on whiteboards.}
+   \li{Hook: 225 paving stones in a perfect square --- how many along one side?
+      Guesses only.}
+   \li{Draw This: the twelve square numbers and the six cube numbers, copied in
+      full.}
+   \li{Squaring and rooting as ``there and back'';
+      5\textsuperscript{2} against 5 \ttimes\ 2, the trap that costs marks.}
+   \li{Worked example widget: the book's own Worked Example 1.6.}}
+  {\li{Twelve squares and six cubes copied correctly.}
+   \li{Students can find a square or cube root from the list without a
+      calculator.}
+   \li{5\textsuperscript{2} read correctly as ``five squared'', not ``five
+      times two.''}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w4d2}{Tuesday}{25 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{\textbf{End-of-Unit 1 Test} --- cells, specialised cells, tissues and
+      organs (1.1--1.4).}}
+  {\li{Papers face down, silence.}
+   \li{Hands up to have a word READ aloud --- never explained.}
+   \li{Students who finish early check their answers over, then read quietly.}
+   \li{Marked and returned before Unit 2 begins.}}
+  {\li{Completed end-of-unit test for every student.}
+   \li{Marks recorded against 1.1--1.4; gaps flagged before Unit 2.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 1.6, Day 2.}
+   \li{Consolidating squares, cubes and roots.}}
+  {\li{Team game: name the square or cube root against a timer.}
+   \li{Workbook 1.6, independent practice --- trapping a non-whole root between
+      two consecutive whole numbers.}
+   \li{Recap ``consecutive'' and why it matters for Exercise 1.6.}}
+  {\li{Roots trapped correctly between two consecutive whole numbers.}
+   \li{Homework set: Exercise 1.6, pp.\,17--19.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w4d3}{Wednesday}{26 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Consolidating Unit 1 through independent review practice.}}
+  {\li{Workbook Unit 1 review pages, worked independently, circulating and
+      supporting.}
+   \li{Students who finish early write one full-sentence definition for each of
+      the five key words on a poster.}}
+  {\li{Completed Unit 1 review workbook pages.}
+   \li{Five correct, full-sentence definitions per poster.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Consolidating Unit 1.6.}
+   \li{Recall at speed.}}
+  {\li{Workbook 1.6 --- pages taken from the class folders, worked
+      independently.}
+   \li{Rapid-fire recall: squares and cubes against a 2-minute timer.}}
+  {\li{Completed Workbook 1.6 pages.}
+   \li{Correct answers at speed in the recall drill.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w4d4}{Thursday}{27 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{\textbf{Lab: accuracy vs precision.}}}
+  {\li{Define accuracy (how close to the true value) and precision (how close
+      repeated measurements are to each other), with a target diagram.}
+   \li{Skills stations: repeat measurements and plot results as
+      accurate/precise, accurate/imprecise, inaccurate/precise,
+      inaccurate/imprecise.}
+   \li{Each group writes one full sentence explaining which of their own
+      measurements were accurate, precise, both, or neither.}}
+  {\li{Correct classification of results against the target diagram.}
+   \li{One full, correct sentence per group distinguishing accuracy from
+      precision.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{\textbf{End-of-Unit 1 Test} --- integers, factors and multiples,
+      divisibility, square and cube roots (1.1--1.6).}}
+  {\li{Calculators not allowed.}
+   \li{Papers face down, silence.}
+   \li{Hands up to have a word READ aloud --- never explained.}
+   \li{Marked and returned before Unit 2 begins.}}
+  {\li{Completed end-of-unit test for every student.}
+   \li{Marks recorded against 1.1--1.6; gaps flagged before Unit 2.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w4d5}{Friday}{28 August}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Plant a seedling; build a classroom planter.}
+   \li{Apply what we know about roots and root hair cells; care for a living
+      thing.}}
+  {\li{Recap: roots and root hair cells absorb water from the soil (links to
+      1.3).}
+   \li{Each student plants a seedling in soil in their own pot.}
+   \li{Build a shared classroom planter; label every pot with a name and
+      today's date.}
+   \li{Agree a watering rota and write it on the board.}
+   \li{Each student writes one full sentence: what a seedling needs to grow.}}
+  {\li{Every student has a planted, labelled seedling.}
+   \li{A watering rota is agreed and displayed.}
+   \li{Each student writes what a plant needs, in a full English sentence.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Consolidating Unit 1 (1.1--1.6).}
+   \li{Recall at speed.}}
+  {\li{``Around the World'' with questions spanning all of Unit 1 --- integers,
+      multiples, factors, divisibility, roots.}
+   \li{Mr Bowen hosts; correct and fast beats correct and slow.}}
+  {\li{Correct answers at speed in Around the World, across the full range of
+      Unit 1 topics.}}
+\end{daypage}
+
+% #############################################################################
+% WEEK 5
+% #############################################################################
+\clearpage
+\renewcommand{\currentweek}{Week 5 \sep 31 August--4 September}
+
+\begin{weekoverview}{w5}{Week 5}{31 August--4 September 2026}
+\textbf{Mon 31 -- Wed 2} & \multicolumn{2}{l|}{No school --- National Day holiday. Optional Unit 1 review on the Dashboard.} \\ \hline
+\glancerow{w5d1}{Thursday 3}
+  {Unit 1 review --- the five key words, and the questions the test caught.}
+  {Unit 1 drills --- integers, factors and multiples, roots, at speed. Packet 4 in.}
+\glancerow{w5d2}{Friday 4}
+  {Mid-Autumn Festival prep --- booth ideas and crafts for Friday 25 September.}
+  {Squish toys from nets of 3D shapes; Unit 1 drills to finish. Packet 5 out.}
+\end{weekoverview}
+
+\begin{weeklinks}
+\linkline{\slidelink{y7-science/U01_4}{Science 1.4 Cells, Tissues and Organs} (review)}
+\linkline{\slidelink{y7-math/U01_6}{Maths 1.6 Square Roots \& Cube Roots} (review)}
+\linkline{\href{https://bowenpra.github.io/Dashboard/}{Dashboard \sep optional Unit 1 review online}}
+\linkline{Homework: \hwlink{Packet 5 \sep Unit 1, All of It} --- out Friday
+  4 September, due Thursday 10 September.}
+\linkline{Homework: \hwlink{Extra sheet 5 \sep Bring Down the Next Digit} ---
+  goes out with Packet 5.}
+\end{weeklinks}
+
+\annstart{w5ann}{Friday 4 September}
+
+\begin{editorial}[Two things to fix next time]
+The sent post does not say which period the Mid-Autumn project time used; the
+day page puts the booth planning in Science and the nets in Mathematics, which
+is a guess. The post also linked the packet by its direct PDF address
+(\texttt{assets/hw05-\ldots.pdf}), which changes on every deploy --- the shelf
+link below is the one that lasts.
+\end{editorial}
+
+\begin{annbody}
+
+\annsub{Science --- Unit 1 Review}
+A short week back from the holiday, so we used the extra time for more Unit 1
+review.
+
+\annsub{Mathematics --- Unit 1 Drills}
+We did more Unit 1 math drills to keep skills sharp after the break.
+
+\annsec{Mid-Autumn Festival prep begins}
+
+We started project time for our upcoming Mid-Autumn Festival on Friday the
+25th! Students discussed business ideas and crafts for their booths, and some
+made squish toys using net diagrams of 3D shapes.
+
+\annsec{Homework}
+
+Due Thursday at the start of class.
+\par\vspace{4pt}
+\hwlink{Packet 5 \sep Unit 1, All of It}
+
+\annsec{Next week}
+
+We start Unit 2 in both Math and Science! We'll also have lab next Thursday.
+
+\vspace{8pt}
+Thank you,\par
+Mr Bowen
+
+\end{annbody}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w5d1}{Thursday}{3 September}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Unit 1 review after the holiday.}
+   \li{Recall the five key words and the ideas the Unit 1 test caught.}}
+  {\li{Starter: define cell, organelle, tissue, organ, organism from memory,
+      then check against the notebook.}
+   \li{Go over the test questions the class lost most marks on; reteach on
+      the board.}
+   \li{Pairs quiz each other from Workbook 1.1--1.4; Around the World to
+      finish.}}
+  {\li{Five key words defined correctly, unprompted.}
+   \li{The two weakest test questions answered correctly on whiteboards.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 1 drills after the holiday.}
+   \li{Recall at speed across 1.1--1.6.}}
+  {\li{Packet 4 collected at the start of class.}
+   \li{Rapid-fire rounds on whiteboards: integer sums and products, LCM and
+      HCF by listing, divisibility tests, squares and cubes.}
+   \li{Reteach any round where more than a third of boards are wrong.}}
+  {\li{Packet 4 in from every student; missing packets noted.}
+   \li{Correct answers at speed in every round.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w5d2}{Friday}{4 September}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Mid-Autumn Festival prep, session 1.}
+   \li{Plan a booth: a product or craft, and who does what.}}
+  {\li{Explain the festival day (Friday 25 September) and what a booth
+      needs.}
+   \li{Groups brainstorm business ideas and crafts; one idea agreed per
+      group.}
+   \li{Each group lists materials, jobs and a price in full English
+      sentences.}}
+  {\li{One booth plan per group with a product, a materials list and named
+      jobs.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Nets of 3D shapes, applied.}
+   \li{Finish the Unit 1 drills; set Packet 5.}}
+  {\li{Squish toys: cut, fold and stuff a net of a cube or cuboid; name the
+      faces, edges and vertices while building.}
+   \li{Remaining Unit 1 drill rounds for anyone not building.}
+   \li{Packet 5 and Extra sheet 5 handed out --- due Thursday 10 September.}}
+  {\li{A finished squish toy from a correct net.}
+   \li{Every student has Packet 5 with the due date written on it.}}
+\end{daypage}
+
+% #############################################################################
+% WEEK 6
+% #############################################################################
+\clearpage
+\renewcommand{\currentweek}{Week 6 \sep 7--11 September}
+
+\begin{weekoverview}{w6}{Week 6}{7--11 September 2026}
+\glancerow{w6d1}{Monday 7}
+  {Unit 2.1a Solids, Liquids and Gases --- properties, the two syringes, the
+   Word Wall.}
+  {Unit 2.1 Constructing Expressions --- a letter for a number you cannot
+   count.}
+\glancerow{w6d2}{Tuesday 8}
+  {Unit 2.1b Particle Theory --- three arrangements; you are the particles.}
+  {Unit 2.1, Day 2 --- the four phrases; Workbook 2.1.}
+\glancerow{w6d3}{Wednesday 9}
+  {Unit 2.2a Changes of State --- the five changes, verb and noun; the particle
+   model.}
+  {Unit 2.2 Using Expressions and Formulae --- substituting; the hidden times
+   sign.}
+\glancerow{w6d4}{Thursday 10}
+  {Unit 2.2b Measuring, and Heating Water --- meniscus, thermometer, the
+   heating curve. Packet 5 in.}
+  {Unit 2.2, Day 2 --- formulae with two letters; Workbook 2.2. Packet 6 out.}
+\glancerow{w6d5}{Friday 11}
+  {Task: The Formula Machine, Part 1 --- temperature scales and the distance to
+   a storm.}
+  {Task: The Formula Machine, Part 2 (the pour), then Girl Math.}
+\end{weekoverview}
+
+\begin{weeklinks}
+\linkline{\slidelink{y7-science/U02_1a}{Science 2.1a Solids, Liquids and Gases}}
+\linkline{\planlink{y7-science/U02_1a}{Science 2.1a}}
+\linkline{\slidelink{y7-science/U02_1b}{Science 2.1b Particle Theory}}
+\linkline{\planlink{y7-science/U02_1b}{Science 2.1b}}
+\linkline{\slidelink{y7-science/U02_2a}{Science 2.2a Changes of State}}
+\linkline{\planlink{y7-science/U02_2a}{Science 2.2a}}
+\linkline{\slidelink{y7-science/U02_2b}{Science 2.2b Measuring, and Heating Water}}
+\linkline{\planlink{y7-science/U02_2b}{Science 2.2b}}
+\linkline{\slidelink{y7-science/U02_model_states}{Science: Heating \& Cooling, a Particle Model} (widget)}
+\linkline{\slidelink{games/G01_word-wall?level=solid-liquid-gas}{Word Wall --- solid, liquid, gas} (widget)}
+\linkline{\slidelink{y7-math/U02_1}{Maths 2.1 Constructing Expressions}}
+\linkline{\planlink{y7-math/U02_1}{Maths 2.1}}
+\linkline{\slidelink{y7-math/U02_2}{Maths 2.2 Using Expressions and Formulae}}
+\linkline{\planlink{y7-math/U02_2}{Maths 2.2}}
+\linkline{\slidelink{y7-math/T01_formula-machine}{Task 1 --- The Formula Machine}}
+\linkline{\planlink{y7-math/T01_formula-machine}{Task 1}}
+\linkline{\slidelink{y7-math/T02_girl-math}{Task 2 --- Girl Math}}
+\linkline{\planlink{y7-math/T02_girl-math}{Task 2}}
+\linkline{Homework: \hwlink{Packet 6 \sep Letters and Particles} --- out
+  Thursday 10 September, due Monday 14 September.}
+\linkline{Homework: \hwlink{Extra sheet 6 \sep One Letter at a Time} --- goes
+  out with Packet 6.}
+\end{weeklinks}
+
+\annstart{w6ann}{Friday 11 September}
+
+\begin{editorial}[Friday's two periods]
+Friday is recorded as the Formula Machine in Science (its formulae are the
+thermometer and the storm) and the pour plus Girl Math in Mathematics. If the
+split was different, change the two Friday rows; the post below does not
+depend on it.
+\end{editorial}
+
+\begin{annbody}
+
+\annsec{Science --- Unit 2: Solids, Liquids and Gases}
+
+We started Unit 2 this week. Students learned the properties of solids,
+liquids and gases, and the particle theory that explains them: everything is
+made of tiny particles, and how they are arranged decides whether something
+keeps its shape, pours, or can be squashed. Then we moved on to changes of
+state (melting, freezing, evaporating, boiling and condensing) and practised
+measuring volume and temperature the way a scientist does.\par
+\vspace{3pt}\slidelinkfull{y7-science/U02_1a}{Science 2.1a Solids, Liquids and Gases}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-science/U02\_1a}\par
+\vspace{3pt}\slidelinkfull{y7-science/U02_1b}{Science 2.1b Particle Theory}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-science/U02\_1b}\par
+\vspace{3pt}\slidelinkfull{y7-science/U02_2a}{Science 2.2a Changes of State}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-science/U02\_2a}\par
+\vspace{3pt}\slidelinkfull{y7-science/U02_2b}{Science 2.2b Measuring, and Heating Water}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-science/U02\_2b}
+
+\vspace{5pt}
+New this week: an interactive particle model. Heat or cool ice, mercury,
+oxygen or iron and watch the particles change state. Students can try it at
+home.\par
+\vspace{3pt}\slidelinkfull{y7-science/U02_model_states}{Heating \& Cooling: A Particle Model}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-science/U02\_model\_states}
+
+\annsec{Maths --- Unit 2: Expressions and Formulae}
+
+We started algebra. Students learned to use a letter for a number we don't
+know yet, to write expressions like c \tminus\ 50 and 3n, and to substitute a
+number into an expression or a formula. The hardest part is the English:
+``3 less than t'' is t \tminus\ 3, not 3 \tminus\ t.\par
+\vspace{3pt}\slidelinkfull{y7-math/U02_1}{Maths 2.1 Constructing Expressions}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-math/U02\_1}\par
+\vspace{3pt}\slidelinkfull{y7-math/U02_2}{Maths 2.2 Using Expressions and Formulae}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-math/U02\_2}
+
+\vspace{5pt}
+On Friday we did two tasks. The Formula Machine: running real formulas, such
+as converting Celsius to Fahrenheit, finding the distance to a storm from the
+gap between the flash and the thunder, and working out the depth of water in a
+tank. Girl Math: sharing pieces of rice paper by rules like ``twice as many
+as'' and ``3 more than'', solved with algebra against the clock.\par
+\vspace{3pt}\slidelinkfull{y7-math/T01_formula-machine}{Task: The Formula Machine}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-math/T01\_formula-machine}\par
+\vspace{3pt}\slidelinkfull{y7-math/T02_girl-math}{Task: Girl Math}%
+  {https://bowenpra.github.io/classroom/\#/lesson/y7-math/T02\_girl-math}
+
+\annsec{Online Dashboard (optional)}
+
+The online Dashboard is now updated through Maths 2.2 and Science 2.2. This
+is optional, but if your child gets stuck on the homework, Science 2.1 and 2.2
+on the Dashboard are the best place to look first.
+\par\vspace{4pt}
+\href{https://bowenpra.github.io/Dashboard/}{https://bowenpra.github.io/Dashboard/}
+\par\vspace{4pt}
+Login: student name\par
+Code: last 3 digits of the student email
+
+\annsec{Homework --- Packet 6}
+
+Due \textbf{Monday 14 September} at the start of class. It covers this
+week's Maths and Science. The last page is a challenge that joins the two
+subjects together (volume). It is okay if students cannot finish that page ---
+they should try it and show their working.
+\par\vspace{4pt}
+\hwlink{Packet 6 \sep Letters and Particles}
+
+\annsec{Next week}
+
+\annsub{Science}
+Unit 2 continues: using the particle model to explain what happens during a
+change of state.
+
+\annsub{Maths}
+Unit 2 continues: collecting like terms and simplifying expressions.
+
+\vspace{8pt}
+Thank you,\par
+Mr Bowen
+
+\end{annbody}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w6d1}{Monday}{7 September}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Unit 2.1a Solids, Liquids and Gases.}
+   \li{Sort a substance by what it does, not how it looks; list the properties
+      of each state; use hypothesis and theory correctly.}}
+  {\li{\slidelink{y7-science/U02_1a}{Science 2.1a Solids, Liquids and Gases}}
+   \li{Starter: two solids, two liquids, two gases in the notebook.}
+   \li{Hook: is sand a liquid? Guesses only; answered after the properties.}
+   \li{Copy matter, states of matter, property; one state at a time with a
+      copy-down panel each.}
+   \li{The two syringes --- predict which plunger moves, then push.}
+   \li{Draw This: the four-question table, ruled; Questions 1--7.}
+   \li{Page 30: hypothesis, theory, particle; the kitchen-smell question left
+      open for tomorrow.}
+   \li{Word Wall (solid / liquid / gas puzzle) if time allows.}}
+  {\li{Table ruled and ticked correctly for all three states.}
+   \li{Students say sand is a solid that pours, and why only a gas
+      compresses.}
+   \li{Hypothesis and theory defined in the notebook.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 2.1 Constructing Expressions.}
+   \li{Use a letter for a number you cannot count; leave c \tminus\ 50
+      unfinished; write 3s; read ``less than'' and ``subtract from''
+      correctly.}}
+  {\li{\slidelink{y7-math/U02_1}{Maths 2.1 Constructing Expressions}}
+   \li{Starter: how many particles in one drop of water? (science bridge ---
+      nobody can write the number, and that is the point).}
+   \li{Name it: let n represent the number; first copy-down panel.}
+   \li{The wall: the coffee table where the third row cannot finish --- c
+      \tminus\ 50 is the answer.}
+   \li{Notation: 3 \ttimes\ s is written 3s.}
+   \li{The four phrases: more than, less than, times, subtract from; the order
+      flips for ``h less than t''.}
+   \li{``Subtract the result from 25'' is 25 \tminus\ 3n.}}
+  {\li{Eight copy-down panels in the notebook.}
+   \li{``h less than t'' written t \tminus\ h on whiteboards.}
+   \li{c \tminus\ 50 accepted as a finished answer.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w6d2}{Tuesday}{8 September}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Unit 2.1b Particle Theory.}
+   \li{Describe the particle arrangement in each state and use it to explain
+      pouring, compressing and a vacuum.}}
+  {\li{\slidelink{y7-science/U02_1b}{Science 2.1b Particle Theory}}
+   \li{Starter: three things a gas can do that a solid cannot, books closed.}
+   \li{Yesterday's kitchen-smell question, then the ink in water.}
+   \li{Copy the theory: all matter is made of particles, arranged
+      differently.}
+   \li{Three arrangements, one copy-down panel each; everyone stands and
+      becomes the particles.}
+   \li{Page 33: why water pours and a brick does not; vacuum.}
+   \li{The sponge: a solid you can squash --- where the air goes.}
+   \li{Draw This: the three-box activity; recap and homework.}}
+  {\li{Three particle diagrams drawn correctly with properties beside them.}
+   \li{Students explain the sponge without saying a solid compresses.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 2.1, Day 2.}
+   \li{Consolidate constructing expressions; the four phrases at speed.}}
+  {\li{Team game: an English phrase on the board, the expression on
+      whiteboards, against a timer.}
+   \li{Workbook 2.1 --- independent practice, circulating.}
+   \li{Recap ``less than'' and ``subtract from'' before independent work.}}
+  {\li{Expressions written correctly for all four phrase types.}
+   \li{Completed Workbook 2.1 pages.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w6d3}{Wednesday}{9 September}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Unit 2.2a Changes of State.}
+   \li{Name the five changes as journeys from one state to another; verb and
+      noun for each; melting and boiling points of water.}}
+  {\li{\slidelink{y7-science/U02_2a}{Science 2.2a Changes of State}}
+   \li{Starter: draw the three particle pictures from memory.}
+   \li{Hook: an ice cube becomes a puddle, the puddle disappears --- where did
+      the water go, twice?}
+   \li{The from-to frame; the five changes one at a time, with the particle
+      model widget showing each one as it happens.}
+   \li{The verb / noun pairs (melt / melting); Draw This.}
+   \li{Activity 2.2.1 in pairs with the change cards.}}
+  {\li{Five changes named as from-to sentences with the right verb and noun.}
+   \li{0 and 100 degrees given as water's melting and boiling points.}
+   \li{Students distinguish evaporating from boiling.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 2.2 Using Expressions and Formulae.}
+   \li{Substitute a number for a letter; 3n with n = 4 is 12, never 34; keep
+      the order of operations; know what a formula is.}}
+  {\li{\slidelink{y7-math/U02_2}{Maths 2.2 Using Expressions and Formulae}}
+   \li{Starter: the cup from 2.1, now c = 320 --- the row finishes.}
+   \li{Substitute and value; the football substitution.}
+   \li{The wall: the hidden times sign --- 3n is 3 \ttimes\ n.}
+   \li{3x + 2 with x = 4: 14 or 18? Show of hands, then the reason.}
+   \li{Formula: an expression has no equals sign, a formula does; A = lw.}
+   \li{The minus sign travels with its number --- use brackets.}
+   \li{The taxi formula: build one, then break one.}}
+  {\li{Seven copy-down panels in the notebook.}
+   \li{3n with n = 4 gives 12 on every whiteboard.}
+   \li{Students say when a formula stops being true.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w6d4}{Thursday}{10 September}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Unit 2.2b Measuring, and Heating Water.}
+   \li{Read a measuring cylinder and a thermometer correctly; plan and run the
+      heating-water investigation; plot and describe the heating curve.}}
+  {\li{Packet 5 collected at the start of class.}
+   \li{\slidelink{y7-science/U02_2b}{Science 2.2b Measuring, and Heating Water}}
+   \li{Starter: guess three temperatures in degrees C.}
+   \li{Hook: two students read the same cylinder as 50 and 47 --- who is
+      right?}
+   \li{The meniscus: read the bottom at eye level; the thermometer: read the
+      top at eye level. Copy both.}
+   \li{Predict, then safety; Draw This: the apparatus, bulb in the water.}
+   \li{The investigation, reading every minute; plot temperature against
+      time; the particle model at the boiling point.}}
+  {\li{Packet 5 in from every student; missing packets noted.}
+   \li{Cylinder and thermometer read correctly on the two check questions.}
+   \li{A plotted heating curve, and the sentence: it rises, then stays at the
+      boiling point.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Unit 2.2, Day 2.}
+   \li{Consolidate substituting; formulae with two letters; set Packet 6.}}
+  {\li{Team game: substitute against the timer --- 3n, 3n + 2, 25 \tminus\
+      3n.}
+   \li{Workbook 2.2 --- independent practice, circulating.}
+   \li{Recap the hidden times sign and the travelling minus before
+      independent work.}
+   \li{Packet 6 and Extra sheet 6 handed out --- due Monday 14 September;
+      say that Section C is a challenge.}}
+  {\li{Completed Workbook 2.2 pages.}
+   \li{Every student has Packet 6 with the due date written on it.}}
+\end{daypage}
+
+% -----------------------------------------------------------------------------
+\begin{daypage}{w6d5}{Friday}{11 September}
+\subjectrow{Science}{8:45 -- 9:35}
+  {\li{Task: The Formula Machine, Part 1 --- formulae from Science.}
+   \li{Run a formula in three lines: write it, put the numbers in, work it
+      out.}}
+  {\li{\slidelink{y7-math/T01_formula-machine}{Task: The Formula Machine}}
+   \li{Starter: the ant walks round the rectangle --- 22.}
+   \li{The three-line routine, copied; the middle line is where the marks
+      are.}
+   \li{Station 1, perimeter; Station 2, area of a triangle --- the height is
+      the dashed line.}
+   \li{The argument: 35 degrees C and 95 degrees F are the same temperature ---
+      link to Thursday's thermometer.}
+   \li{Station 4, the storm: flash first, then the bang; d = t divided by 3.}}
+  {\li{Every problem worked in three lines, not one.}
+   \li{Station 3: 35 degrees C converted to 95 degrees F, with the working.}
+   \li{Students say why the flash arrives before the bang.}}
+\subjectrow{Mathematics}{10:45 -- 11:35}
+  {\li{Task: The Formula Machine, Part 2, then Task: Girl Math.}
+   \li{Find the letter that was not given by counting cubes; write
+      ``twice as many'' and ``3 more than'' as expressions and solve.}}
+  {\li{The pour: water from one tank into another with a different base ---
+      deeper, shallower or the same? Real water first, then the widget.}
+   \li{\slidelink{y7-math/T02_girl-math}{Task: Girl Math}}
+   \li{Twice as many is 2n; 3 more than is n + 3; the four steps.}
+   \li{The game: teams, ten rounds, read each round aloud in English before
+      the clock runs.}
+   \li{Exit question: 34 pieces, Su three times Ana, Tess 4 more than Ana.}}
+  {\li{Depth found by counting cubes, not by rearranging.}
+   \li{Every share written as an expression before the total is used.}
+   \li{Exit question solved by at least half the class.}}
+\end{daypage}
+
+\end{document}

@@ -12,7 +12,6 @@ import { dashboardUnitUrl } from '../lib/dashboardLink.js'
 import WidgetRenderer, { WidgetErrorBoundary } from './WidgetRenderer.jsx'
 import { RandomStudentModal, PickButton } from './RandomStudent.jsx'
 import { useStudentPicker } from '../lib/useStudentPicker.js'
-import { recordRecent } from '../lib/recentLessons.js'
 import { useDarkMode } from '../lib/useDarkMode.js'
 import { getLayout } from './layouts/index.js'
 
@@ -41,8 +40,6 @@ export default function Deck({ lesson, course }) {
     navigate(`/course/${course.id}`)
   }, [navigate, course.id])
 
-  // Remember this lesson for the home page's "recently opened" strip.
-  useEffect(() => { recordRecent(course, lesson) }, [course, lesson])
 
   useEffect(() => {
     const onFsChange = () => { if (!document.fullscreenElement) setIsDisplayMode(false) }

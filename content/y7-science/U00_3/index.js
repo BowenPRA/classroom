@@ -11,7 +11,7 @@ import { plan } from './plan.js'
 export default {
   meta: {
     course: 'y7-science',
-    unit: 'Project 1',
+    unit: 'P1',
     id: 'U00_3',
     title: 'Hanging Window Planters',
     subtitle: 'A tiny recycled-cup garden for the classroom window',

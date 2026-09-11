@@ -11,3 +11,10 @@ homework/**/.preview/
 homework/**/*.aux
 homework/**/*.log
 homework/**/*.out
+
+# Same for the weekly plan in planning/. The .tex and the .pdf are what matter.
+planning/**/.preview/
+planning/**/*.aux
+planning/**/*.log
+planning/**/*.out
+planning/**/*.toc

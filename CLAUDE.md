@@ -25,6 +25,18 @@ Vietnamese twins, no widgets, no dark mode. They have their own method: use the
 The rule that matters most there: **verify by rasterising the PDF and looking at
 every page.** A clean LaTeX log proves nothing about the layout.
 
+## The weekly plan is a third artefact
+
+`planning/<doc>/` holds the printed lesson-plan document — LaTeX to PDF, one
+page per teaching day, plus a week overview and the Friday parent update. Use
+the **`weekly-plan` skill**. Shared house style is `planning/plan-style.tex`;
+`planning/y7-q1/` is the reference implementation.
+
+Two rules specific to it: **never write a path to a homework PDF** — Vite
+fingerprints them, so `#/homework` is the only stable link — and **reproduce
+parent updates rather than tidying them.** Where a sent post contradicts itself
+or the plan, put it in an `editorial` box instead of quietly picking a winner.
+
 ## Think before building
 
 Surface the assumption instead of quietly picking one. If a request has two

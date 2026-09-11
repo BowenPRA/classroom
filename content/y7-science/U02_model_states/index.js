@@ -10,7 +10,7 @@ import { plan } from './plan.js'
 export default {
   meta: {
     course: 'y7-science',
-    unit: '2 · Model',
+    unit: 'Model',
     id: 'U02_MODEL',
     title: 'Heating & Cooling: A Particle Model',
     objective: 'An interactive model for section 2.2: change the temperature of ice, mercury, oxygen or iron and watch it melt, evaporate, boil, condense and freeze — with the particle arrangement shown beside the beaker, and every transition temperature marked on a temperature axis.',
