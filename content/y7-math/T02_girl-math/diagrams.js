@@ -6,19 +6,20 @@
 // <text> written out literally, because `npm run audit:svg` cannot see text
 // produced by a `${helper(...)}` call and will silently check nothing.
 //
-// WHY BARS AND NOT ALGEBRA. "Carrot gets twice as many as Erica" is an equation
-// — 3e = 12 — and a Year 7 who has just met substitution cannot yet solve for e.
-// Drawn as boxes it is not an equation at all: there are three identical boxes
-// and twelve pieces, so a box is four. Every round of the game is that same
-// picture with more boxes, and the two extra moves are the ones on BAR_PLUS
-// (take the extra off the total first) and BAR_THREE (do both at once).
+// THE BOX IS THE EXPRESSION. Each drawing names one box **n** and then writes
+// every share in terms of it — n, 2n, n + 3 — before adding them up and solving.
+// That is deliberate: this class met expressions and substitution in 2.1 and
+// 2.2, so 2n is a word they already own, and the picture is what stops n from
+// being a symbol with no meaning. The chain of equations under each drawing is
+// the SAME chain the game reveals after every round, so the slide and the game
+// speak one language.
 //
-// The numbers on these three are deliberately NOT numbers from any round of the
-// game, so the worked example does not spend a round.
+// The numbers on these three appear in no round of the game, so the worked
+// example does not spend a round.
 //
-//   BAR_TWICE   twice as many — three equal boxes, 12 pieces
-//   BAR_PLUS    3 more than — take the 3 off the total FIRST
-//   BAR_THREE   three girls at once, with a times rule and a plus rule
+//   BAR_TWICE   twice as many — two boxes, so three boxes altogether
+//   BAR_PLUS    3 more than — a box plus a loose 3 that comes off the total
+//   BAR_THREE   both moves at once, three girls
 
 const INK = '#2b2b2b'
 const KEY = '#c25e12'
@@ -29,7 +30,6 @@ const GREEN_T = '#eef6e6'
 const ORANGE_T = '#fdf1e3'
 const BLUE_T = '#eef4fb'
 const PURPLE_T = '#f2ecf7'
-const PAPER = '#f5e9d0'
 
 const FONT = "Inter, 'Segoe UI', system-ui, sans-serif"
 
@@ -37,109 +37,103 @@ const FONT = "Inter, 'Segoe UI', system-ui, sans-serif"
 const plate = (w, h) => `<rect x="0" y="0" width="${w}" height="${h}" rx="14" fill="#ffffff"/>
     <rect x="0.75" y="0.75" width="${w - 1.5}" height="${h - 1.5}" rx="13" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>`
 
-const MARKERS = `<defs>
-    <marker id="gm-key" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="${KEY}"/></marker>
-    <marker id="gm-green" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="${GREEN}"/></marker>
-  </defs>`
-
 export const DIAGRAMS = {
   // ───────────────────────────────────────────────────────────────────────────
-  // The first move, and the one every round is built on: "twice as many" means
-  // two boxes the same size as the one box, so the total is cut into THREE
-  // equal boxes — not two.
+  // The first move: "twice as many" means two boxes the same size as the one
+  // box, so the total is cut into THREE equal boxes, not two. Naming the box n
+  // turns the picture straight into n + 2n = 12.
   // ───────────────────────────────────────────────────────────────────────────
-  BAR_TWICE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 520" class="w-full h-full">
-    ${plate(840, 520)}
-    ${MARKERS}
+  BAR_TWICE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 500" class="w-full h-full">
+    ${plate(840, 500)}
 
     <text x="420" y="44" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">Carrot gets twice as many as Erica</text>
-    <text x="420" y="82" font-family="${FONT}" font-size="22" font-weight="bold" fill="${BLUE}" text-anchor="middle">12 pieces of rice paper altogether</text>
+    <text x="420" y="80" font-family="${FONT}" font-size="21" font-weight="bold" fill="${BLUE}" text-anchor="middle">12 pieces altogether</text>
 
-    <text x="196" y="152" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="end">Erica</text>
-    <rect x="216" y="120" width="160" height="52" rx="8" fill="${BLUE_T}" stroke="${INK}" stroke-width="3"/>
-    <text x="296" y="156" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}" text-anchor="middle">4</text>
+    <text x="196" y="150" font-family="${FONT}" font-size="23" font-weight="bold" fill="${INK}" text-anchor="end">Erica</text>
+    <rect x="216" y="118" width="150" height="50" rx="8" fill="${BLUE_T}" stroke="${INK}" stroke-width="3"/>
+    <text x="291" y="152" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}" text-anchor="middle">n</text>
+    <text x="560" y="152" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}">= n</text>
 
-    <text x="196" y="234" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="end">Carrot</text>
-    <rect x="216" y="202" width="160" height="52" rx="8" fill="${ORANGE_T}" stroke="${INK}" stroke-width="3"/>
-    <text x="296" y="238" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">4</text>
-    <rect x="386" y="202" width="160" height="52" rx="8" fill="${ORANGE_T}" stroke="${INK}" stroke-width="3"/>
-    <text x="466" y="238" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">4</text>
+    <text x="196" y="226" font-family="${FONT}" font-size="23" font-weight="bold" fill="${INK}" text-anchor="end">Carrot</text>
+    <rect x="216" y="194" width="150" height="50" rx="8" fill="${ORANGE_T}" stroke="${INK}" stroke-width="3"/>
+    <text x="291" y="228" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">n</text>
+    <rect x="376" y="194" width="150" height="50" rx="8" fill="${ORANGE_T}" stroke="${INK}" stroke-width="3"/>
+    <text x="451" y="228" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">n</text>
+    <text x="560" y="228" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}">= 2n</text>
 
-    <text x="420" y="322" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">Three equal boxes, and 12 pieces to fill them.</text>
-    <text x="420" y="378" font-family="${FONT}" font-size="34" font-weight="bold" fill="${GREEN}" text-anchor="middle">12 ÷ 3 = 4 in one box</text>
+    <text x="420" y="308" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">n + 2n = 12  →  3n = 12  →  n = 4</text>
 
-    <rect x="150" y="416" width="540" height="70" rx="14" fill="${GREEN_T}" stroke="${GREEN}" stroke-width="2.5"/>
-    <text x="420" y="460" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">Erica gets 4. Carrot gets 8.</text>
+    <rect x="140" y="350" width="560" height="76" rx="14" fill="${GREEN_T}" stroke="${GREEN}" stroke-width="2.5"/>
+    <text x="420" y="398" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">Erica gets 4. Carrot gets 8.</text>
+
+    <text x="420" y="466" font-family="${FONT}" font-size="20" font-weight="bold" fill="${KEY}" text-anchor="middle">Three boxes, not two.</text>
   </svg>`,
 
   // ───────────────────────────────────────────────────────────────────────────
-  // The second move. A class that has only met "twice as many" tries to divide
-  // 15 by 2 and gets stuck on the half. Taking the extra 3 off the TOTAL first
-  // leaves two boxes and an even number, and the extra goes back on at the end.
+  // The second move. A class that has only met "twice as many" tries to share
+  // 15 between 2 and gets stuck on the half. The loose 3 comes off the total
+  // first, and goes back on at the end.
   // ───────────────────────────────────────────────────────────────────────────
-  BAR_PLUS: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 520" class="w-full h-full">
-    ${plate(840, 520)}
-    ${MARKERS}
+  BAR_PLUS: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 500" class="w-full h-full">
+    ${plate(840, 500)}
 
     <text x="420" y="44" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">Nam gets 3 more than Su</text>
-    <text x="420" y="82" font-family="${FONT}" font-size="22" font-weight="bold" fill="${BLUE}" text-anchor="middle">15 pieces of rice paper altogether</text>
+    <text x="420" y="80" font-family="${FONT}" font-size="21" font-weight="bold" fill="${BLUE}" text-anchor="middle">15 pieces altogether</text>
 
-    <text x="196" y="152" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="end">Su</text>
-    <rect x="216" y="120" width="180" height="52" rx="8" fill="${PURPLE_T}" stroke="${INK}" stroke-width="3"/>
-    <text x="306" y="156" font-family="${FONT}" font-size="26" font-weight="bold" fill="${PURPLE}" text-anchor="middle">6</text>
+    <text x="196" y="150" font-family="${FONT}" font-size="23" font-weight="bold" fill="${INK}" text-anchor="end">Su</text>
+    <rect x="216" y="118" width="170" height="50" rx="8" fill="${PURPLE_T}" stroke="${INK}" stroke-width="3"/>
+    <text x="301" y="152" font-family="${FONT}" font-size="26" font-weight="bold" fill="${PURPLE}" text-anchor="middle">n</text>
+    <text x="560" y="152" font-family="${FONT}" font-size="26" font-weight="bold" fill="${PURPLE}">= n</text>
 
-    <text x="196" y="234" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="end">Nam</text>
-    <rect x="216" y="202" width="180" height="52" rx="8" fill="${BLUE_T}" stroke="${INK}" stroke-width="3"/>
-    <text x="306" y="238" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}" text-anchor="middle">6</text>
-    <rect x="406" y="202" width="90" height="52" rx="8" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="3" stroke-dasharray="8 6"/>
-    <text x="451" y="238" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">3</text>
+    <text x="196" y="226" font-family="${FONT}" font-size="23" font-weight="bold" fill="${INK}" text-anchor="end">Nam</text>
+    <rect x="216" y="194" width="170" height="50" rx="8" fill="${BLUE_T}" stroke="${INK}" stroke-width="3"/>
+    <text x="301" y="228" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}" text-anchor="middle">n</text>
+    <rect x="396" y="194" width="86" height="50" rx="8" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="3" stroke-dasharray="8 6"/>
+    <text x="439" y="228" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">3</text>
+    <text x="560" y="228" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}">= n + 3</text>
 
-    <text x="540" y="238" font-family="${FONT}" font-size="20" font-weight="bold" fill="${KEY}">the extra</text>
+    <text x="420" y="302" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">n + (n + 3) = 15  →  2n + 3 = 15</text>
+    <text x="420" y="344" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">2n = 12  →  n = 6</text>
 
-    <text x="420" y="316" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">Take the extra 3 off the total first: 15 − 3 = 12</text>
-    <text x="420" y="372" font-family="${FONT}" font-size="34" font-weight="bold" fill="${GREEN}" text-anchor="middle">12 ÷ 2 = 6 in one box</text>
+    <rect x="140" y="376" width="560" height="72" rx="14" fill="${GREEN_T}" stroke="${GREEN}" stroke-width="2.5"/>
+    <text x="420" y="422" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">Su gets 6. Nam gets 9.</text>
 
-    <rect x="150" y="410" width="540" height="70" rx="14" fill="${GREEN_T}" stroke="${GREEN}" stroke-width="2.5"/>
-    <text x="420" y="454" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">Su gets 6. Nam gets 6 + 3 = 9.</text>
+    <text x="420" y="478" font-family="${FONT}" font-size="20" font-weight="bold" fill="${KEY}" text-anchor="middle">Take the loose 3 off the total first.</text>
   </svg>`,
 
   // ───────────────────────────────────────────────────────────────────────────
-  // Both moves at once, which is every round from the fourth onwards: take the
-  // extra off the total, THEN count the boxes. Three girls, 26 pieces, and none
-  // of these numbers appears in the game.
+  // Both moves at once, which is every round from the fourth onwards. None of
+  // these numbers appears in the game.
   // ───────────────────────────────────────────────────────────────────────────
-  BAR_THREE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
-    ${plate(840, 560)}
-    ${MARKERS}
+  BAR_THREE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 540" class="w-full h-full">
+    ${plate(840, 540)}
 
     <text x="420" y="42" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">Three girls, 26 pieces</text>
-    <text x="420" y="78" font-family="${FONT}" font-size="20" font-weight="bold" fill="${INK}" text-anchor="middle">Tess gets twice as many as Su. Ana gets 2 more than Su.</text>
+    <text x="420" y="76" font-family="${FONT}" font-size="20" font-weight="bold" fill="${INK}" text-anchor="middle">Tess gets twice as many as Su. Ana gets 2 more than Su.</text>
 
-    <text x="196" y="140" font-family="${FONT}" font-size="23" font-weight="bold" fill="${INK}" text-anchor="end">Su</text>
-    <rect x="216" y="110" width="150" height="48" rx="8" fill="${PURPLE_T}" stroke="${INK}" stroke-width="3"/>
-    <text x="291" y="143" font-family="${FONT}" font-size="24" font-weight="bold" fill="${PURPLE}" text-anchor="middle">6</text>
+    <text x="186" y="138" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="end">Su</text>
+    <rect x="206" y="108" width="140" height="46" rx="8" fill="${PURPLE_T}" stroke="${INK}" stroke-width="3"/>
+    <text x="276" y="140" font-family="${FONT}" font-size="24" font-weight="bold" fill="${PURPLE}" text-anchor="middle">n</text>
+    <text x="576" y="140" font-family="${FONT}" font-size="24" font-weight="bold" fill="${PURPLE}">= n</text>
 
-    <text x="196" y="216" font-family="${FONT}" font-size="23" font-weight="bold" fill="${INK}" text-anchor="end">Tess</text>
-    <rect x="216" y="186" width="150" height="48" rx="8" fill="${GREEN_T}" stroke="${INK}" stroke-width="3"/>
-    <text x="291" y="219" font-family="${FONT}" font-size="24" font-weight="bold" fill="${GREEN}" text-anchor="middle">6</text>
-    <rect x="376" y="186" width="150" height="48" rx="8" fill="${GREEN_T}" stroke="${INK}" stroke-width="3"/>
-    <text x="451" y="219" font-family="${FONT}" font-size="24" font-weight="bold" fill="${GREEN}" text-anchor="middle">6</text>
+    <text x="186" y="212" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="end">Tess</text>
+    <rect x="206" y="182" width="140" height="46" rx="8" fill="${GREEN_T}" stroke="${INK}" stroke-width="3"/>
+    <text x="276" y="214" font-family="${FONT}" font-size="24" font-weight="bold" fill="${GREEN}" text-anchor="middle">n</text>
+    <rect x="356" y="182" width="140" height="46" rx="8" fill="${GREEN_T}" stroke="${INK}" stroke-width="3"/>
+    <text x="426" y="214" font-family="${FONT}" font-size="24" font-weight="bold" fill="${GREEN}" text-anchor="middle">n</text>
+    <text x="576" y="214" font-family="${FONT}" font-size="24" font-weight="bold" fill="${GREEN}">= 2n</text>
 
-    <text x="196" y="292" font-family="${FONT}" font-size="23" font-weight="bold" fill="${INK}" text-anchor="end">Ana</text>
-    <rect x="216" y="262" width="150" height="48" rx="8" fill="${BLUE_T}" stroke="${INK}" stroke-width="3"/>
-    <text x="291" y="295" font-family="${FONT}" font-size="24" font-weight="bold" fill="${BLUE}" text-anchor="middle">6</text>
-    <rect x="376" y="262" width="70" height="48" rx="8" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="3" stroke-dasharray="8 6"/>
-    <text x="411" y="295" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}" text-anchor="middle">2</text>
+    <text x="186" y="286" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="end">Ana</text>
+    <rect x="206" y="256" width="140" height="46" rx="8" fill="${BLUE_T}" stroke="${INK}" stroke-width="3"/>
+    <text x="276" y="288" font-family="${FONT}" font-size="24" font-weight="bold" fill="${BLUE}" text-anchor="middle">n</text>
+    <rect x="356" y="256" width="70" height="46" rx="8" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="3" stroke-dasharray="8 6"/>
+    <text x="391" y="288" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}" text-anchor="middle">2</text>
+    <text x="576" y="288" font-family="${FONT}" font-size="24" font-weight="bold" fill="${BLUE}">= n + 2</text>
 
-    <text x="420" y="360" font-family="${FONT}" font-size="23" font-weight="bold" fill="${INK}" text-anchor="middle">Take the extra 2 off first: 26 − 2 = 24</text>
-    <text x="420" y="400" font-family="${FONT}" font-size="23" font-weight="bold" fill="${INK}" text-anchor="middle">Now count the boxes. There are 4 of them.</text>
-    <text x="420" y="452" font-family="${FONT}" font-size="34" font-weight="bold" fill="${GREEN}" text-anchor="middle">24 ÷ 4 = 6 in one box</text>
+    <text x="420" y="356" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}" text-anchor="middle">n + 2n + (n + 2) = 26  →  4n + 2 = 26</text>
+    <text x="420" y="398" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}" text-anchor="middle">4n = 24  →  n = 6</text>
 
-    <rect x="90" y="486" width="660" height="60" rx="14" fill="${GREEN_T}" stroke="${GREEN}" stroke-width="2.5"/>
-    <text x="420" y="524" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}" text-anchor="middle">Su 6 · Tess 12 · Ana 8 · and 6 + 12 + 8 = 26</text>
+    <rect x="70" y="430" width="700" height="70" rx="14" fill="${GREEN_T}" stroke="${GREEN}" stroke-width="2.5"/>
+    <text x="420" y="474" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}" text-anchor="middle">Su 6 · Tess 12 · Ana 8 · and 6 + 12 + 8 = 26</text>
   </svg>`,
 }
-
-// PAPER is kept for the rice-paper fill used by the game widget's own drawing;
-// referenced here so the palette stays in one place with the rest of the task.
-export const RICE_PAPER_FILL = PAPER

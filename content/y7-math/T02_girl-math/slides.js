@@ -6,22 +6,22 @@
 // model, and everything else is the class playing.
 //
 // WHAT IT IS ACTUALLY FOR. "Carrot gets twice as many as Erica, and there are
-// twelve pieces" is a linear equation, and this class cannot solve one yet.
-// Drawn as boxes it is not an equation at all — three identical boxes, twelve
-// pieces, so a box is four. That picture is worth having in the room a long
-// time before the algebra that replaces it, and it is the single most useful
-// thing a Year 7 can own for word problems.
+// twelve pieces" is the equation n + 2n = 12, and a Year 7 who meets that as
+// symbols has nothing to hold on to. Drawn as boxes first it is not frightening
+// at all — one box, then two the same size, twelve pieces, so a box is four —
+// and the letter is simply the box's name. Slides 2 to 4 name the box n and
+// then write, add, solve; the game reveals every round the same way.
 //
 // THE ENGLISH IS THE MATHS, AGAIN. Every round turns on three phrases and
 // nothing else: "twice as many as", "more than", "fewer than". A student who
 // reads "Nam gets 3 more than Su" as "Nam gets 3" is not bad at arithmetic —
-// they have misread a sentence. Say all three out loud on slides 2 and 3, and
-// keep saying them during the game.
+// they have misread a sentence, and they will write 3 where n + 3 belongs. Say
+// all three out loud on slides 2 and 3, and keep saying them during the game.
 //
 // THE GAME'S SHAPE, so the deck and the widget agree:
 //   · ten rounds, harder as they go, worth 2 rolls up to 8
 //   · a generous clock — 90 seconds early, 210 by the end, and a +30 button
-//   · answers revealed ONE GIRL AT A TIME, so half-right gets caught
+//   · revealed as expressions → the sum → solve for n → each girl in turn
 //   · the class writes on whiteboards; the teacher says who was right and taps
 //     a team to award that round's rolls. Nothing is typed in.
 //
@@ -65,29 +65,29 @@ export const slides = [
     accent: TEAL,
     icon: 'Boxes',
     side: 'left',
-    eyebrow: 'Draw a box for the smaller share',
-    eyebrowVn: 'Vẽ một cái hộp cho phần nhỏ hơn',
+    eyebrow: 'One box. Call it n.',
+    eyebrowVn: 'Một cái hộp. Gọi nó là n.',
     title: 'Twice As Many',
     titleVn: 'Gấp Đôi',
     ratio: 45,
     inlineSvg: DIAGRAMS.BAR_TWICE,
     content:
-      'Do not start with the numbers. Start with a **box** for the smaller share — here that is Erica.\n\n' +
-      '**Twice as many** means two boxes of exactly that size. So the 12 pieces are shared into **three** equal boxes, not two.',
+      'Draw a box for the smallest share. Call the box **n**.\n\n' +
+      '**Twice as many** = **2n**. So there are **three** boxes, not two.',
     contentVn:
-      'Đừng bắt đầu bằng các con số. Hãy bắt đầu bằng một **cái hộp** cho phần nhỏ hơn — ở đây là Erica.\n\n' +
-      '**Gấp đôi** nghĩa là hai cái hộp đúng bằng cỡ đó. Vậy 12 miếng được chia vào **ba** hộp bằng nhau, không phải hai.',
+      'Vẽ một cái hộp cho phần nhỏ nhất. Gọi hộp đó là **n**.\n\n' +
+      '**Gấp đôi** = **2n**. Vậy có **ba** hộp, không phải hai.',
     notes: [
       {
         tone: 'write',
         text:
-          '**Draw a box** for the smallest share.\n' +
-          '**Twice as many** = 2 boxes. **Three times as many** = 3 boxes. **The same as** = 1 more box.\n' +
-          'Count all the boxes, then divide the total by that number.',
+          'Call the smallest share **n**.\n' +
+          '**Twice as many** = 2n. **Three times as many** = 3n. **The same as** = n.\n' +
+          'Add every share up, make it equal the total, then solve for n.',
         textVn:
-          '**Vẽ một cái hộp** cho phần nhỏ nhất.\n' +
-          '**Gấp đôi** = 2 hộp. **Gấp ba** = 3 hộp. **Bằng nhau** = thêm 1 hộp nữa.\n' +
-          'Đếm tất cả các hộp, rồi lấy tổng chia cho số hộp đó.',
+          'Gọi phần nhỏ nhất là **n**.\n' +
+          '**Gấp đôi** = 2n. **Gấp ba** = 3n. **Bằng nhau** = n.\n' +
+          'Cộng tất cả các phần lại, cho bằng tổng, rồi tìm n.',
       },
     ],
   },
@@ -95,29 +95,27 @@ export const slides = [
     layout: 'split',
     accent: ORANGE,
     icon: 'Equal',
-    eyebrow: 'The extra comes off the total first',
-    eyebrowVn: 'Phần dôi ra phải trừ khỏi tổng trước',
+    eyebrow: 'n + 3, not 3',
+    eyebrowVn: 'n + 3, không phải 3',
     title: 'More Than, Fewer Than',
     titleVn: 'Nhiều Hơn, Ít Hơn',
     ratio: 45,
     inlineSvg: DIAGRAMS.BAR_PLUS,
     content:
-      '**3 more than** is not a box. It is one box **plus a loose 3**.\n\n' +
-      'Take that 3 off the total before you divide. Put it back at the end. **Fewer than** works the same way, but you *add* it on first.',
+      '**3 more than** is **n + 3**. Not 3.\n\n' +
+      'Add the shares up, and the loose 3 comes off the total: 2n + 3 = 15, so 2n = 12.',
     contentVn:
-      '**Nhiều hơn 3** không phải một cái hộp. Nó là một hộp **cộng thêm 3 miếng lẻ**.\n\n' +
-      'Hãy trừ 3 đó khỏi tổng trước khi chia. Cuối cùng mới cộng lại. **Ít hơn** làm y hệt, nhưng phải *cộng* vào trước.',
+      '**Nhiều hơn 3** là **n + 3**. Không phải 3.\n\n' +
+      'Cộng các phần lại, rồi chuyển số 3 sang: 2n + 3 = 15, nên 2n = 12.',
     notes: [
       {
         tone: 'write',
         text:
-          '**More than** = 1 box + the extra. Take the extra **off** the total before dividing.\n' +
-          '**Fewer than** = 1 box − the missing pieces. Put them **back on** the total before dividing.\n' +
-          'Divide only when every share is a whole number of boxes.',
+          '**3 more than** = n + 3. **3 fewer than** = n − 3.\n' +
+          'The loose number moves across the = sign and changes sign.',
         textVn:
-          '**Nhiều hơn** = 1 hộp + phần dôi. Trừ phần dôi **khỏi** tổng trước khi chia.\n' +
-          '**Ít hơn** = 1 hộp − phần thiếu. Cộng phần thiếu **vào** tổng trước khi chia.\n' +
-          'Chỉ chia khi mọi phần đều là số hộp nguyên.',
+          '**Nhiều hơn 3** = n + 3. **Ít hơn 3** = n − 3.\n' +
+          'Số lẻ chuyển sang bên kia dấu = và đổi dấu.',
       },
     ],
   },
@@ -126,31 +124,29 @@ export const slides = [
     accent: PURPLE,
     icon: 'Users',
     side: 'left',
-    eyebrow: 'Both moves at once — this is every round',
-    eyebrowVn: 'Cả hai bước cùng lúc — mọi vòng đều thế',
+    eyebrow: 'This is every round of the game',
+    eyebrowVn: 'Mọi vòng của trò chơi đều như thế này',
     title: 'Three Girls At Once',
     titleVn: 'Ba Bạn Cùng Lúc',
     ratio: 45,
     inlineSvg: DIAGRAMS.BAR_THREE,
     content:
-      'Extras off the total first. Then count the boxes. Then divide.\n\n' +
-      'Always **add your answers up** at the end. If they do not make the total, a rule was read wrong.',
+      'Write each girl. Add them up. Solve for **n**. Put n back in.\n\n' +
+      'Then **add your answers up**. If they do not make the total, a rule was read wrong.',
     contentVn:
-      'Trừ phần dôi khỏi tổng trước. Rồi đếm số hộp. Rồi chia.\n\n' +
-      'Cuối cùng luôn **cộng các đáp án lại**. Nếu không ra đúng tổng thì em đã đọc sai một quy tắc.',
+      'Viết từng bạn. Cộng lại. Tìm **n**. Thay n trở lại.\n\n' +
+      'Rồi **cộng các đáp án lại**. Nếu không ra đúng tổng thì em đã đọc sai một quy tắc.',
     notes: [
       {
         tone: 'write',
         text:
-          '**The order, every time:**\n' +
-          '**1** Take the extras off the total (or add the missing ones on).\n' +
-          '**2** Count the boxes. **3** Divide to find one box.\n' +
-          '**4** Work out each girl. **5** Add them up and check they make the total.',
+          '**Every round, four steps:**\n' +
+          '**1** Write each girl in terms of n.  **2** Add them up = the total.\n' +
+          '**3** Solve for n.  **4** Put n back in, then check the total.',
         textVn:
-          '**Thứ tự, lần nào cũng vậy:**\n' +
-          '**1** Trừ phần dôi khỏi tổng (hoặc cộng phần thiếu vào).\n' +
-          '**2** Đếm số hộp. **3** Chia để tìm một hộp.\n' +
-          '**4** Tính phần của từng bạn. **5** Cộng lại và kiểm tra có ra đúng tổng không.',
+          '**Mỗi vòng, bốn bước:**\n' +
+          '**1** Viết từng bạn theo n.  **2** Cộng lại = tổng.\n' +
+          '**3** Tìm n.  **4** Thay n trở lại, rồi kiểm tra tổng.',
       },
     ],
   },
@@ -165,13 +161,13 @@ export const slides = [
     title: 'How Girl Math Works',
     titleVn: 'Cách Chơi',
     content:
-      'The screen shows how many pieces there are and the rules. **You work it out on your whiteboard** while the clock runs. Nobody shouts.\n\n' +
-      'When the clock stops, the answers come out **one girl at a time**.\n\n' +
+      'The screen shows the pieces and the rules. **You work it out on your whiteboard** while the clock runs. Nobody shouts.\n\n' +
+      'Then we do it together on screen: the **expressions**, the **sum**, solve for **n**, then each girl.\n\n' +
       'Each round is worth a number of **rolls**. Harder round, more rolls.\n\n' +
       '> The rounds get harder. They also get sillier. Both on purpose.',
     contentVn:
-      'Màn hình cho biết có bao nhiêu miếng và các quy tắc. **Em tính ra bảng con** trong lúc đồng hồ chạy. Không ai được hô.\n\n' +
-      'Khi hết giờ, đáp án hiện ra **từng bạn một**.\n\n' +
+      'Màn hình cho biết số miếng và các quy tắc. **Em tính ra bảng con** trong lúc đồng hồ chạy. Không ai được hô.\n\n' +
+      'Rồi cả lớp cùng làm trên màn hình: các **biểu thức**, **cộng lại**, tìm **n**, rồi từng bạn.\n\n' +
       'Mỗi vòng có giá trị một số **cuốn**. Vòng khó hơn thì nhiều cuốn hơn.\n\n' +
       '> Các vòng sẽ khó dần. Và cũng ngớ ngẩn dần. Cả hai đều là cố ý.',
   },
