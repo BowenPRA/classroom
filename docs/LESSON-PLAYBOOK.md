@@ -4,13 +4,65 @@ How to build a lesson deck in this repo that actually works in front of a class.
 
 [README.md](../README.md) is the **reference** — every field, every layout. This
 is the **method**: what makes a deck good, the order to build it in, and the
-traps that have already cost time. Written after Y7 Science 1.1 Cells, which is
-the worked example for everything below — read
-[`content/y7-science/U01_1/`](../content/y7-science/U01_1/) alongside this.
+traps that have already cost time.
+
+### The exemplars
+
+Two decks are the standard every new lesson is measured against. Read both end
+to end before building — they are the right density, the right mix of
+diagrams, photographs and widgets, and the right amount of English:
+
+- **Science 2.5** — [`content/y7-science/U02_5/`](../content/y7-science/U02_5/)
+  (Atoms, elements and the Periodic Table)
+- **Maths 2.3** — [`content/y7-math/U02_3/`](../content/y7-math/U02_3/)
+  (Collecting like terms)
+
+Older decks (1.1–2.2 in both subjects) teach well but are **over-written**:
+their slides carry two or three sentences where one would do. Borrow their
+ideas, never their wording.
 
 ---
 
 ## 1. The design principles
+
+### Write less. Make it easy to read.
+The class reads English slowly. Every extra word on a slide is one more thing
+between them and the idea. This is the rule Mr Bowen has asked for most often.
+
+- **One hook line, or no body text at all.** If a `write` note, a diagram label
+  or a caption already says it, the slide does not say it again.
+- **Short sentences, one idea each, everyday words.** *"7s is right. The letter
+  never disappears."* — not *"Last lesson we stopped writing it, and nothing
+  about that has changed; the only new thing is…"*
+- **Cut the commentary.** Sentences that explain why the slide exists
+  (*"Nobody in this room finds that hard"*, *"That is the whole point"*) belong
+  in the teacher plan, not on the projector.
+- **Put words on the picture.** A label on the diagram beats a sentence beside
+  it.
+- **Eyebrows 2–5 words, captions one sentence, titles name the thing.**
+- **The maths is the biggest thing on a problem slide.** Never leave the
+  question in an eyebrow or a caption, where the back row cannot read it.
+- **Keep all the content.** Tighter is not shorter-on-ideas: move a sentence
+  into a label, a caption, a reveal or another slide rather than deleting it.
+
+The plan (`plan.js`) is for the teacher and can say more. The slide cannot.
+
+### Vote slides: left hand, right hand
+When the class must choose between two answers, everyone votes **at once with
+one hand**: left hand for A, right hand for B. It is quicker than two rounds of
+hands up, nobody can copy a neighbour's vote after seeing it, and the split is
+visible in one glance.
+
+The shape (Maths 2.3 slides 11 and 17):
+
+- `layout: 'compare'` with **`text`** — the problem, printed as big as a
+  statement slide (`text: 'Simplify $8s − s$'`).
+- Column headings **`A · left hand up`** / **`B · right hand up`**, icon
+  `Hand`, blue for A and orange for B.
+- Each column is **one answer card and nothing else** — an `inlineSvg` with the
+  answer huge beside a drawn hand (`ANS_*` in 2.3's `diagrams.js`: a left hand
+  seen from behind on A, a right hand on B). No quotes, no captions.
+- No answer anywhere on the slide. The next slide settles it.
 
 ### Mimic the Cambridge Learner's Book
 Students have the book open next to them. When a slide uses the same visual
@@ -66,7 +118,9 @@ numbers, teacher-paced, so the class does each step on paper first.
 
 See `ScaleChallengeWidget` in
 [`widgets.jsx`](../content/y7-science/U01_1/widgets.jsx) — four steps, a Back
-button, and nothing else to fiddle with.
+button, and nothing else to fiddle with. The current models are Science 2.5's
+`HalvingWidget` and Maths 2.3's `Collect` (find → move → collect, one press
+each, with the class saying the step before it is pressed).
 
 ### Three sources of imagery, each with a job
 
@@ -98,9 +152,12 @@ A widget earns its place by doing one thing a static slide cannot.
 |---|---|
 | Open the lesson; set the starter task | `hero` |
 | Pose a question and stop | `statement` |
+| Vote between two answers (left hand / right hand) | `compare` + `text` + one answer card per column (§1) |
 | Explain with a diagram / run a widget beside the text | `split` |
 | One big figure, especially a Draw This | `showcase` |
+| Several photographs side by side | `showcase` with a wide SVG panel of `<image>`s (a `gallery` makes them thumbnails) |
 | A vs B (animal vs plant, model vs real, word vs word) | `compare` |
+| Quick-fire recall for the whole room | `game` (Symbol Snap, Like or Not?) |
 | A set of terms, one picture each | `gallery` |
 | Recap checklist | `stack` + `variant: 'checklist'` |
 | Aside, cross-curricular link, homework | `callout` |
@@ -109,8 +166,9 @@ A widget earns its place by doing one thing a static slide cannot.
 
 ## 3. Build order
 
-1. **Read** [README.md](../README.md) and one existing unit end to end. Match
-   the patterns you find; don't invent parallel ones.
+1. **Read** [README.md](../README.md) and both exemplars (Science 2.5, Maths
+   2.3) end to end. Match their patterns and their density; don't invent
+   parallel ones.
 2. **Write the beat sheet first** — one line per slide, in teaching order,
    before any code. Mark which slides are questions, which are copy-down, and
    which are Draw This.
@@ -313,6 +371,21 @@ Navigating from one lesson URL straight to another kept the index, landing
 mid-deck and crashing when the second deck was shorter. Fixed with a `key` on
 `<Deck>`.
 
+**Runs of spaces collapse.**
+`$4x + x = 5x$     $8s − s = 7s$` in a note, or `a   3x` in SVG `<text>`,
+renders as one run-together line. → *Join with "and" / "và" or a comma. One
+answer per line in a reveal avoids it but costs height — five lines pushed a
+reveal 73px off the slide in project mode.*
+
+**A `callout` prints `content` above its notes.**
+A practice question in `content` appears before the rule it depends on. → *Put
+the question in `reveal.prompt`, which renders above the reveal button.*
+
+**`check:deck` stops at a game slide and never opens a reveal.**
+Both look like a pass (see the project-mode section of §6). → *Walk the deck by
+clicking the last `<button>` (the deck's own Next) and open every "Check" button
+before measuring. Maths 2.3 hid two overflowing reveals this way.*
+
 ---
 
 ## 8. Definition of done
@@ -320,6 +393,7 @@ mid-deck and crashing when the second deck was shorter. Fixed with a `key` on
 - [ ] `lint`, `build`, `audit:svg`, `check:deck` all clean
 - [ ] Every user-facing string has a `…Vn` twin
 - [ ] Light **and** dark checked by eye
+- [ ] Read every slide against the exemplars: no sentence the class does not need
 - [ ] Every copy-down item is in a `write` note or an orange bumper
 - [ ] Every image is in `CREDITS.json` with an honest licence
 - [ ] `plan.js` matches the deck

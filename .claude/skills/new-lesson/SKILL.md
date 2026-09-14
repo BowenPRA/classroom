@@ -33,9 +33,12 @@ Get these pinned down first — guessing any of them wastes the whole run.
   (`Y7MathUnit01.pdf`) covering 1.1–1.6. For maths you must find the section
   inside it; do not assume the file is the section.
 - **The teaching date**, for the hero's `date` field.
-- **What already exists.** Read the most recent unit in `content/<course>/`
-  end to end. Match its patterns; do not invent parallel ones. It is also your
-  baseline for "how dense is too dense".
+- **The exemplars.** Read Science 2.5 (`content/y7-science/U02_5/`) and Maths
+  2.3 (`content/y7-math/U02_3/`) end to end — slides, diagrams, widgets, plan.
+  They are the baseline for "how dense is too dense" and for how much English a
+  slide can carry. Decks older than these are over-written; do not copy their
+  wording. Then read the most recent unit in the course you are building, for
+  continuity with what the class had last lesson.
 
 ## 1 · Read the book pages
 
@@ -152,6 +155,13 @@ The non-negotiables are in `CLAUDE.md`. The one worth restating because it is
 the whole point of the deck: **anything a student must copy goes in a `write`
 note or an orange `>` bumper, and nothing else does.** A definition that looks
 like discussion prose does not get copied into a notebook.
+
+**Write less than feels natural.** One hook line or no body text; short
+sentences; nothing the note, a label or the caption already says; no sentence
+about why the slide exists (that is the plan's job). Then reread each slide and
+cut again — the first draft is always too long. On a problem slide the maths is
+the biggest thing on it, and a two-answer vote is left hand A / right hand B
+(playbook §1).
 
 Prefer the plain slide. A widget must do one thing a static slide cannot —
 otherwise it is a note. This is the failure that recurs most; when in doubt,

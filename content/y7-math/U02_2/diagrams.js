@@ -318,4 +318,32 @@ export const DIAGRAMS = {
     <text x="420" y="500" font-family="${FONT}" font-size="24" font-weight="bold" fill="${RED}" text-anchor="middle">Water cannot get hotter than 100 °C.</text>
     <text x="420" y="538" font-family="${FONT}" font-size="21" fill="${INK}" text-anchor="middle">A formula is only true while the situation it describes is true.</text>
   </svg>`,
+
+  // The two answers on each vote slide, each beside the hand that votes for it:
+  // A is a LEFT hand seen from behind, thumb on the right — what a student sees when
+  // they raise it palm-forward — and B is a right hand, thumb on the left. The answer is the
+  // biggest thing on the card so the back row can read it.
+  ANS_14: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
+    ${plate(720, 320)}
+    <g transform="translate(192 76) scale(-7 7)" fill="none" stroke="${BLUE}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></g>
+    <text x="440" y="228" font-family="${FONT}" font-size="190" font-weight="bold" fill="${BLUE}" text-anchor="middle">14</text>
+  </svg>`,
+
+  ANS_18: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
+    ${plate(720, 320)}
+    <g transform="translate(528 76) scale(7)" fill="none" stroke="${KEY}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></g>
+    <text x="280" y="228" font-family="${FONT}" font-size="190" font-weight="bold" fill="${KEY}" text-anchor="middle">18</text>
+  </svg>`,
+
+  ANS_NEG1: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
+    ${plate(720, 320)}
+    <g transform="translate(192 76) scale(-7 7)" fill="none" stroke="${BLUE}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></g>
+    <text x="440" y="228" font-family="${FONT}" font-size="190" font-weight="bold" fill="${BLUE}" text-anchor="middle">−1</text>
+  </svg>`,
+
+  ANS_11: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
+    ${plate(720, 320)}
+    <g transform="translate(528 76) scale(7)" fill="none" stroke="${KEY}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></g>
+    <text x="280" y="228" font-family="${FONT}" font-size="190" font-weight="bold" fill="${KEY}" text-anchor="middle">11</text>
+  </svg>`,
 }

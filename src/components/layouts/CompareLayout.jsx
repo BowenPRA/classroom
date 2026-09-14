@@ -49,13 +49,27 @@ export default function CompareLayout({ slide: s, ctx }) {
   const { pick, isDisplayMode } = ctx
   const accent = toHex(s.accent || s.color, '#8b5cf6')
   const title = pick(s.title, s.titleVn)
+  const text = pick(s.text, s.textVn)
   const columns = s.columns || []
 
   return (
     <>
       {title && <HeaderBar title={title} icon={s.icon || 'Scale'} accent={accent} eyebrow={pick(s.eyebrow, s.eyebrowVn)} isDisplayMode={isDisplayMode} />}
-      <div className={`flex-1 min-h-0 bg-slate-50/50 dark:bg-slate-900/50 flex flex-col lg:flex-row gap-3 sm:gap-4 lg:gap-5 ${isDisplayMode ? 'p-[clamp(1.25rem,2.5vw,2.5rem)]' : 'p-3 sm:p-5 lg:p-6'}`}>
-        {columns.map((col, i) => <Column key={i} col={col} ctx={ctx} />)}
+      <div className={`flex-1 min-h-0 bg-slate-50/50 dark:bg-slate-900/50 flex flex-col gap-3 sm:gap-4 lg:gap-5 ${isDisplayMode ? 'p-[clamp(1.25rem,2.5vw,2.5rem)]' : 'p-3 sm:p-5 lg:p-6'}`}>
+        {/* The problem both columns answer, printed as big as a statement slide's
+            line. On a vote slide the class must be able to read the question
+            from the back row — an eyebrow is far too small for it. */}
+        {text && (
+          <div className="shrink-0 rounded-2xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 shadow-sm text-center"
+            style={{ borderLeftWidth: 8, borderLeftColor: accent }}>
+            <p className={`font-black text-slate-900 dark:text-slate-50 leading-tight tracking-tight ${isDisplayMode ? 'text-[clamp(1.75rem,3.6vw,3.6rem)] px-6 py-[clamp(0.75rem,1.6vh,1.5rem)]' : 'text-3xl lg:text-4xl px-5 py-3'}`}>
+              {parseInlineText(text)}
+            </p>
+          </div>
+        )}
+        <div className="flex-1 min-h-0 flex flex-col lg:flex-row gap-3 sm:gap-4 lg:gap-5">
+          {columns.map((col, i) => <Column key={i} col={col} ctx={ctx} />)}
+        </div>
       </div>
     </>
   )

@@ -199,33 +199,27 @@ export const slides = [
     // the split on the board before slide 7 settles it.
     layout: 'compare',
     accent: PURPLE,
-    icon: 'MessageSquare',
-    // No maths markup in an eyebrow — HeaderBar prints it raw and uppercased,
-    // so a $…$ would show as literal dollar signs on the slide.
-    eyebrow: 'Both worked out 3x + 2 when x = 4. Only one is right.',
-    eyebrowVn: 'Cả hai cùng tính 3x + 2 khi x = 4. Chỉ một bạn đúng.',
+    icon: 'Hand',
+    eyebrow: 'Vote with one hand',
+    eyebrowVn: 'Biểu quyết bằng một tay',
     title: 'Which Answer, and Why?',
     titleVn: 'Đáp án nào đúng, và vì sao?',
+    text: 'Work out $3x + 2$ when $x = 4$',
+    textVn: 'Tính $3x + 2$ khi $x = 4$',
     columns: [
       {
-        heading: 'Answer A',
-        headingVn: 'Đáp án A',
+        heading: 'A · left hand up',
+        headingVn: 'A · giơ tay trái',
         accent: BLUE,
-        icon: 'Hash',
-        content: '**14**\n\n"I did the multiplication first."',
-        contentVn: '**14**\n\n"Em nhân trước."',
-        caption: 'Hands up if you got this.',
-        captionVn: 'Giơ tay nếu em ra kết quả này.',
+        icon: 'Hand',
+        inlineSvg: DIAGRAMS.ANS_14,
       },
       {
-        heading: 'Answer B',
-        headingVn: 'Đáp án B',
+        heading: 'B · right hand up',
+        headingVn: 'B · giơ tay phải',
         accent: ORANGE,
-        icon: 'Hash',
-        content: '**18**\n\n"I worked from left to right."',
-        contentVn: '**18**\n\n"Em tính lần lượt từ trái sang phải."',
-        caption: 'Now hands up for this one. Do not change your mind yet.',
-        captionVn: 'Bây giờ giơ tay cho đáp án này. Chưa đổi ý vội.',
+        icon: 'Hand',
+        inlineSvg: DIAGRAMS.ANS_18,
       },
     ],
   },
@@ -385,21 +379,31 @@ export const slides = [
   {
     // QUESTION ONLY. No answer on this slide. The two candidates are the two
     // things the class will actually write, so let them argue.
-    layout: 'statement',
+    layout: 'compare',
     accent: PURPLE,
-    eyebrow: 'Discuss in pairs — do not write the answer yet',
-    eyebrowVn: 'Thảo luận theo cặp — chưa viết đáp án vội',
+    icon: 'Hand',
+    eyebrow: 'Vote with one hand',
+    eyebrowVn: 'Biểu quyết bằng một tay',
     title: 'One of These Is Wrong',
     titleVn: 'Một trong hai cái này là sai',
-    label: 'Discuss',
-    labelVn: 'Thảo luận',
-    labelIcon: 'MessageSquare',
-    text: '$5 − 2n$, when $n = −3$',
-    textVn: '$5 − 2n$, khi $n = −3$',
-    sub: 'One pair says the answer is **−1**. Another pair says it is **11**.',
-    subVn: 'Một cặp nói đáp án là **−1**. Một cặp khác nói là **11**.',
-    content: '> Which pair is right, and what did the other pair forget?',
-    contentVn: '> Cặp nào đúng, và cặp kia đã quên mất điều gì?',
+    text: 'Work out $5 − 2n$ when $n = −3$',
+    textVn: 'Tính $5 − 2n$ khi $n = −3$',
+    columns: [
+      {
+        heading: 'A · left hand up',
+        headingVn: 'A · giơ tay trái',
+        accent: BLUE,
+        icon: 'Hand',
+        inlineSvg: DIAGRAMS.ANS_NEG1,
+      },
+      {
+        heading: 'B · right hand up',
+        headingVn: 'B · giơ tay phải',
+        accent: ORANGE,
+        icon: 'Hand',
+        inlineSvg: DIAGRAMS.ANS_11,
+      },
+    ],
   },
   {
     layout: 'split',
@@ -436,8 +440,8 @@ export const slides = [
     accent: PURPLE,
     icon: 'PenTool',
     side: 'left',
-    eyebrow: 'Now go the other way — write the formula first',
-    eyebrowVn: 'Bây giờ làm ngược lại — viết công thức trước',
+    eyebrow: 'Write the formula first',
+    eyebrowVn: 'Viết công thức trước',
     title: 'Write It, Then Use It',
     titleVn: 'Viết ra, rồi dùng nó',
     ratio: 50,
@@ -464,21 +468,19 @@ export const slides = [
       label: 'Check your answer',
       labelVn: 'Kiểm tra đáp án',
       answer:
-        '**a** $C = 15 + 9k$\n\n' +
-        '**b** $C = 15 + 9 × 6 = 15 + 54 = 69$, so 69 thousand dong.\n\n' +
-        'The 15 is paid once, so it has no letter with it. The 9 is paid every kilometre, so it is multiplied by k.',
+        '**a** $C = 15 + 9k$: 15 is paid once, 9 every kilometre.\n' +
+        '**b** $C = 15 + 9 × 6 = 69$ thousand dong',
       answerVn:
-        '**a** $C = 15 + 9k$\n\n' +
-        '**b** $C = 15 + 9 × 6 = 15 + 54 = 69$, tức là 69 nghìn đồng.\n\n' +
-        'Số 15 chỉ trả một lần nên không đi kèm chữ cái nào. Số 9 phải trả mỗi ki-lô-mét nên được nhân với k.',
+        '**a** $C = 15 + 9k$: 15 trả một lần, 9 trả mỗi ki-lô-mét.\n' +
+        '**b** $C = 15 + 9 × 6 = 69$ nghìn đồng',
     },
   },
   {
     layout: 'split',
     accent: GREEN,
     icon: 'Thermometer',
-    eyebrow: 'Problem — from your Science lesson yesterday',
-    eyebrowVn: 'Bài toán — từ tiết Khoa học hôm qua',
+    eyebrow: 'From yesterday’s Science',
+    eyebrowVn: 'Từ tiết Khoa học hôm qua',
     title: 'The Water That Would Not Get Hotter',
     titleVn: 'Nước không thể nóng hơn được nữa',
     ratio: 50,
@@ -497,13 +499,11 @@ export const slides = [
       label: 'Check your answer',
       labelVn: 'Kiểm tra đáp án',
       answer:
-        '**a** $24 + 36 = 60$ °C  **b** $24 + 75 = 99$ °C\n\n' +
-        '**c** **No.** Water boils at 100 °C and stops getting hotter — you saw that yesterday.\n\n' +
-        'The arithmetic is perfect and the answer is still wrong, because a formula is only true while the situation it describes is true.',
+        '**a** $24 + 36 = 60$ °C, **b** $24 + 75 = 99$ °C\n' +
+        '**c** **No.** Water stops getting hotter at 100 °C. A formula is only true while the situation is.',
       answerVn:
-        '**a** $24 + 36 = 60$ °C  **b** $24 + 75 = 99$ °C\n\n' +
-        '**c** **Không.** Nước sôi ở 100 °C rồi không nóng thêm nữa — hôm qua em đã thấy điều đó.\n\n' +
-        'Phép tính hoàn toàn đúng mà đáp án vẫn sai, vì một công thức chỉ đúng chừng nào tình huống mà nó mô tả còn đúng.',
+        '**a** $24 + 36 = 60$ °C, **b** $24 + 75 = 99$ °C\n' +
+        '**c** **Không.** Nước không nóng hơn 100 °C. Công thức chỉ đúng khi tình huống còn đúng.',
     },
   },
 

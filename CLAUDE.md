@@ -15,6 +15,11 @@ A lesson is a folder — `content/<course>/<unit>/index.js`, default-exporting
 `{ meta, slides, plan }`. The registry discovers it automatically; there is no
 list to update.
 
+**The exemplars are Science 2.5 (`content/y7-science/U02_5/`) and Maths 2.3
+(`content/y7-math/U02_3/`).** Read both before building. Match their density,
+their mix of diagrams, real photographs and widgets, and their English. Older
+decks are over-written — borrow ideas from them, never wording.
+
 ## Homework is a different artefact
 
 Printed packets live in `homework/<packet>/` as LaTeX compiled to PDF — no
@@ -42,6 +47,17 @@ or the plan, put it in an `editorial` box instead of quietly picking a winner.
 Surface the assumption instead of quietly picking one. If a request has two
 readings that would produce different decks, say so and ask. A question before
 you start costs a minute; the wrong deck costs the lesson.
+
+## Write less, and make it easy to read
+
+Every extra word on a slide is one more thing between an ESL student and the
+idea. One hook line or no body text; short sentences with everyday words;
+never repeat what the write note, a label or a caption already says; cut any
+sentence that explains why the slide exists (that goes in `plan.js`). Keep all
+the content — move words into a label, caption, reveal or another slide rather
+than deleting ideas. On a problem slide the maths is the biggest thing on it.
+When the class votes between two answers: left hand A, right hand B, all at
+once (LESSON-PLAYBOOK §1, "Vote slides").
 
 ## Prefer the plain slide
 

@@ -105,7 +105,7 @@ Each slide is a plain object. Set **`layout`** to pick a shape. (Slides with no
 | `statement` | Big centred definition on a theme canvas | `accent` (hex), `eyebrow`, `title`, `label` (chip), `text` (the big line), `sub`, `reveal`, `notes` |
 | `split` | Text + media panel | `accent`, `icon`, `title`, `content`, `notes`, `example`+`exampleLabel`, media (`widget`/`inlineSvg`/`image`), `side` (`'left'`\|`'right'`), `ratio` (40/45/50/55/60), `reveal`, `drawThis` |
 | `showcase` | One media, edge-to-edge | `accent`, `icon`, `title`, `eyebrow`, media, `caption`, `drawThis` |
-| `compare` | Two themeable columns | `title`, `columns: [{heading, accent, icon, content, notes, inlineSvg\|image, caption}]` |
+| `compare` | Two themeable columns | `title`, `text` (optional big problem line above the columns — use it on vote slides), `columns: [{heading, accent, icon, content, notes, inlineSvg\|image, caption}]` |
 | `stack` | Grid of note cards / checklist | `accent`, `icon`, `title`, `content`, `columns` (1\|2), `notes` — or `variant:'checklist'` + `items` |
 | `steps` | Numbered sequence | `accent`, `icon`, `title`, `content`, `steps: [{text}]`, optional side media, `reveal` |
 | `callout` | Single accent "glass" card | `accent`, `icon`, `eyebrow`, `title`, `content`, `notes`, `reveal` |

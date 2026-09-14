@@ -21,6 +21,8 @@ import {
   // (Droplets, Wind, Flame, Snowflake) were already referenced by 2.1a's slides
   // and were silently falling back to the Info circle until now.
   Thermometer, Droplets, Wind, Flame, Snowflake, Waves, CloudFog, Gauge,
+  // Added for left-hand / right-hand vote slides (Y7 Maths 2.3).
+  Hand,
 } from 'lucide-react'
 import WidgetRenderer, { WidgetErrorBoundary } from '../WidgetRenderer.jsx'
 import { parseInlineText, renderContent, NOTE_TONES } from './helpers.jsx'
@@ -36,6 +38,7 @@ const ICONS = {
   Calculator, Timer, Hammer, ArrowLeftRight, Spline, Clapperboard,
   Compass, Globe, Circle, MapPin,
   Thermometer, Droplets, Wind, Flame, Snowflake, Waves, CloudFog, Gauge,
+  Hand,
 }
 
 /** Render a lucide icon by name (falls back to Info). */
