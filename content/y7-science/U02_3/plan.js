@@ -19,14 +19,15 @@ export const plan = {
     { term: 'expand', defn: 'get bigger' },
   ],
   timeline: [
-    { t: '0–5', activity: 'Starter: write the five changes of state from memory (slide 1). Quick check — hands up for each one.' },
-    { t: '5–7', activity: 'Bridge: you know WHAT happens — today we explain WHY (slide 2).' },
-    { t: '7–12', activity: 'Key words: read through the four terms on slide 3. Students copy into notebooks (write note).' },
-    { t: '12–22', activity: 'Diagram + explanation: walk through the three-panel heating-to-melting diagram (slide 4). Students copy it with rulers. Then read the written explanation on slide 5 — students copy the write note.' },
-    { t: '22–27', activity: 'Boiling and the reverse (slide 6). Teacher-led — no copy-down, just make sure they see the same pattern repeating.' },
-    { t: '27–40', activity: 'Explain It With Particles activity (slide 7). Students work individually or in pairs, ordering the explanation steps for each scenario.' },
-    { t: '40–47', activity: 'Book questions 1–3 (slide 8). Written answers in notebooks. Reveal and mark.' },
-    { t: '47–50', activity: 'Checklist (slide 9) + exit question about the bridge (slide 10). Collect answers verbally on the way out.' },
+    { t: '0–5', activity: 'Starter: write the five changes of state from memory (slide 1). Hands up to check.' },
+    { t: '5–7', activity: 'Bridge: you know WHAT happens, today we explain WHY (slide 2).' },
+    { t: '7–12', activity: 'Key words: four terms on slide 3. Students copy the write note.' },
+    { t: '12–15', activity: 'Expansion: discuss the bridge photo (slide 4). Why do engineers leave gaps?' },
+    { t: '15–25', activity: 'Draw This: students copy the heating-to-melting diagram with rulers (slide 5). Walk through the melting explanation (slide 6); students copy the write note.' },
+    { t: '25–30', activity: 'Boiling diagram (slide 7) and condensing/freezing (slide 8). Teacher-led, no copy-down.' },
+    { t: '30–42', activity: 'Particle Explainer activity (slide 9). Students work individually or in pairs, stepping through each scenario.' },
+    { t: '42–47', activity: 'Book questions 1–3 (slide 10). Written answers. Reveal and mark.' },
+    { t: '47–50', activity: 'Checklist (slide 11) and exit question about the bridge (slide 12). Collect answers on the way out.' },
   ],
   answers: {
     'Book Q1': 'Heat energy is transferred to the particles. They vibrate more and take up more space, so the solid gets bigger (expands).',
@@ -35,7 +36,6 @@ export const plan = {
     'Exit Q': 'In summer more heat energy is transferred to the metal. The particles vibrate more and take up more space, so the bridge expands and gets longer.',
   },
   notes:
-    'This lesson teaches one reasoning chain and then drills it across all five changes. ' +
-    'Resist the urge to explain each one at length from the front — the widget does that work. ' +
-    'The diagram copy-down takes time; circulate and check that grids look roughly regular.',
+    'The diagram copy-down takes time; circulate and check that grids look roughly regular. ' +
+    'The widget drills all five scenarios so do not over-explain boiling and condensing from the front.',
 }
