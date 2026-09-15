@@ -1,0 +1,812 @@
+[
+  {
+    "name": "ant.jpg",
+    "title": "File:Red_Ant_-_March_2025.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Red_Ant_-_March_2025.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Samantha Henneke from Seagrove, North Carolina, USA",
+    "usage": "Which Is… picture card \"ANT\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/ant.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 27486
+  },
+  {
+    "name": "apple.jpg",
+    "title": "File:Red Apple.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Red_Apple.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Abhijit Tembhekar from Mumbai, India",
+    "usage": "Which Is… picture card \"APPLE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/apple.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 34113
+  },
+  {
+    "name": "ball.jpg",
+    "title": "File:Soccer ball on ground.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Soccer_ball_on_ground.jpg",
+    "license": "CC0",
+    "artist": "Petey21",
+    "usage": "Which Is… picture card \"BALL\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/ball.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 50776
+  },
+  {
+    "name": "banana.jpg",
+    "title": "File:HK food 生果 fruit yellow 香蕉 banana 梅花點 February 2021 SS2 03.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:HK_food_%E7%94%9F%E6%9E%9C_fruit_yellow_%E9%A6%99%E8%95%89_banana_%E6%A2%85%E8%8A%B1%E9%BB%9E_February_2021_SS2_03.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Schawhoi Kamnls",
+    "usage": "Which Is… picture card \"BANANA\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/banana.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 46811
+  },
+  {
+    "name": "bed.jpg",
+    "title": "File:Hotel-suite-bedroom.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Hotel-suite-bedroom.jpg",
+    "license": "Public domain",
+    "artist": "Derek Jensen (Tysto)",
+    "usage": "Which Is… picture card \"BED\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/bed.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 39808
+  },
+  {
+    "name": "bee.jpg",
+    "title": "File:The_Lone_Pollinator.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:The_Lone_Pollinator.jpg",
+    "license": "CC BY 4.0",
+    "artist": "Tanner Smida",
+    "usage": "Which Is… picture card \"BEE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/bee.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 21570
+  },
+  {
+    "name": "biscuit.jpg",
+    "title": "File:Koekjestrommel open.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Koekjestrommel_open.jpg",
+    "license": "Public domain",
+    "artist": "Pudding4brains",
+    "usage": "Which Is… picture card \"BISCUIT\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/biscuit.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 52278
+  },
+  {
+    "name": "boat.jpg",
+    "title": "File:Rowing boat on a house roof - Fira - Santorini - Greece - 02.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Rowing_boat_on_a_house_roof_-_Fira_-_Santorini_-_Greece_-_02.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Norbert Nagel",
+    "usage": "Which Is… picture card \"BOAT\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/boat.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 30623
+  },
+  {
+    "name": "bottle.jpg",
+    "title": "File:Multi-use water bottle.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Multi-use_water_bottle.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Amraepowell",
+    "usage": "Which Is… picture card \"BOTTLE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/bottle.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 50227
+  },
+  {
+    "name": "bread.jpg",
+    "title": "File:Fresh made bread 05.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Fresh_made_bread_05.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "FranHogan",
+    "usage": "Which Is… picture card \"BREAD\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/bread.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 50535
+  },
+  {
+    "name": "broccoli.jpg",
+    "title": "File:Broccoli DSC00862.png",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Broccoli_DSC00862.png",
+    "license": "CC BY-SA 3.0",
+    "artist": "David Monniaux",
+    "usage": "Which Is… picture card \"BROCCOLI\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/broccoli.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 47849
+  },
+  {
+    "name": "bucket.jpg",
+    "title": "File:Bucket.agr.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Bucket.agr.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "ArnoldReinhold",
+    "usage": "Which Is… picture card \"BUCKET\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/bucket.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 39977
+  },
+  {
+    "name": "bus.jpg",
+    "title": "File:2016-10 Yellow school bus Quebec.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:2016-10_Yellow_school_bus_Quebec.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "0x010C",
+    "usage": "Which Is… picture card \"BUS\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/bus.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 44170
+  },
+  {
+    "name": "butterfly.jpg",
+    "title": "File:Fesoj_-_Papilio_machaon_(by).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Fesoj_-_Papilio_machaon_(by).jpg",
+    "license": "CC BY 2.0",
+    "artist": "fesoj",
+    "usage": "Which Is… picture card \"BUTTERFLY\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/butterfly.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 84075
+  },
+  {
+    "name": "cake.jpg",
+    "title": "File:Italy - birthday cake with candles 1.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Italy_-_birthday_cake_with_candles_1.jpg",
+    "license": "CC BY-SA 3.0 it",
+    "artist": "Francesca Cesa Bianchi, Milano",
+    "usage": "Which Is… picture card \"CAKE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/cake.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 41707
+  },
+  {
+    "name": "car.jpg",
+    "title": "File:Chrysler Crossfire Red Coupe2.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Chrysler_Crossfire_Red_Coupe2.JPG",
+    "license": "Public domain",
+    "artist": "CZmarlin — Christopher Ziemnowicz, releases all rights but a photo credit would be appreciated if this image is used anywhere other than Wikipedia. Please leave a note at Wikipedia here. Thank you!",
+    "usage": "Which Is… picture card \"CAR\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/car.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 31662
+  },
+  {
+    "name": "cat.jpg",
+    "title": "File:Orange tabby cat sitting on fallen leaves-Hisashi-01A.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01.jpg: Hisashi from Japan derivative work: Caspian blue",
+    "usage": "Which Is… picture card \"CAT\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/cat.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 62220
+  },
+  {
+    "name": "chair.jpg",
+    "title": "File:Aalto chair front.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Aalto_chair_front.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Ellywa (Wikimedia Commons uploader; no separate author named on the file page)",
+    "usage": "Which Is… picture card \"CHAIR\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/chair.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 86742
+  },
+  {
+    "name": "chips.jpg",
+    "title": "File:Schale mit einer Portion Pommes frites.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Schale_mit_einer_Portion_Pommes_frites.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "4028mdk09",
+    "usage": "Which Is… picture card \"CHIPS\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/chips.jpg); A portion on its own in a white dish, with nothing else on the plate to look at. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 48470
+  },
+  {
+    "name": "chocolate.jpg",
+    "title": "File:3-Musketeers-Broken.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:3-Musketeers-Broken.jpg",
+    "license": "Public domain",
+    "artist": "Evan-Amos",
+    "usage": "Which Is… picture card \"CHOCOLATE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/chocolate.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 13084
+  },
+  {
+    "name": "chopsticks.jpg",
+    "title": "File:Chopsticks (59810130).jpeg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Chopsticks_(59810130).jpeg",
+    "license": "CC BY 3.0",
+    "artist": "Jamie Hamel Smith",
+    "usage": "Which Is… picture card \"CHOPSTICKS\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/chopsticks.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 24265
+  },
+  {
+    "name": "cloud.jpg",
+    "title": "File:White Cumulus Clouds against Blue Sky (4).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:White_Cumulus_Clouds_against_Blue_Sky_(4).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Lance Vanlewen",
+    "usage": "Which Is… picture card \"CLOUD\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/cloud.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 36315
+  },
+  {
+    "name": "coconut.jpg",
+    "title": "File:Cocos nucifera8.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Cocos_nucifera8.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Kurt Stüber [1]",
+    "usage": "Which Is… picture card \"COCONUT\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/coconut.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 54186
+  },
+  {
+    "name": "coffee.jpg",
+    "title": "File:A small cup of coffee.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:A_small_cup_of_coffee.JPG",
+    "license": "CC BY-SA 2.0",
+    "artist": "Julius Schorzman",
+    "usage": "Which Is… picture card \"COFFEE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/coffee.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 22299
+  },
+  {
+    "name": "coin.jpg",
+    "title": "File:10 Cents, Estland- 2011, obverse.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:10_Cents%2C_Estland-_2011%2C_obverse.jpg",
+    "license": "Public domain",
+    "artist": "Reinhard Saczewski",
+    "usage": "Which Is… picture card \"COIN\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/coin.jpg); Downscaled to 497px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 81855
+  },
+  {
+    "name": "cow.jpg",
+    "title": "File:Grazing, Dierhagen ( 1100746).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Grazing,_Dierhagen_(_1100746).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Matti Blume",
+    "usage": "Which Is… picture card \"COW\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/cow.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 42359
+  },
+  {
+    "name": "dog.jpg",
+    "title": "File:Golden-retriever-1827903 1920.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Golden-retriever-1827903_1920.jpg",
+    "license": "CC0",
+    "artist": "RetyiRetyi",
+    "usage": "Which Is… picture card \"DOG\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/dog.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 57035
+  },
+  {
+    "name": "doughnut.jpg",
+    "title": "File:Chocolate-glazed doughnut with sprinkles (7429937320).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Chocolate-glazed_doughnut_with_sprinkles_(7429937320).jpg",
+    "license": "CC BY 2.0",
+    "artist": "Kiran Foster from no fixed abode, New Zealand",
+    "usage": "Which Is… picture card \"DOUGHNUT\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/doughnut.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 22537
+  },
+  {
+    "name": "duck.jpg",
+    "title": "File:Anas platyrhynchos male female.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Anas_platyrhynchos_male_female.jpg",
+    "license": "CC BY-SA 2.5",
+    "artist": "This picture was realized by Richard Bartz by using a Canon EF 70-300mm f/4-5.6 IS USM Lens",
+    "usage": "Which Is… picture card \"DUCK\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/duck.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 51463
+  },
+  {
+    "name": "dumpling.jpg",
+    "title": "File:Willow leaf steamed dumplings.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Willow_leaf_steamed_dumplings.jpg",
+    "license": "CC0",
+    "artist": "Fumikas Sagisavas",
+    "usage": "Which Is… picture card \"DUMPLING\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/dumpling.jpg); Shown in the steamer basket, which is the clue that they were cooked over water rather than fried. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 57403
+  },
+  {
+    "name": "egg.jpg",
+    "title": "File:Chicken eggs 20101113.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Chicken_eggs_20101113.jpg",
+    "license": "Public domain",
+    "artist": "Batholith (talk)",
+    "usage": "Which Is… picture card \"EGG\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/egg.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 10719
+  },
+  {
+    "name": "elephant.jpg",
+    "title": "File:African_Bush_Elephant.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:African_Bush_Elephant.jpg",
+    "license": "GFDL 1.2",
+    "artist": "Muhammad Mahdi Karim Facebook The making of this document was supported by Wikimedia CH. (Submit your project!) For all the files concerned, please see the category Supported by Wikimedia CH. العربية ∙ বাংলা ∙ čeština ∙ Deutsch ∙ English ∙ Esperanto ∙ español ∙ français ∙ galego ∙ हिन्दी ∙ magyar ∙ italiano ∙ 日本語 ∙ македонски ∙ Nederlands ∙ português do Brasil ∙ rumantsch ∙ русский ∙ sicilianu ∙ slovenščina ∙ தமிழ் ∙ українська ∙ 中文 ∙ +/−",
+    "usage": "Which Is… picture card \"ELEPHANT\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/elephant.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 94123
+  },
+  {
+    "name": "fish.jpg",
+    "title": "File:Fresh fish in market (27002392530).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Fresh_fish_in_market_(27002392530).jpg",
+    "license": "CC BY 2.0",
+    "artist": "Thomas Quine",
+    "usage": "Which Is… picture card \"FISH\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/fish.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 38477
+  },
+  {
+    "name": "flower.jpg",
+    "title": "File:Magnolia_grandiflora_-_flower_1.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Magnolia_grandiflora_-_flower_1.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Ianaré Sévi",
+    "usage": "Which Is… picture card \"FLOWER\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/flower.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 52377
+  },
+  {
+    "name": "fork.jpg",
+    "title": "File:Dinner fork on brown wood surface.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Dinner_fork_on_brown_wood_surface.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Hephaestos at English Wikipedia",
+    "usage": "Which Is… picture card \"FORK\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/fork.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 6044
+  },
+  {
+    "name": "fridge.jpg",
+    "title": "File:Hisense, IFA 2018, Berlin (P1070179).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Hisense,_IFA_2018,_Berlin_(P1070179).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Matti Blume",
+    "usage": "Which Is… picture card \"FRIDGE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/fridge.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 52408
+  },
+  {
+    "name": "ginger.jpg",
+    "title": "File:Ginger Yogic Secrets.png",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Ginger_Yogic_Secrets.png",
+    "license": "CC BY-SA 4.0",
+    "artist": "Yogic Secrets",
+    "usage": "Which Is… picture card \"GINGER\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/ginger.jpg); Downscaled to 520px via the Commons thumbnailer; plain border trimmed off, not otherwise altered.",
+    "bytes": 23372
+  },
+  {
+    "name": "giraffe.jpg",
+    "title": "File:Giraffe_Mikumi_National_Park.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Giraffe_Mikumi_National_Park.jpg",
+    "license": "GFDL 1.2",
+    "artist": "Muhammad Mahdi Karim Facebook The making of this document was supported by Wikimedia CH. (Submit your project!) For all the files concerned, please see the category Supported by Wikimedia CH. العربية ∙ বাংলা ∙ čeština ∙ Deutsch ∙ English ∙ Esperanto ∙ español ∙ français ∙ galego ∙ हिन्दी ∙ magyar ∙ italiano ∙ 日本語 ∙ македонски ∙ Nederlands ∙ português do Brasil ∙ rumantsch ∙ русский ∙ sicilianu ∙ slovenščina ∙ தமிழ் ∙ українська ∙ 中文 ∙ +/−",
+    "usage": "Which Is… picture card \"GIRAFFE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/giraffe.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 112711
+  },
+  {
+    "name": "glue.jpg",
+    "title": "File:Pritt_Sticks.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Pritt_Sticks.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Elarkon",
+    "usage": "Which Is… picture card \"GLUE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/glue.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 34248
+  },
+  {
+    "name": "grass.jpg",
+    "title": "File:Blades of grass.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Blades_of_grass.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Catarina Carvalho from Lisboa, Portugal",
+    "usage": "Which Is… picture card \"GRASS\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/grass.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 54137
+  },
+  {
+    "name": "hen.jpg",
+    "title": "File:Hen on street.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Hen_on_street.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Just chaos",
+    "usage": "Which Is… picture card \"HEN\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/hen.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 61425
+  },
+  {
+    "name": "icecream.jpg",
+    "title": "File:Ice cream cone - superman flavor.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Ice_cream_cone_-_superman_flavor.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Ben Dominguez-Benner",
+    "usage": "Which Is… picture card \"ICE CREAM\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/icecream.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 76962
+  },
+  {
+    "name": "kite.jpg",
+    "title": "File:Kitesflying.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Kitesflying.jpg",
+    "license": "Public domain",
+    "artist": "Jon Sullivan",
+    "usage": "Which Is… picture card \"KITE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/kite.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 64847
+  },
+  {
+    "name": "leaf.jpg",
+    "title": "File:Lisc_lipy.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Lisc_lipy.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Krzysztof P. Jasiutowicz",
+    "usage": "Which Is… picture card \"LEAF\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/leaf.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 63464
+  },
+  {
+    "name": "milk.jpg",
+    "title": "File:Milk glass.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Milk_glass.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Stefan Kühn",
+    "usage": "Which Is… picture card \"MILK\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/milk.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 17541
+  },
+  {
+    "name": "monkey.jpg",
+    "title": "File:Ubud_Monkey_Family.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Ubud_Monkey_Family.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Deerpeter",
+    "usage": "Which Is… picture card \"MONKEY\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/monkey.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 76627
+  },
+  {
+    "name": "moon.jpg",
+    "title": "File:FullMoon2010.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:FullMoon2010.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Gregory H. Revera",
+    "usage": "Which Is… picture card \"MOON\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/moon.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 38686
+  },
+  {
+    "name": "nail.jpg",
+    "title": "File:Clou_127.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Clou_127.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Own work",
+    "usage": "Which Is… picture card \"NAIL\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/nail.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 15752
+  },
+  {
+    "name": "onion.jpg",
+    "title": "File:Mixed onions.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Mixed_onions.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Colin",
+    "usage": "Which Is… picture card \"ONION\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/onion.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 32481
+  },
+  {
+    "name": "orange.jpg",
+    "title": "File:Orange-Fruit-Pieces.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Orange-Fruit-Pieces.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Evan-Amos",
+    "usage": "Which Is… picture card \"ORANGE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/orange.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 22298
+  },
+  {
+    "name": "oven.jpg",
+    "title": "File:Bauknecht kitchen oven (brown).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Bauknecht_kitchen_oven_(brown).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Donald Trung",
+    "usage": "Which Is… picture card \"OVEN\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/oven.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 22147
+  },
+  {
+    "name": "parrot.jpg",
+    "title": "File:Rainbow_lorikeet_(Trichoglossus_moluccanus_moluccanus)_Sydney.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Rainbow_lorikeet_(Trichoglossus_moluccanus_moluccanus)_Sydney.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Charles J. Sharp",
+    "usage": "Which Is… picture card \"PARROT\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/parrot.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 67718
+  },
+  {
+    "name": "pencil.jpg",
+    "title": "File:Pencils_hb.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Pencils_hb.jpg",
+    "license": "CC BY 3.0",
+    "artist": "Original uploader was Dmgerman at en.wikipedia",
+    "usage": "Which Is… picture card \"PENCIL\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/pencil.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 20991
+  },
+  {
+    "name": "penguin.jpg",
+    "title": "File:South_Shetland-2016-Deception_Island–Chinstrap_penguin_(Pygoscelis_antarctica)_04.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:South_Shetland-2016-Deception_Island%E2%80%93Chinstrap_penguin_(Pygoscelis_antarctica)_04.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Godot13",
+    "usage": "Which Is… picture card \"PENGUIN\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/penguin.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 92251
+  },
+  {
+    "name": "pig.jpg",
+    "title": "File:Inkognito. - Flickr - simon berger.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Inkognito._-_Flickr_-_simon_berger.jpg",
+    "license": "CC0",
+    "artist": "simon from Austria",
+    "usage": "Which Is… picture card \"PIG\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/pig.jpg); Downscaled to 520px via the Commons thumbnailer; plain border trimmed off, not otherwise altered.",
+    "bytes": 55682
+  },
+  {
+    "name": "pillow.jpg",
+    "title": "File:Pillows_on_a_hotel_bed.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Pillows_on_a_hotel_bed.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Amin",
+    "usage": "Which Is… picture card \"PILLOW\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/pillow.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 34825
+  },
+  {
+    "name": "pizza.jpg",
+    "title": "File:Whole Foods Kitchen Margherita Pizza 2 (15411931231).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Whole_Foods_Kitchen_Margherita_Pizza_2_(15411931231).jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Willis Lam",
+    "usage": "Which Is… picture card \"PIZZA\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/pizza.jpg); A whole margherita from above, so it reads as one round thing rather than as a slice of something. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 60265
+  },
+  {
+    "name": "plane.jpg",
+    "title": "File:Turkish Airlines A330-200 (TC-JIO) @ MAN, September 2015 (03).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Turkish_Airlines_A330-200_(TC-JIO)_@_MAN,_September_2015_(03).jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Riik@mctr",
+    "usage": "Which Is… picture card \"PLANE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/plane.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 30245
+  },
+  {
+    "name": "pot.jpg",
+    "title": "File:Pot with no background.png",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Pot_with_no_background.png",
+    "license": "CC BY-SA 4.0",
+    "artist": "Lightsnap",
+    "usage": "Which Is… picture card \"POT\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/pot.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 14053
+  },
+  {
+    "name": "potato.jpg",
+    "title": "File:Russet potato cultivar with sprouts.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Russet_potato_cultivar_with_sprouts.jpg",
+    "license": "Public domain",
+    "artist": "ZooFari",
+    "usage": "Which Is… picture card \"POTATO\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/potato.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 13964
+  },
+  {
+    "name": "rainbow.jpg",
+    "title": "File:Double-alaskan-rainbow.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Double-alaskan-rainbow.jpg",
+    "license": "CC BY-SA 2.5",
+    "artist": "Eric Rolph at English Wikipedia",
+    "usage": "Which Is… picture card \"RAINBOW\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/rainbow.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 46448
+  },
+  {
+    "name": "rug.jpg",
+    "title": "File:Wollteppich 1.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Wollteppich_1.jpg",
+    "license": "Public domain",
+    "artist": "Ryj",
+    "usage": "Which Is… picture card \"RUG\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/rug.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 87251
+  },
+  {
+    "name": "scissors.jpg",
+    "title": "File:Standard_household_scissors.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Standard_household_scissors.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Doggerelblogger",
+    "usage": "Which Is… picture card \"SCISSORS\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/scissors.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 14547
+  },
+  {
+    "name": "seesaw.jpg",
+    "title": "File:Seesaw waiting for kids - panoramio.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Seesaw_waiting_for_kids_-_panoramio.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "PS Harris",
+    "usage": "Which Is… picture card \"SEESAW\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/seesaw.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 61104
+  },
+  {
+    "name": "shark.jpg",
+    "title": "File:Corl0207_(28225976491).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Corl0207_(28225976491).jpg",
+    "license": "CC BY 2.0",
+    "artist": "NOAA Photo Library",
+    "usage": "Which Is… picture card \"SHARK\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/shark.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 25382
+  },
+  {
+    "name": "sheep.jpg",
+    "title": "File:Swaledale Sheep, Lake District, England - June 2009.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Swaledale_Sheep,_Lake_District,_England_-_June_2009.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "User:Diliff",
+    "usage": "Which Is… picture card \"SHEEP\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/sheep.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 55332
+  },
+  {
+    "name": "shell.jpg",
+    "title": "File:Conch shell 2.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Conch_shell_2.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Original uploader was Brian0918 at en.wikipedia",
+    "usage": "Which Is… picture card \"SHELL\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/shell.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 48486
+  },
+  {
+    "name": "shoe.jpg",
+    "title": "File:Sportschuh 35ab.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Sportschuh_35ab.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "OnkelJohn",
+    "usage": "Which Is… picture card \"SHOE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/shoe.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 49336
+  },
+  {
+    "name": "slide.jpg",
+    "title": "File:Playground slide2.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Playground_slide2.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "KENPEI",
+    "usage": "Which Is… picture card \"SLIDE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/slide.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 77205
+  },
+  {
+    "name": "snake.jpg",
+    "title": "File:Opheodrys aestivusPCCP20030524-0823B.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Opheodrys_aestivusPCCP20030524-0823B.jpg",
+    "license": "CC BY-SA 2.5",
+    "artist": "Patrick Coin (Patrick Coin)",
+    "usage": "Which Is… picture card \"SNAKE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/snake.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 22945
+  },
+  {
+    "name": "snow.jpg",
+    "title": "File:Silesian - Moravian Beskids in winter 2014.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Silesian_-_Moravian_Beskids_in_winter_2014.JPG",
+    "license": "CC BY-SA 4.0",
+    "artist": "Pudelek (Marcin Szala)",
+    "usage": "Which Is… picture card \"SNOW\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/snow.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 44641
+  },
+  {
+    "name": "soap.jpg",
+    "title": "File:Handmade_soap_cropped_and_simplified.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Handmade_soap_cropped_and_simplified.jpg",
+    "license": "CC BY 2.5",
+    "artist": "Malene Thyssen, simplified by HLHJ",
+    "usage": "Which Is… picture card \"SOAP\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/soap.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 67815
+  },
+  {
+    "name": "sock.jpg",
+    "title": "File:BLW Pair of socks.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:BLW_Pair_of_socks.jpg",
+    "license": "CC BY-SA 2.0 uk",
+    "artist": "David Jackson",
+    "usage": "Which Is… picture card \"SOCK\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/sock.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 24813
+  },
+  {
+    "name": "sofa.jpg",
+    "title": "File:Couch-furniture-living-room-sofa (24300293356).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Couch-furniture-living-room-sofa_(24300293356).jpg",
+    "license": "CC0",
+    "artist": "www.Pixel.la Free Stock Photos",
+    "usage": "Which Is… picture card \"SOFA\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/sofa.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 34798
+  },
+  {
+    "name": "soup.jpg",
+    "title": "File:Liat Portal for Foodie Disorder - Homemade minestrone soup.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Homemade_minestrone_soup.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "HaJunkiyada",
+    "usage": "Which Is… picture card \"SOUP\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/soup.jpg); A plain bowl of vegetable soup, top down, so the liquid is unmistakable. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 27099
+  },
+  {
+    "name": "spider.jpg",
+    "title": "File:Araneus_diadematus_(Clerck,_1757).JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Araneus_diadematus_(Clerck%2C_1757).JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Michael Gäbler",
+    "usage": "Which Is… picture card \"SPIDER\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/spider.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 32948
+  },
+  {
+    "name": "spoon.jpg",
+    "title": "File:Samuel Vernon (American, 1683-1737) - Teaspoon - 1940.278 - Cleveland Museum of Art.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Samuel_Vernon_(American,_1683-1737)_-_Teaspoon_-_1940.278_-_Cleveland_Museum_of_Art.jpg",
+    "license": "CC0",
+    "artist": "",
+    "usage": "Which Is… picture card \"SPOON\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/spoon.jpg); Cropped to the spoon and rotated a quarter turn so it lies across the tile; downscaled via the Commons thumbnailer.",
+    "bytes": 14667
+  },
+  {
+    "name": "starfish.jpg",
+    "title": "File:Starfish on a sand beach (Unsplash).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Starfish_on_a_sand_beach_(Unsplash).jpg",
+    "license": "CC0",
+    "artist": "Pedro Lastra peterlaster",
+    "usage": "Which Is… picture card \"STARFISH\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/starfish.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 86134
+  },
+  {
+    "name": "straw.jpg",
+    "title": "File:Eight_drinking_straws_(4273846588).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Eight_drinking_straws_(4273846588).jpg",
+    "license": "CC BY 2.0",
+    "artist": "Horia Varlan from Bucharest, Romania",
+    "usage": "Which Is… picture card \"STRAW\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/straw.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 56218
+  },
+  {
+    "name": "sun.jpg",
+    "title": "File:Full disk white-light ISS transit USET 20200606140216.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Full_disk_white-light_ISS_transit_USET_20200606140216.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Sabrina Bechet",
+    "usage": "Which Is… picture card \"SUN\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/sun.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 26020
+  },
+  {
+    "name": "tea.jpg",
+    "title": "File:Cup of black tea.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Cup_of_black_tea.JPG",
+    "license": "CC BY-SA 4.0",
+    "artist": "AntanO",
+    "usage": "Which Is… picture card \"TEA\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/tea.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 18426
+  },
+  {
+    "name": "teddy.jpg",
+    "title": "File:Steiff Teddy Bear.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Steiff_Teddy_Bear.jpg",
+    "license": "Public domain",
+    "artist": "Unknown authorUnknown author",
+    "usage": "Which Is… picture card \"TEDDY BEAR\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/teddy.jpg); Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 38551
+  },
+  {
+    "name": "television.jpg",
+    "title": "File:LG smart TV.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:LG_smart_TV.jpg",
+    "license": "CC BY 2.0",
+    "artist": "LG전자",
+    "usage": "Which Is… picture card \"TV\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/television.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 35577
+  },
+  {
+    "name": "tiger.jpg",
+    "title": "File:Bengal_tiger_(Panthera_tigris_tigris)_female_3_crop.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Bengal_tiger_(Panthera_tigris_tigris)_female_3_crop.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Charles J. Sharp",
+    "usage": "Which Is… picture card \"TIGER\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/tiger.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 90123
+  },
+  {
+    "name": "toothbrush.jpg",
+    "title": "File:Toothbrush_20050716_004.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Toothbrush_20050716_004.jpg",
+    "license": "Public domain",
+    "artist": "Jonas Bergsten",
+    "usage": "Which Is… picture card \"TOOTHBRUSH\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/toothbrush.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 31091
+  },
+  {
+    "name": "towel.jpg",
+    "title": "File:Zusammengelegte_Handtücher.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Zusammengelegte_Handt%C3%BCcher.jpg",
+    "license": "Public domain",
+    "artist": "User:Mattes",
+    "usage": "Which Is… picture card \"TOWEL\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/towel.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 78888
+  },
+  {
+    "name": "tree.jpg",
+    "title": "File:Usamljeni_jasen_-_panoramio_(cropped).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Usamljeni_jasen_-_panoramio_(cropped).jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "menergo",
+    "usage": "Which Is… picture card \"TREE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/tree.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 116933
+  },
+  {
+    "name": "turtle.jpg",
+    "title": "File:Chelonia_mydas_is_going_for_the_air_edit.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Chelonia_mydas_is_going_for_the_air_edit.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Brocken Inaglory",
+    "usage": "Which Is… picture card \"TURTLE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/turtle.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 83567
+  },
+  {
+    "name": "whale.jpg",
+    "title": "File:Southern_right_whale.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Southern_right_whale.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Michaël CATANZARITI",
+    "usage": "Which Is… picture card \"WHALE\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/whale.jpg); Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
+    "bytes": 92144
+  },
+  {
+    "name": "yoghurt.jpg",
+    "title": "File:Yoghurt and spoon.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Yoghurt_and_spoon.jpg",
+    "license": "CC0",
+    "artist": "Julikalucky",
+    "usage": "Which Is… picture card \"YOGHURT\". Byte-identical copy of the Word Wall tile (content/games/G01_word-wall/images/yoghurt.jpg); A glass bowl and a spoon; sữa chua is familiar here, which is why it is on the board rather than a cold pudding nobody eats. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 32206
+  }
+]
