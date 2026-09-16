@@ -1,0 +1,892 @@
+% homework/hw07x/hw07x.tex
+% Year 7 - Extra Homework: split, multiply, add.
+%
+% Goes out alongside Homework 7. Same framing rule as hw03x through hw06x:
+% nothing on the sheet says easy, basic, extra help, catch-up or revision, and
+% no question is marked as being for anybody in particular. The cover states a
+% fact, and it is a true one:
+%
+%   two-digit multiplication and expanding a bracket are the same picture.
+%
+% THAT IS THE WHOLE DESIGN. 4 x 16 is 4(10 + 6) = 40 + 24, which is the deck's
+% own starter for 2.4, and 4(x + 3) = 4x + 12 is the same grid with one box
+% unknown. So this sheet gives the two-digit multiplication practice the class
+% needs AND lands them on 2.4's method, rather than treating the arithmetic and
+% the algebra as two subjects.
+%
+% hw05x already taught the column method -- two rows, then add -- and long
+% division. This sheet does not repeat either. It teaches the GRID, which the
+% column method hides and the algebra needs, and its division is aimed at one
+% thing: the reverse of a multiplication, which is what undoes a bracket.
+%
+% F20 is the sheet in miniature and the last question on purpose. Expand
+% 4(x + 3), then put x = 10 into both sides: 4 x 13 = 52 and 4 x 10 + 12 = 52.
+% The arithmetic they practised in Part 1 proves the algebra in Part 4, using
+% the same grid both times.
+%
+% House style is shared: see homework/hw-style.tex. Method: the new-homework
+% skill. Source is pure ASCII on purpose.
+%
+% Build:  pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw07x
+
+\documentclass[12pt,a4paper]{article}
+
+% -- Answer key switch -------------------------------------------------------
+\newif\ifkey
+\ifdefined\TEACHER\keytrue\else
+  \keyfalse        % \keyfalse = student copy   |   \keytrue = teacher copy
+\fi
+
+% -- House style -------------------------------------------------------------
+\input{../hw-style.tex}
+
+% -- Per-packet running head -------------------------------------------------
+\fancyhead[L]{\small\color{black!55}Year 7\sep Extra Homework}
+
+% -- A group of writing lines that will not be split -------------------------
+% See hw06.tex: \wlines is a run of separate hboxes and TeX will break in the
+% middle of one, stranding a single rule at the top of the next page.
+\newcommand{\qlines}[1]{\par\needspace{\numexpr#1+1\relax\baselineskip}\wlines{#1}}
+
+% -- A box to write one number in --------------------------------------------
+% The workbook's own scaffold: a part-written line with an empty square where
+% the number goes. Filling the squares IS the method being taught, so it has to
+% look like something you write in, not like a blank.
+\newcommand{\nbox}{\ \fbox{\rule{0pt}{1.05em}\rule{1.0em}{0pt}}\ }
+
+% -- An empty two-by-two grid to multiply in ---------------------------------
+% #1 #2 are the column headings (the number split into tens and ones), #3 #4
+% the row headings. Every practice grid on the sheet is one of these, so the
+% picture never changes between a number question and a letter question -- which
+% is the entire argument of the sheet.
+\newcommand{\gridtwo}[4]{%
+  \renewcommand{\arraystretch}{1.9}%
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $\times$ & $#1$ & $#2$ \\ \hline
+    $#3$     &      &      \\ \hline
+    $#4$     &      &      \\ \hline
+  \end{tabular}%
+  \renewcommand{\arraystretch}{1.45}}
+
+% -- An empty one-row grid ---------------------------------------------------
+\newcommand{\gridone}[3]{%
+  \renewcommand{\arraystretch}{1.9}%
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $\times$ & $#1$ & $#2$ \\ \hline
+    $#3$     &      &      \\ \hline
+  \end{tabular}%
+  \renewcommand{\arraystretch}{1.45}}
+
+\begin{document}
+
+% ===========================================================================
+% COVER BLOCK
+% ===========================================================================
+\thispagestyle{fancy}
+
+\begin{tcolorbox}[enhanced, colback=cbgreen!8, colframe=cbgreen!8, arc=7pt,
+                  borderline west={6pt}{0pt}{cbgreen},
+                  left=18pt, right=14pt, top=11pt, bottom=11pt]
+  {\color{cbgreen!75!black}\bfseries YEAR 7\sep UNIT 2\sep EXTRA HOMEWORK}\\[6pt]
+  {\color{cbgreen!70!black}\Huge\bfseries Split, Multiply, Add}\\[10pt]
+  {\color{black!70}Two-digit multiplication\sep dividing\sep and the same grid with a letter in it}
+\end{tcolorbox}
+
+\vspace{6pt}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+  \textbf{Name:} \blank[5.6cm] & \textbf{Class:} \blank[5.6cm] \\
+  \textbf{Date given:} \blank[4.6cm] &
+  \textbf{Date due:} {\color{cbred}\bfseries Monday 21 September 2026} \\
+\end{tabularx}
+
+\vspace{4pt}
+\begin{activity}[Why this sheet exists]
+  Nobody multiplies by 16. They \key{split it up}: $4 \times 10$ is 40,
+  $4 \times 6$ is 24, and $40 + 24 = 64$.
+
+  \medskip
+  That is three steps --- \key{split, multiply, add} --- and it is also, exactly,
+  what expanding a bracket is. $4 \times 16$ and $4(x + 3)$ are drawn in the
+  \key{same grid}. Part 1 of this sheet practises the grid on numbers. Part 4
+  puts a letter in one box. Nothing else changes.
+
+  \medskip
+  \eng{No calculator.} Write in every box.
+\end{activity}
+
+% ===========================================================================
+% PART 1 -- SPLIT IT UP
+% ===========================================================================
+\hwsection[cbgreen]{Part 1 \textperiodcentered\ Split it up}
+
+\qhead[cbgreen]{F1}{Tens and ones}
+
+\noindent Split each number. The first one is done for you.
+
+\vspace{4pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*), itemsep=10pt]
+  \item $47 = 40 + 7$
+  \item $23 = \blank[2.2cm]$
+  \item $65 = \blank[2.2cm]$
+  \item $18 = \blank[2.2cm]$
+  \item $52 = \blank[2.2cm]$
+  \item $96 = \blank[2.2cm]$
+  \item $34 = \blank[2.2cm]$
+  \item $70 = \blank[2.2cm]$
+  \item $89 = \blank[2.2cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- F2 ---------------------------------------------------------------------
+\qhead[cbgreen]{F2}{Times a ten}
+
+\noindent This is the box that people get wrong, so do a page of them first.
+
+\begin{remember}[Multiply, then put the zero back on]
+  \hspace*{1.2em}$4 \times 30$: \; $4 \times 3 = 12$, \; so \; $4 \times 30 =
+  \mathbf{120}$.
+
+  \smallskip
+  \hspace*{1.2em}$20 \times 30$: \; $2 \times 3 = 6$, \; \key{two} zeros, \; so \;
+  $20 \times 30 = \mathbf{600}$.
+\end{remember}
+
+\vspace{2pt}
+\begin{multicols}{4}
+\begin{enumerate}[label=(\alph*), itemsep=10pt]
+  \item $4 \times 30 = \blank[1.3cm]$
+  \item $6 \times 50 = \blank[1.3cm]$
+  \item $7 \times 40 = \blank[1.3cm]$
+  \item $9 \times 60 = \blank[1.3cm]$
+  \item $8 \times 20 = \blank[1.3cm]$
+  \item $3 \times 90 = \blank[1.3cm]$
+  \item $20 \times 30 = \blank[1.3cm]$
+  \item $40 \times 50 = \blank[1.3cm]$
+  \item $60 \times 70 = \blank[1.3cm]$
+  \item $30 \times 80 = \blank[1.3cm]$
+  \item $50 \times 50 = \blank[1.3cm]$
+  \item $20 \times 90 = \blank[1.3cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- F3 ---------------------------------------------------------------------
+\qhead[cbgreen]{F3}{One row: two digits by one digit}
+
+\noindent Fill the two boxes, then add them.
+
+\begin{remember}[The grid, once, in full]
+  $4 \times 16$ \; means \; $4 \times (10 + 6)$. \; One box, one multiplication.
+
+  \medskip
+  \noindent
+  \begin{minipage}[c]{0.40\linewidth}
+    \renewcommand{\arraystretch}{1.9}%
+    \begin{tabular}{|c|c|c|}
+      \hline
+      $\times$ & $10$ & $6$ \\ \hline
+      $4$      & $40$ & $24$ \\ \hline
+    \end{tabular}%
+    \renewcommand{\arraystretch}{1.45}
+  \end{minipage}%
+  \begin{minipage}[c]{0.58\linewidth}
+    $40 + 24 = \mathbf{64}$
+
+    \smallskip
+    \key{Split} 16 into $10 + 6$. \; \key{Multiply} each box. \; \key{Add} the
+    boxes.
+  \end{minipage}
+\end{remember}
+
+\vspace{4pt}
+\noindent
+\begin{minipage}[c]{0.30\textwidth}\gridone{20}{3}{7}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(a)} $7 \times 23$ \\[4pt] $= \blank[1.8cm]$\end{minipage}%
+\begin{minipage}[c]{0.30\textwidth}\gridone{40}{8}{6}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(b)} $6 \times 48$ \\[4pt] $= \blank[1.8cm]$\end{minipage}
+
+\vspace{11pt}
+\noindent
+\begin{minipage}[c]{0.30\textwidth}\gridone{50}{4}{8}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(c)} $8 \times 54$ \\[4pt] $= \blank[1.8cm]$\end{minipage}%
+\begin{minipage}[c]{0.30\textwidth}\gridone{30}{7}{9}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(d)} $9 \times 37$ \\[4pt] $= \blank[1.8cm]$\end{minipage}
+
+% -- F4 ---------------------------------------------------------------------
+\qhead[cbgreen]{F4}{Now without the printed grid}
+
+\noindent Draw your own grid in the box, then write the answer under it.
+
+\vspace{4pt}
+\noindent
+% Three bands rather than one table, for the reason given at F6.
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+  \hline
+  $6 \times 34$ & $8 \times 72$ & $7 \times 85$ & $9 \times 46$ \\
+  \rule[-3.0em]{0pt}{3.6em} & & & \\
+  \hline
+\end{tabularx}
+
+\vspace{5pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+  \hline
+  $5 \times 68$ & $4 \times 93$ & $8 \times 57$ & $7 \times 64$ \\
+  \rule[-3.0em]{0pt}{3.6em} & & & \\
+  \hline
+\end{tabularx}
+
+\vspace{5pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+  \hline
+  $9 \times 78$ & $6 \times 95$ & $7 \times 49$ & $8 \times 86$ \\
+  \rule[-3.0em]{0pt}{3.6em} & & & \\
+  \hline
+\end{tabularx}
+
+% ===========================================================================
+% PART 2 -- TWO DIGITS BY TWO DIGITS
+% ===========================================================================
+\hwsection[cbgreen]{Part 2 \textperiodcentered\ Two digits by two digits}
+
+\qhead[cbgreen]{F5}{Four boxes instead of two}
+
+\noindent Both numbers get split, so the grid has \textbf{four} boxes.
+
+\begin{remember}[$23 \times 14$, once, in full]
+  \noindent
+  \begin{minipage}[c]{0.40\linewidth}
+    \renewcommand{\arraystretch}{1.9}%
+    \begin{tabular}{|c|c|c|}
+      \hline
+      $\times$ & $20$  & $3$ \\ \hline
+      $10$     & $200$ & $30$ \\ \hline
+      $4$      & $80$  & $12$ \\ \hline
+    \end{tabular}%
+    \renewcommand{\arraystretch}{1.45}
+  \end{minipage}%
+  \begin{minipage}[c]{0.58\linewidth}
+    $200 + 30 + 80 + 12 = \mathbf{322}$
+
+    \smallskip
+    \eng{Four boxes, four multiplications, then add all four.} Three boxes means
+    one was missed, and the answer comes out far too small.
+  \end{minipage}
+\end{remember}
+
+\vspace{4pt}
+\noindent
+\begin{minipage}[c]{0.30\textwidth}\gridtwo{30}{2}{10}{5}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(a)} $32 \times 15$ \\[4pt] $= \blank[1.8cm]$\end{minipage}%
+\begin{minipage}[c]{0.30\textwidth}\gridtwo{40}{6}{20}{3}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(b)} $46 \times 23$ \\[4pt] $= \blank[1.8cm]$\end{minipage}
+
+\vspace{11pt}
+\noindent
+\begin{minipage}[c]{0.30\textwidth}\gridtwo{50}{7}{30}{4}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(c)} $57 \times 34$ \\[4pt] $= \blank[1.8cm]$\end{minipage}%
+\begin{minipage}[c]{0.30\textwidth}\gridtwo{60}{8}{40}{2}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(d)} $68 \times 42$ \\[4pt] $= \blank[1.8cm]$\end{minipage}
+
+\vspace{11pt}
+\noindent
+\begin{minipage}[c]{0.30\textwidth}\gridtwo{70}{4}{20}{6}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(e)} $74 \times 26$ \\[4pt] $= \blank[1.8cm]$\end{minipage}%
+\begin{minipage}[c]{0.30\textwidth}\gridtwo{80}{5}{30}{7}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(f)} $85 \times 37$ \\[4pt] $= \blank[1.8cm]$\end{minipage}
+
+% -- F6 ---------------------------------------------------------------------
+\qhead[cbgreen]{F6}{Draw the grid yourself}
+
+\noindent Twelve of them. Draw a four-box grid in each square.
+
+% Four separate tables of three, not one table of twelve. A tabularx cannot be
+% broken across a page, so as a single block this walked whole to the next page
+% and left two-fifths of the previous one white. As four bands, TeX can break
+% between any two of them, and the student sees no difference.
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  $24 \times 13$ & $35 \times 21$ & $47 \times 16$ \\
+  \rule[-3.6em]{0pt}{4.2em} & & \\
+  \hline
+\end{tabularx}
+
+\vspace{5pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  $52 \times 34$ & $63 \times 27$ & $78 \times 45$ \\
+  \rule[-3.6em]{0pt}{4.2em} & & \\
+  \hline
+\end{tabularx}
+
+\vspace{5pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  $86 \times 53$ & $94 \times 38$ & $75 \times 64$ \\
+  \rule[-3.6em]{0pt}{4.2em} & & \\
+  \hline
+\end{tabularx}
+
+\vspace{5pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  $29 \times 37$ & $56 \times 48$ & $83 \times 26$ \\
+  \rule[-3.6em]{0pt}{4.2em} & & \\
+  \hline
+\end{tabularx}
+
+% -- F7 ---------------------------------------------------------------------
+\qhead[cbgreen]{F7}{Use it}
+
+\begin{wordhelp}[Word help --- the words that mean multiply]
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{16pt}}X@{}}
+    \eng{each} \sep \eng{every} \sep \eng{per} & one of them costs this much, so all of them cost this much times the number \\
+    \eng{altogether} \sep \eng{in total} & the whole lot added up \\
+    \eng{rows of} \sep \eng{boxes of} & this many groups, each the same size \\
+  \end{tabularx}
+\end{wordhelp}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=10pt]
+  \item Mr Bowen buys \textbf{24} boxes of pencils. Every box holds \textbf{36}
+        pencils. How many pencils altogether?
+        \begin{workspace}[2.2cm]\end{workspace}
+  \item A classroom has \textbf{18} rows of chairs with \textbf{15} chairs in each
+        row. How many chairs are there?
+        \begin{workspace}[2.2cm]\end{workspace}
+  \item A bus has \textbf{47} seats. A school books \textbf{23} buses for a trip.
+        How many seats are there in total?
+        \begin{workspace}[2.2cm]\end{workspace}
+  \item Mr Bowen keeps \textbf{18} fish tanks. Every tank holds \textbf{25} rubber
+        ducks. How many rubber ducks does he own?
+        \begin{workspace}[2.2cm]\end{workspace}
+\end{enumerate}
+
+% ===========================================================================
+% PART 3 -- DIVIDING
+% ===========================================================================
+\hwsection[cbgreen]{Part 3 \textperiodcentered\ Dividing --- the multiplication backwards}
+
+\qhead[cbgreen]{F8}{The same three numbers, four ways}
+
+\noindent Every multiplication you know is also two divisions. The first one is done
+for you.
+
+\begin{wordhelp}[Word help --- the words that mean divide]
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{16pt}}X@{}}
+    \eng{share} \sep \eng{split between} & divide it up so everybody gets the same \\
+    \eng{goes into}  & ``6 goes into 54 nine times'' means $54 \div 6 = 9$ \\
+    \eng{how many each} & the answer to a division \\
+    \eng{left over} \sep \eng{remainder} & what will not divide up evenly \\
+  \end{tabularx}
+\end{wordhelp}
+
+\vspace{2pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+  \hline
+  \textbf{Multiplication} & \textbf{The other one} & \textbf{Division} &
+  \textbf{The other one} \\
+  \hline
+  $6 \times 9 = 54$ \rule[-0.7em]{0pt}{2.2em} & $9 \times 6 = 54$ &
+  $54 \div 6 = 9$ & $54 \div 9 = 6$ \\ \hline
+  $7 \times 8 = 56$ \rule[-0.7em]{0pt}{2.2em} & & & \\ \hline
+  \rule[-0.7em]{0pt}{2.2em} & & $72 \div 8 = \blank[1.0cm]$ & \\ \hline
+  \rule[-0.7em]{0pt}{2.2em} & & & $96 \div 12 = \blank[1.0cm]$ \\ \hline
+\end{tabularx}
+
+% -- F9 ---------------------------------------------------------------------
+\qhead[cbgreen]{F9}{Divide}
+
+\vspace{2pt}
+\begin{multicols}{4}
+\begin{enumerate}[label=(\alph*), itemsep=10pt]
+  \item $84 \div 7 = \blank[1.2cm]$
+  \item $96 \div 8 = \blank[1.2cm]$
+  \item $72 \div 6 = \blank[1.2cm]$
+  \item $135 \div 9 = \blank[1.2cm]$
+  \item $128 \div 4 = \blank[1.2cm]$
+  \item $161 \div 7 = \blank[1.2cm]$
+  \item $192 \div 8 = \blank[1.2cm]$
+  \item $216 \div 6 = \blank[1.2cm]$
+\end{enumerate}
+\end{multicols}
+
+\vspace{2pt}
+\noindent Now four with something \textbf{left over}. Write them like this:
+\; $75 \div 8 = 9$ r 3.
+
+\vspace{4pt}
+% Two columns, not four. An answer here is "35 r 3", so the blank has to be wide
+% enough to write two numbers and a letter in -- and at four columns the blank had
+% nowhere to go and dropped onto a line of its own under the division.
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), start=9, itemsep=11pt]
+  \item $58 \div 7 = \blank[2.6cm]$
+  \item $100 \div 6 = \blank[2.6cm]$
+  \item $85 \div 9 = \blank[2.6cm]$
+  \item $143 \div 4 = \blank[2.6cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- F10 --------------------------------------------------------------------
+% The bridge question. Every box here is filled by dividing, and F19 is this
+% same question with a bracket around it.
+\qhead[cbgreen]{F10}{Find the missing number}
+
+\noindent Every box holds one number. To find it, \key{divide}.
+
+\vspace{4pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*), itemsep=12pt]
+  \item $6 \times \nbox = 54$
+  \item $\nbox \times 7 = 84$
+  \item $9 \times \nbox = 108$
+  \item $\nbox \times 8 = 96$
+  \item $12 \times \nbox = 60$
+  \item $\nbox \times 5 = 115$
+\end{enumerate}
+\end{multicols}
+
+% -- F11 --------------------------------------------------------------------
+\qhead[cbgreen]{F11}{Share it out}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=10pt]
+  \item \textbf{144} pencils are shared equally between \textbf{12} students. How
+        many does each student get?
+        \begin{workspace}[2.0cm]\end{workspace}
+  \item \textbf{90} students go on a trip. Each bus holds \textbf{16} students.
+        How many buses are needed? \; \eng{Careful:} the last bus will not be full,
+        and nobody can be left behind.
+        \begin{workspace}[2.2cm]\end{workspace}
+  \item Mr Bowen shares \textbf{216} stickers equally between \textbf{8} classes.
+        How many stickers does each class get?
+        \begin{workspace}[2.2cm]\end{workspace}
+  \item Mr Bowen buys \textbf{175} rubber ducks and puts the same number into each
+        of his \textbf{18} fish tanks. How many go into each tank? How many are
+        left over?
+        \begin{workspace}[2.4cm]\end{workspace}
+\end{enumerate}
+
+% ===========================================================================
+% PART 4 -- THE SAME GRID, WITH A LETTER
+% ===========================================================================
+\hwsection[cbgreen]{Part 4 \textperiodcentered\ The same grid, with a letter in it}
+
+\qhead[cbgreen]{F12}{A letter is a number you do not know yet}
+
+\noindent Collect the like terms. The first one is done for you.
+
+\begin{remember}[Two rules, and that is all of it]
+  \key{Only the same letter can be added.} \; $3a + 2a = 5a$, \; but $3a + 2b$
+  \key{cannot be added} and is already finished.
+
+  \smallskip
+  \key{A letter on its own means one of it.} \; $5x - x = 5x - 1x = \mathbf{4x}$,
+  \; {\color{cbred}\bfseries not 5}.
+\end{remember}
+
+\vspace{2pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*), itemsep=11pt]
+  \item $3a + 2a = 5a$
+  \item $4b + 5b = \blank[1.4cm]$
+  \item $7c - 2c = \blank[1.4cm]$
+  \item $5x - x = \blank[1.4cm]$
+  \item $m + m = \blank[1.4cm]$
+  \item $6y - y = \blank[1.4cm]$
+  \item $2p + 3q = \blank[1.4cm]$
+  \item $8k - 3k = \blank[1.4cm]$
+  \item $4n + 7 = \blank[1.4cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- F13 --------------------------------------------------------------------
+\qhead[cbgreen]{F13}{One box has a letter in it}
+
+\noindent Exactly the grid from Part 1. One box is a letter, so you cannot work that
+box out --- \key{leave it as it is}.
+
+\begin{remember}[$4(x + 3)$ is $4 \times 16$ with the 16 hidden]
+  \noindent
+  \begin{minipage}[c]{0.40\linewidth}
+    \renewcommand{\arraystretch}{1.9}%
+    \begin{tabular}{|c|c|c|}
+      \hline
+      $\times$ & $x$  & $3$ \\ \hline
+      $4$      & $4x$ & $12$ \\ \hline
+    \end{tabular}%
+    \renewcommand{\arraystretch}{1.45}
+  \end{minipage}%
+  \begin{minipage}[c]{0.58\linewidth}
+    $4(x + 3) = \mathbf{4x + 12}$
+
+    \smallskip
+    $4 \times x$ is \key{4x} --- you cannot finish it, so you write it and move on.
+    $4 \times 3$ is 12. Then \key{add the boxes}, the same as always.
+  \end{minipage}
+\end{remember}
+
+\vspace{4pt}
+\noindent
+\begin{minipage}[c]{0.30\textwidth}\gridone{x}{5}{2}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(a)} $2(x + 5)$ \\[4pt] $= \blank[1.8cm]$\end{minipage}%
+\begin{minipage}[c]{0.30\textwidth}\gridone{m}{4}{3}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(b)} $3(m + 4)$ \\[4pt] $= \blank[1.8cm]$\end{minipage}
+
+\vspace{11pt}
+\noindent
+\begin{minipage}[c]{0.30\textwidth}\gridone{y}{2}{6}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(c)} $6(y + 2)$ \\[4pt] $= \blank[1.8cm]$\end{minipage}%
+\begin{minipage}[c]{0.30\textwidth}\gridone{k}{7}{5}\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}\textbf{(d)} $5(k + 7)$ \\[4pt] $= \blank[1.8cm]$\end{minipage}
+
+% -- F14 --------------------------------------------------------------------
+\qhead[cbgreen]{F14}{Fill the boxes}
+
+\noindent No grid. Write the two numbers straight into the boxes.
+
+\vspace{4pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=13pt]
+  \item $3(a + 2) = \nbox a + \nbox$
+  \item $5(b + 4) = \nbox b + \nbox$
+  \item $7(c + 1) = \nbox c + \nbox$
+  \item $2(d + 9) = \nbox d + \nbox$
+  \item $4(e + 6) = \nbox e + \nbox$
+  \item $8(f + 3) = \nbox f + \nbox$
+\end{enumerate}
+\end{multicols}
+
+% -- F15 --------------------------------------------------------------------
+\qhead[cbgreen]{F15}{A minus inside}
+
+\noindent The minus sign belongs to the number after it, and it goes into the brackets
+with that number.
+
+\begin{remember}[Same grid, one sign]
+  \hspace*{1.2em}$3(x - 2) \;=\; 3x - 6$ \qquad
+  \hspace*{1.2em}$5(y - 4) \;=\; 5y - 20$
+\end{remember}
+
+\vspace{2pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=11pt]
+  \item $4(x - 3) = \blank[2.4cm]$
+  \item $6(m - 2) = \blank[2.4cm]$
+  \item $2(k - 7) = \blank[2.4cm]$
+  \item $9(n - 1) = \blank[2.4cm]$
+  \item $3(p - 5) = \blank[2.4cm]$
+  \item $7(q - 2) = \blank[2.4cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- F16 --------------------------------------------------------------------
+% F10 again, with a bracket around it. Same division, same answer.
+\qhead[cbgreen]{F16}{Find the number outside}
+
+\noindent This is \textbf{F10} again, with a bracket around it. Divide, exactly as you
+did there.
+
+\vspace{4pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=13pt]
+  \item $\nbox (x + 2) = 5x + 10$
+  \item $\nbox (y + 3) = 4y + 12$
+  \item $\nbox (m + 1) = 7m + 7$
+  \item $\nbox (k + 5) = 6k + 30$
+  \item $\nbox (p + 4) = 3p + 12$
+  \item $\nbox (n + 6) = 8n + 48$
+\end{enumerate}
+\end{multicols}
+
+% -- F17 --------------------------------------------------------------------
+% The last question, and the sheet in miniature: the arithmetic from Part 1
+% proves the algebra from Part 4, in the same grid.
+\qhead[cbgreen]{F17}{Check it with a number}
+
+\begin{yourturn}[This one proves the whole sheet]
+  You wrote \; $4(x + 3) = 4x + 12$ \; in F13. Now \key{put $x = 10$ into both
+  sides} and see whether they agree.
+\end{yourturn}
+
+\vspace{2pt}
+\begin{enumerate}[label=(\alph*), itemsep=11pt]
+  \item The \textbf{left} side. \quad $x + 3$ is $10 + 3 = \nbox$, \; so
+        $4(x+3)$ is $4 \times \nbox = \nbox$
+  \item The \textbf{right} side. \quad $4x$ is $4 \times 10 = \nbox$, \; so
+        $4x + 12$ is $\nbox + 12 = \nbox$
+  \item Did the two sides agree? \hfill \blank[3.0cm]
+  \item You have just worked out $4 \times 13$ twice, in two different ways. Which
+        two numbers did you add together the second time?
+        \hfill \blank[4.0cm]
+\end{enumerate}
+
+\vspace{7pt}
+\noindent \textbf{(e)} Now do the whole thing again on your own, with
+\; \expr{3(m + 4)} \; and \; $m = 20$.
+
+\vspace{4pt}
+\begin{enumerate}[label=(\roman*), itemsep=9pt]
+  \item Expand it. \hfill \blank[4.4cm]
+  \item The \textbf{left} side: work out $m + 4$ first, then multiply by 3.
+        \hfill \blank[4.4cm]
+  \item The \textbf{right} side: put $m = 20$ into your expanded answer.
+        \hfill \blank[4.4cm]
+  \item Did they agree? \hfill \blank[4.4cm]
+\end{enumerate}
+
+% ===========================================================================
+% ANSWER KEY -- TEACHER COPY ONLY
+% ===========================================================================
+\ifkey
+\clearpage
+
+\hwsection[cbred]{Answer Key --- Teacher Copy}
+
+\linespread{1.0}\selectfont
+\setlist[enumerate]{itemsep=2pt, topsep=3pt, leftmargin=*}
+\setlist[itemize]{itemsep=2pt, topsep=3pt, leftmargin=*}
+
+\qhead[cbred]{F1}{Tens and ones}
+\noindent (b) $20+3$ \quad (c) $60+5$ \quad (d) $10+8$ \quad (e) $50+2$ \quad
+(f) $90+6$ \quad (g) $30+4$ \quad (h) $70+0$ \quad (i) $80+9$
+
+\smallskip
+\noindent{\small (h) is the row to check. $70 = 70 + 0$, and a student who cannot write
+it has been splitting by copying the digits rather than by reading the place value.
+Accept ``70 and nothing''; do not accept 7 and 0.}
+
+\qhead[cbred]{F2}{Times a ten}
+\noindent (a) 120 \quad (b) 300 \quad (c) 280 \quad (d) 540 \quad (e) 160 \quad
+(f) 270 \\
+(g) 600 \quad (h) 2000 \quad (i) 4200 \quad (j) 2400 \quad (k) 2500 \quad (l) 1800
+
+\smallskip
+\noindent{\small (g) to (l) are the ones that decide whether F5 works, because the
+top-left box of every two-by-two grid is a ten times a ten and is \emph{much} the
+biggest number in the grid. A student who writes 60 for (g) will lose a whole place
+value on every question in Part 2 and their answers will be about ten times too small.
+That symptom is worth memorising: \textbf{answers ten times too small means F2, not
+F5.}}
+
+\qhead[cbred]{F3}{One row: two digits by one digit}
+\noindent (a) $140 + 21 = \mathbf{161}$ \quad (b) $240 + 48 = \mathbf{288}$ \\
+(c) $400 + 32 = \mathbf{432}$ \quad (d) $270 + 63 = \mathbf{333}$
+
+\smallskip
+\noindent{\small Mark the boxes, not the total. The point of a printed grid is that
+every step is visible, so a wrong answer here can always be traced to one box. \\
+Both boxes filled and the addition wrong is an arithmetic slip. One box filled is the
+error this sheet exists to fix.}
+
+\qhead[cbred]{F4}{Now without the printed grid}
+\noindent 204 \quad 576 \quad 595 \quad 414 \\
+340 \quad 372 \quad 456 \quad 448 \\
+702 \quad 570 \quad 343 \quad 688
+
+\smallskip
+\noindent{\small In order: $6 \times 34$, $8 \times 72$, $7 \times 85$, $9 \times 46$;
+$5 \times 68$, $4 \times 93$, $8 \times 57$, $7 \times 64$; $9 \times 78$,
+$6 \times 95$, $7 \times 49$, $8 \times 86$. \\
+The instruction is to \emph{draw the grid}, and it is worth insisting on for another
+week even from students who no longer need it --- Part 4 asks for the same picture with
+a letter in it, and a student who has stopped drawing it has nothing to fall back on
+when the box will not multiply.}
+
+\qhead[cbred]{F5}{Four boxes instead of two}
+\noindent (a) $300+20+150+10 = \mathbf{480}$ \quad
+(b) $800+120+120+18 = \mathbf{1058}$ \\
+(c) $1500+210+200+28 = \mathbf{1938}$ \quad
+(d) $2400+320+120+16 = \mathbf{2856}$ \\
+(e) $1400+420+80+24 = \mathbf{1924}$ \quad
+(f) $2400+560+150+35 = \mathbf{3145}$
+
+\smallskip
+\noindent{\small Count the filled boxes before reading the answer. Four numbers means
+the method was followed; three means one box was missed, which is the single commonest
+error in two-by-two multiplication and is invisible in the total. \\
+In (b), $23$ splits as $20+3$ and both rows have to reach both columns. The box that
+gets forgotten is nearly always the bottom-right one --- the small ones times the small
+ones --- because it looks least important and is the easiest to do.}
+
+\qhead[cbred]{F6}{Draw the grid yourself}
+\noindent 312 \quad 735 \quad 752 \\
+1768 \quad 1701 \quad 3510 \\
+4558 \quad 3572 \quad 4800 \\
+1073 \quad 2688 \quad 2158
+
+\smallskip
+\noindent{\small In order: $24 \times 13$, $35 \times 21$, $47 \times 16$;
+$52 \times 34$, $63 \times 27$, $78 \times 45$; $86 \times 53$, $94 \times 38$,
+$75 \times 64$; $29 \times 37$, $56 \times 48$, $83 \times 26$. \\
+$75 \times 64 = 4800$ is a good one to put on the board at the end, because the grid
+gives $4200 + 300 + 280 + 20$ and the round answer looks like a coincidence until the
+four boxes are shown.}
+
+\qhead[cbred]{F7}{Use it}
+\noindent 1. \; $24 \times 36 = \mathbf{864}$ pencils. \quad
+2. \; $18 \times 15 = \mathbf{270}$ chairs. \\
+3. \; $47 \times 23 = \mathbf{1081}$ seats. \quad
+4. \; $18 \times 25 = \mathbf{450}$ rubber ducks.
+
+\smallskip
+\noindent{\small None of the four says \emph{multiply}. The words doing the work are
+\emph{every box holds}, \emph{in each row}, \emph{in total} and \emph{every tank holds},
+which are all in the word help. A student who adds $24+36$ has read the numbers and not
+the sentence --- that is a reading error, and it should be named as one out loud rather
+than marked as arithmetic. \\
+3 is the hardest arithmetic on the sheet and the grid earns its keep:
+$800+140+210+21$. \\
+4 is meant to be read completely straight. If the class laughs, that is fine; the
+question is still $18 \times 25$, and $450$ rubber ducks is the correct answer.}
+
+\qhead[cbred]{F8}{The same three numbers, four ways}
+\noindent Row 2: $7 \times 8 = 56$, $8 \times 7 = 56$, $56 \div 7 = 8$,
+$56 \div 8 = 7$. \\
+Row 3: $8 \times 9 = 72$, $9 \times 8 = 72$, $72 \div 8 = \mathbf{9}$,
+$72 \div 9 = 8$. \\
+Row 4: $8 \times 12 = 96$, $12 \times 8 = 96$, $96 \div 8 = 12$,
+$96 \div 12 = \mathbf{8}$.
+
+\smallskip
+\noindent{\small Rows 3 and 4 are filled in \emph{backwards}, from a division to the
+multiplication that made it, which is the whole idea Part 3 is for: a division question
+is a multiplication question you already know the answer to. \\
+This is F10 and F16 in advance. If a student can do this table, neither of those is new
+work.}
+
+\qhead[cbred]{F9}{Divide}
+\noindent (a) 12 \quad (b) 12 \quad (c) 12 \quad (d) 15 \quad (e) 32 \quad (f) 23
+\quad (g) 24 \quad (h) 36 \\
+(i) 8 r 2 \quad (j) 16 r 4 \quad (k) 9 r 4 \quad (l) 35 r 3
+
+\smallskip
+\noindent{\small (a), (b) and (c) are all 12 on purpose. Say so afterwards --- a student
+who trusted their arithmetic and got three identical answers will have assumed they were
+wrong, and that assumption is worth naming. \\
+(f) $161 \div 7$ is the hardest of the exact ones. Counting up in sevens is a perfectly
+good method and should not be marked down.}
+
+\qhead[cbred]{F10}{Find the missing number}
+\noindent (a) 9 \quad (b) 12 \quad (c) 12 \quad (d) 12 \quad (e) 5 \quad (f) 23
+
+\smallskip
+\noindent{\small Every one of these is found by dividing --- $54 \div 6$, $84 \div 7$,
+$108 \div 9$, $96 \div 8$, $60 \div 12$, $115 \div 5$. Say that sentence out loud when
+you hand the sheet back, because F16 is this question with a bracket drawn round it and
+the connection is the point. \\
+A student who gets these by guessing and checking has still got them right. Ask for the
+division as well, once.}
+
+\qhead[cbred]{F11}{Share it out}
+\noindent 1. \; $144 \div 12 = \mathbf{12}$ pencils each.
+
+\smallskip
+\noindent 2. \; $90 \div 16 = 5$ r 10, so \textbf{6 buses} are needed.
+
+\smallskip
+\noindent 3. \; $216 \div 8 = \mathbf{27}$ stickers each. \quad
+4. \; $175 \div 18 = \mathbf{9}$ each, with \textbf{13 left over}.
+
+\smallskip
+\noindent{\small \textbf{Question 2 is the one worth discussing.} The arithmetic gives 5
+remainder 10 and the answer is 6, because ten students cannot be left in the car park.
+Expect 5, and expect ``5.6''. \\
+Then put 2 and 4 side by side. Both divisions leave a remainder and the two remainders
+are treated in opposite ways: the ten students need a sixth bus, and the thirteen spare
+ducks simply stay in the box. Nothing in the arithmetic tells you which --- only the
+sentence does. That is the whole reason these are word problems and not sums. \\
+4 is meant to be read straight, and 9 r 13 is the full answer; a student who writes 9 has
+answered only half the question.}
+
+\qhead[cbred]{F12}{A letter is a number you do not know yet}
+\noindent (b) $9b$ \quad (c) $5c$ \quad (d) $4x$ \quad (e) $2m$ \quad (f) $5y$ \quad
+(g) $2p+3q$ \textbf{finished} \quad (h) $5k$ \quad (i) $4n+7$ \textbf{finished}
+
+\smallskip
+\noindent{\small (d), (e) and (f) are the invisible 1, three times. (d) comes out $5$ if
+the $x$ is read as nothing; (f) comes out $6$ the same way. \\
+(g) and (i) are the two to leave alone, and they are the reason the letter work comes
+before the brackets: a student who turns $4n+7$ into $11n$ will turn $4(x+3)$ into
+$4x+12$ and then into $16x$.}
+
+\qhead[cbred]{F13}{One box has a letter in it}
+\noindent (a) $2x+10$ \quad (b) $3m+12$ \quad (c) $6y+12$ \quad (d) $5k+35$
+
+\smallskip
+\noindent{\small The left box is the whole lesson. $2 \times x$ cannot be worked out, so
+it is written as $2x$ and left --- and a student who stalls there has not misunderstood
+multiplication, they have been taught that a box must contain a number. Say plainly that
+this box does not. \\
+Compare (c) with F3(d) if anyone doubts the grids are the same picture: identical
+layout, identical instruction, one box that happens to be a letter.}
+
+\qhead[cbred]{F14}{Fill the boxes}
+\noindent (a) $3a+6$ \quad (b) $5b+20$ \quad (c) $7c+7$ \quad (d) $2d+18$ \quad
+(e) $4e+24$ \quad (f) $8f+24$
+
+\smallskip
+\noindent{\small (c) is the one that looks wrong and is not: $7 \times 1 = 7$, so both
+boxes hold a 7. Expect it to be left blank. \\
+The printed boxes are doing real work here. A blank square in front of the letter is
+much harder to skip than an empty line, and skipping the second number ---
+$3(a+2) = 3a+2$ --- is the headline error of Maths 2.4.}
+
+\qhead[cbred]{F15}{A minus inside}
+\noindent (a) $4x-12$ \quad (b) $6m-12$ \quad (c) $2k-14$ \quad (d) $9n-9$ \quad
+(e) $3p-15$ \quad (f) $7q-14$
+
+\smallskip
+\noindent{\small (d) is the invisible 1 arriving inside a bracket: $9 \times 1 = 9$, so
+the answer is $9n-9$ and not $9n-1$. It is F14(c) with a minus sign, and a student who
+got that one right and this one wrong was copying rather than multiplying.}
+
+\qhead[cbred]{F16}{Find the number outside}
+\noindent (a) 5 \quad (b) 4 \quad (c) 7 \quad (d) 6 \quad (e) 3 \quad (f) 8
+
+\smallskip
+\noindent{\small Found by dividing: $10 \div 2$, $12 \div 3$, $7 \div 1$, $30 \div 5$,
+$12 \div 4$, $48 \div 6$.
+Or by dividing the other term --- $5x \div x$ --- which is also right and is worth
+hearing if a student offers it. \\
+Point back at F10 before they start. The two questions are the same question and the
+sheet says so; a student who does F10 confidently and stalls here has been stopped by
+the bracket, not by the arithmetic.}
+
+\qhead[cbred]{F17}{Check it with a number}
+\noindent (a) $10+3 = \mathbf{13}$, \; so $4 \times \mathbf{13} = \mathbf{52}$. \\
+(b) $4 \times 10 = \mathbf{40}$, \; so $\mathbf{40} + 12 = \mathbf{52}$. \\
+(c) \textbf{Yes} --- both sides are 52. \\
+(d) \textbf{40 and 12.}
+
+\smallskip
+\noindent (e) (i) $3m+12$ \; (ii) $m+4 = 24$, and $3 \times 24 = \mathbf{72}$ \;
+(iii) $3 \times 20 = 60$, and $60 + 12 = \mathbf{72}$ \; (iv) \textbf{yes}.
+
+\smallskip
+\noindent{\small (e) is (a) to (d) with the scaffolding taken away, and it is the one
+that shows whether the method transferred. The two boxes this time are \textbf{60 and
+12}, which is the grid for $3 \times 24$. \\
+\noindent{\small \textbf{This is the sheet in one question.} The left side is
+$4 \times 13$ done as a single multiplication. The right side is $4 \times 13$ done as
+$40 + 12$ --- which is the grid from F3, with the same two boxes, arrived at from the
+algebra. \\
+(d) is the part to ask for out loud. A student who says ``40 and 12'' and then sees that
+those are the two boxes of $4 \times 13$ has understood why expanding a bracket is not a
+new rule but the multiplication they have done all year, written down before the letter
+is known. \\
+If there is time for one thing from this sheet at the board, do this question and draw
+the grid for $4 \times 13$ beside it.}
+
+\fi
+
+\end{document}

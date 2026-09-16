@@ -19,6 +19,8 @@ import hw05 from '../homework/hw05/hw05.pdf?url'
 import hw05x from '../homework/hw05x/hw05x.pdf?url'
 import hw06 from '../homework/hw06/hw06.pdf?url'
 import hw06x from '../homework/hw06x/hw06x.pdf?url'
+import hw07 from '../homework/hw07/hw07.pdf?url'
+import hw07x from '../homework/hw07x/hw07x.pdf?url'
 import alg13 from '../homework/alg13/alg13.pdf?url'
 import alg13p3 from '../homework/alg13p3/alg13p3.pdf?url'
 
@@ -110,6 +112,27 @@ export const HOMEWORK = [
     title: 'One Letter at a Time',
     subtitle: 'Extra · expressions, substituting, volume',
     pdf: hw06x,
+  },
+  // Unit 2 again, both subjects, and the two rules they turned out to share:
+  // a symbol says what kind and a number says how many, and a number in front
+  // multiplies everything after it. Section E is the reason this packet exists —
+  // counting the atoms in 3CO2 is expanding a bracket, on the same grid.
+  {
+    id: 'hw07',
+    label: 'HW 7',
+    title: 'What Kind, and How Many',
+    subtitle: 'Maths 2.3–2.4 · Science 2.5–2.6 · where they meet',
+    pdf: hw07,
+  },
+  // Goes out with HW 7. Two-digit multiplication taught as the GRID rather than
+  // the column method of EX 4 and EX 5, because the grid is what 2.4 needs: the
+  // same picture carries 4 x 16 and 4(x + 3), and the sheet ends by proving it.
+  {
+    id: 'hw07x',
+    label: 'EX 7',
+    title: 'Split, Multiply, Add',
+    subtitle: 'Extra · two-digit multiplication, dividing, brackets',
+    pdf: hw07x,
   },
   // Not a Year 7 packet: a single landscape sheet for the Algebra Track, handed
   // out DURING lesson 1.3 and used twice in it. It lives here because this is

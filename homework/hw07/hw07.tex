@@ -1,0 +1,1192 @@
+% homework/hw07/hw07.tex
+% Year 7 - Homework Packet 7: Unit 2, both subjects, and the place they meet.
+%
+% Covers Mathematics 2.3-2.4 (collecting like terms; expanding brackets) and
+% Science 2.5-2.6 (atoms, elements and the Periodic Table; compounds and
+% formulae).
+%
+% SECTION E IS THE POINT OF THIS PACKET, and the tie is exact rather than
+% decorative. Both subjects handed this class the same two rules in the same
+% week:
+%
+%   * a symbol says WHAT KIND, a number says HOW MANY;
+%   * a number written in front multiplies EVERYTHING after it.
+%
+% From the first rule: 8s - s = 7s because s means 1s, and H2O has one oxygen
+% atom because nothing is written after the O. Two of the same kind is still
+% one kind, so x + x = 2x and O2 is still an element -- E4 is those two facts
+% shown to be one fact.
+%
+% From the second: 3CO2 is three lots of CO2, which is 3(C + 2O) = 3C + 6O.
+% That is 2.4's grid drawn on a chemical formula, and it is not an analogy --
+% it is how the atoms in a formula are actually counted. E5 closes on the
+% shared error: 4(x + 3) = 4x + 3 and 6CO2 = 6C + 2O are one mistake made
+% twice, once in each subject.
+%
+% Nothing here is lifted from the workbook. Where a trap from a deck is reused
+% it has new numbers and a new context.
+%
+% House style is shared: see homework/hw-style.tex. Method: the new-homework
+% skill. Source is pure ASCII on purpose.
+%
+% Build:  pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw07
+
+\documentclass[12pt,a4paper]{article}
+
+% -- Answer key switch -------------------------------------------------------
+\newif\ifkey
+\ifdefined\TEACHER\keytrue\else
+  \keyfalse        % \keyfalse = student copy   |   \keytrue = teacher copy
+\fi
+
+% -- House style -------------------------------------------------------------
+\input{../hw-style.tex}
+
+% -- Per-packet running head -------------------------------------------------
+\fancyhead[L]{\small\color{black!55}Year 7\sep Homework 7}
+
+% -- A group of writing lines that will not be split -------------------------
+% See hw06.tex: \wlines is a run of separate hboxes and TeX will break in the
+% middle of one, stranding a single rule at the top of the next page.
+\newcommand{\qlines}[1]{\par\needspace{\numexpr#1+1\relax\baselineskip}\wlines{#1}}
+
+% -- A chemical formula ------------------------------------------------------
+% Upright, so it does not come out in mathastext's italic and read as algebra.
+% That distinction is the whole of E1, so it has to be visibly true everywhere
+% else on the packet too.
+\newcommand{\ch}[1]{\ensuremath{\mathrm{#1}}}
+
+% -- A box to write one number in --------------------------------------------
+\newcommand{\nbox}{\ \fbox{\rule{0pt}{1.05em}\rule{1.0em}{0pt}}\ }
+
+% -- An answer blank that will not cause an overfull line ---------------------
+% "\hfill \blank[3.4cm]" at the end of a wrapping \item overflows the margin
+% when the text happens to fill its last line: the blank has nowhere to go and
+% hangs off the right edge. Two of them did. \ansline puts the blank on a line
+% of its own, right-aligned, which cannot overflow whatever the text does.
+\newcommand{\ansline}[1][4.4cm]{\par\vspace{2pt}\hspace*{\fill}\blank[#1]\par}
+
+% -- A note on the word-help tables ------------------------------------------
+% They are written {@{}l@{\hspace{16pt}}X@{}}, spelled out in full. The first
+% column must be `l', not `p': LaTeX puts the stretched row strut in the FIRST
+% cell only, and inside a p-column it lands in the parbox and pushes the text
+% down a line, so every left-hand phrase prints below its meaning. The spec
+% cannot be hidden behind a macro (array does not expand macros in a preamble)
+% nor the table behind a wrapper environment (tabularx reads ahead for a
+% literal end-of-tabularx). Both were tried.
+
+\begin{document}
+
+% ===========================================================================
+% COVER BLOCK
+% ===========================================================================
+\thispagestyle{fancy}
+
+\begin{tcolorbox}[enhanced, colback=cbpurple!7, colframe=cbpurple!7, arc=7pt,
+                  borderline west={6pt}{0pt}{cbpurple},
+                  left=18pt, right=14pt, top=10pt, bottom=10pt]
+  {\color{cbpurple}\bfseries YEAR 7\sep UNIT 2\sep HOMEWORK 7}\\[5pt]
+  {\color{cbpurple}\Huge\bfseries What Kind, and How Many}\\[7pt]
+  {\color{black!70}Mathematics 2.3--2.4 --- collecting like terms, expanding brackets}\\
+  {\color{black!70}Science 2.5--2.6 --- atoms, elements, compounds and formulae}\\
+  {\color{black!70}Section E --- the two rules both subjects taught you this week}
+\end{tcolorbox}
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+  \textbf{Name:} \blank[5.6cm] & \textbf{Class:} \blank[5.6cm] \\
+  \textbf{Date given:} \blank[4.6cm] &
+  \textbf{Date due:} {\color{cbred}\bfseries Monday 21 September 2026} \\
+\end{tabularx}
+
+\vspace{2pt}
+\begin{activity}
+  Five sections. Maths first, then science, then \key{Section E}, where the two
+  meet.
+  \begin{itemize}
+    \item In maths, $3x + 5$ is a \key{finished answer}. You are allowed to stop.
+    \item In science, write \key{full English sentences}. ``Compound'' is not a
+          sentence; ``Salt is a compound of sodium and chlorine'' is.
+    \item \eng{No calculator.}
+  \end{itemize}
+\end{activity}
+
+% ===========================================================================
+% SECTION A -- MATHEMATICS 2.3
+% ===========================================================================
+\hwsection{Section A \textperiodcentered\ Mathematics 2.3 --- Collecting Like Terms}
+
+% -- A1 ---------------------------------------------------------------------
+% The way in, and it is meant to be easy: count the terms. A student who can
+% start nothing else can start this. The instruction line comes BEFORE the
+% orange box -- a section heading followed straight by a large tcolorbox cannot
+% be split, and the pair walks to the next page and leaves a hole behind it.
+\qhead{A1}{How many terms?}
+
+\noindent Count the terms in each expression. The first one is done for you.
+
+\begin{remember}[What a term is]
+  A \key{term} is one part of an expression. The \key{plus and minus signs
+  separate the terms}. A number on its own is a term too. \; So $4a + 3b$ has
+  \key{two} terms: $4a$ and $3b$.
+\end{remember}
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|p{3.9cm}|X|p{3.9cm}|X|}
+  \hline
+  \textbf{Expression} & \textbf{Terms} & \textbf{Expression} & \textbf{Terms} \\
+  \hline
+  $4a + 3b$ \rule[-0.65em]{0pt}{2.0em}      & \textbf{2}
+    & $8m - 3m + n$ \rule[-0.65em]{0pt}{2.0em} & \\ \hline
+  $5x$ \rule[-0.65em]{0pt}{2.0em}           &
+    & $6$ \rule[-0.65em]{0pt}{2.0em}           & \\ \hline
+  $2p + 7q + 4$ \rule[-0.65em]{0pt}{2.0em}  &
+    & $y + 2z - 5 + 3y$ \rule[-0.65em]{0pt}{2.0em} & \\ \hline
+\end{tabularx}
+
+% -- A2 ---------------------------------------------------------------------
+% One line of prose before the word-help box, for the same reason as A1.
+\qhead{A2}{Like or not like?}
+
+\noindent Tick one box in each row.
+
+\begin{wordhelp}[Word help --- one word with two jobs]
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{16pt}}X@{}}
+    \eng{like} & every day, to enjoy something. In maths, \textbf{the same kind}: \emph{milk is like water --- both are liquids.} \\
+    \eng{like terms} & terms with \textbf{the same letter}, so they can be added together \\
+  \end{tabularx}
+\end{wordhelp}
+
+\vspace{2pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|c|c|X|c|c|}
+  \hline
+  & \textbf{Like} & \textbf{Not like} & & \textbf{Like} & \textbf{Not like} \\
+  \hline
+  $3a$ and $5a$ \rule[-0.65em]{0pt}{2.0em}   & & &
+  $2ab$ and $5ba$ \rule[-0.65em]{0pt}{2.0em} & & \\ \hline
+  $4x$ and $4y$ \rule[-0.65em]{0pt}{2.0em}   & & &
+  $m$ and $m^2$ \rule[-0.65em]{0pt}{2.0em}   & & \\ \hline
+  $7$ and $2$ \rule[-0.65em]{0pt}{2.0em}     & & &
+  $5c$ and $-2c$ \rule[-0.65em]{0pt}{2.0em}  & & \\ \hline
+\end{tabularx}
+
+% -- A3 ---------------------------------------------------------------------
+% The bare-calculation block, with the invisible 1 inside it rather than in a
+% question of its own. Items (e)-(h) each contain a lone letter, so the rule in
+% the box is needed four times and never announced again.
+\qhead{A3}{Simplify}
+
+\noindent Collect the like terms. Two of these are already finished --- leave them alone.
+
+\begin{remember}[$x$ means $1x$]
+  A letter on its own already has a \key{1} in front of it. Nobody writes the 1,
+  but it is there.
+
+  \smallskip
+  \hspace*{1.2em}$8s - s \;=\; 8s - 1s \;=\; \mathbf{7s}$ \qquad
+  {\color{cbred}\bfseries not 8.}
+\end{remember}
+
+\vspace{2pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=10pt]
+  \item $2b + 3b = \blank[2.4cm]$
+  \item $9k - 4k = \blank[2.4cm]$
+  \item $6m + 3n + 2m = \blank[2.4cm]$
+  \item $5p + 2q + p + 4q = \blank[2.4cm]$
+  \item $8s - s = \blank[2.4cm]$
+  \item $4x + x + 2x = \blank[2.4cm]$
+  \item $3a + 7 = \blank[2.4cm]$
+  \item $6y - y + 2y = \blank[2.4cm]$
+  \item $10g - 6g - g = \blank[2.4cm]$
+  \item $5c + 3d = \blank[2.4cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- A4 ---------------------------------------------------------------------
+\qhead{A4}{Every sign travels with its own term}
+
+\begin{remember}[Take the sign with you]
+  The $+$ or $-$ in front of a term \key{belongs to that term}. When you move the
+  term, the sign goes with it.
+
+  \smallskip
+  \hspace*{1.2em}$7x + 5y - 3x + y \;=\; 7x - 3x + 5y + y \;=\; \mathbf{4x + 6y}$
+\end{remember}
+
+\noindent Simplify. Write the middle line, with the like terms next to each other.
+
+\vspace{4pt}
+\begin{enumerate}[label=(\alph*), itemsep=10pt]
+  \item $9x + 4y - 5x + 2y$ \hfill \blank[6.6cm]
+  \item $8a - 3b + 2a - b$ \hfill \blank[6.6cm]
+  \item $6 + 5t - 1 - 2t$ \hfill \blank[6.6cm]
+  \item $7p - 2q - 3p + 6q + 4$ \hfill \blank[6.6cm]
+\end{enumerate}
+
+% -- A5 ---------------------------------------------------------------------
+% There was a "Mr Bowen's homework" error-hunt here -- 4x + 3 = 7x, 7y - y = 7,
+% 3p + 2q + p, 4ab + 2ba. It came out for the page target and it was the right
+% one to cut, because every one of its four traps is already on the packet:
+% 4ab/2ba is a row of A2, the two already-finished items are A3(g) and A3(j),
+% and the invisible 1 is four separate items of A3. B4 keeps the error-hunt
+% format, on 2.4, where it pairs with E5.
+%
+% The reverse question: an expression, and the student writes the word problem.
+% It cannot be pattern-matched, so it is the best single item in Section A for
+% finding out who is reading.
+\qhead{A5}{Now you write the question}
+
+\begin{yourturn}[Read all four conditions before you start]
+  Here is an expression:\qquad \expr{5a + 3b}
+
+  \medskip
+  Write a \key{word problem} that this expression is the answer to. Your question
+  must:
+  \begin{enumerate}[label=\arabic*., itemsep=4pt, topsep=5pt]
+    \item be about something \key{real} --- a shop, a classroom, a lab bench;
+    \item use \key{two different kinds} of thing, one for $a$ and one for $b$;
+    \item say clearly what $a$ and $b$ \key{stand for};
+    \item be written in \key{full sentences} and \key{end in a question}.
+  \end{enumerate}
+\end{yourturn}
+
+\qlines{4}
+
+% ===========================================================================
+% SECTION B -- MATHEMATICS 2.4
+% ===========================================================================
+\hwsection{Section B \textperiodcentered\ Mathematics 2.4 --- Expanding Brackets}
+
+% -- B1 ---------------------------------------------------------------------
+\qhead{B1}{Fill the grid}
+
+\noindent One box, one multiplication. Fill in the empty boxes, then write the answer.
+
+\begin{wordhelp}[Word help --- the words that carry the whole rule]
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{16pt}}X@{}}
+    \eng{expand} \sep \eng{multiply out} & the same instruction in different words. Both appear in the exercise \\
+    \eng{each / every} & not a maths word, but it carries the whole rule: \textbf{every} term inside, not just the first \\
+  \end{tabularx}
+\end{wordhelp}
+
+\begin{remember}[Brackets mean multiply]
+  $4(x + 3)$ means $4 \times (x + 3)$. The times sign is hidden, exactly as it is
+  in $4n$.
+
+  \medskip
+  \noindent
+  \begin{minipage}[c]{0.40\linewidth}
+    \renewcommand{\arraystretch}{1.6}%
+    \begin{tabular}{|c|c|c|}
+      \hline
+      $\times$ & $x$  & $+\,3$ \\ \hline
+      $4$      & $4x$ & $+\,12$ \\ \hline
+    \end{tabular}
+  \end{minipage}%
+  \begin{minipage}[c]{0.58\linewidth}
+    $4(x + 3) = \mathbf{4x + 12}$
+
+    \smallskip
+    \eng{Not} $4x + 3$. The 3 is inside the brackets, so it gets multiplied too.
+  \end{minipage}
+\end{remember}
+
+% Three separate blocks with a real \vspace between them, NOT three rows of one
+% tabularx. As rows, the grids stack with their borders touching and read as a
+% single six-row table -- which is exactly the wrong idea, since each grid is its
+% own multiplication. The optional argument of \\ does not open the gap here:
+% each inner tabular is centred on its row's baseline and swallows it. Explicit
+% blocks are the only thing that reliably separates them.
+\renewcommand{\arraystretch}{1.55}%
+\vspace{4pt}
+
+\noindent
+\begin{minipage}[c]{0.26\textwidth}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $\times$ & $m$ & $+\,4$ \\ \hline
+    $3$      &     &        \\ \hline
+  \end{tabular}
+\end{minipage}%
+\begin{minipage}[c]{0.72\textwidth}
+  \textbf{(a)} \; $3(m + 4) = \blank[4.0cm]$
+\end{minipage}
+
+\vspace{13pt}
+\noindent
+\begin{minipage}[c]{0.26\textwidth}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $\times$ & $y$ & $+\,2$ \\ \hline
+    $5$      &     &        \\ \hline
+  \end{tabular}
+\end{minipage}%
+\begin{minipage}[c]{0.72\textwidth}
+  \textbf{(b)} \; $5(y + 2) = \blank[4.0cm]$
+\end{minipage}
+
+\vspace{13pt}
+\noindent
+\begin{minipage}[c]{0.26\textwidth}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $\times$ & $2n$ & $+\,3$ \\ \hline
+    $4$      &      &        \\ \hline
+  \end{tabular}
+\end{minipage}%
+\begin{minipage}[c]{0.72\textwidth}
+  \textbf{(c)} \; $4(2n + 3) = \blank[4.0cm]$
+\end{minipage}
+\renewcommand{\arraystretch}{1.45}%
+
+% -- B2 ---------------------------------------------------------------------
+% Plain expanding, a minus inside, and a number in front of the letter, all in
+% one block. Three headings and three boxes for what is really one skill left
+% the section a page longer than the packet has.
+\qhead{B2}{Expand}
+
+\noindent No grid this time. Draw one if it helps.
+
+\begin{remember}[Two things that go inside with the term]
+  \key{The minus sign.} \; $3(x - 2) = 3x - 6$ \quad and \quad $7(1 - w) = 7 - 7w$.
+
+  \smallskip
+  \key{A number already in front of the letter.} Multiply the numbers, keep the
+  letter: \; $5 \times 2p = 10p$, \; {\color{cbred}\bfseries not $52p$}.
+\end{remember}
+
+\vspace{2pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*), itemsep=11pt]
+  \item $3(a + 2) = \blank[1.5cm]$
+  \item $5(b + 3) = \blank[1.5cm]$
+  \item $9(y + 3) = \blank[1.5cm]$
+  \item $4(2 + f) = \blank[1.5cm]$
+  \item $8(7 + z) = \blank[1.5cm]$
+  \item $6(k - 3) = \blank[1.5cm]$
+  \item $2(y - 4) = \blank[1.5cm]$
+  \item $5(m - 6) = \blank[1.5cm]$
+  \item $4(3 - t) = \blank[1.5cm]$
+  \item $3(2q + 5) = \blank[1.5cm]$
+  \item $4(5u - 1) = \blank[1.5cm]$
+  \item $6(1 + 2v) = \blank[1.5cm]$
+\end{enumerate}
+\end{multicols}
+
+\vspace{2pt}
+\noindent \textbf{(m)} This one has three terms inside. \quad $8(6 + 4w - 3g) =
+\blank[5.0cm]$
+
+% -- B3 ---------------------------------------------------------------------
+% 2.3 arriving inside 2.4. This is why Section A comes first.
+\qhead{B3}{Knowing when to stop}
+
+\noindent Tick one box in each row. If it can be collected, write the answer.
+
+\begin{remember}[Expanding does not switch off Section A]
+  After you expand, look for like terms. Often there are none.
+
+  \smallskip
+  \hspace*{1.2em}$4(3 - c) \;=\; 12 - 4c$, \; and $12$ and $4c$ are
+  \key{not like terms}. So $12 - 4c$ is \key{finished}.
+\end{remember}
+
+\vspace{2pt}
+\noindent
+\begin{tabularx}{\textwidth}{|p{3.7cm}|c|c|X|}
+  \hline
+  \textbf{Expression} & \textbf{Finished} & \textbf{Can be collected} &
+  \textbf{If so, write it} \\
+  \hline
+  $12 - 4c$ \rule[-0.7em]{0pt}{2.2em}       & & & \\ \hline
+  $5x + 3x$ \rule[-0.7em]{0pt}{2.2em}       & & & \\ \hline
+  $3a + 6$ \rule[-0.7em]{0pt}{2.2em}        & & & \\ \hline
+  $8 + 2m + 5$ \rule[-0.7em]{0pt}{2.2em}    & & & \\ \hline
+\end{tabularx}
+
+% -- B4 ---------------------------------------------------------------------
+\qhead{B4}{Mr Bowen's homework, again}
+
+\noindent One of these four is right. Find it, and correct the other three.
+
+\vspace{4pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=10pt]
+  \item $3(a + 4) = 3a + 4$ \; \blank[2.2cm]
+  \item $4(2b - 5) = 8b - 9$ \; \blank[2.2cm]
+  \item $2(5 - d) = 10 - 2d$ \; \blank[2.2cm]
+  \item $6(m + 2) = 6m + 8$ \; \blank[2.2cm]
+\end{enumerate}
+\end{multicols}
+
+% -- B5 ---------------------------------------------------------------------
+\qhead{B5}{Expand, then collect}
+
+\noindent Two jobs, in this order. Expand the brackets first, then look for like terms.
+
+\vspace{2pt}
+\begin{enumerate}[label=(\alph*), itemsep=4pt]
+  \item $3(2y + 1) + 5y + 4$
+        \begin{workspace}[1.7cm]\end{workspace}
+  \item $2(a + 6) + 3(a + 1)$
+        \begin{workspace}[1.7cm]\end{workspace}
+\end{enumerate}
+
+% -- B6 ---------------------------------------------------------------------
+% There was a "work backwards" question here -- fill the box in [](x + 3) =
+% 5x + 15 -- which is the deck's Challenge slide. It came out for the page
+% target and it is the right thing to lose, because it is the only item in
+% Section B that is not one of 2.4's stated objectives: B1 to B5 cover expand,
+% the sign, the number in front, when to stop, and expand-and-simplify between
+% them. The skill itself is not lost to the class -- hw07x teaches it at length,
+% as the place where dividing turns out to be what undoes a bracket.
+\qhead{B6}{The fish tanks}
+
+\noindent Mr Bowen keeps \textbf{7} fish tanks in his kitchen. Every tank holds $f$
+fish and \textbf{2} rubber ducks.
+
+\vspace{4pt}
+\begin{enumerate}[label=(\alph*), itemsep=9pt]
+  \item Write an expression with brackets for the number of things in the tanks
+        altogether. \ansline
+  \item Expand it. \hfill \blank[4.4cm]
+  \item Rubber ducks are not alive. Write an expression for the number of
+        \textbf{living} things in the tanks.
+        \ansline
+\end{enumerate}
+
+% ===========================================================================
+% SECTION C -- SCIENCE 2.5
+% ===========================================================================
+\hwsection{Section C \textperiodcentered\ Science 2.5 --- Atoms, Elements and the Periodic Table}
+
+% -- C1 ---------------------------------------------------------------------
+% This question opens the section because it is small, and because the section
+% header lands near the foot of a page: C2's eight-row table needs about 10 cm
+% and will not follow it, so without something short here the page ends a fifth
+% white. A two-row lookup fits in the gap exactly.
+%
+% It is also the only question on the packet that cannot be answered without
+% opening the book, which is half of what 2.5 was about. A five-element version
+% was cut for the page target; this is what came back.
+\qhead{C1}{Use the Periodic Table in your book}
+
+\noindent Groups are numbered 1 to 8.
+
+\vspace{6pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|p{2.0cm}|p{2.0cm}|p{2.0cm}|p{3.1cm}|}
+  \hline
+  \textbf{Element} & \textbf{Symbol} & \textbf{Period} & \textbf{Group} &
+  \textbf{Metal or} \newline \textbf{non-metal} \\
+  \hline
+  magnesium \rule[-0.7em]{0pt}{2.2em} & & & & \\ \hline
+  chlorine \rule[-0.7em]{0pt}{2.2em}  & & & & \\ \hline
+\end{tabularx}
+
+% -- C2 ---------------------------------------------------------------------
+\qhead{C2}{Match the word to its meaning}
+
+\noindent Write the correct \textbf{letter} in each box.
+
+\vspace{7pt}
+\noindent
+\begin{tabularx}{\textwidth}{|p{3.9cm}|c|X|}
+  \hline
+  \textbf{Word} & & \textbf{Meaning} \\
+  \hline
+  1.\ Atom              & \tickbox & \textbf{A} \; A column in the Periodic Table. \\
+  2.\ Element           & \tickbox & \textbf{B} \; A short way to write the name of an element. \\
+  3.\ The Periodic Table & \tickbox & \textbf{C} \; Elements such as iron, copper and aluminium. \\
+  4.\ Period            & \tickbox & \textbf{D} \; A tiny piece of matter. Everything is made of them. \\
+  5.\ Group             & \tickbox & \textbf{E} \; A very, very small tube made of carbon atoms. \\
+  6.\ Symbol            & \tickbox & \textbf{F} \; A substance made of only one kind of atom. \\
+  7.\ Nanotube          & \tickbox & \textbf{G} \; A row in the Periodic Table. \\
+  8.\ Metals            & \tickbox & \textbf{H} \; A way of arranging all the elements. \\
+  \hline
+\end{tabularx}
+
+% -- C3 ---------------------------------------------------------------------
+\qhead{C3}{The capital-letter rule}
+
+\noindent \textbf{(a)} Four students wrote a symbol wrongly. Write it correctly, and
+name the element.
+
+\begin{remember}[One capital, then small letters]
+  An element symbol starts with a \key{CAPITAL} letter. If there is a second
+  letter it is \key{small}. \; \ch{Mg} is magnesium --- \key{one} element.
+  \ch{MG} and \ch{mg} are not symbols at all.
+\end{remember}
+
+\vspace{2pt}
+\noindent
+% Two self-contained three-column blocks side by side, not one row carrying two
+% symbols. The earlier version put "NA / cl" in a single cell followed by four
+% answer cells, and nothing said which Correct column belonged to which symbol.
+\begin{tabularx}{\textwidth}{|p{1.9cm}|p{1.9cm}|X|p{1.9cm}|p{1.9cm}|X|}
+  \hline
+  \textbf{Written} & \textbf{Correct} & \textbf{Element} &
+  \textbf{Written} & \textbf{Correct} & \textbf{Element} \\
+  \hline
+  \ch{NA} \rule[-0.7em]{0pt}{2.2em} & & & \ch{mG} \rule[-0.7em]{0pt}{2.2em} & & \\ \hline
+  \ch{cl} \rule[-0.7em]{0pt}{2.2em} & & & \ch{CA} \rule[-0.7em]{0pt}{2.2em} & & \\ \hline
+\end{tabularx}
+
+\vspace{9pt}
+\noindent \textbf{(b)} Mr Bowen means cobalt, and writes \ch{CO}. Cobalt is \ch{Co}.
+Explain what he has actually written down.
+\qlines{2}
+
+% -- C4 ---------------------------------------------------------------------
+% There was a part (b) here -- Mr Bowen halving a piece of gold 25 times down to
+% one atom, and why he cannot halve it again. It went for the page target. C1's
+% first row already gives the class what an atom is, and 2.5's stated objective
+% is met by (a), which is the harder question of the two by some distance.
+\qhead{C4}{Answer in full sentences}
+
+\noindent Diamond is hard and clear. Graphite is soft and grey. Both are made of
+\textbf{only} carbon atoms. Is diamond an element? Explain your answer.
+
+\begin{wordhelp}[Sentence starters --- you may copy these]
+  ``An element is a substance that\ldots'' \qquad
+  ``\ldots because every atom in it is\ldots''
+\end{wordhelp}
+
+\qlines{3}
+
+% ===========================================================================
+% SECTION D -- SCIENCE 2.6
+% ===========================================================================
+\hwsection{Section D \textperiodcentered\ Science 2.6 --- Compounds and Formulae}
+
+% -- D1 ---------------------------------------------------------------------
+\qhead{D1}{Element or compound?}
+
+\noindent Tick one box in each row.
+
+\begin{remember}[Count the kinds, not the atoms]
+  An \key{element} is made of \key{one kind} of atom. A \key{compound} is made of
+  \key{two or more kinds} of atom \key{bonded} together. \; \ch{O_2} has two
+  atoms and they are \key{both oxygen} --- one kind, so it is an \key{element}.
+\end{remember}
+
+\vspace{2pt}
+\noindent
+\begin{tabularx}{\textwidth}{|X|c|c|X|c|c|}
+  \hline
+  & \textbf{Element} & \textbf{Compound} & & \textbf{Element} & \textbf{Compound} \\
+  \hline
+  \ch{Na} \rule[-0.65em]{0pt}{2.0em}   & & & \ch{H_2} \rule[-0.65em]{0pt}{2.0em}    & & \\ \hline
+  \ch{NaCl} \rule[-0.65em]{0pt}{2.0em} & & & \ch{CaCO_3} \rule[-0.65em]{0pt}{2.0em} & & \\ \hline
+  \ch{O_2} \rule[-0.65em]{0pt}{2.0em}  & & & \ch{Al} \rule[-0.65em]{0pt}{2.0em}     & & \\ \hline
+  \ch{CO_2} \rule[-0.65em]{0pt}{2.0em} & & & \ch{H_2O} \rule[-0.65em]{0pt}{2.0em}   & & \\ \hline
+\end{tabularx}
+
+% -- D2 ---------------------------------------------------------------------
+% There was a "Read the formula" table here: H2O, CO2, CH4, NaOH, CaCO3, with
+% columns for which elements and how many atoms in total. It came out for the
+% page target. Its skill is not lost -- E3's middle column asks for the atoms of
+% each element by name, which is the same reading done harder, and the one trap
+% that lived only here, NaOH being sodium rather than nitrogen and hydrogen, is
+% now a row of E1, where the capital-letter rule that decides it is the subject
+% of the question.
+\qhead{D2}{Naming a compound}
+
+\noindent Name the compound made from each set of elements.
+
+\begin{wordhelp}[Word help --- the endings and the counting words]
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{16pt}}X@{}}
+    \eng{-ide}  & two elements joined. The metal comes first; the non-metal ends in \textbf{-ide} \\
+    \eng{-ate}  & two elements and \textbf{oxygen} joined. The ending is often \textbf{-ate} \\
+    \eng{mono / di} & one / two. \ch{CO} is carbon mon\textbf{o}xide; \ch{CO_2} is carbon \textbf{di}oxide \\
+  \end{tabularx}
+\end{wordhelp}
+
+\vspace{2pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=10pt]
+  \item sodium and chlorine \\ \blank[4.6cm]
+  \item magnesium and oxygen \\ \blank[4.6cm]
+  \item lithium and sulfur \\ \blank[4.6cm]
+  \item calcium, carbon and oxygen \\ \blank[4.6cm]
+\end{enumerate}
+\end{multicols}
+
+\vspace{4pt}
+\noindent \textbf{(e)} Mr Bowen writes \emph{sulfur calcide}. Two things are wrong.
+Write the correct name and say what the two mistakes were.
+\qlines{2}
+
+% -- D4 ---------------------------------------------------------------------
+\qhead{D3}{A compound is nothing like the elements in it}
+
+\noindent Sodium is a soft metal that bursts into flame in water. Chlorine is a
+poisonous yellow-green gas. Bonded together they make sodium chloride, which you ate
+with your dinner last night.
+
+\vspace{5pt}
+\noindent A student says: \emph{``Salt must be dangerous, because chlorine is
+poisonous.''} Explain, in full sentences, why this is wrong.
+\qlines{3}
+
+% -- D5 ---------------------------------------------------------------------
+% Atomic block: four drawing panels and their labels cannot be split, so it sits
+% at the end of Section D where it strands nothing.
+\qhead{D4}{Draw the particles}
+
+\noindent Draw the particles of each substance in the box. Use a different colour or
+pattern for each kind of atom, then tick element or compound.
+
+\vspace{7pt}
+\noindent
+\renewcommand{\arraystretch}{1.3}%
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+  \hline
+  \textbf{oxygen} & \textbf{water} & \textbf{carbon dioxide} & \textbf{methane} \\
+  \ch{O_2} & \ch{H_2O} & \ch{CO_2} & \ch{CH_4} \\
+  \hline
+  \rule[-5.2em]{0pt}{5.6em} & & & \\
+  \hline
+  element \tickbox & element \tickbox & element \tickbox & element \tickbox \\
+  compound \tickbox & compound \tickbox & compound \tickbox & compound \tickbox \\
+  \hline
+\end{tabularx}
+\renewcommand{\arraystretch}{1.45}%
+
+% ===========================================================================
+% SECTION E -- THE BRIDGE
+% ===========================================================================
+\hwsection[cbgreen]{Section E \textperiodcentered\ Where the two subjects meet}
+
+\noindent In maths a letter stands for a number. In science a letter stands for an
+element. You read them with the same two rules.
+
+% The worked examples that used to sit under each rule came out. They were the
+% examples E2 and E3 open with anyway, and printing them twice cost the bottom
+% of this page: E1's heading, box and table are about 12 cm and would not fit
+% under the longer version, so the page ended two-fifths white.
+\begin{remember}[The two rules]
+  \key{1. \; A letter says what kind. A number says how many.} \quad $3a$ \sep \ch{O_3}
+
+  \smallskip
+  \key{2. \; A number written in front multiplies everything after it.} \quad
+  $4(x+3)$ \sep \ch{3CO_2}
+\end{remember}
+
+% -- E1 ---------------------------------------------------------------------
+\qhead[cbgreen]{E1}{$\mathrm{Mg}$ or $mg$?}
+
+\noindent Complete the table. The first row is done for you.
+
+\begin{remember}[The capital is doing a job]
+  In \key{maths} every letter is small, and two letters written together means
+  \key{multiply}: \; $mg$ means $m \times g$.
+
+  \smallskip
+  In \key{science} a symbol begins with a \key{capital}: \; \ch{Mg} is magnesium,
+  one element. Two capitals means \key{two} elements: \; \ch{CO} is carbon and
+  oxygen.
+\end{remember}
+
+% The NaOH row arrived here when D2 was cut. It belongs here: what makes it hard
+% is precisely the capital-letter rule, because Na is one symbol of two letters
+% and every student who reads it as nitrogen-and-hydrogen has ignored the case.
+\vspace{2pt}
+\noindent
+\begin{tabularx}{\textwidth}{|p{2.2cm}|p{3.0cm}|X|}
+  \hline
+  \textbf{Written} & \textbf{Maths or} \newline \textbf{science?} &
+  \textbf{What it means} \\
+  \hline
+  $mg$ \rule[-0.65em]{0pt}{2.0em}     & maths & $m$ multiplied by $g$ \\ \hline
+  \ch{Mg} \rule[-0.65em]{0pt}{2.0em}  & & \\ \hline
+  \ch{CO} \rule[-0.65em]{0pt}{2.0em}  & & \\ \hline
+  \ch{Co} \rule[-0.65em]{0pt}{2.0em}  & & \\ \hline
+  $xy$ \rule[-0.65em]{0pt}{2.0em}     & & \\ \hline
+  \ch{NaOH} \rule[-0.65em]{0pt}{2.0em} & & \\ \hline
+\end{tabularx}
+
+% -- E2 ---------------------------------------------------------------------
+\qhead[cbgreen]{E2}{The 1 that nobody writes --- in both subjects}
+
+\noindent Write the number that is \textbf{not printed}. The first one is done for you.
+
+\begin{remember}[Same habit, two subjects]
+  In \key{maths}, $s$ means $1s$ --- that is why $8s - s = 7s$. In \key{science},
+  \ch{H_2O} has nothing after the \ch{O}, so there is \key{one} oxygen atom.
+  Both subjects leave the 1 out and expect you to know it is there.
+\end{remember}
+
+\vspace{2pt}
+\noindent
+\begin{tabularx}{\textwidth}{|p{3.2cm}|X|p{2.4cm}|}
+  \hline
+  \textbf{Written} & \textbf{The question} & \textbf{The number} \\
+  \hline
+  $8s - s$ \rule[-0.65em]{0pt}{2.0em}   & how many $s$ is the second term? & 1 \\ \hline
+  $w + w$ \rule[-0.65em]{0pt}{2.0em}    & how many $w$ is each term? & \\ \hline
+  \ch{H_2O} \rule[-0.65em]{0pt}{2.0em}  & how many oxygen atoms? & \\ \hline
+  \ch{NaCl} \rule[-0.65em]{0pt}{2.0em}  & how many chlorine atoms? & \\ \hline
+\end{tabularx}
+
+% -- E3 ---------------------------------------------------------------------
+% The keystone. Counting the atoms in 3CO2 is not LIKE expanding a bracket; it
+% is the same operation on the same kind of object, and the grid works on it
+% unchanged.
+\qhead[cbgreen]{E3}{Counting atoms is expanding brackets}
+
+\noindent Complete the table. The first row is done for you.
+
+\begin{remember}[The same grid, on a formula]
+  \ch{3CO_2} means \key{three lots of} \ch{CO_2}. One \ch{CO_2} is one carbon atom
+  and two oxygen atoms. So put it in the grid:
+
+  \medskip
+  \noindent
+  \begin{minipage}[c]{0.42\linewidth}
+    \renewcommand{\arraystretch}{1.6}%
+    \begin{tabular}{|c|c|c|}
+      \hline
+      $\times$ & \ch{C}  & $+\;2\,$\ch{O} \\ \hline
+      $3$      & $3\,$\ch{C} & $+\;6\,$\ch{O} \\ \hline
+    \end{tabular}
+  \end{minipage}%
+  \begin{minipage}[c]{0.56\linewidth}
+    $3(\ch{C} + 2\ch{O}) = \mathbf{3\ch{C} + 6\ch{O}}$
+
+    \smallskip
+    Three \ch{CO_2} is \key{3 carbon atoms and 6 oxygen atoms}.
+  \end{minipage}
+\end{remember}
+
+\vspace{2pt}
+\noindent
+\begin{tabularx}{\textwidth}{|p{2.2cm}|X|p{2.7cm}|}
+  \hline
+  \textbf{Formula} & \textbf{Atoms of each element} & \textbf{Atoms in total} \\
+  \hline
+  \ch{3CO_2} \rule[-0.65em]{0pt}{2.0em}   & 3 carbon, 6 oxygen & 9 \\ \hline
+  \ch{2H_2O} \rule[-0.65em]{0pt}{2.0em}   & & \\ \hline
+  \ch{4NaCl} \rule[-0.65em]{0pt}{2.0em}   & & \\ \hline
+  \ch{2CaCO_3} \rule[-0.65em]{0pt}{2.0em} & & \\ \hline
+\end{tabularx}
+
+\vspace{7pt}
+\noindent \textbf{(b)} Now write \ch{2H_2O} the way a maths teacher would. Fill the boxes.
+
+\vspace{4pt}
+\noindent\hspace*{1.2em}$2\,(\,2\ch{H} \;+\; \ch{O}\,) \;=\; \nbox \ch{H} \;+\; \nbox \ch{O}$
+
+% -- E4 ---------------------------------------------------------------------
+\qhead[cbgreen]{E4}{The same mistake, in two subjects}
+
+\noindent Mr Bowen made two mistakes on the same day. In \textbf{maths} he wrote
+\; \expr{x + x = x^2}
+
+\vspace{4pt}
+\noindent In \textbf{science} he said: \quad
+\emph{``\ch{O_2} has two atoms, so it is a compound.''}
+
+\vspace{4pt}
+\begin{enumerate}[label=(\alph*), itemsep=6pt]
+  \item Write the correct answer to $x + x$. \hfill \blank[4.0cm]
+  \item Is \ch{O_2} an element or a compound? \hfill \blank[4.0cm]
+  \item These two mistakes are the \textbf{same} mistake. Explain what it is, in
+        full sentences.
+\end{enumerate}
+\qlines{3}
+
+% -- E5 ---------------------------------------------------------------------
+\qhead[cbgreen]{E5}{And he made it again}
+
+\noindent A week later Mr Bowen wrote these two lines, one in each book.
+
+\vspace{4pt}
+\noindent \hspace*{1.2em}\textbf{Maths:} \quad $4(x + 3) = 4x + 3$
+
+\vspace{3pt}
+\noindent \hspace*{1.2em}\textbf{Science:} \quad \ch{6CO_2} is 6 carbon atoms and 2
+oxygen atoms.
+
+\vspace{4pt}
+\begin{enumerate}[label=(\alph*), itemsep=6pt]
+  \item Write the maths line correctly. \hfill \blank[4.6cm]
+  \item Write the science line correctly. \hfill \blank[4.6cm]
+  \item What did he forget to do, both times? Answer in one sentence.
+\end{enumerate}
+\qlines{2}
+
+% ===========================================================================
+% ANSWER KEY -- TEACHER COPY ONLY
+% ===========================================================================
+\ifkey
+\clearpage
+
+\hwsection[cbred]{Answer Key --- Teacher Copy}
+
+\linespread{1.0}\selectfont
+\setlist[enumerate]{itemsep=2pt, topsep=3pt, leftmargin=*}
+\setlist[itemize]{itemsep=2pt, topsep=3pt, leftmargin=*}
+
+\qhead[cbred]{A1}{How many terms?}
+\noindent $4a+3b$: \textbf{2} \quad $5x$: \textbf{1} \quad $2p+7q+4$: \textbf{3}
+\quad $8m-3m+n$: \textbf{3} \quad $6$: \textbf{1} \quad $y+2z-5+3y$: \textbf{4}
+
+\smallskip
+\noindent{\small The two rows that separate the class are $6$ and $2p+7q+4$. A number
+on its own \emph{is} a term, and students who have decided a term must contain a letter
+write 0 for the first and 2 for the second. Both errors come from one belief, so fix it
+once.}
+
+\qhead[cbred]{A2}{Like or not like?}
+\noindent Left column: $3a$, $5a$ \textbf{like} \sep $4x$, $4y$ \textbf{not} \sep
+$7$, $2$ \textbf{like}. \\
+Right column: $2ab$, $5ba$ \textbf{like} \sep $m$, $m^2$ \textbf{not} \sep
+$5c$, $-2c$ \textbf{like}.
+
+\smallskip
+\noindent{\small $2ab$ and $5ba$ is the row worth the time: multiplication can be
+written in either order, so they are the same kind. If anyone doubts it, put $a=2$ and
+$b=3$ in both. \\
+$5c$ and $-2c$ is like. The sign belongs to the term but does not change what kind of
+term it is --- which is exactly the fact A4 needs. \\
+$m$ and $m^2$ is the only row that cannot be settled with an everyday picture. $m^2$
+means $m \times m$, and that is a different thing from $m$.}
+
+\qhead[cbred]{A3}{Simplify}
+\noindent (a) $5b$ \quad (b) $5k$ \quad (c) $8m+3n$ \quad (d) $6p+6q$ \quad
+(e) $7s$ \\
+(f) $7x$ \quad (g) $3a+7$ \textbf{already finished} \quad (h) $7y$ \quad
+(i) $3g$ \quad (j) $5c+3d$ \textbf{already finished}
+
+\smallskip
+\noindent{\small (e), (f), (h) and (i) all contain a lone letter, and skipping it goes
+wrong in \emph{two} directions, which is worth knowing before you mark. Where the lone
+letter is \textbf{added}, the answer comes out one short: (f) gives $6x$. Where it is
+\textbf{subtracted}, the answer comes out one too many: (h) gives $8y$ and (i) gives
+$4g$. (e) is the extreme case --- $8s-s$ becomes $8$, with the letter gone altogether.
+Ask for the 1 in pencil until it stops being needed. \\
+(g) and (j) are the two that must be left alone, and the instruction line says there are
+two. A student who simplifies (g) to $10a$ has not read it; a student who leaves eight
+alone has read it too carefully. \\
+(h) is the hardest item: the invisible 1 is in the middle of the line \emph{and} carries
+a minus sign.}
+
+\qhead[cbred]{A4}{Every sign travels with its own term}
+\noindent (a) $9x-5x+4y+2y = \mathbf{4x+6y}$ \quad
+(b) $8a+2a-3b-b = \mathbf{10a-4b}$ \\
+(c) $5t-2t+6-1 = \mathbf{3t+5}$ \quad
+(d) $7p-3p-2q+6q+4 = \mathbf{4p+3q+4}$
+
+\smallskip
+\noindent{\small Mark the middle line, not the answer. Every error here is invisible in
+a final number and obvious in the working, which is the whole argument for demanding
+it. \\
+(b) is the one that goes wrong: the $-b$ is a lone letter \emph{and} carries a minus, so
+it collects two errors at once and comes out $10a-2b$ or $10a-4$. \\
+(d) ends with a number that belongs to nothing, and a class that has just learned to
+collect will try to collect it.}
+
+\qhead[cbred]{A5}{Now you write the question}
+\noindent No single right answer. Check the four conditions \textbf{in this order}:
+\begin{enumerate}[label=\arabic*., itemsep=3pt]
+  \item \textbf{Are there two different kinds of thing?} This is the one that fails. A
+        question about 5 red pens and 3 blue pens is still one kind of thing being
+        counted, and it gives $8p$, not $5a+3b$.
+  \item \textbf{Is it said what $a$ and $b$ stand for?}
+  \item \textbf{Is each letter a number, not an object?} ``$a$ is a mango'' is the
+        error; ``$a$ is the number of mangoes in one bag'' is right.
+  \item \textbf{Full sentences, ending in a question?}
+\end{enumerate}
+
+\smallskip
+\noindent{\small One that works: ``A bag holds $a$ apples. A box holds $b$ bananas.
+Mr Bowen buys 5 bags and 3 boxes. Write an expression for the number of pieces of fruit
+he has.'' \\
+A question ending ``what is $5a+3b$?'' has not done the task --- it is the expression
+read out in words. Name that out loud rather than marking it wrong. \\
+Read four or five aloud. This is the best item in Section A for finding out who is
+reading.}
+
+\qhead[cbred]{B1}{Fill the grid}
+\noindent (a) $3m + 12$ \quad (b) $5y + 10$ \quad (c) $8n + 12$
+
+\smallskip
+\noindent{\small (c) is the only one where the left-hand box is not a lone letter, and
+it is the one to check: $4 \times 2n$ is $8n$, not $6n$ and not $8n^2$. That is B2's
+second rule arriving before it is stated, on purpose --- the grid makes it obvious and
+the rule can be named afterwards. \\
+Strong students will start writing the answer straight out. That is fine; ask them to
+draw the grid for (c) anyway.}
+
+\qhead[cbred]{B2}{Expand}
+\noindent (a) $3a+6$ \quad (b) $5b+15$ \quad (c) $9y+27$ \quad (d) $8+4f$ \quad
+(e) $56+8z$ \quad (f) $6k-18$ \\
+(g) $2y-8$ \quad (h) $5m-30$ \quad (i) $12-4t$ \quad (j) $6q+15$ \quad
+(k) $20u-4$ \quad (l) $6+12v$ \\
+(m) $48+32w-24g$
+
+\smallskip
+\noindent{\small (d) and (e) put the number first inside the brackets, and a student who
+has learned ``letter then number'' writes $4f+8$. That is the same expression, so accept
+it and say why out loud. \\
+(i) is the one to watch: the letter is second, the answer starts with a number and
+\emph{looks} unfinished --- and B3 is about to say that it is not. \\
+(m) has three terms and the third gets left behind. Counting the terms inside before
+starting is A1 doing real work.}
+
+\qhead[cbred]{B3}{Knowing when to stop}
+\noindent $12-4c$ finished \quad $5x+3x \rightarrow \mathbf{8x}$ \quad
+$3a+6$ finished \quad $8+2m+5 \rightarrow \mathbf{2m+13}$
+
+\smallskip
+\noindent{\small $8+2m+5$ is the useful row. The two numbers are \emph{not} next to each
+other, and a student reading left to right will not see them as a pair. It is A4's skill
+in B's clothing. \\
+This question is why Section A comes before Section B. A student who can expand
+perfectly and cannot do this has learned two lessons and not joined them.}
+
+\qhead[cbred]{B4}{Mr Bowen's homework, again}
+\noindent (a) \textbf{wrong} --- $\mathbf{3a+12}$. He multiplied the $a$ and not the 4. \\
+(b) \textbf{wrong} --- $\mathbf{8b-20}$. He did $4+5$ instead of $4 \times 5$. \\
+(c) \textbf{right}. \\
+(d) \textbf{wrong} --- $\mathbf{6m+12}$. He did $6+2$ instead of $6 \times 2$.
+
+\smallskip
+\noindent{\small (b) and (d) are the same error and are printed apart on purpose: a
+student who corrects one and not the other is guessing. \\
+(a) is the headline error of 2.4, and it reappears in E5 wearing a chemical formula. If
+you mark one question in Section B, mark this one, and keep the answers to show
+alongside E5.}
+
+\qhead[cbred]{B5}{Expand, then collect}
+\noindent (a) $6y+3+5y+4 = \mathbf{11y+7}$ \quad
+(b) $2a+12+3a+3 = \mathbf{5a+15}$
+
+\smallskip
+\noindent{\small The order is the lesson: expand, \emph{then} collect. A student who
+tries to collect first meets $2y+1$ inside a bracket and stalls. \\
+(b) has two brackets and is the only place in the packet where one expansion has to be
+held while another is done. Insist on both being written out before anything is
+collected.}
+
+\qhead[cbred]{B6}{The fish tanks}
+\noindent (a) $7(f+2)$ \quad (b) $7f+14$ \quad (c) $\mathbf{7f}$
+
+\smallskip
+\noindent{\small (c) is the best item in Section B. The answer is $7f$, with no number
+added and no bracket --- fourteen rubber ducks simply are not alive. Expect blanks, and
+expect $7f+14$. Anyone who writes $7f$ has read every word. \\
+An expression that is a single term with no operation in it does not look like an answer
+to this class. Say that it is one.}
+
+\qhead[cbred]{C1}{Use the Periodic Table in your book}
+\noindent magnesium \ch{Mg}, period 3, group 2, \textbf{metal} \\
+chlorine \ch{Cl}, period 3, group 7, \textbf{non-metal}
+
+\smallskip
+\noindent{\small The two are in the same period and different groups on purpose: one row
+across, two columns apart, so a student who has period and group the wrong way round
+gives 2 and 3, and 7 and 3, and is wrong in a way you can read at a glance. \\
+This is the only question on the packet that cannot be answered without opening the
+book. A blank here may mean the book stayed in the bag rather than that the science is
+missing --- ask before marking it. \\
+Group numbers follow the book's table, which numbers them 1 to 8. A student using a wall
+chart numbered 1 to 18 will say 17 for chlorine. That is a different table, not a wrong
+answer; ask which one they used.}
+
+\qhead[cbred]{C2}{Match the word to its meaning}
+\noindent 1--D \quad 2--F \quad 3--H \quad 4--G \quad 5--A \quad 6--B \quad 7--E
+\quad 8--C
+
+\smallskip
+\noindent{\small \emph{Period} (4--G) and \emph{group} (5--A) are the pair that swap, and
+not because of the science: both words have an everyday English meaning --- a lesson,
+and people together --- and neither helps. Make the class say \textbf{period is a row,
+group is a column} out loud. \\
+A student with 4 and 5 reversed and everything else right has a vocabulary problem, not
+a chemistry problem.}
+
+\qhead[cbred]{C3}{The capital-letter rule}
+\noindent (a) \ch{NA} $\rightarrow$ \ch{Na}, sodium \quad
+\ch{cl} $\rightarrow$ \ch{Cl}, chlorine \quad
+\ch{mG} $\rightarrow$ \ch{Mg}, magnesium \quad
+\ch{CA} $\rightarrow$ \ch{Ca}, calcium
+
+\smallskip
+\noindent (b) \ch{CO} is \textbf{two} symbols, \ch{C} and \ch{O}, so he has written
+carbon and oxygen bonded together --- a compound, not an element. Cobalt is \ch{Co}, with
+a small second letter.
+
+\smallskip
+\noindent{\small (b) is the question. The capital letter is not neatness, and this is the
+one place a student can see that it changes the meaning completely: \ch{CO} and \ch{Co}
+are different substances. \\
+It is also E1 in advance, so keep the answers.}
+
+\smallskip
+\noindent (c) Magnesium is in \textbf{period 3}, \textbf{group 2}, and it is a
+\textbf{metal}.
+
+\smallskip
+\noindent{\small (c) is the only question on the packet that cannot be answered without
+opening the book, so a blank here may mean the book stayed in the bag rather than that
+the science is missing. Ask before marking. \\
+Group numbers follow the book's table, which numbers them 1 to 8. A student using a wall
+chart numbered 1 to 18 will still say 2 for magnesium --- but for carbon or chlorine the
+two systems disagree, so if this question is ever widened, say which table to use.}
+
+\qhead[cbred]{C4}{Answer in full sentences}
+\noindent \textbf{Yes.} Diamond is made of only one kind of atom --- carbon --- so it is an
+element. Diamond and graphite look different because the carbon atoms are \textbf{joined
+in different arrangements}, not because they are different elements.
+
+\smallskip
+\noindent{\small Discuss this one rather than marking it. The everyday evidence --- one
+hard and clear, one soft and grey --- points the wrong way, and a student who says ``no,
+they look different'' has reasoned from what they can see. Say that is good science,
+then give them the extra fact. \\
+Watch for ``an element has one atom''. One \emph{kind} of atom; a gold ring has an
+enormous number of them.}
+
+\qhead[cbred]{D1}{Element or compound?}
+\noindent Elements: \ch{Na}, \ch{O_2}, \ch{H_2}, \ch{Al}. \quad
+Compounds: \ch{NaCl}, \ch{CO_2}, \ch{CaCO_3}, \ch{H_2O}.
+
+\smallskip
+\noindent{\small \ch{O_2} and \ch{H_2} are the whole question, and most of the class will
+tick compound for both. Two atoms is not two kinds. \\
+Do not mark these two rows --- put them on the board and take a hand vote before saying
+anything. It is the same misconception as E4, and it is worth meeting twice in one
+evening.}
+
+\qhead[cbred]{D2}{Naming a compound}
+\noindent (a) sodium chloride \quad (b) magnesium oxide \quad (c) lithium sulfide
+\quad (d) calcium carbonate
+
+\smallskip
+\noindent (e) \textbf{Calcium sulfide.} Two mistakes: the \textbf{metal must come first}
+(calcium, not sulfur), and the \textbf{non-metal takes the -ide ending} (sulfide, not
+calcide).
+
+\smallskip
+\noindent{\small (d) is the only \emph{-ate}, and the trigger is the oxygen. A student
+who writes calcium carbide knows the ending rule and did not notice the oxygen. \\
+(e) can be got right for the wrong reason. Ask for both mistakes, named separately.}
+
+\qhead[cbred]{D3}{A compound is nothing like the elements in it}
+\noindent When atoms bond, the compound has \textbf{new properties} of its own. Sodium
+chloride is not sodium and it is not chlorine --- it is a new substance, and it is safe to
+eat. What the elements do on their own tells you nothing about what the compound does.
+
+\smallskip
+\noindent{\small This is the one sentence of 2.6 that has to survive the week. Push for
+the words \emph{new properties}; ``because it is a compound'' is circular and is what
+most of them will write first. \\
+A student who brings up chlorine in swimming pools has made a real connection and is
+also making the point --- pool chlorine is not the chlorine bonded in salt.}
+
+\qhead[cbred]{D4}{Draw the particles}
+\noindent \ch{O_2} two circles of one kind, joined --- \textbf{element}. \quad
+\ch{H_2O} one large circle with two small ones joined to it --- \textbf{compound}. \\
+\ch{CO_2} one central circle with two of a different kind, one each side ---
+\textbf{compound}. \quad
+\ch{CH_4} one central circle with four of a different kind around it ---
+\textbf{compound}.
+
+\smallskip
+\noindent{\small Mark two things and no more: \textbf{are the atoms touching}, and
+\textbf{is each kind drawn differently}. Loose separated circles mean a mixture, which is
+2.7 and not what any of these are. \\
+A \ch{CH_4} with three hydrogens is not a drawing error --- it is the small number not
+being read, and it is the same failure E3 tests with a big number in front. Do not mark
+the artwork.}
+
+\qhead[cbred]{E1}{$\mathrm{Mg}$ or $mg$?}
+\noindent \ch{Mg} --- science --- magnesium, one element \\
+\ch{CO} --- science --- carbon and oxygen, two elements \\
+\ch{Co} --- science --- cobalt, one element \\
+$xy$ --- maths --- $x$ multiplied by $y$ \\
+\ch{NaOH} --- science --- sodium, oxygen and hydrogen: \textbf{three} elements
+
+\smallskip
+\noindent{\small Mark \ch{CO} and \ch{Co} together. Same two letters, same order, one
+capital changed, and the answer goes from two elements to one. Nothing in maths behaves
+like that, which is why the question is here. \\
+\ch{NaOH} is the hardest row and the one worth the most. \ch{Na} is \emph{one} symbol
+made of two letters, so a student who reads four letters as four elements --- or as
+nitrogen, oxygen and hydrogen --- has ignored the small \emph{a}. It is the same reading
+that \ch{CaCO_3} needs in E3. \\
+Expect ``\ch{Mg} means $m$ times $g$'' from at least one student who read the shape and
+not the case.}
+
+\qhead[cbred]{E2}{The 1 that nobody writes}
+\noindent $w+w$ --- 1 each \quad \ch{H_2O} --- 1 oxygen atom \quad
+\ch{NaCl} --- 1 chlorine atom
+
+\smallskip
+\noindent{\small This is A3 and the science formulae side by side, and the point is that
+they are one habit rather than two. Both subjects leave out the 1; neither warns you. \\
+A student who has A3 right and this wrong is not being inconsistent --- they have learned
+a maths rule rather than a reading rule. Show them the two rows together.}
+
+\qhead[cbred]{E3}{Counting atoms is expanding brackets}
+\noindent \ch{2H_2O} --- 4 hydrogen, 2 oxygen --- 6 atoms \\
+\ch{4NaCl} --- 4 sodium, 4 chlorine --- 8 atoms \\
+\ch{2CaCO_3} --- 2 calcium, 2 carbon, 6 oxygen --- 10 atoms
+
+\smallskip
+\noindent (b) $2(2\ch{H} + \ch{O}) = \mathbf{4}\ch{H} + \mathbf{2}\ch{O}$
+
+\smallskip
+\noindent{\small \textbf{This is the question the packet was built around.} The two
+numbers in \ch{2H_2O} do different jobs: the small 2 counts hydrogen atoms inside one
+molecule, and the big 2 in front multiplies all of it. That is exactly the difference
+between the 3 inside $4(x+3)$ and the 4 outside it. \\
+\ch{2CaCO_3} is the hard row, because the big 2 has to reach past two symbols to get to
+the small 3: $2 \times 3 = 6$ oxygen atoms. A student who writes 3 stopped multiplying
+halfway along the bracket, which is B4(a) exactly. \\
+(b) is not a trick. Atoms in a formula are counted this way; the brackets are simply not
+printed.}
+
+\qhead[cbred]{E4}{The same mistake, in two subjects}
+\noindent (a) $x+x = \mathbf{2x}$ \quad (b) \textbf{Element.}
+
+\smallskip
+\noindent (c) Both times he counted \textbf{how many} and then answered as though it told
+him \textbf{how many kinds}. Two $x$ is still one kind of term, so they collect into
+$2x$. Two oxygen atoms are still one kind of atom, so \ch{O_2} is still an element.
+\textbf{Two of the same thing is not two different things.}
+
+\smallskip
+\noindent{\small \textbf{Discuss this one; do not mark it.} It is the only question in
+the packet that asks the class to see two errors from two subjects as one error, and the
+wording they reach for will be rough. Accept anything that gets to \emph{same kind},
+however it is phrased. ``He thought two meant two different'' has it. \\
+If the room is silent, put $x+x$ and \ch{O_2} on the board side by side and ask only:
+how many \emph{kinds} are in each? The answer arrives on its own.}
+
+\qhead[cbred]{E5}{And he made it again}
+\noindent (a) $4(x+3) = \mathbf{4x+12}$ \\
+(b) \ch{6CO_2} is \textbf{6 carbon atoms and 12 oxygen atoms}.
+
+\smallskip
+\noindent (c) He multiplied the \textbf{first} thing and stopped. The number in front has
+to multiply \textbf{everything} after it --- every term inside the brackets, every atom in
+the formula.
+
+\smallskip
+\noindent{\small Put B4(a) and this question next to each other when you hand the packet
+back. They are the same line written twice, once with a letter in it and once with an
+element, and a student who corrected B4(a) confidently and left this one alone has
+learned a maths rule rather than a rule. \\
+(c) is marked on one word: \textbf{everything}. \emph{Each} and \emph{every} carry the
+whole of 2.4, which is why they are in B1's word help.}
+
+\fi
+
+\end{document}
