@@ -23,6 +23,8 @@ import {
   Thermometer, Droplets, Wind, Flame, Snowflake, Waves, CloudFog, Gauge,
   // Added for left-hand / right-hand vote slides (Y7 Maths 2.3).
   Hand,
+  // Added for expanding brackets (Y7 Maths 2.4).
+  Parentheses, Square,
 } from 'lucide-react'
 import WidgetRenderer, { WidgetErrorBoundary } from '../WidgetRenderer.jsx'
 import { parseInlineText, renderContent, NOTE_TONES } from './helpers.jsx'
@@ -39,6 +41,7 @@ const ICONS = {
   Compass, Globe, Circle, MapPin,
   Thermometer, Droplets, Wind, Flame, Snowflake, Waves, CloudFog, Gauge,
   Hand,
+  Parentheses, Square,
 }
 
 /** Render a lucide icon by name (falls back to Info). */
