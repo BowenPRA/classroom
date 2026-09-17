@@ -68,16 +68,30 @@ const clueImage = (clue, revealed) =>
 //
 // Each picture sits absolutely inside a box that flexes, so a photo's own
 // pixel size can never push the award buttons off the bottom: revealing the
-// answer shrinks the pictures instead. With two or three pictures each gets a
+// answer shrinks the pictures instead. With two to four pictures each gets a
 // frame, and on the reveal the `aIndex` one goes green and the rest fade — the
 // class sees which picture was right without having to read the answer.
+//
+// A `qImage` here is not a choice: it sits beside the question at the height
+// of the words, like a flag next to "Which one is from Japan?". It is sized in
+// em so it grows with the question in project mode, and it has a border
+// because a Japanese flag on a white card is otherwise a red dot.
 function PictureClue({ clue, lang, big, revealed }) {
   const choice = clue.qImages.length > 1
   return (
     <div className="flex-1 min-h-0 flex flex-col gap-2 sm:gap-3">
-      <p className={`shrink-0 text-center font-black tracking-tight leading-tight text-slate-800 dark:text-slate-100 ${big ? 'text-[clamp(1.5rem,3vw,3.2rem)]' : 'text-xl sm:text-3xl'}`}>
-        {pick(lang, clue.q, clue.qVn)}
-      </p>
+      <div className={`shrink-0 flex items-center justify-center gap-3 font-black tracking-tight leading-tight text-slate-800 dark:text-slate-100 ${big ? 'text-[clamp(1.5rem,3vw,3.2rem)]' : 'text-xl sm:text-3xl'}`}>
+        {clue.qImage && (
+          <img
+            src={clue.qImage.src}
+            alt={pick(lang, clue.qImage.alt, clue.qImage.altVn)}
+            className="shrink-0 h-[1.5em] w-auto rounded-md border-2 border-slate-200 dark:border-slate-700"
+          />
+        )}
+        <p className="min-w-0 text-center">
+          {pick(lang, clue.q, clue.qVn)}
+        </p>
+      </div>
       <div className="flex-1 min-h-0 flex gap-2 sm:gap-4">
         {clue.qImages.map((image, i) => {
           const right = revealed && choice && i === clue.aIndex

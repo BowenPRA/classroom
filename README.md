@@ -175,10 +175,12 @@ between the class and the maths. Every board's images are preloaded when the
 board is chosen, so a reveal is never a blank rectangle waiting on school wifi.
 
 For a class that cannot read yet, a clue can be led by its pictures instead:
-`qImages` is a list of one to three `{ src, alt, altVn, label?, labelVn? }`,
-shown under a one-line question and filling the card. With two or three
+`qImages` is a list of one to four `{ src, alt, altVn, label?, labelVn? }`,
+shown under a one-line question and filling the card. With two or more
 pictures, `aIndex` names the right one, and it turns green on the reveal while
-the others fade. The Year 1 board is built entirely this way. A board can also
+the others fade. A `qImage` on such a clue is not a choice: it sits beside the
+question at the height of the words, which is how a country's flag goes next to
+"Which one is from Japan?". The Year 1 board is built entirely this way. A board can also
 have fewer than six categories: the grid takes its column count from the data.
 
 ### Drawing diagrams

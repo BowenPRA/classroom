@@ -6,8 +6,8 @@
 //   3. Revision              — one category per unit, all six units, fresh clues
 //   4. Unit 1 Finale         — Maths 1.4–1.6, Science 1.4, and two trivia rounds
 //   5. Kindergarten & Year 1 — cooking and first science, read aloud
-//   6. Year 1                — four columns, all pictures: kitchen, food, claps
-//                              and "Which is…?"
+//   6. Year 1                — five columns of picture questions: kitchen,
+//                              food, dishes from the world, claps, "Which is…?"
 //
 // The board grid takes its column count from `categories.length`, so a board
 // can have fewer than six.
@@ -45,9 +45,11 @@
 //   aIndex:  1                                          which one is right
 //
 // The question shrinks to a line over the top and the pictures take the rest
-// of the card. With one picture it is "What is it?". With two or three it is a
+// of the card. With one picture it is "What is it?". With two to four it is a
 // choice, and on the reveal the `aIndex` picture turns green and the others fade.
 // `label` prints a word under a picture — the word to clap, or a teacher's name.
+// A `qImage` on a picture clue sits beside the question as a small lead picture
+// (a country's flag), not as one of the choices.
 import { IMAGES } from './images.js'
 
 export const BOARDS = [
@@ -1450,26 +1452,32 @@ export const BOARDS = [
     ],
   },
 
-  // ── 6 · YEAR 1 · KITCHEN, FOOD, CLAPS ─────────────────────────────────────
-  // Four columns, not six, and every clue is a picture with a few words over it.
-  // The class cannot read a sentence yet, so the question is "What is it?" and
-  // the photograph is the question — the child has to find the English word.
-  // That is why these use `qImages` rather than the Kindergarten board's
-  // `aImage`: there the words described the thing and the picture was the
-  // reward; here there are no words to describe it with.
+  // ── 6 · YEAR 1 · PICTURES THAT MAKE THEM THINK ────────────────────────────
+  // Five columns, and every clue is a picture with a few words over it. The
+  // class cannot read a sentence yet, so the words stay short and the pictures
+  // carry the question.
   //
-  // Two or three pictures side by side is a choice. `aIndex` says which one is
-  // right, and it lights up green on the reveal. With two, the class votes all
-  // at once: left hand for the left picture, right hand for the right.
+  // Almost every clue is a CHOICE, not a name. "What is it?" only asks a child
+  // to remember a word; "Which one makes toast?" makes them look at three
+  // things and think about what each one does. The 500s want two steps: an egg
+  // is the odd one out because the other three are made from milk.
   //
-  // Claps counts the beats in a spoken word. The values run 1, 2, 3, 4 claps,
-  // and then the 500 is "fire", which sounds long and is one clap.
+  // `aIndex` says which picture is right, and it lights up green on the reveal.
+  // With two pictures the class votes all at once: left hand for the left
+  // picture, right hand for the right.
+  //
+  // Dishes from the World puts the country's flag beside its question (a
+  // `qImage` on a picture clue), because "Italy" means nothing to a six-year-old
+  // until they can see which flag it is.
+  //
+  // Claps counts the beats in a spoken word, and the 500 is still "fire", which
+  // sounds long and is one clap.
   {
     id: 'year1-pictures',
-    title: 'Year 1 · Kitchen, Food, Claps',
-    titleVn: 'Lớp 1 · Nhà bếp, Đồ ăn, Vỗ tay',
-    subtitle: 'Four columns, and a picture on every clue',
-    subtitleVn: 'Bốn cột, câu nào cũng có hình',
+    title: 'Year 1 · Picture Questions',
+    titleVn: 'Lớp 1 · Câu hỏi bằng hình',
+    subtitle: 'Kitchen, food, dishes from the world, claps, which is…?',
+    subtitleVn: 'Nhà bếp, đồ ăn, món ăn thế giới, vỗ tay, cái nào…?',
     icon: 'Apple',
     accent: '#16a34a',
     categories: [
@@ -1479,47 +1487,68 @@ export const BOARDS = [
         clues: [
           {
             value: 100,
-            q: 'What is it?',
-            qVn: 'Đây là cái gì?',
-            qImages: [{ src: IMAGES.woodenspoon, alt: 'A wooden spoon.', altVn: 'Một cái thìa gỗ.' }],
-            a: 'A spoon.',
-            aVn: 'Cái thìa. (Tiếng Anh: a spoon.)',
+            q: 'Which one is NOT in the kitchen?',
+            qVn: 'Cái nào KHÔNG có trong nhà bếp?',
+            qImages: [
+              { src: IMAGES.bed, alt: 'A bed.', altVn: 'Một cái giường.' },
+              { src: IMAGES.pot, alt: 'A cooking pot.', altVn: 'Một cái nồi.' },
+              { src: IMAGES.pan, alt: 'A frying pan.', altVn: 'Một cái chảo.' },
+            ],
+            aIndex: 0,
+            a: 'The bed. A bed is in the bedroom.',
+            aVn: 'Cái giường. Giường ở trong phòng ngủ.',
           },
           {
             value: 200,
-            q: 'What is it?',
-            qVn: 'Đây là cái gì?',
-            qImages: [{ src: IMAGES.kettle, alt: 'A white electric kettle.', altVn: 'Một ấm đun nước điện màu trắng.' }],
-            a: 'A kettle.',
-            aVn: 'Ấm đun nước. (Tiếng Anh: a kettle.)',
+            q: 'Which one makes toast?',
+            qVn: 'Cái nào nướng bánh mì?',
+            qImages: [
+              { src: IMAGES.kettle, alt: 'A white electric kettle.', altVn: 'Một ấm đun nước điện màu trắng.' },
+              { src: IMAGES.microwave, alt: 'A microwave oven.', altVn: 'Một cái lò vi sóng.' },
+              { src: IMAGES.toaster, alt: 'A toaster.', altVn: 'Một máy nướng bánh mì.' },
+            ],
+            aIndex: 2,
+            a: 'The toaster.',
+            aVn: 'Máy nướng bánh mì. (Tiếng Anh: the toaster.)',
           },
           {
             value: 300,
-            q: 'What is it?',
-            qVn: 'Đây là cái gì?',
-            qImages: [{ src: IMAGES.microwave, alt: 'A microwave oven.', altVn: 'Một cái lò vi sóng.' }],
-            a: 'A microwave.',
-            aVn: 'Lò vi sóng. (Tiếng Anh: a microwave.)',
+            q: 'Where do we keep ice cream?',
+            qVn: 'Chúng ta cất kem ở đâu?',
+            qImages: [
+              { src: IMAGES.fridge, alt: 'A tall fridge.', altVn: 'Một chiếc tủ lạnh cao.' },
+              { src: IMAGES.oven, alt: 'An oven in a kitchen.', altVn: 'Một cái lò nướng trong bếp.' },
+              { src: IMAGES.microwave, alt: 'A microwave oven.', altVn: 'Một cái lò vi sóng.' },
+            ],
+            aIndex: 0,
+            a: 'In the fridge. It is cold inside.',
+            aVn: 'Trong tủ lạnh. Bên trong tủ lạnh rất lạnh.',
           },
           {
             value: 400,
-            q: 'Which one is cold?',
-            qVn: 'Cái nào lạnh?',
+            q: 'Which one cooks rice?',
+            qVn: 'Cái nào nấu cơm?',
             qImages: [
-              { src: IMAGES.oven, alt: 'An oven in a kitchen.', altVn: 'Một cái lò nướng trong bếp.' },
-              { src: IMAGES.fridge, alt: 'A tall fridge.', altVn: 'Một chiếc tủ lạnh cao.' },
+              { src: IMAGES.toaster, alt: 'A toaster.', altVn: 'Một máy nướng bánh mì.' },
+              { src: IMAGES.kettle, alt: 'A white electric kettle.', altVn: 'Một ấm đun nước điện màu trắng.' },
+              { src: IMAGES.riceCooker, alt: 'A white rice cooker with a round lid.', altVn: 'Một nồi cơm điện màu trắng có nắp tròn.' },
             ],
-            aIndex: 1,
-            a: 'The fridge.',
-            aVn: 'Tủ lạnh. (Tiếng Anh: the fridge.)',
+            aIndex: 2,
+            a: 'The rice cooker.',
+            aVn: 'Nồi cơm điện. (Tiếng Anh: the rice cooker.)',
           },
           {
             value: 500,
-            q: 'What is it?',
-            qVn: 'Đây là cái gì?',
-            qImages: [{ src: IMAGES.riceCooker, alt: 'A white rice cooker with a round lid.', altVn: 'Một nồi cơm điện màu trắng có nắp tròn.' }],
-            a: 'A rice cooker.',
-            aVn: 'Nồi cơm điện. (Tiếng Anh: a rice cooker.)',
+            q: 'Which one is for a hot pan?',
+            qVn: 'Cái nào dùng để cầm chảo nóng?',
+            qImages: [
+              { src: IMAGES.sock, alt: 'A pair of red socks.', altVn: 'Một đôi tất màu đỏ.' },
+              { src: IMAGES.ovenGlove, alt: 'A red oven glove.', altVn: 'Một chiếc găng tay nhắc nồi màu đỏ.' },
+              { src: IMAGES.hat, alt: 'A hat.', altVn: 'Một cái mũ.' },
+            ],
+            aIndex: 1,
+            a: 'The oven glove. It keeps your hand safe.',
+            aVn: 'Găng tay nhắc nồi. Nó giữ cho tay em an toàn. (Tiếng Anh: an oven glove.)',
           },
         ],
       },
@@ -1529,35 +1558,19 @@ export const BOARDS = [
         clues: [
           {
             value: 100,
-            q: 'What is it?',
-            qVn: 'Đây là quả gì?',
-            qImages: [{ src: IMAGES.apple, alt: 'A red apple.', altVn: 'Một quả táo đỏ.' }],
-            a: 'An apple.',
-            aVn: 'Quả táo. (Tiếng Anh: an apple.)',
+            q: 'Which one is a fruit?',
+            qVn: 'Cái nào là trái cây?',
+            qImages: [
+              { src: IMAGES.broccoli, alt: 'A head of broccoli.', altVn: 'Một cây súp lơ xanh.' },
+              { src: IMAGES.potato, alt: 'Two potatoes, one cut open.', altVn: 'Hai củ khoai tây, một củ bổ ra.' },
+              { src: IMAGES.banana, alt: 'Bananas.', altVn: 'Những quả chuối.' },
+            ],
+            aIndex: 2,
+            a: 'The banana.',
+            aVn: 'Quả chuối. (Tiếng Anh: the banana.)',
           },
           {
             value: 200,
-            q: 'What are they?',
-            qVn: 'Đây là món gì?',
-            qImages: [{ src: IMAGES.noodles, alt: 'A bowl of phở noodle soup with chopsticks.', altVn: 'Một bát phở có đôi đũa.' }],
-            a: 'Noodles.',
-            aVn: 'Phở, mì. (Tiếng Anh: noodles.)',
-          },
-          {
-            value: 300,
-            q: 'Which one is a vegetable?',
-            qVn: 'Cái nào là rau?',
-            qImages: [
-              { src: IMAGES.grapes, alt: 'A bunch of green grapes.', altVn: 'Một chùm nho xanh.' },
-              { src: IMAGES.broccoli, alt: 'A head of broccoli.', altVn: 'Một cây súp lơ xanh.' },
-              { src: IMAGES.orange, alt: 'Oranges, one cut open.', altVn: 'Những quả cam, có một quả bổ ra.' },
-            ],
-            aIndex: 1,
-            a: 'Broccoli.',
-            aVn: 'Súp lơ xanh. (Tiếng Anh: broccoli.)',
-          },
-          {
-            value: 400,
             q: 'Which one is NOT sweet?',
             qVn: 'Cái nào KHÔNG ngọt?',
             qImages: [
@@ -1570,12 +1583,118 @@ export const BOARDS = [
             aVn: 'Củ hành. (Tiếng Anh: the onion.)',
           },
           {
+            value: 300,
+            q: 'Which one grows on a tree?',
+            qVn: 'Cái nào mọc trên cây?',
+            qImages: [
+              { src: IMAGES.orange, alt: 'Oranges, one cut open.', altVn: 'Những quả cam, có một quả bổ ra.' },
+              { src: IMAGES.carrot, alt: 'Carrots.', altVn: 'Những củ cà rốt.' },
+              { src: IMAGES.ginger, alt: 'Ginger root.', altVn: 'Củ gừng.' },
+            ],
+            aIndex: 0,
+            a: 'The orange. Carrots and ginger grow under the ground.',
+            aVn: 'Quả cam. Cà rốt và gừng mọc dưới đất.',
+          },
+          {
+            value: 400,
+            q: 'Which one is made from potatoes?',
+            qVn: 'Món nào làm từ khoai tây?',
+            qImages: [
+              { src: IMAGES.bread, alt: 'A loaf of bread.', altVn: 'Một ổ bánh mì.' },
+              { src: IMAGES.noodles, alt: 'A bowl of phở noodle soup.', altVn: 'Một bát phở.' },
+              { src: IMAGES.chips, alt: 'Chips (French fries).', altVn: 'Khoai tây chiên.' },
+            ],
+            aIndex: 2,
+            a: 'Chips. Some people say French fries.',
+            aVn: 'Khoai tây chiên. (Tiếng Anh: chips, hoặc French fries.)',
+          },
+          {
             value: 500,
-            q: 'What is it?',
-            qVn: 'Đây là quả gì?',
-            qImages: [{ src: IMAGES.dragonfruit, alt: 'A dragon fruit cut open: pink skin, white inside with black seeds.', altVn: 'Một quả thanh long bổ ra: vỏ hồng, ruột trắng hạt đen.' }],
-            a: 'A dragon fruit.',
-            aVn: 'Quả thanh long. (Tiếng Anh: a dragon fruit.)',
+            q: 'Which one is different?',
+            qVn: 'Cái nào khác các cái còn lại?',
+            qImages: [
+              { src: IMAGES.milk, alt: 'A glass of milk.', altVn: 'Một ly sữa.' },
+              { src: IMAGES.cheese, alt: 'Cheese.', altVn: 'Phô mai.' },
+              { src: IMAGES.egg, alt: 'Eggs.', altVn: 'Những quả trứng.' },
+              { src: IMAGES.yoghurt, alt: 'A bowl of yoghurt.', altVn: 'Một bát sữa chua.' },
+            ],
+            aIndex: 2,
+            a: 'The egg. It comes from a hen. The others are made from milk.',
+            aVn: 'Quả trứng. Trứng do gà mái đẻ. Ba thứ kia đều làm từ sữa.',
+          },
+        ],
+      },
+      {
+        name: 'Dishes from the World',
+        nameVn: 'Món Ăn Thế Giới',
+        clues: [
+          {
+            value: 100,
+            q: 'Which one is from Vietnam?',
+            qVn: 'Món nào đến từ Việt Nam?',
+            qImage: { src: IMAGES.flagVietnam, alt: 'The flag of Vietnam.', altVn: 'Quốc kỳ Việt Nam.' },
+            qImages: [
+              { src: IMAGES.pizza, alt: 'A pizza.', altVn: 'Một chiếc bánh pizza.' },
+              { src: IMAGES.banhMi, alt: 'A bánh mì sandwich.', altVn: 'Một ổ bánh mì kẹp.' },
+            ],
+            aIndex: 1,
+            a: 'Bánh mì.',
+            aVn: 'Bánh mì.',
+          },
+          {
+            value: 200,
+            q: 'Which one is from Italy?',
+            qVn: 'Món nào đến từ nước Ý?',
+            qImage: { src: IMAGES.flagItaly, alt: 'The flag of Italy.', altVn: 'Quốc kỳ Ý.' },
+            qImages: [
+              { src: IMAGES.pizza, alt: 'A pizza.', altVn: 'Một chiếc bánh pizza.' },
+              { src: IMAGES.springroll, alt: 'Spring rolls.', altVn: 'Nem rán.' },
+            ],
+            aIndex: 0,
+            a: 'Pizza.',
+            aVn: 'Bánh pizza.',
+          },
+          {
+            value: 300,
+            q: 'Which one is from Japan?',
+            qVn: 'Món nào đến từ Nhật Bản?',
+            qImage: { src: IMAGES.flagJapan, alt: 'The flag of Japan.', altVn: 'Quốc kỳ Nhật Bản.' },
+            qImages: [
+              { src: IMAGES.banhMi, alt: 'A bánh mì sandwich.', altVn: 'Một ổ bánh mì kẹp.' },
+              { src: IMAGES.sushi, alt: 'A plate of sushi.', altVn: 'Một đĩa sushi.' },
+              { src: IMAGES.croissant, alt: 'A croissant.', altVn: 'Một chiếc bánh sừng bò.' },
+            ],
+            aIndex: 1,
+            a: 'Sushi.',
+            aVn: 'Sushi.',
+          },
+          {
+            value: 400,
+            q: 'Which one is from Korea?',
+            qVn: 'Món nào đến từ Hàn Quốc?',
+            qImage: { src: IMAGES.flagKorea, alt: 'The flag of South Korea.', altVn: 'Quốc kỳ Hàn Quốc.' },
+            qImages: [
+              { src: IMAGES.kimchi, alt: 'Kimchi.', altVn: 'Kim chi.' },
+              { src: IMAGES.sushi, alt: 'A plate of sushi.', altVn: 'Một đĩa sushi.' },
+              { src: IMAGES.pizza, alt: 'A pizza.', altVn: 'Một chiếc bánh pizza.' },
+            ],
+            aIndex: 0,
+            a: 'Kimchi.',
+            aVn: 'Kim chi.',
+          },
+          {
+            value: 500,
+            q: 'Which one is from France?',
+            qVn: 'Món nào đến từ nước Pháp?',
+            qImage: { src: IMAGES.flagFrance, alt: 'The flag of France.', altVn: 'Quốc kỳ Pháp.' },
+            qImages: [
+              { src: IMAGES.noodles, alt: 'A bowl of phở noodle soup.', altVn: 'Một bát phở.' },
+              { src: IMAGES.croissant, alt: 'A croissant.', altVn: 'Một chiếc bánh sừng bò.' },
+              { src: IMAGES.kimchi, alt: 'Kimchi.', altVn: 'Kim chi.' },
+            ],
+            aIndex: 1,
+            a: 'The croissant. Fun fact: the bread in bánh mì came from France too!',
+            aVn: 'Bánh sừng bò. Điều thú vị: bánh mì của chúng ta cũng bắt nguồn từ nước Pháp!',
           },
         ],
       },
@@ -1589,33 +1708,38 @@ export const BOARDS = [
             value: 100,
             q: 'How many claps?',
             qVn: 'Vỗ tay mấy cái?',
-            qImages: [{ src: IMAGES.cat, alt: 'A cat.', altVn: 'Một con mèo.', label: 'cat', labelVn: 'cat' }],
-            a: '1 clap: cat',
-            aVn: '1 cái: cat',
+            qImages: [{ src: IMAGES.tiger, alt: 'A tiger.', altVn: 'Một con hổ.', label: 'tiger', labelVn: 'tiger' }],
+            a: '2 claps: ti · ger',
+            aVn: '2 cái: ti · ger',
           },
           {
             value: 200,
             q: 'How many claps?',
             qVn: 'Vỗ tay mấy cái?',
-            qImages: [{ src: IMAGES.monkey, alt: 'Monkeys sitting together.', altVn: 'Những chú khỉ ngồi cạnh nhau.', label: 'monkey', labelVn: 'monkey' }],
-            a: '2 claps: mon · key',
-            aVn: '2 cái: mon · key',
+            qImages: [{ src: IMAGES.elephant, alt: 'An elephant.', altVn: 'Một con voi.', label: 'elephant', labelVn: 'elephant' }],
+            a: '3 claps: el · e · phant',
+            aVn: '3 cái: el · e · phant',
           },
           {
             value: 300,
-            q: 'How many claps?',
-            qVn: 'Vỗ tay mấy cái?',
-            qImages: [{ src: IMAGES.butterfly, alt: 'A yellow and black butterfly on a flower.', altVn: 'Một con bướm vàng đen đậu trên hoa.', label: 'butterfly', labelVn: 'butterfly' }],
-            a: '3 claps: but · ter · fly',
-            aVn: '3 cái: but · ter · fly',
+            q: 'Which one has 1 clap?',
+            qVn: 'Từ nào chỉ vỗ tay 1 cái?',
+            qImages: [
+              { src: IMAGES.penguin, alt: 'A penguin.', altVn: 'Một con chim cánh cụt.', label: 'penguin', labelVn: 'penguin' },
+              { src: IMAGES.duck, alt: 'Two ducks.', altVn: 'Hai con vịt.', label: 'duck', labelVn: 'duck' },
+              { src: IMAGES.turtle, alt: 'A turtle swimming.', altVn: 'Một con rùa đang bơi.', label: 'turtle', labelVn: 'turtle' },
+            ],
+            aIndex: 1,
+            a: 'Duck: 1 clap. Pen · guin and tur · tle have 2.',
+            aVn: 'Duck: 1 cái. Pen · guin và tur · tle có 2 cái.',
           },
           {
             value: 400,
             q: 'How many claps?',
             qVn: 'Vỗ tay mấy cái?',
-            qImages: [{ src: IMAGES.watermelon, alt: 'Slices of red watermelon.', altVn: 'Những miếng dưa hấu đỏ.', label: 'watermelon', labelVn: 'watermelon' }],
-            a: '4 claps: wa · ter · mel · on',
-            aVn: '4 cái: wa · ter · mel · on',
+            qImages: [{ src: IMAGES.hippo, alt: 'A hippopotamus.', altVn: 'Một con hà mã.', label: 'hippopotamus', labelVn: 'hippopotamus' }],
+            a: '5 claps: hip · po · pot · a · mus',
+            aVn: '5 cái: hip · po · pot · a · mus',
           },
           {
             value: 500,
@@ -1628,56 +1752,62 @@ export const BOARDS = [
         ],
       },
       {
+        // The pictures never show the real sizes — an ant and a bee fill the
+        // same frame — so every one of these has to be answered from what the
+        // child knows, not from what they see. The opposites (smaller,
+        // lighter) and the -est words are the step up from "bigger".
         name: 'Which Is…?',
         nameVn: 'Cái Nào…?',
         clues: [
           {
             value: 100,
-            q: 'Which is taller?',
-            qVn: 'Con nào cao hơn?',
+            q: 'Which is smaller?',
+            qVn: 'Con nào nhỏ hơn?',
             qImages: [
-              { src: IMAGES.elephant, alt: 'An elephant.', altVn: 'Một con voi.' },
-              { src: IMAGES.giraffe, alt: 'Two giraffes.', altVn: 'Hai con hươu cao cổ.' },
+              { src: IMAGES.bee, alt: 'A bee.', altVn: 'Một con ong.' },
+              { src: IMAGES.ant, alt: 'An ant.', altVn: 'Một con kiến.' },
             ],
             aIndex: 1,
-            a: 'A giraffe is taller than an elephant.',
-            aVn: 'Hươu cao cổ cao hơn voi.',
+            a: 'An ant is smaller than a bee.',
+            aVn: 'Con kiến nhỏ hơn con ong.',
           },
           {
             value: 200,
-            q: 'Which is slower?',
-            qVn: 'Con nào chậm hơn?',
+            q: 'Which is the slowest?',
+            qVn: 'Con nào chậm nhất?',
             qImages: [
+              { src: IMAGES.tiger, alt: 'A tiger.', altVn: 'Một con hổ.' },
               { src: IMAGES.snail, alt: 'A snail.', altVn: 'Một con ốc sên.' },
               { src: IMAGES.turtle, alt: 'A turtle swimming.', altVn: 'Một con rùa đang bơi.' },
             ],
-            aIndex: 0,
-            a: 'A snail is slower than a turtle.',
-            aVn: 'Ốc sên chậm hơn rùa.',
+            aIndex: 1,
+            a: 'The snail is the slowest.',
+            aVn: 'Con ốc sên chậm nhất.',
           },
           {
             value: 300,
-            q: 'Which is heavier?',
-            qVn: 'Cái nào nặng hơn?',
+            q: 'Which is lighter?',
+            qVn: 'Cái nào nhẹ hơn?',
             qImages: [
-              { src: IMAGES.bus, alt: 'A yellow bus.', altVn: 'Một chiếc xe buýt màu vàng.' },
               { src: IMAGES.whale, alt: 'A whale jumping out of the sea.', altVn: 'Một con cá voi nhảy lên khỏi mặt biển.' },
+              { src: IMAGES.bus, alt: 'A yellow bus.', altVn: 'Một chiếc xe buýt màu vàng.' },
             ],
             aIndex: 1,
-            a: 'A whale is heavier than a bus.',
-            aVn: 'Cá voi nặng hơn xe buýt.',
+            a: 'A bus is lighter than a whale.',
+            aVn: 'Xe buýt nhẹ hơn cá voi.',
           },
           {
             value: 400,
-            q: 'Which is bigger?',
-            qVn: 'Cái nào to hơn?',
+            q: 'Which is the biggest?',
+            qVn: 'Cái nào to nhất?',
             qImages: [
+              { src: IMAGES.earth, alt: 'The Earth seen from space.', altVn: 'Trái Đất nhìn từ vũ trụ.' },
               { src: IMAGES.moon, alt: 'The full moon.', altVn: 'Mặt Trăng tròn.' },
               { src: IMAGES.sun, alt: 'The sun.', altVn: 'Mặt Trời.' },
             ],
-            aIndex: 1,
-            a: 'The sun is bigger than the moon.',
-            aVn: 'Mặt Trời to hơn Mặt Trăng.',
+            aIndex: 2,
+            a: 'The sun is the biggest.',
+            aVn: 'Mặt Trời to nhất.',
           },
           {
             value: 500,

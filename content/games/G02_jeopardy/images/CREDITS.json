@@ -1,13 +1,13 @@
 [
   {
-    "name": "apple.jpg",
-    "title": "File:Red Apple.jpg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Red_Apple.jpg",
+    "name": "ant.jpg",
+    "title": "File:Red_Ant_-_March_2025.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Red_Ant_-_March_2025.jpg",
     "license": "CC BY 2.0",
-    "artist": "Abhijit Tembhekar from Mumbai, India",
-    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/apple.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Food 100 — the QUESTION picture for \"What is it?\" (an apple). Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
-    "bytes": 34113
+    "artist": "Samantha Henneke from Seagrove, North Carolina, USA",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/ant.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, Which Is…? 100 (\"Which is smaller?\"): the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 27486
   },
   {
     "name": "banana.jpg",
@@ -16,8 +16,28 @@
     "license": "CC BY-SA 4.0",
     "artist": "Schawhoi Kamnls",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/banana.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
-    "usage": "How Do We Cook It? 400 — the ANSWER picture for the one food on the board that is never cooked. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "How Do We Cook It? 400 — the ANSWER picture for the one food on the board that is never cooked. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled. ALSO Year 1 board, Food 100 (\"Which one is a fruit?\"): the answer.",
     "bytes": 46811
+  },
+  {
+    "name": "banh-mi.jpg",
+    "title": "File:Vietnamese Bánh mì (Banh Mi) Sandwich.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Vietnamese_B%C3%A1nh_m%C3%AC_(Banh_Mi)_Sandwich.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Jimmy Chen",
+    "source": "Wikimedia Commons. CC BY-SA, not public domain - the attribution has to travel with it.",
+    "usage": "Year 1 board, Dishes from the World 100 (\"Which one is from Vietnam?\"): the answer; Year 1 board, Dishes from the World 300 (\"Which one is from Japan?\"): another choice. A classic baguette bánh mì, the one every child in the class will recognise. Downscaled to 800px and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 113000
+  },
+  {
+    "name": "bed.jpg",
+    "title": "File:Hotel-suite-bedroom.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Hotel-suite-bedroom.jpg",
+    "license": "Public domain",
+    "artist": "Derek Jensen (Tysto)",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/bed.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, In the Kitchen 100 (\"Which one is NOT in the kitchen?\"): the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 39808
   },
   {
     "name": "bee.jpg",
@@ -26,7 +46,7 @@
     "license": "CC BY 4.0",
     "artist": "Tanner Smida",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/bee.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
-    "usage": "Where Does It Come From? 500 — the ANSWER picture for the animal that makes honey. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Where Does It Come From? 500 — the ANSWER picture for the animal that makes honey. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled. ALSO Year 1 board, Which Is…? 100 (\"Which is smaller?\"): another choice.",
     "bytes": 21570
   },
   {
@@ -56,7 +76,7 @@
     "license": "CC BY-SA 4.0",
     "artist": "FranHogan",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/bread.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
-    "usage": "How Do We Cook It? 200 — the ANSWER picture for bread, the food baked in an oven. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "How Do We Cook It? 200 — the ANSWER picture for bread, the food baked in an oven. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled. ALSO Year 1 board, Food 400 (\"Which one is made from potatoes?\"): another choice.",
     "bytes": 50535
   },
   {
@@ -66,7 +86,7 @@
     "license": "CC BY-SA 3.0",
     "artist": "David Monniaux",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/broccoli.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Food 300 — the middle of three pictures for \"Which one is a vegetable?\"; the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, Food 100 (\"Which one is a fruit?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 47849
   },
   {
@@ -76,18 +96,8 @@
     "license": "CC BY-SA 4.0",
     "artist": "0x010C",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/bus.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Which Is…? 300 — the left of two pictures for \"Which is heavier?\"; a whale outweighs a bus. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, Which Is…? 300 (\"Which is lighter?\"): the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 44170
-  },
-  {
-    "name": "butterfly.jpg",
-    "title": "File:Fesoj_-_Papilio_machaon_(by).jpg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Fesoj_-_Papilio_machaon_(by).jpg",
-    "license": "CC BY 2.0",
-    "artist": "fesoj",
-    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/butterfly.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Claps 300 — the picture for \"butterfly\", three claps. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
-    "bytes": 84075
   },
   {
     "name": "cake.jpg",
@@ -106,18 +116,28 @@
     "license": "CC BY 4.0",
     "artist": "domdomegg",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/carrot.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
-    "usage": "Living or Not Living? 400 — the ANSWER picture for the carrot that WAS living in the ground and is not living now. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Living or Not Living? 400 — the ANSWER picture for the carrot that WAS living in the ground and is not living now. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled. ALSO Year 1 board, Food 300 (\"Which one grows on a tree?\"): another choice.",
     "bytes": 33875
   },
   {
-    "name": "cat.jpg",
-    "title": "File:Orange tabby cat sitting on fallen leaves-Hisashi-01A.jpg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg",
-    "license": "CC BY-SA 2.0",
-    "artist": "Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01.jpg: Hisashi from Japan derivative work: Caspian blue",
-    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/cat.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Claps 100 — the picture for \"cat\", one clap. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
-    "bytes": 62220
+    "name": "cheese.jpg",
+    "title": "File:Wedge of Swedish Grevé cheese.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Wedge_of_Swedish_Grev%C3%A9_cheese.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Ankara",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/cheese.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, Food 500 (\"Which one is different?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 16441
+  },
+  {
+    "name": "chips.jpg",
+    "title": "File:Schale mit einer Portion Pommes frites.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Schale_mit_einer_Portion_Pommes_frites.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "4028mdk09",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/chips.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, Food 400 (\"Which one is made from potatoes?\"): the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 48470
   },
   {
     "name": "chopsticks.jpg",
@@ -140,6 +160,16 @@
     "bytes": 42359
   },
   {
+    "name": "croissant.jpg",
+    "title": "File:Croissant 3.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Croissant_3.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Maffeth.opiana",
+    "source": "Wikimedia Commons. CC BY-SA, not public domain - the attribution has to travel with it.",
+    "usage": "Year 1 board, Dishes from the World 300 (\"Which one is from Japan?\"): another choice; Year 1 board, Dishes from the World 500 (\"Which one is from France?\"): the answer. One croissant on a plate. Downscaled to 800px and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 68443
+  },
+  {
     "name": "dog.jpg",
     "title": "File:Golden-retriever-1827903 1920.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Golden-retriever-1827903_1920.jpg",
@@ -156,18 +186,18 @@
     "license": "CC BY 2.0",
     "artist": "Kiran Foster from no fixed abode, New Zealand",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/doughnut.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Food 400 — the left of three pictures for \"Which one is NOT sweet?\"; not the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, Food 200 (\"Which one is NOT sweet?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 22537
   },
   {
-    "name": "dragonfruit.jpg",
-    "title": "File:Dragon Fruit cut by Shyamal.jpg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Dragon_Fruit_cut_by_Shyamal.jpg",
-    "license": "CC BY-SA 4.0",
-    "artist": "Shyamal Kumar Chaudhary",
-    "source": "Wikimedia Commons. CC BY-SA, not public domain - the attribution has to travel with it.",
-    "usage": "Year 1 board, Food 500 — the QUESTION picture for \"What is it?\" (a dragon fruit). Cut open, so the pink skin and the white, seeded inside are both in the frame. Downscaled to 800px and re-encoded at quality 85; not otherwise altered.",
-    "bytes": 101676
+    "name": "duck.jpg",
+    "title": "File:Anas platyrhynchos male female.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Anas_platyrhynchos_male_female.jpg",
+    "license": "CC BY-SA 2.5",
+    "artist": "This picture was realized by Richard Bartz by using a Canon EF 70-300mm f/4-5.6 IS USM Lens",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/duck.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, Claps 300 (\"Which one has 1 clap?\"): the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 51463
   },
   {
     "name": "ears.jpg",
@@ -180,13 +210,33 @@
     "bytes": 108954
   },
   {
+    "name": "earth.jpg",
+    "title": "File:The Earth seen from Apollo 17.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg",
+    "license": "Public domain",
+    "artist": "NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans",
+    "source": "Wikimedia Commons. Public domain.",
+    "usage": "Year 1 board, Which Is…? 400 (\"Which is the biggest?\"): another choice. The Blue Marble: the whole Earth, round and on black, like the sun and moon beside it. Downscaled to 800px and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 179537
+  },
+  {
+    "name": "egg.jpg",
+    "title": "File:Chicken eggs 20101113.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Chicken_eggs_20101113.jpg",
+    "license": "Public domain",
+    "artist": "Batholith (talk)",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/egg.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, Food 500 (\"Which one is different?\"): the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 10719
+  },
+  {
     "name": "elephant.jpg",
     "title": "File:African_Bush_Elephant.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:African_Bush_Elephant.jpg",
     "license": "GFDL 1.2",
     "artist": "Muhammad Mahdi Karim Facebook The making of this document was supported by Wikimedia CH. (Submit your project!) For all the files concerned, please see the category Supported by Wikimedia CH. العربية ∙ বাংলা ∙ čeština ∙ Deutsch ∙ English ∙ Esperanto ∙ español ∙ français ∙ galego ∙ हिन्दी ∙ magyar ∙ italiano ∙ 日本語 ∙ македонски ∙ Nederlands ∙ português do Brasil ∙ rumantsch ∙ русский ∙ sicilianu ∙ slovenščina ∙ தமிழ் ∙ українська ∙ 中文 ∙ +/−",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/elephant.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Which Is…? 100 — the left of two pictures for \"Which is taller?\"; the elephant loses to the giraffe. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, Claps 200 (\"How many claps?\"): the picture. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 94123
   },
   {
@@ -206,8 +256,58 @@
     "license": "CC BY-SA 4.0",
     "artist": "Hameltion",
     "source": "Wikimedia Commons. CC BY-SA, not public domain - the attribution has to travel with it.",
-    "usage": "Year 1 board, Claps 500 — the picture for \"fire\", one clap. A campfire on black: the flame shape and nothing else. Downscaled to 800px and re-encoded at quality 85; not otherwise altered.",
+    "usage": "Year 1 board, Claps 500 (\"How many claps?\"): the picture. A campfire on black: the flame shape and nothing else. Downscaled to 800px and re-encoded at quality 85; not otherwise altered.",
     "bytes": 103934
+  },
+  {
+    "name": "flag-france.png",
+    "title": "File:Flag of France.svg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_France.svg",
+    "license": "Public domain",
+    "artist": "French Republic (flag design); SVG by SKopp and Commons contributors",
+    "source": "Wikimedia Commons. Public domain.",
+    "usage": "Year 1 board, Dishes from the World 500 (\"Which one is from France?\"): the flag beside the question. Rendered from the Commons SVG by the Commons thumbnailer and downscaled to 480px PNG; not otherwise altered.",
+    "bytes": 986
+  },
+  {
+    "name": "flag-italy.png",
+    "title": "File:Flag of Italy.svg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Italy.svg",
+    "license": "Public domain",
+    "artist": "Italian Republic (flag design); SVG by Commons contributors",
+    "source": "Wikimedia Commons. Public domain.",
+    "usage": "Year 1 board, Dishes from the World 200 (\"Which one is from Italy?\"): the flag beside the question. Rendered from the Commons SVG by the Commons thumbnailer and downscaled to 480px PNG; not otherwise altered.",
+    "bytes": 985
+  },
+  {
+    "name": "flag-japan.png",
+    "title": "File:Flag of Japan.svg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Japan.svg",
+    "license": "Public domain",
+    "artist": "Government of Japan (flag design); SVG by Commons contributors",
+    "source": "Wikimedia Commons. Public domain.",
+    "usage": "Year 1 board, Dishes from the World 300 (\"Which one is from Japan?\"): the flag beside the question. Rendered from the Commons SVG by the Commons thumbnailer and downscaled to 480px PNG; not otherwise altered.",
+    "bytes": 8277
+  },
+  {
+    "name": "flag-korea.png",
+    "title": "File:Flag of South Korea.svg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_South_Korea.svg",
+    "license": "Public domain",
+    "artist": "Government of the Republic of Korea (flag design); SVG by Commons contributors",
+    "source": "Wikimedia Commons. Public domain.",
+    "usage": "Year 1 board, Dishes from the World 400 (\"Which one is from Korea?\"): the flag beside the question. Rendered from the Commons SVG by the Commons thumbnailer and downscaled to 480px PNG; not otherwise altered.",
+    "bytes": 19835
+  },
+  {
+    "name": "flag-vietnam.png",
+    "title": "File:Flag of Vietnam.svg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Vietnam.svg",
+    "license": "Public domain",
+    "artist": "Government of Vietnam (flag design); SVG by Commons contributors",
+    "source": "Wikimedia Commons. Public domain.",
+    "usage": "Year 1 board, Dishes from the World 100 (\"Which one is from Vietnam?\"): the flag beside the question. Rendered from the Commons SVG by the Commons thumbnailer and downscaled to 480px PNG; not otherwise altered.",
+    "bytes": 7252
   },
   {
     "name": "fridge.jpg",
@@ -216,7 +316,7 @@
     "license": "CC BY-SA 4.0",
     "artist": "Matti Blume",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/fridge.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
-    "usage": "In the Kitchen 300 — the ANSWER picture for the fridge. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled. ALSO the Year 1 board, In the Kitchen 400 — the right of two pictures for \"Which one is cold?\"; the answer.",
+    "usage": "In the Kitchen 300 — the ANSWER picture for the fridge. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled. ALSO Year 1 board, In the Kitchen 300 (\"Where do we keep ice cream?\"): the answer.",
     "bytes": 52408
   },
   {
@@ -230,24 +330,34 @@
     "bytes": 32267
   },
   {
+    "name": "ginger.jpg",
+    "title": "File:Ginger Yogic Secrets.png",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Ginger_Yogic_Secrets.png",
+    "license": "CC BY-SA 4.0",
+    "artist": "Yogic Secrets",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/ginger.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, Food 300 (\"Which one grows on a tree?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 23372
+  },
+  {
     "name": "giraffe.jpg",
     "title": "File:Giraffe Ithala KZN South Africa Luca Galuzzi 2004.JPG",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Giraffe_Ithala_KZN_South_Africa_Luca_Galuzzi_2004.JPG",
     "license": "CC BY-SA 2.5",
     "artist": "Luca Galuzzi (Lucag)",
     "source": "Wikimedia Commons. CC BY-SA, not public domain - keep the attribution.",
-    "usage": "Unit 1 Finale, Animal Records 300 - the QUESTION picture, not the answer one: the clue already names the giraffe, so the photo is there to make two metres of neck vivid while the teams argue about how many bones are in it. Two animals with their necks crossed, which shows the length better than one standing straight. Downscaled to 1280px via the Commons thumbnailer; not otherwise altered. ALSO the Year 1 board, Which Is…? 100 — the right of two pictures for \"Which is taller?\"; the answer.",
+    "usage": "Unit 1 Finale, Animal Records 300 - the QUESTION picture, not the answer one: the clue already names the giraffe, so the photo is there to make two metres of neck vivid while the teams argue about how many bones are in it. Two animals with their necks crossed, which shows the length better than one standing straight. Downscaled to 1280px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 283153
   },
   {
-    "name": "grapes.jpg",
-    "title": "File:Green Grape 3.jpg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Green_Grape_3.jpg",
-    "license": "Public domain",
-    "artist": "Martin Kozák",
-    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/grapes.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Food 300 — the left of three pictures for \"Which one is a vegetable?\"; not the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
-    "bytes": 39328
+    "name": "hat.jpg",
+    "title": "File:Straw Harvest Hat, International Hat, ca. 1960s.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Straw_Harvest_Hat,_International_Hat,_ca._1960s.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Belshay",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/hat.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, In the Kitchen 500 (\"Which one is for a hot pan?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 26188
   },
   {
     "name": "hen.jpg",
@@ -258,6 +368,16 @@
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/hen.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
     "usage": "Where Does It Come From? 200 — the ANSWER picture for the animal that gives us eggs. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 61425
+  },
+  {
+    "name": "hippo.jpg",
+    "title": "File:Hipopótamo (Hippopotamus amphibius), parque nacional de Chobe, Botsuana, 2018-07-28, DD 82.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Hipop%C3%B3tamo_(Hippopotamus_amphibius),_parque_nacional_de_Chobe,_Botsuana,_2018-07-28,_DD_82.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Diego Delso",
+    "source": "Wikimedia Commons. CC BY-SA, not public domain - the attribution has to travel with it.",
+    "usage": "Year 1 board, Claps 400 (\"How many claps?\"): the picture. One whole hippo standing on dry ground, so the animal the long word names is unmistakable. Downscaled to 800px and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 112634
   },
   {
     "name": "ice.jpg",
@@ -276,7 +396,7 @@
     "license": "CC BY 2.0",
     "artist": "Ben Dominguez-Benner",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/icecream.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Food 400 — the right of three pictures for \"Which one is NOT sweet?\"; not the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, Food 200 (\"Which one is NOT sweet?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 76962
   },
   {
@@ -286,8 +406,18 @@
     "license": "Public domain",
     "artist": "Rafa",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/kettle.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, In the Kitchen 200 — the QUESTION picture for \"What is it?\" (a kettle). Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, In the Kitchen 200 (\"Which one makes toast?\"): another choice; Year 1 board, In the Kitchen 400 (\"Which one cooks rice?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 32778
+  },
+  {
+    "name": "kimchi.jpg",
+    "title": "File:Korean cuisine-Kimchi-08.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Korean_cuisine-Kimchi-08.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Jeremy Keith",
+    "source": "Wikimedia Commons. CC BY, not public domain - the attribution has to travel with it.",
+    "usage": "Year 1 board, Dishes from the World 400 (\"Which one is from Korea?\"): the answer; Year 1 board, Dishes from the World 500 (\"Which one is from France?\"): another choice. Red cabbage kimchi on a plate, close up. Downscaled to 800px and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 103989
   },
   {
     "name": "leaf-cross-section.jpg",
@@ -326,7 +456,7 @@
     "license": "Public domain",
     "artist": "Wrightmt",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/microwave.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, In the Kitchen 300 — the QUESTION picture for \"What is it?\" (a microwave). Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, In the Kitchen 200 (\"Which one makes toast?\"): another choice; Year 1 board, In the Kitchen 300 (\"Where do we keep ice cream?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 18699
   },
   {
@@ -336,18 +466,8 @@
     "license": "CC BY-SA 3.0",
     "artist": "Stefan Kühn",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/milk.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
-    "usage": "Where Does It Come From? 400 — the ANSWER picture for the white drink that cheese and butter both start as. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Where Does It Come From? 400 — the ANSWER picture for the white drink that cheese and butter both start as. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled. ALSO Year 1 board, Food 500 (\"Which one is different?\"): another choice.",
     "bytes": 17541
-  },
-  {
-    "name": "monkey.jpg",
-    "title": "File:Ubud_Monkey_Family.jpg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Ubud_Monkey_Family.jpg",
-    "license": "CC BY-SA 4.0",
-    "artist": "Deerpeter",
-    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/monkey.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Claps 200 — the picture for \"monkey\", two claps. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
-    "bytes": 76627
   },
   {
     "name": "moon.jpg",
@@ -356,7 +476,7 @@
     "license": "CC BY-SA 3.0",
     "artist": "Gregory H. Revera",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/moon.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Which Is…? 400 — the left of two pictures for \"Which is bigger?\"; it looks the same size in the sky and is not. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, Which Is…? 400 (\"Which is the biggest?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 38686
   },
   {
@@ -366,7 +486,7 @@
     "license": "Not openly licensed. All rights reserved.",
     "artist": "Photographer unknown; supplied by Mr Bowen",
     "source": "Supplied by Mr Bowen for this board (Downloads/Selena/Mr_ Bowen.avif). A staff portrait, NOT a Commons image and not openly licensed: do not reuse it outside this classroom deck, and remove it if the person pictured asks.",
-    "usage": "Year 1 board, Which Is…? 500 — the left of two pictures for \"Who is taller?\"; the answer. Head and shoulders, framed the same as Mr Seth's, so the picture cannot give the height away. Converted from AVIF, flattened onto white and saved as JPEG at quality 88; not otherwise altered.",
+    "usage": "Year 1 board, Which Is…? 500 (\"Who is taller?\"): the answer. Head and shoulders, framed the same as Mr Seth's, so the picture cannot give the height away. Converted from AVIF, flattened onto white and saved as JPEG at quality 88; not otherwise altered.",
     "bytes": 37167
   },
   {
@@ -376,7 +496,7 @@
     "license": "Not openly licensed. All rights reserved.",
     "artist": "Photographer unknown; supplied by Mr Bowen",
     "source": "Supplied by Mr Bowen for this board (Downloads/Selena/Mr_ Seth.avif). A staff portrait, NOT a Commons image and not openly licensed: do not reuse it outside this classroom deck, and remove it if the person pictured asks.",
-    "usage": "Year 1 board, Which Is…? 500 — the right of two pictures for \"Who is taller?\". Head and shoulders, framed the same as Mr Bowen's, so the picture cannot give the height away. Converted from AVIF, flattened onto white and saved as JPEG at quality 88; not otherwise altered.",
+    "usage": "Year 1 board, Which Is…? 500 (\"Who is taller?\"): another choice. Head and shoulders, framed the same as Mr Bowen's, so the picture cannot give the height away. Converted from AVIF, flattened onto white and saved as JPEG at quality 88; not otherwise altered.",
     "bytes": 45114
   },
   {
@@ -386,7 +506,7 @@
     "license": "CC BY-SA 3.0",
     "artist": "Codename5281",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/noodles.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Food 200 — the QUESTION picture for \"What are they?\" (noodles). A bowl of phở, the noodle dish this class knows. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, Food 400 (\"Which one is made from potatoes?\"): another choice; Year 1 board, Dishes from the World 500 (\"Which one is from France?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 34150
   },
   {
@@ -406,7 +526,7 @@
     "license": "CC BY-SA 3.0",
     "artist": "Colin",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/onion.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Food 400 — the middle of three pictures for \"Which one is NOT sweet?\"; the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, Food 200 (\"Which one is NOT sweet?\"): the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 32481
   },
   {
@@ -416,8 +536,18 @@
     "license": "CC BY-SA 3.0",
     "artist": "Evan-Amos",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/orange.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Food 300 — the right of three pictures for \"Which one is a vegetable?\"; not the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, Food 300 (\"Which one grows on a tree?\"): the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 22298
+  },
+  {
+    "name": "oven-glove.jpg",
+    "title": "File:Baking glove.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Baking_glove.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Lymantria",
+    "source": "Wikimedia Commons. CC BY-SA, not public domain - the attribution has to travel with it.",
+    "usage": "Year 1 board, In the Kitchen 500 (\"Which one is for a hot pan?\"): the answer. A red quilted oven glove on its own; red like the socks beside it, so the child has to think about what it is for. Downscaled to 800px and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 87183
   },
   {
     "name": "oven.jpg",
@@ -426,7 +556,7 @@
     "license": "CC BY-SA 4.0",
     "artist": "Donald Trung",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/oven.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, In the Kitchen 400 — the left of two pictures for \"Which one is cold?\"; the wrong one. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, In the Kitchen 300 (\"Where do we keep ice cream?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 22147
   },
   {
@@ -436,8 +566,18 @@
     "license": "CC BY 2.0",
     "artist": "Cooks &amp; Kitchens from Darlington, UK",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/pan.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
-    "usage": "In the Kitchen 200 — the ANSWER picture for the frying pan, and again on How Do We Cook It? where a pan is the thing that is not a pot. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "In the Kitchen 200 — the ANSWER picture for the frying pan, and again on How Do We Cook It? where a pan is the thing that is not a pot. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled. ALSO Year 1 board, In the Kitchen 100 (\"Which one is NOT in the kitchen?\"): another choice.",
     "bytes": 5470
+  },
+  {
+    "name": "penguin.jpg",
+    "title": "File:South_Shetland-2016-Deception_Island–Chinstrap_penguin_(Pygoscelis_antarctica)_04.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:South_Shetland-2016-Deception_Island%E2%80%93Chinstrap_penguin_(Pygoscelis_antarctica)_04.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Godot13",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/penguin.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, Claps 300 (\"Which one has 1 clap?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 92251
   },
   {
     "name": "peregrine-falcon.jpg",
@@ -450,14 +590,34 @@
     "bytes": 224987
   },
   {
+    "name": "pizza.jpg",
+    "title": "File:Whole Foods Kitchen Margherita Pizza 2 (15411931231).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Whole_Foods_Kitchen_Margherita_Pizza_2_(15411931231).jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Willis Lam",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/pizza.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, Dishes from the World 100 (\"Which one is from Vietnam?\"): another choice; Year 1 board, Dishes from the World 200 (\"Which one is from Italy?\"): the answer; Year 1 board, Dishes from the World 400 (\"Which one is from Korea?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 60265
+  },
+  {
     "name": "pot.jpg",
     "title": "File:Pot with no background.png",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Pot_with_no_background.png",
     "license": "CC BY-SA 4.0",
     "artist": "Lightsnap",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/pot.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
-    "usage": "In the Kitchen 500 — the ANSWER picture for \"pan or pot?\". Deep, with two handles, so the class can see why it holds more soup. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "In the Kitchen 500 — the ANSWER picture for \"pan or pot?\". Deep, with two handles, so the class can see why it holds more soup. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled. ALSO Year 1 board, In the Kitchen 100 (\"Which one is NOT in the kitchen?\"): another choice.",
     "bytes": 14053
+  },
+  {
+    "name": "potato.jpg",
+    "title": "File:Russet potato cultivar with sprouts.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Russet_potato_cultivar_with_sprouts.jpg",
+    "license": "Public domain",
+    "artist": "ZooFari",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/potato.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, Food 100 (\"Which one is a fruit?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 13964
   },
   {
     "name": "rice-cooker.jpg",
@@ -466,7 +626,7 @@
     "license": "Public domain",
     "artist": "Taken by User:Aarchiba; detoured by Rama",
     "source": "Wikimedia Commons. Public domain.",
-    "usage": "Year 1 board, In the Kitchen 500 — the QUESTION picture for \"What is it?\" (a rice cooker). The domed-lid shape found in Vietnamese kitchens, already cut out onto white. The original is only 469px and is used at that size, re-encoded at quality 85; not otherwise altered.",
+    "usage": "Year 1 board, In the Kitchen 400 (\"Which one cooks rice?\"): the answer. The domed-lid shape found in Vietnamese kitchens, already cut out onto white. The original is only 469px and is used at that size, re-encoded at quality 85; not otherwise altered.",
     "bytes": 22774
   },
   {
@@ -506,8 +666,18 @@
     "license": "CC BY 2.0",
     "artist": "macrophile on Flickr",
     "source": "Wikimedia Commons, from Flickr. CC BY, not public domain - the attribution has to travel with it.",
-    "usage": "Year 1 board, Which Is…? 200 — the left of two pictures for \"Which is slower?\"; the answer. A side view, so the shell and the foot are both plain. Downscaled to 800px and re-encoded at quality 85; not otherwise altered.",
+    "usage": "Year 1 board, Which Is…? 200 (\"Which is the slowest?\"): the answer. A side view, so the shell and the foot are both plain. Downscaled to 800px and re-encoded at quality 85; not otherwise altered.",
     "bytes": 105364
+  },
+  {
+    "name": "sock.jpg",
+    "title": "File:BLW Pair of socks.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:BLW_Pair_of_socks.jpg",
+    "license": "CC BY-SA 2.0 uk",
+    "artist": "David Jackson",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/sock.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, In the Kitchen 500 (\"Which one is for a hot pan?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 24813
   },
   {
     "name": "spoon.jpg",
@@ -526,7 +696,7 @@
     "license": "CC BY-SA 4.0",
     "artist": "PattayaPatrol",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/springroll.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
-    "usage": "How Do We Cook It? 300 — the ANSWER picture for the spring roll, the food fried in hot oil. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "How Do We Cook It? 300 — the ANSWER picture for the spring roll, the food fried in hot oil. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled. ALSO Year 1 board, Dishes from the World 200 (\"Which one is from Italy?\"): another choice.",
     "bytes": 31410
   },
   {
@@ -536,8 +706,18 @@
     "license": "CC BY-SA 4.0",
     "artist": "Sabrina Bechet",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/sun.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Which Is…? 400 — the right of two pictures for \"Which is bigger?\"; the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, Which Is…? 400 (\"Which is the biggest?\"): the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 26020
+  },
+  {
+    "name": "sushi.jpg",
+    "title": "File:Sushi platter.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Sushi_platter.jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "chidorian from Japan",
+    "source": "Wikimedia Commons. CC BY-SA, not public domain - the attribution has to travel with it.",
+    "usage": "Year 1 board, Dishes from the World 300 (\"Which one is from Japan?\"): the answer; Year 1 board, Dishes from the World 400 (\"Which one is from Korea?\"): another choice. A round platter of mixed sushi, seen from above. Downscaled to 800px and re-encoded at quality 85; not otherwise altered.",
+    "bytes": 196386
   },
   {
     "name": "tardigrade.jpg",
@@ -550,13 +730,23 @@
     "bytes": 189760
   },
   {
+    "name": "tiger.jpg",
+    "title": "File:Bengal_tiger_(Panthera_tigris_tigris)_female_3_crop.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Bengal_tiger_(Panthera_tigris_tigris)_female_3_crop.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Charles J. Sharp",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/tiger.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, Claps 100 (\"How many claps?\"): the picture; Year 1 board, Which Is…? 200 (\"Which is the slowest?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 90123
+  },
+  {
     "name": "toaster.jpg",
     "title": "File:Tiffany toaster with intel inside sticker.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Tiffany_toaster_with_intel_inside_sticker.jpg",
     "license": "Public domain",
     "artist": "Leon Brooks",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/toaster.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match. Deliberately the same photograph the class sorted in Word Wall.",
-    "usage": "In the Kitchen 400 — the ANSWER picture for the toaster. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "In the Kitchen 400 — the ANSWER picture for the toaster. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled. ALSO Year 1 board, In the Kitchen 200 (\"Which one makes toast?\"): the answer; Year 1 board, In the Kitchen 400 (\"Which one cooks rice?\"): another choice.",
     "bytes": 22416
   },
   {
@@ -576,18 +766,8 @@
     "license": "CC BY-SA 3.0",
     "artist": "Brocken Inaglory",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/turtle.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Which Is…? 200 — the right of two pictures for \"Which is slower?\"; the turtle is faster than the snail. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, Claps 300 (\"Which one has 1 clap?\"): another choice; Year 1 board, Which Is…? 200 (\"Which is the slowest?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 83567
-  },
-  {
-    "name": "watermelon.jpg",
-    "title": "File:Sliced Watermelon.jpg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Sliced_Watermelon.jpg",
-    "license": "CC BY-SA 2.0",
-    "artist": "Harsha K R",
-    "source": "Wikimedia Commons, from Flickr (https://www.flickr.com/photos/mynameisharsha/5427691534/). CC BY-SA, not public domain - the attribution has to travel with it.",
-    "usage": "Year 1 board, Claps 400 — the picture for \"watermelon\", four claps. Slices rather than a whole melon, because the red inside is what makes it a watermelon and not a big green ball. Downscaled to 800px and re-encoded at quality 85; not otherwise altered.",
-    "bytes": 64199
   },
   {
     "name": "whale.jpg",
@@ -596,17 +776,17 @@
     "license": "CC BY-SA 3.0",
     "artist": "Michaël CATANZARITI",
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/whale.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, Which Is…? 300 — the right of two pictures for \"Which is heavier?\"; the answer. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "usage": "Year 1 board, Which Is…? 300 (\"Which is lighter?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 92144
   },
   {
-    "name": "woodenspoon.jpg",
-    "title": "File:Wooden Spoon.jpg",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Wooden_Spoon.jpg",
-    "license": "CC BY-SA 3.0",
-    "artist": "Donovan Govan.",
-    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/woodenspoon.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
-    "usage": "Year 1 board, In the Kitchen 100 — the QUESTION picture for \"What is it?\" (a spoon). Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
-    "bytes": 75361
+    "name": "yoghurt.jpg",
+    "title": "File:Yoghurt and spoon.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Yoghurt_and_spoon.jpg",
+    "license": "CC0",
+    "artist": "Julikalucky",
+    "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/yoghurt.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
+    "usage": "Year 1 board, Food 500 (\"Which one is different?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
+    "bytes": 32206
   }
 ]

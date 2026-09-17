@@ -28,12 +28,13 @@
 // Year 7 boards that is six clues out of 120. On the Kindergarten board it is
 // 29 out of 30, because a five-year-old who has just said "chopsticks" out loud
 // has not finished the clue until they have seen a pair. On the Year 1 board it
-// is all 20, and there the picture IS the question.
+// is all 25, and there the pictures ARE the question.
 //
-// The Year 1 section adds five photographs from Commons at 800px (nothing in the
-// Word Wall covers them) and two that are not from Commons at all: the staff
-// portraits of Mr Bowen and Mr Seth. Those are not openly licensed — see
-// CREDITS.json before copying them anywhere else.
+// The Year 1 section adds photographs from Commons at 800px where the Word Wall
+// has nothing (the dishes, the hippo, the Earth), five flags at 480px, and two
+// pictures that are not from Commons at all: the staff portraits of Mr Bowen
+// and Mr Seth. Those are not openly licensed — see CREDITS.json before copying
+// them anywhere else.
 import blueWhale from './images/blue-whale.jpg'
 import peregrineFalcon from './images/peregrine-falcon.jpg'
 import giraffe from './images/giraffe.jpg'
@@ -74,25 +75,33 @@ import meltingIcecream from './images/melting-icecream.jpg'
 import boilingPot from './images/boiling-pot.jpg'
 import seedling from './images/seedling.jpg'
 
-// ── Year 1 · Kitchen, Food, Claps ───────────────────────────────────────────
+// ── Year 1 · picture questions ───────────────────────────────────────────────
 // Word Wall copies again, so no new bytes in the bundle.
-import woodenspoon from './images/woodenspoon.jpg'
 import kettle from './images/kettle.jpg'
 import microwave from './images/microwave.jpg'
 import oven from './images/oven.jpg'
-import apple from './images/apple.jpg'
-import noodles from './images/noodles.jpg'
-import grapes from './images/grapes.jpg'
+import bed from './images/bed.jpg'
+import sock from './images/sock.jpg'
+import hat from './images/hat.jpg'
 import broccoli from './images/broccoli.jpg'
-import orange from './images/orange.jpg'
+import potato from './images/potato.jpg'
 import doughnut from './images/doughnut.jpg'
 import onion from './images/onion.jpg'
 import icecream from './images/icecream.jpg'
-import cat from './images/cat.jpg'
-import monkey from './images/monkey.jpg'
-import butterfly from './images/butterfly.jpg'
+import orange from './images/orange.jpg'
+import ginger from './images/ginger.jpg'
+import chips from './images/chips.jpg'
+import noodles from './images/noodles.jpg'
+import cheese from './images/cheese.jpg'
+import egg from './images/egg.jpg'
+import yoghurt from './images/yoghurt.jpg'
+import pizza from './images/pizza.jpg'
+import tiger from './images/tiger.jpg'
 import elephant from './images/elephant.jpg'
+import penguin from './images/penguin.jpg'
+import duck from './images/duck.jpg'
 import turtle from './images/turtle.jpg'
+import ant from './images/ant.jpg'
 import bus from './images/bus.jpg'
 import whale from './images/whale.jpg'
 import sun from './images/sun.jpg'
@@ -100,10 +109,20 @@ import moon from './images/moon.jpg'
 
 // Sourced for the Year 1 board.
 import riceCooker from './images/rice-cooker.jpg'
-import dragonfruit from './images/dragonfruit.jpg'
-import watermelon from './images/watermelon.jpg'
+import ovenGlove from './images/oven-glove.jpg'
+import banhMi from './images/banh-mi.jpg'
+import sushi from './images/sushi.jpg'
+import kimchi from './images/kimchi.jpg'
+import croissant from './images/croissant.jpg'
+import flagVietnam from './images/flag-vietnam.png'
+import flagItaly from './images/flag-italy.png'
+import flagJapan from './images/flag-japan.png'
+import flagKorea from './images/flag-korea.png'
+import flagFrance from './images/flag-france.png'
+import hippo from './images/hippo.jpg'
 import fire from './images/fire.jpg'
 import snail from './images/snail.jpg'
+import earth from './images/earth.jpg'
 
 // Supplied by Mr Bowen. Staff portraits, not openly licensed.
 import mrBowen from './images/mr-bowen.jpg'
@@ -146,32 +165,50 @@ export const IMAGES = {
   boilingPot,
   seedling,
   // Year 1
-  woodenspoon,
   kettle,
   microwave,
   oven,
-  apple,
-  noodles,
-  grapes,
+  bed,
+  sock,
+  hat,
   broccoli,
-  orange,
+  potato,
   doughnut,
   onion,
   icecream,
-  cat,
-  monkey,
-  butterfly,
+  orange,
+  ginger,
+  chips,
+  noodles,
+  cheese,
+  egg,
+  yoghurt,
+  pizza,
+  tiger,
   elephant,
+  penguin,
+  duck,
   turtle,
+  ant,
   bus,
   whale,
   sun,
   moon,
   riceCooker,
-  dragonfruit,
-  watermelon,
+  ovenGlove,
+  banhMi,
+  sushi,
+  kimchi,
+  croissant,
+  flagVietnam,
+  flagItaly,
+  flagJapan,
+  flagKorea,
+  flagFrance,
+  hippo,
   fire,
   snail,
+  earth,
   mrBowen,
   mrSeth,
 }
