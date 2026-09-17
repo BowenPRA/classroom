@@ -367,8 +367,8 @@ export const slides = [
     eyebrowVn: 'Kiểm tra tiếng Anh',
     title: 'Pure',
     titleVn: 'Tinh khiết',
-    text: 'On a bottle, **pure** means clean. In science, it means **only one substance**.',
-    textVn: 'Trên chai nước, **pure** nghĩa là sạch. Trong khoa học, nó nghĩa là **chỉ có một chất**.',
+    text: 'On a bottle, **pure** just means clean.',
+    textVn: 'Trên chai nước, **pure** chỉ có nghĩa là sạch.',
     notes: [
       {
         tone: 'write',
