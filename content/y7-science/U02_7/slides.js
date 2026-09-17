@@ -25,8 +25,6 @@ import filings from './images/filings.jpg'
 import ijen from './images/ijen.jpg'
 import magnet from './images/magnet.jpg'
 import ironsulfide from './images/ironsulfide.jpg'
-import volcano from './images/volcano.jpg'
-import traffic from './images/traffic.jpg'
 import basin from './images/basin.jpg'
 import kettle from './images/kettle.jpg'
 
@@ -35,7 +33,6 @@ const PURPLE = '#5c2483'
 const ORANGE = '#c25e12'
 const BLUE = '#1a5fa8'
 const RED = '#c8102e'
-const GREEN = '#4a8b23'
 
 export const slides = [
   // ── 1. Hero + starter (the book's Getting Started) ─────────────────────────
@@ -82,13 +79,8 @@ export const slides = [
         accent: BLUE,
         icon: 'Hammer',
         image: filings,
-        notes: [
-          {
-            tone: 'write',
-            text: '**Filings:** very small pieces of metal.',
-            textVn: '**Mạt (filings):** những mẩu kim loại rất nhỏ.',
-          },
-        ],
+        caption: 'Iron **filings**: tiny pieces of iron.',
+        captionVn: '**Mạt sắt** (iron filings): những mẩu sắt rất nhỏ.',
       },
       {
         heading: 'Sulfur · not magnetic',
@@ -133,6 +125,11 @@ export const slides = [
     content: '**Yes!** The iron is still iron. The sulfur is still sulfur.',
     contentVn: '**Có!** Sắt vẫn là sắt. Lưu huỳnh vẫn là lưu huỳnh.',
     notes: [
+      {
+        tone: 'write',
+        text: '**Filings:** very small pieces of metal.',
+        textVn: '**Mạt (filings):** những mẩu kim loại rất nhỏ.',
+      },
       {
         tone: 'write',
         text: '**Mixture:** different substances mixed together, but **not bonded**.',
@@ -338,38 +335,24 @@ export const slides = [
     ],
   },
 
-  // 14. What changes the air
+  // 14. What changes the air (write)
   {
-    layout: 'compare',
-    accent: TEAL,
+    layout: 'split',
+    accent: ORANGE,
     icon: 'CloudFog',
     eyebrow: 'Book page 67',
     eyebrowVn: 'Sách trang 67',
     title: 'The Air Changes',
     titleVn: 'Không khí thay đổi',
-    columns: [
+    ratio: 40,
+    inlineSvg: DIAGRAMS.EMISSIONS,
+    content: 'Burning petrol gives out carbon dioxide too.',
+    contentVn: 'Đốt xăng cũng thải ra cacbon đioxit.',
+    notes: [
       {
-        heading: 'From nature',
-        headingVn: 'Từ tự nhiên',
-        accent: GREEN,
-        icon: 'Leaf',
-        image: volcano,
-        notes: [
-          {
-            tone: 'write',
-            text: '**Natural emissions:** gases that nature gives out. Animals and plants give out carbon dioxide.',
-            textVn: '**Khí thải tự nhiên (natural emissions):** các khí do tự nhiên thải ra. Động vật và thực vật thải ra cacbon đioxit.',
-          },
-        ],
-      },
-      {
-        heading: 'From people',
-        headingVn: 'Từ con người',
-        accent: RED,
-        icon: 'Flame',
-        image: traffic,
-        caption: 'Burning petrol gives out carbon dioxide too.',
-        captionVn: 'Đốt xăng cũng thải ra cacbon đioxit.',
+        tone: 'write',
+        text: '**Natural emissions:** gases that nature gives out. Animals and plants give out carbon dioxide.',
+        textVn: '**Khí thải tự nhiên (natural emissions):** các khí do tự nhiên thải ra. Động vật và thực vật thải ra cacbon đioxit.',
       },
     ],
   },

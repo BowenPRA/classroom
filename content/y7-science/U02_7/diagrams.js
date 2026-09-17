@@ -11,18 +11,29 @@
 //   MIX_COMPOUND   iron and sulfur atoms, mixed, then bonded — the Draw This (p. 65)
 //   AIR            a sample of air, particle by particle (p. 68)
 //   AIR_PIE        the composition of air (p. 67)
+//   EMISSIONS      what changes the air: a volcano, and Hanoi traffic
 //   MINERAL_LABEL  the mineral water label (p. 68)
+
+import volcano from './images/volcano.jpg'
+import traffic from './images/traffic.jpg'
 
 const INK = '#2b2b2b'
 const KEY = '#c25e12'
 const MUTED = '#5b6770'
 const RULE = '#cfd8dc'
 const BLUE = '#1a5fa8'
+const GREEN = '#4a8b23'
+const RED = '#c8102e'
 
 const FONT = "Inter, 'Segoe UI', system-ui, sans-serif"
 
 const plate = (w, h) => `<rect x="0" y="0" width="${w}" height="${h}" rx="14" fill="#ffffff"/>
     <rect x="0.75" y="0.75" width="${w - 1.5}" height="${h - 1.5}" rx="13" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>`
+
+// A photograph cropped to fill its cell, with a hairline frame.
+const photo = (href, id, x, y, w, h) => `<defs><clipPath id="${id}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12"/></clipPath></defs>
+    <image href="${href}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice" clip-path="url(#${id})"/>
+    <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" fill="none" stroke="${RULE}" stroke-width="2"/>`
 
 const ATOM = {
   Fe: ['#f3b27a', '#9a4f10'],
@@ -170,6 +181,16 @@ export const DIAGRAMS = {
     <text x="634" y="448" font-family="${FONT}" font-size="26" fill="${INK}" text-anchor="start">carbon dioxide,</text>
     <text x="634" y="482" font-family="${FONT}" font-size="26" fill="${INK}" text-anchor="start">argon, water</text>
     <text x="634" y="516" font-family="${FONT}" font-size="26" fill="${INK}" text-anchor="start">and other gases</text>
+  </svg>`,
+
+  EMISSIONS: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
+    ${plate(840, 560)}
+    ${photo(volcano, 'u27-em-volcano', 24, 24, 384, 420)}
+    ${photo(traffic, 'u27-em-traffic', 432, 24, 384, 420)}
+    <text x="216" y="494" font-family="${FONT}" font-size="34" font-weight="bold" fill="${GREEN}" text-anchor="middle">from nature</text>
+    <text x="216" y="532" font-family="${FONT}" font-size="24" fill="${MUTED}" text-anchor="middle">volcano gas, Indonesia</text>
+    <text x="624" y="494" font-family="${FONT}" font-size="34" font-weight="bold" fill="${RED}" text-anchor="middle">from people</text>
+    <text x="624" y="532" font-family="${FONT}" font-size="24" fill="${MUTED}" text-anchor="middle">motorbikes, Hanoi</text>
   </svg>`,
 
   MINERAL_LABEL: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
