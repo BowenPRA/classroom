@@ -3,8 +3,6 @@
 import { slides } from './slides.js'
 import { plan } from './plan.js'
 
-// No `dashboard` link yet: the Dashboard has no Y7_MATH U02_3 unit, and the
-// pairing is added on both sides in the same commit or on neither (playbook §9).
 export default {
   meta: {
     course: 'y7-math',
@@ -17,6 +15,8 @@ export default {
       'recognise numbers and ab and ba as like terms, but not x and x²; ' +
       'and move each sign with its term, so 7x + 5y − 3x + y = 4x + 6y.',
     order: 9,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_MATH', unit: 'U02_3' },
   },
   slides,
   plan,

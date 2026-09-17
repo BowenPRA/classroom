@@ -1,8 +1,6 @@
 import { slides } from './slides.js'
 import { plan } from './plan.js'
 
-// No `dashboard` link yet: the Dashboard has no 2.6 unit, and the pairing is
-// added on both sides in the same commit or on neither (playbook §9).
 export default {
   meta: {
     course: 'y7-science',
@@ -15,6 +13,8 @@ export default {
       'diagrams; and read a formula to say which elements and how many atoms.',
     // 2.5 is 11; 10 is still free for 2.4 The water cycle.
     order: 12,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_SCI', unit: 'U02_6' },
   },
   slides,
   plan,

@@ -3,8 +3,6 @@
 import { slides } from './slides.js'
 import { plan } from './plan.js'
 
-// No `dashboard` link yet: the Dashboard has no Y7_MATH U02_5 unit, and the
-// pairing is added on both sides in the same commit or on neither (playbook §9).
 export default {
   meta: {
     course: 'y7-math',
@@ -17,6 +15,8 @@ export default {
       'turn "I think of a number…" into an equation and solve it; ' +
       'and solve two-step equations by undoing the last step first, so 2a + 4 = 18 gives a = 7.',
     order: 11,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_MATH', unit: 'U02_5' },
   },
   slides,
   plan,
