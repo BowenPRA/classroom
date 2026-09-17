@@ -144,6 +144,11 @@ const TIMER_SECONDS = 30
 // Loud enough to be heard over a room of Year 7s arguing, quiet enough that
 // the teacher does not have to raise their voice to read the clue again.
 const MUSIC_VOLUME = 0.35
+// Switched off for now, to be fixed later. While this is false nothing plays —
+// not under the countdown, not as a preview in Setup — and the track picker and
+// the sound button are hidden. The tracks stay imported and credited so turning
+// it back on is this one line.
+const MUSIC_ON = false
 
 const TRACKS = [
   // The descriptor line has about twenty characters before it truncates at
@@ -420,48 +425,52 @@ function Setup({
               )}
             </div>
 
-            {/* The music, and whether the countdown runs at all. Both live
-                here rather than on the board, because they are decisions made
-                once before the game and never mid-clue. They sit under the
-                teams, not under the boards: the sixth board would otherwise
-                have pushed the left column past a 1440×900 window. */}
-            <h2 className="mt-4 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500 mb-1.5">
-              {t(lang, 'music')}
-            </h2>
-            {/* Three across, so five tracks are two rows and not three. Two
-                rows is what keeps Setup inside the frame at 1440×900 — the
-                fifth track is exactly what pushed it over. */}
-            <div className="grid gap-1.5 grid-cols-2 sm:grid-cols-3">
-              {TRACKS.map((track, i) => (
-                <button
-                  key={track.id}
-                  type="button"
-                  onClick={() => pickTrack(i)}
-                  className={`text-left rounded-xl border-2 border-b-4 px-2.5 py-1.5 transition-all active:border-b-2 active:translate-y-0.5 ${
-                    i === trackIndex
-                      ? 'border-[#f59e0b] bg-amber-50 dark:bg-amber-500/15'
-                      : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900'
-                  }`}
-                >
-                  <span className="flex items-center gap-1.5">
-                    {previewing === i
-                      ? <Pause className="w-3.5 h-3.5 shrink-0 text-[#f59e0b]" strokeWidth={3} />
-                      : <Music className={`w-3.5 h-3.5 shrink-0 ${i === trackIndex ? 'text-[#f59e0b]' : 'text-slate-300 dark:text-slate-600'}`} strokeWidth={3} />}
-                    <span className="min-w-0 truncate font-black text-[11px] sm:text-xs text-slate-800 dark:text-slate-100">
-                      {pick(lang, track.name, track.nameVn)}
-                    </span>
-                  </span>
-                  <span className="block pl-5 truncate font-bold text-[10px] text-slate-400 dark:text-slate-500">
-                    {pick(lang, track.by, track.byVn)}
-                  </span>
-                </button>
-              ))}
-            </div>
+            {MUSIC_ON && (
+              <>
+                {/* The music, and whether the countdown runs at all. Both live
+                    here rather than on the board, because they are decisions made
+                    once before the game and never mid-clue. They sit under the
+                    teams, not under the boards: the sixth board would otherwise
+                    have pushed the left column past a 1440×900 window. */}
+                <h2 className="mt-4 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500 mb-1.5">
+                  {t(lang, 'music')}
+                </h2>
+                {/* Three across, so five tracks are two rows and not three. Two
+                    rows is what keeps Setup inside the frame at 1440×900 — the
+                    fifth track is exactly what pushed it over. */}
+                <div className="grid gap-1.5 grid-cols-2 sm:grid-cols-3">
+                  {TRACKS.map((track, i) => (
+                    <button
+                      key={track.id}
+                      type="button"
+                      onClick={() => pickTrack(i)}
+                      className={`text-left rounded-xl border-2 border-b-4 px-2.5 py-1.5 transition-all active:border-b-2 active:translate-y-0.5 ${
+                        i === trackIndex
+                          ? 'border-[#f59e0b] bg-amber-50 dark:bg-amber-500/15'
+                          : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900'
+                      }`}
+                    >
+                      <span className="flex items-center gap-1.5">
+                        {previewing === i
+                          ? <Pause className="w-3.5 h-3.5 shrink-0 text-[#f59e0b]" strokeWidth={3} />
+                          : <Music className={`w-3.5 h-3.5 shrink-0 ${i === trackIndex ? 'text-[#f59e0b]' : 'text-slate-300 dark:text-slate-600'}`} strokeWidth={3} />}
+                        <span className="min-w-0 truncate font-black text-[11px] sm:text-xs text-slate-800 dark:text-slate-100">
+                          {pick(lang, track.name, track.nameVn)}
+                        </span>
+                      </span>
+                      <span className="block pl-5 truncate font-bold text-[10px] text-slate-400 dark:text-slate-500">
+                        {pick(lang, track.by, track.byVn)}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
 
             <button
               type="button"
               onClick={() => setAutoTimer(!autoTimer)}
-              className="mt-2 w-full flex items-center gap-2 rounded-xl border-2 border-b-4 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-2.5 py-2 active:border-b-2 active:translate-y-0.5 transition-all"
+              className={`${MUSIC_ON ? 'mt-2' : 'mt-4'} w-full flex items-center gap-2 rounded-xl border-2 border-b-4 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-2.5 py-2 active:border-b-2 active:translate-y-0.5 transition-all`}
             >
               <span
                 className={`shrink-0 w-5 h-5 rounded-md border-2 flex items-center justify-center ${
@@ -576,7 +585,7 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
   const running = seconds !== null && seconds > 0
   useEffect(() => {
     const track = TRACKS[trackIndex]
-    if (!running || muted || !track?.src) return undefined
+    if (!MUSIC_ON || !running || muted || !track?.src) return undefined
     const audio = new Audio(track.src)
     audio.volume = MUSIC_VOLUME
     // A browser that refuses to autoplay simply stays quiet; the game does not
@@ -787,19 +796,21 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
         {/* Sound off is here rather than in Setup because it is the control a
             teacher reaches for mid-game — the class next door, a fire drill,
             a clue that needs reading three times. */}
-        <button
-          type="button"
-          onClick={() => setMuted(!muted)}
-          title={t(lang, muted ? 'soundOn' : 'soundOff')}
-          aria-label={t(lang, muted ? 'soundOn' : 'soundOff')}
-          className={`shrink-0 w-9 h-9 rounded-xl border-2 border-b-4 flex items-center justify-center active:border-b-2 active:translate-y-0.5 transition-all ${
-            muted
-              ? 'border-rose-300 dark:border-rose-800 bg-rose-50 dark:bg-rose-950 text-rose-500 dark:text-rose-300'
-              : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-300'
-          }`}
-        >
-          {muted ? <VolumeX className="w-4 h-4" strokeWidth={3} /> : <Volume2 className="w-4 h-4" strokeWidth={3} />}
-        </button>
+        {MUSIC_ON && (
+          <button
+            type="button"
+            onClick={() => setMuted(!muted)}
+            title={t(lang, muted ? 'soundOn' : 'soundOff')}
+            aria-label={t(lang, muted ? 'soundOn' : 'soundOff')}
+            className={`shrink-0 w-9 h-9 rounded-xl border-2 border-b-4 flex items-center justify-center active:border-b-2 active:translate-y-0.5 transition-all ${
+              muted
+                ? 'border-rose-300 dark:border-rose-800 bg-rose-50 dark:bg-rose-950 text-rose-500 dark:text-rose-300'
+                : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-300'
+            }`}
+          >
+            {muted ? <VolumeX className="w-4 h-4" strokeWidth={3} /> : <Volume2 className="w-4 h-4" strokeWidth={3} />}
+          </button>
+        )}
 
         <button
           type="button"

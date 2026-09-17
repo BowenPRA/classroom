@@ -63,7 +63,9 @@ export const plan = {
     { q: 'Turning the sound off', a: 'The speaker button beside Edit scores, at any time. To change which piece plays, or to stop the timer starting on its own, go back to Setup — both live there.' },
   ],
   notes:
-    'This is a REVISION game, not new teaching. Run it the lesson before a test, or as the last twenty minutes of a Friday — the '
+    'THE MUSIC IS SWITCHED OFF FOR NOW. Nothing plays under the countdown, and the track picker and the sound button are hidden '
+    + 'until it is fixed. Everything below about the music describes how it works when it is back on (MUSIC_ON in widgets.jsx).\n\n'
+    + 'This is a REVISION game, not new teaching. Run it the lesson before a test, or as the last twenty minutes of a Friday — the '
     + 'clues assume the unit has already been taught.\n\n'
     + 'THE FINALE BOARD IS THE ONE WITH TRIVIA ON IT, and the trivia is not a reward or a break. A board made only of the taught '
     + 'units hands the whole game to the three strongest mathematicians in the room and the other twenty-one stop speaking. Animal '
