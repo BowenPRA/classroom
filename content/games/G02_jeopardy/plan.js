@@ -2,7 +2,7 @@
 // How to actually run Jeopardy in front of a class, rendered by
 // src/pages/Plan.jsx. It is a revision lesson or a plenary, not new teaching.
 export const plan = {
-  duration: 'Year 7: 20–25 minutes (half a board), or a full 50-minute revision lesson (one whole board). Kindergarten / Year 1: 15 minutes, one half of the board, sitting on the floor',
+  duration: 'Year 7: 20–25 minutes (half a board), or a full 50-minute revision lesson (one whole board). Kindergarten / Year 1: 15 minutes, one half of the board, sitting on the floor. Year 1 picture board: 20 minutes, the whole board',
   objective:
     'Students recall and SAY, in English, what they were taught in Mathematics 1.1–1.6 (adding and subtracting integers, the four sign '
     + 'rules, multiples and the LCM, factors and the HCF, the divisibility tests, squares, cubes and roots) and Science 1.1–1.4 (cells and '
@@ -12,7 +12,9 @@ export const plan = {
     + 'THE FIFTH BOARD IS FOR A DIFFERENT CLASS ENTIRELY. Kindergarten and Year 1 name kitchen things, sort food by how it is '
     + 'cooked, say where food comes from, and meet three Cambridge Primary Science Stage 1 ideas — the five senses, living '
     + 'against not living, and changes that go back against changes that never do. There the target is one English word said '
-    + 'out loud by everybody, not a sentence.',
+    + 'out loud by everybody, not a sentence.\n\n'
+    + 'THE SIXTH BOARD IS YEAR 1 ONLY, and every clue on it is a picture. Students name kitchen things and food in English, '
+    + 'clap the beats in a word, and compare two things with taller, slower, heavier and bigger.',
   materials: [
     'Projector / TV — press Project for the big version',
     'Mini whiteboards + markers (one per team), so every team answers every clue instead of the fastest hand winning',
@@ -25,13 +27,14 @@ export const plan = {
     { term: 'Show your working', def: 'on the maths board, a right answer with no calculation written on the whiteboard scores nothing.' },
   ],
   timeline: [
-    { time: '0–3 min', phase: 'Set up', detail: 'Choose a board. Four are Year 7 — Mathematics 1.1–1.3, Science 1.1–1.3, the Revision board that runs one category per unit across all six, and the Unit 1 Finale (Maths 1.4–1.6, Science 1.4, and two rounds of trivia). The fifth, in pink, is Kindergarten & Year 1 and belongs to a different class; do not open it in front of Year 7. Then type the team names. Two to six teams; four teams of six is about right for a class of 24.' },
+    { time: '0–3 min', phase: 'Set up', detail: 'Choose a board. Four are Year 7 — Mathematics 1.1–1.3, Science 1.1–1.3, the Revision board that runs one category per unit across all six, and the Unit 1 Finale (Maths 1.4–1.6, Science 1.4, and two rounds of trivia). The fifth, in pink, is Kindergarten & Year 1, and the sixth, in green, is the Year 1 picture board; neither belongs to Year 7, so do not open them in front of that class. Then type the team names. Two to six teams; four teams of six is about right for a class of 24.' },
     { time: '3–5 min', phase: 'The rules', detail: 'A team chooses a category and a value in English. EVERY team writes an answer on a whiteboard — that is what keeps the other twenty students in the game. Boards up together, then the answer is revealed. Any team that had it right gets the points, so several teams can score on one clue.' },
     { time: '5–10 min', phase: 'The 100s', detail: 'Start along the top row. The 100s are recall in one word; they exist to get every team on the scoreboard and to set the sentence frame before the questions get long.' },
     { time: '10–40 min', phase: 'Play', detail: 'Work down the values. The 30-second timer starts by itself when a clue opens, with the music, so the room can hear the clock without watching it — tap the countdown to stop it whenever a clue needs more thinking than pressure. Read every clue aloud twice, and make the answering team read it back before they answer if the English is the problem.' },
     { time: 'each reveal', phase: 'Make them justify it', detail: 'Before pressing Show the answer, ask the room "why?" The revealed answer usually carries the reason as well as the fact — read that reason out, and have the class repeat it. The reason is the revision; the points are the excuse. On the six clues that have a picture, the picture comes up with the answer too — let it sit there while you read.' },
     { time: '40–47 min', phase: 'The 500s', detail: 'The bottom row is full-sentence work: prove that "two negatives make a positive" is only half true, explain why a root hair cell has no chloroplasts, say why the book wants the LOWEST multiple but the HIGHEST factor, give the two meanings of "tissue" in a sentence each. Slow down here — one 500 is worth five 100s in teaching value as well as in points.' },
     { time: 'Kindy / Y1', phase: 'Run it differently', detail: 'Half a board, fifteen minutes, everyone on the floor. Two teams, not four. READ EVERY CLUE ALOUD TWICE and point at the team whose turn it is — they cannot read the board, so you are the board. Turn the timer OFF in Setup: thirty seconds of pressure on a five-year-old produces silence, not English. Accept one correct word, then make the whole class chorus it before you press Show the answer, so the photograph lands on a room that has already said it.' },
+    { time: 'Year 1 pictures', phase: 'The green board', detail: 'Four columns, twenty clues, and the picture comes up WITH the question. Two teams. Timer off. Read the question aloud and point at the picture. One child answers, the whole class says the word, and then you press Show the answer. On a two-picture clue, everybody votes at once: left hand for the left picture, right hand for the right. On Claps, say the word and clap it together before anyone gives a number.' },
     { time: '47–50 min', phase: 'Final scores', detail: 'Press Finish (or let the last clue run out) for the ranked scoreboard. Then ask the losing team for the one clue they wish they had taken, and re-ask it. Nobody leaves on a wrong answer.' },
   ],
   answers: [
@@ -51,6 +54,10 @@ export const plan = {
     { q: 'Kindergarten board · the science that matters', a: 'Living or Not Living 400 — the carrot in the soup is NOT living now, but it WAS living in the ground. That distinction is Stage 1 biology and every class gets it wrong first. Hot, Cold and Changing 500 — ice melts and freezes back, but a cooked egg never goes back. Reversible against irreversible change, in words a five-year-old owns.' },
     { q: 'Kindergarten board · the pictures', a: 'Twenty-nine of the thirty clues show a photograph when you reveal, and none of them shows one before. That order is the point: the class says the English word, THEN sees the thing. Never press Show the answer before somebody has said something out loud, or the picture does the work instead of the child.' },
     { q: 'Kindergarten board · the answers', a: 'Chopsticks · a pan · the fridge · a toaster · a pot (deep, so it holds more) || rice · bread · a spring roll · the banana · fry it or boil it || the cow · the hen · a rice (paddy) field · milk · the bee || eyes · ears · his nose · sour · ice (touch) || living · not living · living · not living now · water and light || ice · it melts · boiling · no, it goes firm · no, never.' },
+    { q: 'Year 1 picture board · what is on it', a: 'In the Kitchen (a spoon, a kettle, a microwave, which one is cold, a rice cooker) · Food (an apple, noodles, which one is a vegetable, which one is NOT sweet, a dragon fruit) · Claps (cat, monkey, butterfly, watermelon, fire) · Which Is…? (taller, slower, heavier, bigger, and who is taller: Mr Bowen or Mr Seth).' },
+    { q: 'Year 1 picture board · the answers', a: 'A spoon · a kettle · a microwave · the fridge · a rice cooker || an apple · noodles · broccoli · the onion · a dragon fruit || 1 · 2 (mon-key) · 3 (but-ter-fly) · 4 (wa-ter-mel-on) · 1 (fire) || a giraffe is taller than an elephant · a snail is slower than a turtle · a whale is heavier than a bus · the sun is bigger than the moon · Mr Bowen is taller than Mr Seth.' },
+    { q: 'Year 1 picture board · the traps', a: 'Claps 500: "fire" sounds long, but it is ONE clap. After 1, 2, 3 and 4, the class will guess 5. Which Is…? 300: a bus looks enormous, but a whale is several buses heavy. Which Is…? 400: the sun and the moon look the same size in the sky, but the sun is far bigger and very far away. Food 400 has a NOT in it — say it loudly.' },
+    { q: 'Year 1 picture board · Mr Bowen or Mr Seth', a: 'The two photographs are head and shoulders, so they cannot show who is taller. Let the class vote with their hands, reveal, and if Mr Seth is in the building, stand back to back in front of them.' },
     { q: 'Awarding points', a: 'Tap every team that had it right, then Confirm. Tap nobody and Confirm records that nobody got it — the clue is spent and no points move.' },
     { q: 'Fixing a score', a: 'Edit scores, in the board header. Every team gets −500, −100, a typed box, +100 and +500. Negative totals are allowed, because a team that has been caught guessing usually deserves one.' },
     { q: 'Turning the sound off', a: 'The speaker button beside Edit scores, at any time. To change which piece plays, or to stop the timer starting on its own, go back to Setup — both live there.' },
@@ -104,6 +111,14 @@ export const plan = {
     + 'SCORES CAN BE CORRECTED. Press Edit scores in the board header for a panel with every team on it: steps of 100 and 500, '
     + 'or type the number straight in. Use it when you tap the wrong team, when the class argues you into a mark, or when a '
     + 'team joins late — a scoreboard that cannot be fixed is a scoreboard the room stops believing in.\n\n'
+    + 'THE GREEN BOARD IS YEAR 1 ONLY, and there the picture IS the question. That is the opposite of the pink board, and it is '
+    + 'deliberate: a Year 1 child cannot read "Which animal gives us milk?", but can look at a kettle and hunt for the English '
+    + 'word. The rule for you does not change — somebody says the word out loud before you press Show the answer. On a choice '
+    + 'clue the right picture turns green and the others fade, so the room sees the answer without reading it.\n\n'
+    + 'THE GREEN BOARD HAS TWO KINDS OF PICTURE ON IT. Most are Word Wall photographs, credited in images/CREDITS.json. Five are '
+    + 'new and four of those are CC BY or CC BY-SA — macrophile on Flickr (snail), Harsha K R (watermelon), Hameltion (fire) '
+    + 'and Shyamal Kumar Chaudhary (dragon fruit); the rice cooker is public domain. The photographs of Mr Bowen and Mr Seth '
+    + 'are staff portraits, not openly licensed, and they are on a public website: take them down if either of them asks.\n\n'
     + 'Points can go to more than one team on the same clue. Do not turn this into a race for the buzzer — the game is about '
     + 'being right in English, not about being first.\n\n'
     + 'Switch the deck to Vietnamese only to unstick a team that is stuck on the WORDING, then switch straight back and make '

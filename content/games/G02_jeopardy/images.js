@@ -27,7 +27,13 @@
 // A clue earns a picture when seeing the thing is part of the answer. On the
 // Year 7 boards that is six clues out of 120. On the Kindergarten board it is
 // 29 out of 30, because a five-year-old who has just said "chopsticks" out loud
-// has not finished the clue until they have seen a pair.
+// has not finished the clue until they have seen a pair. On the Year 1 board it
+// is all 20, and there the picture IS the question.
+//
+// The Year 1 section adds five photographs from Commons at 800px (nothing in the
+// Word Wall covers them) and two that are not from Commons at all: the staff
+// portraits of Mr Bowen and Mr Seth. Those are not openly licensed — see
+// CREDITS.json before copying them anywhere else.
 import blueWhale from './images/blue-whale.jpg'
 import peregrineFalcon from './images/peregrine-falcon.jpg'
 import giraffe from './images/giraffe.jpg'
@@ -68,6 +74,41 @@ import meltingIcecream from './images/melting-icecream.jpg'
 import boilingPot from './images/boiling-pot.jpg'
 import seedling from './images/seedling.jpg'
 
+// ── Year 1 · Kitchen, Food, Claps ───────────────────────────────────────────
+// Word Wall copies again, so no new bytes in the bundle.
+import woodenspoon from './images/woodenspoon.jpg'
+import kettle from './images/kettle.jpg'
+import microwave from './images/microwave.jpg'
+import oven from './images/oven.jpg'
+import apple from './images/apple.jpg'
+import noodles from './images/noodles.jpg'
+import grapes from './images/grapes.jpg'
+import broccoli from './images/broccoli.jpg'
+import orange from './images/orange.jpg'
+import doughnut from './images/doughnut.jpg'
+import onion from './images/onion.jpg'
+import icecream from './images/icecream.jpg'
+import cat from './images/cat.jpg'
+import monkey from './images/monkey.jpg'
+import butterfly from './images/butterfly.jpg'
+import elephant from './images/elephant.jpg'
+import turtle from './images/turtle.jpg'
+import bus from './images/bus.jpg'
+import whale from './images/whale.jpg'
+import sun from './images/sun.jpg'
+import moon from './images/moon.jpg'
+
+// Sourced for the Year 1 board.
+import riceCooker from './images/rice-cooker.jpg'
+import dragonfruit from './images/dragonfruit.jpg'
+import watermelon from './images/watermelon.jpg'
+import fire from './images/fire.jpg'
+import snail from './images/snail.jpg'
+
+// Supplied by Mr Bowen. Staff portraits, not openly licensed.
+import mrBowen from './images/mr-bowen.jpg'
+import mrSeth from './images/mr-seth.jpg'
+
 export const IMAGES = {
   // Year 7
   blueWhale,
@@ -104,4 +145,33 @@ export const IMAGES = {
   meltingIcecream,
   boilingPot,
   seedling,
+  // Year 1
+  woodenspoon,
+  kettle,
+  microwave,
+  oven,
+  apple,
+  noodles,
+  grapes,
+  broccoli,
+  orange,
+  doughnut,
+  onion,
+  icecream,
+  cat,
+  monkey,
+  butterfly,
+  elephant,
+  turtle,
+  bus,
+  whale,
+  sun,
+  moon,
+  riceCooker,
+  dragonfruit,
+  watermelon,
+  fire,
+  snail,
+  mrBowen,
+  mrSeth,
 }

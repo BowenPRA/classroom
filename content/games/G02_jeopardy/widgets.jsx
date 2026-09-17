@@ -33,6 +33,9 @@
 //     picture, because a photograph next to "What is 9²?" is decoration — and
 //     29 of the 30 Kindergarten clues do, because a five-year-old who has just
 //     said "chopsticks" has not finished the clue until they have seen a pair.
+//     The Year 1 board goes one step further and lets the pictures BE the
+//     clue: a line of words over one to three photographs, and on a choice the
+//     right one lights up green when the teacher reveals.
 //
 // The board is a grid whose rows divide whatever height the slide gives it, so
 // it fills a projector without ever growing a scrollbar.
@@ -40,7 +43,7 @@ import { useState, useEffect, useRef, useCallback, createElement } from 'react'
 import {
   Calculator, FlaskConical, Trophy, Gamepad2, ArrowLeft, Plus, X,
   Play, Pause, Eye, Check, Timer, Flag, RotateCcw, Crown, Users, Sparkles,
-  Music, Volume2, VolumeX, Pencil, CookingPot,
+  Music, Volume2, VolumeX, Pencil, CookingPot, Apple,
 } from 'lucide-react'
 
 import { BOARDS } from './boards.js'
@@ -57,6 +60,63 @@ import { BOARDS } from './boards.js'
 // buttons off the bottom of a 768px-tall window.
 const clueImage = (clue, revealed) =>
   (revealed ? clue.aImage ?? clue.qImage : clue.qImage) ?? null
+
+// A clue led by its pictures (`qImages`), for a class that cannot read the
+// question. The words shrink to one line over the top and the pictures share
+// everything below it, because on a projector a photo beside a sentence is
+// half the size it could be.
+//
+// Each picture sits absolutely inside a box that flexes, so a photo's own
+// pixel size can never push the award buttons off the bottom: revealing the
+// answer shrinks the pictures instead. With two or three pictures each gets a
+// frame, and on the reveal the `aIndex` one goes green and the rest fade — the
+// class sees which picture was right without having to read the answer.
+function PictureClue({ clue, lang, big, revealed }) {
+  const choice = clue.qImages.length > 1
+  return (
+    <div className="flex-1 min-h-0 flex flex-col gap-2 sm:gap-3">
+      <p className={`shrink-0 text-center font-black tracking-tight leading-tight text-slate-800 dark:text-slate-100 ${big ? 'text-[clamp(1.5rem,3vw,3.2rem)]' : 'text-xl sm:text-3xl'}`}>
+        {pick(lang, clue.q, clue.qVn)}
+      </p>
+      <div className="flex-1 min-h-0 flex gap-2 sm:gap-4">
+        {clue.qImages.map((image, i) => {
+          const right = revealed && choice && i === clue.aIndex
+          const faded = revealed && choice && i !== clue.aIndex
+          return (
+            <figure
+              key={i}
+              className={`relative flex-1 min-w-0 min-h-0 m-0 flex flex-col gap-1 transition-opacity duration-300 ${
+                choice ? 'rounded-2xl border-4 p-1.5 sm:p-2' : ''
+              } ${
+                right
+                  ? 'border-[#58cc02] bg-[#f0fdf4] dark:bg-emerald-500/15'
+                  : choice ? 'border-slate-100 dark:border-slate-800' : ''
+              } ${faded ? 'opacity-30' : ''}`}
+            >
+              <div className="relative flex-1 min-h-0">
+                <img
+                  src={image.src}
+                  alt={pick(lang, image.alt, image.altVn)}
+                  className="absolute inset-0 w-full h-full object-contain"
+                />
+              </div>
+              {image.label && (
+                <figcaption className={`shrink-0 text-center font-black tracking-tight leading-tight text-slate-800 dark:text-slate-100 ${big ? 'text-[clamp(1.3rem,2.6vw,2.8rem)]' : 'text-lg sm:text-2xl'}`}>
+                  {pick(lang, image.label, image.labelVn)}
+                </figcaption>
+              )}
+              {right && (
+                <span className="absolute -top-3 -right-3 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#58cc02] text-white flex items-center justify-center shadow-lg animate-in zoom-in duration-200">
+                  <Check className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={4} />
+                </span>
+              )}
+            </figure>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
 
 // Thinking music. Six free tracks — lofi first, because that is what the room
 // responds to — with licences and sources in audio/CREDITS.json.
@@ -77,7 +137,7 @@ import bossBattle from './audio/boss-battle.opus'
 import timeAttack from './audio/time-attack.ogg'
 import phonk from './audio/phonk.opus'
 
-const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot }
+const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot, Apple }
 
 // The clue countdown, and the music that runs with it.
 const TIMER_SECONDS = 30
@@ -207,9 +267,9 @@ function useConfetti(canvasRef) {
 
 // Padded p-2 rather than p-3, because the fifth board tipped the Setup column
 // 45px past a 1440×900 window and a Setup screen that scrolls is one the
-// teacher has to hunt around in with the class already watching. If a sixth
-// board is ever added, move the music picker into the right-hand column rather
-// than shaving this again.
+// teacher has to hunt around in with the class already watching. The sixth
+// board moved the music picker over to the teams column instead of shaving
+// this again; a seventh should start by checking that column's height.
 function BoardCard({ board, lang, selected, onPick }) {
   return (
     <button
@@ -317,10 +377,54 @@ function Setup({
                 />
               ))}
             </div>
+          </section>
+
+          <section>
+            <h2 className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500 mb-1.5">
+              {t(lang, 'teams')}
+            </h2>
+            <div className="grid gap-2">
+              {names.map((name, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <span
+                    className="w-3 h-9 shrink-0 rounded-full"
+                    style={{ backgroundColor: TEAM_COLOURS[i % TEAM_COLOURS.length] }}
+                  />
+                  <input
+                    type="text"
+                    value={name}
+                    placeholder={`${t(lang, 'team')} ${i + 1}`}
+                    onChange={(e) => rename(i, e.target.value)}
+                    className="flex-1 min-w-0 px-3 py-2 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-black text-sm focus:outline-none focus:border-[#1cb0f6]"
+                  />
+                  {names.length > 2 && (
+                    <button
+                      type="button"
+                      onClick={() => remove(i)}
+                      className="shrink-0 w-9 h-9 rounded-xl border-2 border-b-4 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-400 hover:text-[#ff4b4b] flex items-center justify-center active:border-b-2 active:translate-y-0.5 transition-all"
+                    >
+                      <X className="w-4 h-4" strokeWidth={3} />
+                    </button>
+                  )}
+                </div>
+              ))}
+              {names.length < 6 && (
+                <button
+                  type="button"
+                  onClick={add}
+                  className="flex items-center justify-center gap-2 py-2.5 rounded-xl border-2 border-b-4 border-dashed border-slate-300 dark:border-slate-700 text-slate-400 dark:text-slate-500 font-black uppercase tracking-widest text-[11px] hover:text-[#1cb0f6] active:border-b-2 active:translate-y-0.5 transition-all"
+                >
+                  <Plus className="w-4 h-4" strokeWidth={3} />
+                  {t(lang, 'addTeam')}
+                </button>
+              )}
+            </div>
 
             {/* The music, and whether the countdown runs at all. Both live
                 here rather than on the board, because they are decisions made
-                once before the game and never mid-clue. */}
+                once before the game and never mid-clue. They sit under the
+                teams, not under the boards: the sixth board would otherwise
+                have pushed the left column past a 1440×900 window. */}
             <h2 className="mt-4 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500 mb-1.5">
               {t(lang, 'music')}
             </h2>
@@ -371,48 +475,6 @@ function Setup({
               </span>
               <Timer className="w-4 h-4 shrink-0 text-slate-300 dark:text-slate-600" strokeWidth={3} />
             </button>
-          </section>
-
-          <section>
-            <h2 className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500 mb-1.5">
-              {t(lang, 'teams')}
-            </h2>
-            <div className="grid gap-2">
-              {names.map((name, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <span
-                    className="w-3 h-9 shrink-0 rounded-full"
-                    style={{ backgroundColor: TEAM_COLOURS[i % TEAM_COLOURS.length] }}
-                  />
-                  <input
-                    type="text"
-                    value={name}
-                    placeholder={`${t(lang, 'team')} ${i + 1}`}
-                    onChange={(e) => rename(i, e.target.value)}
-                    className="flex-1 min-w-0 px-3 py-2 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-black text-sm focus:outline-none focus:border-[#1cb0f6]"
-                  />
-                  {names.length > 2 && (
-                    <button
-                      type="button"
-                      onClick={() => remove(i)}
-                      className="shrink-0 w-9 h-9 rounded-xl border-2 border-b-4 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-400 hover:text-[#ff4b4b] flex items-center justify-center active:border-b-2 active:translate-y-0.5 transition-all"
-                    >
-                      <X className="w-4 h-4" strokeWidth={3} />
-                    </button>
-                  )}
-                </div>
-              ))}
-              {names.length < 6 && (
-                <button
-                  type="button"
-                  onClick={add}
-                  className="flex items-center justify-center gap-2 py-2.5 rounded-xl border-2 border-b-4 border-dashed border-slate-300 dark:border-slate-700 text-slate-400 dark:text-slate-500 font-black uppercase tracking-widest text-[11px] hover:text-[#1cb0f6] active:border-b-2 active:translate-y-0.5 transition-all"
-                >
-                  <Plus className="w-4 h-4" strokeWidth={3} />
-                  {t(lang, 'addTeam')}
-                </button>
-              )}
-            </div>
 
             <button
               type="button"
@@ -529,7 +591,7 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
   // wifi takes — at exactly the moment the room is looking hardest.
   useEffect(() => {
     board.categories.forEach((category) => category.clues.forEach((clue) => {
-      [clue.qImage, clue.aImage].forEach((image) => {
+      [clue.qImage, clue.aImage, ...(clue.qImages ?? [])].forEach((image) => {
         if (image?.src) Object.assign(new Image(), { src: image.src })
       })
     }))
@@ -877,7 +939,8 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
               </button>
             </div>
 
-            {/* Question, and the picture if this clue has one. Side by side,
+            {/* A clue with `qImages` is laid out by PictureClue. Otherwise:
+                question, and the picture if this clue has one. Side by side,
                 because a photo stacked under the text is a photo two inches
                 tall on a projector. Two caps, and whichever bites first wins:
                 the height of this region, and 48% of its width. A wide shot on
@@ -885,25 +948,29 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
                 in a small desk window, is stopped by the height. Neither can
                 produce a scrollbar, and 48% still leaves the question a
                 readable column beside it. */}
-            <div className="flex-1 min-h-[2.5rem] flex items-center gap-3 sm:gap-5 overflow-y-auto custom-scrollbar">
-              {/* A clue with a picture beside it has half the width for its
-                  words, so its words are set a notch smaller. Without this the
-                  longest clue on the board — the tardigrade, in Vietnamese —
-                  runs 22px past the bottom of the region and `items-center`
-                  clips the top of it where no scrollbar can reach. */}
-              <p className={`flex-1 min-w-0 font-black tracking-tight leading-snug text-slate-800 dark:text-slate-100 ${shownImage
-                ? (big ? 'text-[clamp(1.15rem,2.1vw,2.3rem)]' : 'text-base sm:text-xl')
-                : (big ? 'text-[clamp(1.5rem,2.8vw,3rem)]' : 'text-lg sm:text-2xl')}`}>
-                {pick(lang, open.clue.q, open.clue.qVn)}
-              </p>
-              {shownImage && (
-                <img
-                  src={shownImage.src}
-                  alt={pick(lang, shownImage.alt, shownImage.altVn)}
-                  className="shrink-0 min-h-0 max-h-full w-auto max-w-[48%] object-contain rounded-2xl border-4 border-slate-100 dark:border-slate-800 animate-in fade-in duration-300"
-                />
-              )}
-            </div>
+            {open.clue.qImages ? (
+              <PictureClue clue={open.clue} lang={lang} big={big} revealed={revealed} />
+            ) : (
+              <div className="flex-1 min-h-[2.5rem] flex items-center gap-3 sm:gap-5 overflow-y-auto custom-scrollbar">
+                {/* A clue with a picture beside it has half the width for its
+                    words, so its words are set a notch smaller. Without this the
+                    longest clue on the board — the tardigrade, in Vietnamese —
+                    runs 22px past the bottom of the region and `items-center`
+                    clips the top of it where no scrollbar can reach. */}
+                <p className={`flex-1 min-w-0 font-black tracking-tight leading-snug text-slate-800 dark:text-slate-100 ${shownImage
+                  ? (big ? 'text-[clamp(1.15rem,2.1vw,2.3rem)]' : 'text-base sm:text-xl')
+                  : (big ? 'text-[clamp(1.5rem,2.8vw,3rem)]' : 'text-lg sm:text-2xl')}`}>
+                  {pick(lang, open.clue.q, open.clue.qVn)}
+                </p>
+                {shownImage && (
+                  <img
+                    src={shownImage.src}
+                    alt={pick(lang, shownImage.alt, shownImage.altVn)}
+                    className="shrink-0 min-h-0 max-h-full w-auto max-w-[48%] object-contain rounded-2xl border-4 border-slate-100 dark:border-slate-800 animate-in fade-in duration-300"
+                  />
+                )}
+              </div>
+            )}
 
             {/* The answer, and who gets the points */}
             {!revealed ? (

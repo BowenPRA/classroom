@@ -174,6 +174,13 @@ get neither, and that is the default, not an oversight: a photo next to
 between the class and the maths. Every board's images are preloaded when the
 board is chosen, so a reveal is never a blank rectangle waiting on school wifi.
 
+For a class that cannot read yet, a clue can be led by its pictures instead:
+`qImages` is a list of one to three `{ src, alt, altVn, label?, labelVn? }`,
+shown under a one-line question and filling the card. With two or three
+pictures, `aIndex` names the right one, and it turns green on the reveal while
+the others fade. The Year 1 board is built entirely this way. A board can also
+have fewer than six categories: the grid takes its column count from the data.
+
 ### Drawing diagrams
 
 House style (see `content/y7-science/U01_1/diagrams.js`): open every diagram with

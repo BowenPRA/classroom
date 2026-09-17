@@ -10,7 +10,7 @@ export default {
     unit: 'G2',
     id: 'G02',
     title: 'Jeopardy',
-    objective: 'Teams pick a category and a value, argue in English, and the teacher reveals — five boards of thirty clues. Four are Year 7: Mathematics 1.1–1.3, Science 1.1–1.3, a revision board drawn from all six units, and a Unit 1 finale covering Maths 1.4–1.6, Science 1.4 and two rounds of classroom trivia. The fifth is for Kindergarten and Year 1 — cooking and first science, read aloud by the teacher, with a photograph on almost every answer.',
+    objective: 'Teams pick a category and a value, argue in English, and the teacher reveals — six boards. Four are Year 7: Mathematics 1.1–1.3, Science 1.1–1.3, a revision board drawn from all six units, and a Unit 1 finale covering Maths 1.4–1.6, Science 1.4 and two rounds of classroom trivia. The fifth is for Kindergarten and Year 1 — cooking and first science, read aloud by the teacher, with a photograph on almost every answer. The sixth is Year 1 only: twenty picture clues in four columns — In the Kitchen, Food, Claps and Which Is…?',
     order: 2,
   },
   slides,

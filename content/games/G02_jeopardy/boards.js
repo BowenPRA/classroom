@@ -1,10 +1,16 @@
 // content/games/G02_jeopardy/boards.js
-// Four Jeopardy boards, six categories of five clues each.
+// Six Jeopardy boards of five clues a category.
 //
 //   1. Mathematics 1.1–1.3   — integers, sign rules, multiples and the LCM
 //   2. Science 1.1–1.3       — cells, plant vs animal, specialised cells
 //   3. Revision              — one category per unit, all six units, fresh clues
 //   4. Unit 1 Finale         — Maths 1.4–1.6, Science 1.4, and two trivia rounds
+//   5. Kindergarten & Year 1 — cooking and first science, read aloud
+//   6. Year 1                — four columns, all pictures: kitchen, food, claps
+//                              and "Which is…?"
+//
+// The board grid takes its column count from `categories.length`, so a board
+// can have fewer than six.
 //
 // Every clue is written from what the deck for that unit actually taught, and
 // the wording is the point: these are the sentences that cost marks, not the
@@ -31,8 +37,17 @@
 // away? "Which animal has three hearts?" gets an aImage, because a photograph
 // of an octopus next to that sentence is not a clue any more. The giraffe is
 // named in its own question, so its photograph is a qImage and can sit there
-// while the teams argue. Only Board 4 uses pictures so far; the field works on
-// any board.
+// while the teams argue.
+//
+// A clue can instead be LED by pictures, for a class that cannot read yet:
+//
+//   qImages: [{ src, alt, altVn, label?, labelVn? }, …]   one to three pictures
+//   aIndex:  1                                          which one is right
+//
+// The question shrinks to a line over the top and the pictures take the rest
+// of the card. With one picture it is "What is it?". With two or three it is a
+// choice, and on the reveal the `aIndex` picture turns green and the others fade.
+// `label` prints a word under a picture — the word to clap, or a teacher's name.
 import { IMAGES } from './images.js'
 
 export const BOARDS = [
@@ -1429,6 +1444,252 @@ export const BOARDS = [
             qVn: 'Nước đá tan thành nước, rồi nước lại đông thành đá. Vậy thầy Bowen có thể biến quả trứng đã chín trở lại thành trứng lỏng không?',
             a: 'No — never. Some changes can go back again, and some can never go back.',
             aVn: 'Không — không bao giờ. Có những thay đổi quay lại được, và có những thay đổi thì không bao giờ quay lại được.',
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── 6 · YEAR 1 · KITCHEN, FOOD, CLAPS ─────────────────────────────────────
+  // Four columns, not six, and every clue is a picture with a few words over it.
+  // The class cannot read a sentence yet, so the question is "What is it?" and
+  // the photograph is the question — the child has to find the English word.
+  // That is why these use `qImages` rather than the Kindergarten board's
+  // `aImage`: there the words described the thing and the picture was the
+  // reward; here there are no words to describe it with.
+  //
+  // Two or three pictures side by side is a choice. `aIndex` says which one is
+  // right, and it lights up green on the reveal. With two, the class votes all
+  // at once: left hand for the left picture, right hand for the right.
+  //
+  // Claps counts the beats in a spoken word. The values run 1, 2, 3, 4 claps,
+  // and then the 500 is "fire", which sounds long and is one clap.
+  {
+    id: 'year1-pictures',
+    title: 'Year 1 · Kitchen, Food, Claps',
+    titleVn: 'Lớp 1 · Nhà bếp, Đồ ăn, Vỗ tay',
+    subtitle: 'Four columns, and a picture on every clue',
+    subtitleVn: 'Bốn cột, câu nào cũng có hình',
+    icon: 'Apple',
+    accent: '#16a34a',
+    categories: [
+      {
+        name: 'In the Kitchen',
+        nameVn: 'Trong Nhà Bếp',
+        clues: [
+          {
+            value: 100,
+            q: 'What is it?',
+            qVn: 'Đây là cái gì?',
+            qImages: [{ src: IMAGES.woodenspoon, alt: 'A wooden spoon.', altVn: 'Một cái thìa gỗ.' }],
+            a: 'A spoon.',
+            aVn: 'Cái thìa. (Tiếng Anh: a spoon.)',
+          },
+          {
+            value: 200,
+            q: 'What is it?',
+            qVn: 'Đây là cái gì?',
+            qImages: [{ src: IMAGES.kettle, alt: 'A white electric kettle.', altVn: 'Một ấm đun nước điện màu trắng.' }],
+            a: 'A kettle.',
+            aVn: 'Ấm đun nước. (Tiếng Anh: a kettle.)',
+          },
+          {
+            value: 300,
+            q: 'What is it?',
+            qVn: 'Đây là cái gì?',
+            qImages: [{ src: IMAGES.microwave, alt: 'A microwave oven.', altVn: 'Một cái lò vi sóng.' }],
+            a: 'A microwave.',
+            aVn: 'Lò vi sóng. (Tiếng Anh: a microwave.)',
+          },
+          {
+            value: 400,
+            q: 'Which one is cold?',
+            qVn: 'Cái nào lạnh?',
+            qImages: [
+              { src: IMAGES.oven, alt: 'An oven in a kitchen.', altVn: 'Một cái lò nướng trong bếp.' },
+              { src: IMAGES.fridge, alt: 'A tall fridge.', altVn: 'Một chiếc tủ lạnh cao.' },
+            ],
+            aIndex: 1,
+            a: 'The fridge.',
+            aVn: 'Tủ lạnh. (Tiếng Anh: the fridge.)',
+          },
+          {
+            value: 500,
+            q: 'What is it?',
+            qVn: 'Đây là cái gì?',
+            qImages: [{ src: IMAGES.riceCooker, alt: 'A white rice cooker with a round lid.', altVn: 'Một nồi cơm điện màu trắng có nắp tròn.' }],
+            a: 'A rice cooker.',
+            aVn: 'Nồi cơm điện. (Tiếng Anh: a rice cooker.)',
+          },
+        ],
+      },
+      {
+        name: 'Food',
+        nameVn: 'Đồ Ăn',
+        clues: [
+          {
+            value: 100,
+            q: 'What is it?',
+            qVn: 'Đây là quả gì?',
+            qImages: [{ src: IMAGES.apple, alt: 'A red apple.', altVn: 'Một quả táo đỏ.' }],
+            a: 'An apple.',
+            aVn: 'Quả táo. (Tiếng Anh: an apple.)',
+          },
+          {
+            value: 200,
+            q: 'What are they?',
+            qVn: 'Đây là món gì?',
+            qImages: [{ src: IMAGES.noodles, alt: 'A bowl of phở noodle soup with chopsticks.', altVn: 'Một bát phở có đôi đũa.' }],
+            a: 'Noodles.',
+            aVn: 'Phở, mì. (Tiếng Anh: noodles.)',
+          },
+          {
+            value: 300,
+            q: 'Which one is a vegetable?',
+            qVn: 'Cái nào là rau?',
+            qImages: [
+              { src: IMAGES.grapes, alt: 'A bunch of green grapes.', altVn: 'Một chùm nho xanh.' },
+              { src: IMAGES.broccoli, alt: 'A head of broccoli.', altVn: 'Một cây súp lơ xanh.' },
+              { src: IMAGES.orange, alt: 'Oranges, one cut open.', altVn: 'Những quả cam, có một quả bổ ra.' },
+            ],
+            aIndex: 1,
+            a: 'Broccoli.',
+            aVn: 'Súp lơ xanh. (Tiếng Anh: broccoli.)',
+          },
+          {
+            value: 400,
+            q: 'Which one is NOT sweet?',
+            qVn: 'Cái nào KHÔNG ngọt?',
+            qImages: [
+              { src: IMAGES.doughnut, alt: 'A chocolate doughnut with sprinkles.', altVn: 'Một chiếc bánh vòng phủ sô-cô-la.' },
+              { src: IMAGES.onion, alt: 'Onions, some cut in half.', altVn: 'Những củ hành, có củ bổ đôi.' },
+              { src: IMAGES.icecream, alt: 'An ice cream cone.', altVn: 'Một cây kem ốc quế.' },
+            ],
+            aIndex: 1,
+            a: 'The onion.',
+            aVn: 'Củ hành. (Tiếng Anh: the onion.)',
+          },
+          {
+            value: 500,
+            q: 'What is it?',
+            qVn: 'Đây là quả gì?',
+            qImages: [{ src: IMAGES.dragonfruit, alt: 'A dragon fruit cut open: pink skin, white inside with black seeds.', altVn: 'Một quả thanh long bổ ra: vỏ hồng, ruột trắng hạt đen.' }],
+            a: 'A dragon fruit.',
+            aVn: 'Quả thanh long. (Tiếng Anh: a dragon fruit.)',
+          },
+        ],
+      },
+      {
+        // The word under each picture is English in both languages: it is the
+        // English word the class claps.
+        name: 'Claps',
+        nameVn: 'Vỗ Tay',
+        clues: [
+          {
+            value: 100,
+            q: 'How many claps?',
+            qVn: 'Vỗ tay mấy cái?',
+            qImages: [{ src: IMAGES.cat, alt: 'A cat.', altVn: 'Một con mèo.', label: 'cat', labelVn: 'cat' }],
+            a: '1 clap: cat',
+            aVn: '1 cái: cat',
+          },
+          {
+            value: 200,
+            q: 'How many claps?',
+            qVn: 'Vỗ tay mấy cái?',
+            qImages: [{ src: IMAGES.monkey, alt: 'Monkeys sitting together.', altVn: 'Những chú khỉ ngồi cạnh nhau.', label: 'monkey', labelVn: 'monkey' }],
+            a: '2 claps: mon · key',
+            aVn: '2 cái: mon · key',
+          },
+          {
+            value: 300,
+            q: 'How many claps?',
+            qVn: 'Vỗ tay mấy cái?',
+            qImages: [{ src: IMAGES.butterfly, alt: 'A yellow and black butterfly on a flower.', altVn: 'Một con bướm vàng đen đậu trên hoa.', label: 'butterfly', labelVn: 'butterfly' }],
+            a: '3 claps: but · ter · fly',
+            aVn: '3 cái: but · ter · fly',
+          },
+          {
+            value: 400,
+            q: 'How many claps?',
+            qVn: 'Vỗ tay mấy cái?',
+            qImages: [{ src: IMAGES.watermelon, alt: 'Slices of red watermelon.', altVn: 'Những miếng dưa hấu đỏ.', label: 'watermelon', labelVn: 'watermelon' }],
+            a: '4 claps: wa · ter · mel · on',
+            aVn: '4 cái: wa · ter · mel · on',
+          },
+          {
+            value: 500,
+            q: 'How many claps?',
+            qVn: 'Vỗ tay mấy cái?',
+            qImages: [{ src: IMAGES.fire, alt: 'A campfire burning at night.', altVn: 'Một đống lửa trại cháy trong đêm.', label: 'fire', labelVn: 'fire' }],
+            a: '1 clap: fire. It sounds long, but it is one clap.',
+            aVn: '1 cái: fire. Nghe thì dài, nhưng chỉ vỗ một cái.',
+          },
+        ],
+      },
+      {
+        name: 'Which Is…?',
+        nameVn: 'Cái Nào…?',
+        clues: [
+          {
+            value: 100,
+            q: 'Which is taller?',
+            qVn: 'Con nào cao hơn?',
+            qImages: [
+              { src: IMAGES.elephant, alt: 'An elephant.', altVn: 'Một con voi.' },
+              { src: IMAGES.giraffe, alt: 'Two giraffes.', altVn: 'Hai con hươu cao cổ.' },
+            ],
+            aIndex: 1,
+            a: 'A giraffe is taller than an elephant.',
+            aVn: 'Hươu cao cổ cao hơn voi.',
+          },
+          {
+            value: 200,
+            q: 'Which is slower?',
+            qVn: 'Con nào chậm hơn?',
+            qImages: [
+              { src: IMAGES.snail, alt: 'A snail.', altVn: 'Một con ốc sên.' },
+              { src: IMAGES.turtle, alt: 'A turtle swimming.', altVn: 'Một con rùa đang bơi.' },
+            ],
+            aIndex: 0,
+            a: 'A snail is slower than a turtle.',
+            aVn: 'Ốc sên chậm hơn rùa.',
+          },
+          {
+            value: 300,
+            q: 'Which is heavier?',
+            qVn: 'Cái nào nặng hơn?',
+            qImages: [
+              { src: IMAGES.bus, alt: 'A yellow bus.', altVn: 'Một chiếc xe buýt màu vàng.' },
+              { src: IMAGES.whale, alt: 'A whale jumping out of the sea.', altVn: 'Một con cá voi nhảy lên khỏi mặt biển.' },
+            ],
+            aIndex: 1,
+            a: 'A whale is heavier than a bus.',
+            aVn: 'Cá voi nặng hơn xe buýt.',
+          },
+          {
+            value: 400,
+            q: 'Which is bigger?',
+            qVn: 'Cái nào to hơn?',
+            qImages: [
+              { src: IMAGES.moon, alt: 'The full moon.', altVn: 'Mặt Trăng tròn.' },
+              { src: IMAGES.sun, alt: 'The sun.', altVn: 'Mặt Trời.' },
+            ],
+            aIndex: 1,
+            a: 'The sun is bigger than the moon.',
+            aVn: 'Mặt Trời to hơn Mặt Trăng.',
+          },
+          {
+            value: 500,
+            q: 'Who is taller?',
+            qVn: 'Ai cao hơn?',
+            qImages: [
+              { src: IMAGES.mrBowen, alt: 'Mr Bowen.', altVn: 'Thầy Bowen.', label: 'Mr Bowen', labelVn: 'Thầy Bowen' },
+              { src: IMAGES.mrSeth, alt: 'Mr Seth.', altVn: 'Thầy Seth.', label: 'Mr Seth', labelVn: 'Thầy Seth' },
+            ],
+            aIndex: 0,
+            a: 'Mr Bowen is taller than Mr Seth.',
+            aVn: 'Thầy Bowen cao hơn thầy Seth.',
           },
         ],
       },
