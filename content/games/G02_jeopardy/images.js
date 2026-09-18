@@ -128,6 +128,45 @@ import earth from './images/earth.jpg'
 import mrBowen from './images/mr-bowen.jpg'
 import mrSeth from './images/mr-seth.jpg'
 
+// ── Year 7 · Science Unit 2 ───────────────────────────────────────────────────
+// Photographs copied byte-for-byte from the Science 2.1–2.7 decks, so the class
+// sees the same picture it saw in the lesson and Vite emits one shared asset.
+// The .svg files (particles, symbols, formulae, the heating curve, the air pie)
+// were drawn for this board; they are pictures, not diagrams.js blocks, so
+// audit:svg does not see them — their text is big and was checked by eye.
+import mercury from './images/sci2-mercury.jpg'
+import hourglass from './images/sci2-hourglass.jpg'
+import balloon from './images/sci2-balloon.jpg'
+import sponge from './images/sci2-sponge.jpg'
+import diffusion from './images/sci2-diffusion.jpg'
+import boilingKettle from './images/sci2-boil.jpg'
+import coldGlass from './images/sci2-condensation.jpg'
+import carbon from './images/sci2-carbon.jpg'
+import periodicTable from './images/sci2-ptwall.jpg'
+import sodium from './images/sci2-sodium.jpg'
+import glassOfWater from './images/sci2-water.jpg'
+import saltShaker from './images/sci2-saltshaker.jpg'
+import dryIce from './images/sci2-dryice.jpg'
+import chlorine from './images/sci2-chlorine.jpg'
+import saltField from './images/sci2-saltfield.jpg'
+import copperSulfate from './images/sci2-coppersulfate.jpg'
+import magnet from './images/sci2-magnet.jpg'
+import ironSulfide from './images/sci2-ironsulfide.jpg'
+import traffic from './images/sci2-traffic.jpg'
+import basin from './images/sci2-basin.jpg'
+import limescale from './images/sci2-kettle.jpg'
+import particlesSolid from './images/sci2-particles-solid.svg'
+import particlesLiquid from './images/sci2-particles-liquid.svg'
+import particlesGas from './images/sci2-particles-gas.svg'
+import heatingCurve from './images/sci2-heating-curve.svg'
+import symbolC from './images/sci2-symbol-c.svg'
+import symbolClCaps from './images/sci2-symbol-cl-caps.svg'
+import symbolClLower from './images/sci2-symbol-cl-lower.svg'
+import symbolCl from './images/sci2-symbol-cl.svg'
+import coVsCo from './images/sci2-co-vs-co.svg'
+import formulaH2o from './images/sci2-formula-h2o.svg'
+import airPie from './images/sci2-air-pie.svg'
+
 export const IMAGES = {
   // Year 7
   blueWhale,
@@ -211,4 +250,37 @@ export const IMAGES = {
   earth,
   mrBowen,
   mrSeth,
+  // Year 7 · Science Unit 2
+  mercury,
+  hourglass,
+  balloon,
+  sponge,
+  diffusion,
+  boilingKettle,
+  coldGlass,
+  carbon,
+  periodicTable,
+  sodium,
+  glassOfWater,
+  saltShaker,
+  dryIce,
+  chlorine,
+  saltField,
+  copperSulfate,
+  magnet,
+  ironSulfide,
+  traffic,
+  basin,
+  limescale,
+  particlesSolid,
+  particlesLiquid,
+  particlesGas,
+  heatingCurve,
+  symbolC,
+  symbolClCaps,
+  symbolClLower,
+  symbolCl,
+  coVsCo,
+  formulaH2o,
+  airPie,
 }

@@ -1,5 +1,5 @@
 // content/games/G02_jeopardy/boards.js
-// Six Jeopardy boards of five clues a category.
+// Seven Jeopardy boards of five clues a category.
 //
 //   1. Mathematics 1.1–1.3   — integers, sign rules, multiples and the LCM
 //   2. Science 1.1–1.3       — cells, plant vs animal, specialised cells
@@ -8,6 +8,8 @@
 //   5. Kindergarten & Year 1 — cooking and first science, read aloud
 //   6. Year 1                — five columns of picture questions: kitchen,
 //                              food, dishes from the world, claps, "Which is…?"
+//   7. Science Unit 2        — states, particles, changes of state, elements,
+//                              compounds and mixtures; 29 of 30 clues have a picture
 //
 // The board grid takes its column count from `categories.length`, so a board
 // can have fewer than six.
@@ -1820,6 +1822,312 @@ export const BOARDS = [
             aIndex: 0,
             a: 'Mr Bowen is taller than Mr Seth.',
             aVn: 'Thầy Bowen cao hơn thầy Seth.',
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── 7 · SCIENCE UNIT 2 ────────────────────────────────────────────────────
+  // Science 2.1–2.7, one category per idea rather than per lesson. There is no
+  // 2.4 deck, so there is no 2.4 here.
+  //
+  // This is the Year 7 board that is built on pictures: 29 of the 30 clues
+  // carry one. The photographs are the ones from the lessons, so a clue is a
+  // memory of a slide. The drawn ones — particle boxes, symbol squares, H₂O,
+  // Co and CO, the heating curve and the air pie — put the symbol or the
+  // diagram on the card as the thing to read, because in this unit the
+  // symbol IS the English.
+  {
+    id: 'science-u2',
+    title: 'Science · Unit 2 · 2.1–2.7',
+    titleVn: 'Khoa học · Chương 2 · Bài 2.1–2.7',
+    subtitle: 'States, particles, elements, compounds and mixtures',
+    subtitleVn: 'Các thể, hạt, nguyên tố, hợp chất và hỗn hợp',
+    icon: 'Atom',
+    accent: '#e11d48',
+    categories: [
+      {
+        name: 'States of Matter',
+        nameVn: 'Các thể của chất',
+        clues: [
+          {
+            value: 100,
+            q: 'Ice: solid, liquid or gas? Give one reason.',
+            qVn: 'Nước đá: rắn, lỏng hay khí? Nêu một lý do.',
+            qImage: { src: IMAGES.ice, alt: 'Ice cubes in a glass of water.', altVn: 'Những viên đá trong ly nước.' },
+            a: 'A solid. It keeps its shape. (Or: it keeps its volume. It cannot be poured.)',
+            aVn: 'Chất rắn. Nó giữ nguyên hình dạng. (Hoặc: nó giữ nguyên thể tích. Nó không rót được.)',
+          },
+          {
+            value: 200,
+            q: 'Mercury is a metal. Is it a solid, a liquid or a gas?',
+            qVn: 'Thuỷ ngân là một kim loại. Nó là chất rắn, chất lỏng hay chất khí?',
+            qImage: { src: IMAGES.mercury, alt: 'Silver liquid mercury being poured.', altVn: 'Thuỷ ngân lỏng màu bạc đang được rót.' },
+            a: 'A liquid. It can be poured, and it takes the shape of its container.',
+            aVn: 'Chất lỏng. Nó rót được, và nó có hình dạng của vật chứa nó.',
+          },
+          {
+            value: 300,
+            q: 'You can pour sand. So is sand a liquid?',
+            qVn: 'Em có thể rót cát. Vậy cát có phải là chất lỏng không?',
+            qImage: { src: IMAGES.hourglass, alt: 'Sand pouring through an hourglass.', altVn: 'Cát đang chảy qua một chiếc đồng hồ cát.' },
+            a: 'No. Each grain of sand is a solid. Each grain keeps its own shape and volume.',
+            aVn: 'Không. Mỗi hạt cát là một chất rắn. Mỗi hạt giữ nguyên hình dạng và thể tích của nó.',
+          },
+          {
+            value: 400,
+            q: 'Only one state of matter can be compressed (squashed). Which one?',
+            qVn: 'Chỉ có một thể của chất có thể bị nén (ép lại). Đó là thể nào?',
+            a: 'A gas. Its particles are far apart, so they can be pushed closer together.',
+            aVn: 'Chất khí. Các hạt của nó ở xa nhau, nên có thể bị đẩy lại gần nhau hơn.',
+            aImage: { src: IMAGES.balloon, alt: 'A hot-air balloon filling up with gas.', altVn: 'Một khinh khí cầu đang được bơm đầy khí.' },
+          },
+          {
+            value: 500,
+            q: 'You can squash a sponge. But a sponge is a solid. How?',
+            qVn: 'Em có thể bóp một miếng bọt biển. Nhưng bọt biển là chất rắn. Tại sao bóp được?',
+            qImage: { src: IMAGES.sponge, alt: 'A yellow kitchen sponge, full of holes.', altVn: 'Một miếng bọt biển màu vàng, có rất nhiều lỗ.' },
+            a: 'A sponge is full of holes, and the holes are full of air. You squash the air — a gas. The solid does not get smaller.',
+            aVn: 'Bọt biển có rất nhiều lỗ, và các lỗ chứa đầy không khí. Em đang nén không khí — một chất khí. Phần chất rắn không nhỏ đi.',
+          },
+        ],
+      },
+      {
+        name: 'Particles',
+        nameVn: 'Các hạt',
+        clues: [
+          {
+            value: 100,
+            q: 'Solid, liquid or gas?',
+            qVn: 'Rắn, lỏng hay khí?',
+            qImage: { src: IMAGES.particlesSolid, alt: 'Particles in neat rows, tightly packed and touching.', altVn: 'Các hạt xếp thành hàng ngay ngắn, sát nhau và chạm nhau.' },
+            a: 'A solid. The particles are in a fixed pattern, tightly packed.',
+            aVn: 'Chất rắn. Các hạt xếp theo một trật tự cố định, sát nhau.',
+          },
+          {
+            value: 200,
+            q: 'Solid, liquid or gas?',
+            qVn: 'Rắn, lỏng hay khí?',
+            qImage: { src: IMAGES.particlesGas, alt: 'A few particles, far apart, spread through the whole box.', altVn: 'Một vài hạt ở xa nhau, rải khắp cả hộp.' },
+            a: 'A gas. The particles do not touch. They are far apart.',
+            aVn: 'Chất khí. Các hạt không chạm nhau. Chúng ở xa nhau.',
+          },
+          {
+            value: 300,
+            q: 'Solid, liquid or gas? Look carefully.',
+            qVn: 'Rắn, lỏng hay khí? Nhìn kỹ nhé.',
+            qImage: { src: IMAGES.particlesLiquid, alt: 'Particles at the bottom of the box, touching, but not in rows.', altVn: 'Các hạt ở đáy hộp, chạm nhau, nhưng không xếp thành hàng.' },
+            a: 'A liquid. The particles still touch, but there is no pattern. They move past one another.',
+            aVn: 'Chất lỏng. Các hạt vẫn chạm nhau, nhưng không có trật tự. Chúng di chuyển qua nhau.',
+          },
+          {
+            value: 400,
+            q: 'Space is almost empty. What is the word for a space with no particles at all?',
+            qVn: 'Vũ trụ gần như trống rỗng. Một khoảng không hoàn toàn không có hạt nào gọi là gì?',
+            qImage: { src: IMAGES.earth, alt: 'The Earth seen from space.', altVn: 'Trái Đất nhìn từ vũ trụ.' },
+            a: 'A vacuum. A vacuum contains nothing.',
+            aVn: 'Chân không (vacuum). Chân không không chứa gì cả.',
+          },
+          {
+            value: 500,
+            q: 'Nobody stirs the water, but the ink spreads out. Why? Use the word "particles".',
+            qVn: 'Không ai khuấy nước, nhưng mực vẫn lan ra. Tại sao? Hãy dùng từ "particles" (hạt).',
+            qImage: { src: IMAGES.diffusion, alt: 'Ink spreading slowly through a glass of water.', altVn: 'Mực đang từ từ lan ra trong một cốc nước.' },
+            a: 'The particles in a liquid move past one another. The ink particles move in between the water particles.',
+            aVn: 'Các hạt trong chất lỏng di chuyển qua nhau. Các hạt mực đi vào giữa các hạt nước.',
+          },
+        ],
+      },
+      {
+        name: 'Changes of State',
+        nameVn: 'Sự chuyển thể',
+        clues: [
+          {
+            value: 100,
+            q: 'Solid to liquid. What is the word?',
+            qVn: 'Từ rắn sang lỏng. Từ đó là gì?',
+            qImage: { src: IMAGES.meltingIcecream, alt: 'An ice lolly melting into a puddle on hot pavement.', altVn: 'Một que kem đang tan thành vũng nước trên vỉa hè nóng.' },
+            a: 'Melt. The ice lolly is melting.',
+            aVn: 'Melt (nóng chảy). Que kem đang tan chảy.',
+          },
+          {
+            value: 200,
+            q: 'Liquid to gas, fast, at 100 °C. What is the word? What is the gas called?',
+            qVn: 'Từ lỏng sang khí, nhanh, ở 100 °C. Từ đó là gì? Chất khí đó gọi là gì?',
+            qImage: { src: IMAGES.boilingKettle, alt: 'A kettle boiling, with steam coming out.', altVn: 'Một chiếc ấm đang sôi, hơi nước bốc ra.' },
+            a: 'Boil. The gas is steam.',
+            aVn: 'Boil (sôi). Chất khí đó là steam (hơi nước).',
+          },
+          {
+            value: 300,
+            q: 'Evaporate and boil both change a liquid into a gas. What is the difference?',
+            qVn: 'Bay hơi và sôi đều biến chất lỏng thành chất khí. Khác nhau ở đâu?',
+            a: 'Evaporation is slow, only from the surface. Boiling is fast, all through the liquid.',
+            aVn: 'Bay hơi thì chậm, chỉ ở bề mặt. Sôi thì nhanh, xảy ra khắp chất lỏng.',
+          },
+          {
+            value: 400,
+            q: 'Mr Bowen puts ice in a glass of water. Soon the OUTSIDE of the glass is wet. Where does the water come from?',
+            qVn: 'Thầy Bowen cho đá vào một cốc nước. Một lúc sau, mặt NGOÀI của cốc bị ướt. Nước đó từ đâu ra?',
+            qImage: { src: IMAGES.coldGlass, alt: 'Drops of water on the outside of a cold glass.', altVn: 'Những giọt nước ở mặt ngoài một chiếc cốc lạnh.' },
+            a: 'From the air. Water vapour in the air touches the cold glass and condenses into drops. It does not come through the glass.',
+            aVn: 'Từ không khí. Hơi nước trong không khí chạm vào cốc lạnh và ngưng tụ thành giọt. Nước không thấm qua thành cốc.',
+          },
+          {
+            value: 500,
+            q: 'Water is heated. Why does the line go flat at 100 °C?',
+            qVn: 'Nước được đun nóng. Tại sao đường đồ thị đi ngang ở 100 °C?',
+            qImage: { src: IMAGES.heatingCurve, alt: 'A graph of temperature against time. The line goes up, then flat at 100.', altVn: 'Đồ thị nhiệt độ theo thời gian. Đường đi lên, rồi đi ngang ở 100.' },
+            a: 'The water is boiling. The heat changes the liquid into gas, so the temperature stays the same.',
+            aVn: 'Nước đang sôi. Nhiệt làm chất lỏng biến thành khí, nên nhiệt độ giữ nguyên.',
+          },
+        ],
+      },
+      {
+        name: 'Elements & Symbols',
+        nameVn: 'Nguyên tố & Kí hiệu',
+        clues: [
+          {
+            value: 100,
+            q: 'Which element is this?',
+            qVn: 'Đây là nguyên tố nào?',
+            qImage: { src: IMAGES.symbolC, alt: 'A Periodic Table square: number 6, symbol C. The name is hidden.', altVn: 'Một ô trong Bảng tuần hoàn: số 6, kí hiệu C. Tên bị che.' },
+            a: 'Carbon. Diamond and graphite (the "lead" in a pencil) are both carbon.',
+            aVn: 'Cacbon. Kim cương và than chì ("ruột" bút chì) đều là cacbon.',
+            aImage: { src: IMAGES.carbon, alt: 'Graphite and a diamond: two forms of carbon.', altVn: 'Than chì và kim cương: hai dạng của cacbon.' },
+          },
+          {
+            value: 200,
+            q: 'In the Periodic Table, what is a row called? What is a column called?',
+            qVn: 'Trong Bảng tuần hoàn, một hàng gọi là gì? Một cột gọi là gì?',
+            qImage: { src: IMAGES.periodicTable, alt: 'A Periodic Table poster on a classroom wall.', altVn: 'Một tấm áp phích Bảng tuần hoàn trên tường lớp học.' },
+            a: 'A row is a period. A column is a group.',
+            aVn: 'Một hàng là một chu kì (period). Một cột là một nhóm (group).',
+          },
+          {
+            value: 300,
+            q: 'Which is the right way to write the symbol for chlorine?',
+            qVn: 'Cách viết nào đúng cho kí hiệu của clo (chlorine)?',
+            qImages: [
+              { src: IMAGES.symbolClCaps, alt: 'CL, two capital letters.', altVn: 'CL, hai chữ in hoa.' },
+              { src: IMAGES.symbolClLower, alt: 'cl, two small letters.', altVn: 'cl, hai chữ thường.' },
+              { src: IMAGES.symbolCl, alt: 'Cl, a capital C and a small l.', altVn: 'Cl, chữ C in hoa và chữ l thường.' },
+            ],
+            aIndex: 2,
+            a: 'Cl. The first letter is a capital. The second letter is small.',
+            aVn: 'Cl. Chữ cái đầu viết hoa. Chữ cái thứ hai viết thường.',
+          },
+          {
+            value: 400,
+            q: 'This is sodium. Its symbol is Na. Where does "Na" come from?',
+            qVn: 'Đây là natri (sodium). Kí hiệu của nó là Na. "Na" từ đâu mà có?',
+            qImage: { src: IMAGES.sodium, alt: 'Freshly cut chunks of sodium metal.', altVn: 'Những miếng kim loại natri vừa được cắt.' },
+            a: 'From "natrium", the old Latin name for sodium.',
+            aVn: 'Từ "natrium", tên La-tinh cổ của sodium.',
+          },
+          {
+            value: 500,
+            q: 'Co and CO. What is the difference?',
+            qVn: 'Co và CO. Khác nhau thế nào?',
+            qImage: { src: IMAGES.coVsCo, alt: 'Two squares: Co, and CO.', altVn: 'Hai ô: Co và CO.' },
+            a: 'Co is one element: cobalt, a metal. CO is a compound: carbon monoxide — one carbon atom and one oxygen atom.',
+            aVn: 'Co là một nguyên tố: coban, một kim loại. CO là một hợp chất: cacbon monoxit — một nguyên tử cacbon và một nguyên tử oxi.',
+          },
+        ],
+      },
+      {
+        name: 'Compounds & Formulae',
+        nameVn: 'Hợp chất & Công thức',
+        clues: [
+          {
+            value: 100,
+            q: 'What compound is this? How many atoms of each element?',
+            qVn: 'Đây là hợp chất gì? Có bao nhiêu nguyên tử của mỗi nguyên tố?',
+            qImage: { src: IMAGES.formulaH2o, alt: 'The formula H₂O.', altVn: 'Công thức H₂O.' },
+            a: 'Water. Two hydrogen atoms and one oxygen atom.',
+            aVn: 'Nước. Hai nguyên tử hiđro và một nguyên tử oxi.',
+            aImage: { src: IMAGES.glassOfWater, alt: 'A glass of water.', altVn: 'Một cốc nước.' },
+          },
+          {
+            value: 200,
+            q: 'Salt is sodium chloride. Write its formula.',
+            qVn: 'Muối là natri clorua (sodium chloride). Hãy viết công thức của nó.',
+            qImage: { src: IMAGES.saltShaker, alt: 'A salt shaker full of table salt.', altVn: 'Một lọ rắc muối đầy muối ăn.' },
+            a: 'NaCl. One sodium atom, one chlorine atom.',
+            aVn: 'NaCl. Một nguyên tử natri, một nguyên tử clo.',
+          },
+          {
+            value: 300,
+            q: 'Dry ice is solid carbon dioxide. Write its formula.',
+            qVn: 'Đá khô là cacbon đioxit (carbon dioxide) ở thể rắn. Hãy viết công thức của nó.',
+            qImage: { src: IMAGES.dryIce, alt: 'White pellets of dry ice, smoking.', altVn: 'Những viên đá khô màu trắng đang bốc khói.' },
+            a: 'CO₂. "Di" means two: two oxygen atoms.',
+            aVn: 'CO₂. "Di" nghĩa là hai: hai nguyên tử oxi.',
+          },
+          {
+            value: 400,
+            q: 'Chlorine is a poisonous gas. Sodium is a dangerous metal. Bond them together. What do you get?',
+            qVn: 'Clo là một chất khí độc. Natri là một kim loại nguy hiểm. Cho chúng liên kết với nhau. Em được chất gì?',
+            qImage: { src: IMAGES.chlorine, alt: 'Yellow-green chlorine gas in a glass jar.', altVn: 'Khí clo màu vàng lục trong một bình thuỷ tinh.' },
+            a: 'Salt — and you can eat it. A compound has new properties. It is not like its elements.',
+            aVn: 'Muối — và em ăn được. Hợp chất có tính chất mới. Nó không giống các nguyên tố tạo ra nó.',
+            aImage: { src: IMAGES.saltField, alt: 'Harvesting salt at a salt field in Phú Yên, Vietnam.', altVn: 'Thu hoạch muối trên cánh đồng muối ở Phú Yên, Việt Nam.' },
+          },
+          {
+            value: 500,
+            q: 'Copper sulfate. Name the THREE elements in it.',
+            qVn: 'Đồng sunfat (copper sulfate). Kể tên BA nguyên tố có trong nó.',
+            qImage: { src: IMAGES.copperSulfate, alt: 'Bright blue crystals of copper sulfate.', altVn: 'Những tinh thể đồng sunfat màu xanh lam.' },
+            a: 'Copper, sulfur and oxygen. A name that ends in "-ate" has oxygen in it too.',
+            aVn: 'Đồng, lưu huỳnh và oxi. Tên kết thúc bằng "-ate" thì có cả oxi.',
+          },
+        ],
+      },
+      {
+        name: 'Compound or Mixture?',
+        nameVn: 'Hợp chất hay hỗn hợp?',
+        clues: [
+          {
+            value: 100,
+            q: 'A magnet pulls the iron away from the sulfur. Compound or mixture?',
+            qVn: 'Nam châm hút sắt ra khỏi lưu huỳnh. Hợp chất hay hỗn hợp?',
+            qImage: { src: IMAGES.magnet, alt: 'A magnet covered in iron filings, lifted out of yellow sulfur.', altVn: 'Một thanh nam châm dính đầy mạt sắt, nhấc ra khỏi bột lưu huỳnh màu vàng.' },
+            a: 'A mixture. The iron is still iron. The iron and sulfur are not bonded.',
+            aVn: 'Hỗn hợp. Sắt vẫn là sắt. Sắt và lưu huỳnh không liên kết với nhau.',
+          },
+          {
+            value: 200,
+            q: 'Now heat the iron and sulfur. They make a new substance. What is its name?',
+            qVn: 'Bây giờ đun nóng sắt và lưu huỳnh. Chúng tạo thành một chất mới. Tên của nó là gì?',
+            a: 'Iron sulfide, a compound. The metal comes first. The non-metal ends in "-ide".',
+            aVn: 'Sắt sunfua (iron sulfide), một hợp chất. Kim loại đứng trước. Phi kim kết thúc bằng "-ide".',
+            aImage: { src: IMAGES.ironSulfide, alt: 'Iron sulfide: a dark grey solid.', altVn: 'Sắt sunfua: một chất rắn màu xám đen.' },
+          },
+          {
+            value: 300,
+            q: 'Air is a mixture. Which gas is 78%? Which gas is 21%?',
+            qVn: 'Không khí là một hỗn hợp. Khí nào chiếm 78%? Khí nào chiếm 21%?',
+            qImage: { src: IMAGES.airPie, alt: 'A pie chart of the air: 78%, 21% and 1%. The names are hidden.', altVn: 'Biểu đồ tròn của không khí: 78%, 21% và 1%. Tên các khí bị che.' },
+            a: 'Nitrogen is 78%. Oxygen is 21%. Other gases are 1%.',
+            aVn: 'Nitơ chiếm 78%. Oxi chiếm 21%. Các khí khác chiếm 1%.',
+          },
+          {
+            value: 400,
+            q: 'Motorbikes burn petrol. Which gas do they put into the air? Give its name and its formula.',
+            qVn: 'Xe máy đốt xăng. Chúng thải vào không khí khí gì? Nêu tên và công thức của nó.',
+            qImage: { src: IMAGES.traffic, alt: 'Motorbike traffic in Hanoi.', altVn: 'Dòng xe máy ở Hà Nội.' },
+            a: 'Carbon dioxide, CO₂.',
+            aVn: 'Cacbon đioxit, CO₂.',
+          },
+          {
+            value: 500,
+            q: 'You boil tap water away in an evaporating basin. A white solid is left. Was the tap water pure?',
+            qVn: 'Em đun cho nước máy bay hơi hết trong một bát sứ (evaporating basin). Còn lại một chất rắn màu trắng. Nước máy có tinh khiết (pure) không?',
+            qImage: { src: IMAGES.basin, alt: 'Three white evaporating basins.', altVn: 'Ba chiếc bát sứ trắng dùng để làm bay hơi.' },
+            a: 'No. Pure water is only water. Tap water is a mixture: water and minerals. The same white solid builds up inside a kettle.',
+            aVn: 'Không. Nước tinh khiết chỉ có nước. Nước máy là một hỗn hợp: nước và khoáng chất. Chất rắn trắng đó cũng bám bên trong ấm đun nước.',
+            aImage: { src: IMAGES.limescale, alt: 'White limescale inside an electric kettle.', altVn: 'Cặn trắng bám bên trong một ấm đun nước điện.' },
           },
         ],
       },

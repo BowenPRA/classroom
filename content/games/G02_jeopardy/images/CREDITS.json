@@ -788,5 +788,314 @@
     "source": "Wikimedia Commons. Byte-identical copy of content/games/G01_word-wall/images/yoghurt.jpg — copied rather than imported across games so each folder carries its own licence, and Vite emits a single shared asset because the bytes match.",
     "usage": "Year 1 board, Food 500 (\"Which one is different?\"): another choice. Unaltered copy of the Word Wall tile; see that folder for how it was originally downscaled.",
     "bytes": 32206
+  },
+  {
+    "name": "sci2-mercury.jpg",
+    "title": "File:Pouring liquid mercury bionerd.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Pouring_liquid_mercury_bionerd.jpg",
+    "license": "CC BY 3.0",
+    "artist": "User:Bionerd",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_1a/images/mercury.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, States of Matter 200 (question picture): mercury, a metal that pours.",
+    "bytes": 143818
+  },
+  {
+    "name": "sci2-hourglass.jpg",
+    "title": "File:Hourglass with flowing sand.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Hourglass_with_flowing_sand.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "User:Pauloleong2002",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_1a/images/hourglass.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, States of Matter 300 (question picture): sand pours, but each grain is a solid.",
+    "bytes": 178818
+  },
+  {
+    "name": "sci2-balloon.jpg",
+    "title": "File:Cappadocia Balloon Inflating Wikimedia Commons.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Cappadocia_Balloon_Inflating_Wikimedia_Commons.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Benh LIEU SONG",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_1a/images/balloon.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, States of Matter 400 (answer picture): a gas fills the balloon.",
+    "bytes": 156821
+  },
+  {
+    "name": "sci2-sponge.jpg",
+    "title": "File:Sponge-viscose.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Sponge-viscose.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Johan",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_1b/images/sponge.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, States of Matter 500 (question picture): a solid you can squash, because its holes hold air.",
+    "bytes": 170859
+  },
+  {
+    "name": "sci2-diffusion.jpg",
+    "title": "File:Diffusion with ink.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Diffusion_with_ink.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "User:Zvonimirl",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_1b/images/diffusion.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Particles 500 (question picture): ink spreading through water on its own.",
+    "bytes": 92613
+  },
+  {
+    "name": "sci2-boil.jpg",
+    "title": "File:Boilingkettle.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Boilingkettle.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "User:Plorpy2",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_2a/images/boil.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Changes of State 200 (question picture): a boiling kettle.",
+    "bytes": 134046
+  },
+  {
+    "name": "sci2-condensation.jpg",
+    "title": "Condensation on a glass of water",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Glass_of_water_(8467149239).jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "James Petts",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_3/images/condensation.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Changes of State 400 (question picture): drops on the outside of a cold glass.",
+    "bytes": 244537
+  },
+  {
+    "name": "sci2-carbon.jpg",
+    "title": "Graphite and diamond, two forms of carbon, with scale",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Graphite-and-diamond-with-scale.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Robert M. Lavinsky (iRocks.com)",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_5/images/carbon.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Elements & Symbols 100 (answer picture): graphite and diamond, both carbon.",
+    "bytes": 61226
+  },
+  {
+    "name": "sci2-ptwall.jpg",
+    "title": "A Periodic Table poster on a college wall",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:A_periodic_table_of_elements_poster,_stuck_on_the_wall_inside_St_Francis_College.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Mouryan",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_5/images/ptwall.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Elements & Symbols 200 (question picture): the Periodic Table.",
+    "bytes": 227180
+  },
+  {
+    "name": "sci2-sodium.jpg",
+    "title": "Sodium metal: freshly cut chunks",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Na_(Sodium).jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Dnn87 (English Wikipedia)",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_6/images/sodium.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Elements & Symbols 400 (question picture): sodium, symbol Na.",
+    "bytes": 103552
+  },
+  {
+    "name": "sci2-water.jpg",
+    "title": "A glass of water",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Glass-of-water.jpg",
+    "license": "Public domain",
+    "artist": "Derek Jensen (Tysto)",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_6/images/water.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Compounds & Formulae 100 (answer picture): a glass of water, H2O.",
+    "bytes": 79299
+  },
+  {
+    "name": "sci2-saltshaker.jpg",
+    "title": "A salt shaker filled with table salt (sodium chloride)",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Salt_shaker_on_white_background.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Dubravko Sorić SoraZG on Flickr",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_6/images/saltshaker.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Compounds & Formulae 200 (question picture): table salt, NaCl.",
+    "bytes": 70550
+  },
+  {
+    "name": "sci2-dryice.jpg",
+    "title": "Pellets of dry ice (solid carbon dioxide)",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Dry_Ice_Pellets_Subliming.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Richard Wheeler (Zephyris)",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_6/images/dryice.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Compounds & Formulae 300 (question picture): dry ice, solid CO2.",
+    "bytes": 35872
+  },
+  {
+    "name": "sci2-chlorine.jpg",
+    "title": "A sample of chlorine gas",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Chlorine-sample.jpg",
+    "license": "Public domain",
+    "artist": "Benjah-bmm27",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_6/images/chlorine.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Compounds & Formulae 400 (question picture): chlorine gas.",
+    "bytes": 78549
+  },
+  {
+    "name": "sci2-saltfield.jpg",
+    "title": "Harvesting salt at a salt field in Phú Yên, Vietnam",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Phu_Yen_salt_field_27-01-2018.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Vinnie Cartabiano",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_6/images/saltfield.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Compounds & Formulae 400 (answer picture): salt harvested in Phu Yen.",
+    "bytes": 148987
+  },
+  {
+    "name": "sci2-coppersulfate.jpg",
+    "title": "Blue crystals of copper sulfate",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Copper_Sulfate_Crystals.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Crystal Titan",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_6/images/coppersulfate.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Compounds & Formulae 500 (question picture): copper sulfate crystals.",
+    "bytes": 148471
+  },
+  {
+    "name": "sci2-magnet.jpg",
+    "title": "A magnet pulling iron out of an iron and sulfur mixture (cropped)",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Fe-S_mixture_04.jpg",
+    "license": "CC BY 4.0",
+    "artist": "Asoult",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_7/images/magnet.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Mixtures 100 (question picture): a magnet pulling iron out of iron and sulfur.",
+    "bytes": 119672
+  },
+  {
+    "name": "sci2-ironsulfide.jpg",
+    "title": "Iron(II) sulfide",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Sulfid_%C5%BEeleznat%C3%BD.JPG",
+    "license": "Public domain",
+    "artist": "Ondřej Mangl",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_7/images/ironsulfide.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Mixtures 200 (answer picture): iron sulfide, the new substance.",
+    "bytes": 43248
+  },
+  {
+    "name": "sci2-traffic.jpg",
+    "title": "Motorbike traffic in Hanoi, Vietnam",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Hanoi_Traffic_(174818911).jpeg",
+    "license": "CC BY 3.0",
+    "artist": "Benjamin Arnold",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_7/images/traffic.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Mixtures 400 (question picture): motorbike traffic in Hanoi.",
+    "bytes": 191923
+  },
+  {
+    "name": "sci2-basin.jpg",
+    "title": "Porcelain evaporating basins in three sizes",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Abdampfschalen_verschiedene_Groessen.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Simon A. Eugster",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_7/images/basin.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Mixtures 500 (question picture): evaporating basins.",
+    "bytes": 43776
+  },
+  {
+    "name": "sci2-kettle.jpg",
+    "title": "Limescale inside an electric kettle",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Waterboiler-internal.jpg",
+    "license": "CC BY-SA 1.0",
+    "artist": "Henna",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_7/images/kettle.jpg, the same photograph the class saw in that lesson, copied so this folder carries its own licence.",
+    "usage": "Science Unit 2 board, Mixtures 500 (answer picture): limescale left inside a kettle.",
+    "bytes": 109161
+  },
+  {
+    "name": "sci2-particles-solid.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Science Unit 2 Jeopardy board. No third-party material.",
+    "usage": "Science Unit 2 board.",
+    "bytes": 3131
+  },
+  {
+    "name": "sci2-particles-liquid.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Science Unit 2 Jeopardy board. No third-party material.",
+    "usage": "Science Unit 2 board.",
+    "bytes": 1649
+  },
+  {
+    "name": "sci2-particles-gas.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Science Unit 2 Jeopardy board. No third-party material.",
+    "usage": "Science Unit 2 board.",
+    "bytes": 902
+  },
+  {
+    "name": "sci2-heating-curve.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Science Unit 2 Jeopardy board. No third-party material.",
+    "usage": "Science Unit 2 board.",
+    "bytes": 1017
+  },
+  {
+    "name": "sci2-symbol-c.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Science Unit 2 Jeopardy board. No third-party material.",
+    "usage": "Science Unit 2 board.",
+    "bytes": 648
+  },
+  {
+    "name": "sci2-symbol-cl-caps.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Science Unit 2 Jeopardy board. No third-party material.",
+    "usage": "Science Unit 2 board.",
+    "bytes": 388
+  },
+  {
+    "name": "sci2-symbol-cl-lower.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Science Unit 2 Jeopardy board. No third-party material.",
+    "usage": "Science Unit 2 board.",
+    "bytes": 388
+  },
+  {
+    "name": "sci2-symbol-cl.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Science Unit 2 Jeopardy board. No third-party material.",
+    "usage": "Science Unit 2 board.",
+    "bytes": 388
+  },
+  {
+    "name": "sci2-co-vs-co.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Science Unit 2 Jeopardy board. No third-party material.",
+    "usage": "Science Unit 2 board.",
+    "bytes": 636
+  },
+  {
+    "name": "sci2-formula-h2o.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Science Unit 2 Jeopardy board. No third-party material.",
+    "usage": "Science Unit 2 board.",
+    "bytes": 467
+  },
+  {
+    "name": "sci2-air-pie.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Science Unit 2 Jeopardy board. No third-party material.",
+    "usage": "Science Unit 2 board.",
+    "bytes": 951
   }
 ]
