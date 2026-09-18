@@ -1097,5 +1097,69 @@
     "source": "Hand-written SVG, generated for the Science Unit 2 Jeopardy board. No third-party material.",
     "usage": "Science Unit 2 board.",
     "bytes": 951
+  },
+  {
+    "name": "teen-halong.jpg",
+    "title": "Limestone tower karsts in Ha Long Bay, Vietnam",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Ha_Long_Bay,_Tower_karsts.jpg",
+    "license": "CC BY 4.0",
+    "artist": "Vyacheslav Argenberg",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_6/images/halong.jpg, copied so this folder carries its own licence.",
+    "usage": "Teens board, Chemistry 400 (question picture): limestone, CaCO3, for the Mr and moles clue.",
+    "bytes": 114386
+  },
+  {
+    "name": "teen-nuclide-na.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Teens Jeopardy board. No third-party material.",
+    "usage": "Teens board.",
+    "bytes": 644
+  },
+  {
+    "name": "teen-equation-iron.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Teens Jeopardy board. No third-party material.",
+    "usage": "Teens board.",
+    "bytes": 660
+  },
+  {
+    "name": "teen-circuit-parallel.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Teens Jeopardy board. No third-party material.",
+    "usage": "Teens board.",
+    "bytes": 1649
+  },
+  {
+    "name": "teen-powers.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Teens Jeopardy board. No third-party material.",
+    "usage": "Teens board.",
+    "bytes": 609
+  },
+  {
+    "name": "teen-chessboard.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Teens Jeopardy board. No third-party material.",
+    "usage": "Teens board.",
+    "bytes": 5148
+  },
+  {
+    "name": "teen-counter.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Teens Jeopardy board. No third-party material.",
+    "usage": "Teens board.",
+    "bytes": 508
   }
 ]

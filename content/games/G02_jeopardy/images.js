@@ -167,6 +167,18 @@ import coVsCo from './images/sci2-co-vs-co.svg'
 import formulaH2o from './images/sci2-formula-h2o.svg'
 import airPie from './images/sci2-air-pie.svg'
 
+// ── Teens ─────────────────────────────────────────────────────────────────────
+// Ha Long Bay again (limestone is CaCO₃), and six drawings: nuclide notation,
+// an equation to balance, a parallel circuit, two powers, a chessboard and a
+// stuck view counter. The sodium, chlorine, Moon and Sun are reused from above.
+import teenHalong from './images/teen-halong.jpg'
+import teenNuclideNa from './images/teen-nuclide-na.svg'
+import teenEquationIron from './images/teen-equation-iron.svg'
+import teenCircuitParallel from './images/teen-circuit-parallel.svg'
+import teenPowers from './images/teen-powers.svg'
+import teenChessboard from './images/teen-chessboard.svg'
+import teenCounter from './images/teen-counter.svg'
+
 export const IMAGES = {
   // Year 7
   blueWhale,
@@ -283,4 +295,12 @@ export const IMAGES = {
   coVsCo,
   formulaH2o,
   airPie,
+  // Teens
+  teenHalong,
+  teenNuclideNa,
+  teenEquationIron,
+  teenCircuitParallel,
+  teenPowers,
+  teenChessboard,
+  teenCounter,
 }

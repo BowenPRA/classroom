@@ -1,5 +1,5 @@
 // content/games/G02_jeopardy/boards.js
-// Seven Jeopardy boards of five clues a category.
+// Eight Jeopardy boards of five clues a category.
 //
 //   1. Mathematics 1.1–1.3   — integers, sign rules, multiples and the LCM
 //   2. Science 1.1–1.3       — cells, plant vs animal, specialised cells
@@ -2128,6 +2128,246 @@ export const BOARDS = [
             a: 'No. Pure water is only water. Tap water is a mixture: water and minerals. The same white solid builds up inside a kettle.',
             aVn: 'Không. Nước tinh khiết chỉ có nước. Nước máy là một hỗn hợp: nước và khoáng chất. Chất rắn trắng đó cũng bám bên trong ấm đun nước.',
             aImage: { src: IMAGES.limescale, alt: 'White limescale inside an electric kettle.', altVn: 'Cặn trắng bám bên trong một ấm đun nước điện.' },
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── 8 · TEENS ─────────────────────────────────────────────────────────────
+  // The hardest board. IGCSE chemistry and physics that need a calculation or
+  // a reason, then three rounds anyone can win: word history, pop songs, and
+  // big numbers. The trivia rounds do the same job as Board 4's: they stop the
+  // two strongest scientists winning alone.
+  //
+  // Every pop clue is a FACT about a song — a record, a year, a reason — and
+  // never a line from it. Lyrics are copyrighted, and this site is public.
+  //
+  // Several clues lean on each other on purpose: Word History 400 (oxygen, the
+  // "acid-maker") answers itself with HCl from chemistry; Big Numbers 400 sets
+  // up the powers of 2 that Big Numbers 500 needs.
+  {
+    id: 'teens',
+    title: 'Teens · Science, Words, Songs & Numbers',
+    titleVn: 'Thiếu niên · Khoa học, Từ ngữ, Bài hát & Con số',
+    subtitle: 'IGCSE chemistry and physics, word history, pop songs, big numbers',
+    subtitleVn: 'Hoá học và vật lí IGCSE, lịch sử từ ngữ, nhạc pop, những con số lớn',
+    icon: 'Rocket',
+    accent: '#4338ca',
+    categories: [
+      {
+        name: 'Chemistry',
+        nameVn: 'Hoá học',
+        clues: [
+          {
+            value: 100,
+            q: 'You hold a lit splint at the mouth of a test tube. It makes a squeaky pop. Which gas is in the tube?',
+            qVn: 'Em đưa que đóm đang cháy vào miệng ống nghiệm. Có một tiếng "pop" nhỏ. Trong ống là khí gì?',
+            a: 'Hydrogen. The pop is hydrogen burning with oxygen to make water.',
+            aVn: 'Hiđro. Tiếng "pop" là hiđro cháy với oxi tạo thành nước.',
+          },
+          {
+            value: 200,
+            q: 'How many protons, neutrons and electrons are in this atom?',
+            qVn: 'Nguyên tử này có bao nhiêu proton, nơtron và electron?',
+            qImage: { src: IMAGES.teenNuclideNa, alt: 'Sodium in nuclide notation: mass number 23, atomic number 11.', altVn: 'Natri viết theo kí hiệu hạt nhân: số khối 23, số hiệu nguyên tử 11.' },
+            a: '11 protons and 11 electrons. 23 − 11 = 12 neutrons.',
+            aVn: '11 proton và 11 electron. 23 − 11 = 12 nơtron.',
+            aImage: { src: IMAGES.sodium, alt: 'Freshly cut chunks of sodium metal.', altVn: 'Những miếng kim loại natri vừa được cắt.' },
+          },
+          {
+            value: 300,
+            q: 'Balance this equation. It happens inside a blast furnace.',
+            qVn: 'Hãy cân bằng phương trình này. Phản ứng xảy ra trong lò cao.',
+            qImage: { src: IMAGES.teenEquationIron, alt: 'Fe₂O₃ plus ? CO gives ? Fe plus ? CO₂.', altVn: 'Fe₂O₃ cộng ? CO tạo ra ? Fe cộng ? CO₂.' },
+            a: 'Fe₂O₃ + 3CO → 2Fe + 3CO₂. Check: 2 Fe, 3 C and 6 O on each side.',
+            aVn: 'Fe₂O₃ + 3CO → 2Fe + 3CO₂. Kiểm tra: mỗi vế có 2 Fe, 3 C và 6 O.',
+          },
+          {
+            value: 400,
+            q: 'Ha Long Bay is limestone, CaCO₃. What is its Mr? How many moles are in 25 g? (Ca = 40, C = 12, O = 16)',
+            qVn: 'Vịnh Hạ Long là đá vôi, CaCO₃. Mr của nó là bao nhiêu? 25 g có bao nhiêu mol? (Ca = 40, C = 12, O = 16)',
+            qImage: { src: IMAGES.teenHalong, alt: 'Limestone towers rising out of the sea in Ha Long Bay.', altVn: 'Những đảo đá vôi nhô lên khỏi mặt biển ở vịnh Hạ Long.' },
+            a: 'Mr = 40 + 12 + (3 × 16) = 100. Moles = 25 ÷ 100 = 0.25 mol.',
+            aVn: 'Mr = 40 + 12 + (3 × 16) = 100. Số mol = 25 ÷ 100 = 0,25 mol.',
+          },
+          {
+            value: 500,
+            q: 'Electrolysis of concentrated sodium chloride solution. What forms at the anode (+)? At the cathode (−)? What is left in the solution?',
+            qVn: 'Điện phân dung dịch natri clorua đặc. Chất gì tạo thành ở cực dương (+)? Ở cực âm (−)? Chất gì còn lại trong dung dịch?',
+            a: 'Anode: chlorine. Cathode: hydrogen — not sodium, because sodium is more reactive than hydrogen. Left in the solution: sodium hydroxide.',
+            aVn: 'Cực dương: clo. Cực âm: hiđro — không phải natri, vì natri hoạt động mạnh hơn hiđro. Còn lại trong dung dịch: natri hiđroxit.',
+            aImage: { src: IMAGES.chlorine, alt: 'Yellow-green chlorine gas in a glass jar.', altVn: 'Khí clo màu vàng lục trong một bình thuỷ tinh.' },
+          },
+        ],
+      },
+      {
+        name: 'Physics',
+        nameVn: 'Vật lí',
+        clues: [
+          {
+            value: 100,
+            q: 'On the Moon, an astronaut drops a hammer and a feather at the same time. Which one lands first?',
+            qVn: 'Trên Mặt Trăng, một phi hành gia thả một cái búa và một chiếc lông vũ cùng lúc. Vật nào chạm đất trước?',
+            qImage: { src: IMAGES.moon, alt: 'The full moon.', altVn: 'Mặt Trăng tròn.' },
+            a: 'Neither — they land together. There is no air on the Moon, so there is no air resistance. (David Scott tried it on Apollo 15, in 1971.)',
+            aVn: 'Không vật nào — chúng chạm đất cùng lúc. Mặt Trăng không có không khí nên không có lực cản không khí. (David Scott đã thử trong chuyến Apollo 15, năm 1971.)',
+          },
+          {
+            value: 200,
+            q: 'Mr Bowen rides his motorbike 12 km in 20 minutes. What is his average speed in km/h?',
+            qVn: 'Thầy Bowen đi xe máy 12 km trong 20 phút. Tốc độ trung bình của thầy là bao nhiêu km/h?',
+            a: '36 km/h. 20 minutes is a third of an hour, so 12 × 3 = 36.',
+            aVn: '36 km/h. 20 phút là một phần ba giờ, nên 12 × 3 = 36.',
+          },
+          {
+            value: 300,
+            q: 'What is the total resistance? What current flows from the 12 V supply?',
+            qVn: 'Điện trở tổng là bao nhiêu? Dòng điện chạy ra từ nguồn 12 V là bao nhiêu?',
+            qImage: { src: IMAGES.teenCircuitParallel, alt: 'A 12 V cell with two 6 ohm resistors in parallel.', altVn: 'Một nguồn 12 V với hai điện trở 6 ôm mắc song song.' },
+            a: '3 Ω — in parallel, the total is LESS than either resistor. Current: I = V ÷ R = 12 ÷ 3 = 4 A.',
+            aVn: '3 Ω — khi mắc song song, điện trở tổng NHỎ HƠN mỗi điện trở. Dòng điện: I = V ÷ R = 12 ÷ 3 = 4 A.',
+          },
+          {
+            value: 400,
+            q: 'A radioactive sample has a half-life of 8 days. You start with 160 g. How much is left after 24 days?',
+            qVn: 'Một mẫu chất phóng xạ có chu kì bán rã 8 ngày. Ban đầu có 160 g. Sau 24 ngày còn lại bao nhiêu?',
+            a: '20 g. 24 days is 3 half-lives: 160 → 80 → 40 → 20.',
+            aVn: '20 g. 24 ngày là 3 chu kì bán rã: 160 → 80 → 40 → 20.',
+          },
+          {
+            value: 500,
+            q: 'Light from the Sun takes about 500 seconds to reach us. Light travels at 3 × 10⁸ m/s. How far away is the Sun?',
+            qVn: 'Ánh sáng từ Mặt Trời mất khoảng 500 giây để đến chỗ chúng ta. Ánh sáng đi với tốc độ 3 × 10⁸ m/s. Mặt Trời cách chúng ta bao xa?',
+            qImage: { src: IMAGES.sun, alt: 'The sun.', altVn: 'Mặt Trời.' },
+            a: '1.5 × 10¹¹ m — 150 million km. Distance = speed × time = 3 × 10⁸ × 500.',
+            aVn: '1,5 × 10¹¹ m — 150 triệu km. Quãng đường = tốc độ × thời gian = 3 × 10⁸ × 500.',
+          },
+        ],
+      },
+      {
+        name: 'Word History',
+        nameVn: 'Lịch sử từ ngữ',
+        clues: [
+          {
+            value: 100,
+            q: 'The sandwich is named after a person. Who?',
+            qVn: 'Bánh sandwich được đặt theo tên một người. Người đó là ai?',
+            a: 'The Earl of Sandwich, an English lord in the 1700s. The story is that he ate meat between bread so he did not have to stop playing cards.',
+            aVn: 'Bá tước xứ Sandwich, một quý tộc Anh ở thế kỉ 18. Chuyện kể rằng ông ăn thịt kẹp giữa hai lát bánh mì để khỏi phải dừng chơi bài.',
+          },
+          {
+            value: 200,
+            q: '"Robot" first appeared in a Czech play in 1920. The Czech word "robota" means…?',
+            qVn: 'Từ "robot" xuất hiện lần đầu trong một vở kịch Séc năm 1920. Từ tiếng Séc "robota" nghĩa là…?',
+            a: 'Forced work — hard work you are made to do. The play was R.U.R., by Karel Čapek.',
+            aVn: 'Lao động cưỡng bức — việc nặng nhọc mà mình bị bắt phải làm. Vở kịch là R.U.R. của Karel Čapek.',
+          },
+          {
+            value: 300,
+            q: '"Quarantine" comes from the Italian "quaranta". What number is that — and why?',
+            qVn: '"Quarantine" (cách li) đến từ tiếng Ý "quaranta". Đó là số mấy — và tại sao?',
+            a: 'Forty. During the plague, ships arriving in Venice had to wait forty days before anyone could come ashore.',
+            aVn: 'Bốn mươi. Trong thời dịch hạch, tàu đến Venice phải chờ bốn mươi ngày rồi mới có người được lên bờ.',
+          },
+          {
+            value: 400,
+            q: 'Hydrogen means "water-maker". Oxygen means "acid-maker". Which name is a mistake — and why?',
+            qVn: 'Hydrogen nghĩa là "chất tạo ra nước". Oxygen nghĩa là "chất tạo ra axit". Tên nào là một sai lầm — và tại sao?',
+            a: 'Oxygen. Lavoisier thought every acid contains oxygen. Hydrochloric acid, HCl, has none.',
+            aVn: 'Oxygen. Lavoisier nghĩ rằng axit nào cũng chứa oxi. Axit clohiđric, HCl, không có oxi.',
+          },
+          {
+            value: 500,
+            q: 'Most languages call it "tea" or "cha". Vietnamese says "trà" or "chè". Why are there two words?',
+            qVn: 'Hầu hết các ngôn ngữ gọi nó là "tea" hoặc "cha". Tiếng Việt nói "trà" hoặc "chè". Tại sao lại có hai từ?',
+            a: 'Both come from Chinese. "Te" is from Fujian, where Dutch ships bought tea, so it spread by SEA to most of Europe. "Cha" spread over LAND — along the Silk Road, and to China\'s neighbours, like Vietnam.',
+            aVn: 'Cả hai đều từ tiếng Trung. "Te" là từ Phúc Kiến, nơi tàu Hà Lan mua trà, nên nó lan theo đường BIỂN tới hầu hết châu Âu. "Cha" lan theo đường BỘ — dọc Con đường Tơ lụa, và tới các nước láng giềng của Trung Quốc, như Việt Nam.',
+          },
+        ],
+      },
+      {
+        name: 'Pop Songs',
+        nameVn: 'Nhạc pop',
+        clues: [
+          {
+            value: 100,
+            q: 'In 2020, which K-pop group became the first all-Korean act to reach number one in the US, with "Dynamite"?',
+            qVn: 'Năm 2020, nhóm K-pop nào trở thành nghệ sĩ toàn người Hàn đầu tiên đứng số một ở Mỹ, với bài "Dynamite"?',
+            a: 'BTS. "Dynamite" went straight to number one on the Billboard Hot 100.',
+            aVn: 'BTS. "Dynamite" lên thẳng vị trí số một trên Billboard Hot 100.',
+          },
+          {
+            value: 200,
+            q: 'Which was the first YouTube video to pass 10 billion views?',
+            qVn: 'Video YouTube nào là video đầu tiên vượt 10 tỉ lượt xem?',
+            a: '"Baby Shark Dance", by Pinkfong from South Korea, in 2022. Yes, really.',
+            aVn: '"Baby Shark Dance" của Pinkfong (Hàn Quốc), năm 2022. Đúng vậy, thật đấy.',
+          },
+          {
+            value: 300,
+            q: 'In 2020, which 18-year-old won all four of the biggest Grammy awards in one night — the youngest person ever to do it?',
+            qVn: 'Năm 2020, ca sĩ 18 tuổi nào đã giành cả bốn giải Grammy lớn nhất trong một đêm — người trẻ nhất từng làm được?',
+            a: 'Billie Eilish. She writes her songs with her brother, Finneas.',
+            aVn: 'Billie Eilish. Cô sáng tác cùng anh trai mình, Finneas.',
+          },
+          {
+            value: 400,
+            q: 'Mariah Carey\'s "All I Want for Christmas Is You" came out in 1994. In which year did it first reach number one in the US?',
+            qVn: 'Bài "All I Want for Christmas Is You" của Mariah Carey ra mắt năm 1994. Năm nào nó lần đầu đứng số một ở Mỹ?',
+            a: '2019 — twenty-five years later. It climbs back up the charts every December.',
+            aVn: 'Năm 2019 — hai mươi lăm năm sau. Tháng Mười Hai nào nó cũng leo lại bảng xếp hạng.',
+          },
+          {
+            value: 500,
+            q: 'Why did Taylor Swift start re-recording her old albums as "Taylor\'s Version"?',
+            qVn: 'Tại sao Taylor Swift bắt đầu thu âm lại các album cũ của mình dưới tên "Taylor\'s Version"?',
+            a: 'She did not own the master recordings of her first six albums. A new recording is a new master — and she owns it. (In 2025 she bought the old ones back too.)',
+            aVn: 'Cô không sở hữu bản thu gốc (master) của sáu album đầu tiên. Một bản thu mới là một bản master mới — và cô sở hữu nó. (Năm 2025 cô cũng đã mua lại được các bản cũ.)',
+          },
+        ],
+      },
+      {
+        name: 'Big Numbers',
+        nameVn: 'Những con số lớn',
+        clues: [
+          {
+            value: 100,
+            q: 'How many zeros are in a googol?',
+            qVn: 'Một googol có bao nhiêu chữ số 0?',
+            a: '100. A googol is 10¹⁰⁰. The name Google is a play on it.',
+            aVn: '100. Một googol là 10¹⁰⁰. Cái tên Google là một cách chơi chữ từ nó.',
+          },
+          {
+            value: 200,
+            q: 'Which is bigger?',
+            qVn: 'Số nào lớn hơn?',
+            qImage: { src: IMAGES.teenPowers, alt: '2 to the power 10, or 10 to the power 3.', altVn: '2 mũ 10, hay 10 mũ 3.' },
+            a: '2¹⁰ = 1024 and 10³ = 1000, so 2¹⁰ is bigger — just.',
+            aVn: '2¹⁰ = 1024 và 10³ = 1000, nên 2¹⁰ lớn hơn — chỉ một chút.',
+          },
+          {
+            value: 300,
+            q: 'You are 15 years old. Roughly how old are you in seconds?',
+            qVn: 'Em 15 tuổi. Tính ra giây thì em khoảng bao nhiêu giây tuổi?',
+            a: 'About 470 million seconds. 15 × 365 × 24 × 60 × 60 ≈ 473 000 000.',
+            aVn: 'Khoảng 470 triệu giây. 15 × 365 × 24 × 60 × 60 ≈ 473 000 000.',
+          },
+          {
+            value: 400,
+            q: '1 grain of rice on the first square, 2 on the next, then 4, 8, 16… How many grains on square 64? Answer as a power of 2.',
+            qVn: '1 hạt gạo ở ô đầu tiên, 2 hạt ở ô tiếp theo, rồi 4, 8, 16… Ô thứ 64 có bao nhiêu hạt? Trả lời dưới dạng lũy thừa của 2.',
+            qImage: { src: IMAGES.teenChessboard, alt: 'A chessboard with 1, 2, 4, 8 and 16 on the first squares, and a question mark on the last square.', altVn: 'Một bàn cờ vua có 1, 2, 4, 8 và 16 ở các ô đầu, và dấu hỏi ở ô cuối cùng.' },
+            a: '2⁶³, not 2⁶⁴ — square 1 is 2⁰. That is about 9 × 10¹⁸ grains: centuries of the whole world\'s rice harvest, on one square.',
+            aVn: '2⁶³, không phải 2⁶⁴ — ô 1 là 2⁰. Khoảng 9 × 10¹⁸ hạt: bằng lượng gạo cả thế giới thu hoạch trong nhiều thế kỉ, chỉ trên một ô.',
+          },
+          {
+            value: 500,
+            q: 'In 2014, "Gangnam Style" broke YouTube\'s view counter. It could not count past this number. Why this number?',
+            qVn: 'Năm 2014, "Gangnam Style" đã làm hỏng bộ đếm lượt xem của YouTube. Nó không thể đếm quá con số này. Tại sao lại là con số này?',
+            qImage: { src: IMAGES.teenCounter, alt: 'A view counter showing 2,147,483,647 views.', altVn: 'Bộ đếm hiển thị 2 147 483 647 lượt xem.' },
+            a: 'It is 2³¹ − 1: the biggest number a 32-bit signed integer can hold. YouTube moved to 64 bits.',
+            aVn: 'Đó là 2³¹ − 1: số lớn nhất mà một số nguyên có dấu 32 bit chứa được. YouTube đã chuyển sang 64 bit.',
           },
         ],
       },
