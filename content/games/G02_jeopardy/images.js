@@ -178,6 +178,8 @@ import teenCircuitParallel from './images/teen-circuit-parallel.svg'
 import teenPowers from './images/teen-powers.svg'
 import teenChessboard from './images/teen-chessboard.svg'
 import teenCounter from './images/teen-counter.svg'
+// Teens 2: one drawing. Its banana, carrot and microwave are the Word Wall photos above.
+import teenDiomede from './images/teen-diomede.svg'
 
 export const IMAGES = {
   // Year 7
@@ -303,4 +305,5 @@ export const IMAGES = {
   teenPowers,
   teenChessboard,
   teenCounter,
+  teenDiomede,
 }

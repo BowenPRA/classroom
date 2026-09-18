@@ -1,5 +1,5 @@
 // content/games/G02_jeopardy/boards.js
-// Eight Jeopardy boards of five clues a category.
+// Nine Jeopardy boards of five clues a category.
 //
 //   1. Mathematics 1.1–1.3   — integers, sign rules, multiples and the LCM
 //   2. Science 1.1–1.3       — cells, plant vs animal, specialised cells
@@ -10,6 +10,10 @@
 //                              food, dishes from the world, claps, "Which is…?"
 //   7. Science Unit 2        — states, particles, changes of state, elements,
 //                              compounds and mixtures; 29 of 30 clues have a picture
+//   8. Teens                 — IGCSE chemistry and physics, word history, pop
+//                              songs and big numbers; the hardest board
+//   9. Teens 2               — myth or fact, celebrity couples, famous covers,
+//                              geography and accidental inventions
 //
 // The board grid takes its column count from `categories.length`, so a board
 // can have fewer than six.
@@ -2368,6 +2372,237 @@ export const BOARDS = [
             qImage: { src: IMAGES.teenCounter, alt: 'A view counter showing 2,147,483,647 views.', altVn: 'Bộ đếm hiển thị 2 147 483 647 lượt xem.' },
             a: 'It is 2³¹ − 1: the biggest number a 32-bit signed integer can hold. YouTube moved to 64 bits.',
             aVn: 'Đó là 2³¹ − 1: số lớn nhất mà một số nguyên có dấu 32 bit chứa được. YouTube đã chuyển sang 64 bit.',
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── 9 · TEENS 2 ───────────────────────────────────────────────────────────
+  // Trivia only, no syllabus: Myth or Fact, Celebrity Couples, Famous Covers,
+  // Geography and Accidental Inventions. Every answer still wants a reason.
+  //
+  // CELEBRITY COUPLES GO STALE. Each clue is pinned to an event and a year
+  // ("In 2025, … was seen on dates with …"), never "is dating", so it stays
+  // true whatever happens to the couple. Keep it that way when editing, and
+  // keep it to confirmed, public, family-friendly facts.
+  //
+  // FAMOUS COVERS name songs and tell their history; they never quote a line.
+  {
+    id: 'teens-2',
+    title: 'Teens 2 · Myths, Couples, Covers & Maps',
+    titleVn: 'Thiếu niên 2 · Lầm tưởng, Cặp đôi, Bản cover & Bản đồ',
+    subtitle: 'Myth or fact, celebrity couples, famous covers, geography, accidental inventions',
+    subtitleVn: 'Lầm tưởng hay sự thật, cặp đôi nổi tiếng, bản cover, địa lí, phát minh tình cờ',
+    icon: 'Globe',
+    accent: '#ea580c',
+    categories: [
+      {
+        name: 'Myth or Fact?',
+        nameVn: 'Lầm tưởng hay sự thật?',
+        clues: [
+          {
+            value: 100,
+            q: 'Myth or fact? A goldfish can only remember things for three seconds.',
+            qVn: 'Lầm tưởng hay sự thật? Cá vàng chỉ nhớ được mọi thứ trong ba giây.',
+            a: 'Myth. Goldfish can be trained, and they remember what they learn for months.',
+            aVn: 'Lầm tưởng. Cá vàng có thể được huấn luyện, và chúng nhớ những gì đã học trong nhiều tháng.',
+          },
+          {
+            value: 200,
+            q: 'Myth or fact? A banana is a berry, but a strawberry is not.',
+            qVn: 'Lầm tưởng hay sự thật? Quả chuối là một loại quả mọng (berry), còn quả dâu tây thì không.',
+            a: 'Fact — to a scientist. A true berry keeps its seeds inside. A strawberry has its seeds on the outside.',
+            aVn: 'Sự thật — theo các nhà khoa học. Quả mọng thật sự có hạt ở bên trong. Dâu tây lại có hạt ở bên ngoài.',
+            aImage: { src: IMAGES.banana, alt: 'A ripe yellow banana.', altVn: 'Một quả chuối chín vàng.' },
+          },
+          {
+            value: 300,
+            q: 'Myth or fact? Lightning never strikes the same place twice.',
+            qVn: 'Lầm tưởng hay sự thật? Sét không bao giờ đánh hai lần vào cùng một chỗ.',
+            a: 'Myth. The Empire State Building in New York is hit more than 20 times a year.',
+            aVn: 'Lầm tưởng. Toà nhà Empire State ở New York bị sét đánh hơn 20 lần mỗi năm.',
+          },
+          {
+            value: 400,
+            q: 'Myth or fact? On Venus, one day is longer than one year.',
+            qVn: 'Lầm tưởng hay sự thật? Trên sao Kim, một ngày dài hơn một năm.',
+            a: 'Fact. Venus takes 243 Earth days to spin round once, but only 225 Earth days to go round the Sun.',
+            aVn: 'Sự thật. Sao Kim mất 243 ngày Trái Đất để tự quay một vòng, nhưng chỉ mất 225 ngày Trái Đất để quay quanh Mặt Trời.',
+          },
+          {
+            value: 500,
+            q: 'Myth or fact? Eating lots of carrots lets you see in the dark. Where did the idea come from?',
+            qVn: 'Lầm tưởng hay sự thật? Ăn nhiều cà rốt giúp em nhìn thấy trong bóng tối. Ý tưởng này từ đâu ra?',
+            qImage: { src: IMAGES.carrot, alt: 'Fresh carrots.', altVn: 'Những củ cà rốt tươi.' },
+            a: 'Myth. The story goes that in World War II, Britain said its pilots ate carrots, to explain how they found enemy planes at night. The real secret was radar.',
+            aVn: 'Lầm tưởng. Chuyện kể rằng trong Thế chiến II, nước Anh nói phi công của họ ăn cà rốt, để giải thích vì sao họ tìm thấy máy bay địch vào ban đêm. Bí mật thật sự là ra-đa.',
+          },
+        ],
+      },
+      {
+        name: 'Celebrity Couples',
+        nameVn: 'Cặp đôi nổi tiếng',
+        clues: [
+          {
+            value: 100,
+            q: 'In 2025, Taylor Swift got engaged to Travis Kelce. What sport does he play?',
+            qVn: 'Năm 2025, Taylor Swift đính hôn với Travis Kelce. Anh ấy chơi môn thể thao nào?',
+            a: 'American football. He plays for the Kansas City Chiefs.',
+            aVn: 'Bóng bầu dục Mỹ. Anh chơi cho đội Kansas City Chiefs.',
+          },
+          {
+            value: 200,
+            q: 'In 2025, which pop star was seen on dates with Justin Trudeau, the former Prime Minister of Canada?',
+            qVn: 'Năm 2025, ngôi sao nhạc pop nào được nhìn thấy đi hẹn hò với Justin Trudeau, cựu Thủ tướng Canada?',
+            a: 'Katy Perry.',
+            aVn: 'Katy Perry.',
+          },
+          {
+            value: 300,
+            q: 'Zendaya and Tom Holland met while making which films?',
+            qVn: 'Zendaya và Tom Holland quen nhau khi đóng loạt phim nào?',
+            a: 'The Spider-Man films, starting with "Spider-Man: Homecoming" (2017). They got engaged in 2025.',
+            aVn: 'Loạt phim Người Nhện, bắt đầu từ "Spider-Man: Homecoming" (2017). Họ đính hôn năm 2025.',
+          },
+          {
+            value: 400,
+            q: 'Lionel Messi met his wife, Antonela, when he was five years old. In which city?',
+            qVn: 'Lionel Messi quen vợ mình, Antonela, khi anh mới năm tuổi. Ở thành phố nào?',
+            a: 'Rosario, in Argentina — his home town. She is the cousin of his childhood best friend.',
+            aVn: 'Rosario, ở Argentina — quê nhà của anh. Cô là em họ của người bạn thân thời thơ ấu của anh.',
+          },
+          {
+            value: 500,
+            q: 'In 1989, Barack Obama started a summer job at a law firm in Chicago. What was Michelle Robinson\'s job — for him?',
+            qVn: 'Năm 1989, Barack Obama bắt đầu làm việc mùa hè ở một công ti luật tại Chicago. Michelle Robinson có nhiệm vụ gì — đối với anh?',
+            a: 'She was his mentor. The firm asked her to look after the new student. She said no to a date at first.',
+            aVn: 'Bà là người hướng dẫn của ông. Công ti giao cho bà kèm cặp cậu sinh viên mới. Lúc đầu bà còn từ chối đi hẹn hò.',
+          },
+        ],
+      },
+      {
+        name: 'Famous Covers',
+        nameVn: 'Những bản cover nổi tiếng',
+        clues: [
+          {
+            value: 100,
+            q: '"I Will Always Love You" was a huge hit for Whitney Houston in 1992. Who wrote it and sang it first?',
+            qVn: '"I Will Always Love You" là bản hit lớn của Whitney Houston năm 1992. Ai đã sáng tác và hát nó đầu tiên?',
+            a: 'Dolly Parton, in 1974. She once refused to let Elvis record it, because his manager wanted half of the rights.',
+            aVn: 'Dolly Parton, năm 1974. Bà từng không cho Elvis thu âm bài này, vì quản lí của Elvis đòi một nửa bản quyền.',
+          },
+          {
+            value: 200,
+            q: '"Shrek" made "Hallelujah" famous with a new generation. Who wrote it, in 1984?',
+            qVn: 'Phim "Shrek" làm bài "Hallelujah" nổi tiếng với một thế hệ mới. Ai đã sáng tác nó, năm 1984?',
+            a: 'Leonard Cohen, a Canadian singer and poet. The film uses a cover by John Cale; Jeff Buckley\'s 1994 cover is the most famous.',
+            aVn: 'Leonard Cohen, một ca sĩ và nhà thơ người Canada. Bộ phim dùng bản cover của John Cale; bản cover năm 1994 của Jeff Buckley là nổi tiếng nhất.',
+          },
+          {
+            value: 300,
+            q: 'Aretha Franklin\'s "Respect" (1967) is a cover. Who sang it first?',
+            qVn: 'Bài "Respect" (1967) của Aretha Franklin là một bản cover. Ai hát nó đầu tiên?',
+            a: 'Otis Redding, in 1965. Aretha changed it so that a woman is the one asking for respect — and her version became the famous one.',
+            aVn: 'Otis Redding, năm 1965. Aretha sửa lại để người đòi được tôn trọng là một người phụ nữ — và bản của bà trở thành bản nổi tiếng.',
+          },
+          {
+            value: 400,
+            q: 'Elvis Presley\'s "Can\'t Help Falling in Love" (1961) borrowed its tune. From where?',
+            qVn: 'Bài "Can\'t Help Falling in Love" (1961) của Elvis Presley mượn giai điệu. Từ đâu?',
+            a: 'From a French love song written in 1784, "Plaisir d\'amour".',
+            aVn: 'Từ một bản tình ca Pháp viết năm 1784, "Plaisir d\'amour".',
+          },
+          {
+            value: 500,
+            q: 'In 2023, Luke Combs took a cover of "Fast Car" up the country charts. Who wrote the song — and what record did she set?',
+            qVn: 'Năm 2023, Luke Combs đưa bản cover "Fast Car" lên các bảng xếp hạng nhạc đồng quê. Ai đã sáng tác bài hát — và bà đã lập kỉ lục gì?',
+            a: 'Tracy Chapman, in 1988. She became the first Black songwriter to win Song of the Year at the Country Music Association Awards.',
+            aVn: 'Tracy Chapman, năm 1988. Bà trở thành nhạc sĩ da màu đầu tiên đoạt giải Bài hát của năm tại Giải thưởng Hiệp hội Nhạc đồng quê (CMA).',
+          },
+        ],
+      },
+      {
+        name: 'Geography',
+        nameVn: 'Địa lí',
+        clues: [
+          {
+            value: 100,
+            q: 'What is the capital of Australia?',
+            qVn: 'Thủ đô của Úc là gì?',
+            a: 'Canberra — not Sydney. Sydney and Melbourne both wanted to be the capital, so a new city was built between them.',
+            aVn: 'Canberra — không phải Sydney. Sydney và Melbourne đều muốn làm thủ đô, nên người ta xây một thành phố mới ở giữa hai nơi.',
+          },
+          {
+            value: 200,
+            q: 'Which is the only landlocked country in Southeast Asia?',
+            qVn: 'Nước nào là nước duy nhất không giáp biển ở Đông Nam Á?',
+            a: 'Laos. It has no coast — and its border with Vietnam is Vietnam\'s longest land border.',
+            aVn: 'Lào. Lào không có bờ biển — và biên giới với Lào là đường biên giới trên đất liền dài nhất của Việt Nam.',
+          },
+          {
+            value: 300,
+            q: 'Which country has the most people in the world?',
+            qVn: 'Nước nào đông dân nhất thế giới?',
+            a: 'India. It passed China in 2023. Each has more than 1.4 billion people.',
+            aVn: 'Ấn Độ. Ấn Độ vượt Trung Quốc năm 2023. Mỗi nước có hơn 1,4 tỉ người.',
+          },
+          {
+            value: 400,
+            q: 'The Mekong flows through six countries. Name them, from the mountains to the sea.',
+            qVn: 'Sông Mê Kông chảy qua sáu nước. Hãy kể tên, từ vùng núi ra đến biển.',
+            a: 'China, Myanmar, Laos, Thailand, Cambodia, Vietnam.',
+            aVn: 'Trung Quốc, Myanmar, Lào, Thái Lan, Campuchia, Việt Nam.',
+          },
+          {
+            value: 500,
+            q: 'Russia and the USA are less than 4 km apart. Where? And why is one island "Tomorrow Island" and the other "Yesterday Island"?',
+            qVn: 'Nga và Mỹ cách nhau chưa đến 4 km. Ở đâu? Và tại sao một hòn đảo được gọi là "Đảo Ngày Mai", còn hòn kia là "Đảo Hôm Qua"?',
+            a: 'The Diomede Islands, in the Bering Strait. The International Date Line runs between them, so the Russian island is almost a day ahead of the American one.',
+            aVn: 'Quần đảo Diomede, ở eo biển Bering. Đường đổi ngày quốc tế chạy giữa hai đảo, nên đảo của Nga đi trước đảo của Mỹ gần một ngày.',
+            aImage: { src: IMAGES.teenDiomede, alt: 'A map, not to scale: Big Diomede (Russia) and Little Diomede (USA), 3.8 km apart, with the International Date Line between them.', altVn: 'Bản đồ minh hoạ, không theo tỉ lệ: Big Diomede (Nga) và Little Diomede (Mỹ), cách nhau 3,8 km, đường đổi ngày quốc tế chạy ở giữa.' },
+          },
+        ],
+      },
+      {
+        name: 'Accidental Inventions',
+        nameVn: 'Phát minh tình cờ',
+        clues: [
+          {
+            value: 100,
+            q: 'In 1928, Alexander Fleming came back from holiday. Mould on a dish had killed the bacteria around it. What medicine did he discover?',
+            qVn: 'Năm 1928, Alexander Fleming đi nghỉ về. Nấm mốc trên một chiếc đĩa đã giết chết vi khuẩn xung quanh nó. Ông đã phát hiện ra loại thuốc gì?',
+            a: 'Penicillin — the first antibiotic.',
+            aVn: 'Penicillin — loại thuốc kháng sinh đầu tiên.',
+          },
+          {
+            value: 200,
+            q: 'In 1945, Percy Spencer was working on radar. The chocolate bar in his pocket melted. What did he invent?',
+            qVn: 'Năm 1945, Percy Spencer đang nghiên cứu ra-đa. Thanh sô-cô-la trong túi ông bị chảy. Ông đã phát minh ra cái gì?',
+            a: 'The microwave oven.',
+            aVn: 'Lò vi sóng.',
+            aImage: { src: IMAGES.microwave, alt: 'A microwave oven.', altVn: 'Một chiếc lò vi sóng.' },
+          },
+          {
+            value: 300,
+            q: 'In 1968, a scientist tried to make a very strong glue. He made a very weak one instead. What did it become?',
+            qVn: 'Năm 1968, một nhà khoa học cố làm ra một loại keo thật chắc. Nhưng ông lại làm ra một loại keo rất yếu. Nó đã trở thành cái gì?',
+            a: 'The Post-it Note. Another scientist at his company used it for bookmarks in his songbook that would not fall out.',
+            aVn: 'Giấy nhớ Post-it. Một nhà khoa học khác ở cùng công ti dùng nó làm dấu trang cho sách hát mà không bị rơi ra.',
+          },
+          {
+            value: 400,
+            q: 'After a walk in the Alps, George de Mestral found burrs (sticky seeds) stuck in his dog\'s fur. What did he invent?',
+            qVn: 'Sau một chuyến đi dạo ở dãy Alps, George de Mestral thấy những quả ké (hạt dính) bám đầy lông chó của mình. Ông đã phát minh ra cái gì?',
+            a: 'Velcro. The name comes from the French "velours" (velvet) and "crochet" (hook).',
+            aVn: 'Khoá dán Velcro. Cái tên đến từ tiếng Pháp "velours" (nhung) và "crochet" (móc).',
+          },
+          {
+            value: 500,
+            q: 'Play-Doh was first sold in the 1930s for a completely different job. What was it?',
+            qVn: 'Play-Doh (đất nặn) lúc đầu được bán vào những năm 1930 cho một việc hoàn toàn khác. Đó là việc gì?',
+            a: 'Cleaning wallpaper. It rubbed off black soot from coal fires. When homes stopped burning coal, the company sold it as a toy.',
+            aVn: 'Lau giấy dán tường. Nó lau sạch muội đen từ lò đốt than. Khi các gia đình không còn đốt than nữa, công ti bán nó làm đồ chơi.',
           },
         ],
       },

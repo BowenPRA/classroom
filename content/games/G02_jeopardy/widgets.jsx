@@ -43,7 +43,7 @@ import { useState, useEffect, useRef, useCallback, createElement } from 'react'
 import {
   Calculator, FlaskConical, Trophy, Gamepad2, ArrowLeft, Plus, X,
   Play, Pause, Eye, Check, Timer, Flag, RotateCcw, Crown, Users, Sparkles,
-  Music, Volume2, VolumeX, Pencil, CookingPot, Apple, Atom, Rocket,
+  Music, Volume2, VolumeX, Pencil, CookingPot, Apple, Atom, Rocket, Globe,
 } from 'lucide-react'
 
 import { BOARDS } from './boards.js'
@@ -151,7 +151,7 @@ import bossBattle from './audio/boss-battle.opus'
 import timeAttack from './audio/time-attack.ogg'
 import phonk from './audio/phonk.opus'
 
-const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot, Apple, Atom, Rocket }
+const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot, Apple, Atom, Rocket, Globe }
 
 // The clue countdown, and the music that runs with it.
 const TIMER_SECONDS = 30

@@ -1161,5 +1161,14 @@
     "source": "Hand-written SVG, generated for the Teens Jeopardy board. No third-party material.",
     "usage": "Teens board.",
     "bytes": 508
+  },
+  {
+    "name": "teen-diomede.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, a schematic (not to scale) of the Diomede Islands and the International Date Line. No third-party material.",
+    "usage": "Teens 2 board, Geography 500 (answer picture).",
+    "bytes": 1654
   }
 ]
