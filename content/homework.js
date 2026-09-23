@@ -21,6 +21,8 @@ import hw06 from '../homework/hw06/hw06.pdf?url'
 import hw06x from '../homework/hw06x/hw06x.pdf?url'
 import hw07 from '../homework/hw07/hw07.pdf?url'
 import hw07x from '../homework/hw07x/hw07x.pdf?url'
+import hw08 from '../homework/hw08/hw08.pdf?url'
+import hw08x from '../homework/hw08x/hw08x.pdf?url'
 import alg13 from '../homework/alg13/alg13.pdf?url'
 import alg13p3 from '../homework/alg13p3/alg13p3.pdf?url'
 
@@ -133,6 +135,29 @@ export const HOMEWORK = [
     title: 'Split, Multiply, Add',
     subtitle: 'Extra · two-digit multiplication, dividing, brackets',
     pdf: hw07x,
+  },
+  // Science at the front, because Section C reads Section A's table: the eight
+  // liquids placed on the pH scale in A1 are the eight that C2 filters with
+  // < and >. Section F is the reason this packet exists -- the pH scale, the
+  // number line, the measuring cylinder and the graph axis are one object, and
+  // all four ask how much one small line is worth before they tell you anything.
+  {
+    id: 'hw08',
+    label: 'HW 8',
+    title: 'Where It Lands on the Line',
+    subtitle: 'Science 2.7–2.8 · Maths 2.5–2.6, 3.1–3.2 · reading a scale',
+    pdf: hw08,
+  },
+  // Goes out with HW 8. One pair of digits standing in four places: 0.46, 4.6,
+  // 46 and 460. Part 4 is the mass ladder, which came out of HW 8 for the page
+  // target, so the two sheets are set together rather than one instead of the
+  // other.
+  {
+    id: 'hw08x',
+    label: 'EX 8',
+    title: 'The Point Never Moves',
+    subtitle: 'Extra · reading decimals, powers of 10, rounding, mg to t',
+    pdf: hw08x,
   },
   // Not a Year 7 packet: a single landscape sheet for the Algebra Track, handed
   // out DURING lesson 1.3 and used twice in it. It lives here because this is
