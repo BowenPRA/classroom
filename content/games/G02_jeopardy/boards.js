@@ -1,5 +1,5 @@
 // content/games/G02_jeopardy/boards.js
-// Nine Jeopardy boards of five clues a category.
+// Eleven Jeopardy boards of five clues a category.
 //
 //   1. Mathematics 1.1–1.3   — integers, sign rules, multiples and the LCM
 //   2. Science 1.1–1.3       — cells, plant vs animal, specialised cells
@@ -10,9 +10,12 @@
 //                              food, dishes from the world, claps, "Which is…?"
 //   7. Science Unit 2        — states, particles, changes of state, elements,
 //                              compounds and mixtures; 29 of 30 clues have a picture
-//   8. Teens                 — IGCSE chemistry and physics, word history, pop
+//   8. Mathematics Unit 2    — Maths 2.1–2.6 and 3.1–3.2: expressions, like
+//                              terms, brackets, equations, inequalities, rounding
+//   9. Science 2.4 + 2.8     — the water cycle, then acids, alkalis and pH
+//  10. Teens                 — IGCSE chemistry and physics, word history, pop
 //                              songs and big numbers; the hardest board
-//   9. Teens 2               — myth or fact, celebrity couples, famous covers,
+//  11. Teens 2               — myth or fact, celebrity couples, famous covers,
 //                              geography and accidental inventions
 //
 // The board grid takes its column count from `categories.length`, so a board
@@ -1833,8 +1836,8 @@ export const BOARDS = [
   },
 
   // ── 7 · SCIENCE UNIT 2 ────────────────────────────────────────────────────
-  // Science 2.1–2.7, one category per idea rather than per lesson. There is no
-  // 2.4 deck, so there is no 2.4 here.
+  // Science 2.1–2.7, one category per idea rather than per lesson. 2.4 was
+  // taught after this board was built, so it is on board 9 with 2.8.
   //
   // This is the Year 7 board that is built on pictures: 29 of the 30 clues
   // carry one. The photographs are the ones from the lessons, so a clue is a
@@ -2138,7 +2141,561 @@ export const BOARDS = [
     ],
   },
 
-  // ── 8 · TEENS ─────────────────────────────────────────────────────────────
+  // ── 8 · MATHEMATICS UNIT 2 + 3.1–3.2 ──────────────────────────────────────
+  // Seven lessons in six columns: 2.1 and 2.2 share Expressions & Formulae,
+  // because 2.2 is 2.1 with the numbers filled in. Every other column is one
+  // lesson.
+  //
+  // Each column carries that lesson's traps, because the traps are what the
+  // decks voted on: 34 for 3n, h − t, 8 for 8s − s, 10x + 6y, 5a + 3, 8c,
+  // x = 2, a = 5, 3 as the smallest integer above 3, 7.2000, 35, 8.285. The
+  // 200s are the English: like, expand, reverse, under, correct to. The 500s
+  // are Mr Bowen, deadpan, as in the decks — the goldfish, the mangoes, and
+  // his age.
+  //
+  // Every inequality is strict. 2.6 never taught ≤, ≥ or a closed circle.
+  {
+    id: 'maths-u2',
+    title: 'Mathematics · Unit 2 + 3.1–3.2',
+    titleVn: 'Toán học · Chương 2 + Bài 3.1–3.2',
+    subtitle: 'Expressions, like terms, brackets, equations, inequalities, rounding',
+    subtitleVn: 'Biểu thức, hạng tử đồng dạng, dấu ngoặc, phương trình, bất đẳng thức, làm tròn',
+    icon: 'Variable',
+    accent: '#2563eb',
+    categories: [
+      {
+        name: 'Expressions & Formulae',
+        nameVn: 'Biểu thức & Công thức',
+        clues: [
+          {
+            value: 100,
+            q: 'Which one is an expression: 4m or y = 5x?',
+            qVn: 'Cái nào là biểu thức: 4m hay y = 5x?',
+            a: '4m. An expression has no = sign. y = 5x has one, so it is a formula.',
+            aVn: '4m. Biểu thức không có dấu =. y = 5x có dấu =, nên nó là một công thức.',
+          },
+          {
+            value: 200,
+            q: 'When n = 4, what is 3n?',
+            qVn: 'Khi n = 4, 3n bằng bao nhiêu?',
+            a: '12. 3n means 3 × n, so 3 × 4 = 12. Never 34.',
+            aVn: '12. 3n nghĩa là 3 × n, nên 3 × 4 = 12. Không bao giờ là 34.',
+          },
+          {
+            value: 300,
+            q: 'Write "h less than t" in algebra.',
+            qVn: 'Viết "h less than t" bằng đại số.',
+            a: 't − h. Write the starting number first. (5 less than 12 is 12 − 5 = 7.)',
+            aVn: 't − h. Viết số ban đầu trước. (5 less than 12 là 12 − 5 = 7.)',
+          },
+          {
+            value: 400,
+            q: '"Multiply x by 5, then subtract from 4." Write the expression.',
+            qVn: '"Multiply x by 5, then subtract from 4." Hãy viết biểu thức.',
+            a: '4 − 5x. "From 4" means you start at 4. ("Subtract 4" would be 5x − 4.)',
+            aVn: '4 − 5x. "From 4" nghĩa là bắt đầu từ 4. ("Subtract 4" mới là 5x − 4.)',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen\'s taxi costs 15 thousand dong to start, then 9 thousand dong for every kilometre. Write a formula for the cost C of k kilometres. Then find the cost of 6 km.',
+            qVn: 'Taxi của thầy Bowen tính 15 nghìn đồng tiền mở cửa, sau đó 9 nghìn đồng mỗi ki-lô-mét. Viết công thức tính chi phí C cho k ki-lô-mét. Rồi tính chi phí cho 6 km.',
+            a: 'C = 15 + 9k. The 15 is paid once. The 9 is paid every kilometre. For 6 km: 15 + 9 × 6 = 69 thousand dong.',
+            aVn: 'C = 15 + 9k. Số 15 trả một lần. Số 9 trả cho mỗi ki-lô-mét. Với 6 km: 15 + 9 × 6 = 69 nghìn đồng.',
+          },
+        ],
+      },
+      {
+        name: 'Like Terms',
+        nameVn: 'Hạng tử đồng dạng',
+        clues: [
+          {
+            value: 100,
+            q: 'Simplify 8s − s.',
+            qVn: 'Rút gọn 8s − s.',
+            a: '7s. s means 1s. The letter never disappears. (Not 8.)',
+            aVn: '7s. s nghĩa là 1s. Chữ cái không bao giờ biến mất. (Không phải 8.)',
+          },
+          {
+            value: 200,
+            q: 'In "like terms", what does "like" mean?',
+            qVn: 'Trong "like terms", từ "like" nghĩa là gì?',
+            a: 'The same kind: terms with the same letter, like 2a and 5a. Not "I like mangoes".',
+            aVn: 'Cùng loại: các hạng tử có cùng chữ cái, như 2a và 5a. Không phải "thích" như trong "I like mangoes".',
+          },
+          {
+            value: 300,
+            q: 'Which pair are like terms: 3a and 2b, 4ab and 3ba, or x and x²?',
+            qVn: 'Cặp nào là hạng tử đồng dạng: 3a và 2b, 4ab và 3ba, hay x và x²?',
+            a: '4ab and 3ba, because a × b = b × a. 3a and 2b have different letters. x² means x × x, so it is not like x.',
+            aVn: '4ab và 3ba, vì a × b = b × a. 3a và 2b khác chữ cái. x² nghĩa là x × x, nên nó không đồng dạng với x.',
+          },
+          {
+            value: 400,
+            q: 'Simplify 7x + 5y − 3x + y.',
+            qVn: 'Rút gọn 7x + 5y − 3x + y.',
+            a: '4x + 6y. The minus moves with the 3x, so 7x − 3x = 4x. (Not 10x + 6y.)',
+            aVn: '4x + 6y. Dấu trừ đi cùng với 3x, nên 7x − 3x = 4x. (Không phải 10x + 6y.)',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen has 4c cats. He buys 3c more cats and 2d dogs. Then 5c cats leave. One goldfish, called x, arrives. How many animals does he have now?',
+            qVn: 'Thầy Bowen có 4c con mèo. Thầy mua thêm 3c con mèo và 2d con chó. Sau đó 5c con mèo bỏ đi. Một con cá vàng tên là x đến. Bây giờ thầy có bao nhiêu con vật?',
+            a: '2c + 2d + 1. 4c + 3c − 5c = 2c. The goldfish is 1 animal. Its name is not a number.',
+            aVn: '2c + 2d + 1. 4c + 3c − 5c = 2c. Con cá vàng là 1 con vật. Tên của nó không phải là một con số.',
+          },
+        ],
+      },
+      {
+        name: 'Brackets',
+        nameVn: 'Dấu ngoặc',
+        clues: [
+          {
+            value: 100,
+            q: 'Expand 5(a + 3).',
+            qVn: 'Khai triển 5(a + 3).',
+            a: '5a + 15. Multiply EVERY term inside the brackets. (Not 5a + 3.)',
+            aVn: '5a + 15. Nhân MỌI hạng tử bên trong ngoặc. (Không phải 5a + 3.)',
+          },
+          {
+            value: 200,
+            q: '"Expand" and "multiply out". Same job, or different jobs?',
+            qVn: '"Expand" và "multiply out". Cùng một việc, hay hai việc khác nhau?',
+            a: 'The same job. And the value does not get bigger. Only the writing gets longer.',
+            aVn: 'Cùng một việc. Và giá trị không lớn hơn. Chỉ có cách viết dài ra.',
+          },
+          {
+            value: 300,
+            q: 'Expand 4(3 − c).',
+            qVn: 'Khai triển 4(3 − c).',
+            a: '12 − 4c. The minus goes in with the c. Then stop: 12 and 4c are not like terms, so it is not 8c.',
+            aVn: '12 − 4c. Dấu trừ đi cùng với c. Rồi dừng lại: 12 và 4c không đồng dạng, nên không phải 8c.',
+          },
+          {
+            value: 400,
+            q: 'Expand 5(2p + 1).',
+            qVn: 'Khai triển 5(2p + 1).',
+            a: '10p + 5. 5 × 2p = 10p: multiply the numbers, and the letter stays. (Not 7p.)',
+            aVn: '10p + 5. 5 × 2p = 10p: nhân các con số, chữ cái giữ nguyên. (Không phải 7p.)',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen buys 6 bags. Each bag has m mangoes and 2 dragon fruits. On the way home, he eats 4 mangoes. How much fruit does he carry into the house?',
+            qVn: 'Thầy Bowen mua 6 túi. Mỗi túi có m quả xoài và 2 quả thanh long. Trên đường về, thầy ăn 4 quả xoài. Thầy mang vào nhà bao nhiêu quả?',
+            a: '6m + 8.  6(m + 2) − 4 = 6m + 12 − 4 = 6m + 8. "Fruit" means the mangoes AND the dragon fruits.',
+            aVn: '6m + 8.  6(m + 2) − 4 = 6m + 12 − 4 = 6m + 8. "Fruit" là cả xoài VÀ thanh long.',
+          },
+        ],
+      },
+      {
+        name: 'Equations',
+        nameVn: 'Phương trình',
+        clues: [
+          {
+            value: 100,
+            q: 'Solve x − 4 = 6. Then check your answer.',
+            qVn: 'Giải x − 4 = 6. Rồi thử lại đáp án.',
+            a: 'x = 10. Check: 10 − 4 = 6 ✓. (x = 2 is wrong: 2 − 4 = −2.)',
+            aVn: 'x = 10. Thử lại: 10 − 4 = 6 ✓. (x = 2 là sai: 2 − 4 = −2.)',
+          },
+          {
+            value: 200,
+            q: '"Reverse" and "inverse" look the same. What does each one mean?',
+            qVn: '"Reverse" và "inverse" trông giống nhau. Mỗi từ nghĩa là gì?',
+            a: 'Reverse: go backwards, like a car. Inverse: the opposite operation. + 5 is undone by − 5.',
+            aVn: 'Reverse: đi ngược lại, như ô tô lùi. Inverse: phép toán ngược. + 5 được xóa bỏ bằng − 5.',
+          },
+          {
+            value: 300,
+            q: 'Mr Bowen thinks of a number and subtracts 5. His answer is 21. What number did he first think of?',
+            qVn: 'Thầy Bowen nghĩ ra một số rồi trừ đi 5. Kết quả là 21. Lúc đầu thầy đã nghĩ ra số nào?',
+            a: '26.  n − 5 = 21, so n = 21 + 5 = 26. Check: 26 − 5 = 21 ✓.',
+            aVn: '26.  n − 5 = 21, nên n = 21 + 5 = 26. Thử lại: 26 − 5 = 21 ✓.',
+          },
+          {
+            value: 400,
+            q: 'Solve 2a + 4 = 18.',
+            qVn: 'Giải 2a + 4 = 18.',
+            a: 'a = 7. Undo the last step first: 18 − 4 = 14, then 14 ÷ 2 = 7. (a = 5 halved first: 2 × 5 + 4 = 14.)',
+            aVn: 'a = 7. Làm ngược bước cuối trước: 18 − 4 = 14, rồi 14 ÷ 2 = 7. (a = 5 là chia đôi trước: 2 × 5 + 4 = 14.)',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen thinks of his age. He doubles it, then subtracts 7. The answer is 1. How old is Mr Bowen?',
+            qVn: 'Thầy Bowen nghĩ đến tuổi của mình. Thầy nhân đôi nó, rồi trừ đi 7. Kết quả là 1. Thầy Bowen bao nhiêu tuổi?',
+            a: '2a − 7 = 1, so 2a = 8 and a = 4. Mr Bowen is 4 years old.',
+            aVn: '2a − 7 = 1, nên 2a = 8 và a = 4. Thầy Bowen 4 tuổi.',
+          },
+        ],
+      },
+      {
+        name: 'Inequalities',
+        nameVn: 'Bất đẳng thức',
+        clues: [
+          {
+            value: 100,
+            q: 'Say it in English: −3 < 2',
+            qVn: 'Đọc bằng tiếng Anh: −3 < 2',
+            a: '"−3 is less than 2." Read it from left to right.',
+            aVn: '"−3 is less than 2." Đọc từ trái sang phải.',
+          },
+          {
+            value: 200,
+            q: '"Under 18 years old." Is that less than, or greater than? Write it with a for age.',
+            qVn: '"Under 18 years old." Đó là nhỏ hơn hay lớn hơn? Viết bằng chữ a cho tuổi.',
+            a: 'Less than: a < 18. Under, below and fewer than all mean <.',
+            aVn: 'Nhỏ hơn: a < 18. Under, below và fewer than đều nghĩa là <.',
+          },
+          {
+            value: 300,
+            q: 'Write the inequality. Use x. What is the smallest integer x could be?',
+            qVn: 'Viết bất đẳng thức. Dùng chữ x. Số nguyên nhỏ nhất mà x có thể là bao nhiêu?',
+            qImage: { src: IMAGES.numberLine, alt: 'A number line from 0 to 6. An open circle at 3, and an arrow to the right.', altVn: 'Trục số từ 0 đến 6. Vòng tròn rỗng ở số 3, và mũi tên sang phải.' },
+            a: 'x > 3. The smallest integer is 4. The circle is open, so 3 is not included.',
+            aVn: 'x > 3. Số nguyên nhỏ nhất là 4. Vòng tròn rỗng, nên 3 không được tính.',
+          },
+          {
+            value: 400,
+            q: 't < −2. Which integers could t be?',
+            qVn: 't < −2. t có thể là những số nguyên nào?',
+            a: '−3, −4, −5, …  Less than means further left. (−1 is greater than −2.)',
+            aVn: '−3, −4, −5, …  Nhỏ hơn nghĩa là xa hơn về bên trái. (−1 lớn hơn −2.)',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen\'s class has more than 20 students. It has fewer than 24 students. How many students could there be?',
+            qVn: 'Lớp của thầy Bowen có nhiều hơn 20 học sinh. Lớp có ít hơn 24 học sinh. Lớp có thể có bao nhiêu học sinh?',
+            a: '21, 22 or 23.  s > 20 and s < 24. Not 20, and not 24.',
+            aVn: '21, 22 hoặc 23.  s > 20 và s < 24. Không phải 20, cũng không phải 24.',
+          },
+        ],
+      },
+      {
+        name: 'Place Value & Rounding',
+        nameVn: 'Giá trị theo vị trí & Làm tròn',
+        clues: [
+          {
+            value: 100,
+            q: 'Say it in English: 10³',
+            qVn: 'Đọc bằng tiếng Anh: 10³',
+            a: '"Ten cubed", or "ten to the power of three". It is 1000.',
+            aVn: '"Ten cubed" hoặc "ten to the power of three" (mười lập phương). Nó bằng 1000.',
+          },
+          {
+            value: 200,
+            q: 'Work out 7.2 × 10³.',
+            qVn: 'Tính 7.2 × 10³.',
+            a: '7200. The digits move 3 places left. (Adding zeros gives 7.2000, and that is still 7.2.)',
+            aVn: '7200. Các chữ số dịch 3 cột sang trái. (Thêm số 0 sẽ ra 7.2000, mà 7.2000 vẫn chỉ là 7.2.)',
+          },
+          {
+            value: 300,
+            q: 'Round 34.9892 to 1 decimal place.',
+            qVn: 'Làm tròn 34.9892 đến 1 chữ số thập phân.',
+            a: '35.0. The 9 carries. Keep the zero: it shows 1 decimal place. (35 loses the mark.)',
+            aVn: '35.0. Số 9 được nhớ lên. Giữ số 0: nó cho thấy có 1 chữ số thập phân. (Viết 35 là mất điểm.)',
+          },
+          {
+            value: 400,
+            q: '"Correct to 2 d.p." and "as far as 2 d.p." Same job, or different jobs?',
+            qVn: '"Correct to 2 d.p." và "as far as 2 d.p." Cùng một việc, hay hai việc khác nhau?',
+            a: 'Different. "Correct to" means round. "As far as" means keep going, and do not round yet.',
+            aVn: 'Khác nhau. "Correct to" nghĩa là làm tròn. "As far as" nghĩa là cứ tính tiếp, chưa làm tròn.',
+          },
+          {
+            value: 500,
+            q: 'Work out 58 ÷ 7, correct to 3 decimal places.',
+            qVn: 'Tính 58 ÷ 7, chính xác đến 3 chữ số thập phân.',
+            a: '8.286. Work to 4 places first: 8.2857. Then round once. (8.285 stopped too early.)',
+            aVn: '8.286. Tính đến 4 chữ số thập phân trước: 8.2857. Rồi làm tròn một lần. (8.285 là dừng quá sớm.)',
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── 9 · SCIENCE 2.4 + 2.8 ─────────────────────────────────────────────────
+  // The two Science lessons no other board has: The Water Cycle (taught after
+  // the Unit 2 board was built) and Acids and Bases. Three columns each.
+  //
+  // Every photograph is the one from the lesson, as on the Unit 2 board. The
+  // kettle comes back from that board on purpose: there it was "boil", here it
+  // is "the white cloud is not water vapour", which is 2.4's one real
+  // misconception. 2.8's is Acid or Alkali? 500 — pH 13 burns too.
+  //
+  // "Alkali" is the word for a liquid being tested and "base" for a thing you
+  // add, which is how the 2.8 deck uses them. The pH scale runs 1 to 14.
+  {
+    id: 'science-water-acids',
+    title: 'Science · 2.4 + 2.8',
+    titleVn: 'Khoa học · Bài 2.4 + 2.8',
+    subtitle: 'The water cycle, acids and alkalis, indicators and pH',
+    subtitleVn: 'Vòng tuần hoàn của nước, axit và kiềm, chất chỉ thị và pH',
+    icon: 'Droplets',
+    accent: '#0891b2',
+    categories: [
+      {
+        name: 'Into the Air',
+        nameVn: 'Bay vào không khí',
+        clues: [
+          {
+            value: 100,
+            q: 'Water as a gas. What is it called?',
+            qVn: 'Nước ở thể khí. Nó được gọi là gì?',
+            a: 'Water vapour.',
+            aVn: 'Hơi nước (water vapour).',
+          },
+          {
+            value: 200,
+            q: 'A rice field loses water through the rice plants. Evaporation or transpiration?',
+            qVn: 'Ruộng lúa mất nước qua cây lúa. Bay hơi (evaporation) hay thoát hơi nước (transpiration)?',
+            a: 'Transpiration: water leaving a plant through its leaves. Out of the leaves, not off the ground.',
+            aVn: 'Thoát hơi nước (transpiration): nước đi ra khỏi cây qua lá. Qua lá cây, không phải từ mặt đất.',
+          },
+          {
+            value: 300,
+            q: 'Water vapour is all around you right now. Can you see it?',
+            qVn: 'Hơi nước đang ở khắp xung quanh em. Em có nhìn thấy nó không?',
+            a: 'No, never. It is a gas, and it is invisible.',
+            aVn: 'Không, không bao giờ. Nó là chất khí, và nó vô hình.',
+          },
+          {
+            value: 400,
+            q: 'Look at the white cloud above this kettle. Is it water vapour?',
+            qVn: 'Nhìn đám mây trắng phía trên chiếc ấm này. Đó có phải là hơi nước không?',
+            qImage: { src: IMAGES.boilingKettle, alt: 'A kettle boiling. A white cloud rises beside the spout.', altVn: 'Một chiếc ấm đang sôi. Một đám mây trắng bốc lên cạnh vòi ấm.' },
+            a: 'No. The white cloud is tiny drops of liquid water. The water vapour is in the clear gap by the spout, and you cannot see it.',
+            aVn: 'Không. Đám mây trắng là những giọt nước lỏng rất nhỏ. Hơi nước ở khoảng trống trong suốt cạnh vòi ấm, và em không nhìn thấy nó.',
+          },
+          {
+            value: 500,
+            q: 'A puddle on the road disappears on a sunny day. Explain why. Use the word "particles".',
+            qVn: 'Một vũng nước trên đường biến mất vào ngày nắng. Giải thích vì sao. Hãy dùng từ "particles" (hạt).',
+            a: 'The Sun gives the water particles heat energy. They move faster. Some break free of the forces holding them together and escape as a gas. The puddle evaporates.',
+            aVn: 'Mặt Trời truyền nhiệt năng cho các hạt nước. Chúng chuyển động nhanh hơn. Một số hạt phá vỡ lực hút giữ chúng lại và thoát ra thành khí. Vũng nước bay hơi.',
+          },
+        ],
+      },
+      {
+        name: 'Clouds & Rain',
+        nameVn: 'Mây & Mưa',
+        clues: [
+          {
+            value: 100,
+            q: 'Rain, snow, hail and sleet. What ONE word names all four?',
+            qVn: 'Mưa, tuyết, mưa đá và mưa tuyết. MỘT từ nào gọi chung cả bốn?',
+            qImage: { src: IMAGES.rainfall, alt: 'Cyclos in the falling rain, Hanoi.', altVn: 'Xích lô dưới mưa, Hà Nội.' },
+            a: 'Precipitation: water falling from clouds.',
+            aVn: 'Giáng thủy (precipitation): nước rơi từ đám mây.',
+          },
+          {
+            value: 200,
+            q: 'Hail is balls of ice. It is frozen. Is it still precipitation?',
+            qVn: 'Mưa đá là những viên nước đá. Nó bị đóng băng. Nó vẫn là giáng thủy chứ?',
+            qImage: { src: IMAGES.hail, alt: 'A hand catching hailstones in a rainstorm.', altVn: 'Một bàn tay hứng những viên mưa đá trong cơn mưa.' },
+            a: 'Yes. It is frozen, but it still fell from a cloud.',
+            aVn: 'Có. Nó bị đóng băng, nhưng nó vẫn rơi xuống từ đám mây.',
+          },
+          {
+            value: 300,
+            q: 'Is a cloud made of gas?',
+            qVn: 'Đám mây có phải được tạo thành từ chất khí không?',
+            qImage: { src: IMAGES.clouds, alt: 'A white cloud building over a mountain.', altVn: 'Một đám mây trắng hình thành trên đỉnh núi.' },
+            a: 'No. A cloud is millions of tiny drops of liquid water. You can see it, so it is already liquid.',
+            aVn: 'Không. Đám mây là hàng triệu giọt nước lỏng rất nhỏ. Em nhìn thấy được, nên nó đã là chất lỏng.',
+          },
+          {
+            value: 400,
+            q: '"Evaporate" is a doing word. What is its naming word? Now do the same for "condense".',
+            qVn: '"Evaporate" là từ chỉ hành động. Từ chỉ tên gọi của nó là gì? Bây giờ làm tương tự với "condense".',
+            a: 'Evaporation. Condensation. All four naming words end in -ation: evaporation, condensation, precipitation, transpiration.',
+            aVn: 'Evaporation. Condensation. Cả bốn từ chỉ tên gọi đều kết thúc bằng -ation: evaporation, condensation, precipitation, transpiration.',
+          },
+          {
+            value: 500,
+            q: 'How does rain form? Say it in three steps.',
+            qVn: 'Mưa hình thành như thế nào? Nói theo ba bước.',
+            a: '1. Water vapour rises and cools.  2. It condenses into tiny drops: a cloud.  3. The drops join up until they are too heavy, and they fall.',
+            aVn: '1. Hơi nước bay lên và lạnh đi.  2. Nó ngưng tụ thành những giọt nhỏ: một đám mây.  3. Các giọt nhập lại đến khi quá nặng, rồi rơi xuống.',
+          },
+        ],
+      },
+      {
+        name: 'Where Does It Go?',
+        nameVn: 'Nước đi đâu?',
+        clues: [
+          {
+            value: 100,
+            q: 'Rivers, large lakes and the oceans: big water you can see. What is it called?',
+            qVn: 'Sông, hồ lớn và đại dương: vùng nước lớn nhìn thấy được. Nó được gọi là gì?',
+            qImage: { src: IMAGES.halong, alt: 'Ha Long Bay, Vietnam.', altVn: 'Vịnh Hạ Long, Việt Nam.' },
+            a: 'Open water.',
+            aVn: 'Mặt nước hở (open water).',
+          },
+          {
+            value: 200,
+            q: 'Rain falls on soil. It can do one of two things. What are they?',
+            qVn: 'Mưa rơi xuống đất. Nó có thể làm một trong hai việc. Đó là hai việc gì?',
+            a: 'It runs over the ground into a river (surface run-off). Or it soaks into the ground (groundwater).',
+            aVn: 'Nó chảy trên mặt đất vào sông (dòng chảy bề mặt). Hoặc nó thấm xuống đất (nước ngầm).',
+          },
+          {
+            value: 300,
+            q: 'Water flows across the ground into a river. What is it called? What does it carry away?',
+            qVn: 'Nước chảy trên mặt đất vào sông. Nó được gọi là gì? Nó cuốn theo cái gì?',
+            qImage: { src: IMAGES.paddy, alt: 'Terraced rice fields on a hillside in Son La, Vietnam.', altVn: 'Ruộng bậc thang trên sườn đồi ở Sơn La, Việt Nam.' },
+            a: 'Surface run-off. It carries the soil away. Terraces like these hold the water back, so it soaks in.',
+            aVn: 'Dòng chảy bề mặt (surface run-off). Nó cuốn đất đi. Ruộng bậc thang giữ nước lại, để nước thấm xuống.',
+          },
+          {
+            value: 400,
+            q: 'These people are filling cans at a village pump. The water comes up from under the ground. What is it called?',
+            qVn: 'Những người này đang lấy nước vào can ở chiếc bơm của làng. Nước được bơm lên từ dưới đất. Nó được gọi là gì?',
+            qImage: { src: IMAGES.pump, alt: 'Villagers with water cans at a village pump.', altVn: 'Người dân mang can nước ở chiếc bơm nước của làng.' },
+            a: 'Groundwater. It soaked into the soil and rocks, and it can stay there for years.',
+            aVn: 'Nước ngầm (groundwater). Nó đã thấm vào đất và đá, và có thể nằm đó nhiều năm.',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen drinks a glass of water. Is it new water? Where was it 2000 years ago?',
+            qVn: 'Thầy Bowen uống một ly nước. Đó có phải là nước mới không? 2000 năm trước nó ở đâu?',
+            a: 'It is not new. It could have been in the sea, a cloud, a river or a dinosaur. The Earth uses the same water again and again. That is the water cycle.',
+            aVn: 'Nó không phải nước mới. Nó có thể đã ở biển, trong mây, dưới sông hay trong một con khủng long. Trái Đất dùng cùng một lượng nước lặp đi lặp lại. Đó là vòng tuần hoàn của nước.',
+          },
+        ],
+      },
+      {
+        name: 'Acid or Alkali?',
+        nameVn: 'Axit hay kiềm?',
+        clues: [
+          {
+            value: 100,
+            q: 'Lemons and limes taste sour. Acid or alkali?',
+            qVn: 'Chanh có vị chua. Axit hay kiềm?',
+            qImage: { src: IMAGES.lemonLime, alt: 'A lemon and a lime.', altVn: 'Một quả chanh vàng và một quả chanh xanh.' },
+            a: 'Acid. Sour means acid.',
+            aVn: 'Axit. Chua nghĩa là axit.',
+          },
+          {
+            value: 200,
+            q: 'Soap feels slippery. Acid or alkali?',
+            qVn: 'Xà phòng sờ thấy trơn. Axit hay kiềm?',
+            qImage: { src: IMAGES.soap, alt: 'A bar of soap with lather.', altVn: 'Một bánh xà phòng có bọt.' },
+            a: 'Alkali. An alkali is a base that dissolves in water.',
+            aVn: 'Kiềm. Kiềm là bazơ tan được trong nước.',
+          },
+          {
+            value: 300,
+            q: 'Which two must you NEVER taste: lemon juice, vinegar, stomach acid, car battery acid?',
+            qVn: 'Hai thứ nào em KHÔNG BAO GIỜ được nếm: nước chanh, giấm, axit dạ dày, axit ắc quy?',
+            a: 'Stomach acid and car battery acid. And never taste anything in the lab.',
+            aVn: 'Axit dạ dày và axit ắc quy. Và không bao giờ nếm bất cứ thứ gì trong phòng thí nghiệm.',
+          },
+          {
+            value: 400,
+            q: 'This symbol is on a bottle in the lab. What does it mean?',
+            qVn: 'Kí hiệu này có trên một chai trong phòng thí nghiệm. Nó nghĩa là gì?',
+            qImage: { src: IMAGES.corrosive, alt: 'A red diamond hazard symbol: liquid dripping onto a metal bar and onto a hand.', altVn: 'Kí hiệu nguy hiểm hình thoi đỏ: chất lỏng nhỏ xuống một thanh kim loại và một bàn tay.' },
+            a: 'Corrosive: it attacks skin, eyes and clothes. Wear eye protection. Never taste. Wash a spill off at once.',
+            aVn: 'Ăn mòn (corrosive): nó làm hỏng da, mắt và quần áo. Đeo kính bảo hộ. Không bao giờ nếm. Nếu đổ ra người, rửa ngay.',
+          },
+          {
+            value: 500,
+            q: 'One drop falls on your hand. Which one burns your skin: pH 1 or pH 13?',
+            qVn: 'Một giọt rơi lên tay em. Giọt nào làm bỏng da: pH 1 hay pH 13?',
+            a: 'BOTH. pH 1 is a strong acid. pH 13 is a strong alkali, like oven cleaner. Danger is at both ends of the scale.',
+            aVn: 'CẢ HAI. pH 1 là axit mạnh. pH 13 là kiềm mạnh, như nước tẩy lò. Nguy hiểm nằm ở cả hai đầu thang đo.',
+          },
+        ],
+      },
+      {
+        name: 'Indicators & pH',
+        nameVn: 'Chất chỉ thị & pH',
+        clues: [
+          {
+            value: 100,
+            q: 'Mr Bowen has two clear glasses: lemon juice and soapy water. They look the same. How can he tell them apart, with no tasting?',
+            qVn: 'Thầy Bowen có hai ly nước trong: nước chanh và nước xà phòng. Chúng trông giống nhau. Làm sao thầy phân biệt được mà không nếm?',
+            a: 'Use an indicator. It changes colour to show an acid or an alkali.',
+            aVn: 'Dùng chất chỉ thị (indicator). Nó đổi màu để cho biết đó là axit hay kiềm.',
+          },
+          {
+            value: 200,
+            q: 'Blue litmus paper turns red. What was it dipped in?',
+            qVn: 'Giấy quỳ xanh chuyển sang đỏ. Nó đã được nhúng vào gì?',
+            qImage: { src: IMAGES.litmusAcid, alt: 'A strip of blue litmus paper. The wet end has turned red.', altVn: 'Một mẩu giấy quỳ xanh. Đầu bị ướt đã chuyển sang đỏ.' },
+            a: 'An acid. (In an alkali it goes the other way: red litmus turns blue.)',
+            aVn: 'Axit. (Trong kiềm thì ngược lại: giấy quỳ đỏ chuyển sang xanh.)',
+            aImage: { src: IMAGES.litmusBase, alt: 'Red litmus paper in an alkali. The wet end has turned blue.', altVn: 'Giấy quỳ đỏ trong kiềm. Đầu bị ướt đã chuyển sang xanh.' },
+          },
+          {
+            value: 300,
+            q: 'The pH scale runs from 1 to 14. Which number is neutral? Is an acid above it, or below it?',
+            qVn: 'Thang pH đi từ 1 đến 14. Số nào là trung tính? Axit lớn hơn hay nhỏ hơn số đó?',
+            a: '7 is neutral. Below 7 is acid. Above 7 is alkali.',
+            aVn: '7 là trung tính. Nhỏ hơn 7 là axit. Lớn hơn 7 là kiềm.',
+          },
+          {
+            value: 400,
+            q: 'Which is the stronger acid: pH 2 or pH 5?',
+            qVn: 'Axit nào mạnh hơn: pH 2 hay pH 5?',
+            a: 'pH 2. The smaller the number, the stronger the acid.',
+            aVn: 'pH 2. Số càng nhỏ, axit càng mạnh.',
+          },
+          {
+            value: 500,
+            q: 'Why can litmus NOT tell pH 8 from pH 13?',
+            qVn: 'Tại sao giấy quỳ KHÔNG phân biệt được pH 8 với pH 13?',
+            a: 'Litmus has only two colours. pH 8 and pH 13 are both alkalis, so both turn red litmus blue. Universal indicator gives a different colour for each number.',
+            aVn: 'Giấy quỳ chỉ có hai màu. pH 8 và pH 13 đều là kiềm, nên cả hai đều làm giấy quỳ đỏ chuyển sang xanh. Chất chỉ thị vạn năng cho mỗi số một màu khác nhau.',
+          },
+        ],
+      },
+      {
+        name: 'Cancel It Out',
+        nameVn: 'Triệt tiêu lẫn nhau',
+        clues: [
+          {
+            value: 100,
+            q: 'An acid and a base cancel each other out, and make something neutral. What is the word?',
+            qVn: 'Axit và bazơ triệt tiêu lẫn nhau, tạo ra chất trung tính. Từ đó là gì?',
+            a: 'Neutralisation.',
+            aVn: 'Sự trung hòa (neutralisation).',
+          },
+          {
+            value: 200,
+            q: 'Mr Bowen ate two bowls of spicy noodles. Now his stomach has too much acid, and it hurts. What should he swallow?',
+            qVn: 'Thầy Bowen ăn hai tô mì cay. Bây giờ dạ dày thầy có quá nhiều axit, và nó đau. Thầy nên uống gì?',
+            a: 'A base, like an indigestion tablet. It neutralises the acid.',
+            aVn: 'Một bazơ, như viên thuốc đau dạ dày. Nó trung hòa axit.',
+            aImage: { src: IMAGES.antacid, alt: 'An indigestion tablet dropped into a glass of water.', altVn: 'Một viên thuốc đau dạ dày thả vào ly nước.' },
+          },
+          {
+            value: 300,
+            q: 'Mr Bowen spills acid on the bench. Should he add more acid, or a base?',
+            qVn: 'Thầy Bowen làm đổ axit ra bàn. Thầy nên đổ thêm axit, hay một bazơ?',
+            a: 'A base. It neutralises the acid. More acid would make it worse.',
+            aVn: 'Một bazơ. Nó trung hòa axit. Thêm axit sẽ làm tệ hơn.',
+          },
+          {
+            value: 400,
+            q: 'The soil has too much acid for rice to grow. What does the farmer spread on it? Why?',
+            qVn: 'Đất có quá nhiều axit, lúa không mọc được. Người nông dân rải gì lên đất? Tại sao?',
+            a: 'Lime. Lime is a base, so it neutralises the acid in the soil.',
+            aVn: 'Vôi. Vôi là một bazơ, nên nó trung hòa axit trong đất.',
+          },
+          {
+            value: 500,
+            q: 'Toothpaste is pH 9. Why do we brush our teeth AFTER eating, not before?',
+            qVn: 'Kem đánh răng có pH 9. Tại sao ta đánh răng SAU khi ăn, không phải trước?',
+            a: 'Food leaves acid on your teeth. Toothpaste is a base, so brushing neutralises the acid. Before you eat, there is no acid there yet.',
+            aVn: 'Thức ăn để lại axit trên răng. Kem đánh răng là một bazơ, nên đánh răng sẽ trung hòa axit. Trước khi ăn, chưa có axit ở đó.',
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── 10 · TEENS ────────────────────────────────────────────────────────────
   // The hardest board. IGCSE chemistry and physics that need a calculation or
   // a reason, then three rounds anyone can win: word history, pop songs, and
   // big numbers. The trivia rounds do the same job as Board 4's: they stop the
@@ -2378,7 +2935,7 @@ export const BOARDS = [
     ],
   },
 
-  // ── 9 · TEENS 2 ───────────────────────────────────────────────────────────
+  // ── 11 · TEENS 2 ──────────────────────────────────────────────────────────
   // Trivia only, no syllabus: Myth or Fact, Celebrity Couples, Famous Covers,
   // Geography and Accidental Inventions. Every answer still wants a reason.
   //

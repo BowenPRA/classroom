@@ -1170,5 +1170,134 @@
     "source": "Hand-written SVG, a schematic (not to scale) of the Diomede Islands and the International Date Line. No third-party material.",
     "usage": "Teens 2 board, Geography 500 (answer picture).",
     "bytes": 1654
+  },
+  {
+    "name": "sci24-rainfall.jpg",
+    "title": "Cyclos in falling rain, Hanoi",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Hanoi_in_the_rain_(1345335758).jpg",
+    "license": "CC BY 2.0",
+    "artist": "thalling55",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_4/images/rainfall.jpg, the same picture the class saw in Science 2.4, copied so this folder carries its own licence.",
+    "usage": "Science 2.4 + 2.8 board, Clouds & Rain 100 (question picture): rain falling on Hanoi.",
+    "bytes": 181832
+  },
+  {
+    "name": "sci24-hail.jpg",
+    "title": "A hand catching hailstones in a rainstorm",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Hand_catching_hailstones_during_a_rainstorm.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Shixart1985",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_4/images/hail.jpg, the same picture the class saw in Science 2.4, copied so this folder carries its own licence.",
+    "usage": "Science 2.4 + 2.8 board, Clouds & Rain 200 (question picture): hail is frozen, but it still fell from a cloud.",
+    "bytes": 87333
+  },
+  {
+    "name": "sci24-clouds.jpg",
+    "title": "Cloud building over a mountain — the atmosphere",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Clouds_floating_over_a_mountain.jpg",
+    "license": "Public domain",
+    "artist": "Unknown author (public-domain-image.com)",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_4/images/clouds.jpg, the same picture the class saw in Science 2.4, copied so this folder carries its own licence.",
+    "usage": "Science 2.4 + 2.8 board, Clouds & Rain 300 (question picture): a cloud is tiny drops of liquid water.",
+    "bytes": 93697
+  },
+  {
+    "name": "sci24-halong.jpg",
+    "title": "Ha Long Bay, Vietnam — open water",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Halong_Bay_in_Vietnam.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Thomas Hirsch",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_4/images/halong.jpg, the same picture the class saw in Science 2.4, copied so this folder carries its own licence.",
+    "usage": "Science 2.4 + 2.8 board, Where Does It Go? 100 (question picture): open water.",
+    "bytes": 171591
+  },
+  {
+    "name": "sci24-paddy.jpg",
+    "title": "Terraced paddy fields, Son La, Vietnam — water running down the land",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Terraced_paddy_fields,_Sonla,_Vietnam.jpg",
+    "license": "CC0",
+    "artist": "Quangpraha",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_4/images/paddy.jpg, the same picture the class saw in Science 2.4, copied so this folder carries its own licence.",
+    "usage": "Science 2.4 + 2.8 board, Where Does It Go? 300 (question picture): terraces hold back the surface run-off.",
+    "bytes": 279049
+  },
+  {
+    "name": "sci24-pump.jpg",
+    "title": "Villagers filling cans at the village water pump, Ngadisan, East Java — groundwater brought back up",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Ngadisan_Indonesia_Village-pump-01.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "CEphoto, Uwe Aranas",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_4/images/pump.jpg, the same picture the class saw in Science 2.4, copied so this folder carries its own licence.",
+    "usage": "Science 2.4 + 2.8 board, Where Does It Go? 400 (question picture): groundwater brought back up.",
+    "bytes": 271936
+  },
+  {
+    "name": "sci28-lemon.jpg",
+    "title": "A lemon and a lime — the sour taste that opens the acid section",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Lemon_and_lime.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Rhododendrites",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_8/images/lemon.jpg, the same picture the class saw in Science 2.8, copied so this folder carries its own licence.",
+    "usage": "Science 2.4 + 2.8 board, Acid or Alkali? 100 (question picture): sour means acid.",
+    "bytes": 65055
+  },
+  {
+    "name": "sci28-soap.jpg",
+    "title": "A bar of handmade soap with lather — the slippery feel of a base",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Handmade_soap.jpg",
+    "license": "CC BY 2.5",
+    "artist": "Malene Thyssen",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_8/images/soap.jpg, the same picture the class saw in Science 2.8, copied so this folder carries its own licence.",
+    "usage": "Science 2.4 + 2.8 board, Acid or Alkali? 200 (question picture): the slippery feel of an alkali.",
+    "bytes": 165322
+  },
+  {
+    "name": "sci28-corrosive.jpg",
+    "title": "The GHS corrosive hazard pictogram (rendered from the source SVG to a PNG, then to JPEG)",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:GHS-pictogram-acid.svg",
+    "license": "Public domain",
+    "artist": "United Nations (Globally Harmonized System) — uploaded by an unknown author",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_8/images/corrosive.jpg, the same picture the class saw in Science 2.8, copied so this folder carries its own licence.",
+    "usage": "Science 2.4 + 2.8 board, Acid or Alkali? 400 (question picture): the corrosive hazard symbol.",
+    "bytes": 64536
+  },
+  {
+    "name": "sci28-litmus-acid.jpg",
+    "title": "Blue litmus paper dipped in hydrochloric acid, turning red (cropped to the strip and dish)",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:The_result_of_blue_litmus_paper_reaction_with_an_acid.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Kanesskong",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_8/images/litmus-acid.jpg, the same picture the class saw in Science 2.8, copied so this folder carries its own licence.",
+    "usage": "Science 2.4 + 2.8 board, Indicators & pH 200 (question picture): blue litmus turned red in an acid.",
+    "bytes": 31310
+  },
+  {
+    "name": "sci28-litmus-base.jpg",
+    "title": "Red litmus paper dipped in sodium hydroxide, turning blue (cropped to the strip and dish; the matching half of litmus-acid.jpg)",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:The_result_of_red_litmus_paper_reaction_with_a_base.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Kanesskong",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_8/images/litmus-base.jpg, the same picture the class saw in Science 2.8, copied so this folder carries its own licence.",
+    "usage": "Science 2.4 + 2.8 board, Indicators & pH 200 (answer picture): red litmus turned blue in an alkali.",
+    "bytes": 32960
+  },
+  {
+    "name": "sci28-antacid.jpg",
+    "title": "A hand dropping an effervescent tablet into a glass of water — the indigestion tablet on the neutralisation slide",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Man_adding_effervescent_tablet_in_the_glass_of_water.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Shixart1985",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U02_8/images/antacid.jpg, the same picture the class saw in Science 2.8, copied so this folder carries its own licence.",
+    "usage": "Science 2.4 + 2.8 board, Cancel It Out 200 (answer picture): an indigestion tablet, a base.",
+    "bytes": 63106
+  },
+  {
+    "name": "ma2-number-line.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Mathematics Unit 2 + 3.1–3.2 Jeopardy board, in the style of the Maths 2.6 number lines. No third-party material.",
+    "usage": "Mathematics Unit 2 + 3.1–3.2 board, Inequalities 300 (question picture): an open circle at 3 and an arrow to the right, on a line from 0 to 6.",
+    "bytes": 1680
   }
 ]

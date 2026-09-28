@@ -44,6 +44,7 @@ import {
   Calculator, FlaskConical, Trophy, Gamepad2, ArrowLeft, Plus, X,
   Play, Pause, Eye, Check, Timer, Flag, RotateCcw, Crown, Users, Sparkles,
   Music, Volume2, VolumeX, Pencil, CookingPot, Apple, Atom, Rocket, Globe,
+  Variable, Droplets,
 } from 'lucide-react'
 
 import { BOARDS } from './boards.js'
@@ -151,7 +152,7 @@ import bossBattle from './audio/boss-battle.opus'
 import timeAttack from './audio/time-attack.ogg'
 import phonk from './audio/phonk.opus'
 
-const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot, Apple, Atom, Rocket, Globe }
+const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot, Apple, Atom, Rocket, Globe, Variable, Droplets }
 
 // The clue countdown, and the music that runs with it.
 const TIMER_SECONDS = 30
@@ -288,7 +289,10 @@ function useConfetti(canvasRef) {
 // 45px past a 1440×900 window and a Setup screen that scrolls is one the
 // teacher has to hunt around in with the class already watching. The sixth
 // board moved the music picker over to the teams column instead of shaving
-// this again; a seventh should start by checking that column's height.
+// this again. By the ninth the column was 100px over, so the boards now sit
+// two across in the wider of two columns, and eleven fit a 1440×900 window
+// with about 30px to spare in Vietnamese, the longer language. A twelfth adds
+// no row; a thirteenth does, and should start by checking that height again.
 function BoardCard({ board, lang, selected, onPick }) {
   return (
     <button
@@ -367,7 +371,7 @@ function Setup({
 
   return (
     <div className="h-full min-h-0 overflow-y-auto custom-scrollbar px-4 sm:px-6 py-4">
-      <div className="w-full max-w-5xl mx-auto">
+      <div className="w-full max-w-7xl mx-auto">
         <div className="flex items-baseline gap-3 mb-4">
           <span className="self-center w-9 h-9 rounded-xl bg-[#f59e0b] text-white flex items-center justify-center shadow-sm shrink-0">
             <Gamepad2 className="w-5 h-5" strokeWidth={2.5} />
@@ -380,12 +384,12 @@ function Setup({
           </p>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-2">
+        <div className="grid gap-5 lg:grid-cols-[5fr_2fr]">
           <section>
             <h2 className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500 mb-1.5">
               {t(lang, 'chooseBoard')}
             </h2>
-            <div className="grid gap-1.5">
+            <div className="grid gap-1.5 sm:grid-cols-2">
               {BOARDS.map((board, i) => (
                 <BoardCard
                   key={board.id}

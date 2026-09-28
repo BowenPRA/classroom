@@ -167,6 +167,32 @@ import coVsCo from './images/sci2-co-vs-co.svg'
 import formulaH2o from './images/sci2-formula-h2o.svg'
 import airPie from './images/sci2-air-pie.svg'
 
+// ── Year 7 · Science 2.4 + 2.8 ────────────────────────────────────────────────
+// The same rule as Unit 2: every photograph is a byte-identical copy from the
+// deck that showed it (sci24- from The Water Cycle, sci28- from Acids and
+// Bases). The boiling kettle is reused from the Unit 2 block above.
+//
+// There is no pH scale picture, on purpose. A clue picture is capped at 48%
+// of the card's width, so a 1-to-14 strip drew each box about 30px wide on a
+// 1920 projector. That clue is words only.
+import rainfall from './images/sci24-rainfall.jpg'
+import hail from './images/sci24-hail.jpg'
+import clouds from './images/sci24-clouds.jpg'
+import halong from './images/sci24-halong.jpg'
+import paddy from './images/sci24-paddy.jpg'
+import pump from './images/sci24-pump.jpg'
+import lemonLime from './images/sci28-lemon.jpg'
+import soap from './images/sci28-soap.jpg'
+import corrosive from './images/sci28-corrosive.jpg'
+import litmusAcid from './images/sci28-litmus-acid.jpg'
+import litmusBase from './images/sci28-litmus-base.jpg'
+import antacid from './images/sci28-antacid.jpg'
+
+// ── Year 7 · Mathematics Unit 2 + 3.1–3.2 ─────────────────────────────────────
+// One drawing: the maths is the picture everywhere else on that board. It runs
+// 0 to 6, not further, for the same 48% reason: fewer ticks, bigger numbers.
+import numberLine from './images/ma2-number-line.svg'
+
 // ── Teens ─────────────────────────────────────────────────────────────────────
 // Ha Long Bay again (limestone is CaCO₃), and six drawings: nuclide notation,
 // an equation to balance, a parallel circuit, two powers, a chessboard and a
@@ -297,6 +323,21 @@ export const IMAGES = {
   coVsCo,
   formulaH2o,
   airPie,
+  // Year 7 · Science 2.4 + 2.8
+  rainfall,
+  hail,
+  clouds,
+  halong,
+  paddy,
+  pump,
+  lemonLime,
+  soap,
+  corrosive,
+  litmusAcid,
+  litmusBase,
+  antacid,
+  // Year 7 · Mathematics Unit 2 + 3.1–3.2
+  numberLine,
   // Teens
   teenHalong,
   teenNuclideNa,
