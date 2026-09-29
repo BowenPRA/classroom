@@ -1,9 +1,13 @@
-import { ArrowLeft, Printer, Clock } from 'lucide-react'
+import { ArrowLeft, Printer, Clock, FileDown } from 'lucide-react'
 
 // Print-friendly teacher lesson plan. Reads `lesson.plan`, an optional object
 // on each lesson module. All fields are optional — empty sections are skipped.
 //   plan = { duration, objective, materials: [..], vocab: [{term, def}],
-//            timeline: [{ time, phase, detail }], answers: [{ q, a }], notes }
+//            timeline: [{ time, phase, detail }], answers: [{ q, a }], notes,
+//            print: [{ label, href, note }] }
+// `print` lists files to print for the lesson (a PDF imported with `?url`, so
+// Vite fingerprints it — never a hand-written path). It renders as links on
+// screen and is hidden on the printed sheet, where a link is useless.
 export default function Plan({ lesson, course, onBack }) {
   const plan = lesson.plan || {}
   const color = course?.color || '#1cb0f6'
@@ -42,6 +46,23 @@ export default function Plan({ lesson, course, onBack }) {
               {plan.materials.map((m, i) => <li key={i}>{m}</li>)}
             </ul>
           </Section>
+        )}
+
+        {plan.print?.length > 0 && (
+          <div className="no-print">
+            <Section title="To print" color={color}>
+              <ul className="space-y-1.5">
+                {plan.print.map((f, i) => (
+                  <li key={i} className="text-slate-700 font-medium">
+                    <a href={f.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 font-black underline underline-offset-2" style={{ color }}>
+                      <FileDown className="w-4 h-4" strokeWidth={2.5} />{f.label}
+                    </a>
+                    {f.note && <span> — {f.note}</span>}
+                  </li>
+                ))}
+              </ul>
+            </Section>
+          </div>
         )}
 
         {plan.vocab?.length > 0 && (

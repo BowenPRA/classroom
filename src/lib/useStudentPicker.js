@@ -16,8 +16,13 @@ import { useState, useCallback } from 'react'
 
 const STORAGE_KEY = 'classroom:student-roster'
 
+// Fired on window whenever the roster is saved, so anything else that reads the
+// class list (the poster task's topic board) can follow an edit made in the
+// picker's modal without a reload. `storage` events only reach OTHER tabs.
+export const ROSTER_EVENT = 'classroom:roster-changed'
+
 /** Read the saved roster. Never throws; returns [] when storage is unavailable. */
-function loadRoster() {
+export function loadRoster() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return []
@@ -33,6 +38,11 @@ function saveRoster(names) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(names))
   } catch {
     /* private window / storage blocked — the list simply won't persist */
+  }
+  try {
+    window.dispatchEvent(new Event(ROSTER_EVENT))
+  } catch {
+    /* no window (never in the app) — nothing is listening anyway */
   }
 }
 
