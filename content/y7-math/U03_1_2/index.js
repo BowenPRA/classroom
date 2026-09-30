@@ -18,6 +18,11 @@ export default {
       'places from the point; round using the next digit; keep the trailing zero, so 34.9892 to 1 d.p. is ' +
       '35.0; and work one place further before rounding, so 58 ÷ 7 to 3 d.p. is 8.286.',
     order: 13,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js). This one
+    // deck is two Dashboard units, split at the hinge slide: U03_1 (powers of
+    // 10) and U03_2 (rounding, plus short division). The link opens the first;
+    // the second is the next card down.
+    dashboard: { track: 'Y7_MATH', unit: 'U03_1' },
   },
   slides,
   plan,
