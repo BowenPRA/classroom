@@ -17,9 +17,9 @@
 //                 up (like terms) or down (not), Show gives the verdict and the
 //                 reason. A clicker's Right arrow shows, then moves on.
 //
-// Showcase and split slides hand a widget no isDisplayMode, so the first two
-// draw their stage as ONE SVG (text scales with the panel) and keep only the
-// buttons as HTML. Every SVG opens with a white plate.
+// The first two draw their stage as ONE SVG (text scales with the panel) and
+// keep only the buttons as HTML, so they need no isDisplayMode — the deck now
+// passes it to every widget, but an SVG stage scales without it. Every SVG opens with a white plate.
 import { useState, useEffect, useCallback } from 'react'
 import { Undo2, RotateCcw, ArrowRight, Eye, Shuffle, Sparkles, ThumbsUp, SkipForward } from 'lucide-react'
 

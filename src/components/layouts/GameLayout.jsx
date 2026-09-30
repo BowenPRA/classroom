@@ -17,7 +17,7 @@ export default function GameLayout({ slide: s, ctx }) {
       <WidgetErrorBoundary>
         {typeof Widget === 'function'
           ? <Widget lang={lang} isDisplayMode={isDisplayMode} />
-          : <WidgetRenderer config={s.widget} lang={lang} />}
+          : <WidgetRenderer config={s.widget} lang={lang} isDisplayMode={isDisplayMode} />}
       </WidgetErrorBoundary>
     </div>
   )

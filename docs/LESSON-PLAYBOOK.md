@@ -311,8 +311,7 @@ Then check by eye, because these are visual artefacts:
 
 - [ ] **Dark mode**, not just light — especially any text on a *fixed*-colour surface
 - [ ] **Vietnamese** — toggle it and read a dense slide; VN runs longer than EN
-- [ ] **Project mode** on the biggest slides (the Project button — the `F`
-      shortcut in its tooltip is not actually wired up)
+- [ ] **Project mode** on the biggest slides (the **Full screen** button, or `F`)
 - [ ] Every **Draw This** slide is actually drawable in the time you'd allow
 - [ ] The **teacher plan** matches the deck you just built
 

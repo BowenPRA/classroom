@@ -8,6 +8,16 @@ body,
   height: 100%;
 }
 
+/* The deck fills the visible viewport. 100vh overshoots on a phone, where the
+   address bar is counted; dvh tracks what is actually visible, and the vh line
+   is the fallback for browsers without it. No rubber-band pull-to-refresh
+   mid-lesson either. */
+.app-screen {
+  height: 100vh;
+  height: 100dvh;
+  overscroll-behavior-y: none;
+}
+
 body {
   margin: 0;
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;

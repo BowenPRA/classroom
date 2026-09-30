@@ -48,7 +48,7 @@ export function PickButton({ picker, lang = 'en', onManage, tone = 'light', larg
         {current ? (
           <span
             key={pickCount}
-            className={`font-black tracking-tight whitespace-nowrap max-w-[10rem] sm:max-w-[16rem] truncate animate-in zoom-in-95 fade-in duration-300 ${light ? 'text-slate-900 dark:text-white' : 'text-white'} ${large ? 'text-lg' : 'text-sm sm:text-base'}`}
+            className={`font-black tracking-tight whitespace-nowrap max-w-[10rem] sm:max-w-[12rem] xl:max-w-[16rem] truncate animate-in zoom-in-95 fade-in duration-300 ${light ? 'text-slate-900 dark:text-white' : 'text-white'} ${large ? 'text-lg' : 'text-sm sm:text-base'}`}
           >
             {current}
             {justReset && <span className="ml-1.5 text-[10px] uppercase tracking-widest text-[#ffc800] align-middle">{pick(lang, 'new round', 'vòng mới')}</span>}

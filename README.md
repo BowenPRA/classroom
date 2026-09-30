@@ -2,7 +2,7 @@
 
 Projected, interactive classroom lesson decks — a small React app that turns
 lesson **data files** into polished slide decks with an EN/VN toggle, KaTeX math,
-interactive widgets, clean SVG diagrams, a fullscreen **Project** mode, dark mode,
+interactive widgets, clean SVG diagrams, a **Full screen** projector mode, dark mode,
 and a printable teacher lesson plan.
 
 Adding a lesson means adding one folder of data — it inherits all the polish.
@@ -93,9 +93,10 @@ export default {
 
 ## Slide schema (`slides.js`)
 
-Each slide is a plain object. Set **`layout`** to pick a shape. (Slides with no
-`layout` fall back to the legacy `type` renderer — `intro` · `concept` · `warmup`
-· `summary` — so old decks keep working unchanged.)
+Each slide is a plain object. Set **`layout`** to pick a shape. (A slide written
+before `layout` existed carries a `type` instead — `intro` · `concept` · `warmup`
+· `summary` — and is mapped onto the layout that replaced it: hero, split, split,
+hero. A slide with neither renders a red "no layout" notice, not a blank card.)
 
 ### The layouts
 
@@ -153,6 +154,20 @@ down" note, blank line = spacer.
 
 Real photos live in the unit's `images/` folder with a `CREDITS.json` recording
 each source + licence (see `content/y7-science/U01_1/images/`).
+
+### Keys in a deck
+
+| Key | Does |
+|---|---|
+| `→` `Enter` `PageDown` `Space` | next slide (a presenter clicker sends PageDown) |
+| `←` `PageUp` | previous slide |
+| `F` | full screen on / off — the **Full screen** button does the same |
+| `R` | draw a random student (opens the class list if there is none yet) |
+| `Esc` | close an expanded picture, or leave full screen |
+
+Full screen is what the class sees: no toolbars, type about 40% larger, the
+cursor hidden after three idle seconds. Where a browser has no fullscreen API
+(an iPhone) the same view opens windowed instead of doing nothing.
 
 ### Games
 

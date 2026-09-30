@@ -98,12 +98,12 @@ if (VN) {
 }
 
 const rect = await evalJs(`(() => {
-  const b = [...document.querySelectorAll('button')].find(x => /project/i.test(x.textContent.trim()));
+  const b = [...document.querySelectorAll('button')].find(x => /full ?screen/i.test(x.textContent.trim()));
   if (!b) return null;
   const r = b.getBoundingClientRect();
   return { x: Math.round(r.x + r.width / 2), y: Math.round(r.y + r.height / 2) };
 })()`, false)
-if (!rect) { console.error('No PROJECT button found — is this a lesson URL?'); cleanup(); process.exit(2) }
+if (!rect) { console.error('No FULL SCREEN button found — is this a lesson URL?'); cleanup(); process.exit(2) }
 
 // A trusted gesture: synthetic el.click() will not satisfy requestFullscreen().
 for (const type of ['mousePressed', 'mouseReleased']) {
