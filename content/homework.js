@@ -24,6 +24,7 @@ import hw07x from '../homework/hw07x/hw07x.pdf?url'
 import hw08 from '../homework/hw08/hw08.pdf?url'
 import hw08x from '../homework/hw08x/hw08x.pdf?url'
 import q1rev from '../homework/q1rev/q1rev.pdf?url'
+import q1sci from '../homework/q1sci/q1sci.pdf?url'
 import alg13 from '../homework/alg13/alg13.pdf?url'
 import alg13p3 from '../homework/alg13p3/alg13p3.pdf?url'
 
@@ -169,6 +170,16 @@ export const HOMEWORK = [
     title: 'Q1 Review: Units 1 to 3',
     subtitle: 'Maths 1.1–3.2 · Focus, Practice, Challenge',
     pdf: q1rev,
+  },
+  // The Science half of the same review, in the Extra packets' green. Its
+  // assessment is also outside this repo; the few question types the two share
+  // are listed there, not here.
+  {
+    id: 'q1sci',
+    label: 'Q1 S',
+    title: 'Q1 Review: Science Units 1 and 2',
+    subtitle: 'Science 1.1–2.8 · Focus, Practice, Challenge',
+    pdf: q1sci,
   },
   // Not a Year 7 packet: a single landscape sheet for the Algebra Track, handed
   // out DURING lesson 1.3 and used twice in it. It lives here because this is

@@ -110,6 +110,13 @@
 % does not fit takes its heading over with it, instead of leaving the heading
 % alone at the foot of the page. (The old needspace did that by accident, and
 % left a hole every time; see above.)
+% A question heading straight after a section heading skips its own
+% \needspace: that \penalty9999 was a legal break BETWEEN the two headings, and
+% when the question's first block was too big for the rest of the page TeX
+% took it and left the section heading alone at the foot (q1sci, Section D).
+% The section heading's own \needspace has already done the job.
+\makeatletter
+\newif\ifhw@aftersection
 \newcommand{\hwsection}[2][cbteal]{%
   \needspace{8\baselineskip}%
   \par\vspace{13pt}%
@@ -120,13 +127,14 @@
       left=14pt, right=10pt, top=7pt, bottom=7pt]
     {\large\bfseries\color{#1}#2}
   \end{tcolorbox}%
-  \par\nobreak\vspace{9pt}}
+  \par\nobreak\vspace{9pt}\global\hw@aftersectiontrue}
 
 % \qhead[colour]{A2}{Moving along the line} -- a question heading.
 \newcommand{\qhead}[3][cbteal]{%
-  \needspace{6\baselineskip}%
+  \ifhw@aftersection\global\hw@aftersectionfalse\else\needspace{6\baselineskip}\fi
   \par\vspace{11pt}%
   \noindent{\large\bfseries\color{#1}#2}\quad{\large\bfseries #3}\par\nobreak\vspace{4pt}}
+\makeatother
 
 % -- Coloured boxes ----------------------------------------------------------
 % Shared look: rounded, light fill, coloured rule, coloured title text on a

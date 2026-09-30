@@ -194,6 +194,9 @@ Page breaks are the fiddly part. In order of effectiveness:
   remember / word-help / activity / your-turn boxes are **unbreakable**, so a
   heading and its box move together instead of the heading being stranded. A
   hole now means an atomic block genuinely did not fit — look at what it is.
+  A question heading straight after a section heading skips its own
+  `\needspace`, whose `\penalty9999` was a break *between* the two headings
+  (it stranded "Section D" in q1sci).
 - **Keep a question's text with its answer space** by putting both in a
   `minipage` (workspace boxes, a puzzle and its blanks), and put a table's
   instruction in its own header row so it cannot be left behind.
