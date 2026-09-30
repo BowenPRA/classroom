@@ -23,6 +23,7 @@ import hw07 from '../homework/hw07/hw07.pdf?url'
 import hw07x from '../homework/hw07x/hw07x.pdf?url'
 import hw08 from '../homework/hw08/hw08.pdf?url'
 import hw08x from '../homework/hw08x/hw08x.pdf?url'
+import q1rev from '../homework/q1rev/q1rev.pdf?url'
 import alg13 from '../homework/alg13/alg13.pdf?url'
 import alg13p3 from '../homework/alg13p3/alg13p3.pdf?url'
 
@@ -158,6 +159,16 @@ export const HOMEWORK = [
     title: 'The Point Never Moves',
     subtitle: 'Extra · reading decimals, powers of 10, rounding, mg to t',
     pdf: hw08x,
+  },
+  // The review before the Quarter 1 Assessment: maths only, every question tagged
+  // Focus / Practice / Challenge like the Workbook. The assessment itself is NOT in
+  // this repo (it would be public) and shares no question with this packet.
+  {
+    id: 'q1rev',
+    label: 'Q1',
+    title: 'Units 1 to 3, All of It',
+    subtitle: 'Quarter 1 review · Maths 1.1–3.2',
+    pdf: q1rev,
   },
   // Not a Year 7 packet: a single landscape sheet for the Algebra Track, handed
   // out DURING lesson 1.3 and used twice in it. It lives here because this is
