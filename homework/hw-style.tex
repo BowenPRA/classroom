@@ -13,6 +13,10 @@
 %     too. Without mathastext every "-6 + 4" is Computer Modern serif and the
 %     sheet looks half-typeset.
 %   * Writing lines are spaced for Year 7 handwriting, not adult margin notes.
+%   * Pages fill. \needspace is redefined below so a heading no longer drags
+%     the page break up to itself, and every heading is glued to the box under
+%     it. Packets built before 2026-09-30 were laid out under the old rules and
+%     will reflow if rebuilt -- re-read every page if you rebuild one.
 %
 % Provides: \wlines \blank \tickbox \sep \qmk-free marks (none) \hwsection
 % \qhead \expr, the workspace box, and the remember / wordhelp / activity /
@@ -39,6 +43,23 @@
 % Make maths use Lato too. Without this, every "-6 + 4" on the page is set in
 % Computer Modern serif and the sheet looks half-typeset. Must come last.
 \usepackage[italic]{mathastext}
+
+% -- \needspace, without the hole it used to leave ----------------------------
+% needspace.sty writes "\vskip 0pt plus X \penalty-100" in front of every
+% heading. A page that ends anywhere else is underfull with no stretch, so TeX
+% scores it b=10000; a page that ends AT a heading gets that X of stretch and a
+% finite badness, and wins. So any heading in roughly the bottom half of a page
+% claimed the break, and the question under it moved over whole, leaving a hole
+% the size of the question. \tracingpages showed it exactly (b=4531 at the
+% heading, b=10000 at every later break) while building homework/q1rev, and it
+% is where the half-empty pages in HW 1-8 came from.
+% This keeps only the \penalty9999, which still refuses to put a heading in the
+% last X of a page. Keeping a heading WITH the box under it is \nobreak's job
+% now -- see \hwsection and \qhead below.
+\makeatletter
+\renewcommand{\needspace}[1]{\begingroup\setlength{\dimen@}{#1}%
+  \vskip\dimen@\penalty9999\vskip-\dimen@\endgroup}
+\makeatother
 
 \linespread{1.06}\selectfont
 
@@ -84,8 +105,11 @@
 % -- Section and question headings -------------------------------------------
 % Light tint plus a fat coloured spine on the left. No solid dark banner: the
 % colour reads clearly but barely costs the printer anything.
-% needspace stops a heading stranding alone at the foot of a page. Kept modest:
-% too large and it pushes headings over, leaving a worse hole than it prevents.
+% needspace keeps a heading out of the last few lines of a page. The \nobreak
+% after it keeps it with whatever comes next: a remember or word-help box that
+% does not fit takes its heading over with it, instead of leaving the heading
+% alone at the foot of the page. (The old needspace did that by accident, and
+% left a hole every time; see above.)
 \newcommand{\hwsection}[2][cbteal]{%
   \needspace{8\baselineskip}%
   \par\vspace{13pt}%
@@ -96,19 +120,24 @@
       left=14pt, right=10pt, top=7pt, bottom=7pt]
     {\large\bfseries\color{#1}#2}
   \end{tcolorbox}%
-  \par\vspace{9pt}}
+  \par\nobreak\vspace{9pt}}
 
 % \qhead[colour]{A2}{Moving along the line} -- a question heading.
 \newcommand{\qhead}[3][cbteal]{%
   \needspace{6\baselineskip}%
   \par\vspace{11pt}%
-  \noindent{\large\bfseries\color{#1}#2}\quad{\large\bfseries #3}\par\vspace{4pt}}
+  \noindent{\large\bfseries\color{#1}#2}\quad{\large\bfseries #3}\par\nobreak\vspace{4pt}}
 
 % -- Coloured boxes ----------------------------------------------------------
 % Shared look: rounded, light fill, coloured rule, coloured title text on a
 % pale title strip rather than a dark one.
+% NOT breakable. A breakable box that cannot fit its first lines forces its own
+% page break, and \nobreak cannot stop a forced break -- so the heading above
+% it was left alone at the foot of the page (tested: it happens with \nobreak
+% in place). Unbreakable, the page builder moves heading and box together.
+% These boxes are a few lines each; none needs to split.
 \tcbset{hwbox/.style={
-  enhanced, breakable, arc=6pt, boxrule=1pt,
+  enhanced, arc=6pt, boxrule=1pt,
   left=11pt, right=11pt, top=8pt, bottom=8pt,
   fonttitle=\bfseries, attach boxed title to top left={xshift=12pt, yshift=-8pt},
   boxed title style={arc=4pt, boxrule=1pt, left=7pt, right=7pt, top=2pt, bottom=2pt},

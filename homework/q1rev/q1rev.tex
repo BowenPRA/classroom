@@ -43,25 +43,9 @@
 \usetikzlibrary{calc}
 
 % -- Per-packet running head -------------------------------------------------
-\fancyhead[L]{\small\color{black!55}Year 7\sep Quarter 1 Review}
-
-% -- Fill the pages ----------------------------------------------------------
-% needspace.sty writes "\vskip 0pt plus X \penalty-100" in front of every
-% heading. A page that ends anywhere else is underfull with no stretch, so TeX
-% scores it b=10000 -- but a page that ends AT a heading gets that X of
-% stretch, a finite badness, and wins. With X = 6 lines, any heading in about
-% the bottom half of a page claims the break, and the question under it moves
-% over whole: a hole the size of the question. \tracingpages showed exactly
-% this (b=4531 at the A8 heading against b=10000 everywhere after it), and it
-% is where the half-empty pages in HW 1-8 came from.
-% Here the stretch and the -100 are gone, so pages fill; the 9999 still keeps
-% each heading with the X of material under it, so no heading is stranded.
-% Local on purpose -- changing hw-style.tex would reflow every packet already
-% printed.
-\makeatletter
-\renewcommand{\needspace}[1]{\begingroup\setlength{\dimen@}{#1}%
-  \vskip\dimen@\penalty9999\vskip-\dimen@\endgroup}
-\makeatother
+% No name line on every page: the name goes once, on the cover.
+\fancyhead[L]{\small\color{black!55}Year 7\sep Q1 Review}
+\fancyhead[R]{}
 
 % -- A group of writing lines that will not be split (see hw06.tex) ----------
 \newcommand{\qlines}[1]{\par\needspace{\numexpr#1+1\relax\baselineskip}\wlines{#1}}
@@ -86,12 +70,9 @@
 \newcommand{\practice}{\levtag{cbteal}{PRACTICE}}
 \newcommand{\challenge}{\levtag{cbred}{CHALLENGE}}
 % \evq{A1}{Title}{\focus} -- a question heading carrying its level. (Not \lq:
-% that is LaTeX's left quote.) It asks for 8 lines, not \qhead's 6: most
-% headings here are followed by a remember or word-help box, and a box that
-% does not fit moves over whole -- leaving the heading alone at the foot of the
-% page, which is what B4 did at 6. Safe because of the \needspace fix above:
-% the reserve can no longer pull the page break towards itself.
-\newcommand{\evq}[3]{\needspace{8\baselineskip}\qhead{#1}{#2\hfill#3}}
+% that is LaTeX's left quote.) Keeping it with the box under it is the house
+% style's job now: see \qhead and hwbox in hw-style.tex.
+\newcommand{\evq}[3]{\qhead{#1}{#2\hfill#3}}
 
 % -- Number lines (as hw08.tex) ----------------------------------------------
 \newcommand{\numline}[2]{%
@@ -128,8 +109,8 @@
 \begin{tcolorbox}[enhanced, colback=cbpurple!7, colframe=cbpurple!7, arc=7pt,
                   borderline west={6pt}{0pt}{cbpurple},
                   left=18pt, right=14pt, top=10pt, bottom=10pt]
-  {\color{cbpurple}\bfseries YEAR 7\sep UNITS 1--3\sep QUARTER 1 REVIEW}\\[5pt]
-  {\color{cbpurple}\Huge\bfseries Units 1 to 3, All of It}\\[9pt]
+  {\color{cbpurple}\bfseries YEAR 7\sep MATHEMATICS}\\[5pt]
+  {\color{cbpurple}\Huge\bfseries Q1 Review: Units 1 to 3}\\[9pt]
   {\color{black!70}Mathematics 1.1--1.6 --- integers, factors, multiples, tests, roots}\\
   {\color{black!70}Mathematics 2.1--2.6 --- expressions, formulae, brackets, equations}\\
   {\color{black!70}Mathematics 3.1--3.2 --- powers of 10, place value, rounding}
@@ -138,19 +119,18 @@
 \vspace{4pt}
 \noindent
 \begin{tabularx}{\textwidth}{@{}X X@{}}
-  \textbf{Name:} \blank[5.6cm] & \textbf{Class:} \blank[5.6cm] \\
-  \textbf{Date given:} \blank[4.6cm] & \textbf{Date due:} \blank[5.0cm] \\
+  \textbf{Name:} \blank[5.6cm] & \textbf{Date given:} \blank[4.6cm] \\
 \end{tabularx}
 
+% Two lines, one each. The levels are coloured words here, not the outlined
+% tags the headings carry: a tag inline is taller than the text and pushed the
+% box to five lines.
 \vspace{2pt}
 \begin{activity}[How to use this packet]
-  Every question has a \textbf{level}, like your Workbook. \;
-  \focus\ the basics. \;
-  \practice\ most of the Quarter 1 Assessment. \;
-  \challenge\ its \textbf{last} questions --- do not skip them.
-  \par\smallskip
-  \key{No calculator} --- the assessment has none. \;
-  \key{Write the calculation before the answer.} Every time.
+  {\color{cbgreen}\bfseries Focus} the basics \sep
+  {\color{cbteal}\bfseries Practice} like the assessment \sep
+  {\color{cbred}\bfseries Challenge} the hardest --- do not skip \\
+  \key{No calculator. Show all your work.}
 \end{activity}
 
 % ===========================================================================
@@ -170,7 +150,7 @@
 
 \vspace{2pt}
 \begin{multicols}{3}
-\begin{enumerate}[label=(\alph*), itemsep=10pt]
+\begin{enumerate}[label=(\alph*), itemsep=14pt]
   \item $-8+5 = \blank[1.5cm]$
   \item $7+(-12) = \blank[1.4cm]$
   \item $-3-(-11) = \blank[1.3cm]$
@@ -198,7 +178,7 @@
 \noindent Write the calculation, then the answer.
 
 \vspace{4pt}
-\begin{enumerate}[label=\arabic*., itemsep=10pt]
+\begin{enumerate}[label=\arabic*., itemsep=15pt]
   \item Subtract 9 from 4. \hfill Calculation: \blank[4.2cm] \quad Answer: \blank[1.8cm]
   \item What is 6 less than $-3$? \hfill Calculation: \blank[4.2cm] \quad
         Answer: \blank[1.8cm]
@@ -214,7 +194,7 @@
 
 \vspace{6pt}
 \begin{multicols}{3}
-\begin{enumerate}[label=(\alph*), itemsep=13pt]
+\begin{enumerate}[label=(\alph*), itemsep=20pt]
   \item \nbox $\times\ (-4) = 36$
   \item $-48 \div{}$ \nbox $= -6$
   \item \nbox $\div\ (-5) = 7$
@@ -238,17 +218,17 @@
 \vspace{5pt}
 \noindent\hspace*{1.2em}The LCM of 8 and 14 is \blank[2.2cm]
 
-\vspace{9pt}
+\vspace{13pt}
 \noindent\textbf{(b)} Factors of 36: \blank[6.2cm] \;\; Factors of 54: \blank[3.6cm]
 
 \vspace{5pt}
 \noindent\hspace*{1.2em}The HCF of 36 and 54 is \blank[2.2cm]
 
-\vspace{9pt}
+\vspace{13pt}
 \noindent\textbf{(c)} Find the LCM of 9 and 15. \hfill \blank[2.4cm] \quad
 \textbf{(d)} Find the HCF of 28 and 42. \hfill \blank[2.4cm]
 
-\vspace{9pt}
+\vspace{13pt}
 \noindent\textbf{(e)} Draw a ring around \textbf{each} number that is a common factor of 48
 and 72.
 
@@ -265,13 +245,13 @@ and 72.
   \sep \eng{none wasted} --- something being \textbf{split up}. You want the \key{HCF}.
 \end{wordhelp}
 
-\noindent Tick \textbf{HCF} or \textbf{LCM}, then work out the answer.
-
-\vspace{6pt}
+% The instruction is the table's own header, as in B1, so it cannot be left at
+% the foot of a page while the table goes over.
+\vspace{2pt}
 \noindent
 \begin{tabularx}{\textwidth}{|L|>{\centering\arraybackslash}p{1.05cm}|>{\centering\arraybackslash}p{1.05cm}|>{\centering\arraybackslash}p{2.3cm}|}
   \hline
-  \textbf{The question} & \textbf{HCF} & \textbf{LCM} & \textbf{Answer} \\
+  \textbf{Tick HCF or LCM, then answer.} & \textbf{HCF} & \textbf{LCM} & \textbf{Answer} \\
   \hline
   One light flashes every 4 seconds and another every 10 seconds. They flash together
   now. After how many seconds will they next flash together? & & & \\
@@ -337,11 +317,11 @@ the possible missing digits.
 
 % -- A8 ---------------------------------------------------------------------
 % The Unit 1 puzzles. Each is a harder cousin of a question on the assessment:
-% the HCF/LCM pair, the product-and-sum pair (twice -- once with both numbers
-% negative), the missing digit (here with 15, which has no test of its own and
-% needs 3 AND 5), the root-to-root question (here with 729, where the second
-% root has to be found, not remembered), and the card puzzle from the Stage 7
-% end-of-year paper.
+% the HCF/LCM pair, the product-and-sum pair, the missing digit (here with 15,
+% which has no test of its own and needs 3 AND 5), the root-to-root question
+% (here with 729, where the second root has to be found, not remembered), and
+% the card puzzle from the Stage 7 end-of-year paper. A second product-and-sum
+% (24 and -10, both numbers negative) came out so the page could breathe.
 \evq{A8}{Unit 1 puzzles}{\challenge}
 
 \begin{wordhelp}[Word help]
@@ -350,47 +330,41 @@ the possible missing digits.
 \end{wordhelp}
 
 % Every puzzle is one minipage, so its question and its box cannot land on
-% different pages. The short ones sit in pairs, side by side: none of them
-% needs a full width to work in, and the packet has a 10-page target.
+% different pages. 2 and 3 sit side by side: neither needs a full width.
 \noindent
 \begin{minipage}{\textwidth}
   \textbf{1.} The HCF of two numbers is 5. The LCM of the two numbers is 60. Both
   numbers are bigger than 5 and smaller than 60. Find the two numbers.
-  \begin{workspace}[1.8cm]\end{workspace}
+  \begin{workspace}[2.3cm]\end{workspace}
 \end{minipage}
 
-\vspace{7pt}
+\vspace{8pt}
 \noindent
 \begin{minipage}[t]{0.485\textwidth}
   \textbf{2.} The product of two integers is $-42$. Their sum is $1$. Find the two
   integers.
-  \begin{workspace}[1.8cm]\end{workspace}
+  \begin{workspace}[2.3cm]\end{workspace}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.485\textwidth}
-  \textbf{3.} The product of two integers is $24$. Their sum is $-10$. Find the two
-  integers.
-  \begin{workspace}[1.8cm]\end{workspace}
+  \textbf{3.} The number \; 2\nbox 5 \; is divisible by 15. Find \textbf{all} the
+  possible missing digits. \emph{Hint:} $15 = 3 \times 5$.
+  \begin{workspace}[2.3cm]\end{workspace}
 \end{minipage}
 
-\vspace{7pt}
+\vspace{8pt}
 \noindent
-\begin{minipage}[t]{0.485\textwidth}
-  \textbf{4.} The number \; 2\nbox 5 \; is divisible by 15. Find \textbf{all} the
-  possible missing digits. \\ \emph{Hint:} $15 = 3 \times 5$.
-  \begin{workspace}[1.8cm]\end{workspace}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.485\textwidth}
-  \textbf{5.} The cube root of a number is 9. Work out the \textbf{square} root of
+\begin{minipage}{\textwidth}
+  \textbf{4.} The cube root of a number is 9. Work out the \textbf{square} root of
   the number.
-  \begin{workspace}[1.8cm]\end{workspace}
+  \begin{workspace}[2.3cm]\end{workspace}
 \end{minipage}
 
-\vspace{7pt}
+\vspace{8pt}
 % The card puzzle is one block: split across a page, the cards land on one
 % side of the sheet and the statements on the other.
 \noindent
 \begin{minipage}{\textwidth}
-  \textbf{6.} Here are eight number cards. Use each card \textbf{once} to make all
+  \textbf{5.} Here are eight number cards. Use each card \textbf{once} to make all
   four statements true.
   \par\vspace{6pt}
   \noindent\hspace*{0.2em}\card{27}\ \card{-5}\ \card{3}\ \card{-2}\
@@ -532,10 +506,8 @@ $k$ for kilograms.
 \end{enumerate}
 \end{multicols}
 
-\vspace{2pt}
-\noindent\textbf{(g)} Mr Bowen simplifies \; $5k - 2j + 3k + j$ \; and gets
-\; $8k - 3j$. \; What is the correct answer, and what did he do wrong?
-\qlines{2}
+% A "Mr Bowen simplifies 5k - 2j + 3k + j and gets 8k - 3j" part came out so
+% the packet could breathe: B6(f) and C5 already ask what Mr Bowen did wrong.
 
 % -- B6 ---------------------------------------------------------------------
 \evq{B6}{Expand, then collect}{\practice}
@@ -825,7 +797,7 @@ $k$ for kilograms.
         \textbf{(a)} What is the temperature at 11 pm? \quad
         \textbf{(b)} What is the difference between the warmest and the coldest of
         these three temperatures?
-        \begin{workspace}[1.6cm]\end{workspace}
+        \begin{workspace}[2.6cm]\end{workspace}
   % The deadpan one. Everything it needs was taught: an equation with like terms
   % in it, and then reading to the end of the question.
   \item \textbf{The mangoes.} Mr Bowen has $x$ mangoes. His neighbour has three times as
@@ -834,7 +806,7 @@ $k$ for kilograms.
         \textbf{(b)} How many mangoes does the neighbour have? \\
         \textbf{(c)} Mr Bowen then eats all of his own mangoes in one afternoon. How
         many mangoes does Mr Bowen have now?
-        \begin{workspace}[1.7cm]\end{workspace}
+        \begin{workspace}[2.6cm]\end{workspace}
 \end{enumerate}
 
 % -- D2 ---------------------------------------------------------------------
@@ -846,7 +818,7 @@ $k$ for kilograms.
   A \textbf{real} situation \sep full sentences \sep ends in a \textbf{question} \sep
   comes out at $n = 8$
 \end{yourturn}
-\qlines{3}
+\qlines{4}
 
 % A half-page "Before the Assessment -- What Can You Do?" tick-list (one row per
 % lesson, 1.1 to 3.2, pointing at the questions for each) stood here. It came
@@ -946,17 +918,16 @@ the second half: most students prove the square and forget to rule out the cube.
   \item $15$ and $20$. The two numbers multiply to $5 \times 60 = 300$; the pairs
         with HCF 5 are $5, 60$ and $15, 20$, and the question rules out 5 and 60.
   \item $7$ and $-6$ \; (not $-7$ and $6$: their sum is $-1$)
-  \item $-4$ and $-6$ \; (both negative: a positive product and a negative sum)
   \item $2$, $5$, $8$. It must end in 5 (it does) \textbf{and} have a digit sum that
         divides by 3: $2 + 5 = 7$, so the digit is 2, 5 or 8.
   \item $9^3 = 729$, and $\sqrt{729} = 27$.
   \item (a) $-2 + (-9)$ \quad (b) $-5 \times 8$ \quad (c) $4^3 + 6$ \quad
         (d) $\sqrt[3]{27} \times 3$
 \end{enumerate}
-\noindent{\small These are harder than the assessment on purpose. 3 is the one to talk
-through: a student who finds $4$ and $6$ has the size and not the signs. In 5, the
+\noindent{\small These are harder than the assessment on purpose. 2 is the one to talk
+through: a student who finds $7$ and $6$ has the size and not the signs. In 4, the
 square root of 729 has to be \emph{found} --- $25^2 = 625$ and $30^2 = 900$, and it
-must end in 3 or 7 --- which is the real challenge. In 6, every card is used once;
+must end in 3 or 7 --- which is the real challenge. In 5, every card is used once;
 (c) is the one that unlocks the rest, because only $4^3$ is close to 70.}
 
 \qhead[cbred]{B1}{Expression, equation or formula?}
@@ -993,9 +964,7 @@ as the word-help box says, is the habit to praise.}
 
 \qhead[cbred]{B5}{Collect like terms}
 \noindent (a) $8y$ \quad (b) $5a + 2b$ \quad (c) $2p + 3q$ \quad (d) $6xy$ \quad
-(e) $5m - 5$ \quad (f) $3a^2 + 5a$ \\
-(g) $8k - j$. He took the $+j$ as $-j$: the sign in front of a term belongs to that
-term.
+(e) $5m - 5$ \quad (f) $3a^2 + 5a$
 
 \smallskip
 \noindent{\small (a) $9y$ means $y$ was not read as $1y$. (d): $yx$ and $xy$ are like

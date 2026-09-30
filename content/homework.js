@@ -166,8 +166,8 @@ export const HOMEWORK = [
   {
     id: 'q1rev',
     label: 'Q1',
-    title: 'Units 1 to 3, All of It',
-    subtitle: 'Quarter 1 review · Maths 1.1–3.2',
+    title: 'Q1 Review: Units 1 to 3',
+    subtitle: 'Maths 1.1–3.2 · Focus, Practice, Challenge',
     pdf: q1rev,
   },
   // Not a Year 7 packet: a single landscape sheet for the Algebra Track, handed

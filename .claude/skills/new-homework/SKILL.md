@@ -185,13 +185,22 @@ Page breaks are the fiddly part. In order of effectiveness:
 - **Keep groups atomic on purpose.** Answer lines that belong to a diagram go
   in a `tabular`, not `multicols` or `enumerate`, so they cannot split away
   from it.
-- **Do not over-use `needspace`.** 6 baselineskips for a question heading, 8
-  for a section heading. Larger values push headings to the next page and open
-  a bigger hole than they prevent. This is counter-intuitive and was got wrong
-  once already.
-- A `breakable` tcolorbox still moves whole if there is not enough room to
-  start it. A heading followed by a big box is the usual cause of a short page;
-  shortening what precedes it fixes it, tuning the box does not.
+- **Pages fill by themselves now (since 2026-09-30).** `hw-style.tex` redefines
+  `\needspace`: the package's own version put stretch and `\penalty-100` before
+  every heading, so a heading in the bottom half of a page claimed the break and
+  its question moved over whole — the source of most half-empty pages in HW 1–8
+  (`\tracingpages` showed b=4531 at the heading against b=10000 at every later
+  break). Headings are now glued to what follows with `\nobreak`, and the
+  remember / word-help / activity / your-turn boxes are **unbreakable**, so a
+  heading and its box move together instead of the heading being stranded. A
+  hole now means an atomic block genuinely did not fit — look at what it is.
+- **Keep a question's text with its answer space** by putting both in a
+  `minipage` (workspace boxes, a puzzle and its blanks), and put a table's
+  instruction in its own header row so it cannot be left behind.
+- **Rebuilding an old packet reflows it** under these rules. Re-read every page.
+- To see why a page broke where it did, put `\tracingpages=1` before the region
+  and read the `% t=... b=... p=... c=...` lines in the log; `#` marks the best
+  break so far. Faster than guessing.
 - Only then reach for leading, margins, and column counts. In a 3-column
   layout, check no expression wraps — shorten the expression rather than
   widening the column.
