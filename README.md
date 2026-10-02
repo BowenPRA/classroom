@@ -205,7 +205,10 @@ holds about 30 short questions per maths unit, each with its unit, a level
 (1–3), the source it was adapted from, and an optional `check` that
 `npm run check:bank` recomputes against the answer. The schema is in the header
 of `bank.js`. Nothing under `content/banks/` may be called `index.js`, because
-the registry would load it as a lesson.
+the registry would load it as a lesson. **Around the World**
+([`content/games/G04_around-the-world/`](content/games/G04_around-the-world/))
+is the first game built on it: choose units, and one question at a time comes up
+big, sized to fit the screen, with one key to show the answer and the next.
 
 ### Drawing diagrams
 
