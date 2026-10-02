@@ -47,6 +47,7 @@ landed.
 content/
   courses.js              the list of courses (shown on the home page, in order)
   registry.js             auto-discovers every lesson — no list to maintain
+  banks/<bank>/bank.js    question banks that games draw from (never an index.js)
   <course>/<unit>/
     index.js              default-exports { meta, slides, plan }
     slides.js             the deck (array of slide objects)
@@ -197,6 +198,14 @@ the others fade. A `qImage` on such a clue is not a choice: it sits beside the
 question at the height of the words, which is how a country's flag goes next to
 "Which one is from Japan?". The Year 1 board is built entirely this way. A board can also
 have fewer than six categories: the grid takes its column count from the data.
+
+**Question banks.** A game that wants one question at a time draws from a bank
+rather than carrying its own: [`content/banks/y7-math/`](content/banks/y7-math/)
+holds about 30 short questions per maths unit, each with its unit, a level
+(1–3), the source it was adapted from, and an optional `check` that
+`npm run check:bank` recomputes against the answer. The schema is in the header
+of `bank.js`. Nothing under `content/banks/` may be called `index.js`, because
+the registry would load it as a lesson.
 
 ### Drawing diagrams
 

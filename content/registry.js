@@ -4,6 +4,8 @@ import { COURSES } from './courses.js'
 //   content/<course>/<unit>/index.js
 // and default-exports { meta, slides, plan? }. Adding a new folder with an
 // index.js is all it takes for a lesson to appear — no list to maintain.
+// content/banks/ holds question banks, which have no index.js on purpose so
+// that this glob never mistakes one for a lesson.
 const modules = import.meta.glob('./*/*/index.js', { eager: true })
 
 // lessons: [{ course, unit, id, title, objective, order, slug, slides, plan }]
