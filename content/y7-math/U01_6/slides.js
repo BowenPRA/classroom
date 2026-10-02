@@ -406,8 +406,8 @@ export const slides = [
     reveal: {
       label: 'Check your answer',
       labelVn: 'Kiểm tra đáp án',
-      answer: '**144.** Between 100 and 200 the only squares are 121 and 144. $\\sqrt{121} = 11$ and $\\sqrt{144} = 12$ — and 12 is the multiple of 3.',
-      answerVn: '**144.** Giữa 100 và 200 chỉ có hai số chính phương là 121 và 144. $\\sqrt{121} = 11$ và $\\sqrt{144} = 12$ — và 12 mới là bội số của 3.',
+      answer: '**144.** The squares between 100 and 200 are 121, 144, 169 and 196. Their roots are 11, 12, 13 and 14 — and only 12 is a multiple of 3.',
+      answerVn: '**144.** Các số chính phương giữa 100 và 200 là 121, 144, 169 và 196. Căn của chúng là 11, 12, 13 và 14 — và chỉ có 12 là bội số của 3.',
     },
   },
   {

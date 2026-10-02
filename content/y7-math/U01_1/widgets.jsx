@@ -48,18 +48,18 @@ const Stepper = ({ label, display, onDown, onUp, colour }) => (
 const START_SECONDS = 120
 
 const REAL_NEGATIVES = [
-  { label: 'Empty space', labelVn: 'Không gian vũ trụ', value: '-270 °C', note: 'between the stars', noteVn: 'giữa các vì sao' },
-  { label: 'Boomerang Nebula', labelVn: 'Tinh vân Boomerang', value: '-272 °C', note: 'coldest place we know of', noteVn: 'nơi lạnh nhất từng biết' },
-  { label: 'Antarctic record', labelVn: 'Kỷ lục Nam Cực', value: '-89 °C', note: 'coldest day ever measured', noteVn: 'ngày lạnh nhất từng đo được' },
-  { label: 'Home freezer', labelVn: 'Tủ đông trong nhà', value: '-18 °C', note: 'colder than the kitchen', noteVn: 'lạnh hơn nhà bếp' },
-  { label: 'Dead Sea shore', labelVn: 'Bờ Biển Chết', value: '-430 m', note: 'the lowest land on Earth', noteVn: 'vùng đất thấp nhất Trái Đất' },
-  { label: 'Much of the Netherlands', labelVn: 'Phần lớn Hà Lan', value: '-7 m', note: 'farmland below sea level', noteVn: 'đồng ruộng dưới mực nước biển' },
-  { label: 'Car park level', labelVn: 'Tầng hầm gửi xe', value: 'B5 = -5', note: 'five floors below the ground', noteVn: 'năm tầng dưới mặt đất' },
-  { label: 'Golf, three under par', labelVn: 'Golf, dưới chuẩn ba gậy', value: '-3', note: 'in golf, lower is better', noteVn: 'trong golf, thấp hơn là giỏi hơn' },
-  { label: 'Goal difference', labelVn: 'Hiệu số bàn thắng', value: '-7', note: 'let in more than you score', noteVn: 'thủng lưới nhiều hơn ghi được' },
+  { label: 'Empty space', labelVn: 'Không gian vũ trụ', value: '−270 °C', note: 'between the stars', noteVn: 'giữa các vì sao' },
+  { label: 'Boomerang Nebula', labelVn: 'Tinh vân Boomerang', value: '−272 °C', note: 'coldest place we know of', noteVn: 'nơi lạnh nhất từng biết' },
+  { label: 'Antarctic record', labelVn: 'Kỷ lục Nam Cực', value: '−89 °C', note: 'coldest day ever measured', noteVn: 'ngày lạnh nhất từng đo được' },
+  { label: 'Home freezer', labelVn: 'Tủ đông trong nhà', value: '−18 °C', note: 'colder than the kitchen', noteVn: 'lạnh hơn nhà bếp' },
+  { label: 'Dead Sea shore', labelVn: 'Bờ Biển Chết', value: '−430 m', note: 'the lowest land on Earth', noteVn: 'vùng đất thấp nhất Trái Đất' },
+  { label: 'Much of the Netherlands', labelVn: 'Phần lớn Hà Lan', value: '−7 m', note: 'farmland below sea level', noteVn: 'đồng ruộng dưới mực nước biển' },
+  { label: 'Car park level', labelVn: 'Tầng hầm gửi xe', value: 'B5 = −5', note: 'five floors below the ground', noteVn: 'năm tầng dưới mặt đất' },
+  { label: 'Golf, three under par', labelVn: 'Golf, dưới chuẩn ba gậy', value: '−3', note: 'in golf, lower is better', noteVn: 'trong golf, thấp hơn là giỏi hơn' },
+  { label: 'Goal difference', labelVn: 'Hiệu số bàn thắng', value: '−7', note: 'let in more than you score', noteVn: 'thủng lưới nhiều hơn ghi được' },
   { label: 'Rocket launch', labelVn: 'Phóng tên lửa', value: 'T - 10', note: 'the countdown to lift-off', noteVn: 'đếm ngược tới lúc rời bệ' },
-  { label: 'Bank overdraft', labelVn: 'Tài khoản âm', value: '-$50', note: 'money you owe the bank', noteVn: 'số tiền em nợ ngân hàng' },
-  { label: 'One electron', labelVn: 'Một electron', value: '-1', note: 'its electric charge', noteVn: 'điện tích của nó' },
+  { label: 'Bank overdraft', labelVn: 'Tài khoản âm', value: '−50 dollars', note: 'money you owe the bank', noteVn: 'số tiền em nợ ngân hàng' },
+  { label: 'One electron', labelVn: 'Một electron', value: '−1', note: 'its electric charge', noteVn: 'điện tích của nó' },
 ]
 
 export const TeamActivityWidget = ({ lang = 'en' }) => {
@@ -287,12 +287,12 @@ const DRILL = [
     answer: '−5 °C',
   },
   {
-    prompt: 'Mr Bowen owes the school canteen $12.',
-    promptVn: 'Thầy Bowen nợ căng tin trường $12.',
+    prompt: 'Mr Bowen owes the school canteen 12 dollars.',
+    promptVn: 'Thầy Bowen nợ căng tin trường 12 đô.',
     signal: 'owes → a debt → a negative amount',
     signalVn: 'owes (nợ) → khoản nợ → số âm',
     calc: '−12',
-    answer: '−$12',
+    answer: '−12 dollars',
   },
   {
     prompt: 'The submarine is 30 m below sea level. It rises 12 m.',
@@ -320,12 +320,12 @@ const DRILL = [
     answer: '10',
   },
   {
-    prompt: 'Mr Bowen has −$6 in the bank. He deposits $20, then withdraws $9.',
-    promptVn: 'Thầy Bowen có −$6 trong ngân hàng. Thầy gửi vào $20, rồi rút ra $9.',
+    prompt: 'Mr Bowen has −6 dollars in the bank. He deposits 20 dollars, then withdraws 9 dollars.',
+    promptVn: 'Thầy Bowen có −6 đô trong ngân hàng. Thầy gửi vào 20 đô, rồi rút ra 9 đô.',
     signal: 'deposits → add · withdraws → subtract',
     signalVn: 'deposits (gửi vào) → cộng · withdraws (rút ra) → trừ',
     calc: '−6 + 20 − 9',
-    answer: '$5',
+    answer: '5 dollars',
   },
   {
     reverse: true,

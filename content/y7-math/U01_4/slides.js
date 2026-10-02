@@ -87,7 +87,7 @@ export const slides = [
     ratio: 45,
     inlineSvg: DIAGRAMS.FACTOR_PAIRS_12,
     content: 'A **factor** of 12 is a number that divides into 12 **exactly**, with nothing left over. You already found them in the starter by hunting for pairs.',
-    contentVn: 'Một **ước số** của 12 là số chia hết cho 12 một cách **chính xác**, không dư gì cả. Em vừa tìm ra chúng trong bài khởi động khi đi tìm các cặp số.',
+    contentVn: 'Một **ước số** của 12 là số mà 12 chia hết cho nó một cách **chính xác**, không dư gì cả. Em vừa tìm ra chúng trong bài khởi động khi đi tìm các cặp số.',
     notes: [
       {
         tone: 'write',

@@ -40,7 +40,7 @@ export const plan = {
     { q: 'Slide 10 — sugar cubes, 4 along each edge', a: '4 × 4 × 4 = 64. Worth noticing out loud that 64 has now appeared as a square number and as a cube number — slide 18 comes back to it.' },
     { q: 'Widget — the book\'s Worked example 1.6', a: '5 × 5 × 5 = 125 so the cube root of 125 is 5. 7 × 7 = 49 so the square root of 49 is 7. Then 5 − 7 = −2.' },
     { q: 'Problem 1 — which two whole numbers is √45 between?', a: '6 and 7. 36 < 45 < 49, and the squares either side have roots 6 and 7. (√45 is about 6.7, but the class is not asked for that.)' },
-    { q: 'Problem 2 — Mr Bowen\'s number', a: '144. The only square numbers between 100 and 200 are 121 and 144; their roots are 11 and 12, and 12 is the multiple of 3.' },
+    { q: 'Problem 2 — Mr Bowen\'s number', a: '144. The square numbers between 100 and 200 are 121, 144, 169 and 196; their roots are 11, 12, 13 and 14, and only 12 is a multiple of 3.' },
     { q: 'Problem 3 — why is 64 on both lists?', a: '8 × 8 = 64 and 4 × 4 × 4 = 64. So the square root of 64 is 8 and the cube root of 64 is 4. If anyone asks for another such number, it is 729 = 27² = 9³ — that is Exercise 1.6 Q16b, so do not give it away.' },
     { q: 'Problem 4 — the cube watermelons', a: '3 × 3 × 3 = 27. The melons are genuine: Japanese growers raise them inside glass boxes so they stack. Read the slide completely straight and do not explain the joke.' },
     { q: 'Problem 5 — the bathroom wall', a: '24 tiles, because 24 × 24 = 576. 576 is past the twelve they copied, so they trap it: 20² = 400 and 25² = 625, so the side is between 20 and 25, and 24² = 576.' },

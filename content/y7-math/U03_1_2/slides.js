@@ -458,7 +458,7 @@ export const slides = [
   },
 
   // ══ PART B · 3.2 ROUNDING ═════════════════════════════════════════════════
-  // 18. Key word: round, off a scale that is already rounding for them
+  // 19. Key word: round, off a scale that is already rounding for them
   {
     layout: 'split',
     accent: ORANGE,
@@ -480,7 +480,7 @@ export const slides = [
     ],
   },
 
-  // 19. English check — the instruction words. The most valuable slide in part B.
+  // 20. English check — the instruction words. The most valuable slide in part B.
   {
     layout: 'showcase',
     accent: PURPLE,
@@ -494,7 +494,7 @@ export const slides = [
     captionVn: 'Ba dòng đầu là cùng một việc. Dòng cuối thì không.',
   },
 
-  // 20. Copy the instruction words
+  // 21. Copy the instruction words
   {
     layout: 'callout',
     accent: ORANGE,
@@ -512,7 +512,7 @@ export const slides = [
     ],
   },
 
-  // 21. Degree of accuracy, on a watch that has chosen one
+  // 22. Degree of accuracy, on a watch that has chosen one
   {
     layout: 'split',
     accent: ORANGE,
@@ -534,7 +534,7 @@ export const slides = [
     ],
   },
 
-  // 22. Counting decimal places
+  // 23. Counting decimal places
   {
     layout: 'split',
     accent: ORANGE,
@@ -556,7 +556,7 @@ export const slides = [
     ],
   },
 
-  // 23. The rule, on a number line so the 5 is honest
+  // 24. The rule, on a number line so the 5 is honest
   {
     layout: 'split',
     accent: ORANGE,
@@ -578,7 +578,7 @@ export const slides = [
     ],
   },
 
-  // 24. Practice, 1 d.p.
+  // 25. Practice, 1 d.p.
   {
     layout: 'split',
     accent: GREEN,
@@ -608,7 +608,7 @@ export const slides = [
     },
   },
 
-  // 25. Ask before you tell: the trailing zero
+  // 26. Ask before you tell: the trailing zero
   {
     layout: 'statement',
     accent: PURPLE,
@@ -623,7 +623,7 @@ export const slides = [
     subVn: 'Viết đáp án ra. Chưa nói vội.',
   },
 
-  // 26. Keep the zero
+  // 27. Keep the zero
   {
     layout: 'split',
     accent: RED,
@@ -645,7 +645,7 @@ export const slides = [
     ],
   },
 
-  // 27. Practice, 2 and 3 d.p.
+  // 28. Practice, 2 and 3 d.p.
   {
     layout: 'split',
     accent: GREEN,
@@ -676,7 +676,7 @@ export const slides = [
   },
 
   // ── STOPPING TOO EARLY ────────────────────────────────────────────────────
-  // 28. Ask before you tell. No numbers, no answer.
+  // 29. Ask before you tell. No numbers, no answer.
   {
     layout: 'statement',
     accent: PURPLE,
@@ -691,7 +691,7 @@ export const slides = [
     subVn: 'Em dừng chia ở đâu?',
   },
 
-  // 29. Vote 2
+  // 30. Vote 2
   {
     layout: 'compare',
     accent: PURPLE,
@@ -720,7 +720,7 @@ export const slides = [
     ],
   },
 
-  // 30. The division, settled
+  // 31. The division, settled
   {
     layout: 'showcase',
     accent: RED,
@@ -734,7 +734,7 @@ export const slides = [
     captionVn: 'Đây chính là lý do **as far as** và **correct to** là hai cách nói khác nhau.',
   },
 
-  // 31. Copy the rule, then use it
+  // 32. Copy the rule, then use it
   {
     layout: 'callout',
     accent: ORANGE,
@@ -760,7 +760,7 @@ export const slides = [
     },
   },
 
-  // 32. One number, many degrees of accuracy
+  // 33. One number, many degrees of accuracy
   {
     layout: 'split',
     accent: GREEN,
@@ -792,7 +792,7 @@ export const slides = [
     },
   },
 
-  // 33. Find the mistakes
+  // 34. Find the mistakes
   {
     layout: 'split',
     accent: PURPLE,
@@ -822,7 +822,7 @@ export const slides = [
   },
 
   // ── WORD PROBLEMS (deadpan, and they get sillier) ─────────────────────────
-  // 34. Two sensible ones
+  // 35. Two sensible ones
   {
     layout: 'split',
     accent: GREEN,
@@ -846,7 +846,7 @@ export const slides = [
     },
   },
 
-  // 35. Silly one
+  // 36. Silly one
   {
     layout: 'callout',
     accent: GREEN,
@@ -869,7 +869,7 @@ export const slides = [
     },
   },
 
-  // 36. Sillier one — and it shows what rounding hides
+  // 37. Sillier one — and it shows what rounding hides
   {
     layout: 'callout',
     accent: GREEN,
@@ -895,7 +895,7 @@ export const slides = [
   },
 
   // ══ CLOSE ═════════════════════════════════════════════════════════════════
-  // 37. Checklist
+  // 38. Checklist
   {
     layout: 'stack',
     variant: 'checklist',
@@ -917,7 +917,7 @@ export const slides = [
     ],
   },
 
-  // 38. Homework
+  // 39. Homework
   {
     layout: 'callout',
     accent: RED,
@@ -940,7 +940,7 @@ export const slides = [
     ],
   },
 
-  // 39. Exit question — one from each half
+  // 40. Exit question — one from each half
   {
     layout: 'hero',
     color: TEAL,

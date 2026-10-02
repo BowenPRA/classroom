@@ -266,10 +266,10 @@ export const slides = [
       labelVn: 'Kiểm tra đáp án',
       answer:
         '**A)** The LCM of 4 and 8 is $8$, **not** 32 — because 4 divides into 8.\n\n' +
-        '**B)** The LCM of 3 and 5 is $15$. Here $3 × 5 = 15$ happens to work, because 3 and 5 share no factor. Multiplying is a lucky shortcut, not the rule — when in doubt, **list them**.',
+        '**B)** The LCM of 3 and 5 is $15$. Here $3 × 5 = 15$ works, because their only common factor is 1. Multiplying is a lucky shortcut, not the rule — when in doubt, **list them**.',
       answerVn:
         '**A)** BCNN của 4 và 8 là $8$, **không** phải 32 — vì 4 chia hết 8.\n\n' +
-        '**B)** BCNN của 3 và 5 là $15$. Ở đây $3 × 5 = 15$ tình cờ đúng, vì 3 và 5 không có thừa số chung. Nhân chỉ là mẹo may mắn, không phải quy tắc — khi phân vân, hãy **liệt kê ra**.',
+        '**B)** BCNN của 3 và 5 là $15$. Ở đây $3 × 5 = 15$ đúng, vì ước số chung duy nhất của chúng là 1. Nhân chỉ là mẹo may mắn, không phải quy tắc — khi phân vân, hãy **liệt kê ra**.',
     },
   },
 
