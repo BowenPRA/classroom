@@ -182,9 +182,12 @@ function Setup({ lang, picked, setPicked, onStart }) {
 
 // ── The question ────────────────────────────────────────────────────────────
 
-// Sizes the whole stage (question, answer, reason) as one block of type: the
-// largest font size at which it fits the box, found by binary search on the
-// real layout. Everything inside is set in em, so one number scales it all.
+// Sizes the whole stage (question, answer, reason) as one block of type.
+// Sizes come from a fixed ladder below one ceiling, so most questions land on
+// exactly the same size and the next question does not jump: only a long word
+// problem steps down a rung. Everything inside is set in em, so one number
+// scales it all. The block stays hidden until it is sized, then fades in, so
+// the class never sees a resize.
 function useFitText(boxRef, contentRef, signature, big) {
   useLayoutEffect(() => {
     const box = boxRef.current
@@ -201,20 +204,15 @@ function useFitText(boxRef, contentRef, signature, big) {
       // The ceiling keeps a three-word question from turning into a poster;
       // the floor is the smallest size the back row can still read.
       const floor = big ? 22 : 14
-      let lo = floor
-      let hi = Math.max(floor, Math.floor(Math.min(W / (big ? 9 : 11), H / 3.4)))
-      if (fits(hi)) lo = hi
-      else {
-        while (hi - lo > 1) {
-          const mid = Math.floor((lo + hi) / 2)
-          if (fits(mid)) lo = mid
-          else hi = mid
-        }
-      }
-      const ok = fits(lo)
-      content.dataset.px = String(lo)
+      const ceiling = Math.max(floor, Math.floor(Math.min(W / (big ? 15 : 18), H / 6)))
+      let px = ceiling
+      while (px > floor && !fits(px)) px = Math.max(floor, Math.floor(px * 0.88))
+      const ok = fits(px)
+      content.dataset.px = String(px)
       content.dataset.fit = ok ? 'ok' : 'overflow'
+      content.style.visibility = 'visible'
     }
+    content.style.visibility = 'hidden'
     fit()
     const observer = new ResizeObserver(fit)
     observer.observe(box)
@@ -230,8 +228,8 @@ function Stage({ lang, big, question, revealed }) {
   const why = pick(lang, question.why, question.whyVn)
   return (
     <div ref={boxRef} className="flex-1 min-h-0 overflow-hidden flex items-center justify-center">
-      <div ref={contentRef} data-qid={question.id} className="w-full flex flex-col items-center gap-[0.45em] text-center">
-        <p lang={lang === 'vn' ? 'vi' : 'en'} className="font-black tracking-tight leading-[1.18] text-slate-800 dark:text-slate-100 text-balance">
+      <div ref={contentRef} key={`${question.id}|${lang}`} data-qid={question.id} className="w-full flex flex-col items-center gap-[0.45em] text-center antialiased animate-in fade-in duration-300">
+        <p lang={lang === 'vn' ? 'vi' : 'en'} className="font-bold tracking-tight leading-[1.18] text-slate-800 dark:text-slate-100 text-balance">
           <BankText text={pick(lang, question.q, question.qVn)} />
         </p>
         {/* Hidden, not removed, until the reveal: the space is kept so the
