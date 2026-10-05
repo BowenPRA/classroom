@@ -186,8 +186,8 @@ function Setup({ lang, picked, setPicked, onStart }) {
 // Sizes come from a fixed ladder below one ceiling, so most questions land on
 // exactly the same size and the next question does not jump: only a long word
 // problem steps down a rung. Everything inside is set in em, so one number
-// scales it all. The block stays hidden until it is sized, then fades in, so
-// the class never sees a resize.
+// scales it all. The block stays hidden until it is sized, so the class
+// never sees a resize.
 function useFitText(boxRef, contentRef, signature, big) {
   useLayoutEffect(() => {
     const box = boxRef.current
@@ -227,8 +227,11 @@ function Stage({ lang, big, question, revealed }) {
   useFitText(boxRef, contentRef, `${question.id}|${lang}`, big)
   const why = pick(lang, question.why, question.whyVn)
   return (
-    <div ref={boxRef} className="flex-1 min-h-0 overflow-hidden flex items-center justify-center">
-      <div ref={contentRef} key={`${question.id}|${lang}`} data-qid={question.id} className="w-full flex flex-col items-center gap-[0.45em] text-center antialiased animate-in fade-in duration-300">
+    // Top-aligned, not centred: the hidden answer below is a different height
+    // for every question, so centring would start each question on a
+    // different line. Now every question appears in exactly the same place.
+    <div ref={boxRef} className="flex-1 min-h-0 overflow-hidden flex items-start justify-center">
+      <div ref={contentRef} data-qid={question.id} className="w-full flex flex-col items-center gap-[0.45em] pt-6 text-center antialiased">
         <p lang={lang === 'vn' ? 'vi' : 'en'} className="font-bold tracking-tight leading-[1.18] text-slate-800 dark:text-slate-100 text-balance">
           <BankText text={pick(lang, question.q, question.qVn)} />
         </p>
