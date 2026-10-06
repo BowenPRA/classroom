@@ -6,7 +6,7 @@ export const plan = {
   objective:
     'Students sort sixteen items into four hidden groups and say WHY the four belong together — building category vocabulary '
     + '(farm animals, clothes, weather, the kitchen, where food comes from), initial sounds and rhyme lower down, materials and '
-    + 'animal groups on the Year 1 science shelf, and Cambridge subject vocabulary plus deliberate wordplay traps at Year 7. '
+    + 'animal groups, shapes, patterns, parts and the senses on the Year 1 science shelf, and Cambridge subject vocabulary plus deliberate wordplay traps at Year 7. '
     + 'Throughout: the habit of justifying a guess in English.',
   materials: [
     'Projector / TV — press Project for the big version',
@@ -20,7 +20,7 @@ export const plan = {
     { term: 'I think… because…', def: 'the answer stem. Never accept a pointed finger; make them finish the sentence.' },
   ],
   timeline: [
-    { time: '0–1 min', phase: 'Choose', detail: 'Open the puzzle list and pick by band — amber is Kindergarten–Year 1 (seven puzzles, five of them all pictures), emerald is Year 1 · Science and the World (four more walls, every one all pictures), sky is Year 1–4 (eleven word walls, roughly easiest first), violet is Year 7 (five walls, each with a baited tile).' },
+    { time: '0–1 min', phase: 'Choose', detail: 'Open the puzzle list and pick by band — amber is Kindergarten–Year 1 (seven puzzles, five of them all pictures), emerald is Year 1 · Science and the World (seven more walls, every one all pictures — the last three sort by what a thing looks like, has, or does to your senses), sky is Year 1–4 (eleven word walls, roughly easiest first), violet is Year 7 (five walls, each with a baited tile).' },
     { time: '1–2 min', phase: 'Read the hint', detail: 'The amber line under the title says how this board sorts. Read it aloud twice. First Sounds is unfair without it — the pictures also group by meaning, and that is the trap.' },
     { time: '2–4 min', phase: 'Name everything', detail: 'Before any guessing, point at all sixteen tiles and have the class chorus each one. On a picture board this is the vocabulary lesson; the sorting is the check.' },
     { time: '4–10 min', phase: 'Play', detail: 'Take a guess from one child, then ask the class to vote before you press Check. Four hearts means four wrong guesses, so make them argue for it: "Why those four?" A wrong guess is the best moment in the game — the tiles shake, nobody is told off, and "so close, three of those go together" is a real clue.' },
@@ -40,6 +40,9 @@ export const plan = {
     { q: 'Y1 · Animal Groups', a: 'In the sea: whale, shark, turtle, octopus · Birds: owl, duck, penguin, parrot · Minibeasts: ant, bee, butterfly, spider · Big wild animals: elephant, tiger, monkey, giraffe. The penguin is the one they argue about — it swims, so half the class puts it in the sea.' },
     { q: 'Y1 · Around the House', a: 'Bathroom: toothbrush, soap, towel, comb · Bedroom: bed, pillow, lamp, teddy · Living room: sofa, television, clock, rug · On the desk: pencil, crayon, scissors, glue' },
     { q: 'Y1 · Out and About', a: 'Playground: slide, seesaw, sandpit, ball · Seaside: shell, starfish, crab, boat · Up in the sky: cloud, rainbow, kite, moon · Garden: flower, tree, grass, leaf' },
+    { q: 'Y1 · What Does It Look Like?', a: 'Round: moon, orange, coin, clock · Stripy: tiger, zebra, bee, WATERMELON · Spotty: ladybird, leopard, dalmatian, dice · Spiky: hedgehog, cactus, durian, pineapple. The watermelon is round AND stripy; it only goes in once Round is full.' },
+    { q: 'Y1 · What Has It Got?', a: 'Teeth: crocodile, comb, zip, saw · Wings: plane, butterfly, OWL, BAT · Legs, but it can’t walk: chair, table, bunk bed, trousers · Wheels: bus, motorbike, skateboard, trolley. The owl, the bat and the crocodile have legs too — but they walk, and the group is things that never do.' },
+    { q: 'Y1 · Use Your Senses', a: 'Loud (ears): drum, trumpet, fire engine, fireworks · Smelly (nose): durian, rubbish bin, skunk, garlic · Soft (hands): pillow, teddy, feather, cat · Sour (tongue): lemon, green mango, star fruit, tamarind' },
     { q: 'Y7 · Talking About Number', a: 'Add: sum, total, plus, more · Subtract: minus, less, take, difference · Kinds of number: prime, SQUARE, CUBE, triangular · Solid shapes: prism, sphere, cone, pyramid. The bait is SQUARE and CUBE, which everyone puts with the shapes.' },
     { q: 'Y7 · Cells and Life', a: 'Every cell: nucleus, membrane, cytoplasm, mitochondria · Plant only: cell wall, chloroplast, vacuole, chlorophyll · Specialised cells: neurone, palisade, ciliated, root hair · Life processes: growth, movement, excretion, nutrition' },
     { q: 'Y7 · Stick a Word on the End', a: '+BALL: foot, base, eye, snow · +WORK: home, net, team, paper · +LIGHT: day, moon, high, FIRE · River: source, bed, bank, mouth. FIRE makes a real word with all three (fireball, firework, firelight) and is only pinned down once BALL and WORK are full — the classic Connections move.' },
@@ -55,7 +58,7 @@ export const plan = {
     + 'finishes the board; nobody should leave a puzzle unsolved.\n\n'
     + 'Kindergarten and Year 1 sit on the floor and point. Do not let a child touch the board before the class has voted — '
     + 'the talking is the whole point, and a fast clicker ends the thinking.\n\n'
-    + 'All eleven puzzles on the amber and emerald shelves carry a Vietnamese gloss on every word: switch the deck to VN after '
+    + 'All fourteen puzzles on the amber and emerald shelves carry a Vietnamese gloss on every word: switch the deck to VN after '
     + 'solving, and the same solved rows print "COW (con bò)". Sort in English, confirm in Vietnamese, never the other way '
     + 'round.\n\n'
     + '"HOW DO WE COOK IT?" IS THE HARDEST WALL ON THE AMBER SHELF, and it is the last one for a reason: the other three food '
@@ -66,5 +69,11 @@ export const plan = {
     + 'The emerald shelf is Year 1 and every wall on it is all pictures. "What Is It Made Of?" is the Cambridge Primary '
     + 'Science Stage 1 materials objective and it sorts on a rule the others do not: not what a thing is for, but what it is '
     + 'made from. Say that twice before you start, and hold up a real wooden spoon and a real metal one — the board has both, '
-    + 'in different groups, and that pair is the whole idea.',
+    + 'in different groups, and that pair is the whole idea.\n\n'
+    + 'THE LAST THREE EMERALD WALLS SORT BY A PROPERTY, NOT A THING. Before "What Does It Look Like?", draw a circle, '
+    + 'stripes, spots and a spiky line on the board and say the four words; the class will try to put the animals together, '
+    + 'and three groups have animals in them. "What Has It Got?" needs one example first — hold up a comb and ask what it '
+    + 'has — or nobody will look for teeth on a zip. Play "Use Your Senses" last: point to your ears, nose, hands and tongue '
+    + 'as you read the hint, and pull the sour face. Seeing is the first wall, so between them the class meets all five senses. '
+    + 'The durian is on both the first and the last; ask why it can be in two groups.',
 }

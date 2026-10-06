@@ -16,8 +16,10 @@ import ant from './images/ant.jpg'
 import apple from './images/apple.jpg'
 import ball from './images/ball.jpg'
 import banana from './images/banana.jpg'
+import bat from './images/bat.jpg'
 import bed from './images/bed.jpg'
 import bee from './images/bee.jpg'
+import bin from './images/bin.jpg'
 import biscuit from './images/biscuit.jpg'
 import boat from './images/boat.jpg'
 import bottle from './images/bottle.jpg'
@@ -26,9 +28,12 @@ import bread from './images/bread.jpg'
 import broccoli from './images/broccoli.jpg'
 import bucket from './images/bucket.jpg'
 import bulb from './images/bulb.jpg'
+import bumblebee from './images/bumblebee.jpg'
+import bunkbed from './images/bunkbed.jpg'
 import bus from './images/bus.jpg'
 import butter from './images/butter.jpg'
 import butterfly from './images/butterfly.jpg'
+import cactus from './images/cactus.jpg'
 import cake from './images/cake.jpg'
 import car from './images/car.jpg'
 import carrot from './images/carrot.jpg'
@@ -47,24 +52,35 @@ import comb from './images/comb.jpg'
 import cow from './images/cow.jpg'
 import crab from './images/crab.jpg'
 import crayon from './images/crayon.jpg'
+import crocodile from './images/crocodile.jpg'
+import dalmatian from './images/dalmatian.jpg'
+import dice from './images/dice.jpg'
 import dog from './images/dog.jpg'
 import doughnut from './images/doughnut.jpg'
+import drum from './images/drum.jpg'
 import duck from './images/duck.jpg'
 import dumpling from './images/dumpling.jpg'
+import durian from './images/durian.jpg'
 import egg from './images/egg.jpg'
 import elephant from './images/elephant.jpg'
+import feather from './images/feather.jpg'
+import fireengine from './images/fireengine.jpg'
+import fireworks from './images/fireworks.jpg'
 import fish from './images/fish.jpg'
 import flower from './images/flower.jpg'
 import fork from './images/fork.jpg'
 import fridge from './images/fridge.jpg'
 import friedegg from './images/friedegg.jpg'
+import garlic from './images/garlic.jpg'
 import ginger from './images/ginger.jpg'
 import giraffe from './images/giraffe.jpg'
 import glasses from './images/glasses.jpg'
 import glue from './images/glue.jpg'
 import grapes from './images/grapes.jpg'
 import grass from './images/grass.jpg'
+import greenmango from './images/greenmango.jpg'
 import hat from './images/hat.jpg'
+import hedgehog from './images/hedgehog.jpg'
 import hen from './images/hen.jpg'
 import icecream from './images/icecream.jpg'
 import jar from './images/jar.jpg'
@@ -72,12 +88,16 @@ import juice from './images/juice.jpg'
 import kettle from './images/kettle.jpg'
 import key from './images/key.jpg'
 import kite from './images/kite.jpg'
+import ladybird from './images/ladybird.jpg'
 import lamp from './images/lamp.jpg'
 import leaf from './images/leaf.jpg'
+import lemon from './images/lemon.jpg'
+import leopard from './images/leopard.jpg'
 import microwave from './images/microwave.jpg'
 import milk from './images/milk.jpg'
 import monkey from './images/monkey.jpg'
 import moon from './images/moon.jpg'
+import motorbike from './images/motorbike.jpg'
 import nail from './images/nail.jpg'
 import noodles from './images/noodles.jpg'
 import octopus from './images/octopus.jpg'
@@ -92,6 +112,7 @@ import pencil from './images/pencil.jpg'
 import penguin from './images/penguin.jpg'
 import pig from './images/pig.jpg'
 import pillow from './images/pillow.jpg'
+import pineapple from './images/pineapple.jpg'
 import pizza from './images/pizza.jpg'
 import plane from './images/plane.jpg'
 import pot from './images/pot.jpg'
@@ -101,12 +122,15 @@ import rainbow from './images/rainbow.jpg'
 import rice from './images/rice.jpg'
 import rug from './images/rug.jpg'
 import sandpit from './images/sandpit.jpg'
+import saw from './images/saw.jpg'
 import scissors from './images/scissors.jpg'
 import seesaw from './images/seesaw.jpg'
 import shark from './images/shark.jpg'
 import sheep from './images/sheep.jpg'
 import shell from './images/shell.jpg'
 import shoe from './images/shoe.jpg'
+import skateboard from './images/skateboard.jpg'
+import skunk from './images/skunk.jpg'
 import slide from './images/slide.jpg'
 import snake from './images/snake.jpg'
 import snow from './images/snow.jpg'
@@ -119,8 +143,11 @@ import spoon from './images/spoon.jpg'
 import springroll from './images/springroll.jpg'
 import squid from './images/squid.jpg'
 import starfish from './images/starfish.jpg'
+import starfruit from './images/starfruit.jpg'
 import straw from './images/straw.jpg'
 import sun from './images/sun.jpg'
+import table from './images/table.jpg'
+import tamarind from './images/tamarind.jpg'
 import tea from './images/tea.jpg'
 import teddy from './images/teddy.jpg'
 import television from './images/television.jpg'
@@ -129,28 +156,38 @@ import toaster from './images/toaster.jpg'
 import toothbrush from './images/toothbrush.jpg'
 import towel from './images/towel.jpg'
 import tree from './images/tree.jpg'
+import trolley from './images/trolley.jpg'
+import trousers from './images/trousers.jpg'
+import trumpet from './images/trumpet.jpg'
 import tshirt from './images/tshirt.jpg'
 import turtle from './images/turtle.jpg'
 import water from './images/water.jpg'
+import watermelon from './images/watermelon.jpg'
 import whale from './images/whale.jpg'
 import windowpane from './images/windowpane.jpg'
 import wok from './images/wok.jpg'
 import woodenspoon from './images/woodenspoon.jpg'
 import yoghurt from './images/yoghurt.jpg'
+import zebra from './images/zebra.jpg'
+import zip from './images/zip.jpg'
 
 export const PICS = {
-  ant, apple, ball, banana, bed, bee, biscuit, boat, bottle, bowl, bread,
-  broccoli, bucket, bulb, bus, butter, butterfly, cake, car, carrot, cat,
-  chair, cheese, chips, chocolate, chopsticks, clock, cloud, coconut,
-  coffee, coin, comb, cow, crab, crayon, dog, doughnut, duck, dumpling,
-  egg, elephant, fish, flower, fork, fridge, friedegg, ginger, giraffe,
-  glasses, glue, grapes, grass, hat, hen, icecream, jar, juice, kettle,
-  key, kite, lamp, leaf, microwave, milk, monkey, moon, nail, noodles,
-  octopus, onion, orange, oven, owl, pan, pancake, parrot, pencil, penguin,
-  pig, pillow, pizza, plane, pot, potato, prawn, rainbow, rice, rug,
-  sandpit, scissors, seesaw, shark, sheep, shell, shoe, slide, snake, snow,
-  soap, sock, sofa, soup, spider, spoon, springroll, squid, starfish,
-  straw, sun, tea, teddy, television, tiger, toaster, toothbrush, towel,
-  tree, tshirt, turtle, water, whale, windowpane, wok, woodenspoon,
-  yoghurt,
+  ant, apple, ball, banana, bat, bed, bee, bin, biscuit, boat, bottle,
+  bowl, bread, broccoli, bucket, bulb, bumblebee, bunkbed, bus, butter,
+  butterfly, cactus, cake, car, carrot, cat, chair, cheese, chips,
+  chocolate, chopsticks, clock, cloud, coconut, coffee, coin, comb, cow,
+  crab, crayon, crocodile, dalmatian, dice, dog, doughnut, drum, duck,
+  dumpling, durian, egg, elephant, feather, fireengine, fireworks, fish,
+  flower, fork, fridge, friedegg, garlic, ginger, giraffe, glasses, glue,
+  grapes, grass, greenmango, hat, hedgehog, hen, icecream, jar, juice,
+  kettle, key, kite, ladybird, lamp, leaf, lemon, leopard, microwave, milk,
+  monkey, moon, motorbike, nail, noodles, octopus, onion, orange, oven,
+  owl, pan, pancake, parrot, pencil, penguin, pig, pillow, pineapple,
+  pizza, plane, pot, potato, prawn, rainbow, rice, rug, sandpit, saw,
+  scissors, seesaw, shark, sheep, shell, shoe, skateboard, skunk, slide,
+  snake, snow, soap, sock, sofa, soup, spider, spoon, springroll, squid,
+  starfish, starfruit, straw, sun, table, tamarind, tea, teddy, television,
+  tiger, toaster, toothbrush, towel, tree, trolley, trousers, trumpet,
+  tshirt, turtle, water, watermelon, whale, windowpane, wok, woodenspoon,
+  yoghurt, zebra, zip,
 }

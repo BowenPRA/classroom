@@ -18,8 +18,9 @@
 // `band` splits the level menu: 'early' is Kindergarten–Year 1 (pictures and
 // three-letter words, ending with four walls about food and cooking), 'y1' is
 // a second all-picture set for Year 1 — materials, animal groups, rooms and
-// places, opening with a Cambridge Primary Science
-// Stage 1 wall — 'words' is the Year 1–4 word puzzles, and 'y7' is the Year 7
+// places, opening with a Cambridge Primary Science Stage 1 wall and closing
+// with three that sort by what a thing looks like, has, or does to your
+// senses — 'words' is the Year 1–4 word puzzles, and 'y7' is the Year 7
 // set — curriculum vocabulary and NYT-Connections-style wordplay, where at
 // least one tile in every wall is deliberately baited into the wrong group.
 
@@ -423,10 +424,10 @@ export const LEVELS = [
   },
 
   // ── Year 1 · science and the world ───────────────────────────────────────
-  // Four more all-picture walls, no reading anywhere on the board. The first
+  // Seven more all-picture walls, no reading anywhere on the board. The first
   // is Cambridge Primary Science Stage 1 Chemistry — sorting objects by the
-  // material they are made from — and the other three widen the same skill to
-  // animals, rooms and places.
+  // material they are made from — the next three widen the same skill to
+  // animals, rooms and places, and the last three sort by a property.
   {
     id: 'what-is-it-made-of',
     band: 'y1',
@@ -643,6 +644,178 @@ export const LEVELS = [
           { img: 'tree', word: 'TREE', vn: 'cái cây' },
           { img: 'grass', word: 'GRASS', vn: 'cỏ' },
           { img: 'leaf', word: 'LEAF', vn: 'chiếc lá' },
+        ],
+      },
+    ],
+  },
+
+  // Three walls that sort on what you can SEE, FIND or SENSE about a thing,
+  // not on what it is. On all three the first idea in the room — animals
+  // together, food together — is wrong, and noticing that is the lesson. The
+  // first two each bait a tile into the wrong group: the WATERMELON is round
+  // as well as stripy, and the OWL and the BAT have legs as well as wings. The
+  // DURIAN is on two walls on purpose — spiky on one, smelly on the other.
+  {
+    id: 'what-does-it-look-like',
+    band: 'y1',
+    icon: 'Eye',
+    title: 'What Does It Look Like?',
+    titleVn: 'Trông Nó Thế Nào?',
+    hint: 'All pictures. Not WHAT it is — what it LOOKS like.',
+    hintVn: 'Toàn tranh. Không phải nó LÀ GÌ — mà nó TRÔNG thế nào.',
+    groups: [
+      {
+        name: 'Round', nameVn: 'Hình Tròn',
+        note: 'Draw a circle in the air with your finger. That is round.',
+        noteVn: 'Lấy ngón tay vẽ một vòng tròn trong không khí. Đó là hình tròn.',
+        items: [
+          { img: 'moon', word: 'MOON', vn: 'mặt trăng' },
+          { img: 'orange', word: 'ORANGE', vn: 'quả cam' },
+          { img: 'coin', word: 'COIN', vn: 'đồng xu' },
+          { img: 'clock', word: 'CLOCK', vn: 'đồng hồ' },
+        ],
+      },
+      {
+        name: 'Stripy', nameVn: 'Có Sọc',
+        note: 'Stripes are long lines, side by side. The watermelon is round too!',
+        noteVn: 'Sọc là những đường dài nằm cạnh nhau. Quả dưa hấu cũng tròn nữa!',
+        items: [
+          { img: 'tiger', word: 'TIGER', vn: 'con hổ' },
+          { img: 'zebra', word: 'ZEBRA', vn: 'ngựa vằn' },
+          { img: 'bumblebee', word: 'BEE', vn: 'con ong' },
+          { img: 'watermelon', word: 'WATERMELON', vn: 'quả dưa hấu' },
+        ],
+      },
+      {
+        name: 'Spotty', nameVn: 'Có Đốm',
+        note: 'Spots are little dots, all over. A dice has spots too!',
+        noteVn: 'Đốm là những chấm nhỏ ở khắp nơi. Xúc xắc cũng có đốm!',
+        items: [
+          { img: 'ladybird', word: 'LADYBIRD', vn: 'con bọ rùa' },
+          { img: 'leopard', word: 'LEOPARD', vn: 'con báo' },
+          { img: 'dalmatian', word: 'DALMATIAN', vn: 'chó đốm' },
+          { img: 'dice', word: 'DICE', vn: 'xúc xắc' },
+        ],
+      },
+      {
+        name: 'Spiky', nameVn: 'Có Gai',
+        note: 'Spikes are sharp points. Look, but do not touch!',
+        noteVn: 'Gai là những mũi nhọn. Nhìn thôi, đừng chạm vào!',
+        items: [
+          { img: 'hedgehog', word: 'HEDGEHOG', vn: 'con nhím' },
+          { img: 'cactus', word: 'CACTUS', vn: 'cây xương rồng' },
+          { img: 'durian', word: 'DURIAN', vn: 'quả sầu riêng' },
+          { img: 'pineapple', word: 'PINEAPPLE', vn: 'quả dứa' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'what-has-it-got',
+    band: 'y1',
+    icon: 'Search',
+    title: 'What Has It Got?',
+    titleVn: 'Nó Có Cái Gì?',
+    hint: 'All pictures. Four things share one PART. Which part?',
+    hintVn: 'Toàn tranh. Bốn thứ có chung một BỘ PHẬN. Bộ phận nào?',
+    groups: [
+      {
+        name: 'It Has Teeth', nameVn: 'Có Răng',
+        note: 'Not only animals have teeth. A zip has teeth too!',
+        noteVn: 'Không chỉ con vật mới có răng. Khoá kéo cũng có răng!',
+        items: [
+          { img: 'crocodile', word: 'CROCODILE', vn: 'cá sấu' },
+          { img: 'comb', word: 'COMB', vn: 'cái lược' },
+          { img: 'zip', word: 'ZIP', vn: 'khoá kéo' },
+          { img: 'saw', word: 'SAW', vn: 'cái cưa' },
+        ],
+      },
+      {
+        name: 'It Has Wings', nameVn: 'Có Cánh',
+        note: 'Wings help it fly. A bat is not a bird, but it has wings.',
+        noteVn: 'Cánh giúp nó bay. Dơi không phải là chim, nhưng nó có cánh.',
+        items: [
+          { img: 'plane', word: 'PLANE', vn: 'máy bay' },
+          { img: 'butterfly', word: 'BUTTERFLY', vn: 'con bướm' },
+          { img: 'owl', word: 'OWL', vn: 'con cú' },
+          { img: 'bat', word: 'BAT', vn: 'con dơi' },
+        ],
+      },
+      {
+        name: 'Legs, But It Can’t Walk', nameVn: 'Có Chân, Nhưng Không Đi',
+        note: 'It has legs, but it never walks anywhere!',
+        noteVn: 'Nó có chân, nhưng chẳng bao giờ đi đâu cả!',
+        items: [
+          { img: 'chair', word: 'CHAIR', vn: 'cái ghế' },
+          { img: 'table', word: 'TABLE', vn: 'cái bàn' },
+          { img: 'bunkbed', word: 'BUNK BED', vn: 'giường tầng' },
+          { img: 'trousers', word: 'TROUSERS', vn: 'quần dài' },
+        ],
+      },
+      {
+        name: 'It Has Wheels', nameVn: 'Có Bánh Xe',
+        note: 'Wheels go round and round, so it can roll.',
+        noteVn: 'Bánh xe quay tròn, nên nó lăn được.',
+        items: [
+          { img: 'bus', word: 'BUS', vn: 'xe buýt' },
+          { img: 'motorbike', word: 'MOTORBIKE', vn: 'xe máy' },
+          { img: 'skateboard', word: 'SKATEBOARD', vn: 'ván trượt' },
+          { img: 'trolley', word: 'TROLLEY', vn: 'xe đẩy' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'use-your-senses',
+    band: 'y1',
+    icon: 'Ear',
+    title: 'Use Your Senses',
+    titleVn: 'Dùng Các Giác Quan',
+    hint: 'All pictures. Ears, nose, hands or tongue?',
+    hintVn: 'Toàn tranh. Tai, mũi, tay hay lưỡi?',
+    groups: [
+      {
+        name: 'Loud', nameVn: 'Ồn Ào',
+        note: 'We HEAR with our ears. Cover them — these are loud!',
+        noteVn: 'Chúng ta NGHE bằng tai. Bịt tai lại — những thứ này ồn lắm!',
+        items: [
+          { img: 'drum', word: 'DRUM', vn: 'cái trống' },
+          { img: 'trumpet', word: 'TRUMPET', vn: 'cây kèn' },
+          { img: 'fireengine', word: 'FIRE ENGINE', vn: 'xe cứu hoả' },
+          { img: 'fireworks', word: 'FIREWORKS', vn: 'pháo hoa' },
+        ],
+      },
+      {
+        name: 'Smelly', nameVn: 'Bốc Mùi',
+        note: 'We SMELL with our nose. Hold your nose!',
+        noteVn: 'Chúng ta NGỬI bằng mũi. Bịt mũi lại!',
+        items: [
+          { img: 'durian', word: 'DURIAN', vn: 'quả sầu riêng' },
+          { img: 'bin', word: 'RUBBISH BIN', vn: 'thùng rác' },
+          { img: 'skunk', word: 'SKUNK', vn: 'con chồn hôi' },
+          { img: 'garlic', word: 'GARLIC', vn: 'củ tỏi' },
+        ],
+      },
+      {
+        name: 'Soft', nameVn: 'Mềm Mại',
+        note: 'We FEEL with our hands. Stroke them gently.',
+        noteVn: 'Chúng ta SỜ bằng tay. Vuốt thật nhẹ nhàng nhé.',
+        items: [
+          { img: 'pillow', word: 'PILLOW', vn: 'cái gối' },
+          { img: 'teddy', word: 'TEDDY', vn: 'gấu bông' },
+          { img: 'feather', word: 'FEATHER', vn: 'lông vũ' },
+          { img: 'cat', word: 'CAT', vn: 'con mèo' },
+        ],
+      },
+      {
+        name: 'Sour', nameVn: 'Chua',
+        note: 'We TASTE with our tongue. Sour makes you pull a funny face!',
+        noteVn: 'Chúng ta NẾM bằng lưỡi. Vị chua làm em nhăn mặt!',
+        items: [
+          { img: 'lemon', word: 'LEMON', vn: 'quả chanh' },
+          { img: 'greenmango', word: 'GREEN MANGO', vn: 'xoài xanh' },
+          { img: 'starfruit', word: 'STAR FRUIT', vn: 'quả khế' },
+          { img: 'tamarind', word: 'TAMARIND', vn: 'quả me' },
         ],
       },
     ],

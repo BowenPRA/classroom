@@ -36,6 +36,15 @@
     "bytes": 46811
   },
   {
+    "name": "bat.jpg",
+    "title": "File:Flying Fox drinking water on mid-flight.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Flying_Fox_drinking_water_on_mid-flight.jpg",
+    "license": "CC BY 4.0",
+    "artist": "Moshiur Rahman Happy",
+    "usage": "Word Wall picture tile \"BAT\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 17159
+  },
+  {
     "name": "bed.jpg",
     "title": "File:Hotel-suite-bedroom.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Hotel-suite-bedroom.jpg",
@@ -52,6 +61,15 @@
     "artist": "Tanner Smida",
     "usage": "Word Wall picture tile \"BEE\". Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 21570
+  },
+  {
+    "name": "bin.jpg",
+    "title": "File:Garbage Can 1 2018-09-20.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Garbage_Can_1_2018-09-20.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "FASTILY",
+    "usage": "Word Wall picture tile \"RUBBISH BIN\". Cropped to the bin, then scaled to 520px wide; not otherwise altered.",
+    "bytes": 103603
   },
   {
     "name": "biscuit.jpg",
@@ -126,6 +144,24 @@
     "bytes": 54517
   },
   {
+    "name": "bumblebee.jpg",
+    "title": "File:Bumblebee October 2007-3a.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Bumblebee_October_2007-3a.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Alvesgaspar",
+    "usage": "Word Wall picture tile \"BEE\". Cropped to the bee, then scaled to 520px wide; not otherwise altered.",
+    "bytes": 54075
+  },
+  {
+    "name": "bunkbed.jpg",
+    "title": "File:Bunk bed.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Bunk_bed.jpg",
+    "license": "Public domain",
+    "artist": "No machine-readable author provided. Miguel Andrade assumed (based on copyright claims).",
+    "usage": "Word Wall picture tile \"BUNK BED\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 52504
+  },
+  {
     "name": "bus.jpg",
     "title": "File:2016-10 Yellow school bus Quebec.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:2016-10_Yellow_school_bus_Quebec.jpg",
@@ -151,6 +187,15 @@
     "artist": "fesoj",
     "usage": "Word Wall picture tile \"BUTTERFLY\". Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 84075
+  },
+  {
+    "name": "cactus.jpg",
+    "title": "File:DFC 3921 A small golden-spined cactus in a white pot dotted with delicate pink blooms.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:DFC_3921_A_small_golden-spined_cactus_in_a_white_pot_dotted_with_delicate_pink_blooms.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "PattayaPatrol",
+    "usage": "Word Wall picture tile \"CACTUS\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 46751
   },
   {
     "name": "cake.jpg",
@@ -315,6 +360,33 @@
     "bytes": 32885
   },
   {
+    "name": "crocodile.jpg",
+    "title": "File:American Crocodile (53496348276).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:American_Crocodile_(53496348276).jpg",
+    "license": "Public domain",
+    "artist": "evergladesnps",
+    "usage": "Word Wall picture tile \"CROCODILE\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 61205
+  },
+  {
+    "name": "dalmatian.jpg",
+    "title": "File:Dalmatiner 2.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Dalmatiner_2.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Heinz Höfling",
+    "usage": "Word Wall picture tile \"DALMATIAN\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 73145
+  },
+  {
+    "name": "dice.jpg",
+    "title": "File:Snake eyes 243x144.png",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Snake_eyes_243x144.png",
+    "license": "Public domain",
+    "artist": "Rfc1394 (Wikimedia Commons user)",
+    "usage": "Word Wall picture tile \"DICE\". Used at the size Commons serves it, 243px wide; PNG flattened onto white and saved as JPEG; not otherwise altered.",
+    "bytes": 7458
+  },
+  {
     "name": "dog.jpg",
     "title": "File:Golden-retriever-1827903 1920.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Golden-retriever-1827903_1920.jpg",
@@ -331,6 +403,15 @@
     "artist": "Kiran Foster from no fixed abode, New Zealand",
     "usage": "Word Wall picture tile \"DOUGHNUT\". Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 22537
+  },
+  {
+    "name": "drum.jpg",
+    "title": "File:DrumMozartRegiment.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:DrumMozartRegiment.jpg",
+    "license": "Public domain",
+    "artist": "NPS",
+    "usage": "Word Wall picture tile \"DRUM\". Used at the size Commons serves it, 490px wide; not otherwise altered.",
+    "bytes": 52792
   },
   {
     "name": "duck.jpg",
@@ -351,6 +432,15 @@
     "bytes": 57403
   },
   {
+    "name": "durian.jpg",
+    "title": "File:Durian in black.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Durian_in_black.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "مانفی",
+    "usage": "Word Wall picture tile \"DURIAN\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 49838
+  },
+  {
     "name": "egg.jpg",
     "title": "File:Chicken eggs 20101113.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Chicken_eggs_20101113.jpg",
@@ -367,6 +457,33 @@
     "artist": "Muhammad Mahdi Karim Facebook The making of this document was supported by Wikimedia CH. (Submit your project!) For all the files concerned, please see the category Supported by Wikimedia CH. العربية ∙ বাংলা ∙ čeština ∙ Deutsch ∙ English ∙ Esperanto ∙ español ∙ français ∙ galego ∙ हिन्दी ∙ magyar ∙ italiano ∙ 日本語 ∙ македонски ∙ Nederlands ∙ português do Brasil ∙ rumantsch ∙ русский ∙ sicilianu ∙ slovenščina ∙ தமிழ் ∙ українська ∙ 中文 ∙ +/−",
     "usage": "Word Wall picture tile \"ELEPHANT\". Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 94123
+  },
+  {
+    "name": "feather.jpg",
+    "title": "File:A single white feather closeup.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:A_single_white_feather_closeup.jpg",
+    "license": "Public domain",
+    "artist": "Joao Estevao Andrade de Freitas",
+    "usage": "Word Wall picture tile \"FEATHER\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 52517
+  },
+  {
+    "name": "fireengine.jpg",
+    "title": "File:Aerial Ladder Platform fire truck (London, UK - 2007).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Aerial_Ladder_Platform_fire_truck_(London,_UK_-_2007).jpg",
+    "license": "Public domain",
+    "artist": "Jackus2008 at English Wikipedia",
+    "usage": "Word Wall picture tile \"FIRE ENGINE\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 60294
+  },
+  {
+    "name": "fireworks.jpg",
+    "title": "File:DFC 3864 Crowds watch a dazzling fireworks display over calm water as colorful bursts light up the night sky.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:DFC_3864_Crowds_watch_a_dazzling_fireworks_display_over_calm_water_as_colorful_bursts_light_up_the_night_sky.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "PattayaPatrol",
+    "usage": "Word Wall picture tile \"FIREWORKS\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 50702
   },
   {
     "name": "fish.jpg",
@@ -412,6 +529,15 @@
     "artist": "cyclonebill",
     "usage": "Word Wall picture tile \"FRIED EGG\", in \"How Do We Cook It?\" — the hot oil group. One egg on a plain plate. It is deliberately the only egg on the board. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
     "bytes": 32267
+  },
+  {
+    "name": "garlic.jpg",
+    "title": "File:Garlic bulbs and cloves.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Garlic_bulbs_and_cloves.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Ivar Leidus",
+    "usage": "Word Wall picture tile \"GARLIC\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 31039
   },
   {
     "name": "ginger.jpg",
@@ -468,6 +594,15 @@
     "bytes": 54137
   },
   {
+    "name": "greenmango.jpg",
+    "title": "File:Green-Mango Rezowan.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Green-Mango_Rezowan.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Rezowan",
+    "usage": "Word Wall picture tile \"GREEN MANGO\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 45236
+  },
+  {
     "name": "hat.jpg",
     "title": "File:Straw Harvest Hat, International Hat, ca. 1960s.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Straw_Harvest_Hat,_International_Hat,_ca._1960s.jpg",
@@ -475,6 +610,15 @@
     "artist": "Belshay",
     "usage": "Word Wall picture tile \"HAT\". Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 26188
+  },
+  {
+    "name": "hedgehog.jpg",
+    "title": "File:Igel.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Igel.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Gibe",
+    "usage": "Word Wall picture tile \"HEDGEHOG\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 84829
   },
   {
     "name": "hen.jpg",
@@ -540,6 +684,15 @@
     "bytes": 64847
   },
   {
+    "name": "ladybird.jpg",
+    "title": "File:Coccinella magnifica01.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Coccinella_magnifica01.jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Gilles San Martin from Namur, Belgium",
+    "usage": "Word Wall picture tile \"LADYBIRD\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 25374
+  },
+  {
     "name": "lamp.jpg",
     "title": "File:Bedside Table Lamp.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Bedside_Table_Lamp.jpg",
@@ -556,6 +709,24 @@
     "artist": "Krzysztof P. Jasiutowicz",
     "usage": "Word Wall picture tile \"LEAF\". Downscaled to 500px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 63464
+  },
+  {
+    "name": "lemon.jpg",
+    "title": "File:P1030323.JPG",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:P1030323.JPG",
+    "license": "CC BY-SA 4.0",
+    "artist": "Elena Chochkova",
+    "usage": "Word Wall picture tile \"LEMON\". Cropped to the lemon, then scaled to 520px wide; not otherwise altered.",
+    "bytes": 66901
+  },
+  {
+    "name": "leopard.jpg",
+    "title": "File:African leopard male (cropped).jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:African_leopard_male_(cropped).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Sumeet Moghe",
+    "usage": "Word Wall picture tile \"LEOPARD\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 87236
   },
   {
     "name": "microwave.jpg",
@@ -592,6 +763,15 @@
     "artist": "Gregory H. Revera",
     "usage": "Word Wall picture tile \"MOON\". Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 38686
+  },
+  {
+    "name": "motorbike.jpg",
+    "title": "File:Yamaha SR 500 Köln-20140321-RM-100226.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Yamaha_SR_500_K%C3%B6ln-20140321-RM-100226.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Ermell",
+    "usage": "Word Wall picture tile \"MOTORBIKE\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 59222
   },
   {
     "name": "nail.jpg",
@@ -720,6 +900,15 @@
     "bytes": 34825
   },
   {
+    "name": "pineapple.jpg",
+    "title": "File:കൈതച്ചക്ക.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:%E0%B4%95%E0%B5%88%E0%B4%A4%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%95%E0%B5%8D%E0%B4%95.jpg",
+    "license": "CC BY 3.0",
+    "artist": "Suniltg at Malayalam Wikipedia",
+    "usage": "Word Wall picture tile \"PINEAPPLE\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 48915
+  },
+  {
     "name": "pizza.jpg",
     "title": "File:Whole Foods Kitchen Margherita Pizza 2 (15411931231).jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Whole_Foods_Kitchen_Margherita_Pizza_2_(15411931231).jpg",
@@ -801,6 +990,15 @@
     "bytes": 103983
   },
   {
+    "name": "saw.jpg",
+    "title": "File:Serrucho.png",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Serrucho.png",
+    "license": "CC0",
+    "artist": "MdeVicente",
+    "usage": "Word Wall picture tile \"SAW\". Downscaled to 520px wide; PNG flattened onto white and saved as JPEG; not otherwise altered.",
+    "bytes": 15169
+  },
+  {
     "name": "scissors.jpg",
     "title": "File:Standard_household_scissors.jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Standard_household_scissors.jpg",
@@ -853,6 +1051,24 @@
     "artist": "OnkelJohn",
     "usage": "Word Wall picture tile \"SHOE\". Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 49336
+  },
+  {
+    "name": "skateboard.jpg",
+    "title": "File:1990s skateboard in Tornio 20190608 001.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:1990s_skateboard_in_Tornio_20190608_001.jpg",
+    "license": "CC BY 4.0",
+    "artist": "Methem (Mikko J. Putkonen)",
+    "usage": "Word Wall picture tile \"SKATEBOARD\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 71104
+  },
+  {
+    "name": "skunk.jpg",
+    "title": "File:Striped skunk.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Striped_skunk.jpg",
+    "license": "Public domain",
+    "artist": "pdimages.com",
+    "usage": "Word Wall picture tile \"SKUNK\". Used at the size Commons serves it, 300px wide; not otherwise altered.",
+    "bytes": 31249
   },
   {
     "name": "slide.jpg",
@@ -963,6 +1179,15 @@
     "bytes": 86134
   },
   {
+    "name": "starfruit.jpg",
+    "title": "File:Sliced Indian Carambola Star fruit with Indian spices.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Sliced_Indian_Carambola_Star_fruit_with_Indian_spices.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Contentshare",
+    "usage": "Word Wall picture tile \"STAR FRUIT\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 62126
+  },
+  {
     "name": "straw.jpg",
     "title": "File:Eight_drinking_straws_(4273846588).jpg",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Eight_drinking_straws_(4273846588).jpg",
@@ -979,6 +1204,24 @@
     "artist": "Sabrina Bechet",
     "usage": "Word Wall picture tile \"SUN\". Downscaled to 520px via the Commons thumbnailer; not otherwise altered.",
     "bytes": 26020
+  },
+  {
+    "name": "table.jpg",
+    "title": "File:Picnic table.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Picnic_table.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Benjamin D. Esham (bdesham)",
+    "usage": "Word Wall picture tile \"TABLE\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 65894
+  },
+  {
+    "name": "tamarind.jpg",
+    "title": "File:Tamarind fruits (Tamarindus indica 'Si Thong').jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Tamarind_fruits_(Tamarindus_indica_%27Si_Thong%27).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Ivar Leidus",
+    "usage": "Word Wall picture tile \"TAMARIND\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 25675
   },
   {
     "name": "tea.jpg",
@@ -1053,6 +1296,33 @@
     "bytes": 116933
   },
   {
+    "name": "trolley.jpg",
+    "title": "File:Colourful shopping carts.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Colourful_shopping_carts.jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Jim",
+    "usage": "Word Wall picture tile \"TROLLEY\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 73407
+  },
+  {
+    "name": "trousers.jpg",
+    "title": "File:Jeans.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Jeans.jpg",
+    "license": "Public domain",
+    "artist": "uploaded by Juanmak",
+    "usage": "Word Wall picture tile \"TROUSERS\". Used at the size Commons serves it, 435px wide; not otherwise altered.",
+    "bytes": 90712
+  },
+  {
+    "name": "trumpet.jpg",
+    "title": "File:Yamaha Trumpet YTR-8335LA crop.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Yamaha_Trumpet_YTR-8335LA_crop.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Yamaha Corporation",
+    "usage": "Word Wall picture tile \"TRUMPET\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 15155
+  },
+  {
     "name": "tshirt.jpg",
     "title": "File:GlobeTeeFront-i0427clb.png",
     "descUrl": "https://commons.wikimedia.org/wiki/File:GlobeTeeFront-i0427clb.png",
@@ -1078,6 +1348,15 @@
     "artist": "Derek Jensen (Tysto)",
     "usage": "Word Wall picture tile \"WATER\". Downscaled to 520px via the Commons thumbnailer; plain border trimmed off, not otherwise altered.",
     "bytes": 32149
+  },
+  {
+    "name": "watermelon.jpg",
+    "title": "File:Taiwan 2009 Tainan City Organic Farm Watermelon FRD 7962.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Taiwan_2009_Tainan_City_Organic_Farm_Watermelon_FRD_7962.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Fred Hsu (Wikipedia:User:Fred Hsu on en.wikipedia)",
+    "usage": "Word Wall picture tile \"WATERMELON\". Cropped to the watermelon, then scaled to 520px wide; not otherwise altered.",
+    "bytes": 80643
   },
   {
     "name": "whale.jpg",
@@ -1123,5 +1402,23 @@
     "artist": "Julikalucky",
     "usage": "Word Wall picture tile \"YOGHURT\", in \"How Do We Cook It?\" — the never-cooked group. A glass bowl and a spoon; sữa chua is familiar here, which is why it is on the board rather than a cold pudding nobody eats. Downscaled to 520px via the Commons thumbnailer and re-encoded at quality 85; not otherwise altered.",
     "bytes": 32206
+  },
+  {
+    "name": "zebra.jpg",
+    "title": "File:Plains Zebra Equus quagga.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Plains_Zebra_Equus_quagga.jpg",
+    "license": "GFDL 1.2",
+    "artist": "Muhammad Mahdi Karim",
+    "usage": "Word Wall picture tile \"ZEBRA\". Cropped to the zebra in front, then scaled to 520px wide; not otherwise altered.",
+    "bytes": 90396
+  },
+  {
+    "name": "zip.jpg",
+    "title": "File:Coil plastic and metal zippers.jpg",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Coil_plastic_and_metal_zippers.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Woodbine9",
+    "usage": "Word Wall picture tile \"ZIP\". Downscaled to 520px wide; not otherwise altered.",
+    "bytes": 92334
   }
 ]

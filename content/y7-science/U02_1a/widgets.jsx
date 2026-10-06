@@ -7,7 +7,7 @@
 // cleverness. It jumps to the games deck with `?level=solid-liquid-gas` on the
 // URL, which WordWallGame reads on mount and opens straight onto that puzzle
 // (see content/games/G01_word-wall/widgets.jsx). Without the query the class
-// lands on a menu of twenty-seven puzzles and the teacher hunts for the right
+// lands on a menu of thirty puzzles and the teacher hunts for the right
 // one in front of thirty children.
 //
 // The href is a bare fragment on purpose. The app runs under HashRouter at

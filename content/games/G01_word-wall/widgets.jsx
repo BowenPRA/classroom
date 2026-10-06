@@ -26,7 +26,7 @@ import {
   ArrowLeft, Lightbulb, Eye, EyeOff, Infinity as InfinityIcon, PartyPopper,
   RotateCcw, CircleCheck, CircleX, Star,
   CookingPot, Carrot, Sprout, Sigma, Dna, Puzzle, Languages,
-  Blocks, Bird, House, Sun, Flame, Droplets,
+  Blocks, Bird, House, Sun, Flame, Droplets, Search,
 } from 'lucide-react'
 
 import { LEVELS, BANDS } from './levels.js'
@@ -36,7 +36,7 @@ const ICONS = {
   Images, BookOpenText, Ear, Apple, Hand, Smile, Shapes, Music, School,
   Wand2, Trees, Cat, Link: LinkIcon,
   CookingPot, Carrot, Sprout, Sigma, Dna, Puzzle, Languages,
-  Blocks, Bird, House, Sun, Flame, Droplets,
+  Blocks, Bird, House, Sun, Flame, Droplets, Eye, Search,
 }
 
 const pick = (lang, en, vn) => (lang === 'vn' ? (vn ?? en) : en)
@@ -150,7 +150,7 @@ function LevelCard({ level, lang, onPick }) {
 function Menu({ lang, onPick }) {
   return (
     // One column per band, side by side, so the Year 7 shelf is visible without
-    // scrolling. Stacked in a single list all twenty-seven cards run well past
+    // scrolling. Stacked in a single list all thirty cards run well past
     // the bottom of the slide and Year 7 is invisible on a projector.
     <div className="h-full min-h-0 overflow-y-auto custom-scrollbar px-4 sm:px-6 py-4">
       <div className="w-full max-w-7xl mx-auto">
@@ -336,7 +336,7 @@ function useConfetti(canvasRef) {
 
 // ── The game ────────────────────────────────────────────────────────────────
 
-// A lesson deck can hand the class one puzzle instead of a menu of twenty-seven:
+// A lesson deck can hand the class one puzzle instead of a menu of thirty:
 //   #/lesson/games/G01_word-wall?level=solid-liquid-gas
 // opens that wall straight away. (Y7 Science 2.1a ends on a button that does
 // exactly this — see content/y7-science/U02_1a/widgets.jsx.) Read from the hash
