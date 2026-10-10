@@ -12,6 +12,7 @@ export default {
       'attractive forces, and expansion — and apply the same reasoning chain to melting, ' +
       'boiling, condensing and freezing.',
     order: 9,
+    french: true,
     dashboard: { track: 'Y7_SCI', unit: 'U02_3' },
   },
   slides,

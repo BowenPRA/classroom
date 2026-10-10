@@ -15,6 +15,7 @@ export default {
       'recognise numbers and ab and ba as like terms, but not x and x²; ' +
       'and move each sign with its term, so 7x + 5y − 3x + y = 4x + 6y.',
     order: 9,
+    french: true,
     // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
     dashboard: { track: 'Y7_MATH', unit: 'U02_3' },
   },

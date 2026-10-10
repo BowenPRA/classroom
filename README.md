@@ -1,7 +1,7 @@
 # Lessons
 
 Projected, interactive classroom lesson decks — a small React app that turns
-lesson **data files** into polished slide decks with an EN/VN toggle, KaTeX math,
+lesson **data files** into polished slide decks with an EN/VN/FR toggle, KaTeX math,
 interactive widgets, clean SVG diagrams, a **Full screen** projector mode, dark mode,
 and a printable teacher lesson plan.
 
@@ -17,6 +17,7 @@ npm run deploy     # build once + publish dist/ to both gh-pages branches
 npm run audit:svg  # check every diagram's text fits its boxes
 npm run check:deck -- "http://localhost:5173/#/lesson/y7-science/U01_1"
                    # walk every slide: overflow, broken images, console errors
+                   # (add `vn` or `fr` to walk it in that language)
 ```
 
 **Writing a lesson?** Read [docs/LESSON-PLAYBOOK.md](docs/LESSON-PLAYBOOK.md)
@@ -74,7 +75,8 @@ immediately (as "coming soon" until it has a lesson):
 ```
 
 `id` must match the folder under `content/` and each lesson's `meta.course`.
-`bilingual: false` hides the EN/VN toggle for that course.
+`bilingual: false` hides the language toggle for that course. FR is added per
+lesson (`meta.french: true`, below).
 
 ## Add a lesson
 
@@ -86,11 +88,15 @@ import { plan } from './plan.js'        // optional
 
 export default {
   meta: { course: 'y7-math', unit: '1.2', id: 'U01_2',
-          title: 'Multiplying & Dividing Integers', order: 2 },
+          title: 'Multiplying & Dividing Integers', order: 2, french: true },
   slides,
   plan,
 }
 ```
+
+`french: true` adds FR to the deck's EN/VN switch. Set it once every string in
+the lesson, widgets included, has its `…Fr` twin. Every Year 7 lesson has
+French; the Year 7 maths tasks (`T*`) and the other courses do not.
 
 ## Slide schema (`slides.js`)
 
@@ -114,9 +120,11 @@ hero. A slide with neither renders a red "no layout" notice, not a blank card.)
 | `game` | Full-bleed game board — no header, no padding | `widget` (gets `lang` **and** `isDisplayMode`) |
 | `gallery` | Grid of picture + key word cards | `accent`, `icon`, `title`, `eyebrow`, `content`, `tone`, `columns` (2\|3\|4), `copy`/`copyLabel`, `items: [{inlineSvg\|image, term, text, tag}]` |
 
-Any field can be suffixed `…Vn` for the Vietnamese version (e.g. `titleVn`,
-`contentVn`, and inside `notes`/`columns`/`card`/`reveal`: `textVn`, `headingVn`,
-`answerVn`, …). Missing `…Vn` falls back to English.
+Any field can be suffixed `…Vn` for the Vietnamese version and `…Fr` for the
+French (e.g. `titleVn` / `titleFr`, `contentVn` / `contentFr`, and inside
+`notes`/`columns`/`card`/`reveal`: `textVn`, `headingFr`, `answerVn`, …). A
+missing twin falls back to English. The choosing is done by `tr` and `field` in
+[`src/lib/lang.js`](src/lib/lang.js).
 
 ### Shared pieces
 
@@ -131,9 +139,11 @@ Any field can be suffixed `…Vn` for the Vietnamese version (e.g. `titleVn`,
   writing `**Cell:** the smallest…` prints the term the way the book does.
 - **`reveal`** — a click-to-reveal answer box: `{ label, prompt?, answer }`.
 - **widgets** — a `widget` component is rendered with the deck's current
-  language as a prop (`({ lang }) => …`, `'en' | 'vn'`), so its own buttons and
-  labels can be bilingual like the rest of the slide. Ignore the prop if the
-  widget has no text of its own.
+  language as a prop (`({ lang }) => …`, `'en' | 'vn' | 'fr'`), so its own
+  buttons and labels can follow the deck's language like the rest of the slide:
+  `import { tr } from '../../../src/lib/lang.js'`, then
+  `tr(lang, 'Back', 'Lùi', 'Retour')`. Ignore the prop if the widget has no
+  text of its own.
 - **media** — `inlineSvg` (from `diagrams.js`), `widget` (a component), or
   `image` (import a file from the unit's `images/` folder so Vite hashes it and
   respects the `/classroom/` base — don't hand-write `/public` paths). `drawThis`

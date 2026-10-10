@@ -22,6 +22,7 @@
 // passes it to every widget, but an SVG stage scales without it. Every SVG opens with a white plate.
 import { useState, useEffect, useCallback } from 'react'
 import { Undo2, RotateCcw, ArrowRight, Eye, Shuffle, Sparkles, ThumbsUp, SkipForward } from 'lucide-react'
+import { tr } from '../../../src/lib/lang.js'
 
 const INK = '#2b2b2b'
 const KEY = '#c25e12'
@@ -37,8 +38,6 @@ const KINDS = [
 ]
 const NUMBER_KIND = { stroke: '#5b6770', fill: '#eef1f4' }
 const PLAIN = { stroke: '#8a979e', fill: '#ffffff' }
-
-const tr = (lang, en, vn) => (lang === 'vn' ? vn : en)
 
 function Btn({ onClick, disabled, tone = 'teal', icon: Icon, children }) {
   const tones = {
@@ -128,7 +127,7 @@ function Collect({ lang = 'en', set }) {
   })
   const answer = groups.map((g) => g.text).join(' ')
 
-  const pills = [tr(lang, '1 Find', '1 Tìm'), tr(lang, '2 Move', '2 Chuyển'), tr(lang, '3 Collect', '3 Gộp')]
+  const pills = [tr(lang, '1 Find', '1 Tìm', '1 Trouve'), tr(lang, '2 Move', '2 Chuyển', '2 Bouge'), tr(lang, '3 Collect', '3 Gộp', '3 Réduis')]
 
   return (
     <div className="w-full h-full flex flex-col gap-3 select-none">
@@ -177,7 +176,7 @@ function Collect({ lang = 'en', set }) {
             <g>
               <rect x="150" y="320" width="820" height="106" rx="16" fill="#fdf1e3" stroke={KEY} strokeWidth="3" />
               <text x="560" y="390" fontFamily={FONT} fontSize="46" fontWeight="bold" fill={INK} textAnchor="middle">
-                {tr(lang, 'Simplest form: ', 'Dạng gọn nhất: ')}
+                {tr(lang, 'Simplest form: ', 'Dạng gọn nhất: ', 'Forme réduite : ')}
                 <tspan fill={KEY}>{answer}</tspan>
               </text>
             </g>
@@ -186,9 +185,9 @@ function Collect({ lang = 'en', set }) {
       </div>
 
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap">
-        <Btn tone="slate" icon={Undo2} disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>{tr(lang, 'Back', 'Lùi')}</Btn>
-        <Btn tone="orange" icon={ArrowRight} disabled={step === 3} onClick={() => setStep((s) => Math.min(3, s + 1))}>{tr(lang, 'Next step', 'Bước tiếp')}</Btn>
-        <Btn tone="teal" icon={SkipForward} onClick={() => { setWhich((w) => (w + 1) % list.length); setStep(0) }}>{tr(lang, 'Next expression', 'Biểu thức khác')}</Btn>
+        <Btn tone="slate" icon={Undo2} disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>{tr(lang, 'Back', 'Lùi', 'Retour')}</Btn>
+        <Btn tone="orange" icon={ArrowRight} disabled={step === 3} onClick={() => setStep((s) => Math.min(3, s + 1))}>{tr(lang, 'Next step', 'Bước tiếp', 'Suivant')}</Btn>
+        <Btn tone="teal" icon={SkipForward} onClick={() => { setWhich((w) => (w + 1) % list.length); setStep(0) }}>{tr(lang, 'Next expression', 'Biểu thức khác', 'Autre expression')}</Btn>
       </div>
     </div>
   )
@@ -219,7 +218,7 @@ const PYRAMIDS = [
     given: ['0-0', '0-1', '0-2'],
     steps: [
       { id: '1-0', from: ['0-0', '0-1'], en: 'a + b + 2a = 3a + b' },
-      { id: '1-1', from: ['0-1', '0-2'], en: '2a + 3b: no like terms', vn: '2a + 3b: không có hạng tử đồng dạng' },
+      { id: '1-1', from: ['0-1', '0-2'], en: '2a + 3b: no like terms', vn: '2a + 3b: không có hạng tử đồng dạng', fr: '2a + 3b : pas de termes semblables' },
       { id: '2-0', from: ['1-0', '1-1'], en: '3a + b + 2a + 3b = 5a + 4b' },
     ],
   },
@@ -259,7 +258,7 @@ export function Pyramid({ lang = 'en' }) {
         <svg viewBox="0 0 840 470" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
           <rect x="0" y="0" width="840" height="470" rx="14" fill="#ffffff" />
           <text x="420" y="42" fontFamily={FONT} fontSize="32" fontWeight="bold" fill={MUTED} textAnchor="middle">
-            {p.back ? tr(lang, 'Work backwards', 'Làm ngược lại') : tr(lang, 'Add the two blocks below', 'Cộng hai ô bên dưới')}
+            {p.back ? tr(lang, 'Work backwards', 'Làm ngược lại', 'Calcule à l’envers') : tr(lang, 'Add the two blocks below', 'Cộng hai ô bên dưới', 'Ajoute les deux cases du dessous')}
           </text>
           <text x="20" y="42" fontFamily={FONT} fontSize="22" fontWeight="bold" fill="#9aa5ae" textAnchor="start">{which + 1} / {PYRAMIDS.length}</text>
 
@@ -289,20 +288,20 @@ export function Pyramid({ lang = 'en' }) {
 
           {current ? (
             <text x="420" y="448" fontFamily={FONT} fontSize="38" fontWeight="bold" fill={KEY} textAnchor="middle">
-              {lang === 'vn' && current.vn ? current.vn : current.en}
+              {tr(lang, current.en, current.vn, current.fr)}
             </text>
           ) : (
             <text x="420" y="448" fontFamily={FONT} fontSize="32" fill="#9aa5ae" textAnchor="middle">
-              {tr(lang, 'Which block can you find first?', 'Em tìm được ô nào trước?')}
+              {tr(lang, 'Which block can you find first?', 'Em tìm được ô nào trước?', 'Quelle case trouves-tu en premier ?')}
             </text>
           )}
         </svg>
       </div>
 
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap">
-        <Btn tone="slate" icon={Undo2} disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>{tr(lang, 'Back', 'Lùi')}</Btn>
-        <Btn tone="orange" icon={ArrowRight} disabled={step === p.steps.length} onClick={() => setStep((s) => Math.min(p.steps.length, s + 1))}>{tr(lang, 'Next block', 'Ô tiếp')}</Btn>
-        <Btn tone="teal" icon={SkipForward} onClick={() => { setWhich((w) => (w + 1) % PYRAMIDS.length); setStep(0) }}>{tr(lang, 'Next pyramid', 'Kim tự tháp khác')}</Btn>
+        <Btn tone="slate" icon={Undo2} disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>{tr(lang, 'Back', 'Lùi', 'Retour')}</Btn>
+        <Btn tone="orange" icon={ArrowRight} disabled={step === p.steps.length} onClick={() => setStep((s) => Math.min(p.steps.length, s + 1))}>{tr(lang, 'Next block', 'Ô tiếp', 'Suivant')}</Btn>
+        <Btn tone="teal" icon={SkipForward} onClick={() => { setWhich((w) => (w + 1) % PYRAMIDS.length); setStep(0) }}>{tr(lang, 'Next pyramid', 'Kim tự tháp khác', 'Autre pyramide')}</Btn>
       </div>
     </div>
   )
@@ -312,22 +311,22 @@ export function Pyramid({ lang = 'en' }) {
  * WIDGET 3 — LIKE OR NOT?
  * ============================================================= */
 const CARDS = [
-  { a: '4a', b: '9a', like: true, en: 'the same letter', vn: 'cùng một chữ cái' },
-  { a: '4a', b: '4b', like: false, en: 'different letters', vn: 'khác chữ cái' },
-  { a: 'x', b: '7x', like: true, en: 'x means 1x', vn: 'x nghĩa là 1x' },
-  { a: '3y', b: '3', like: false, en: '3 has no letter', vn: '3 không có chữ cái' },
-  { a: '2ab', b: '5ba', like: true, en: 'ab = ba, because a × b = b × a', vn: 'ab = ba, vì a × b = b × a' },
-  { a: '8', b: '2', like: true, en: 'both are numbers', vn: 'cả hai đều là số' },
-  { a: '6p', b: '6pq', like: false, en: 'p is not pq', vn: 'p khác pq' },
-  { a: '5c', b: `${MINUS}2c`, like: true, en: 'both are c terms; the sign does not change that', vn: 'cả hai đều là hạng tử c; dấu không làm thay đổi điều đó' },
-  { a: 'm²', b: '4m', like: false, en: 'm² means m × m', vn: 'm² nghĩa là m × m' },
-  { a: '7xy', b: '7x', like: false, en: 'xy is not x', vn: 'xy khác x' },
-  { a: '9n', b: 'n', like: true, en: 'n means 1n', vn: 'n nghĩa là 1n' },
-  { a: '12t', b: '12', like: false, en: '12 has no letter', vn: '12 không có chữ cái' },
-  { a: '2rd', b: '3dr', like: true, en: 'rd = dr', vn: 'rd = dr' },
-  { a: '3h²', b: 'h²', like: true, en: 'both are h² terms', vn: 'cả hai đều là hạng tử h²' },
-  { a: '10w', b: '10v', like: false, en: 'different letters', vn: 'khác chữ cái' },
-  { a: '20', b: `${MINUS}6`, like: true, en: 'both are numbers', vn: 'cả hai đều là số' },
+  { a: '4a', b: '9a', like: true, en: 'the same letter', vn: 'cùng một chữ cái', fr: 'la même lettre' },
+  { a: '4a', b: '4b', like: false, en: 'different letters', vn: 'khác chữ cái', fr: 'des lettres différentes' },
+  { a: 'x', b: '7x', like: true, en: 'x means 1x', vn: 'x nghĩa là 1x', fr: 'x veut dire 1x' },
+  { a: '3y', b: '3', like: false, en: '3 has no letter', vn: '3 không có chữ cái', fr: '3 n’a pas de lettre' },
+  { a: '2ab', b: '5ba', like: true, en: 'ab = ba, because a × b = b × a', vn: 'ab = ba, vì a × b = b × a', fr: 'ab = ba, car a × b = b × a' },
+  { a: '8', b: '2', like: true, en: 'both are numbers', vn: 'cả hai đều là số', fr: 'ce sont deux nombres' },
+  { a: '6p', b: '6pq', like: false, en: 'p is not pq', vn: 'p khác pq', fr: 'p n’est pas pq' },
+  { a: '5c', b: `${MINUS}2c`, like: true, en: 'both are c terms; the sign does not change that', vn: 'cả hai đều là hạng tử c; dấu không làm thay đổi điều đó', fr: 'deux termes en c ; le signe n’y change rien' },
+  { a: 'm²', b: '4m', like: false, en: 'm² means m × m', vn: 'm² nghĩa là m × m', fr: 'm² veut dire m × m' },
+  { a: '7xy', b: '7x', like: false, en: 'xy is not x', vn: 'xy khác x', fr: 'xy n’est pas x' },
+  { a: '9n', b: 'n', like: true, en: 'n means 1n', vn: 'n nghĩa là 1n', fr: 'n veut dire 1n' },
+  { a: '12t', b: '12', like: false, en: '12 has no letter', vn: '12 không có chữ cái', fr: '12 n’a pas de lettre' },
+  { a: '2rd', b: '3dr', like: true, en: 'rd = dr', vn: 'rd = dr', fr: 'rd = dr' },
+  { a: '3h²', b: 'h²', like: true, en: 'both are h² terms', vn: 'cả hai đều là hạng tử h²', fr: 'deux termes en h²' },
+  { a: '10w', b: '10v', like: false, en: 'different letters', vn: 'khác chữ cái', fr: 'des lettres différentes' },
+  { a: '20', b: `${MINUS}6`, like: true, en: 'both are numbers', vn: 'cả hai đều là số', fr: 'ce sont deux nombres' },
 ]
 
 function TermTile({ text, verdict, big }) {
@@ -385,10 +384,10 @@ export function LikeOrNot({ lang = 'en', isDisplayMode = false }) {
           </div>
           <div className="min-w-0">
             <div className={`font-black tracking-tight text-slate-800 dark:text-slate-100 leading-none ${big ? 'text-2xl' : 'text-lg sm:text-xl'}`}>
-              {tr(lang, 'Like or Not?', 'Đồng dạng hay không?')}
+              {tr(lang, 'Like or Not?', 'Đồng dạng hay không?', 'Semblables ou non ?')}
             </div>
             <div className={`font-bold text-slate-400 dark:text-slate-500 truncate ${big ? 'text-base' : 'text-xs'}`}>
-              {tr(lang, 'Thumbs up: like terms. Thumbs down: not. Then press Show.', 'Ngón cái lên: đồng dạng. Ngón cái xuống: không. Rồi bấm Hiện.')}
+              {tr(lang, 'Thumbs up: like terms. Thumbs down: not. Then press Show.', 'Ngón cái lên: đồng dạng. Ngón cái xuống: không. Rồi bấm Hiện.', 'Pouce levé : semblables. Baissé : non. Puis appuie sur Voir.')}
             </div>
           </div>
         </div>
@@ -404,17 +403,17 @@ export function LikeOrNot({ lang = 'en', isDisplayMode = false }) {
         {done ? (
           <>
             <div className="p-4 rounded-2xl bg-emerald-500 text-white"><Sparkles className="w-12 h-12" strokeWidth={2} /></div>
-            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{tr(lang, 'All 16 done!', 'Xong cả 16!')}</div>
+            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{tr(lang, 'All 16 done!', 'Xong cả 16!', 'Les 16 sont faits !')}</div>
           </>
         ) : (
           <>
             <div className={`font-black uppercase tracking-[0.2em] text-[#c25e12] ${big ? 'text-[clamp(1rem,2.2vh,1.6rem)]' : 'text-sm'}`}>
-              {tr(lang, 'Are these like terms?', 'Đây có phải hạng tử đồng dạng?')}
+              {tr(lang, 'Are these like terms?', 'Đây có phải hạng tử đồng dạng?', 'Des termes semblables ?')}
             </div>
 
             <div className="flex items-center justify-center gap-[clamp(1rem,3vw,3rem)] flex-wrap">
               <TermTile text={card.a} verdict={shown ? card.like : null} big={big} />
-              <div className={`font-black text-slate-400 ${big ? 'text-[clamp(2rem,5vh,3.5rem)]' : 'text-3xl'}`}>{tr(lang, 'and', 'và')}</div>
+              <div className={`font-black text-slate-400 ${big ? 'text-[clamp(2rem,5vh,3.5rem)]' : 'text-3xl'}`}>{tr(lang, 'and', 'và', 'et')}</div>
               <TermTile text={card.b} verdict={shown ? card.like : null} big={big} />
             </div>
 
@@ -422,10 +421,10 @@ export function LikeOrNot({ lang = 'en', isDisplayMode = false }) {
               {shown ? (
                 <>
                   <div className={`rounded-full text-white font-black px-8 py-2 ${card.like ? 'bg-[#4a8b23]' : 'bg-[#c8102e]'} ${big ? 'text-[clamp(1.8rem,4.5vh,3rem)]' : 'text-3xl'}`}>
-                    {card.like ? tr(lang, '✓ Like terms', '✓ Đồng dạng') : tr(lang, '✗ Not like terms', '✗ Không đồng dạng')}
+                    {card.like ? tr(lang, '✓ Like terms', '✓ Đồng dạng', '✓ Semblables') : tr(lang, '✗ Not like terms', '✗ Không đồng dạng', '✗ Pas semblables')}
                   </div>
                   <div className={`font-bold text-slate-600 dark:text-slate-300 ${big ? 'text-[clamp(1.2rem,2.8vh,2rem)]' : 'text-lg'}`}>
-                    {tr(lang, card.en, card.vn)}
+                    {tr(lang, card.en, card.vn, card.fr)}
                   </div>
                 </>
               ) : (
@@ -438,14 +437,14 @@ export function LikeOrNot({ lang = 'en', isDisplayMode = false }) {
 
       {/* Controls */}
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap px-4 pb-4 pt-2">
-        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn')}</Btn>
+        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn', 'Mélanger')}</Btn>
         {!done && (
           <Btn tone="orange" icon={shown ? ArrowRight : Eye} onClick={advance}>
-            {shown ? tr(lang, 'Next', 'Tiếp') : tr(lang, 'Show', 'Hiện')}
+            {shown ? tr(lang, 'Next', 'Tiếp', 'Suivant') : tr(lang, 'Show', 'Hiện', 'Voir')}
           </Btn>
         )}
         {done && (
-          <Btn tone="slate" icon={RotateCcw} onClick={() => { setPos(0); setShown(false) }}>{tr(lang, 'Start again', 'Làm lại')}</Btn>
+          <Btn tone="slate" icon={RotateCcw} onClick={() => { setPos(0); setShown(false) }}>{tr(lang, 'Start again', 'Làm lại', 'Recommencer')}</Btn>
         )}
       </div>
     </div>

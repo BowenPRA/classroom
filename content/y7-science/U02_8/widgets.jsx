@@ -28,6 +28,7 @@
 // reads the same on a light or dark slide.
 import { useState, useEffect, useCallback } from 'react'
 import { Undo2, RotateCcw, ArrowRight, Eye, Shuffle, Droplet, FlaskConical, Sparkles } from 'lucide-react'
+import { tr } from '../../../src/lib/lang.js'
 
 const INK = '#2b2b2b'
 const KEY = '#c25e12'
@@ -47,13 +48,11 @@ const PH = [
 ]
 const phColour = (n) => PH[Math.min(14, Math.max(1, n)) - 1]
 
-const tr = (lang, en, vn) => (lang === 'vn' ? vn : en)
-
 const verdict = (ph) => (ph < 7 ? 'acid' : ph > 7 ? 'alkali' : 'neutral')
 const VERDICT = {
-  acid: { en: 'ACID', vn: 'AXIT', colour: ACID_S },
-  neutral: { en: 'NEUTRAL', vn: 'TRUNG TÍNH', colour: NEUT_S },
-  alkali: { en: 'ALKALI', vn: 'KIỀM', colour: BASE_S },
+  acid: { en: 'ACID', vn: 'AXIT', fr: 'ACIDE', colour: ACID_S },
+  neutral: { en: 'NEUTRAL', vn: 'TRUNG TÍNH', fr: 'NEUTRE', colour: NEUT_S },
+  alkali: { en: 'ALKALI', vn: 'KIỀM', fr: 'ALCALIN', colour: BASE_S },
 }
 
 function Btn({ onClick, disabled, tone = 'teal', icon: Icon, children }) {
@@ -79,17 +78,17 @@ function Btn({ onClick, disabled, tone = 'teal', icon: Icon, children }) {
  * ============================================================= */
 // In pH order, so the marker walks the scale from left to right.
 const LIQUIDS = [
-  { en: 'lemon juice', vn: 'nước chanh', ph: 2 },
-  { en: 'vinegar', vn: 'giấm', ph: 3 },
-  { en: 'orange juice', vn: 'nước cam', ph: 4 },
-  { en: 'black coffee', vn: 'cà phê đen', ph: 5 },
-  { en: 'milk', vn: 'sữa', ph: 6 },
-  { en: 'pure water', vn: 'nước tinh khiết', ph: 7 },
-  { en: 'sea water', vn: 'nước biển', ph: 8 },
-  { en: 'baking soda', vn: 'bột nở', ph: 9 },
-  { en: 'soap', vn: 'nước xà phòng', ph: 10 },
-  { en: 'limewater', vn: 'nước vôi trong', ph: 12 },
-  { en: 'oven cleaner', vn: 'nước tẩy lò', ph: 13 },
+  { en: 'lemon juice', vn: 'nước chanh', fr: 'jus de citron', ph: 2 },
+  { en: 'vinegar', vn: 'giấm', fr: 'vinaigre', ph: 3 },
+  { en: 'orange juice', vn: 'nước cam', fr: 'jus d’orange', ph: 4 },
+  { en: 'black coffee', vn: 'cà phê đen', fr: 'café noir', ph: 5 },
+  { en: 'milk', vn: 'sữa', fr: 'lait', ph: 6 },
+  { en: 'pure water', vn: 'nước tinh khiết', fr: 'eau pure', ph: 7 },
+  { en: 'sea water', vn: 'nước biển', fr: 'eau de mer', ph: 8 },
+  { en: 'baking soda', vn: 'bột nở', fr: 'bicarbonate', ph: 9 },
+  { en: 'soap', vn: 'nước xà phòng', fr: 'eau savonneuse', ph: 10 },
+  { en: 'limewater', vn: 'nước vôi trong', fr: 'eau de chaux', ph: 12 },
+  { en: 'oven cleaner', vn: 'nước tẩy lò', fr: 'décape-four', ph: 13 },
 ]
 
 const CELL_W = 60
@@ -122,7 +121,7 @@ export function PhDipper({ lang = 'en' }) {
           <path d="M 103 74 v 120 q 0 13 13 13 h 52 q 13 0 13 -13 v -120" fill="none" stroke="#6b7a86" strokeWidth="3.5" strokeLinejoin="round" />
           <path d="M 93 71 q 10 8 20 3" fill="none" stroke="#6b7a86" strokeWidth="3.5" strokeLinecap="round" />
           <text x="142" y="254" fontFamily={FONT} fontSize="26" fontWeight="bold" fill={INK} textAnchor="middle">
-            {tr(lang, liquid.en, liquid.vn)}
+            {tr(lang, liquid.en, liquid.vn, liquid.fr)}
           </text>
 
           {/* the paper */}
@@ -131,7 +130,7 @@ export function PhDipper({ lang = 'en' }) {
           <path d="M 356 140 h 44 v 84 h -44 Z" fill={paper} stroke="#6b7a86" strokeWidth="3" strokeLinejoin="round" />
           {!wet && <text x="378" y="196" fontFamily={FONT} fontSize="54" fontWeight="bold" fill="#aeb9c2" textAnchor="middle">?</text>}
           <text x="378" y="254" fontFamily={FONT} fontSize="22" fill={MUTED} textAnchor="middle">
-            {tr(lang, 'indicator paper', 'giấy chỉ thị')}
+            {tr(lang, 'indicator paper', 'giấy chỉ thị', 'papier pH')}
           </text>
 
           {/* the verdict */}
@@ -139,26 +138,26 @@ export function PhDipper({ lang = 'en' }) {
           {wet ? (
             <>
               <text x="796" y="122" fontFamily={FONT} fontSize="96" fontWeight="bold" fill={v.colour} textAnchor="middle">
-                {tr(lang, v.en, v.vn)}
+                {tr(lang, v.en, v.vn, v.fr)}
               </text>
               <text x="796" y="218" fontFamily={FONT} fontSize="76" fontWeight="bold" fill={INK} textAnchor="middle">
                 pH {liquid.ph}
               </text>
               <text x="796" y="258" fontFamily={FONT} fontSize="26" fill={MUTED} textAnchor="middle">
                 {liquid.ph < 7
-                  ? tr(lang, 'below 7', 'nhỏ hơn 7')
+                  ? tr(lang, 'below 7', 'nhỏ hơn 7', 'moins de 7')
                   : liquid.ph > 7
-                    ? tr(lang, 'above 7', 'lớn hơn 7')
-                    : tr(lang, 'exactly 7', 'đúng bằng 7')}
+                    ? tr(lang, 'above 7', 'lớn hơn 7', 'plus de 7')
+                    : tr(lang, 'exactly 7', 'đúng bằng 7', 'égal à 7')}
               </text>
             </>
           ) : (
             <>
               <text x="796" y="130" fontFamily={FONT} fontSize="38" fontWeight="bold" fill="#9aa5ae" textAnchor="middle">
-                {tr(lang, 'Acid, neutral or alkali?', 'Axit, trung tính hay kiềm?')}
+                {tr(lang, 'Acid, neutral or alkali?', 'Axit, trung tính hay kiềm?', 'Acide, neutre ou alcalin ?')}
               </text>
               <text x="796" y="200" fontFamily={FONT} fontSize="32" fill="#aeb9c2" textAnchor="middle">
-                {tr(lang, 'Say it, then dip the paper.', 'Nói đáp án, rồi nhúng giấy.')}
+                {tr(lang, 'Say it, then dip the paper.', 'Nói đáp án, rồi nhúng giấy.', 'Dis-le. Trempe le papier.')}
               </text>
             </>
           )}
@@ -173,7 +172,7 @@ export function PhDipper({ lang = 'en' }) {
             </text>
           ))}
           <text x="140" y="372" fontFamily={FONT} fontSize="30" fontWeight="bold" fill={INK} textAnchor="middle">
-            {tr(lang, 'pH scale', 'thang pH')}
+            {tr(lang, 'pH scale', 'thang pH', 'échelle pH')}
           </text>
           {wet && (
             <g>
@@ -185,20 +184,20 @@ export function PhDipper({ lang = 'en' }) {
             </g>
           )}
           <text x="560" y="428" fontFamily={FONT} fontSize="24" fill={MUTED} textAnchor="middle">
-            {tr(lang, 'red = acid  ·  green = neutral  ·  blue and purple = alkali', 'đỏ = axit  ·  xanh lá = trung tính  ·  xanh dương và tím = kiềm')}
+            {tr(lang, 'red = acid  ·  green = neutral  ·  blue and purple = alkali', 'đỏ = axit  ·  xanh lá = trung tính  ·  xanh dương và tím = kiềm', 'rouge = acide  ·  vert = neutre  ·  bleu et violet = alcalin')}
           </text>
         </svg>
       </div>
 
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap">
         <Btn tone="slate" icon={Undo2} disabled={i === 0 && !wet} onClick={() => (wet ? setWet(false) : (setI((n) => n - 1), setWet(true)))}>
-          {tr(lang, 'Back', 'Lùi')}
+          {tr(lang, 'Back', 'Lùi', 'Retour')}
         </Btn>
         <Btn tone="orange" icon={wet ? ArrowRight : Droplet} disabled={wet && last} onClick={advance}>
-          {wet ? tr(lang, 'Next liquid', 'Chất tiếp theo') : tr(lang, 'Dip the paper', 'Nhúng giấy')}
+          {wet ? tr(lang, 'Next liquid', 'Chất tiếp theo', 'Liquide suivant') : tr(lang, 'Dip the paper', 'Nhúng giấy', 'Trempe le papier')}
         </Btn>
         <Btn tone="teal" icon={RotateCcw} disabled={i === 0 && !wet} onClick={() => { setI(0); setWet(false) }}>
-          {tr(lang, 'Start again', 'Làm lại')}
+          {tr(lang, 'Start again', 'Làm lại', 'Recommencer')}
         </Btn>
       </div>
     </div>
@@ -210,18 +209,18 @@ export function PhDipper({ lang = 'en' }) {
  * ============================================================= */
 // Twelve that the dipper did NOT show, so this is recall, not a repeat.
 const CARDS = [
-  { en: 'tamarind', vn: 'quả me', ph: 3 },
-  { en: 'toothpaste', vn: 'kem đánh răng', ph: 9 },
-  { en: 'tap water', vn: 'nước máy', ph: 7 },
-  { en: 'car battery acid', vn: 'axit ắc quy', ph: 1 },
-  { en: 'an indigestion tablet', vn: 'viên thuốc đau dạ dày', ph: 10 },
-  { en: 'cola', vn: 'nước cô-ca', ph: 3 },
-  { en: 'shampoo', vn: 'dầu gội', ph: 8 },
-  { en: 'the acid in your stomach', vn: 'axit trong dạ dày', ph: 2 },
-  { en: 'salty water', vn: 'nước muối', ph: 7 },
-  { en: 'an ant bite', vn: 'vết kiến cắn', ph: 3 },
-  { en: 'oven cleaner', vn: 'nước tẩy lò', ph: 13 },
-  { en: 'green tea', vn: 'trà xanh', ph: 6 },
+  { en: 'tamarind', vn: 'quả me', fr: 'tamarin', ph: 3 },
+  { en: 'toothpaste', vn: 'kem đánh răng', fr: 'dentifrice', ph: 9 },
+  { en: 'tap water', vn: 'nước máy', fr: 'eau du robinet', ph: 7 },
+  { en: 'car battery acid', vn: 'axit ắc quy', fr: 'acide de batterie', ph: 1 },
+  { en: 'an indigestion tablet', vn: 'viên thuốc đau dạ dày', fr: 'un comprimé antiacide', ph: 10 },
+  { en: 'cola', vn: 'nước cô-ca', fr: 'cola', ph: 3 },
+  { en: 'shampoo', vn: 'dầu gội', fr: 'shampooing', ph: 8 },
+  { en: 'the acid in your stomach', vn: 'axit trong dạ dày', fr: 'l’acide de ton estomac', ph: 2 },
+  { en: 'salty water', vn: 'nước muối', fr: 'eau salée', ph: 7 },
+  { en: 'an ant bite', vn: 'vết kiến cắn', fr: 'une piqûre de fourmi', ph: 3 },
+  { en: 'oven cleaner', vn: 'nước tẩy lò', fr: 'décape-four', ph: 13 },
+  { en: 'green tea', vn: 'trà xanh', fr: 'thé vert', ph: 6 },
 ]
 
 const ORDER = CARDS.map((_, k) => k)
@@ -274,10 +273,10 @@ export function AcidSnap({ lang = 'en', isDisplayMode = false }) {
           </div>
           <div className="min-w-0">
             <div className={`font-black tracking-tight text-slate-800 dark:text-slate-100 leading-none ${big ? 'text-2xl' : 'text-lg sm:text-xl'}`}>
-              {tr(lang, 'Acid Snap', 'Đoán nhanh axit')}
+              {tr(lang, 'Acid Snap', 'Đoán nhanh axit', 'Acide express')}
             </div>
             <div className={`font-bold text-slate-400 dark:text-slate-500 truncate ${big ? 'text-base' : 'text-xs'}`}>
-              {tr(lang, 'Everyone says it out loud. Then press Show.', 'Cả lớp nói to. Rồi bấm Hiện.')}
+              {tr(lang, 'Everyone says it out loud. Then press Show.', 'Cả lớp nói to. Rồi bấm Hiện.', 'Tout le monde le dit à voix haute. Puis appuie sur Voir.')}
             </div>
           </div>
         </div>
@@ -294,18 +293,18 @@ export function AcidSnap({ lang = 'en', isDisplayMode = false }) {
           <>
             <div className="p-4 rounded-2xl bg-emerald-500 text-white"><Sparkles className="w-12 h-12" strokeWidth={2} /></div>
             <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>
-              {tr(lang, 'All twelve done!', 'Xong cả mười hai!')}
+              {tr(lang, 'All twelve done!', 'Xong cả mười hai!', 'Les douze sont faits !')}
             </div>
           </>
         ) : (
           <>
             <div className={`font-black uppercase tracking-[0.2em] text-[#c25e12] ${big ? 'text-[clamp(1rem,2.2vh,1.6rem)]' : 'text-sm'}`}>
-              {tr(lang, 'Acid, neutral or alkali?', 'Axit, trung tính hay kiềm?')}
+              {tr(lang, 'Acid, neutral or alkali?', 'Axit, trung tính hay kiềm?', 'Acide, neutre ou alcalin ?')}
             </div>
 
             <div className="text-center">
               <div className={`font-black tracking-tight text-slate-800 dark:text-slate-100 leading-none ${big ? 'text-[clamp(3rem,8vh,6rem)]' : 'text-4xl sm:text-5xl'}`}>
-                {tr(lang, card.en, card.vn)}
+                {tr(lang, card.en, card.vn, card.fr)}
               </div>
             </div>
 
@@ -316,7 +315,7 @@ export function AcidSnap({ lang = 'en', isDisplayMode = false }) {
                     className={`rounded-2xl border-4 px-[clamp(1.5rem,4vh,3rem)] py-[clamp(0.5rem,1.5vh,1.25rem)] font-black text-white leading-none ${big ? 'text-[clamp(3rem,9vh,7rem)]' : 'text-5xl'}`}
                     style={{ backgroundColor: v.colour, borderColor: v.colour }}
                   >
-                    {tr(lang, v.en, v.vn)}
+                    {tr(lang, v.en, v.vn, v.fr)}
                   </div>
                   <div
                     className={`rounded-full border-4 bg-white dark:bg-slate-900 font-black px-6 py-1.5 ${big ? 'text-[clamp(1.6rem,4vh,3rem)]' : 'text-2xl'}`}
@@ -335,10 +334,10 @@ export function AcidSnap({ lang = 'en', isDisplayMode = false }) {
 
       {/* Controls */}
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap px-4 pb-4 pt-2">
-        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn')}</Btn>
+        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn', 'Mélanger')}</Btn>
         {!done && (
           <Btn tone="orange" icon={shown ? ArrowRight : Eye} onClick={advance}>
-            {shown ? tr(lang, 'Next', 'Tiếp') : tr(lang, 'Show', 'Hiện')}
+            {shown ? tr(lang, 'Next', 'Tiếp', 'Suivant') : tr(lang, 'Show', 'Hiện', 'Voir')}
           </Btn>
         )}
       </div>

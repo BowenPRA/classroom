@@ -3,10 +3,12 @@
  *
  *   node slides-lint.mjs content/y7-science/U01_2/slides.js
  *
- * Two failures this catches, both of which ship silently:
+ * Three failures this catches, all of which ship silently:
  *
- *  1. A user-facing string with no `…Vn` twin. Half the class reads the
- *     Vietnamese; a missing twin silently falls back to English mid-slide.
+ *  1. A user-facing string with no `…Vn` twin, or no `…Fr` twin. A missing
+ *     twin silently falls back to English mid-slide, so the class reading the
+ *     other language loses that line. Pass `--no-fr` for a deck that does not
+ *     set `meta.french` (the Year 7 tasks).
  *  2. An UNBALANCED `$`. `parseInlineText` splits on /(\$[\s\S]+?\$)/ to find
  *     KaTeX, so dollar signs pair up greedily. Balanced pairs are fine and the
  *     maths decks rely on them — but an odd number of `$` in a string means
@@ -14,6 +16,9 @@
  *     words between, or render as a stray. Currency is the usual culprit:
  *     write "20 dollars". An escaped `\$` does not help; it prints the
  *     backslash and still counts.
+ *  3. A `…Fr` twin whose `$…$` maths differs from the English. The maths is
+ *     the same in every language; a changed span is a translation that
+ *     touched a number or a decimal point.
  *
  * slides.js imports diagrams, widgets (.jsx) and images, none of which node
  * can load directly — so the imports are stripped and every imported
@@ -24,9 +29,10 @@ import os from 'os'
 import path from 'path'
 import { pathToFileURL } from 'url'
 
-const target = process.argv[2]
+const target = process.argv.slice(2).find((a) => !a.startsWith('--'))
+const FRENCH = !process.argv.includes('--no-fr')
 if (!target) {
-  console.error('usage: node slides-lint.mjs <path-to-slides.js>')
+  console.error('usage: node slides-lint.mjs <path-to-slides.js> [--no-fr]')
   process.exit(2)
 }
 const src = fs.readFileSync(target, 'utf8')
@@ -78,8 +84,14 @@ const walk = (node, at) => {
       const n = (line.match(/\$/g) || []).length
       if (n % 2 === 1) problems.push(`UNPAIRED-$ ${at2} — "${line.slice(0, 54)}"`)
     })
-    if (k.endsWith('Vn') || SKIP.has(k)) continue
+    if (/(Vn|Fr)$/.test(k) || SKIP.has(k)) continue
     if (!(`${k}Vn` in node)) problems.push(`NO-VN    ${at}.${k} — "${v.slice(0, 48)}"`)
+    if (!FRENCH) continue
+    const fr = node[`${k}Fr`]
+    if (typeof fr !== 'string') { problems.push(`NO-FR    ${at}.${k} — "${v.slice(0, 48)}"`); continue }
+    // Words inside \text{…} are prose and may be translated.
+    const maths = (t) => (t.match(/\$[\s\S]+?\$/g) || []).join(' ').replace(/\\text\{[^}]*\}/g, '\\text{}')
+    if (maths(fr) !== maths(v)) problems.push(`FR-MATHS ${at}.${k}Fr — "${maths(v).slice(0, 30)}" became "${maths(fr).slice(0, 30)}"`)
   }
 }
 slides.forEach((s, i) => walk(s, `slide${i + 1}`))
@@ -91,4 +103,4 @@ if (problems.length) {
   console.log(`\n${slides.length} slides checked, ${problems.length} problem(s)`)
   process.exit(1)
 }
-console.log(`${slides.length} slides checked — every string has a Vn twin, every $ is paired`)
+console.log(`${slides.length} slides checked — every string has a Vn${FRENCH ? ' and an Fr' : ''} twin, every $ is paired`)

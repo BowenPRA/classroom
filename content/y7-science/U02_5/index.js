@@ -13,6 +13,7 @@ export default {
       'Periodic Table, and write element symbols correctly.',
     // 2.3 is 9; 10 is left free for 2.4 The water cycle.
     order: 11,
+    french: true,
     // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
     dashboard: { track: 'Y7_SCI', unit: 'U02_5' },
   },

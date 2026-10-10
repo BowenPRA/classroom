@@ -15,6 +15,7 @@ export default {
       'turn "I think of a number…" into an equation and solve it; ' +
       'and solve two-step equations by undoing the last step first, so 2a + 4 = 18 gives a = 7.',
     order: 11,
+    french: true,
     // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
     dashboard: { track: 'Y7_MATH', unit: 'U02_5' },
   },

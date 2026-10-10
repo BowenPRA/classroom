@@ -14,13 +14,12 @@
 // /classroom/, so `#/lesson/...` replaces only the fragment and the base path
 // looks after itself — hand-writing the base here would break the dev server.
 //
-// It takes the deck's `lang`, so both strings have a Vietnamese twin.
+// It takes the deck's `lang`, so every string has Vietnamese and French twins.
 import { Gamepad2, ArrowRight } from 'lucide-react'
+import { tr as pick } from '../../../src/lib/lang.js'
 
 const AMBER = '#f59e0b'
 const WALL_URL = '#/lesson/games/G01_word-wall?level=solid-liquid-gas'
-
-const pick = (lang, en, vn) => (lang === 'vn' ? vn : en)
 
 export function WordWallLink({ lang = 'en' }) {
   return (
@@ -37,20 +36,20 @@ export function WordWallLink({ lang = 'en' }) {
         </span>
 
         <span className="block text-xs font-black uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">
-          {pick(lang, 'Word Wall', 'Bức Tường Từ')}
+          {pick(lang, 'Word Wall', 'Bức Tường Từ', 'Mur de mots')}
         </span>
 
         <span className="mt-1 block text-2xl font-black leading-tight tracking-tight text-slate-800 dark:text-slate-100">
-          {pick(lang, 'Solid, Liquid or Gas?', 'Rắn, Lỏng hay Khí?')}
+          {pick(lang, 'Solid, Liquid or Gas?', 'Rắn, Lỏng hay Khí?', 'Solide, liquide ou gaz ?')}
         </span>
 
         <span className="mt-5 inline-flex items-center gap-2 rounded-xl px-5 py-3 text-base font-black text-white" style={{ backgroundColor: AMBER }}>
-          {pick(lang, 'Play the puzzle', 'Chơi thử')}
+          {pick(lang, 'Play the puzzle', 'Chơi thử', 'Jouer')}
           <ArrowRight className="h-5 w-5" strokeWidth={3} />
         </span>
 
         <span className="mt-4 block text-xs font-bold text-slate-500 dark:text-slate-400">
-          {pick(lang, 'Press Back in the game to return to this deck.', 'Bấm Back trong trò chơi để quay lại bài giảng.')}
+          {pick(lang, 'Press Back in the game to return to this deck.', 'Bấm Back trong trò chơi để quay lại bài giảng.', 'Appuie sur Back dans le jeu pour revenir ici.')}
         </span>
       </a>
     </div>

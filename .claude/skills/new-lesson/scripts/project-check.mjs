@@ -7,8 +7,8 @@
  * a third of its slides in front of the class, so this has to be checked
  * separately — in both languages, at the room's real resolution.
  *
- *   node project-check.mjs <lesson-url> [vn]
- *   WSIZE=1366,768 node project-check.mjs <lesson-url> vn
+ *   node project-check.mjs <lesson-url> [vn|fr]
+ *   WSIZE=1366,768 node project-check.mjs <lesson-url> fr
  *
  * Two things make this awkward, both handled below:
  *   1. Project mode calls requestFullscreen(), which needs a TRUSTED user
@@ -29,10 +29,10 @@ import path from 'path'
 
 const [URL_ARG, ...flags] = process.argv.slice(2)
 if (!URL_ARG) {
-  console.error('usage: node project-check.mjs <lesson-url> [vn]   (env: WSIZE=1920,1080)')
+  console.error('usage: node project-check.mjs <lesson-url> [vn|fr]   (env: WSIZE=1920,1080)')
   process.exit(2)
 }
-const VN = flags.includes('vn')
+const LANG = flags.find((f) => f === 'vn' || f === 'fr') || 'en'
 const [VW, VH] = (process.env.WSIZE || '1920,1080').split(',').map(Number)
 const PORT = Number(process.env.PORT || 9455)
 
@@ -92,8 +92,17 @@ await metrics()
 await send('Page.navigate', { url: URL_ARG })
 await sleep(2600)
 
-if (VN) {
-  await evalJs(`(() => { const b = [...document.querySelectorAll('button')].find(x => x.textContent.trim() === 'vn'); if (b) b.click(); return 1 })()`, false)
+if (LANG !== 'en') {
+  // A cold dev server can take ~12s to render the first deck: wait for the button.
+  const found = await evalJs(`(async () => {
+    for (let i = 0; i < 60; i++) {
+      const b = [...document.querySelectorAll('button')].find(x => x.textContent.trim().toLowerCase() === '${LANG}');
+      if (b) { b.click(); return true }
+      await new Promise(r => setTimeout(r, 250));
+    }
+    return false;
+  })()`)
+  if (!found) { console.error(`No ${LANG.toUpperCase()} button — does this deck offer that language?`); cleanup(); process.exit(2) }
   await sleep(400)
 }
 
@@ -116,7 +125,7 @@ await sleep(600)
 const on = await evalJs('!!document.fullscreenElement', false)
 const size = await evalJs('window.innerWidth + "x" + window.innerHeight', false)
 if (!on) { console.error('Could not enter project mode'); cleanup(); process.exit(2) }
-console.log(`project mode: ${size}, ${VN ? 'VN' : 'EN'}`)
+console.log(`project mode: ${size}, ${LANG.toUpperCase()}`)
 
 const rows = await evalJs(`(async () => {
   const wait = (ms) => new Promise(r => setTimeout(r, ms));
@@ -142,7 +151,7 @@ const rows = await evalJs(`(async () => {
 
 console.log(rows)
 const bad = rows.split('\n').filter((r) => r.includes('OVERFLOW')).length
-console.log(`\n${VN ? 'VN' : 'EN'} @ ${size}: ${bad} slide(s) overflowing`)
+console.log(`\n${LANG.toUpperCase()} @ ${size}: ${bad} slide(s) overflowing`)
 ws.close()
 cleanup()
 process.exit(bad ? 1 : 0)

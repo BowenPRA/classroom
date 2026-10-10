@@ -10,6 +10,7 @@
  *
  *   node scripts/deck-check.mjs http://localhost:5173/#/lesson/y7-science/U01_1
  *   node scripts/deck-check.mjs <url> 22 dark
+ *   node scripts/deck-check.mjs <url> fr        (or vn: walk it in that language)
  *
  * Set CHROME to override the browser path. Exits non-zero if anything fails,
  * so it can gate a deploy.
@@ -22,6 +23,7 @@ import path from 'path'
 const args = process.argv.slice(2)
 const URL_ARG = args.find((a) => a.startsWith('http'))
 const DARK = args.includes('dark')
+const LANG = args.find((a) => a === 'vn' || a === 'fr') || 'en'
 const SLIDES = Number(args.find((a) => /^\d+$/.test(a)) || 40)
 const PORT = 9333
 // Images come off the network on a deployed site; sample too early and every
@@ -29,7 +31,7 @@ const PORT = 9333
 const SETTLE_MS = 1400
 
 if (!URL_ARG) {
-  console.error('usage: node scripts/deck-check.mjs <lesson-url> [slideCount] [dark]')
+  console.error('usage: node scripts/deck-check.mjs <lesson-url> [slideCount] [dark] [vn|fr]')
   process.exit(2)
 }
 
@@ -97,6 +99,25 @@ await sleep(200)
 await send('Page.navigate', { url: URL_ARG })
 await sleep(2000)
 
+// The language toggle's buttons are labelled with the language code. A cold
+// dev server can take ~12s to render the first deck, so wait for the button.
+if (LANG !== 'en') {
+  const { result: hit } = await send('Runtime.evaluate', {
+    awaitPromise: true,
+    returnByValue: true,
+    expression: `(async () => {
+      for (let i = 0; i < 60; i++) {
+        const b = [...document.querySelectorAll('button')].find((x) => x.textContent.trim().toLowerCase() === '${LANG}');
+        if (b) { b.click(); return true }
+        await new Promise((r) => setTimeout(r, 250));
+      }
+      return false;
+    })()`,
+  })
+  if (!hit?.value) { console.error(`No ${LANG.toUpperCase()} button — does this deck offer that language?`); cleanup(); process.exit(2) }
+  await sleep(300)
+}
+
 const { result } = await send('Runtime.evaluate', {
   awaitPromise: true,
   returnByValue: true,
@@ -141,7 +162,7 @@ if (consoleErrors.length) {
   for (const e of [...new Set(consoleErrors)]) console.log('  ' + e)
 }
 
-console.log(`\n${rows.length} slides checked, ${bad} with layout issues, ${consoleErrors.length} console error(s)`)
+console.log(`\n${LANG.toUpperCase()}: ${rows.length} slides checked, ${bad} with layout issues, ${consoleErrors.length} console error(s)`)
 ws.close()
 cleanup()
 process.exit(bad || consoleErrors.length ? 1 : 0)

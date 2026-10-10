@@ -31,6 +31,9 @@ const lessons = Object.entries(modules).map(([path, mod]) => {
     // The self-study twin on the Dashboard, `{ track, unit }` — see
     // src/lib/dashboardLink.js. Null for a lesson with no unit built yet.
     dashboard: meta.dashboard || null,
+    // `french: true` adds FR to the deck's EN/VN switch — set it once every
+    // string in the lesson, widgets included, has its `…Fr` twin.
+    french: meta.french === true,
     slides: data.slides || [],
     plan: data.plan || null,
   }

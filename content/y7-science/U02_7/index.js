@@ -13,6 +13,7 @@ export default {
       'examples of mixtures.',
     // 2.6 is 12; 10 is still free for 2.4 The water cycle.
     order: 13,
+    french: true,
     // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
     dashboard: { track: 'Y7_SCI', unit: 'U02_7' },
   },

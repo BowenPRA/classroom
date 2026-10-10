@@ -16,6 +16,7 @@ export default {
       'stop at 12 − 4c because 12 and 4c are not like terms; and expand and simplify in that order, ' +
       'so 3(x + 2) + 4x = 7x + 6.',
     order: 10,
+    french: true,
     // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
     dashboard: { track: 'Y7_MATH', unit: 'U02_4' },
   },

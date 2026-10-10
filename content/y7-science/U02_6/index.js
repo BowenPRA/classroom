@@ -13,6 +13,7 @@ export default {
       'diagrams; and read a formula to say which elements and how many atoms.',
     // 2.5 is 11; 10 is still free for 2.4 The water cycle.
     order: 12,
+    french: true,
     // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
     dashboard: { track: 'Y7_SCI', unit: 'U02_6' },
   },

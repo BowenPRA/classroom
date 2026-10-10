@@ -75,8 +75,11 @@ where something simple was wanted.**
 
 - Copy-down content goes in a `write` note or an orange `>` bumper. **Nothing
   else.** A definition that looks like discussion prose does not get copied.
-- Every user-facing string needs a `…Vn` twin, written inline from the start —
-  including widget interface text, which receives the deck's `lang` prop.
+- Every user-facing string needs a `…Vn` **and** a `…Fr` twin, written inline
+  from the start — including widget interface text, which receives the deck's
+  `lang` prop (`tr(lang, en, vn, fr)` from `src/lib/lang.js`). Set
+  `meta.french: true` so the deck offers FR. The Year 7 maths tasks (`T*`
+  folders) are EN/VN only.
 - Never put a `$` in prose. `parseInlineText` turns any two of them into a
   maths span and eats the words between. Write "20 dollars".
 - Write SVG label `<text>` out literally. `audit:svg` cannot see text emitted
@@ -95,10 +98,10 @@ npm run audit:svg
 npm run check:deck -- "http://localhost:5173/#/lesson/<course>/<unit>"
 ```
 
-`check:deck` walks the deck **windowed at 1440×900, in English** (it takes a
-`dark` argument). Project mode is fullscreen with roughly 40% larger type, and
-it is what the class actually sees — check it separately, in both languages, at
-the room's real resolution. See LESSON-PLAYBOOK §6 for why that check is
+`check:deck` walks the deck **windowed at 1440×900, in English** (it takes
+`dark`, and `vn` or `fr` to walk it in that language). Project mode is
+fullscreen with roughly 40% larger type, and it is what the class actually sees
+— check it separately, in all three languages, at the room's real resolution. See LESSON-PLAYBOOK §6 for why that check is
 awkward to automate.
 
 Then commit to `main`, run `npm run deploy`, and confirm the live site is

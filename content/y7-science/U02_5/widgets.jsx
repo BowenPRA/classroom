@@ -29,6 +29,7 @@
 // the same on a light or dark slide.
 import { useState, useEffect, useCallback } from 'react'
 import { Scissors, Undo2, RotateCcw, ArrowRight, Eye, Shuffle, ArrowLeftRight, Sparkles, Atom } from 'lucide-react'
+import { tr } from '../../../src/lib/lang.js'
 
 const INK = '#2b2b2b'
 const KEY = '#c25e12'
@@ -41,7 +42,13 @@ const NONMETAL = { fill: '#cfe5f5', stroke: '#4f8fbf' }
 const PLAIN = { fill: '#ffffff', stroke: '#8a979e' }
 const OFF = { fill: '#eef1f4', stroke: '#d5dbe1', text: '#b8c1ca', name: '#c8d0d7' }
 
-const tr = (lang, en, vn) => (lang === 'vn' ? vn : en)
+// An element's name in the deck's language, shown beside the English one. A
+// French name spelled exactly like the English is not repeated.
+const localName = (lang, el) => {
+  if (lang === 'en') return ''
+  const name = tr(lang, el.en, el.vn, el.fr)
+  return lang === 'fr' && name === el.en ? '' : name
+}
 
 function Btn({ onClick, disabled, tone = 'teal', icon: Icon, children }) {
   const tones = {
@@ -66,13 +73,13 @@ function Btn({ onClick, disabled, tone = 'teal', icon: Icon, children }) {
  * ============================================================= */
 const LAST_CUT = 25
 const MILESTONES = [
-  { n: 0, en: 'gold cube', vn: 'khối vàng', longEn: "Mr Bowen's gold cube", longVn: 'Khối vàng của thầy Bowen' },
-  { n: 3, en: 'sand', vn: 'hạt cát', longEn: 'a grain of sand', longVn: 'một hạt cát' },
-  { n: 7, en: 'hair', vn: 'sợi tóc', longEn: 'as thin as a hair', longVn: 'mỏng như sợi tóc' },
-  { n: 9, en: 'cell', vn: 'tế bào', longEn: 'one cell (Unit 1)', longVn: 'một tế bào (Bài 1)' },
-  { n: 13, en: 'bacterium', vn: 'vi khuẩn', longEn: 'a bacterium', longVn: 'một vi khuẩn' },
-  { n: 17, en: 'virus', vn: 'vi-rút', longEn: 'a virus', longVn: 'một vi-rút' },
-  { n: 25, en: 'atom', vn: 'nguyên tử', longEn: 'ONE GOLD ATOM', longVn: 'MỘT NGUYÊN TỬ VÀNG' },
+  { n: 0, en: 'gold cube', vn: 'khối vàng', fr: 'cube d’or', longEn: "Mr Bowen's gold cube", longVn: 'Khối vàng của thầy Bowen', longFr: 'Le cube d’or de M. Bowen' },
+  { n: 3, en: 'sand', vn: 'hạt cát', fr: 'sable', longEn: 'a grain of sand', longVn: 'một hạt cát', longFr: 'un grain de sable' },
+  { n: 7, en: 'hair', vn: 'sợi tóc', fr: 'cheveu', longEn: 'as thin as a hair', longVn: 'mỏng như sợi tóc', longFr: 'fin comme un cheveu' },
+  { n: 9, en: 'cell', vn: 'tế bào', fr: 'cellule', longEn: 'one cell (Unit 1)', longVn: 'một tế bào (Bài 1)', longFr: 'une cellule (Unité 1)' },
+  { n: 13, en: 'bacterium', vn: 'vi khuẩn', fr: 'bactérie', longEn: 'a bacterium', longVn: 'một vi khuẩn', longFr: 'une bactérie' },
+  { n: 17, en: 'virus', vn: 'vi-rút', fr: 'virus', longEn: 'a virus', longVn: 'một vi-rút', longFr: 'un virus' },
+  { n: 25, en: 'atom', vn: 'nguyên tử', fr: 'atome', longEn: 'ONE GOLD ATOM', longVn: 'MỘT NGUYÊN TỬ VÀNG', longFr: 'UN ATOME D’OR' },
 ]
 
 // 10 mm halved n times, to two significant figures, written out in full so the
@@ -98,19 +105,19 @@ export function HalvingWidget({ lang = 'en' }) {
 
           {/* counter */}
           <rect x="20" y="16" width="340" height="262" rx="18" fill="#fdf1e3" stroke={KEY} strokeWidth="3" />
-          <text x="190" y="66" fontFamily={FONT} fontSize="30" fontWeight="bold" fill={INK} textAnchor="middle">{tr(lang, 'Cut in half', 'Cắt đôi')}</text>
+          <text x="190" y="66" fontFamily={FONT} fontSize="30" fontWeight="bold" fill={INK} textAnchor="middle">{tr(lang, 'Cut in half', 'Cắt đôi', 'Coupe en deux')}</text>
           <text x="190" y="214" fontFamily={FONT} fontSize="140" fontWeight="bold" fill={KEY} textAnchor="middle">{n}</text>
-          <text x="190" y="260" fontFamily={FONT} fontSize="30" fill={INK} textAnchor="middle">{tr(lang, n === 1 ? 'time' : 'times', 'lần')}</text>
+          <text x="190" y="260" fontFamily={FONT} fontSize="30" fill={INK} textAnchor="middle">{tr(lang, n === 1 ? 'time' : 'times', 'lần', 'fois')}</text>
 
           {/* width read-out */}
-          <text x="740" y="70" fontFamily={FONT} fontSize="28" fill={MUTED} textAnchor="middle">{tr(lang, 'How wide?', 'Rộng bao nhiêu?')}</text>
+          <text x="740" y="70" fontFamily={FONT} fontSize="28" fill={MUTED} textAnchor="middle">{tr(lang, 'How wide?', 'Rộng bao nhiêu?', 'Quelle largeur ?')}</text>
           <text x="740" y="160" fontFamily={FONT} fontSize="76" fontWeight="bold" fill={INK} textAnchor="middle">{widthMm(n)} mm</text>
           {here ? (
             <text x="740" y="236" fontFamily={FONT} fontSize={n === LAST_CUT ? 46 : 38} fontWeight="bold" fill={KEY} textAnchor="middle">
-              {n === 0 ? tr(lang, here.longEn, here.longVn) : `≈ ${tr(lang, here.longEn, here.longVn)}`}
+              {n === 0 ? tr(lang, here.longEn, here.longVn, here.longFr) : `≈ ${tr(lang, here.longEn, here.longVn, here.longFr)}`}
             </text>
           ) : (
-            <text x="740" y="236" fontFamily={FONT} fontSize="34" fill="#9aa5ae" textAnchor="middle">{tr(lang, 'Keep cutting…', 'Cắt tiếp…')}</text>
+            <text x="740" y="236" fontFamily={FONT} fontSize="34" fill="#9aa5ae" textAnchor="middle">{tr(lang, 'Keep cutting…', 'Cắt tiếp…', 'Continue…')}</text>
           )}
 
           {/* track */}
@@ -131,7 +138,7 @@ export function HalvingWidget({ lang = 'en' }) {
               <g key={m.n}>
                 <line x1={trackX(m.n)} y1="341" x2={trackX(m.n)} y2={y - 22} stroke={reached ? KEY : '#c3cbd2'} strokeWidth="2" />
                 <text x={lx} y={y} fontFamily={FONT} fontSize="22" fontWeight={reached ? 'bold' : 'normal'} fill={reached ? KEY : '#9aa5ae'} textAnchor={anchor}>
-                  {tr(lang, m.en, m.vn)}
+                  {tr(lang, m.en, m.vn, m.fr)}
                 </text>
               </g>
             )
@@ -140,9 +147,9 @@ export function HalvingWidget({ lang = 'en' }) {
       </div>
 
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap">
-        <Btn tone="slate" icon={Undo2} disabled={n === 0} onClick={() => setN((v) => Math.max(0, v - 1))}>{tr(lang, 'Back', 'Lùi')}</Btn>
-        <Btn tone="orange" icon={Scissors} disabled={n === LAST_CUT} onClick={() => setN((v) => Math.min(LAST_CUT, v + 1))}>{tr(lang, 'Cut in half', 'Cắt đôi')}</Btn>
-        <Btn tone="teal" icon={RotateCcw} disabled={n === 0} onClick={() => setN(0)}>{tr(lang, 'Start again', 'Làm lại')}</Btn>
+        <Btn tone="slate" icon={Undo2} disabled={n === 0} onClick={() => setN((v) => Math.max(0, v - 1))}>{tr(lang, 'Back', 'Lùi', 'Retour')}</Btn>
+        <Btn tone="orange" icon={Scissors} disabled={n === LAST_CUT} onClick={() => setN((v) => Math.min(LAST_CUT, v + 1))}>{tr(lang, 'Cut in half', 'Cắt đôi', 'Coupe en deux')}</Btn>
+        <Btn tone="teal" icon={RotateCcw} disabled={n === 0} onClick={() => setN(0)}>{tr(lang, 'Start again', 'Làm lại', 'Recommencer')}</Btn>
       </div>
     </div>
   )
@@ -152,26 +159,26 @@ export function HalvingWidget({ lang = 'en' }) {
  * WIDGET 2 — THE FIRST 20 ELEMENTS
  * ============================================================= */
 const ELEMENTS = [
-  { z: 1, sym: 'H', en: 'hydrogen', vn: 'hiđro', metal: false, period: 1, group: null },
-  { z: 2, sym: 'He', en: 'helium', vn: 'heli', metal: false, period: 1, group: 8 },
-  { z: 3, sym: 'Li', en: 'lithium', vn: 'liti', metal: true, period: 2, group: 1 },
-  { z: 4, sym: 'Be', en: 'beryllium', vn: 'beri', metal: true, period: 2, group: 2 },
-  { z: 5, sym: 'B', en: 'boron', vn: 'bo', metal: false, period: 2, group: 3 },
-  { z: 6, sym: 'C', en: 'carbon', vn: 'cacbon', metal: false, period: 2, group: 4 },
-  { z: 7, sym: 'N', en: 'nitrogen', vn: 'nitơ', metal: false, period: 2, group: 5 },
-  { z: 8, sym: 'O', en: 'oxygen', vn: 'oxi', metal: false, period: 2, group: 6 },
-  { z: 9, sym: 'F', en: 'fluorine', vn: 'flo', metal: false, period: 2, group: 7 },
-  { z: 10, sym: 'Ne', en: 'neon', vn: 'neon', metal: false, period: 2, group: 8 },
-  { z: 11, sym: 'Na', en: 'sodium', vn: 'natri', metal: true, period: 3, group: 1, latin: 'natrium' },
-  { z: 12, sym: 'Mg', en: 'magnesium', vn: 'magie', metal: true, period: 3, group: 2 },
-  { z: 13, sym: 'Al', en: 'aluminium', vn: 'nhôm', metal: true, period: 3, group: 3 },
-  { z: 14, sym: 'Si', en: 'silicon', vn: 'silic', metal: false, period: 3, group: 4 },
-  { z: 15, sym: 'P', en: 'phosphorus', vn: 'photpho', metal: false, period: 3, group: 5 },
-  { z: 16, sym: 'S', en: 'sulfur', vn: 'lưu huỳnh', metal: false, period: 3, group: 6 },
-  { z: 17, sym: 'Cl', en: 'chlorine', vn: 'clo', metal: false, period: 3, group: 7 },
-  { z: 18, sym: 'Ar', en: 'argon', vn: 'agon', metal: false, period: 3, group: 8 },
-  { z: 19, sym: 'K', en: 'potassium', vn: 'kali', metal: true, period: 4, group: 1, latin: 'kalium' },
-  { z: 20, sym: 'Ca', en: 'calcium', vn: 'canxi', metal: true, period: 4, group: 2 },
+  { z: 1, sym: 'H', en: 'hydrogen', vn: 'hiđro', fr: 'hydrogène', metal: false, period: 1, group: null },
+  { z: 2, sym: 'He', en: 'helium', vn: 'heli', fr: 'hélium', metal: false, period: 1, group: 8 },
+  { z: 3, sym: 'Li', en: 'lithium', vn: 'liti', fr: 'lithium', metal: true, period: 2, group: 1 },
+  { z: 4, sym: 'Be', en: 'beryllium', vn: 'beri', fr: 'béryllium', metal: true, period: 2, group: 2 },
+  { z: 5, sym: 'B', en: 'boron', vn: 'bo', fr: 'bore', metal: false, period: 2, group: 3 },
+  { z: 6, sym: 'C', en: 'carbon', vn: 'cacbon', fr: 'carbone', metal: false, period: 2, group: 4 },
+  { z: 7, sym: 'N', en: 'nitrogen', vn: 'nitơ', fr: 'azote', metal: false, period: 2, group: 5 },
+  { z: 8, sym: 'O', en: 'oxygen', vn: 'oxi', fr: 'oxygène', metal: false, period: 2, group: 6 },
+  { z: 9, sym: 'F', en: 'fluorine', vn: 'flo', fr: 'fluor', metal: false, period: 2, group: 7 },
+  { z: 10, sym: 'Ne', en: 'neon', vn: 'neon', fr: 'néon', metal: false, period: 2, group: 8 },
+  { z: 11, sym: 'Na', en: 'sodium', vn: 'natri', fr: 'sodium', metal: true, period: 3, group: 1, latin: 'natrium' },
+  { z: 12, sym: 'Mg', en: 'magnesium', vn: 'magie', fr: 'magnésium', metal: true, period: 3, group: 2 },
+  { z: 13, sym: 'Al', en: 'aluminium', vn: 'nhôm', fr: 'aluminium', metal: true, period: 3, group: 3 },
+  { z: 14, sym: 'Si', en: 'silicon', vn: 'silic', fr: 'silicium', metal: false, period: 3, group: 4 },
+  { z: 15, sym: 'P', en: 'phosphorus', vn: 'photpho', fr: 'phosphore', metal: false, period: 3, group: 5 },
+  { z: 16, sym: 'S', en: 'sulfur', vn: 'lưu huỳnh', fr: 'soufre', metal: false, period: 3, group: 6 },
+  { z: 17, sym: 'Cl', en: 'chlorine', vn: 'clo', fr: 'chlore', metal: false, period: 3, group: 7 },
+  { z: 18, sym: 'Ar', en: 'argon', vn: 'agon', fr: 'argon', metal: false, period: 3, group: 8 },
+  { z: 19, sym: 'K', en: 'potassium', vn: 'kali', fr: 'potassium', metal: true, period: 4, group: 1, latin: 'kalium' },
+  { z: 20, sym: 'Ca', en: 'calcium', vn: 'canxi', fr: 'calcium', metal: true, period: 4, group: 2 },
 ]
 
 // Layout of the book's table: two wide columns, a strip of ten narrow empty
@@ -213,10 +220,10 @@ function PeriodicTable({ lang = 'en', mode }) {
       bands = [sel.kind === 'period' ? periodBand(sel.idx) : groupBand(sel.idx)]
     }
     status = !sel
-      ? tr(lang, 'The first 20 elements', '20 nguyên tố đầu tiên')
+      ? tr(lang, 'The first 20 elements', '20 nguyên tố đầu tiên', 'Les 20 premiers éléments')
       : sel.kind === 'period'
-        ? tr(lang, 'A row is called a period', 'Một hàng gọi là một chu kì')
-        : tr(lang, 'A column is called a group', 'Một cột gọi là một nhóm')
+        ? tr(lang, 'A row is called a period', 'Một hàng gọi là một chu kì', 'Une ligne s’appelle une période')
+        : tr(lang, 'A column is called a group', 'Một cột gọi là một nhóm', 'Une colonne s’appelle un groupe')
   }
 
   if (mode === 'mass') {
@@ -228,9 +235,9 @@ function PeriodicTable({ lang = 'en', mode }) {
           : { ...OFF, sw: 1.5 }
     const cur = ELEMENTS[step - 1]
     status = step === 0
-      ? tr(lang, 'Press Next: the lightest atom first', 'Bấm Tiếp: nguyên tử nhẹ nhất trước')
-      : `${step}. ${cur.en}${lang === 'vn' ? ` (${cur.vn})` : ''}` +
-        (step === 1 ? tr(lang, ' — the lightest', ' — nhẹ nhất') : step === 20 ? tr(lang, ' — the heaviest here', ' — nặng nhất ở đây') : '')
+      ? tr(lang, 'Press Next: the lightest atom first', 'Bấm Tiếp: nguyên tử nhẹ nhất trước', 'Appuie sur Suivant : le plus léger d’abord')
+      : `${step}. ${cur.en}${localName(lang, cur) ? ` (${localName(lang, cur)})` : ''}` +
+        (step === 1 ? tr(lang, ' — the lightest', ' — nhẹ nhất', ' — le plus léger') : step === 20 ? tr(lang, ' — the heaviest here', ' — nặng nhất ở đây', ' — le plus lourd ici') : '')
   }
 
   if (mode === 'metals') {
@@ -242,10 +249,10 @@ function PeriodicTable({ lang = 'en', mode }) {
           ? { ...bookColour(el), text: INK, name: MUTED, sw: step === 3 ? 1.5 : 2.5 }
           : { ...OFF, sw: 1.5 }
     status = [
-      tr(lang, 'Metals and non-metals', 'Kim loại và phi kim'),
-      tr(lang, 'Metals: the yellow boxes', 'Kim loại: các ô màu vàng'),
-      tr(lang, 'Non-metals: the blue boxes', 'Phi kim: các ô màu xanh'),
-      tr(lang, 'Similar elements sit close together', 'Các nguyên tố giống nhau nằm gần nhau'),
+      tr(lang, 'Metals and non-metals', 'Kim loại và phi kim', 'Métaux et non-métaux'),
+      tr(lang, 'Metals: the yellow boxes', 'Kim loại: các ô màu vàng', 'Métaux : les cases jaunes'),
+      tr(lang, 'Non-metals: the blue boxes', 'Phi kim: các ô màu xanh', 'Non-métaux : les cases bleues'),
+      tr(lang, 'Similar elements sit close together', 'Các nguyên tố giống nhau nằm gần nhau', 'Les éléments semblables sont proches'),
     ][step]
   }
 
@@ -259,10 +266,10 @@ function PeriodicTable({ lang = 'en', mode }) {
     }
     if (picked) {
       bands = [periodBand(picked.period), ...(picked.group ? [groupBand(picked.group)] : [])]
-      status = `${picked.sym} · ${picked.en}${lang === 'vn' ? ` (${picked.vn})` : ''} · ` +
-        (picked.metal ? tr(lang, 'a metal', 'kim loại') : tr(lang, 'a non-metal', 'phi kim'))
+      status = `${picked.sym} · ${picked.en}${localName(lang, picked) ? ` (${localName(lang, picked)})` : ''} · ` +
+        (picked.metal ? tr(lang, 'a metal', 'kim loại', 'un métal') : tr(lang, 'a non-metal', 'phi kim', 'un non-métal'))
     } else {
-      status = tr(lang, 'Tap an element', 'Chạm vào một nguyên tố')
+      status = tr(lang, 'Tap an element', 'Chạm vào một nguyên tố', 'Touche un élément')
     }
   }
 
@@ -318,26 +325,26 @@ function PeriodicTable({ lang = 'en', mode }) {
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap">
         {mode === 'rowscols' && (
           <>
-            <Btn tone="orange" icon={ArrowRight} onClick={() => cycle('period', 4)}>{tr(lang, 'Next row', 'Hàng tiếp')}</Btn>
-            <Btn tone="orange" icon={ArrowRight} onClick={() => cycle('group', 8)}>{tr(lang, 'Next column', 'Cột tiếp')}</Btn>
-            <Btn tone="slate" icon={RotateCcw} disabled={!sel} onClick={() => setSel(null)}>{tr(lang, 'Clear', 'Xóa')}</Btn>
+            <Btn tone="orange" icon={ArrowRight} onClick={() => cycle('period', 4)}>{tr(lang, 'Next row', 'Hàng tiếp', 'Ligne suivante')}</Btn>
+            <Btn tone="orange" icon={ArrowRight} onClick={() => cycle('group', 8)}>{tr(lang, 'Next column', 'Cột tiếp', 'Colonne suivante')}</Btn>
+            <Btn tone="slate" icon={RotateCcw} disabled={!sel} onClick={() => setSel(null)}>{tr(lang, 'Clear', 'Xóa', 'Effacer')}</Btn>
           </>
         )}
         {mode === 'mass' && (
           <>
-            <Btn tone="slate" icon={Undo2} disabled={step === 0} onClick={() => setStep((v) => Math.max(0, v - 1))}>{tr(lang, 'Back', 'Lùi')}</Btn>
-            <Btn tone="orange" icon={ArrowRight} disabled={step === 20} onClick={() => setStep((v) => Math.min(20, v + 1))}>{tr(lang, 'Next atom', 'Nguyên tử tiếp')}</Btn>
-            <Btn tone="teal" icon={RotateCcw} disabled={step === 0} onClick={() => setStep(0)}>{tr(lang, 'Start again', 'Làm lại')}</Btn>
+            <Btn tone="slate" icon={Undo2} disabled={step === 0} onClick={() => setStep((v) => Math.max(0, v - 1))}>{tr(lang, 'Back', 'Lùi', 'Retour')}</Btn>
+            <Btn tone="orange" icon={ArrowRight} disabled={step === 20} onClick={() => setStep((v) => Math.min(20, v + 1))}>{tr(lang, 'Next atom', 'Nguyên tử tiếp', 'Atome suivant')}</Btn>
+            <Btn tone="teal" icon={RotateCcw} disabled={step === 0} onClick={() => setStep(0)}>{tr(lang, 'Start again', 'Làm lại', 'Recommencer')}</Btn>
           </>
         )}
         {mode === 'metals' && (
           <>
-            <Btn tone="orange" icon={ArrowRight} disabled={step === 3} onClick={() => setStep((v) => Math.min(3, v + 1))}>{tr(lang, 'Next', 'Tiếp')}</Btn>
-            <Btn tone="teal" icon={RotateCcw} disabled={step === 0} onClick={() => setStep(0)}>{tr(lang, 'Start again', 'Làm lại')}</Btn>
+            <Btn tone="orange" icon={ArrowRight} disabled={step === 3} onClick={() => setStep((v) => Math.min(3, v + 1))}>{tr(lang, 'Next', 'Tiếp', 'Suivant')}</Btn>
+            <Btn tone="teal" icon={RotateCcw} disabled={step === 0} onClick={() => setStep(0)}>{tr(lang, 'Start again', 'Làm lại', 'Recommencer')}</Btn>
           </>
         )}
         {mode === 'explore' && (
-          <Btn tone="slate" icon={RotateCcw} disabled={!sel} onClick={() => setSel(null)}>{tr(lang, 'Clear', 'Xóa')}</Btn>
+          <Btn tone="slate" icon={RotateCcw} disabled={!sel} onClick={() => setSel(null)}>{tr(lang, 'Clear', 'Xóa', 'Effacer')}</Btn>
         )}
       </div>
     </div>
@@ -358,9 +365,9 @@ const FIRST_ORDER = [12, 1, 19, 6, 11, 2, 17, 8, 13, 4, 20, 9, 3, 15, 10, 18, 5,
 const cap = (s) => s[0].toUpperCase() + s.slice(1)
 
 function howMade(el, lang) {
-  if (el.latin) return tr(lang, `from the Latin name: ${el.latin}`, `từ tên La-tinh: ${el.latin}`)
-  if (el.sym.length === 1) return tr(lang, 'the first letter', 'chữ cái đầu tiên')
-  return tr(lang, 'the first letter + another letter', 'chữ cái đầu + một chữ khác')
+  if (el.latin) return tr(lang, `from the Latin name: ${el.latin}`, `từ tên La-tinh: ${el.latin}`, `du nom latin\u00A0: ${el.latin}`)
+  if (el.sym.length === 1) return tr(lang, 'the first letter', 'chữ cái đầu tiên', 'la première lettre')
+  return tr(lang, 'the first letter + another letter', 'chữ cái đầu + một chữ khác', 'première lettre + une autre')
 }
 
 function SymbolTile({ el, big }) {
@@ -416,7 +423,7 @@ export function SymbolSnap({ lang = 'en', isDisplayMode = false }) {
   const nameBlock = el && (
     <div className="text-center">
       <div className={`font-black tracking-tight text-slate-800 dark:text-slate-100 leading-none ${big ? 'text-[clamp(3.5rem,9vh,7rem)]' : 'text-5xl sm:text-6xl'}`}>{cap(el.en)}</div>
-      {lang === 'vn' && <div className={`mt-2 font-bold text-slate-400 ${big ? 'text-[clamp(1.2rem,2.6vh,2rem)]' : 'text-lg'}`}>({el.vn})</div>}
+      {localName(lang, el) && <div className={`mt-2 font-bold text-slate-400 ${big ? 'text-[clamp(1.2rem,2.6vh,2rem)]' : 'text-lg'}`}>({localName(lang, el)})</div>}
     </div>
   )
 
@@ -431,7 +438,7 @@ export function SymbolSnap({ lang = 'en', isDisplayMode = false }) {
           <div className="min-w-0">
             <div className={`font-black tracking-tight text-slate-800 dark:text-slate-100 leading-none ${big ? 'text-2xl' : 'text-lg sm:text-xl'}`}>Symbol Snap</div>
             <div className={`font-bold text-slate-400 dark:text-slate-500 truncate ${big ? 'text-base' : 'text-xs'}`}>
-              {tr(lang, 'Write your answer. Then press Show.', 'Viết câu trả lời. Rồi bấm Hiện.')}
+              {tr(lang, 'Write your answer. Then press Show.', 'Viết câu trả lời. Rồi bấm Hiện.', 'Écris ta réponse. Puis appuie sur Voir.')}
             </div>
           </div>
         </div>
@@ -447,12 +454,12 @@ export function SymbolSnap({ lang = 'en', isDisplayMode = false }) {
         {done ? (
           <>
             <div className="p-4 rounded-2xl bg-emerald-500 text-white"><Sparkles className="w-12 h-12" strokeWidth={2} /></div>
-            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{tr(lang, 'All 20 done!', 'Xong cả 20!')}</div>
+            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{tr(lang, 'All 20 done!', 'Xong cả 20!', 'Les 20 terminés !')}</div>
           </>
         ) : (
           <>
             <div className={`font-black uppercase tracking-[0.2em] text-[#c25e12] ${big ? 'text-[clamp(1rem,2.2vh,1.6rem)]' : 'text-sm'}`}>
-              {askSymbol ? tr(lang, 'What is the symbol?', 'Kí hiệu là gì?') : tr(lang, 'Which element?', 'Nguyên tố nào?')}
+              {askSymbol ? tr(lang, 'What is the symbol?', 'Kí hiệu là gì?', 'Quel est le symbole ?') : tr(lang, 'Which element?', 'Nguyên tố nào?', 'Quel élément ?')}
             </div>
 
             {askSymbol ? nameBlock : <SymbolTile el={el} big />}
@@ -476,12 +483,12 @@ export function SymbolSnap({ lang = 'en', isDisplayMode = false }) {
       {/* Controls */}
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap px-4 pb-4 pt-2">
         <Btn tone="slate" icon={ArrowLeftRight} onClick={() => { setAskSymbol((v) => !v); setShown(false) }}>
-          {askSymbol ? tr(lang, 'Show symbols instead', 'Hiện kí hiệu') : tr(lang, 'Show names instead', 'Hiện tên')}
+          {askSymbol ? tr(lang, 'Show symbols instead', 'Hiện kí hiệu', 'Voir les symboles') : tr(lang, 'Show names instead', 'Hiện tên', 'Voir les noms')}
         </Btn>
-        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn')}</Btn>
+        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn', 'Mélanger')}</Btn>
         {!done && (
           <Btn tone="orange" icon={shown ? ArrowRight : Eye} onClick={advance}>
-            {shown ? tr(lang, 'Next', 'Tiếp') : tr(lang, 'Show', 'Hiện')}
+            {shown ? tr(lang, 'Next', 'Tiếp', 'Suivant') : tr(lang, 'Show', 'Hiện', 'Voir')}
           </Btn>
         )}
       </div>

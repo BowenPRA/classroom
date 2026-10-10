@@ -7,9 +7,9 @@ import { renderContent, toHex } from './helpers.jsx'
 export default function CalloutLayout({ slide: s, ctx }) {
   const { pick, lang, isDisplayMode } = ctx
   const accent = toHex(s.accent || s.color, '#8b5cf6')
-  const eyebrow = pick(s.eyebrow, s.eyebrowVn)
-  const title = pick(s.title, s.titleVn)
-  const content = pick(s.content, s.contentVn)
+  const eyebrow = pick(s.eyebrow, s.eyebrowVn, s.eyebrowFr)
+  const title = pick(s.title, s.titleVn, s.titleFr)
+  const content = pick(s.content, s.contentVn, s.contentFr)
 
   return (
     <div className={`flex-1 flex flex-col items-center justify-center overflow-y-auto custom-scrollbar bg-slate-50 dark:bg-slate-900 min-h-0 ${isDisplayMode ? 'p-[clamp(2rem,5vw,5rem)]' : 'p-6 sm:p-10 lg:p-14'}`}>

@@ -25,25 +25,25 @@
 // without re-rendering React.
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { Flame, Snowflake, Sparkles, RotateCcw, ArrowRight, Check } from 'lucide-react'
+import { tr } from '../../../src/lib/lang.js'
 
-const pick = (lang, en, vn) => (lang === 'vn' ? (vn ?? en) : en)
-
+// Each entry is [English, Vietnamese, French].
 const T = {
-  title: ['Explain It With Particles', 'Giải thích bằng hạt'],
-  subtitle: ['Watch the particles, read the explanation', 'Xem các hạt, đọc lời giải thích'],
-  addHeat: ['Add heat', 'Thêm nhiệt'],
-  removeHeat: ['Remove heat', 'Lấy nhiệt đi'],
-  next: ['Next', 'Tiếp theo'],
-  done: ['All done!', 'Hoàn thành!'],
-  doneMsg: ['You can explain every change of state with particles.', 'Em có thể giải thích mọi sự chuyển thể bằng hạt.'],
-  again: ['Start again', 'Làm lại'],
-  round: ['of', 'trong'],
-  explanation: ['The explanation', 'Lời giải thích'],
-  particles: ['The particles', 'Các hạt'],
-  watch: ['Press the button and watch what happens.', 'Bấm nút và xem điều gì xảy ra.'],
-  complete: ['Correct!', 'Chính xác!'],
+  title: ['Explain It With Particles', 'Giải thích bằng hạt', 'Explique avec les particules'],
+  subtitle: ['Watch the particles, read the explanation', 'Xem các hạt, đọc lời giải thích', 'Regarde les particules, lis l’explication'],
+  addHeat: ['Add heat', 'Thêm nhiệt', 'Chauffer'],
+  removeHeat: ['Remove heat', 'Lấy nhiệt đi', 'Refroidir'],
+  next: ['Next', 'Tiếp theo', 'Suivant'],
+  done: ['All done!', 'Hoàn thành!', 'Terminé !'],
+  doneMsg: ['You can explain every change of state with particles.', 'Em có thể giải thích mọi sự chuyển thể bằng hạt.', 'Tu sais expliquer chaque changement d’état avec les particules.'],
+  again: ['Start again', 'Làm lại', 'Recommencer'],
+  round: ['of', 'trong', 'sur'],
+  explanation: ['The explanation', 'Lời giải thích', 'L’explication'],
+  particles: ['The particles', 'Các hạt', 'Les particules'],
+  watch: ['Press the button and watch what happens.', 'Bấm nút và xem điều gì xảy ra.', 'Appuie sur le bouton et regarde ce qui se passe.'],
+  complete: ['Correct!', 'Chính xác!', 'Exact !'],
 }
-const t = (lang, key) => T[key][lang === 'vn' ? 1 : 0]
+const t = (lang, key) => tr(lang, T[key][0], T[key][1], T[key][2])
 
 // ── Particle field ──────────────────────────────────────────────────────────
 const BW = 360, BH = 310
@@ -86,106 +86,111 @@ function makeParticles(type, spacing = 1) {
 const SCENARIOS = [
   {
     key: 'expand', icon: 'heat',
-    title: ['Expanding', 'Giãn nở'],
+    title: ['Expanding', 'Giãn nở', 'Dilatation'],
     scene: ['Mr Bowen heats an iron bar. It gets slightly bigger. Why?',
-            'Thầy Bowen đun nóng một thanh sắt. Nó to ra một chút. Tại sao?'],
+            'Thầy Bowen đun nóng một thanh sắt. Nó to ra một chút. Tại sao?',
+            'M. Bowen chauffe une barre de fer. Elle grandit un peu. Pourquoi ?'],
     init: 'solid',
     steps: [
       {
         params: { homePull: 0.20, vibAmp: 4.5, spacing: 1.0, flowKick: 0, gravity: 0, vapTarget: 0 },
-        text: ['**Heat energy** is **transferred** to the particles.', '**Nhiệt năng** được **truyền** đến các hạt.'],
+        text: ['**Heat energy** is **transferred** to the particles.', '**Nhiệt năng** được **truyền** đến các hạt.', 'L’**énergie thermique** est **transférée** aux particules.'],
       },
       {
         params: { homePull: 0.17, vibAmp: 7, spacing: 1.15, flowKick: 0, gravity: 0, vapTarget: 0 },
-        text: ['The particles vibrate more. They take up more space.', 'Các hạt rung động nhiều hơn. Chúng chiếm nhiều chỗ hơn.'],
+        text: ['The particles vibrate more. They take up more space.', 'Các hạt rung động nhiều hơn. Chúng chiếm nhiều chỗ hơn.', 'Les particules vibrent plus. Elles prennent plus de place.'],
       },
       {
         params: { homePull: 0.14, vibAmp: 9, spacing: 1.3, flowKick: 0, gravity: 0, vapTarget: 0 },
-        text: ['The solid **expands** (gets bigger).', 'Chất rắn **giãn nở** (to ra).'],
+        text: ['The solid **expands** (gets bigger).', 'Chất rắn **giãn nở** (to ra).', 'Le solide se **dilate** (il grandit).'],
       },
     ],
   },
   {
     key: 'melt', icon: 'heat',
-    title: ['Melting', 'Nóng chảy'],
+    title: ['Melting', 'Nóng chảy', 'Fusion'],
     scene: ['An ice cube sits on a warm table. It turns into water.',
-            'Một viên đá để trên bàn ấm. Nó biến thành nước.'],
+            'Một viên đá để trên bàn ấm. Nó biến thành nước.',
+            'Un glaçon est posé sur une table chaude. Il devient de l’eau.'],
     init: 'solid',
     steps: [
       {
         params: { homePull: 0.12, vibAmp: 10, spacing: 1.12, flowKick: 30, gravity: 0, vapTarget: 0 },
-        text: ['The particles vibrate more and more as **heat energy** is **transferred**.', 'Các hạt rung động ngày càng nhiều khi **nhiệt năng** được **truyền**.'],
+        text: ['The particles vibrate more and more as **heat energy** is **transferred**.', 'Các hạt rung động ngày càng nhiều khi **nhiệt năng** được **truyền**.', 'Les particules vibrent de plus en plus quand l’**énergie thermique** est **transférée**.'],
       },
       {
         params: { homePull: 0.02, vibAmp: 4, spacing: 1.0, flowKick: 120, gravity: 500, vapTarget: 0 },
-        text: ['The **attractive forces** can no longer hold them in a fixed pattern.', '**Lực hút** không còn giữ được chúng trong trật tự cố định.'],
+        text: ['The **attractive forces** can no longer hold them in a fixed pattern.', '**Lực hút** không còn giữ được chúng trong trật tự cố định.', 'Les **forces d’attraction** ne peuvent plus les tenir en place.'],
       },
       {
         params: { homePull: 0, vibAmp: 0, spacing: 1.0, flowKick: 170, gravity: 650, vapTarget: 0 },
-        text: ['They slide past each other. The solid melts into a liquid.', 'Chúng trượt qua nhau. Chất rắn nóng chảy thành chất lỏng.'],
+        text: ['They slide past each other. The solid melts into a liquid.', 'Chúng trượt qua nhau. Chất rắn nóng chảy thành chất lỏng.', 'Elles glissent les unes sur les autres. Le solide fond en liquide.'],
       },
     ],
   },
   {
     key: 'boil', icon: 'heat',
-    title: ['Boiling', 'Sôi'],
+    title: ['Boiling', 'Sôi', 'Ébullition'],
     scene: ['Water is heated to 100 degrees C. Bubbles form and steam escapes.',
-            'Nước được đun đến 100 độ C. Bọt hình thành và hơi thoát ra.'],
+            'Nước được đun đến 100 độ C. Bọt hình thành và hơi thoát ra.',
+            'On chauffe de l’eau à 100 degrés C. Des bulles se forment et la vapeur s’échappe.'],
     init: 'liquid',
     steps: [
       {
         params: { homePull: 0, vibAmp: 0, spacing: 1.0, flowKick: 280, gravity: 500, vapTarget: 0 },
-        text: ['The particles move faster and faster.', 'Các hạt chuyển động ngày càng nhanh.'],
+        text: ['The particles move faster and faster.', 'Các hạt chuyển động ngày càng nhanh.', 'Les particules bougent de plus en plus vite.'],
       },
       {
         params: { homePull: 0, vibAmp: 0, spacing: 1.0, flowKick: 200, gravity: 350, vapTarget: 10 },
-        text: ['Some have enough energy to break the **attractive forces**.', 'Một số có đủ năng lượng để phá vỡ **lực hút**.'],
+        text: ['Some have enough energy to break the **attractive forces**.', 'Một số có đủ năng lượng để phá vỡ **lực hút**.', 'Certaines ont assez d’énergie pour briser les **forces d’attraction**.'],
       },
       {
         params: { homePull: 0, vibAmp: 0, spacing: 1.0, flowKick: 0, gravity: 0, vapTarget: N },
-        text: ['They escape as a gas. The liquid boils.', 'Chúng thoát ra dưới dạng khí. Chất lỏng sôi.'],
+        text: ['They escape as a gas. The liquid boils.', 'Chúng thoát ra dưới dạng khí. Chất lỏng sôi.', 'Elles s’échappent sous forme de gaz. Le liquide bout.'],
       },
     ],
   },
   {
     key: 'condense', icon: 'cool',
-    title: ['Condensing', 'Ngưng tụ'],
+    title: ['Condensing', 'Ngưng tụ', 'Condensation'],
     scene: ['Steam from a shower hits a cold mirror. Water drops appear.',
-            'Hơi nước từ vòi sen chạm vào gương lạnh. Các giọt nước xuất hiện.'],
+            'Hơi nước từ vòi sen chạm vào gương lạnh. Các giọt nước xuất hiện.',
+            'La vapeur d’une douche touche un miroir froid. Des gouttes d’eau apparaissent.'],
     init: 'gas',
     steps: [
       {
         params: { homePull: 0, vibAmp: 0, spacing: 1.0, flowKick: 0, gravity: 0, vapTarget: N, gasSlowdown: 0.6 },
-        text: ['Gas particles hit the cold surface and lose energy.', 'Các hạt khí va vào bề mặt lạnh và mất năng lượng.'],
+        text: ['Gas particles hit the cold surface and lose energy.', 'Các hạt khí va vào bề mặt lạnh và mất năng lượng.', 'Les particules de gaz touchent la surface froide et perdent de l’énergie.'],
       },
       {
         params: { homePull: 0, vibAmp: 0, spacing: 1.0, flowKick: 60, gravity: 400, vapTarget: 6 },
-        text: ['They slow down and get closer together.', 'Chúng chậm lại và lại gần nhau hơn.'],
+        text: ['They slow down and get closer together.', 'Chúng chậm lại và lại gần nhau hơn.', 'Elles ralentissent et se rapprochent.'],
       },
       {
         params: { homePull: 0, vibAmp: 0, spacing: 1.0, flowKick: 140, gravity: 650, vapTarget: 0 },
-        text: ['The **attractive forces** pull them together. The gas condenses into a liquid.', '**Lực hút** kéo chúng lại gần nhau. Chất khí ngưng tụ thành chất lỏng.'],
+        text: ['The **attractive forces** pull them together. The gas condenses into a liquid.', '**Lực hút** kéo chúng lại gần nhau. Chất khí ngưng tụ thành chất lỏng.', 'Les **forces d’attraction** les rassemblent. Le gaz se condense en liquide.'],
       },
     ],
   },
   {
     key: 'freeze', icon: 'cool',
-    title: ['Freezing', 'Đông đặc'],
+    title: ['Freezing', 'Đông đặc', 'Solidification'],
     scene: ['A puddle of water freezes into ice overnight.',
-            'Một vũng nước đóng băng thành đá qua đêm.'],
+            'Một vũng nước đóng băng thành đá qua đêm.',
+            'Une flaque d’eau gèle pendant la nuit.'],
     init: 'liquid',
     steps: [
       {
         params: { homePull: 0, vibAmp: 0, spacing: 1.0, flowKick: 60, gravity: 500, vapTarget: 0 },
-        text: ['**Heat energy** is **transferred** away from the particles. They slow down.', '**Nhiệt năng** bị **truyền** ra khỏi các hạt. Chúng chậm lại.'],
+        text: ['**Heat energy** is **transferred** away from the particles. They slow down.', '**Nhiệt năng** bị **truyền** ra khỏi các hạt. Chúng chậm lại.', 'L’**énergie thermique** est **transférée** hors des particules. Elles ralentissent.'],
       },
       {
         params: { homePull: 0.08, vibAmp: 5, spacing: 1.05, flowKick: 15, gravity: 150, vapTarget: 0 },
-        text: ['They can no longer flow past each other.', 'Chúng không còn chảy qua nhau được nữa.'],
+        text: ['They can no longer flow past each other.', 'Chúng không còn chảy qua nhau được nữa.', 'Elles ne peuvent plus couler les unes sur les autres.'],
       },
       {
         params: { homePull: 0.25, vibAmp: 1.5, spacing: 1.0, flowKick: 0, gravity: 0, vapTarget: 0 },
-        text: ['They lock into a fixed pattern. The liquid freezes into a solid.', 'Chúng khóa vào trật tự cố định. Chất lỏng đông đặc thành chất rắn.'],
+        text: ['They lock into a fixed pattern. The liquid freezes into a solid.', 'Chúng khóa vào trật tự cố định. Chất lỏng đông đặc thành chất rắn.', 'Elles se bloquent en place. Le liquide gèle et devient solide.'],
       },
     ],
   },
@@ -431,10 +436,10 @@ export function ParticleExplainer({ lang = 'en', isDisplayMode = false }) {
           {/* Scenario card */}
           <div className="rounded-2xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden">
             <div className={`px-4 py-2 font-black uppercase tracking-widest text-white ${accentBg} ${big ? 'text-sm' : 'text-[10px] sm:text-xs'}`}>
-              {pick(lang, sc.title[0], sc.title[1])}
+              {tr(lang, sc.title[0], sc.title[1], sc.title[2])}
             </div>
             <div className={`px-4 py-3 font-bold text-slate-700 dark:text-slate-200 leading-relaxed ${big ? 'text-lg' : 'text-sm sm:text-base'}`}>
-              {pick(lang, sc.scene[0], sc.scene[1])}
+              {tr(lang, sc.scene[0], sc.scene[1], sc.scene[2])}
             </div>
           </div>
 
@@ -460,7 +465,7 @@ export function ParticleExplainer({ lang = 'en', isDisplayMode = false }) {
                     {allStepsShown ? <Check className="w-3.5 h-3.5" strokeWidth={3} /> : i + 1}
                   </span>
                   <span className="font-bold leading-snug text-slate-700 dark:text-slate-200">
-                    {renderLine(pick(lang, s.text[0], s.text[1]), big)}
+                    {renderLine(tr(lang, s.text[0], s.text[1], s.text[2]), big)}
                   </span>
                 </div>
               ))}

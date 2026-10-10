@@ -21,6 +21,7 @@
 // Every SVG opens with a white plate.
 import { useState, useEffect, useCallback } from 'react'
 import { Undo2, RotateCcw, ArrowRight, Eye, Shuffle, Sparkles, ThumbsUp, SkipForward } from 'lucide-react'
+import { tr } from '../../../src/lib/lang.js'
 
 const INK = '#2b2b2b'
 const KEY = '#c25e12'
@@ -30,8 +31,6 @@ const GREEN = '#4a8b23'
 const MUTED = '#5b6770'
 const FONT = "Inter, 'Segoe UI', system-ui, sans-serif"
 const MINUS = '−'
-
-const tr = (lang, en, vn) => (lang === 'vn' ? vn : en)
 
 function Btn({ onClick, disabled, tone = 'teal', icon: Icon, children }) {
   const tones = {
@@ -141,13 +140,13 @@ function Reverse({ lang = 'en', set }) {
   if (step === 0) {
     line = (
       <text x="560" y="392" fontFamily={FONT} fontSize="34" fill="#9aa5ae" textAnchor="middle">
-        {n === 1 ? tr(lang, `What happens to ${p.L}?`, `Điều gì xảy ra với ${p.L}?`) : tr(lang, `What happens to ${p.L} first?`, `Điều gì xảy ra với ${p.L} trước tiên?`)}
+        {n === 1 ? tr(lang, `What happens to ${p.L}?`, `Điều gì xảy ra với ${p.L}?`, 'Que devient ' + p.L + ' ?') : tr(lang, `What happens to ${p.L} first?`, `Điều gì xảy ra với ${p.L} trước tiên?`, 'Que devient ' + p.L + ' en premier ?')}
       </text>
     )
   } else if (step === n) {
     line = (
       <text x="560" y="392" fontFamily={FONT} fontSize="34" fill="#9aa5ae" textAnchor="middle">
-        {tr(lang, 'Now undo it, starting from the right.', 'Giờ làm ngược lại, bắt đầu từ bên phải.')}
+        {tr(lang, 'Now undo it, starting from the right.', 'Giờ làm ngược lại, bắt đầu từ bên phải.', 'Maintenant, annule depuis la droite.')}
       </text>
     )
   } else if (activeBack) {
@@ -160,7 +159,7 @@ function Reverse({ lang = 'en', set }) {
   } else if (step > 0 && step < n) {
     line = (
       <text x="560" y="392" fontFamily={FONT} fontSize="34" fill="#9aa5ae" textAnchor="middle">
-        {tr(lang, 'What happens next?', 'Tiếp theo là gì?')}
+        {tr(lang, 'What happens next?', 'Tiếp theo là gì?', 'Et ensuite ?')}
       </text>
     )
   }
@@ -172,7 +171,7 @@ function Reverse({ lang = 'en', set }) {
           <rect x="0" y="0" width="1120" height="440" rx="14" fill="#ffffff" />
 
           <text x="560" y="84" fontFamily={FONT} fontSize="56" fontWeight="bold" fill={INK} textAnchor="middle">
-            {tr(lang, 'Solve ', 'Giải ')}
+            {tr(lang, 'Solve ', 'Giải ', 'Résous ')}
             <tspan fill={KEY}>{equation}</tspan>
           </text>
           <text x="1096" y="52" fontFamily={FONT} fontSize="22" fontWeight="bold" fill="#9aa5ae" textAnchor="end">{which + 1} / {list.length}</text>
@@ -241,7 +240,7 @@ function Reverse({ lang = 'en', set }) {
               <rect x="110" y="340" width="900" height="88" rx="16" fill="#fdf1e3" stroke={KEY} strokeWidth="3" />
               <text x="560" y="398" fontFamily={FONT} fontSize="44" fontWeight="bold" fill={KEY} textAnchor="middle">
                 {p.L} = {num(vals[0])}
-                <tspan dx="36" fill={INK} fontSize="36">{tr(lang, 'Check: ', 'Thử lại: ')}{substituted(p, vals[0])} = {p.r}</tspan>
+                <tspan dx="36" fill={INK} fontSize="36">{tr(lang, 'Check: ', 'Thử lại: ', 'Vérifie : ')}{substituted(p, vals[0])} = {p.r}</tspan>
                 <tspan dx="14" fill={GREEN}>✓</tspan>
               </text>
             </g>
@@ -250,9 +249,9 @@ function Reverse({ lang = 'en', set }) {
       </div>
 
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap">
-        <Btn tone="slate" icon={Undo2} disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>{tr(lang, 'Back', 'Lùi')}</Btn>
-        <Btn tone="orange" icon={ArrowRight} disabled={checked} onClick={() => setStep((s) => Math.min(last, s + 1))}>{step === 2 * n ? tr(lang, 'Check', 'Thử lại') : tr(lang, 'Next box', 'Ô tiếp')}</Btn>
-        <Btn tone="teal" icon={SkipForward} onClick={() => { setWhich((w) => (w + 1) % list.length); setStep(0) }}>{tr(lang, 'Next question', 'Câu tiếp')}</Btn>
+        <Btn tone="slate" icon={Undo2} disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>{tr(lang, 'Back', 'Lùi', 'Retour')}</Btn>
+        <Btn tone="orange" icon={ArrowRight} disabled={checked} onClick={() => setStep((s) => Math.min(last, s + 1))}>{step === 2 * n ? tr(lang, 'Check', 'Thử lại', 'Vérifier') : tr(lang, 'Next box', 'Ô tiếp', 'Suivant')}</Btn>
+        <Btn tone="teal" icon={SkipForward} onClick={() => { setWhich((w) => (w + 1) % list.length); setStep(0) }}>{tr(lang, 'Next question', 'Câu tiếp', 'Autre question')}</Btn>
       </div>
     </div>
   )
@@ -266,21 +265,21 @@ export function ReverseTwo({ lang }) { return <Reverse lang={lang} set="two" /> 
  * ============================================================= */
 const CARDS = [
   { eq: 'x + 9 = 15', ans: 'x = 6', ok: true, check: '6 + 9 = 15' },
-  { eq: 'x − 3 = 8', ans: 'x = 5', ok: false, fix: 'x = 11', check: '5 − 3 = 2, not 8', checkVn: '5 − 3 = 2, không phải 8' },
+  { eq: 'x − 3 = 8', ans: 'x = 5', ok: false, fix: 'x = 11', check: '5 − 3 = 2, not 8', checkVn: '5 − 3 = 2, không phải 8', checkFr: '5 − 3 = 2, pas 8' },
   { eq: '4x = 28', ans: 'x = 7', ok: true, check: '4 × 7 = 28' },
-  { eq: 'x + 12 = 20', ans: 'x = 32', ok: false, fix: 'x = 8', check: '32 + 12 = 44, not 20', checkVn: '32 + 12 = 44, không phải 20' },
+  { eq: 'x + 12 = 20', ans: 'x = 32', ok: false, fix: 'x = 8', check: '32 + 12 = 44, not 20', checkVn: '32 + 12 = 44, không phải 20', checkFr: '32 + 12 = 44, pas 20' },
   { eq: '15 = x + 6', ans: 'x = 9', ok: true, check: '9 + 6 = 15' },
-  { eq: '6x = 42', ans: 'x = 36', ok: false, fix: 'x = 7', check: '6 × 36 = 216, not 42', checkVn: '6 × 36 = 216, không phải 42' },
+  { eq: '6x = 42', ans: 'x = 36', ok: false, fix: 'x = 7', check: '6 × 36 = 216, not 42', checkVn: '6 × 36 = 216, không phải 42', checkFr: '6 × 36 = 216, pas 42' },
   { eq: 'x − 7 = 13', ans: 'x = 20', ok: true, check: '20 − 7 = 13' },
   { eq: '30 = 5x', ans: 'x = 6', ok: true, check: '5 × 6 = 30' },
   { eq: 'x + 4 = 11', ans: 'x = 7', ok: true, check: '7 + 4 = 11' },
-  { eq: 'x − 10 = 5', ans: 'x = −5', ok: false, fix: 'x = 15', check: '−5 − 10 = −15, not 5', checkVn: '−5 − 10 = −15, không phải 5' },
+  { eq: 'x − 10 = 5', ans: 'x = −5', ok: false, fix: 'x = 15', check: '−5 − 10 = −15, not 5', checkVn: '−5 − 10 = −15, không phải 5', checkFr: '−5 − 10 = −15, pas 5' },
   { eq: '9x = 54', ans: 'x = 6', ok: true, check: '9 × 6 = 54' },
-  { eq: '25 = x − 5', ans: 'x = 20', ok: false, fix: 'x = 30', check: '20 − 5 = 15, not 25', checkVn: '20 − 5 = 15, không phải 25' },
+  { eq: '25 = x − 5', ans: 'x = 20', ok: false, fix: 'x = 30', check: '20 − 5 = 15, not 25', checkVn: '20 − 5 = 15, không phải 25', checkFr: '20 − 5 = 15, pas 25' },
   { eq: 'x + 8 = 8', ans: 'x = 0', ok: true, check: '0 + 8 = 8' },
-  { eq: '2x = 30', ans: 'x = 28', ok: false, fix: 'x = 15', check: '2 × 28 = 56, not 30', checkVn: '2 × 28 = 56, không phải 30' },
+  { eq: '2x = 30', ans: 'x = 28', ok: false, fix: 'x = 15', check: '2 × 28 = 56, not 30', checkVn: '2 × 28 = 56, không phải 30', checkFr: '2 × 28 = 56, pas 30' },
   { eq: 'x − 6 = 0', ans: 'x = 6', ok: true, check: '6 − 6 = 0' },
-  { eq: '7x = 7', ans: 'x = 0', ok: false, fix: 'x = 1', check: '7 × 0 = 0, not 7', checkVn: '7 × 0 = 0, không phải 7' },
+  { eq: '7x = 7', ans: 'x = 0', ok: false, fix: 'x = 1', check: '7 × 0 = 0, not 7', checkVn: '7 × 0 = 0, không phải 7', checkFr: '7 × 0 = 0, pas 7' },
 ]
 
 function Tile({ text, verdict, big }) {
@@ -338,10 +337,10 @@ export function CheckIt({ lang = 'en', isDisplayMode = false }) {
           </div>
           <div className="min-w-0">
             <div className={`font-black tracking-tight text-slate-800 dark:text-slate-100 leading-none ${big ? 'text-2xl' : 'text-lg sm:text-xl'}`}>
-              {tr(lang, 'Check It!', 'Thử lại nào!')}
+              {tr(lang, 'Check It!', 'Thử lại nào!', 'Vérifie !')}
             </div>
             <div className={`font-bold text-slate-400 dark:text-slate-500 truncate ${big ? 'text-base' : 'text-xs'}`}>
-              {tr(lang, 'Put the answer back in. Thumbs up: right. Thumbs down: wrong. Then press Show.', 'Thay đáp án vào lại. Ngón cái lên: đúng. Ngón cái xuống: sai. Rồi bấm Hiện.')}
+              {tr(lang, 'Put the answer back in. Thumbs up: right. Thumbs down: wrong. Then press Show.', 'Thay đáp án vào lại. Ngón cái lên: đúng. Ngón cái xuống: sai. Rồi bấm Hiện.', 'Remplace la réponse. Pouce en haut : juste. En bas : faux. Puis clique sur Montrer.')}
             </div>
           </div>
         </div>
@@ -357,17 +356,17 @@ export function CheckIt({ lang = 'en', isDisplayMode = false }) {
         {done ? (
           <>
             <div className="p-4 rounded-2xl bg-emerald-500 text-white"><Sparkles className="w-12 h-12" strokeWidth={2} /></div>
-            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{tr(lang, 'All 16 done!', 'Xong cả 16!')}</div>
+            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{tr(lang, 'All 16 done!', 'Xong cả 16!', 'Les 16 sont finies !')}</div>
           </>
         ) : (
           <>
             <div className={`font-black uppercase tracking-[0.2em] text-[#c25e12] ${big ? 'text-[clamp(1rem,2.2vh,1.6rem)]' : 'text-sm'}`}>
-              {tr(lang, 'Is this answer right?', 'Đáp án này đúng không?')}
+              {tr(lang, 'Is this answer right?', 'Đáp án này đúng không?', 'Cette réponse est-elle juste ?')}
             </div>
 
             <div className="flex items-center justify-center gap-[clamp(0.75rem,2.5vw,2.5rem)] flex-wrap">
               <Tile text={card.eq} verdict={null} big={big} />
-              <div className={`font-black text-slate-400 ${big ? 'text-[clamp(2rem,5vh,3.5rem)]' : 'text-3xl'}`}>{tr(lang, 'so', 'nên')}</div>
+              <div className={`font-black text-slate-400 ${big ? 'text-[clamp(2rem,5vh,3.5rem)]' : 'text-3xl'}`}>{tr(lang, 'so', 'nên', 'donc')}</div>
               <Tile text={card.ans} verdict={shown ? card.ok : null} big={big} />
             </div>
 
@@ -376,11 +375,11 @@ export function CheckIt({ lang = 'en', isDisplayMode = false }) {
                 <>
                   <div className={`rounded-full text-white font-black px-8 py-2 ${card.ok ? 'bg-[#4a8b23]' : 'bg-[#c8102e]'} ${big ? 'text-[clamp(1.6rem,4vh,2.6rem)]' : 'text-2xl'}`}>
                     {card.ok
-                      ? tr(lang, '✓ Right', '✓ Đúng')
-                      : tr(lang, `✗ Wrong — it is ${card.fix}`, `✗ Sai — phải là ${card.fix}`)}
+                      ? tr(lang, '✓ Right', '✓ Đúng', '✓ Juste')
+                      : tr(lang, `✗ Wrong — it is ${card.fix}`, `✗ Sai — phải là ${card.fix}`, `✗ Faux — c’est ${card.fix}`)}
                   </div>
                   <div className={`font-bold text-slate-600 dark:text-slate-300 ${big ? 'text-[clamp(1.2rem,2.8vh,2rem)]' : 'text-lg'}`}>
-                    {tr(lang, 'Check: ', 'Thử lại: ')}{lang === 'vn' && card.checkVn ? card.checkVn : card.check}
+                    {tr(lang, 'Check: ', 'Thử lại: ', 'Vérifie : ')}{tr(lang, card.check, card.checkVn, card.checkFr)}
                   </div>
                 </>
               ) : (
@@ -393,14 +392,14 @@ export function CheckIt({ lang = 'en', isDisplayMode = false }) {
 
       {/* Controls */}
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap px-4 pb-4 pt-2">
-        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn')}</Btn>
+        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn', 'Mélanger')}</Btn>
         {!done && (
           <Btn tone="orange" icon={shown ? ArrowRight : Eye} onClick={advance}>
-            {shown ? tr(lang, 'Next', 'Tiếp') : tr(lang, 'Show', 'Hiện')}
+            {shown ? tr(lang, 'Next', 'Tiếp', 'Suivant') : tr(lang, 'Show', 'Hiện', 'Montrer')}
           </Btn>
         )}
         {done && (
-          <Btn tone="slate" icon={RotateCcw} onClick={() => { setPos(0); setShown(false) }}>{tr(lang, 'Start again', 'Làm lại')}</Btn>
+          <Btn tone="slate" icon={RotateCcw} onClick={() => { setPos(0); setShown(false) }}>{tr(lang, 'Start again', 'Làm lại', 'Recommencer')}</Btn>
         )}
       </div>
     </div>

@@ -7,10 +7,10 @@ import { parseInlineText, renderContent, toHex } from './helpers.jsx'
 function Column({ col, ctx }) {
   const { pick, lang, isDisplayMode } = ctx
   const accent = toHex(col.accent, '#0087a8')
-  const heading = pick(col.heading, col.headingVn)
-  const content = pick(col.content, col.contentVn)
+  const heading = pick(col.heading, col.headingVn, col.headingFr)
+  const content = pick(col.content, col.contentVn, col.contentFr)
   const hasMedia = !!col.widget || !!col.inlineSvg || !!col.image
-  const caption = pick(col.caption, col.captionVn)
+  const caption = pick(col.caption, col.captionVn, col.captionFr)
   const hasText = !!content || col.notes?.length > 0
 
   return (
@@ -48,13 +48,13 @@ function Column({ col, ctx }) {
 export default function CompareLayout({ slide: s, ctx }) {
   const { pick, isDisplayMode } = ctx
   const accent = toHex(s.accent || s.color, '#8b5cf6')
-  const title = pick(s.title, s.titleVn)
-  const text = pick(s.text, s.textVn)
+  const title = pick(s.title, s.titleVn, s.titleFr)
+  const text = pick(s.text, s.textVn, s.textFr)
   const columns = s.columns || []
 
   return (
     <>
-      {title && <HeaderBar title={title} icon={s.icon || 'Scale'} accent={accent} eyebrow={pick(s.eyebrow, s.eyebrowVn)} isDisplayMode={isDisplayMode} />}
+      {title && <HeaderBar title={title} icon={s.icon || 'Scale'} accent={accent} eyebrow={pick(s.eyebrow, s.eyebrowVn, s.eyebrowFr)} isDisplayMode={isDisplayMode} />}
       <div className={`flex-1 min-h-0 bg-slate-50/50 dark:bg-slate-900/50 flex flex-col gap-3 sm:gap-4 lg:gap-5 ${isDisplayMode ? 'p-[clamp(1.25rem,2.5vw,2.5rem)]' : 'p-3 sm:p-5 lg:p-6'}`}>
         {/* The problem both columns answer, printed as big as a statement slide's
             line. On a vote slide the class must be able to read the question

@@ -22,6 +22,7 @@ export default {
       'vapour is an invisible gas.',
     // The slot 2.5, 2.6 and 2.7 kept free for it.
     order: 10,
+    french: true,
     // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
     dashboard: { track: 'Y7_SCI', unit: 'U02_4' },
   },

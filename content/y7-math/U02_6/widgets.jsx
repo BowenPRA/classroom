@@ -20,6 +20,7 @@
 // Every SVG opens with a white plate.
 import { useState, useEffect, useCallback } from 'react'
 import { Undo2, RotateCcw, ArrowRight, Eye, Shuffle, Sparkles, ThumbsUp, SkipForward } from 'lucide-react'
+import { tr } from '../../../src/lib/lang.js'
 
 const INK = '#2b2b2b'
 const KEY = '#c25e12'
@@ -28,7 +29,6 @@ const MUTED = '#5b6770'
 const FONT = "Inter, 'Segoe UI', system-ui, sans-serif"
 const MINUS = '−'
 
-const tr = (lang, en, vn) => (lang === 'vn' ? vn : en)
 const num = (v) => (v < 0 ? `${MINUS}${-v}` : `${v}`)
 
 function Btn({ onClick, disabled, tone = 'teal', icon: Icon, children }) {
@@ -102,21 +102,21 @@ function ShowIt({ lang = 'en', set }) {
   if (step === 0) {
     line = (
       <text x="560" y="400" fontFamily={FONT} fontSize="36" fill="#9aa5ae" textAnchor="middle">
-        {tr(lang, `Where is ${nText}? Is ${nText} included?`, `${nText} ở đâu? ${nText} có được tính không?`)}
+        {tr(lang, `Where is ${nText}? Is ${nText} included?`, `${nText} ở đâu? ${nText} có được tính không?`, 'Où est ' + nText + ' ? ' + nText + ' est-il inclus ?')}
       </text>
     )
   } else if (step === 1) {
     line = (
       <text x="560" y="400" fontFamily={FONT} fontSize="40" fontWeight="bold" fill={KEY} textAnchor="middle">
-        {tr(lang, `Open circle: ${nText} is not included.`, `Vòng tròn rỗng: không tính ${nText}.`)}
+        {tr(lang, `Open circle: ${nText} is not included.`, `Vòng tròn rỗng: không tính ${nText}.`, 'Cercle vide : ' + nText + ' n’est pas inclus.')}
       </text>
     )
   } else if (step === 2) {
     line = (
       <text x="560" y="400" fontFamily={FONT} fontSize="40" fontWeight="bold" fill={KEY} textAnchor="middle">
         {greater
-          ? tr(lang, 'Greater than: the arrow goes right.', 'Lớn hơn: mũi tên sang phải.')
-          : tr(lang, 'Less than: the arrow goes left.', 'Nhỏ hơn: mũi tên sang trái.')}
+          ? tr(lang, 'Greater than: the arrow goes right.', 'Lớn hơn: mũi tên sang phải.', 'Plus grand : flèche à droite.')
+          : tr(lang, 'Less than: the arrow goes left.', 'Nhỏ hơn: mũi tên sang trái.', 'Plus petit : flèche à gauche.')}
       </text>
     )
   }
@@ -166,7 +166,7 @@ function ShowIt({ lang = 'en', set }) {
             <g>
               <rect x="110" y="344" width="900" height="84" rx="16" fill="#eef6e6" stroke={GREEN} strokeWidth="3" />
               <text x="560" y="400" fontFamily={FONT} fontSize="38" fontWeight="bold" fill={GREEN} textAnchor="middle">
-                {greater ? tr(lang, 'Smallest integer: ', 'Số nguyên nhỏ nhất: ') : tr(lang, 'Largest integer: ', 'Số nguyên lớn nhất: ')}
+                {greater ? tr(lang, 'Smallest integer: ', 'Số nguyên nhỏ nhất: ', 'Plus petit entier : ') : tr(lang, 'Largest integer: ', 'Số nguyên lớn nhất: ', 'Plus grand entier : ')}
                 {num(edge)}
                 <tspan dx="30" fill={MUTED} fontSize="32">{list3}</tspan>
               </text>
@@ -176,9 +176,9 @@ function ShowIt({ lang = 'en', set }) {
       </div>
 
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap">
-        <Btn tone="slate" icon={Undo2} disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>{tr(lang, 'Back', 'Lùi')}</Btn>
-        <Btn tone="orange" icon={ArrowRight} disabled={step === last} onClick={() => setStep((s) => Math.min(last, s + 1))}>{step === 2 ? tr(lang, 'Integers', 'Số nguyên') : tr(lang, 'Next step', 'Bước tiếp')}</Btn>
-        <Btn tone="teal" icon={SkipForward} onClick={() => { setWhich((w) => (w + 1) % list.length); setStep(0) }}>{tr(lang, 'Next question', 'Câu tiếp')}</Btn>
+        <Btn tone="slate" icon={Undo2} disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>{tr(lang, 'Back', 'Lùi', 'Retour')}</Btn>
+        <Btn tone="orange" icon={ArrowRight} disabled={step === last} onClick={() => setStep((s) => Math.min(last, s + 1))}>{step === 2 ? tr(lang, 'Integers', 'Số nguyên', 'Entiers') : tr(lang, 'Next step', 'Bước tiếp', 'Suivant')}</Btn>
+        <Btn tone="teal" icon={SkipForward} onClick={() => { setWhich((w) => (w + 1) % list.length); setStep(0) }}>{tr(lang, 'Next question', 'Câu tiếp', 'Autre question')}</Btn>
       </div>
     </div>
   )
@@ -192,7 +192,7 @@ export function ShowTwo({ lang }) { return <ShowIt lang={lang} set="two" /> }
  * ============================================================= */
 const CARDS = [
   { q: 'x > 4', v: 'x = 6', ok: true, why: '6 > 4' },
-  { q: 'x > 4', v: 'x = 4', ok: false, why: '4 is not greater than 4', whyVn: '4 không lớn hơn 4' },
+  { q: 'x > 4', v: 'x = 4', ok: false, why: '4 is not greater than 4', whyVn: '4 không lớn hơn 4', whyFr: '4 n’est pas plus grand que 4' },
   { q: 'x < 10', v: 'x = 9', ok: true, why: '9 < 10' },
   { q: 'x < 10', v: 'x = 11', ok: false, why: '11 > 10' },
   { q: 'y > −2', v: 'y = 0', ok: true, why: '0 > −2' },
@@ -200,7 +200,7 @@ const CARDS = [
   { q: 't < −5', v: 't = −6', ok: true, why: '−6 < −5' },
   { q: 't < −5', v: 't = −4', ok: false, why: '−4 > −5' },
   { q: 'm < 0', v: 'm = −1', ok: true, why: '−1 < 0' },
-  { q: 'm < 0', v: 'm = 0', ok: false, why: '0 is not less than 0', whyVn: '0 không nhỏ hơn 0' },
+  { q: 'm < 0', v: 'm = 0', ok: false, why: '0 is not less than 0', whyVn: '0 không nhỏ hơn 0', whyFr: '0 n’est pas plus petit que 0' },
   { q: 'p > 2.5', v: 'p = 3', ok: true, why: '3 > 2.5' },
   { q: 'p > 2.5', v: 'p = 2', ok: false, why: '2 < 2.5' },
   { q: 'k > −10', v: 'k = −9', ok: true, why: '−9 > −10' },
@@ -265,10 +265,10 @@ export function CouldItBe({ lang = 'en', isDisplayMode = false }) {
           </div>
           <div className="min-w-0">
             <div className={`font-black tracking-tight text-slate-800 dark:text-slate-100 leading-none ${big ? 'text-2xl' : 'text-lg sm:text-xl'}`}>
-              {tr(lang, 'Could It Be?', 'Có thể không?')}
+              {tr(lang, 'Could It Be?', 'Có thể không?', 'Est-ce possible ?')}
             </div>
             <div className={`font-bold text-slate-400 dark:text-slate-500 truncate ${big ? 'text-base' : 'text-xs'}`}>
-              {tr(lang, 'Thumbs up: it could. Thumbs down: it could not. Then press Show.', 'Ngón cái lên: có thể. Ngón cái xuống: không thể. Rồi bấm Hiện.')}
+              {tr(lang, 'Thumbs up: it could. Thumbs down: it could not. Then press Show.', 'Ngón cái lên: có thể. Ngón cái xuống: không thể. Rồi bấm Hiện.', 'Pouce en haut : oui. Pouce en bas : non. Puis clique sur Montrer.')}
             </div>
           </div>
         </div>
@@ -284,12 +284,12 @@ export function CouldItBe({ lang = 'en', isDisplayMode = false }) {
         {done ? (
           <>
             <div className="p-4 rounded-2xl bg-emerald-500 text-white"><Sparkles className="w-12 h-12" strokeWidth={2} /></div>
-            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{tr(lang, 'All 16 done!', 'Xong cả 16!')}</div>
+            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{tr(lang, 'All 16 done!', 'Xong cả 16!', 'Les 16 sont finies !')}</div>
           </>
         ) : (
           <>
             <div className={`font-black uppercase tracking-[0.2em] text-[#c25e12] ${big ? 'text-[clamp(1rem,2.2vh,1.6rem)]' : 'text-sm'}`}>
-              {tr(lang, `Could ${letter} be this number?`, `${letter} có thể là số này không?`)}
+              {tr(lang, `Could ${letter} be this number?`, `${letter} có thể là số này không?`, letter + ' peut-il valoir ce nombre ?')}
             </div>
 
             <div className="flex items-center justify-center gap-[clamp(0.75rem,2.5vw,2.5rem)] flex-wrap">
@@ -302,10 +302,10 @@ export function CouldItBe({ lang = 'en', isDisplayMode = false }) {
               {shown ? (
                 <>
                   <div className={`rounded-full text-white font-black px-8 py-2 ${card.ok ? 'bg-[#4a8b23]' : 'bg-[#c8102e]'} ${big ? 'text-[clamp(1.6rem,4vh,2.6rem)]' : 'text-2xl'}`}>
-                    {card.ok ? tr(lang, '✓ Yes, it could', '✓ Có thể') : tr(lang, '✗ No', '✗ Không thể')}
+                    {card.ok ? tr(lang, '✓ Yes, it could', '✓ Có thể', '✓ Oui, c’est possible') : tr(lang, '✗ No', '✗ Không thể', '✗ Non')}
                   </div>
                   <div className={`font-bold text-slate-600 dark:text-slate-300 ${big ? 'text-[clamp(1.2rem,2.8vh,2rem)]' : 'text-lg'}`}>
-                    {lang === 'vn' && card.whyVn ? card.whyVn : card.why}
+                    {tr(lang, card.why, card.whyVn, card.whyFr)}
                   </div>
                 </>
               ) : (
@@ -318,14 +318,14 @@ export function CouldItBe({ lang = 'en', isDisplayMode = false }) {
 
       {/* Controls */}
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap px-4 pb-4 pt-2">
-        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn')}</Btn>
+        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn', 'Mélanger')}</Btn>
         {!done && (
           <Btn tone="orange" icon={shown ? ArrowRight : Eye} onClick={advance}>
-            {shown ? tr(lang, 'Next', 'Tiếp') : tr(lang, 'Show', 'Hiện')}
+            {shown ? tr(lang, 'Next', 'Tiếp', 'Suivant') : tr(lang, 'Show', 'Hiện', 'Montrer')}
           </Btn>
         )}
         {done && (
-          <Btn tone="slate" icon={RotateCcw} onClick={() => { setPos(0); setShown(false) }}>{tr(lang, 'Start again', 'Làm lại')}</Btn>
+          <Btn tone="slate" icon={RotateCcw} onClick={() => { setPos(0); setShown(false) }}>{tr(lang, 'Start again', 'Làm lại', 'Recommencer')}</Btn>
         )}
       </div>
     </div>

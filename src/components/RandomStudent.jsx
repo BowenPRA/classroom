@@ -13,11 +13,10 @@
 // from the bar and a pick from the modal count towards the same round. The
 // roster storage and the no-repeats rule are documented there.
 //
-// Bilingual like the rest of the deck: it takes the deck's `lang` prop.
+// In the deck's language like everything else: it takes the deck's `lang` prop.
 import { useState, useEffect, useRef } from 'react'
 import { Users, X, Shuffle, Pencil, Check, RotateCcw, ListChecks } from 'lucide-react'
-
-const pick = (lang, en, vn) => (lang === 'vn' ? vn : en)
+import { tr as pick } from '../lib/lang.js'
 
 /**
  * The one-press trigger for the bottom bar and the projector dock. Left half
@@ -42,7 +41,7 @@ export function PickButton({ picker, lang = 'en', onManage, tone = 'light', larg
       <button
         onClick={onPick}
         className={`flex items-center gap-2 px-3 sm:px-4 py-2 transition-colors active:scale-95 ${hover}`}
-        title={pick(lang, 'Pick a random student (R)', 'Chọn ngẫu nhiên một học sinh (R)')}
+        title={pick(lang, 'Pick a random student (R)', 'Chọn ngẫu nhiên một học sinh (R)', 'Choisir un élève au hasard (R)')}
       >
         <Shuffle className="w-5 h-5 shrink-0" strokeWidth={2.5} />
         {current ? (
@@ -51,18 +50,18 @@ export function PickButton({ picker, lang = 'en', onManage, tone = 'light', larg
             className={`font-black tracking-tight whitespace-nowrap max-w-[10rem] sm:max-w-[12rem] xl:max-w-[16rem] truncate animate-in zoom-in-95 fade-in duration-300 ${light ? 'text-slate-900 dark:text-white' : 'text-white'} ${large ? 'text-lg' : 'text-sm sm:text-base'}`}
           >
             {current}
-            {justReset && <span className="ml-1.5 text-[10px] uppercase tracking-widest text-[#ffc800] align-middle">{pick(lang, 'new round', 'vòng mới')}</span>}
+            {justReset && <span className="ml-1.5 text-[10px] uppercase tracking-widest text-[#ffc800] align-middle">{pick(lang, 'new round', 'vòng mới', 'nouveau tour')}</span>}
           </span>
         ) : (
           <span className="hidden sm:inline text-xs font-black uppercase tracking-widest">
-            {names.length ? pick(lang, 'Pick', 'Chọn') : pick(lang, 'Class list', 'Danh sách lớp')}
+            {names.length ? pick(lang, 'Pick', 'Chọn', 'Choisir') : pick(lang, 'Class list', 'Danh sách lớp', 'Liste de la classe')}
           </span>
         )}
       </button>
       <button
         onClick={onManage}
         className={`flex items-center px-2 border-l-2 transition-colors ${divider} ${hover}`}
-        title={pick(lang, 'Class list, rounds and repeats', 'Danh sách lớp, vòng và lặp lại')}
+        title={pick(lang, 'Class list, rounds and repeats', 'Danh sách lớp, vòng và lặp lại', 'Liste de la classe, tours et répétitions')}
       >
         <ListChecks className="w-4 h-4" strokeWidth={2.5} />
       </button>
@@ -134,17 +133,17 @@ function PickerBody({ onClose, lang, picker }) {
             </div>
             <div>
               <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">
-                {pick(lang, 'Random Student', 'Gọi ngẫu nhiên')}
+                {pick(lang, 'Random Student', 'Gọi ngẫu nhiên', 'Élève au hasard')}
               </div>
               <div className="text-lg font-black tracking-tight leading-none">
-                {pick(lang, 'Who’s next?', 'Đến lượt ai?')}
+                {pick(lang, 'Who’s next?', 'Đến lượt ai?', 'À qui le tour ?')}
               </div>
             </div>
           </div>
           <button
             onClick={onClose}
             className="p-2 rounded-xl bg-white/15 hover:bg-rose-500 text-white transition-colors active:scale-95"
-            title={pick(lang, 'Close (Esc)', 'Đóng (Esc)')}
+            title={pick(lang, 'Close (Esc)', 'Đóng (Esc)', 'Fermer (Échap)')}
           >
             <X className="w-6 h-6" strokeWidth={3} />
           </button>
@@ -154,18 +153,18 @@ function PickerBody({ onClose, lang, picker }) {
           /* ── Roster editor ──────────────────────────────────────────── */
           <div className="p-6 sm:p-8">
             <label className="block text-sm font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2">
-              {pick(lang, 'Your class list — one name per line', 'Danh sách lớp — mỗi dòng một tên')}
+              {pick(lang, 'Your class list — one name per line', 'Danh sách lớp — mỗi dòng một tên', 'Liste de la classe — un nom par ligne')}
             </label>
             <textarea
               ref={textareaRef}
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
               rows={10}
-              placeholder={pick(lang, 'Type each student’s name on its own line…', 'Nhập tên mỗi học sinh trên một dòng…')}
+              placeholder={pick(lang, 'Type each student’s name on its own line…', 'Nhập tên mỗi học sinh trên một dòng…', 'Écris le nom de chaque élève sur sa propre ligne…')}
               className="w-full rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4 font-semibold text-slate-800 dark:text-slate-100 text-lg leading-relaxed focus:outline-none focus:border-[#1cb0f6] resize-none"
             />
             <p className="mt-2 text-xs font-bold text-slate-400 dark:text-slate-500">
-              {pick(lang, 'Saved on this device only.', 'Chỉ lưu trên thiết bị này.')}
+              {pick(lang, 'Saved on this device only.', 'Chỉ lưu trên thiết bị này.', 'Enregistrée sur cet appareil seulement.')}
             </p>
             <div className="mt-5 flex items-center justify-end gap-3">
               {names.length > 0 && (
@@ -173,7 +172,7 @@ function PickerBody({ onClose, lang, picker }) {
                   onClick={() => setEditing(false)}
                   className="px-5 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 font-black uppercase tracking-widest text-xs text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-95"
                 >
-                  {pick(lang, 'Cancel', 'Huỷ')}
+                  {pick(lang, 'Cancel', 'Huỷ', 'Annuler')}
                 </button>
               )}
               <button
@@ -181,7 +180,7 @@ function PickerBody({ onClose, lang, picker }) {
                 className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#58cc02] border-b-4 border-[#58a700] text-white font-black uppercase tracking-widest text-sm active:border-b-0 active:translate-y-1 transition-all"
               >
                 <Check className="w-5 h-5" strokeWidth={3} />
-                {pick(lang, 'Save list', 'Lưu danh sách')}
+                {pick(lang, 'Save list', 'Lưu danh sách', 'Enregistrer la liste')}
               </button>
             </div>
           </div>
@@ -198,12 +197,12 @@ function PickerBody({ onClose, lang, picker }) {
                 </div>
               ) : (
                 <div className="text-xl sm:text-2xl font-black text-slate-400 dark:text-slate-500">
-                  {pick(lang, 'Press the button to pick a student.', 'Bấm nút để chọn một học sinh.')}
+                  {pick(lang, 'Press the button to pick a student.', 'Bấm nút để chọn một học sinh.', 'Appuie sur le bouton pour choisir un élève.')}
                 </div>
               )}
               {justReset && (
                 <div className="mt-3 text-xs font-black uppercase tracking-widest text-[#c25e12] dark:text-amber-300">
-                  {pick(lang, 'New round — everyone’s back in', 'Vòng mới — tất cả trở lại')}
+                  {pick(lang, 'New round — everyone’s back in', 'Vòng mới — tất cả trở lại', 'Nouveau tour — tout le monde revient')}
                 </div>
               )}
             </div>
@@ -214,8 +213,8 @@ function PickerBody({ onClose, lang, picker }) {
             >
               <Shuffle className="w-6 h-6" strokeWidth={3} />
               {current
-                ? pick(lang, 'Pick again', 'Chọn lại')
-                : pick(lang, 'Pick a student', 'Chọn học sinh')}
+                ? pick(lang, 'Pick again', 'Chọn lại', 'Choisir encore')
+                : pick(lang, 'Pick a student', 'Chọn học sinh', 'Choisir un élève')}
             </button>
 
             <div className="mt-5 flex items-center justify-between gap-3 text-xs">
@@ -226,12 +225,12 @@ function PickerBody({ onClose, lang, picker }) {
                   onChange={(e) => toggleNoRepeat(e.target.checked)}
                   className="w-4 h-4 accent-[#1cb0f6]"
                 />
-                {pick(lang, 'No repeats until everyone’s had a turn', 'Không lặp lại cho đến khi cả lớp đã được gọi')}
+                {pick(lang, 'No repeats until everyone’s had a turn', 'Không lặp lại cho đến khi cả lớp đã được gọi', 'Personne deux fois avant que tout le monde soit passé')}
               </label>
               <span className="font-black tabular-nums text-slate-400 dark:text-slate-500 whitespace-nowrap">
                 {noRepeat
-                  ? pick(lang, `${remaining} left`, `còn ${remaining}`)
-                  : pick(lang, `${names.length} students`, `${names.length} học sinh`)}
+                  ? pick(lang, `${remaining} left`, `còn ${remaining}`, `encore ${remaining}`)
+                  : pick(lang, `${names.length} students`, `${names.length} học sinh`, `${names.length} élèves`)}
               </span>
             </div>
 
@@ -241,22 +240,22 @@ function PickerBody({ onClose, lang, picker }) {
                 className="flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 border-slate-200 dark:border-slate-700 font-black uppercase tracking-widest text-xs text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-95"
               >
                 <Pencil className="w-4 h-4" strokeWidth={3} />
-                {pick(lang, 'Edit list', 'Sửa danh sách')}
+                {pick(lang, 'Edit list', 'Sửa danh sách', 'Modifier la liste')}
               </button>
               {noRepeat && pickedThisRound.length > 0 && (
                 <button
                   onClick={newRound}
                   className="flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 border-slate-200 dark:border-slate-700 font-black uppercase tracking-widest text-xs text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-95"
-                  title={pick(lang, 'Start a fresh round', 'Bắt đầu vòng mới')}
+                  title={pick(lang, 'Start a fresh round', 'Bắt đầu vòng mới', 'Commencer un nouveau tour')}
                 >
                   <RotateCcw className="w-4 h-4" strokeWidth={3} />
-                  {pick(lang, 'New round', 'Vòng mới')}
+                  {pick(lang, 'New round', 'Vòng mới', 'Nouveau tour')}
                 </button>
               )}
             </div>
             {allDone && (
               <p className="mt-3 text-center text-xs font-bold text-slate-400 dark:text-slate-500">
-                {pick(lang, 'Everyone has had a turn. The next pick starts a new round.', 'Cả lớp đều đã được gọi. Lần chọn tiếp theo bắt đầu vòng mới.')}
+                {pick(lang, 'Everyone has had a turn. The next pick starts a new round.', 'Cả lớp đều đã được gọi. Lần chọn tiếp theo bắt đầu vòng mới.', 'Tout le monde est passé. Le prochain choix commence un nouveau tour.')}
               </p>
             )}
           </div>

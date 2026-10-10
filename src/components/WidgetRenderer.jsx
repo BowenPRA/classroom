@@ -9,8 +9,9 @@ import { Construction } from 'lucide-react'
  * stub for future generic, registry-based widgets.
  *
  * Every widget receives two props and may ignore either:
- *   `lang`           'en' | 'vn' — so its own interface text can be bilingual
- *                    like the rest of a slide.
+ *   `lang`           'en' | 'vn' | 'fr' — so its own interface text follows
+ *                    the deck's language like the rest of a slide. Use
+ *                    `tr(lang, en, vn, fr)` from src/lib/lang.js.
  *   `isDisplayMode`  true in full screen, where the layouts scale their type
  *                    up ~40%; a widget with HTML text can do the same.
  */

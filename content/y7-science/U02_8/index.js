@@ -23,6 +23,7 @@ export default {
       'neutralisation does and where it is already used.',
     // 2.7 is 13; 10 was the slot left free for 2.4 and is now filled.
     order: 14,
+    french: true,
     // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
     dashboard: { track: 'Y7_SCI', unit: 'U02_8' },
   },

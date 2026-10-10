@@ -175,8 +175,10 @@ A widget earns its place by doing one thing a static slide cannot.
 3. **Source the images** (§4) and record every one in `images/CREDITS.json` as
    you go, not afterwards.
 4. **Author the diagrams** (§5).
-5. **Write `slides.js`**, bilingual from the start — retro-fitting `…Vn` is
-   worse than writing it inline.
+5. **Write `slides.js`**, in all three languages from the start — every
+   string gets its `…Vn` and `…Fr` twin inline, and `index.js` sets
+   `meta.french: true`. Retro-fitting twins is worse than writing them
+   inline.
 6. **Update `plan.js`** so the teacher plan matches the deck. A stale timeline
    is worse than none.
 7. **Verify** (§6). Fix. Re-verify.
@@ -291,8 +293,9 @@ scroll on nine slides in front of the class.
 
 Check project mode separately, at the resolution the room actually has (1.2 was
 clean at 1920×1080 while still overflowing seven slides at 1366×768), and in
-**both languages** — Vietnamese runs longer and fails different slides than
-English does.
+**every language** — Vietnamese and French both run longer than English and
+fail different slides. `check:deck` and the skill's `project-check.mjs` take
+`vn` or `fr` to walk the deck in that language.
 
 Two things make that harder than it looks:
 
@@ -310,7 +313,7 @@ bad — 1.1 overflows one slide by 96px at 1366×768 and is fine in the room.
 Then check by eye, because these are visual artefacts:
 
 - [ ] **Dark mode**, not just light — especially any text on a *fixed*-colour surface
-- [ ] **Vietnamese** — toggle it and read a dense slide; VN runs longer than EN
+- [ ] **Vietnamese and French** — toggle each and read a dense slide; both run longer than EN
 - [ ] **Project mode** on the biggest slides (the **Full screen** button, or `F`)
 - [ ] Every **Draw This** slide is actually drawable in the time you'd allow
 - [ ] The **teacher plan** matches the deck you just built
@@ -390,7 +393,7 @@ before measuring. Maths 2.3 hid two overflowing reveals this way.*
 ## 8. Definition of done
 
 - [ ] `lint`, `build`, `audit:svg`, `check:deck` all clean
-- [ ] Every user-facing string has a `…Vn` twin
+- [ ] Every user-facing string has a `…Vn` and a `…Fr` twin (`slides-lint.mjs` clean), and `meta.french: true` is set
 - [ ] Light **and** dark checked by eye
 - [ ] Read every slide against the exemplars: no sentence the class does not need
 - [ ] Every copy-down item is in a `write` note or an orange bumper

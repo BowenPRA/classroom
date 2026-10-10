@@ -19,6 +19,7 @@
 // the buttons are HTML. Every SVG opens with a white plate.
 import { useState, useEffect, useCallback } from 'react'
 import { Undo2, RotateCcw, ArrowRight, Eye, Shuffle, Sparkles, Move, SkipForward } from 'lucide-react'
+import { tr } from '../../../src/lib/lang.js'
 
 const INK = '#2b2b2b'
 const KEY = '#c25e12'
@@ -27,7 +28,6 @@ const RULE = '#cfd8dc'
 const FONT = "Inter, 'Segoe UI', system-ui, sans-serif"
 
 const SUP = ['⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹']
-const tr = (lang, en, vn) => (lang === 'vn' ? vn : en)
 
 function Btn({ onClick, disabled, tone = 'teal', icon: Icon, children }) {
   const tones = {
@@ -126,9 +126,10 @@ export function PlaceShift({ lang = 'en' }) {
           </text>
           <text x="560" y="56" fontFamily={FONT} fontSize="26" fontWeight="bold" fill={KEY} textAnchor="middle">
             {step === 0
-              ? tr(lang, 'Ready', 'Sẵn sàng')
+              ? tr(lang, 'Ready', 'Sẵn sàng', 'Prêt')
               : tr(lang, `${step} of ${set.k} places ${dir > 0 ? 'left' : 'right'}`,
-                        `${step} trên ${set.k} cột sang ${dir > 0 ? 'trái' : 'phải'}`)}
+                        `${step} trên ${set.k} cột sang ${dir > 0 ? 'trái' : 'phải'}`,
+                        `${step} sur ${set.k} rangs à ${dir > 0 ? 'gauche' : 'droite'}`)}
           </text>
 
           {/* Empty columns, so the class can see where a digit is heading. */}
@@ -159,20 +160,21 @@ export function PlaceShift({ lang = 'en' }) {
 
           <text x="560" y="414" fontFamily={FONT} fontSize="24" fill={MUTED} textAnchor="middle">
             {tr(lang, 'An orange zero is holding a column open.',
-                      'Số 0 màu cam giữ chỗ cho một cột.')}
+                      'Số 0 màu cam giữ chỗ cho một cột.',
+                      'Un zéro orange garde une colonne ouverte.')}
           </text>
         </svg>
       </div>
 
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap">
         <Btn tone="slate" icon={Undo2} disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>
-          {tr(lang, 'Back', 'Lùi')}
+          {tr(lang, 'Back', 'Lùi', 'Retour')}
         </Btn>
         <Btn tone="orange" icon={Move} disabled={step === set.k} onClick={() => setStep((s) => Math.min(set.k, s + 1))}>
-          {tr(lang, 'Move one place', 'Dịch một cột')}
+          {tr(lang, 'Move one place', 'Dịch một cột', 'Décale 1 rang')}
         </Btn>
         <Btn tone="teal" icon={SkipForward} onClick={() => { setWhich((w) => (w + 1) % SETS.length); setStep(0) }}>
-          {tr(lang, 'Next number', 'Số khác')}
+          {tr(lang, 'Next number', 'Số khác', 'Suivant')}
         </Btn>
       </div>
     </div>
@@ -244,11 +246,12 @@ export function WhichWay({ lang = 'en', isDisplayMode = false }) {
           </div>
           <div className="min-w-0">
             <div className={`font-black tracking-tight text-slate-800 dark:text-slate-100 leading-none ${big ? 'text-2xl' : 'text-lg sm:text-xl'}`}>
-              {tr(lang, 'Which Way?', 'Đi hướng nào?')}
+              {tr(lang, 'Which Way?', 'Đi hướng nào?', 'Quel sens ?')}
             </div>
             <div className={`font-bold text-slate-400 dark:text-slate-500 truncate ${big ? 'text-base' : 'text-xs'}`}>
               {tr(lang, 'Fingers: how many places. Hand: which way. Then press Show.',
-                        'Ngón tay: mấy cột. Bàn tay: hướng nào. Rồi bấm Hiện.')}
+                        'Ngón tay: mấy cột. Bàn tay: hướng nào. Rồi bấm Hiện.',
+                        'Doigts : combien. Main : quel sens. Puis Voir.')}
             </div>
           </div>
         </div>
@@ -264,13 +267,13 @@ export function WhichWay({ lang = 'en', isDisplayMode = false }) {
           <>
             <div className="p-4 rounded-2xl bg-emerald-500 text-white"><Sparkles className="w-12 h-12" strokeWidth={2} /></div>
             <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>
-              {tr(lang, 'All 14 done!', 'Xong cả 14!')}
+              {tr(lang, 'All 14 done!', 'Xong cả 14!', 'Les 14 sont faits !')}
             </div>
           </>
         ) : (
           <>
             <div className={`font-black uppercase tracking-[0.2em] text-[#c25e12] ${big ? 'text-[clamp(1rem,2.2vh,1.6rem)]' : 'text-sm'}`}>
-              {tr(lang, 'How many places, and which way?', 'Mấy cột, và về hướng nào?')}
+              {tr(lang, 'How many places, and which way?', 'Mấy cột, và về hướng nào?', 'Combien de rangs, quel sens ?')}
             </div>
 
             <div className={`rounded-3xl border-[6px] border-slate-300 bg-white flex items-center justify-center font-black text-[#2b2b2b] leading-none shadow-sm px-10 ${big ? 'h-[clamp(9rem,24vh,16rem)] text-[clamp(4rem,11vh,8rem)]' : 'h-[8rem] text-6xl'}`}>
@@ -282,7 +285,8 @@ export function WhichWay({ lang = 'en', isDisplayMode = false }) {
                 <>
                   <div className={`rounded-full text-white font-black px-8 py-2 ${card.left ? 'bg-[#c25e12]' : 'bg-[#0087a8]'} ${big ? 'text-[clamp(1.6rem,4vh,2.6rem)]' : 'text-2xl'}`}>
                     {tr(lang, `${card.places} places ${card.left ? 'left' : 'right'}`,
-                              `${card.places} cột sang ${card.left ? 'trái' : 'phải'}`)}
+                              `${card.places} cột sang ${card.left ? 'trái' : 'phải'}`,
+                              `${card.places} rangs à ${card.left ? 'gauche' : 'droite'}`)}
                   </div>
                   <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-[clamp(2.4rem,7vh,5rem)]' : 'text-4xl'}`}>
                     {card.a}
@@ -297,15 +301,15 @@ export function WhichWay({ lang = 'en', isDisplayMode = false }) {
       </div>
 
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap px-4 pb-4 pt-2">
-        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn')}</Btn>
+        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn', 'Mélanger')}</Btn>
         {!done && (
           <Btn tone="orange" icon={shown ? ArrowRight : Eye} onClick={advance}>
-            {shown ? tr(lang, 'Next', 'Tiếp') : tr(lang, 'Show', 'Hiện')}
+            {shown ? tr(lang, 'Next', 'Tiếp', 'Suivant') : tr(lang, 'Show', 'Hiện', 'Voir')}
           </Btn>
         )}
         {done && (
           <Btn tone="slate" icon={RotateCcw} onClick={() => { setPos(0); setShown(false) }}>
-            {tr(lang, 'Start again', 'Làm lại')}
+            {tr(lang, 'Start again', 'Làm lại', 'Rejouer')}
           </Btn>
         )}
       </div>

@@ -19,6 +19,7 @@
 // SVG opens with a white plate.
 import { useState, useEffect, useCallback } from 'react'
 import { Undo2, RotateCcw, ArrowRight, Eye, Shuffle, Sparkles, ThumbsUp, SkipForward } from 'lucide-react'
+import { tr } from '../../../src/lib/lang.js'
 
 const INK = '#2b2b2b'
 const KEY = '#c25e12'
@@ -27,8 +28,6 @@ const PURPLE = '#5c2483'
 const MUTED = '#5b6770'
 const FONT = "Inter, 'Segoe UI', system-ui, sans-serif"
 const MINUS = '−'
-
-const tr = (lang, en, vn) => (lang === 'vn' ? vn : en)
 
 function Btn({ onClick, disabled, tone = 'teal', icon: Icon, children }) {
   const tones = {
@@ -105,7 +104,7 @@ function Expand({ lang = 'en', set }) {
           <rect x="0" y="0" width="1120" height="440" rx="14" fill="#ffffff" />
 
           <text x="560" y="78" fontFamily={FONT} fontSize="54" fontWeight="bold" fill={INK} textAnchor="middle">
-            {tr(lang, 'Expand ', 'Khai triển ')}
+            {tr(lang, 'Expand ', 'Khai triển ', 'Développe ')}
             <tspan fill={KEY}>{bracketText(p)}</tspan>
           </text>
           <text x="1096" y="52" fontFamily={FONT} fontSize="22" fontWeight="bold" fill="#9aa5ae" textAnchor="end">{which + 1} / {list.length}</text>
@@ -156,16 +155,16 @@ function Expand({ lang = 'en', set }) {
           )}
           {step === 0 && (
             <text x="560" y="392" fontFamily={FONT} fontSize="32" fill="#9aa5ae" textAnchor="middle">
-              {tr(lang, 'Which box can you fill first?', 'Em điền được ô nào trước?')}
+              {tr(lang, 'Which box can you fill first?', 'Em điền được ô nào trước?', 'Quelle case remplis-tu en premier ?')}
             </text>
           )}
         </svg>
       </div>
 
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap">
-        <Btn tone="slate" icon={Undo2} disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>{tr(lang, 'Back', 'Lùi')}</Btn>
-        <Btn tone="orange" icon={ArrowRight} disabled={done} onClick={() => setStep((s) => Math.min(n + 1, s + 1))}>{tr(lang, 'Next box', 'Ô tiếp')}</Btn>
-        <Btn tone="teal" icon={SkipForward} onClick={() => { setWhich((w) => (w + 1) % list.length); setStep(0) }}>{tr(lang, 'Next question', 'Câu tiếp')}</Btn>
+        <Btn tone="slate" icon={Undo2} disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>{tr(lang, 'Back', 'Lùi', 'Retour')}</Btn>
+        <Btn tone="orange" icon={ArrowRight} disabled={done} onClick={() => setStep((s) => Math.min(n + 1, s + 1))}>{tr(lang, 'Next box', 'Ô tiếp', 'Suivant')}</Btn>
+        <Btn tone="teal" icon={SkipForward} onClick={() => { setWhich((w) => (w + 1) % list.length); setStep(0) }}>{tr(lang, 'Next question', 'Câu tiếp', 'Autre calcul')}</Btn>
       </div>
     </div>
   )
@@ -178,22 +177,22 @@ export function ExpandMinus({ lang }) { return <Expand lang={lang} set="minus" /
  * WIDGET 2 — RIGHT OR WRONG?
  * ============================================================= */
 const CARDS = [
-  { q: '5(a + 3)', a: '5a + 15', ok: true, en: 'both terms were multiplied', vn: 'cả hai hạng tử đều được nhân' },
-  { q: '4(b + 2)', a: '4b + 2', ok: false, fix: '4b + 8', en: 'the 2 was not multiplied', vn: 'số 2 chưa được nhân' },
-  { q: '6(k − 3)', a: '6k − 18', ok: true, en: 'the minus travels with the 3', vn: 'dấu trừ đi cùng với số 3' },
-  { q: '3(4b − 5)', a: '12b − 8', ok: false, fix: '12b − 15', en: '3 × 5 = 15, not 3 + 5', vn: '3 × 5 = 15, không phải 3 + 5' },
-  { q: '2(3x + 1)', a: '6x + 2', ok: true, en: '2 × 3 = 6, and the x stays', vn: '2 × 3 = 6, và chữ x giữ nguyên' },
-  { q: '5(2 − d)', a: '10 − 5d', ok: true, en: 'this is finished', vn: 'đến đây là xong' },
-  { q: '4(3 − c)', a: '8c', ok: false, fix: '12 − 4c', en: '12 and 4c are not like terms', vn: '12 và 4c không đồng dạng' },
-  { q: '7(y + 4)', a: '7y + 28', ok: true, en: '7 × 4 = 28', vn: '7 × 4 = 28' },
-  { q: '9(2r + 3)', a: '11r + 27', ok: false, fix: '18r + 27', en: '9 × 2 = 18, not 9 + 2', vn: '9 × 2 = 18, không phải 9 + 2' },
-  { q: '3(x − 7)', a: '3x + 21', ok: false, fix: '3x − 21', en: 'the minus does not change', vn: 'dấu trừ không đổi' },
-  { q: '8(7 + z)', a: '56 + 8z', ok: true, en: 'both terms, in the same order', vn: 'cả hai hạng tử, theo đúng thứ tự' },
-  { q: '5(m + 1)', a: '5m + 5', ok: true, en: 'the 1 is multiplied too', vn: 'số 1 cũng được nhân' },
-  { q: '2(5t − 4)', a: '10t − 8', ok: true, en: '2 × 5t = 10t and 2 × 4 = 8', vn: '2 × 5t = 10t và 2 × 4 = 8' },
-  { q: '6(1 + 2v)', a: '6 + 12v', ok: true, en: '6 × 1 = 6 and 6 × 2v = 12v', vn: '6 × 1 = 6 và 6 × 2v = 12v' },
-  { q: '4(x + 4)', a: '4x + 4', ok: false, fix: '4x + 16', en: '4 × 4 = 16', vn: '4 × 4 = 16' },
-  { q: '10(6 + 7x)', a: '60 + 7x', ok: false, fix: '60 + 70x', en: 'the 7x was not multiplied', vn: '7x chưa được nhân' },
+  { q: '5(a + 3)', a: '5a + 15', ok: true, en: 'both terms were multiplied', vn: 'cả hai hạng tử đều được nhân', fr: 'les deux termes sont multipliés' },
+  { q: '4(b + 2)', a: '4b + 2', ok: false, fix: '4b + 8', en: 'the 2 was not multiplied', vn: 'số 2 chưa được nhân', fr: 'le 2 n’est pas multiplié' },
+  { q: '6(k − 3)', a: '6k − 18', ok: true, en: 'the minus travels with the 3', vn: 'dấu trừ đi cùng với số 3', fr: 'le moins reste avec le 3' },
+  { q: '3(4b − 5)', a: '12b − 8', ok: false, fix: '12b − 15', en: '3 × 5 = 15, not 3 + 5', vn: '3 × 5 = 15, không phải 3 + 5', fr: '3 × 5 = 15, pas 3 + 5' },
+  { q: '2(3x + 1)', a: '6x + 2', ok: true, en: '2 × 3 = 6, and the x stays', vn: '2 × 3 = 6, và chữ x giữ nguyên', fr: '2 × 3 = 6, et le x reste' },
+  { q: '5(2 − d)', a: '10 − 5d', ok: true, en: 'this is finished', vn: 'đến đây là xong', fr: 'c’est fini' },
+  { q: '4(3 − c)', a: '8c', ok: false, fix: '12 − 4c', en: '12 and 4c are not like terms', vn: '12 và 4c không đồng dạng', fr: '12 et 4c ne sont pas semblables' },
+  { q: '7(y + 4)', a: '7y + 28', ok: true, en: '7 × 4 = 28', vn: '7 × 4 = 28', fr: '7 × 4 = 28' },
+  { q: '9(2r + 3)', a: '11r + 27', ok: false, fix: '18r + 27', en: '9 × 2 = 18, not 9 + 2', vn: '9 × 2 = 18, không phải 9 + 2', fr: '9 × 2 = 18, pas 9 + 2' },
+  { q: '3(x − 7)', a: '3x + 21', ok: false, fix: '3x − 21', en: 'the minus does not change', vn: 'dấu trừ không đổi', fr: 'le moins ne change pas' },
+  { q: '8(7 + z)', a: '56 + 8z', ok: true, en: 'both terms, in the same order', vn: 'cả hai hạng tử, theo đúng thứ tự', fr: 'les deux termes, dans le même ordre' },
+  { q: '5(m + 1)', a: '5m + 5', ok: true, en: 'the 1 is multiplied too', vn: 'số 1 cũng được nhân', fr: 'le 1 est multiplié aussi' },
+  { q: '2(5t − 4)', a: '10t − 8', ok: true, en: '2 × 5t = 10t and 2 × 4 = 8', vn: '2 × 5t = 10t và 2 × 4 = 8', fr: '2 × 5t = 10t et 2 × 4 = 8' },
+  { q: '6(1 + 2v)', a: '6 + 12v', ok: true, en: '6 × 1 = 6 and 6 × 2v = 12v', vn: '6 × 1 = 6 và 6 × 2v = 12v', fr: '6 × 1 = 6 et 6 × 2v = 12v' },
+  { q: '4(x + 4)', a: '4x + 4', ok: false, fix: '4x + 16', en: '4 × 4 = 16', vn: '4 × 4 = 16', fr: '4 × 4 = 16' },
+  { q: '10(6 + 7x)', a: '60 + 7x', ok: false, fix: '60 + 70x', en: 'the 7x was not multiplied', vn: '7x chưa được nhân', fr: 'le 7x n’est pas multiplié' },
 ]
 
 function Tile({ text, verdict, big }) {
@@ -251,10 +250,10 @@ export function RightOrWrong({ lang = 'en', isDisplayMode = false }) {
           </div>
           <div className="min-w-0">
             <div className={`font-black tracking-tight text-slate-800 dark:text-slate-100 leading-none ${big ? 'text-2xl' : 'text-lg sm:text-xl'}`}>
-              {tr(lang, 'Right or Wrong?', 'Đúng hay sai?')}
+              {tr(lang, 'Right or Wrong?', 'Đúng hay sai?', 'Juste ou faux ?')}
             </div>
             <div className={`font-bold text-slate-400 dark:text-slate-500 truncate ${big ? 'text-base' : 'text-xs'}`}>
-              {tr(lang, 'Thumbs up: right. Thumbs down: wrong. Then press Show.', 'Ngón cái lên: đúng. Ngón cái xuống: sai. Rồi bấm Hiện.')}
+              {tr(lang, 'Thumbs up: right. Thumbs down: wrong. Then press Show.', 'Ngón cái lên: đúng. Ngón cái xuống: sai. Rồi bấm Hiện.', 'Pouce levé : juste. Baissé : faux. Appuie sur Voir.')}
             </div>
           </div>
         </div>
@@ -270,12 +269,12 @@ export function RightOrWrong({ lang = 'en', isDisplayMode = false }) {
         {done ? (
           <>
             <div className="p-4 rounded-2xl bg-emerald-500 text-white"><Sparkles className="w-12 h-12" strokeWidth={2} /></div>
-            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{tr(lang, 'All 16 done!', 'Xong cả 16!')}</div>
+            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{tr(lang, 'All 16 done!', 'Xong cả 16!', 'Les 16 sont faits !')}</div>
           </>
         ) : (
           <>
             <div className={`font-black uppercase tracking-[0.2em] text-[#c25e12] ${big ? 'text-[clamp(1rem,2.2vh,1.6rem)]' : 'text-sm'}`}>
-              {tr(lang, 'Is this expansion right?', 'Khai triển này đúng không?')}
+              {tr(lang, 'Is this expansion right?', 'Khai triển này đúng không?', 'Ce développement est-il juste ?')}
             </div>
 
             <div className="flex items-center justify-center gap-[clamp(0.75rem,2.5vw,2.5rem)] flex-wrap">
@@ -289,11 +288,11 @@ export function RightOrWrong({ lang = 'en', isDisplayMode = false }) {
                 <>
                   <div className={`rounded-full text-white font-black px-8 py-2 ${card.ok ? 'bg-[#4a8b23]' : 'bg-[#c8102e]'} ${big ? 'text-[clamp(1.6rem,4vh,2.6rem)]' : 'text-2xl'}`}>
                     {card.ok
-                      ? tr(lang, '✓ Right', '✓ Đúng')
-                      : tr(lang, `✗ Wrong — it is ${card.fix}`, `✗ Sai — phải là ${card.fix}`)}
+                      ? tr(lang, '✓ Right', '✓ Đúng', '✓ Juste')
+                      : tr(lang, `✗ Wrong — it is ${card.fix}`, `✗ Sai — phải là ${card.fix}`, `✗ Faux — c’est ${card.fix}`)}
                   </div>
                   <div className={`font-bold text-slate-600 dark:text-slate-300 ${big ? 'text-[clamp(1.2rem,2.8vh,2rem)]' : 'text-lg'}`}>
-                    {tr(lang, card.en, card.vn)}
+                    {tr(lang, card.en, card.vn, card.fr)}
                   </div>
                 </>
               ) : (
@@ -306,14 +305,14 @@ export function RightOrWrong({ lang = 'en', isDisplayMode = false }) {
 
       {/* Controls */}
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap px-4 pb-4 pt-2">
-        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn')}</Btn>
+        <Btn tone="teal" icon={Shuffle} onClick={deal}>{tr(lang, 'Shuffle', 'Xáo trộn', 'Mélanger')}</Btn>
         {!done && (
           <Btn tone="orange" icon={shown ? ArrowRight : Eye} onClick={advance}>
-            {shown ? tr(lang, 'Next', 'Tiếp') : tr(lang, 'Show', 'Hiện')}
+            {shown ? tr(lang, 'Next', 'Tiếp', 'Suivant') : tr(lang, 'Show', 'Hiện', 'Voir')}
           </Btn>
         )}
         {done && (
-          <Btn tone="slate" icon={RotateCcw} onClick={() => { setPos(0); setShown(false) }}>{tr(lang, 'Start again', 'Làm lại')}</Btn>
+          <Btn tone="slate" icon={RotateCcw} onClick={() => { setPos(0); setShown(false) }}>{tr(lang, 'Start again', 'Làm lại', 'Recommencer')}</Btn>
         )}
       </div>
     </div>

@@ -12,6 +12,7 @@ export default {
     title: 'Animal Cells: What You Are Made Of',
     objective: 'Name the parts of an animal cell, describe how animal cells differ from plant cells, and follow the method for looking at your own cells under a microscope.',
     order: 2,
+    french: true,
     // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
     dashboard: { track: 'Y7_SCI', unit: 'U01_2' },
   },

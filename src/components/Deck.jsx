@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback, createElement } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { dashboardUnitUrl } from '../lib/dashboardLink.js'
+import { deckLangs, tr } from '../lib/lang.js'
 import { useStudentPicker } from '../lib/useStudentPicker.js'
 import { useDarkMode } from '../lib/useDarkMode.js'
 import { useDisplayMode } from '../lib/useDisplayMode.js'
@@ -18,6 +19,7 @@ const PREV_KEYS = new Set(['ArrowLeft', 'PageUp'])
 export default function Deck({ lesson, course }) {
   const slides = lesson.slides || []
   const bilingual = course?.bilingual !== false
+  const langs = deckLangs(course, lesson)
   const navigate = useNavigate()
   const { isDark, toggle: toggleDark } = useDarkMode()
 
@@ -88,12 +90,12 @@ export default function Deck({ lesson, course }) {
 
   const s = resolveSlide(slides[currentIndex])
   const LayoutComp = getLayout(s.layout)
-  const pick = (en, vn) => (lang === 'vn' ? (vn || en) : en)
+  const pick = (en, vn, fr) => tr(lang, en, vn, fr)
   const ctx = { lang, pick, isDisplayMode, bilingual, onZoom: setZoomedImage }
   const selfStudyUrl = dashboardUnitUrl(lesson.dashboard)
 
   const nav = {
-    index: currentIndex, total: slides.length, bilingual, lang, setLang, picker,
+    index: currentIndex, total: slides.length, bilingual, langs, lang, setLang, picker,
     onManage: () => setPickerOpen(true), onPrev: handlePrev, onNext: handleNext,
   }
 

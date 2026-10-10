@@ -13,12 +13,15 @@ import { PickButton } from './RandomStudent.jsx'
 const SECONDARY = 'flex items-center gap-2 px-3 lg:px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 transition-all border-2 border-slate-200 dark:border-slate-700 active:scale-95'
 const LABEL = 'text-xs font-black uppercase tracking-widest whitespace-nowrap'
 
-/** EN / VN switch. `tone` picks the light (toolbar) or dark (dock) styling. */
-export function LangToggle({ lang, setLang, tone = 'light' }) {
+/**
+ * Language switch: EN / VN, plus FR on a lesson that has French (`langs`, from
+ * deckLangs). `tone` picks the light (toolbar) or dark (dock) styling.
+ */
+export function LangToggle({ langs = ['en', 'vn'], lang, setLang, tone = 'light' }) {
   if (tone === 'dark') {
     return (
       <div className="flex items-center gap-1 px-1.5 border-r border-l border-white/20">
-        {['en', 'vn'].map((l) => (
+        {langs.map((l) => (
           <button key={l} onClick={() => setLang(l)} className={`px-2.5 py-1.5 rounded-lg font-black text-xs tracking-wider ${lang === l ? 'bg-[#1cb0f6] text-white' : 'text-white/50 hover:text-white'}`}>
             {l.toUpperCase()}
           </button>
@@ -28,7 +31,7 @@ export function LangToggle({ lang, setLang, tone = 'light' }) {
   }
   return (
     <div className="flex bg-slate-100 dark:bg-slate-800 rounded-2xl border-2 border-slate-200 dark:border-slate-700 p-1">
-      {['en', 'vn'].map((l) => (
+      {langs.map((l) => (
         <button
           key={l}
           onClick={() => setLang(l)}
@@ -54,7 +57,7 @@ function Progress({ index, total, className = '' }) {
  * bar appears from `sm`, the lesson title from `md`. On a phone the EN/VN
  * switch lives here because the bottom bar has no room for it.
  */
-export function TopBar({ title, index, total, bilingual, lang, setLang, isDark, onToggleDark, onBack }) {
+export function TopBar({ title, index, total, bilingual, langs, lang, setLang, isDark, onToggleDark, onBack }) {
   return (
     <div className="flex items-center gap-3 px-3 sm:px-4 h-14 sm:h-16 lg:h-20 border-b-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm z-20 shrink-0">
       <button onClick={onBack} className="flex items-center gap-2 text-slate-500 dark:text-slate-300 hover:text-[#1cb0f6] font-black uppercase tracking-widest text-xs sm:text-sm transition-colors active:scale-95 shrink-0">
@@ -67,7 +70,7 @@ export function TopBar({ title, index, total, bilingual, lang, setLang, isDark, 
         <span className="text-xs font-black text-slate-400 tabular-nums shrink-0">{index + 1}/{total}</span>
       </div>
       <div className="flex items-center gap-2 shrink-0">
-        {bilingual && <div className="sm:hidden"><LangToggle lang={lang} setLang={setLang} /></div>}
+        {bilingual && <div className="sm:hidden"><LangToggle langs={langs} lang={lang} setLang={setLang} /></div>}
         <button onClick={onToggleDark} className="p-2 rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-600 transition-colors active:scale-95 border-2 border-transparent hover:border-slate-200 dark:hover:border-slate-700" title="Toggle dark mode">
           {isDark ? <Sun className="w-5 h-5 text-amber-400" strokeWidth={2.5} /> : <Moon className="w-5 h-5" strokeWidth={2.5} />}
         </button>
@@ -82,7 +85,7 @@ export function TopBar({ title, index, total, bilingual, lang, setLang, isDark, 
  * Self-study are teacher shortcuts that also live on the course page, so they
  * are dropped first as the screen narrows; Full screen stays at every width.
  */
-export function BottomBar({ index, total, bilingual, lang, setLang, picker, onManage, onPrev, onNext, onFullscreen, onPlan, selfStudyUrl }) {
+export function BottomBar({ index, total, bilingual, langs, lang, setLang, picker, onManage, onPrev, onNext, onFullscreen, onPlan, selfStudyUrl }) {
   const last = index === total - 1
   return (
     <div className="bg-white dark:bg-slate-900 border-t-2 border-slate-200 dark:border-slate-800 px-3 sm:px-5 pt-3 sm:pt-5 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-[max(1.25rem,env(safe-area-inset-bottom))] z-20 shrink-0">
@@ -92,7 +95,7 @@ export function BottomBar({ index, total, bilingual, lang, setLang, picker, onMa
         </button>
 
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 min-w-0">
-          {bilingual && <div className="hidden sm:block"><LangToggle lang={lang} setLang={setLang} /></div>}
+          {bilingual && <div className="hidden sm:block"><LangToggle langs={langs} lang={lang} setLang={setLang} /></div>}
           <PickButton picker={picker} lang={lang} onManage={onManage} />
           <button onClick={onFullscreen} className={`${SECONDARY} hover:text-[#1cb0f6]`} title="Full screen (F)">
             <Maximize className="w-5 h-5" strokeWidth={2.5} />
@@ -128,12 +131,12 @@ export function BottomBar({ index, total, bilingual, lang, setLang, picker, onMa
  * The floating dock in full screen, plus the thin progress line along the
  * bottom edge. Both fade out with the cursor once the presenter goes idle.
  */
-export function ProjectorDock({ index, total, bilingual, lang, setLang, picker, onManage, onPrev, onNext, onExit, idle }) {
+export function ProjectorDock({ index, total, bilingual, langs, lang, setLang, picker, onManage, onPrev, onNext, onExit, idle }) {
   return (
     <>
       <div className={`absolute top-2.5 sm:top-3 right-3 sm:right-4 flex items-center gap-1.5 bg-slate-900/80 backdrop-blur-md p-1.5 rounded-2xl shadow-2xl border border-white/15 z-50 transition-all duration-500 ${idle ? 'opacity-0 -translate-y-4 pointer-events-none' : 'opacity-100'}`}>
         <button onClick={onPrev} disabled={index === 0} className="p-2 rounded-xl bg-white/10 text-white hover:bg-white/20 disabled:opacity-30" title="Back (←)"><ChevronLeft className="w-5 h-5" strokeWidth={3} /></button>
-        {bilingual && <LangToggle lang={lang} setLang={setLang} tone="dark" />}
+        {bilingual && <LangToggle langs={langs} lang={lang} setLang={setLang} tone="dark" />}
         <PickButton picker={picker} lang={lang} onManage={onManage} tone="dark" large />
         <button onClick={onExit} className="p-2 rounded-xl bg-white/10 text-slate-300 hover:bg-rose-500 hover:text-white" title="Exit full screen (Esc)"><Minimize className="w-5 h-5" strokeWidth={2.5} /></button>
         <button onClick={onNext} className="p-2 rounded-xl bg-[#58cc02] text-white hover:bg-[#46a802] ml-0.5" title="Continue (→)"><ChevronRight className="w-5 h-5" strokeWidth={3} /></button>

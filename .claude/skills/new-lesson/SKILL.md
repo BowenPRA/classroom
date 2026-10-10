@@ -145,11 +145,20 @@ Label leader-lines are the thing you will get wrong: dots land inside the
 shape, or point at the membrane when they mean the cytoplasm. Only the contact
 sheet shows this.
 
-## 5 · Write `slides.js`, bilingual from the start
+## 5 · Write `slides.js`, in all three languages from the start
 
-Retro-fitting the `…Vn` twins is worse than writing them inline — you end up
-re-reading every slide. Vietnamese also runs longer than English and overflows
-different slides, so writing it late hides layout problems until the end.
+Every string gets its `…Vn` and `…Fr` twins inline, and `index.js` sets
+`meta.french: true` (which adds FR to the deck's switch). Retro-fitting twins
+is worse than writing them inline — you end up re-reading every slide.
+Vietnamese and French also run longer than English and overflow different
+slides, so writing them late hides layout problems until the end.
+
+French conventions, so every deck reads alike: short everyday French; `tu`
+(*Recopie*, *Calcule*); **M. Bowen**; maths and decimal points exactly as the
+English (the class works from the English book); a no-break space before
+`? ! : ;` and inside « »; where a slide teaches English wording and the
+Vietnamese keeps the English phrase, the French keeps it too. Widgets use
+`tr(lang, en, vn, fr)` from `src/lib/lang.js`; diagrams stay English.
 
 The non-negotiables are in `CLAUDE.md`. The one worth restating because it is
 the whole point of the deck: **anything a student must copy goes in a `write`
@@ -182,12 +191,14 @@ npm run build
 npm run audit:svg
 npm run check:deck -- "http://localhost:5173/#/lesson/<course>/<unit>"
 npm run check:deck -- "http://localhost:5173/#/lesson/<course>/<unit>" dark
+npm run check:deck -- "http://localhost:5173/#/lesson/<course>/<unit>" fr
 node .claude/skills/new-lesson/scripts/slides-lint.mjs content/<course>/<unit>/slides.js
 ```
 
 `slides-lint.mjs` catches what eslint cannot: a user-facing string with no
-`…Vn` twin, and an unpaired `$` (balanced `$…$` pairs are real KaTeX and are
-left alone).
+`…Vn` or `…Fr` twin, a French twin whose `$…$` maths differs from the English,
+and an unpaired `$` (balanced `$…$` pairs are real KaTeX and are left alone).
+Pass `--no-fr` for a maths task deck, which is EN/VN only.
 
 Then **project mode**, which is what the class actually sees and which
 `check:deck` does not test — it measures windowed, 1440×900, English:
@@ -195,8 +206,10 @@ Then **project mode**, which is what the class actually sees and which
 ```bash
 node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>"
 node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>" vn
+node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>" fr
 WSIZE=1366,768 node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>"
 WSIZE=1366,768 node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>" vn
+WSIZE=1366,768 node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>" fr
 ```
 
 Fullscreen swaps every layout to `clamp()` type ~40% larger, so a deck that is
