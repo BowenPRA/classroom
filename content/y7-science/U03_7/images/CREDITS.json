@@ -1,0 +1,74 @@
+[
+  {
+    "file": "tower.jpg",
+    "name": "Cooling tower, Lippendorf Power Station.JPG",
+    "title": "Steam rising from a cooling tower of Lippendorf Power Station, Germany, seen from above",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Cooling_tower,_Lippendorf_Power_Station.JPG",
+    "license": "CC BY 3.0 DE",
+    "artist": "High Contrast",
+    "usage": "Slide 3 (the power station). Cropped to the cloud and the top of the tower (y 200–990 of the 960 px thumbnail)."
+  },
+  {
+    "file": "petrol.jpg",
+    "name": "Motorbike fuel from plastic bottle.jpg",
+    "title": "Pouring petrol from a plastic bottle into a motorbike's tank at a roadside stall (rural Udaipur, India)",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Motorbike_fuel_from_plastic_bottle.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Jay.Jarosz",
+    "usage": "Slide 4 (the motorbike), in place of the book's petrol-pump photo on p.118, which is too soft to project. 960 px thumbnail."
+  },
+  {
+    "file": "strobe.jpg",
+    "name": "Bouncing ball strobe edit.jpg",
+    "title": "A bouncing ball photographed with a stroboscopic flash, 25 images a second",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Bouncing_ball_strobe_edit.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "MichaelMaggs; edit by Richard Bartz",
+    "usage": "Slide 13 (lower every time). 960 px thumbnail."
+  },
+  {
+    "file": "fire.jpg",
+    "name": "Cooking in a three stone fire stove in Oyam District 02.jpg",
+    "title": "A metal pot on a three-stone wood fire, Oyam District, Uganda",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Cooking_in_a_three_stone_fire_stove_in_Oyam_District_02.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Sandra Aceng",
+    "usage": "GS (burning wood for cooking) and POT_Q / POT_A (slides 17–18), in place of the book's photo of a pot on a wood fire on p.119. 960 px thumbnail; labels drawn over it."
+  },
+  {
+    "file": "stairs.jpg",
+    "name": "People climbing stairs in Cambodia.jpg",
+    "title": "People climbing a wooden staircase, Cambodia",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:People_climbing_stairs_in_Cambodia.jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Mark J. Sebastian (mark sebastian on Flickr)",
+    "usage": "GS (walking up stairs). 960 px thumbnail."
+  },
+  {
+    "file": "cycling.jpg",
+    "name": "Cyclists in training on road to Noi Bai International Terminal, Hanoi (7069248657).jpg",
+    "title": "Cyclists training on the flat road to Noi Bai airport, Hanoi",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Cyclists_in_training_on_road_to_Noi_Bai_International_Terminal,_Hanoi_(7069248657).jpg",
+    "license": "CC BY 2.0",
+    "artist": "David McKelvey from Brisbane, Australia",
+    "usage": "GS (cycling on a level road). 960 px thumbnail."
+  },
+  {
+    "file": "filament.jpg",
+    "name": "Gluehlampe 01 KMJ.jpg",
+    "title": "A clear 60 W filament (incandescent) light bulb on white",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Gluehlampe_01_KMJ.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "KMJ",
+    "usage": "Lamp A in LAMPS and LAMP_BARS, as in the book's figure on p.118. 768 px wide thumbnail."
+  },
+  {
+    "file": "saver.jpg",
+    "name": "Energy-saving electric bulb.jpg",
+    "title": "A spiral compact fluorescent (energy-saving) lamp on white",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Energy-saving_electric_bulb.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "AlixSaz",
+    "usage": "Lamp B in LAMPS and LAMP_BARS, as in the book's figure on p.118. The 960 px thumbnail rotated 115° to stand upright on a white fill, then cropped to the lamp."
+  }
+]
