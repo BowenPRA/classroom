@@ -140,7 +140,7 @@ const rows = await evalJs(`(async () => {
   const wait = (ms) => new Promise(r => setTimeout(r, ms));
   const out = [];
   let last = null;
-  for (let i = 1; i <= 40; i++) {
+  for (let i = 1; i <= 150; i++) {
     await wait(520);
     if (!location.hash.includes('/lesson/')) break;
     const title = ((document.querySelector('h1,h2') || {}).textContent || '(none)').trim();

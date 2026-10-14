@@ -234,7 +234,16 @@ about 60 px, split it or move a note elsewhere rather than compressing until it
 is terse.
 
 Finally, look at it: screenshot the changed slides in **light and dark**, and
-open any widget in each of its states. The reasoning here cannot be automated —
+open any widget in each of its states. `deck-shots.mjs` walks the deck in
+project mode and saves one JPEG per slide plus 2×2 contact sheets — read the
+sheets for the overview, single slides for detail:
+
+```bash
+WSIZE=1366,768 node .claude/skills/new-lesson/scripts/deck-shots.mjs "<lesson-url>" <out-dir> fr dark
+```
+
+All three Chrome-driving scripts take `PORT` (the debugging port), so several
+can run at once without fighting over one Chrome. The reasoning here cannot be automated —
 a widget can pass every check and still say "a an animal cell".
 
 ## 8 · Ship

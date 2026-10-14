@@ -24,8 +24,9 @@ const args = process.argv.slice(2)
 const URL_ARG = args.find((a) => a.startsWith('http'))
 const DARK = args.includes('dark')
 const LANG = args.find((a) => a === 'vn' || a === 'fr') || 'en'
-const SLIDES = Number(args.find((a) => /^\d+$/.test(a)) || 40)
-const PORT = 9333
+const SLIDES = Number(args.find((a) => /^\d+$/.test(a)) || 150)
+// PORT lets several checks run at once (one Chrome each); project-check reads it too.
+const PORT = Number(process.env.PORT || 9333)
 // Images come off the network on a deployed site; sample too early and every
 // slide looks broken. This is a settle delay, not a page-load timeout.
 const SETTLE_MS = 1400
