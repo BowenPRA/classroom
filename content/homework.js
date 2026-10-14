@@ -23,6 +23,10 @@ import hw07 from '../homework/hw07/hw07.pdf?url'
 import hw07x from '../homework/hw07x/hw07x.pdf?url'
 import hw08 from '../homework/hw08/hw08.pdf?url'
 import hw08x from '../homework/hw08x/hw08x.pdf?url'
+import hw09 from '../homework/hw09/hw09.pdf?url'
+import hw09fr from '../homework/hw09/hw09-fr.pdf?url'
+import hw09x from '../homework/hw09x/hw09x.pdf?url'
+import hw09xfr from '../homework/hw09x/hw09x-fr.pdf?url'
 import q1rev from '../homework/q1rev/q1rev.pdf?url'
 import q1sci from '../homework/q1sci/q1sci.pdf?url'
 import alg13 from '../homework/alg13/alg13.pdf?url'
@@ -160,6 +164,44 @@ export const HOMEWORK = [
     title: 'The Point Never Moves',
     subtitle: 'Extra · reading decimals, powers of 10, rounding, mg to t',
     pdf: hw08x,
+  },
+  // Unit 4, all of it, with Science 3.1 used only as a place to do decimals.
+  // Section F is the reason this packet exists: four stopwatch times each for a
+  // heavy and a light ball, the light ball has the fastest single time, and both
+  // means are 0.45 s -- the decimals answer "do heavy things fall faster?".
+  {
+    id: 'hw09',
+    label: 'HW 9',
+    title: 'Lighter on the Moon',
+    subtitle: 'Maths 4.1–4.5 and the review · Science 3.1 in decimals',
+    pdf: hw09,
+  },
+  // Goes out with HW 9. Every Unit 4 method printed as a frame to fill in: column
+  // grids with the point column drawn, division frames with the point already
+  // placed, then the same frames with it taken away.
+  {
+    id: 'hw09x',
+    label: 'EX 9',
+    title: 'Where the Point Goes',
+    subtitle: 'Extra · lining up, point out and back, straight up, the words',
+    pdf: hw09x,
+  },
+  // The same two packets built with \FRENCH defined: every question keeps its
+  // English and gains a grey French line underneath, with the English key word
+  // left in. Same questions, same answers, longer (HW 9 is 13 pages, EX 9 is 9).
+  {
+    id: 'hw09fr',
+    label: 'FR 9',
+    title: 'Lighter on the Moon — English / Français',
+    subtitle: 'HW 9 with a French line under every question',
+    pdf: hw09fr,
+  },
+  {
+    id: 'hw09xfr',
+    label: 'FR X9',
+    title: 'Where the Point Goes — English / Français',
+    subtitle: 'EX 9 with a French line under every question',
+    pdf: hw09xfr,
   },
   // The review before the Quarter 1 Assessment: maths only, every question tagged
   // Focus / Practice / Challenge like the Workbook. The assessment itself is NOT in

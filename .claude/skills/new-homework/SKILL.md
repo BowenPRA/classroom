@@ -132,8 +132,8 @@ different, the real question is whether *every* packet should have it.
 
 ## 4 · LaTeX traps that have already cost time
 
-- **`\marks` is a TeX primitive.** Naming a macro that fails with a confusing
-  "already defined" error.
+- **`\marks` is a TeX primitive**, and so is **`\lastbox`** (it cost a build on
+  EX 9). Naming a macro either fails with a confusing "already defined" error.
 - **`titlesec` refuses `#1` in its before-code here** — you get "Illegal
   parameter number in `\ttlf@section`" and stray `#` in horizontal mode. The
   style file hand-rolls `\hwsection` instead. Do not reintroduce titlesec.
@@ -239,3 +239,32 @@ marked, and, for open questions, the conditions to check in order.
   flag it.
 - Rebuild, re-render, re-read. A cut two pages earlier moves every page break
   after it.
+
+## 9 · The English / French copy
+
+From Unit 4 (Oct 2026) the lessons are English + French. **The packets stay
+English**, but the teacher asked (HW 9) for a second copy that is *"a mix of
+French and English to help the student learn English."* `hw09/` and `hw09x/`
+are the reference.
+
+- **One source, built a third time** with `\FRENCH` defined:
+  `build-hw.ps1 <packet> -French` makes `<packet>-fr.pdf` and rasterises it to
+  `.preview/fr-N.png`. Read those pages too; the French copy breaks differently.
+- `\fr{...}` puts a grey italic French line under the English; `\frin{...}` a
+  short gloss in brackets (table cells, word-help rows, headings). Both are
+  empty in the English copy and both **begin with `\unskip`** — without it the
+  line break before `\fr` leaves a space at the end of the English line and moves
+  a break (it did, in HW 9's E2(d)). After adding French, check the English PNG
+  densities are byte-identical to the verified build.
+- **Keep the English key word inside the French line, in `\eng{}` blue**:
+  *Combien de monnaie (**change**) reçoit-il ?* That is the whole design.
+- Keep the **English decimal point** in the French (the class writes 0.85, not
+  0,85), say **en anglais** wherever the student writes sentences, and leave
+  the answer key English-only.
+- Accents as ASCII: `\'e \`a \^e \c{c}`; French quotes as
+  `\guillemotleft\,...\,\guillemotright` (`\og`/`\fg` need babel and fail);
+  `~?` and `~:` for the French space before punctuation.
+- The French copy runs 25–30% longer (HW 9: 10 → 13 pages). Do not squeeze the
+  English to make room; a minipage round a question and its box (HW 9's E4)
+  stops the longer French splitting them.
+- Link both on the shelf (`content/homework.js`), labelled `FR 9` / `FR X9`.

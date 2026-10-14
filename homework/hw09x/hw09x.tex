@@ -1,0 +1,1018 @@
+% homework/hw09x/hw09x.tex
+% Year 7 - Extra Homework: where the point goes.
+%
+% Goes out alongside Homework 9. Same framing rule as hw03x through hw08x:
+% nothing on the sheet says easy, basic, extra help, catch-up or revision, and
+% no question is marked as being for anybody in particular. The cover states a
+% fact, and it is a true one:
+%
+%   There is nothing new to calculate in Unit 4. 3.2 x 7 is 32 x 7. The one
+%   new question is WHERE THE POINT GOES.
+%
+% THAT IS THE WHOLE DESIGN. Every method in Unit 4 is printed here as a frame
+% the student fills in: column grids with the point column already drawn and
+% the zeros to be written tinted orange; a point-out / point-back table whose
+% scaffold fades row by row; division frames with the point already placed in
+% the answer. Filling the boxes IS the method, so it cannot be skipped.
+%
+% hw08x was place value and the point never moving. This sheet does not repeat
+% it: there is no place-value table and no x 10 / x 100 here.
+%
+% QUESTION NUMBERS ARE X1..X19. Homework 9 has Sections A-F and the two
+% sheets go home in the same envelope.
+%
+% FRENCH COPY. \fr{...} prints a grey French line under the English and
+% \frin{...} a short French gloss in brackets. Both are EMPTY in the English
+% copy, so the English layout is the one that was checked to eight pages. The
+% French copy is built with \FRENCH defined (see README) and runs longer. The
+% English key words stay English inside the French lines, in blue, because the
+% English is still what is being learned. Numbers keep the English decimal
+% point, as the class does.
+%
+% House style is shared: see homework/hw-style.tex. Method: the new-homework
+% skill. Source is pure ASCII on purpose: French accents are written \'e etc.
+%
+% Build:  pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw09x -French
+
+\documentclass[12pt,a4paper]{article}
+
+% -- Answer key switch -------------------------------------------------------
+\newif\ifkey
+\ifdefined\TEACHER\keytrue\else
+  \keyfalse        % \keyfalse = student copy   |   \keytrue = teacher copy
+\fi
+
+% -- Language switch ---------------------------------------------------------
+\newif\iffr
+\ifdefined\FRENCH\frtrue\fi
+
+% -- House style -------------------------------------------------------------
+\input{../hw-style.tex}
+
+% -- French support lines ----------------------------------------------------
+% \fr{...}  a French line of its own, grey and italic, under the English.
+% \frin{...} a French gloss in brackets, inline -- for table cells and labels.
+% \fq{...}  French quotation marks.
+% Both start with \unskip: the line break before \fr is a space, and in the
+% English copy it would otherwise sit at the end of the line and move a break.
+\newcommand{\fr}[1]{\unskip\iffr\par\vspace{1pt}\noindent{\small\itshape\color{black!60}#1}\par\fi}
+\newcommand{\frin}[1]{\unskip\iffr\ {\small\itshape\color{black!60}(#1)}\fi}
+\newcommand{\fq}[1]{\guillemotleft\,#1\,\guillemotright}
+
+% -- Per-packet running head -------------------------------------------------
+\iffr
+  \fancyhead[L]{\small\color{black!55}Year 7\sep Extra Homework\sep English /
+    Fran\c{c}ais}
+\else
+  \fancyhead[L]{\small\color{black!55}Year 7\sep Extra Homework}
+\fi
+
+% -- A group of writing lines that will not be split -------------------------
+\newcommand{\qlines}[1]{\par\needspace{\numexpr#1+1\relax\baselineskip}\wlines{#1}}
+
+% -- A box to write one digit in ---------------------------------------------
+\newcommand{\nbox}{\ \fbox{\rule{0pt}{1.05em}\rule{1.0em}{0pt}}\ }
+% The same box, tinted: write a 0 here.
+\newcommand{\zbox}{\ \fcolorbox{cborange}{cborange!14}{\rule{0pt}{1.05em}\rule{1.0em}{0pt}}\ }
+% A box with no space round it, to sit against a number: 0.6\zb
+\newcommand{\zb}{\fcolorbox{cborange}{cborange!14}{\rule{0pt}{0.95em}\rule{0.75em}{0pt}}}
+
+% -- An answer blank on a line of its own, right-aligned ---------------------
+\newcommand{\ansline}[1][4.4cm]{\par\vspace{2pt}\hspace*{\fill}\blank[#1]\par}
+
+% -- A ragged-right X column and a centred fixed one -------------------------
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% -- A table row tall enough to write in -------------------------------------
+\newcommand{\tall}{\rule[-0.6em]{0pt}{1.9em}}
+
+% ---------------------------------------------------------------------------
+% COLUMN GRID. \colgrid{op}{row 1}{row 2}{answer row}
+% Each row is four entries: tens, ones, tenths, hundredths. The point column
+% sits between ones and tenths and is printed on all three rows, so it cannot
+% move. An entry is a digit, nothing, z (an orange box: write a 0 here) or Z
+% (an orange box with the 0 already written -- for the worked example).
+% ---------------------------------------------------------------------------
+\def\zz{z}
+\def\ZZ{Z}
+\def\pt{.}
+\newcommand{\gcell}[4][black]{%
+  \edef\gcE{#4}%
+  \ifx\gcE\zz
+    \filldraw[fill=cborange!14, draw=cborange!80, line width=0.8pt]
+      (#2,#3) rectangle ++(0.72,0.78);
+  \else\ifx\gcE\ZZ
+    \filldraw[fill=cborange!14, draw=cborange!80, line width=0.8pt]
+      (#2,#3) rectangle ++(0.72,0.78);
+    \node[font=\large\bfseries, text=cborange] at (#2+0.36,#3+0.39) {0};
+  \else
+    \draw[rulegray, line width=0.6pt] (#2,#3) rectangle ++(0.72,0.78);
+    \node[font=\large, text=#1] at (#2+0.36,#3+0.39) {\gcE};
+  \fi\fi}
+\newcommand{\colgrid}[4]{%
+  \begin{tikzpicture}[x=1cm, y=1cm, baseline=(current bounding box.north)]
+    \foreach \d [count=\i] in {#2}{%
+      \pgfmathsetmacro\xx{(\i-1)*0.72+(\i>2)*0.30}\gcell{\xx}{1.75}{\d}}
+    \foreach \d [count=\i] in {#3}{%
+      \pgfmathsetmacro\xx{(\i-1)*0.72+(\i>2)*0.30}\gcell{\xx}{0.85}{\d}}
+    \foreach \d [count=\i] in {#4}{%
+      \pgfmathsetmacro\xx{(\i-1)*0.72+(\i>2)*0.30}\gcell[cbteal]{\xx}{-0.25}{\d}}
+    \foreach \y in {1.75,0.85,-0.25}{\fill (1.59,\y+0.13) circle (0.06);}
+    \node[font=\Large] at (-0.42,1.24) {$#1$};
+    \draw[line width=1.2pt] (-0.75,0.72) -- (3.18,0.72);
+  \end{tikzpicture}}
+
+% ---------------------------------------------------------------------------
+% DIVISION FRAME. \bus{divisor}{dividend}
+% The dividend is a list of entries: a digit, . (the point) or z (an orange
+% box: write a 0 here and keep dividing). Above every digit is an empty box for
+% the answer; above the point the point is already printed. That is the whole
+% of "the point goes straight up", drawn.
+% ---------------------------------------------------------------------------
+% \bus[np]{..}{..} leaves the point OUT of the answer row: the student puts it
+% there. That is X12, the step after X11.
+\def\np{np}
+\newcommand{\bus}[3][]{%
+  \edef\busopt{#1}%
+  \begin{tikzpicture}[x=1cm, y=1cm, baseline=(current bounding box.north)]
+    \draw[line width=1.2pt] (-0.20,0.86) -- (0,0.86);
+    \foreach \d [count=\i] in {#3}{%
+      \pgfmathsetmacro\xx{(\i-1)*0.66}%
+      \edef\gcE{\d}%
+      \draw[line width=1.2pt] (\xx,0.86) -- (\xx+0.66,0.86);
+      \ifx\gcE\pt
+        \fill (\xx+0.33,0.12) circle (0.06);
+        \ifx\busopt\np\else\fill (\xx+0.33,1.10) circle (0.06);\fi
+      \else
+        \draw[rulegray, line width=0.6pt] (\xx+0.04,0.98) rectangle ++(0.58,0.74);
+        \ifx\gcE\zz
+          \filldraw[fill=cborange!14, draw=cborange!80, line width=0.8pt]
+            (\xx+0.04,0.04) rectangle ++(0.58,0.74);
+        \else
+          \node[font=\large] at (\xx+0.33,0.41) {\gcE};
+        \fi
+      \fi}
+    \draw[line width=1.2pt] (-0.20,-0.02) .. controls (-0.06,0.42) .. (-0.20,0.86);
+    \node[font=\large] at (-0.55,0.41) {#2};
+  \end{tikzpicture}}
+
+\begin{document}
+
+% ===========================================================================
+% COVER BLOCK
+% ===========================================================================
+\thispagestyle{fancy}
+
+\begin{tcolorbox}[enhanced, colback=cbgreen!8, colframe=cbgreen!8, arc=7pt,
+                  borderline west={6pt}{0pt}{cbgreen},
+                  left=18pt, right=14pt, top=11pt, bottom=11pt]
+  {\color{cbgreen!75!black}\bfseries YEAR 7\sep UNIT 4\sep EXTRA HOMEWORK}\\[6pt]
+  {\color{cbgreen!70!black}\Huge\bfseries Where the Point Goes}\\[10pt]
+  {\color{black!70}Comparing\sep adding and subtracting\sep multiplying and
+  dividing\sep the words that choose}
+  \iffr\\[4pt]{\small\itshape\color{black!60}O\`u va le point~: comparer, additionner
+  et soustraire, multiplier et diviser, les mots qui choisissent l'op\'eration}\fi
+\end{tcolorbox}
+
+\vspace{6pt}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+  \textbf{Name:} \blank[5.6cm] & \textbf{Class:} \blank[5.6cm] \\
+  \textbf{Date given:} \blank[4.6cm] &
+  \textbf{Date due:} {\color{cbred}\bfseries Friday 23 October 2026} \\
+\end{tabularx}
+
+\vspace{4pt}
+\begin{activity}[Why this sheet exists]
+  There is \key{nothing new to calculate} in Unit 4. $3.2 \times 7$ is $32 \times 7$,
+  and you already know how to do that. $8.24 \div 4$ is short division. The one new
+  question is \key{where the point goes}.
+  \fr{Il n'y a \textbf{rien de nouveau \`a calculer} dans l'unit\'e 4. $3.2 \times 7$,
+  c'est $32 \times 7$, et tu sais d\'ej\`a le faire. La seule nouvelle question~:
+  \textbf{o\`u va le point} (\eng{where the point goes})~?}
+
+  \medskip
+  Every question on this sheet prints its steps as \key{boxes}. Fill the boxes ---
+  that \emph{is} the method. An \key{orange box} means: write a \key{0} here.
+  \fr{Chaque question montre les \'etapes dans des cases. Remplis les cases~: c'est la
+  m\'ethode. Une case orange veut dire~: \'ecris un 0 ici.}
+
+  \medskip
+  \eng{No calculator.} \frin{Pas de calculatrice.}
+\end{activity}
+
+% ===========================================================================
+% PART 1 -- WHICH IS BIGGER?
+% ===========================================================================
+\hwsection[cbgreen]{Part 1 \textperiodcentered\ Which is bigger?\frin{Lequel est le
+plus grand~?}}
+
+% -- X1 ---------------------------------------------------------------------
+\qhead[cbgreen]{X1}{Two parts of a number}
+
+\noindent Write the \textbf{whole-number part} and the \textbf{decimal part}. The first
+one is done for you.
+\fr{\'Ecris la partie enti\`ere (\eng{whole-number part}) et la partie d\'ecimale
+(\eng{decimal part}). Le premier est fait pour toi.}
+
+\vspace{4pt}
+\begin{center}
+\begin{tabular}{|C{3.0cm}|C{4.4cm}|C{4.4cm}|}
+  \hline
+  \textbf{Number} & \textbf{Whole-number part} & \textbf{Decimal part} \\ \hline
+  $3.25$ \tall  & 3 & .25 \\ \hline
+  $14.6$ \tall  & & \\ \hline
+  $0.38$ \tall  & & \\ \hline
+  $7.05$ \tall  & & \\ \hline
+  $120.9$ \tall & & \\ \hline
+\end{tabular}
+\end{center}
+
+% -- X2 ---------------------------------------------------------------------
+% The deck's rule as a frame. The orange boxes are the zeros, and they are
+% printed exactly where they go, so "fill with zeros" is a thing the hand does.
+\qhead[cbgreen]{X2}{Fill with zeros, then compare}
+
+\begin{remember}[Compare decimals]
+  First look at the \key{whole-number parts}. If they are the same, \key{fill with
+  zeros} so both numbers have the same number of digits after the point. Then
+  compare. \quad $3.3 = 3.30$, \; and $3.30 > 3.25$.
+  \fr{Regarde d'abord les parties enti\`eres. Si elles sont pareilles, compl\`ete
+  avec des z\'eros (\eng{fill with zeros}), puis compare.}
+\end{remember}
+
+\vspace{2pt}
+\noindent Write a 0 in each orange box. Then write the \textbf{bigger} number. The
+first one is done for you.
+\fr{\'Ecris un 0 dans chaque case orange. Puis \'ecris le plus grand nombre
+(\eng{the bigger number}). Le premier est fait pour toi.}
+
+\vspace{4pt}
+\begin{center}
+\begin{tabular}{|C{3.4cm}|C{4.6cm}|C{3.4cm}|}
+  \hline
+  \textbf{The two numbers} & \textbf{Fill with zeros} & \textbf{Bigger} \\ \hline
+  $3.3$ and $3.25$ \tall   & $3.3${\color{cborange}\textbf{0}} and $3.25$ & $3.3$ \\ \hline
+  $0.6$ and $0.52$ \tall   & $0.6$\zb\ and $0.52$ & \\ \hline
+  $4.1$ and $4.09$ \tall   & $4.1$\zb\ and $4.09$ & \\ \hline
+  $2.75$ and $2.8$ \tall   & $2.75$ and $2.8$\zb & \\ \hline
+  $6.07$ and $6.7$ \tall   & $6.07$ and $6.7$\zb & \\ \hline
+  $0.5$ and $0.499$ \tall  & $0.5$\zb\zb\ and $0.499$ & \\ \hline
+\end{tabular}
+\end{center}
+
+% -- X3 ---------------------------------------------------------------------
+\qhead[cbgreen]{X3}{Put them in order}
+
+\noindent \textbf{Step 1.} Fill with zeros, so every number has three digits after the
+point.
+\fr{\'Etape 1. Compl\`ete avec des z\'eros~: trois chiffres apr\`es le point pour
+chaque nombre.}
+
+\vspace{8pt}
+\noindent\hspace*{1.6em}$2.4$\zb\zb \qquad\quad $2.38$\zb \qquad\quad $2.405$
+\qquad\quad $2.04$\zb
+
+\vspace{10pt}
+\noindent \textbf{Step 2.} Write the four numbers \textbf{in order of size, starting
+with the smallest}.
+\fr{\'Etape 2. Range les quatre nombres par ordre de taille, en commen\c{c}ant par le
+plus petit (\eng{starting with the smallest}).}
+
+\vspace{8pt}
+\noindent\hspace*{1.6em}\blank[2.6cm] \quad \blank[2.6cm] \quad \blank[2.6cm] \quad
+\blank[2.6cm]
+
+% -- X4 ---------------------------------------------------------------------
+\qhead[cbgreen]{X4}{The snail race}
+
+\noindent Three snails race 1 metre across Mr Bowen's desk. These are their times.
+\fr{Trois escargots font une course d'un m\`etre sur le bureau de Mr Bowen. Voici
+leurs temps.}
+
+\begin{wordhelp}[Word help]
+  \eng{fastest} = the \textbf{smallest} time. \quad \eng{slowest} = the
+  \textbf{biggest} time.
+  \fr{\eng{fastest} = le plus rapide = le plus petit temps. \quad \eng{slowest} = le
+  plus lent = le plus grand temps.}
+\end{wordhelp}
+
+\vspace{4pt}
+\begin{center}
+\begin{tabular}{|C{2.4cm}|C{3.0cm}|C{4.0cm}|}
+  \hline
+  \textbf{Snail} & \textbf{Time (min)} & \textbf{Fill with zeros} \\ \hline
+  A \tall & 8.5  & $8.5$\zb \\ \hline
+  B \tall & 8.25 & $8.25$ \\ \hline
+  C \tall & 8.05 & $8.05$ \\ \hline
+\end{tabular}
+\end{center}
+
+\vspace{4pt}
+\begin{enumerate}[label=(\alph*), itemsep=8pt]
+  \item Which snail was the \textbf{fastest}? \frin{le plus rapide} \hfill
+        \blank[2.6cm]
+  \item Which snail was the \textbf{slowest}? \frin{le plus lent} \hfill
+        \blank[2.6cm]
+\end{enumerate}
+
+% ===========================================================================
+% PART 2 -- LINE UP THE POINTS
+% ===========================================================================
+\hwsection[cbgreen]{Part 2 \textperiodcentered\ Line up the points\frin{Aligne les
+points}}
+
+\begin{remember}[Adding and subtracting]
+  Write the numbers with the \key{points in a line}. Fill the gaps with \key{zeros}.
+  Work from the right, like whole numbers. The point in the answer goes
+  \key{straight down}.
+  \fr{Aligne les points. Remplis les trous avec des z\'eros. Calcule en partant de la
+  droite. Le point de la r\'eponse descend tout droit (\eng{straight down}).}
+\end{remember}
+
+% -- X5 ---------------------------------------------------------------------
+\qhead[cbgreen]{X5}{The point is already there}
+
+\noindent Write a 0 in every orange box. Then add or subtract. The first one is done
+for you.
+\fr{\'Ecris un 0 dans chaque case orange. Puis additionne ou soustrais. Le premier est
+fait pour toi.}
+
+\vspace{8pt}
+\noindent
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(a)} $4.6 + 2.35$\par\vspace{6pt}
+  \colgrid{+}{,4,6,Z}{,2,3,5}{,6,9,5}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(b)} $12.4 + 3.08$\par\vspace{6pt}
+  \colgrid{+}{1,2,4,z}{,3,0,8}{,,,}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(c)} $7 + 0.45$\par\vspace{6pt}
+  \colgrid{+}{,7,z,z}{,0,4,5}{,,,}
+\end{minipage}
+
+\vspace{14pt}
+\noindent
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(d)} $8.5 - 2.36$\par\vspace{6pt}
+  \colgrid{-}{,8,5,z}{,2,3,6}{,,,}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(e)} $10 - 3.4$\par\vspace{6pt}
+  \colgrid{-}{1,0,z,}{,3,4,}{,,,}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(f)} $1 - 0.36$\par\vspace{6pt}
+  \colgrid{-}{,1,z,z}{,0,3,6}{,,,}
+\end{minipage}
+
+\vspace{8pt}
+\noindent \textbf{(g)} In \textbf{(c)}, where is the point in the number 7?
+\frin{O\`u est le point dans le nombre 7~?}
+\ansline[8.0cm]
+
+% -- X6 ---------------------------------------------------------------------
+\qhead[cbgreen]{X6}{Change}
+
+\begin{wordhelp}[Word help]
+  \eng{change}: in a shop, the money you get \textbf{back} when you pay too much.
+  \; 10 dollars is written \textbf{10.00}.
+  \fr{\eng{change} = la monnaie~: l'argent qu'on te rend quand tu paies trop. 10
+  dollars s'\'ecrit 10.00.}
+\end{wordhelp}
+
+\vspace{4pt}
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+  \textbf{(a)} Mr Bowen pays for a 6.45-dollar book with a 10-dollar note. How much
+  change does he get?
+  \fr{Mr Bowen paie un livre \`a 6.45 dollars avec un billet de 10 dollars. Combien
+  de monnaie (\eng{change}) re\c{c}oit-il~?}
+  \par\vspace{8pt}\centering
+  \colgrid{-}{1,0,z,z}{,6,4,5}{,,,}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+  \textbf{(b)} Mr Bowen pays for 12.80-dollar shoes with a 20-dollar note. How much
+  change does he get?
+  \fr{Mr Bowen paie des chaussures \`a 12.80 dollars avec un billet de 20 dollars.
+  Combien de monnaie re\c{c}oit-il~?}
+  \par\vspace{8pt}\centering
+  \colgrid{-}{2,0,z,z}{1,2,8,0}{,,,}
+\end{minipage}
+
+% -- X7 ---------------------------------------------------------------------
+% The scaffold comes off: the grid is still there, the digits are not. Where
+% each digit goes is now the student's job, and the point column is the only
+% guide.
+\qhead[cbgreen]{X7}{Now you line them up}
+
+% A minipage, so the instruction cannot be left at the foot of a page with the
+% grids overleaf (it was, on the first build).
+\noindent\begin{minipage}{\textwidth}
+Write the numbers in the grid yourself. The point goes in the point column. Write a
+0 in any gap after the point. Then work it out.
+\fr{\'Ecris toi-m\^eme les nombres dans la grille. Le point va dans la colonne du
+point. \'Ecris un 0 dans chaque trou apr\`es le point. Puis calcule.}
+
+\vspace{8pt}
+\noindent
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(a)} $5.07 + 12.6$\par\vspace{6pt}
+  \colgrid{+}{,,,}{,,,}{,,,}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(b)} $9 - 4.25$\par\vspace{6pt}
+  \colgrid{-}{,,,}{,,,}{,,,}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(c)} $0.8 + 3.45$\par\vspace{6pt}
+  \colgrid{+}{,,,}{,,,}{,,,}
+\end{minipage}
+\end{minipage}
+
+% ===========================================================================
+% PART 3 -- POINT OUT, POINT BACK
+% ===========================================================================
+\hwsection[cbgreen]{Part 3 \textperiodcentered\ Point out, point back\frin{Enl\`eve le
+point, remets le point}}
+
+\begin{remember}[Multiplying a decimal]
+  $3.2 \times 7$. \; Take the point out: $32 \times 7 = 224$. \; There is
+  \key{1 decimal place} in $3.2$, so put \key{1} back: $22.4$. \\
+  \key{Estimate} to check: $3 \times 7 = 21$. \; $22.4$ is close to 21. \checkmark
+  \fr{Enl\`eve le point et multiplie. Remets le point avec le m\^eme nombre de
+  d\'ecimales (\eng{decimal places}). Estime (\eng{estimate}) pour v\'erifier.}
+\end{remember}
+
+% -- X8 ---------------------------------------------------------------------
+% The scaffold fades: row 1 done, rows 2-3 with the calculations printed and
+% the numbers missing, rows 4-6 empty.
+\qhead[cbgreen]{X8}{Four steps}
+
+\noindent Fill in the table. The first one is done for you.
+\fr{Compl\`ete le tableau. Le premier est fait pour toi.}
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|C{2.3cm}|L|C{2.3cm}|C{2.1cm}|L|}
+  \hline
+  \textbf{Calculation} & \textbf{Point out} & \textbf{Decimal places} &
+  \textbf{Point back} & \textbf{Estimate} \\
+  \hline
+  $2.4 \times 3$ \tall & $24 \times 3 = 72$ & 1 & $7.2$ & $2 \times 3 = 6$ \\ \hline
+  $1.6 \times 4$ \tall & $16 \times 4 =$ & & & $2 \times 4 =$ \\ \hline
+  $0.9 \times 6$ \tall & $9 \times 6 =$ & & & $1 \times 6 =$ \\ \hline
+  $3.25 \times 2$ \tall & & & & \\ \hline
+  $5.3 \times 7$ \tall & & & & \\ \hline
+  $4.05 \times 3$ \tall & & & & \\ \hline
+\end{tabularx}
+
+% -- X9 ---------------------------------------------------------------------
+\qhead[cbgreen]{X9}{The estimate decides}
+
+\noindent All three answers have the same digits. Work out the estimate, then
+\textbf{circle} the answer that is close to it.
+\fr{Les trois r\'eponses ont les m\^emes chiffres. Calcule l'estimation, puis entoure
+(\eng{circle}) la r\'eponse qui en est proche.}
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|C{2.6cm}|L|C{1.8cm}C{1.8cm}C{1.8cm}|}
+  \hline
+  \textbf{Calculation} & \textbf{Estimate} &
+  \multicolumn{3}{c|}{\textbf{Circle one}} \\
+  \hline
+  $6.8 \times 4$ \tall  & $7 \times 4 =$ & $2.72$ & $27.2$ & $272$ \\ \hline
+  $3.9 \times 6$ \tall  & & $2.34$ & $23.4$ & $234$ \\ \hline
+  $12.5 \times 3$ \tall & & $3.75$ & $37.5$ & $375$ \\ \hline
+  $0.8 \times 9$ \tall  & & $0.72$ & $7.2$ & $72$ \\ \hline
+\end{tabularx}
+
+% -- X10 --------------------------------------------------------------------
+% X8's steps with a science label. Every mass is whole and every strength of
+% gravity is a decimal from the 3.1 deck, so it is never decimal x decimal.
+\qhead[cbgreen]{X10}{Lighter on the Moon}
+
+\noindent On the Moon, weight $=$ mass $\times$ \textbf{1.6}. On Mars, weight $=$ mass
+$\times$ \textbf{3.7}. Fill in the steps.
+\fr{Sur la Lune, poids (\eng{weight}) $=$ masse $\times$ 1.6. Sur Mars, poids $=$
+masse $\times$ 3.7. Compl\`ete les \'etapes.}
+
+\vspace{4pt}
+\begin{enumerate}[label=(\alph*), itemsep=10pt]
+  \item A 5 kg bag of rice on the \textbf{Moon}: \; $5 \times 1.6$
+        \par\vspace{4pt}Point out: \; $5 \times 16 =$ \blank[1.8cm] \qquad
+        Point back: \; \blank[1.8cm] N
+  \item A 3 kg cat on the \textbf{Moon}: \; $3 \times 1.6$
+        \par\vspace{4pt}Point out: \; $3 \times 16 =$ \blank[1.8cm] \qquad
+        Point back: \; \blank[1.8cm] N
+  \item A 7 kg bag on \textbf{Mars}: \; $7 \times 3.7$
+        \par\vspace{4pt}Point out: \; \blank[3.0cm] \qquad
+        Point back: \; \blank[1.8cm] N
+\end{enumerate}
+
+% ===========================================================================
+% PART 4 -- THE POINT GOES STRAIGHT UP
+% ===========================================================================
+\hwsection[cbgreen]{Part 4 \textperiodcentered\ The point goes straight up\frin{Le
+point monte tout droit}}
+
+\begin{remember}[Dividing a decimal]
+  Use short division. The point in the answer goes \key{straight up}. \\
+  If a digit is too small to divide, write \key{0} in the answer and carry. \\
+  Check with the \key{inverse calculation}: \; $8.24 \div 4 = 2.06$, because $2.06
+  \times 4 = 8.24$.
+  \fr{Le point monte tout droit (\eng{straight up}). Si un chiffre est trop petit pour
+  \^etre divis\'e, \'ecris 0. V\'erifie avec l'op\'eration inverse (\eng{inverse
+  calculation}).}
+\end{remember}
+
+% -- X11 ---------------------------------------------------------------------
+% (c) and (d) need a 0 in the answer; (f) needs a 0 in the orange box under
+% the line first, then keeps going.
+\qhead[cbgreen]{X11}{One digit in each box}
+
+\noindent The point is already in the answer. Write one digit in each box. In
+\textbf{(f)}, write a 0 in the orange box first. Then check.
+\fr{Le point est d\'ej\`a dans la r\'eponse. \'Ecris un chiffre dans chaque case. Dans
+\textbf{(f)}, \'ecris d'abord un 0 dans la case orange. Puis v\'erifie.}
+
+\vspace{8pt}
+\noindent
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(a)} $6.84 \div 2$\par\vspace{6pt}
+  \bus{2}{6,.,8,4}\par\vspace{6pt}
+  \small Check: \blank[1.3cm] $\times\, 2 = 6.84$
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(b)} $9.45 \div 3$\par\vspace{6pt}
+  \bus{3}{9,.,4,5}\par\vspace{6pt}
+  \small Check: \blank[1.3cm] $\times\, 3 = 9.45$
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(c)} $4.28 \div 4$\par\vspace{6pt}
+  \bus{4}{4,.,2,8}\par\vspace{6pt}
+  \small Check: \blank[1.3cm] $\times\, 4 = 4.28$
+\end{minipage}
+
+\vspace{14pt}
+\noindent
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(d)} $7.2 \div 8$\par\vspace{6pt}
+  \bus{8}{7,.,2}\par\vspace{6pt}
+  \small Check: \blank[1.3cm] $\times\, 8 = 7.2$
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(e)} $5.6 \div 7$\par\vspace{6pt}
+  \bus{7}{5,.,6}\par\vspace{6pt}
+  \small Check: \blank[1.3cm] $\times\, 7 = 5.6$
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(f)} $2.6 \div 4$\par\vspace{6pt}
+  \bus{4}{2,.,6,z}\par\vspace{6pt}
+  \small Check: \blank[1.3cm] $\times\, 4 = 2.6$
+\end{minipage}
+
+% -- X12 --------------------------------------------------------------------
+% The point is no longer printed in the answer row. (b) needs the orange 0
+% under the line; (c) needs two zeros in the answer: 0.08.
+\qhead[cbgreen]{X12}{Now you put the point up}
+
+\noindent\begin{minipage}{\textwidth}
+This time the point is \textbf{not} in the answer. Put it there yourself --- straight
+up. Then fill the boxes.
+\fr{Cette fois, le point n'est \textbf{pas} dans la r\'eponse. Mets-le toi-m\^eme ---
+tout droit vers le haut. Puis remplis les cases.}
+
+\vspace{8pt}
+\noindent
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(a)} $8.16 \div 4$\par\vspace{6pt}
+  \bus[np]{4}{8,.,1,6}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(b)} $9.3 \div 6$\par\vspace{6pt}
+  \bus[np]{6}{9,.,3,z}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}\centering
+  \textbf{(c)} $0.72 \div 9$\par\vspace{6pt}
+  \bus[np]{9}{0,.,7,2}
+\end{minipage}
+\end{minipage}
+
+% -- X13 --------------------------------------------------------------------
+% The mean is an add and a divide, and the divide is X11. Both data sets are
+% from Science 3.1: the falling-ball lab and the ruler catch.
+\qhead[cbgreen]{X13}{The mean, in two steps}
+
+\begin{remember}[The mean]
+  \key{Step 1:} add up all the values. \quad \key{Step 2:} divide by how many there
+  are.
+  \fr{La moyenne (\eng{mean})~: additionne toutes les valeurs, puis divise par le
+  nombre de valeurs.}
+\end{remember}
+
+\vspace{2pt}
+\begin{enumerate}[label=(\alph*), itemsep=10pt]
+  \item Mr Bowen drops a ball three times and times it. The times are
+        \textbf{0.46 s}, \textbf{0.44 s} and \textbf{0.45 s}. Find the mean.
+        \fr{Mr Bowen l\^ache une balle trois fois et chronom\`etre la chute. Trouve la
+        moyenne.}
+        \par\vspace{6pt}\hspace*{1.6em}Step 1: \; $0.46 + 0.44 + 0.45 =$ \blank[2.0cm]
+        \par\vspace{6pt}\hspace*{1.6em}Step 2: \; \blank[2.0cm] $\div\ 3 =$
+        \blank[2.0cm] s
+  \item His reaction times in the ruler catch are \textbf{0.21 s}, \textbf{0.19 s},
+        \textbf{0.23 s} and \textbf{0.17 s}. Find the mean.
+        \fr{Ses temps de r\'eaction (\eng{reaction times}) avec la r\`egle. Trouve la
+        moyenne.}
+        \par\vspace{6pt}\hspace*{1.6em}Step 1: \; \blank[6.0cm] $=$ \blank[2.0cm]
+        \par\vspace{6pt}\hspace*{1.6em}Step 2: \; \blank[2.0cm] $\div$ \nbox $=$
+        \blank[2.0cm] s
+\end{enumerate}
+
+% ===========================================================================
+% PART 5 -- MAKING IT EASIER
+% ===========================================================================
+\hwsection[cbgreen]{Part 5 \textperiodcentered\ Making it easier\frin{Calculer plus
+facilement}}
+
+% -- X14 --------------------------------------------------------------------
+\qhead[cbgreen]{X14}{``Of'' means $\times$}
+
+\begin{remember}[Half, a quarter, a tenth]
+  \key{half of} = $\div\, 2$ = $\times\, 0.5$ \qquad
+  \key{a quarter of} = $\div\, 4$ = $\times\, 0.25$ \qquad
+  \key{a tenth of} = $\div\, 10$ = $\times\, 0.1$
+  \fr{\eng{half of} = la moiti\'e de \quad \eng{a quarter of} = le quart de \quad
+  \eng{a tenth of} = le dixi\`eme de}
+\end{remember}
+
+\vspace{2pt}
+\noindent Fill in the table. The first one is done for you.
+\fr{Compl\`ete le tableau. Le premier est fait pour toi.}
+
+\vspace{4pt}
+\begin{center}
+\begin{tabular}{|C{4.0cm}|C{3.6cm}|C{2.6cm}|}
+  \hline
+  \textbf{In English} & \textbf{Calculation} & \textbf{Answer} \\ \hline
+  half of 18 \tall       & $18 \div 2$ & $9$ \\ \hline
+  a quarter of 20 \tall  & $20 \div$ \nbox & \\ \hline
+  a tenth of 35 \tall    & $35 \div$ \nbox & \\ \hline
+  half of 7 \tall        & & \\ \hline
+  a quarter of 6 \tall   & & \\ \hline
+\end{tabular}
+\end{center}
+
+% -- X15 --------------------------------------------------------------------
+\qhead[cbgreen]{X15}{Times 9 and times 11}
+
+\begin{remember}[Start from $\times\, 10$]
+  $\times\, 9$: do $\times\, 10$, then \key{take away} one lot. \qquad
+  $\times\, 11$: do $\times\, 10$, then \key{add} one lot.
+  \fr{$\times\, 9$~: fais $\times\, 10$, puis enl\`eve le nombre une fois.
+  \quad $\times\, 11$~: fais $\times\, 10$, puis ajoute le nombre une fois.}
+\end{remember}
+
+\vspace{4pt}
+\begin{enumerate}[label=(\alph*), itemsep=12pt]
+  \item $2.6 \times 9 = 26 - 2.6 = \blank[2.2cm]$
+  \item $1.4 \times 9 = \blank[1.6cm] - \blank[1.6cm] = \blank[2.2cm]$
+  \item $2.6 \times 11 = 26 + 2.6 = \blank[2.2cm]$
+  \item $3.2 \times 11 = \blank[1.6cm] + \blank[1.6cm] = \blank[2.2cm]$
+\end{enumerate}
+
+% -- X16 --------------------------------------------------------------------
+\qhead[cbgreen]{X16}{Split the number}
+
+\noindent \textbf{Partitioning} means splitting a number into easy parts:
+$4.3 = 4 + 0.3$.
+\fr{\eng{Partitioning} = d\'ecomposer un nombre en parties faciles.}
+
+\vspace{6pt}
+\begin{enumerate}[label=(\alph*), itemsep=12pt]
+  \item $4.2 \times 3 = 4 \times 3 + 0.2 \times 3 = \blank[1.6cm] + \blank[1.6cm] =
+        \blank[2.0cm]$
+  \item $5.3 \times 4 = 5 \times 4 + 0.3 \times 4 = \blank[1.6cm] + \blank[1.6cm] =
+        \blank[2.0cm]$
+  \item $7.4 \times 2 = \blank[1.6cm] + \blank[1.6cm] = \blank[2.0cm]$
+\end{enumerate}
+
+% ===========================================================================
+% PART 6 -- THE WORDS THAT CHOOSE
+% ===========================================================================
+\hwsection[cbgreen]{Part 6 \textperiodcentered\ The words that choose\frin{Les mots qui
+choisissent}}
+
+% -- X17 --------------------------------------------------------------------
+\qhead[cbgreen]{X17}{Which operation?}
+
+\noindent Write $+$, $-$, $\times$ or $\div$ for each one. The first one is done for
+you.
+\fr{\'Ecris $+$, $-$, $\times$ ou $\div$ pour chaque mot. Le premier est fait pour
+toi.}
+
+\vspace{4pt}
+% The words column is wider in the French copy, which adds a gloss to each row.
+\newlength{\wordcol}
+\iffr\setlength{\wordcol}{9.4cm}\else\setlength{\wordcol}{6.2cm}\fi
+\begin{center}
+\begin{tabular}{|p{\wordcol}|C{2.2cm}|}
+  \hline
+  \textbf{The words} & \textbf{Operation} \\ \hline
+  altogether \frin{en tout} \tall & $+$ \\ \hline
+  change \frin{la monnaie} \tall & \\ \hline
+  share equally \frin{partager en parts \'egales} \tall & \\ \hline
+  how much do 4 cost? \frin{combien co\^utent 4~?} \tall & \\ \hline
+  how much heavier? \frin{combien plus lourd~?} \tall & \\ \hline
+  the total \frin{le total} \tall & \\ \hline
+\end{tabular}
+\end{center}
+
+% -- X18 --------------------------------------------------------------------
+\qhead[cbgreen]{X18}{Calculation first}
+
+\noindent Write the calculation in the boxes: number, sign, number. Then the answer.
+\fr{\'Ecris le calcul dans les cases~: nombre, signe, nombre. Puis la r\'eponse.}
+
+\begin{enumerate}[label=(\alph*), itemsep=8pt]
+  \item A bottle of water costs 0.85 dollars. Mr Bowen buys 4. How much does he pay?
+        \fr{Une bouteille d'eau co\^ute 0.85 dollar. Mr Bowen en ach\`ete 4. Combien
+        paie-t-il~?}
+        \par\vspace{6pt}\hspace*{1.6em}\blank[2.0cm] \nbox \blank[1.6cm] $=$
+        \blank[2.2cm] dollars
+  \item Mr Bowen pays for a 2.65-dollar juice with a 5-dollar note. How much change
+        does he get?
+        \fr{Mr Bowen paie un jus \`a 2.65 dollars avec un billet de 5 dollars. Combien
+        de monnaie (\eng{change}) re\c{c}oit-il~?}
+        \par\vspace{6pt}\hspace*{1.6em}\blank[2.0cm] \nbox \blank[1.6cm] $=$
+        \blank[2.2cm] dollars
+  \item Mr Bowen and three friends share 9.20 dollars equally. How much does each
+        person get?
+        \fr{Mr Bowen et trois amis partagent 9.20 dollars en parts \'egales
+        (\eng{share equally}). Combien re\c{c}oit chaque personne~?}
+        \par\vspace{6pt}\hspace*{1.6em}How many people? \nbox \hfill
+        \blank[2.0cm] \nbox \blank[1.6cm] $=$ \blank[2.2cm] dollars
+  \item A bag of sugar has a mass of 0.5 kg. What is its \textbf{weight} on Earth?
+        Weight $=$ mass $\times$ 10.
+        \fr{Un sac de sucre a une masse de 0.5 kg. Quel est son poids (\eng{weight})
+        sur Terre~?}
+        \par\vspace{6pt}\hspace*{1.6em}\blank[2.0cm] \nbox \blank[1.6cm] $=$
+        \blank[2.2cm] N
+\end{enumerate}
+
+% -- X19 --------------------------------------------------------------------
+% The sheet in miniature: a multiplication with the point taken out and put
+% back, then a subtraction with the zeros written. Last on purpose.
+\qhead[cbgreen]{X19}{The whole sheet in one question}
+
+\noindent Mr Bowen buys 3 mangoes at 1.45 dollars each. He pays with a 5-dollar note.
+How much change does he get?
+\fr{Mr Bowen ach\`ete 3 mangues \`a 1.45 dollar chacune. Il paie avec un billet de 5
+dollars. Combien de monnaie re\c{c}oit-il~?}
+
+\vspace{8pt}
+\noindent\hspace*{1.6em}\textbf{Step 1.} The mangoes: \quad $145 \times 3 =$
+\blank[1.8cm], \; so $1.45 \times 3 =$ \blank[1.8cm] dollars.
+\fr{\'Etape 1. Les mangues.}
+
+\vspace{10pt}
+\noindent\hspace*{1.6em}\textbf{Step 2.} The change: \quad $5.00 \;-$ \blank[1.8cm]
+$=$ \blank[1.8cm] dollars.
+\fr{\'Etape 2. La monnaie.}
+
+\vspace{12pt}
+\noindent Work it out here. Write $5$ as $5.00$ and line up the points.
+\fr{Calcule ici. \'Ecris 5 comme 5.00 et aligne les points.}
+
+% Taller in the English copy, which has the room on its last page.
+\newlength{\finalboxht}
+\iffr\setlength{\finalboxht}{4.2cm}\else\setlength{\finalboxht}{7.0cm}\fi
+\begin{workspace}[\finalboxht]\end{workspace}
+
+% ===========================================================================
+% ANSWER KEY -- TEACHER COPY ONLY
+% ===========================================================================
+\ifkey
+\clearpage
+
+\hwsection[cbred]{Answer Key --- Teacher Copy}
+
+\linespread{1.0}\selectfont
+\setlist[enumerate]{itemsep=2pt, topsep=3pt, leftmargin=*}
+\setlist[itemize]{itemsep=2pt, topsep=3pt, leftmargin=*}
+
+\qhead[cbred]{X1}{Two parts of a number}
+\noindent $14.6$: 14 and .6 \sep $0.38$: 0 and .38 \sep $7.05$: 7 and .05 \sep
+$120.9$: 120 and .9
+
+\smallskip
+\noindent{\small $0.38$ is the row that gets a blank: there is a whole-number part, and
+it is 0. $7.05$ is the row that gets ``.5''. Both are the same habit --- not writing a
+zero that is holding a place --- and X2 depends on it.}
+
+\qhead[cbred]{X2}{Fill with zeros, then compare}
+\noindent $0.60$, bigger $0.6$ \sep $4.10$, bigger $4.1$ \sep $2.80$, bigger $2.8$ \sep
+$6.70$, bigger $6.7$ \sep $0.500$, bigger $0.5$
+
+\smallskip
+\noindent{\small \textbf{In every row the bigger number is the shorter one}, and that
+is on purpose: it is the opposite of what ``more digits'' suggests, and the zeros are
+what show it. \\
+$6.07$ against $6.7$ is the row to discuss: both have a 0 and a 7, and it is
+\emph{where} the 0 is that decides. The 0 in $6.07$ holds the tenths open; the 0 in
+$6.70$ adds nothing. \\
+$0.5$ against $0.499$ needs two boxes. A student who writes $0.50$ and compares $50$
+with $499$ has still been fooled by length.}
+
+\qhead[cbred]{X3}{Put them in order}
+\noindent Step 1: $2.400, \; 2.380, \; 2.405, \; 2.040$ \\
+Step 2: $2.04, \; 2.38, \; 2.4, \; 2.405$
+
+\smallskip
+\noindent{\small Accept the numbers written with or without their filled-in zeros. \\
+$2.4$ against $2.405$ is the close pair: $2.400 < 2.405$, so $2.4$ comes first. Expect
+$2.405$ before $2.4$ from a student who stopped filling at two places. $2.04$ first is
+the one most will get, because the zero is so visible.}
+
+\qhead[cbred]{X4}{The snail race}
+\noindent $8.50$ \sep (a) \textbf{C} ($8.05$) \sep (b) \textbf{A} ($8.5$)
+
+\smallskip
+\noindent{\small The slowest snail has the shortest-looking time. Expect B for (b) from
+anyone comparing length, and A for (a) from anyone who has read ``fastest'' as
+``biggest''. The word help is on the page; send them back to it.}
+
+\qhead[cbred]{X5}{The point is already there}
+\noindent (b) $12.40 + 3.08 = \mathbf{15.48}$ \quad (c) $7.00 + 0.45 = \mathbf{7.45}$
+\quad (d) $8.50 - 2.36 = \mathbf{6.14}$ \\
+(e) $10.0 - 3.4 = \mathbf{6.6}$ \quad (f) $1.00 - 0.36 = \mathbf{0.64}$ \\
+(g) After the 7: \; $7 = 7.00$. \; (Accept ``at the end'', ``after the 7''.)
+
+\smallskip
+\noindent{\small The grid makes the alignment impossible to get wrong, so what is left
+is the subtraction with zeros. (d) and (f) need a borrow from a 0 the student wrote
+themselves; expect $6.26$ for (d) and $1.36$ for (f) --- ``take the smaller digit from
+the bigger'' in each column, which a 0 on top invites. \\
+(g) is the question the grid answers by itself. A whole number has its point at the
+end, and that is why (c)'s 7 is in the ones column and not under the 4.}
+
+\qhead[cbred]{X6}{Change}
+\noindent (a) $10.00 - 6.45 = \mathbf{3.55}$ dollars \quad (b) $20.00 - 12.80 =
+\mathbf{7.20}$ dollars
+
+\smallskip
+\noindent{\small (b) answers in money, so $7.20$, not $7.2$ (HW 9's E3). \\
+(a) borrows across three zeros and is the hardest subtraction on the sheet. If it goes
+wrong, check it column by column from the right; the inverse ($3.55 + 6.45 = 10.00$)
+is the fastest way for the student to see it.}
+
+\qhead[cbred]{X7}{Now you line them up}
+\noindent (a) $5.07 + 12.60 = \mathbf{17.67}$ \quad (b) $9.00 - 4.25 = \mathbf{4.75}$
+\quad (c) $0.80 + 3.45 = \mathbf{4.25}$
+
+\smallskip
+\noindent{\small \textbf{Look at where the digits went before marking the answer.}
+(a) is the test: $12.6$ needs the tens column and $5.07$ does not, so a student who
+fills the grid from the left puts the 5 under the 1 and gets $62.67$ or similar. \\
+(b): the 9 goes in the ones, with two zeros after the point. Expect $9 - 4.25$
+written as $9.25 - 4$ or with the 9 in the hundredths.}
+
+\qhead[cbred]{X8}{Four steps}
+\noindent
+\begin{tabular}{@{}lllll@{}}
+  $1.6 \times 4$ & $16 \times 4 = 64$ & 1 & $6.4$ & $2 \times 4 = 8$ \\
+  $0.9 \times 6$ & $9 \times 6 = 54$ & 1 & $5.4$ & $1 \times 6 = 6$ \\
+  $3.25 \times 2$ & $325 \times 2 = 650$ & 2 & $6.50 = 6.5$ & $3 \times 2 = 6$ \\
+  $5.3 \times 7$ & $53 \times 7 = 371$ & 1 & $37.1$ & $5 \times 7 = 35$ \\
+  $4.05 \times 3$ & $405 \times 3 = 1215$ & 2 & $12.15$ & $4 \times 3 = 12$ \\
+\end{tabular}
+
+\smallskip
+\noindent{\small The third column is the step, and it counts decimal places in the
+\emph{question}, not digits. Expect 3 for $3.25$ from anyone counting all the digits;
+the answer then comes out $0.650$ and the estimate of 6 throws it out. \\
+$4.05$: the 0 is a digit and stays in when the point comes out --- $405$, not $45$. Expect
+$45 \times 3 = 135$, $1.35$, from anyone who drops it. The estimate (12) catches that too.}
+
+\qhead[cbred]{X9}{The estimate decides}
+\noindent $27.2$ ($7 \times 4 = 28$) \sep $23.4$ ($4 \times 6 = 24$) \sep $37.5$
+($12 \times 3 = 36$, or $13 \times 3 = 39$) \sep $7.2$ ($1 \times 9 = 9$)
+
+\smallskip
+\noindent{\small No multiplication is needed in this question and that is the point
+of it. A student who works out $68 \times 4$ first has done more than was asked and
+should be told so --- warmly. \\
+$0.8 \times 9$: the estimate $1 \times 9 = 9$ is a bit big, and $7.2$ is the only
+choice near it. Some will circle $0.72$ because ``$0.8$ is less than 1''; ask whether
+nine lots of nearly 1 could be less than 1.}
+
+\qhead[cbred]{X10}{Lighter on the Moon}
+\noindent (a) $80$, so $\mathbf{8}$ N ($8.0$) \quad (b) $48$, so $\mathbf{4.8}$ N \quad
+(c) $7 \times 37 = 259$, so $\mathbf{25.9}$ N
+
+\smallskip
+\noindent{\small (a) comes back as $8.0$, which is $8$; accept both (nothing was
+rounded). Expect $80$ from a student who skipped putting the point back --- a bag of
+rice weighing 80 N on the Moon would weigh more than on Earth (50 N), which is worth
+asking about. \\
+This is HW 9's F2 with smaller numbers and the steps printed.}
+
+\qhead[cbred]{X11}{One digit in each box}
+\noindent (a) $3.42$ \sep (b) $3.15$ \sep (c) $\mathbf{1.07}$ \sep (d) $\mathbf{0.9}$
+\sep (e) $\mathbf{0.8}$ \sep (f) $\mathbf{0.65}$ \\
+Checks: $3.42 \times 2$, $3.15 \times 3$, $1.07 \times 4$, $0.9 \times 8$, $0.8 \times
+7$, $0.65 \times 4$.
+
+\smallskip
+\noindent{\small (c), (d) and (e) each need a 0 written in an answer box. The frame
+has a box there, so a blank box is visible --- that is the scaffold doing its job.
+Expect $1.7$ for (c) if the student skipped the box. \\
+(d) and (e) start with ``8 into 7 will not go'': the 0 goes in the ones, then the
+remainder carries. \\
+(f) runs out of digits: $2.60$, and the orange 0 is where the last 5 comes from.
+Expect ``$0.6$ remainder 2''.}
+
+\qhead[cbred]{X12}{Now you put the point up}
+\noindent (a) $\mathbf{2.04}$ \quad (b) $9.30 \div 6 = \mathbf{1.55}$ \quad
+(c) $\mathbf{0.08}$
+
+\smallskip
+\noindent{\small Look for the point in the answer row first; it should sit exactly
+above the dividend's point. \\
+(c) is the hardest item in Part 4: $0 \div 9 = 0$, then $7 \div 9$ will not go, so a
+second 0, then $72 \div 9 = 8$. Expect $0.8$ and $8$. \\
+(b) needs the orange 0 to finish: $9.3 \div 6$ stops at $1.5$ remainder 3, and $30
+\div 6 = 5$ gives the last digit.}
+
+\qhead[cbred]{X13}{The mean, in two steps}
+\noindent (a) $0.46 + 0.44 + 0.45 = 1.35$, \; $1.35 \div 3 = \mathbf{0.45}$ s \\
+(b) $0.21 + 0.19 + 0.23 + 0.17 = 0.80$, \; $0.80 \div 4 = \mathbf{0.2}$ s
+
+\smallskip
+\noindent{\small (a) is the drop time from HW 9's F3, so a student doing both sheets
+meets $0.45$ s twice --- on purpose. \\
+(b): ``how many there are'' is 4, the box in Step 2. Expect $\div\ 2$ from a student who
+counted the digits after the point. The answer, $0.2$ s, is the reaction time the
+Science 3.1 deck quoted.}
+
+\qhead[cbred]{X14}{``Of'' means $\times$}
+\noindent a quarter of 20: $20 \div 4 = 5$ \sep a tenth of 35: $35 \div 10 = 3.5$ \sep
+half of 7: $7 \div 2 = 3.5$ \sep a quarter of 6: $6 \div 4 = 1.5$
+
+\smallskip
+\noindent{\small The last two rows have no calculation printed; a student who writes
+only the answer has skipped the column. \\
+``A quarter of 6'' is the hardest: $6 \div 4$ does not divide exactly, so it is short
+division with the point --- $6.0 \div 4 = 1.5$ --- which is Part 4 again.}
+
+\qhead[cbred]{X15}{Times 9 and times 11}
+\noindent (a) $23.4$ \quad (b) $14 - 1.4 = 12.6$ \quad (c) $28.6$ \quad (d) $32 + 3.2
+= 35.2$
+
+\smallskip
+\noindent{\small (a) and (b) are subtractions with a hidden zero: $26.0 - 2.6$. Expect
+$24.6$ from $26 - 2 + 0.6$: the 0.6 added instead of taken away. Writing $26.0$ in a
+column fixes it.}
+
+\qhead[cbred]{X16}{Split the number}
+\noindent (a) $12 + 0.6 = 12.6$ \quad (b) $20 + 1.2 = 21.2$ \quad (c) $7 \times 2 + 0.4
+\times 2 = 14 + 0.8 = 14.8$
+
+\smallskip
+\noindent{\small $0.3 \times 4 = 1.2$ is the one to watch: it crosses 1. Expect
+$0.12$, which is a decimal place counted in the wrong place.}
+
+\qhead[cbred]{X17}{Which operation?}
+\noindent change $-$ \sep share equally $\div$ \sep how much do 4 cost? $\times$ \sep how
+much heavier? $-$ \sep the total $+$
+
+\smallskip
+\noindent{\small ``How much do 4 cost?'' is $\times$, and some will write $+$ --- which
+is not wrong, just slow (repeated addition). Accept it with a word.}
+
+\qhead[cbred]{X18}{Calculation first}
+\noindent (a) $0.85 \times 4 = 3.40$ dollars \sep (b) $5.00 - 2.65 = 2.35$ dollars \\
+(c) \textbf{4} people; $9.20 \div 4 = 2.30$ dollars \sep (d) $0.5 \times 10 = 5$ N
+
+\smallskip
+\noindent{\small (c) is HW 9's E2(c) with the box that makes the student count: ``Mr
+Bowen and three friends'' is four. A 3 in the people box is the English error, and
+this sheet catches it before the division starts. \\
+(d) is the one science question on the sheet, and the number comes from Science 3.1:
+$W = m \times 10$.}
+
+\qhead[cbred]{X19}{The whole sheet in one question}
+\noindent Step 1: $145 \times 3 = 435$, so $\mathbf{4.35}$ dollars. \quad Step 2:
+$5.00 - 4.35 = \mathbf{0.65}$ dollars.
+
+\smallskip
+\noindent{\small Point out and back (Part 3), then zeros written and subtracted (Part
+2), with ``change'' choosing the operation (Part 6). Expect $1.35$ from a student who
+subtracted $4.35$ from $5.00$ the easy way round in the tenths (X5(d)'s error).}
+
+\fi
+\end{document}

@@ -1,0 +1,1235 @@
+% homework/hw09/hw09.tex
+% Year 7 - Homework Packet 9: Lighter on the Moon.
+%
+% Covers Mathematics 4.1-4.4 (compare, add, subtract, multiply and divide
+% decimals), 4.5 (making calculations easier) and the Unit 4 review (x and / by
+% a 2-digit number, money to 2 d.p., conjecture and the mean). Section F takes
+% Science 3.1 (gravity, weight and mass) and uses it ONLY as a place to do
+% decimals -- at the teacher's request, there is no science question on this
+% packet that is not answered with a decimal.
+%
+% THE SPINE IS THAT NOTHING IN UNIT 4 IS NEW ARITHMETIC. 3.2 x 7 is 32 x 7 with
+% the point put back; 8.24 / 4 is short division with the point straight up.
+% The only new question is where the point goes, and the estimate answers it.
+% Every section asks that question in a different way.
+%
+% Section F is why this packet exists. F3 is the falling-ball lab done with a
+% stopwatch: four drop times each for a heavy ball and a light ball. The
+% fastest SINGLE time belongs to the light ball, so a student who reads one
+% number gets the science wrong. Both MEANS are 0.45 s. The decimals answer
+% "do heavy things fall faster?", which is the question 3.1 opened on, and the
+% spread of the times is the 0.2 s reaction time from slide 43.
+%
+% Nothing untaught:
+%   * Strengths of gravity are the 3.1 deck's own (widgets.jsx, Mr Bowen in
+%     Space): Moon 1.6, Mars 3.7, Uranus 8.7, Venus 8.9, Earth 10, Neptune 11,
+%     Jupiter 25. Mercury (3.7) and Saturn (10) are left out so F4 has ONE
+%     answer.
+%   * No decimal x decimal anywhere: every weight is a whole-number mass times
+%     a decimal strength, which is 4.3 and the review. "A quarter of 0.5" in E4
+%     is 0.5 / 4, which is 4.4.
+%   * The deck already did Mr Bowen's 80 kg on every planet, so F2 uses a 15 kg
+%     backpack, and F4 runs the deck's question backwards.
+%   * No number is lifted from the workbook or from the decks' practice panels.
+%
+% House style is shared: see homework/hw-style.tex. Method: the new-homework
+% skill. Source is pure ASCII on purpose.
+%
+% Build:  pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw09
+
+\documentclass[12pt,a4paper]{article}
+
+% -- Answer key switch -------------------------------------------------------
+\newif\ifkey
+\ifdefined\TEACHER\keytrue\else
+  \keyfalse        % \keyfalse = student copy   |   \keytrue = teacher copy
+\fi
+
+% -- Language switch ---------------------------------------------------------
+% The French copy (hw09-fr.pdf) is this file built with \FRENCH defined. See
+% hw09x.tex, which introduced the scheme, and the README.
+\newif\iffr
+\ifdefined\FRENCH\frtrue\fi
+
+% -- House style -------------------------------------------------------------
+\input{../hw-style.tex}
+
+% -- French support lines ----------------------------------------------------
+% \fr{...}  a French line of its own, grey and italic, under the English.
+% \frin{...} a French gloss in brackets, inline -- for table cells and labels.
+% Both are EMPTY in the English copy, so the English layout is the one that was
+% checked to ten pages. Key English words stay English inside the French, in
+% blue, because the English is what is being learned.
+% Both start with \unskip: the line break before \fr is a space, and in the
+% English copy it would otherwise sit at the end of the line and move a break
+% (it did, in E2(d)).
+\newcommand{\fr}[1]{\unskip\iffr\par\vspace{1pt}\noindent{\small\itshape\color{black!60}#1}\par\fi}
+\newcommand{\frin}[1]{\unskip\iffr\ {\small\itshape\color{black!60}(#1)}\fi}
+\newcommand{\fq}[1]{\guillemotleft\,#1\,\guillemotright}
+
+% -- Per-packet running head -------------------------------------------------
+\iffr
+  \fancyhead[L]{\small\color{black!55}Year 7\sep Homework 9\sep English /
+    Fran\c{c}ais}
+\else
+  \fancyhead[L]{\small\color{black!55}Year 7\sep Homework 9}
+\fi
+
+% -- A group of writing lines that will not be split -------------------------
+% See hw06.tex: \wlines is a run of separate hboxes and TeX will break in the
+% middle of one, stranding a single rule at the top of the next page.
+\newcommand{\qlines}[1]{\par\needspace{\numexpr#1+1\relax\baselineskip}\wlines{#1}}
+
+% -- A box to write one sign or number in ------------------------------------
+\newcommand{\nbox}{\ \fbox{\rule{0pt}{1.05em}\rule{1.0em}{0pt}}\ }
+
+% -- An answer blank that will not cause an overfull line ---------------------
+% "\hfill \blank[..]" at the end of a wrapping \item overflows the margin when
+% the text happens to fill its last line. \ansline puts the blank on a line of
+% its own, right-aligned, which cannot overflow.
+\newcommand{\ansline}[1][4.4cm]{\par\vspace{2pt}\hspace*{\fill}\blank[#1]\par}
+
+% -- "Calculation: ____  Answer: ____" on a line of its own -------------------
+% The calculation comes FIRST on the line on purpose: it is the thing to write
+% first, and the packet says so on the cover.
+\newcommand{\calcans}[1][6.6cm]{\par\vspace{5pt}\noindent\hspace*{1.6em}%
+  \textbf{Calculation:} \blank[#1] \hfill \textbf{Answer:} \blank[3.0cm]\par}
+
+% -- A ragged-right X column -------------------------------------------------
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+% -- A centred fixed-width column --------------------------------------------
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% -- One calculation with a box to work it in --------------------------------
+% Three to a row. The calculation sits above its own box so the two cannot be
+% separated by a page break.
+\newcommand{\wsq}[3][3.1cm]{%
+  \begin{minipage}[t]{0.315\textwidth}
+    \textbf{(#2)}\; $#3$
+    \begin{workspace}[#1]\end{workspace}
+  \end{minipage}}
+
+% -- Two to a row, for the longer ones ---------------------------------------
+\newcommand{\wsh}[3][3.4cm]{%
+  \begin{minipage}[t]{0.485\textwidth}
+    \textbf{(#2)}\; $#3$
+    \begin{workspace}[#1]\end{workspace}
+  \end{minipage}}
+
+% -- A table row tall enough to write in -------------------------------------
+\newcommand{\tall}{\rule[-0.6em]{0pt}{1.9em}}
+
+\begin{document}
+
+% ===========================================================================
+% COVER BLOCK
+% ===========================================================================
+\thispagestyle{fancy}
+
+\begin{tcolorbox}[enhanced, colback=cbpurple!7, colframe=cbpurple!7, arc=7pt,
+                  borderline west={6pt}{0pt}{cbpurple},
+                  left=18pt, right=14pt, top=10pt, bottom=10pt]
+  {\color{cbpurple}\bfseries YEAR 7\sep UNIT 4\sep HOMEWORK 9}\\[5pt]
+  {\color{cbpurple}\Huge\bfseries Lighter on the Moon}\\[7pt]
+  {\color{black!70}Mathematics 4.1--4.5 and the Unit 4 review --- decimals}\\
+  {\color{black!70}Section F --- Science 3.1 in decimals: weight, gravity and falling}
+  \iffr\\[4pt]{\small\itshape\color{black!60}Plus l\'eger sur la Lune~: les
+  d\'ecimaux, et la gravit\'e en d\'ecimaux}\fi
+\end{tcolorbox}
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+  \textbf{Name:} \blank[5.6cm] & \textbf{Class:} \blank[5.6cm] \\
+  \textbf{Date given:} \blank[4.6cm] &
+  \textbf{Date due:} {\color{cbred}\bfseries Friday 23 October 2026} \\
+\end{tabularx}
+
+\vspace{2pt}
+\begin{activity}
+  Six sections. A to E are the decimal lessons. F is the science from 3.1, and
+  \key{every answer in F is a decimal}.
+  \fr{Six parties. A \`a E~: les le\c{c}ons sur les d\'ecimaux. F~: la science de la
+  le\c{c}on 3.1 --- toutes les r\'eponses sont des d\'ecimaux.}
+  \begin{itemize}
+    \item \key{Write the calculation before you write the answer.}
+          \frin{\'Ecris le calcul avant la r\'eponse.}
+    \item \key{Estimate first.} The estimate tells you where the point goes.
+          \frin{Estime d'abord~: l'estimation te dit o\`u va le point.}
+    \item \eng{No calculator.} In F, answer in \key{full English sentences}
+          where it says so.
+          \frin{Pas de calculatrice. Dans F, r\'eponds par des phrases compl\`etes
+          \textbf{en anglais}.}
+  \end{itemize}
+\end{activity}
+
+% ===========================================================================
+% SECTION A -- MATHEMATICS 4.1
+% ===========================================================================
+\hwsection{Section A \textperiodcentered\ Mathematics 4.1 --- Comparing and Ordering}
+
+% -- A1 ---------------------------------------------------------------------
+% The way in, and it is meant to be easy. Part (b) is the whole of 4.1 with
+% the line still in front of them: once 5.05 and 5.45 are drawn, the order is
+% just reading left to right.
+\qhead{A1}{Put each number on the line}
+
+\noindent The line goes from \textbf{5} to \textbf{6}. Every small line is
+\textbf{0.1}. \textbf{(a)} Draw an arrow to each number and write its letter.
+\fr{La droite va de 5 \`a 6. Chaque petit trait vaut 0.1. (a) Dessine une fl\`eche
+vers chaque nombre et \'ecris sa lettre.}
+
+\vspace{4pt}
+\begin{center}
+\begin{tikzpicture}[x=1.45cm, y=1cm, line width=0.9pt]
+  \path (0,0.95) -- (10,0.95);  % room above the line for arrows and letters
+  \draw[cbteal] (-0.4,0) -- (10.4,0);
+  \foreach \n in {0,...,10}{\draw[cbteal] (\n,-0.15) -- (\n,0.15);}
+  \draw[cbteal, line width=1.6pt] (0,-0.26) -- (0,0.26);
+  \draw[cbteal, line width=1.6pt] (5,-0.22) -- (5,0.22);
+  \draw[cbteal, line width=1.6pt] (10,-0.26) -- (10,0.26);
+  \node[below=4pt, font=\bfseries] at (0,-0.26) {$5$};
+  \node[below=4pt, font=\small] at (5,-0.22) {$5.5$};
+  \node[below=4pt, font=\bfseries] at (10,-0.26) {$6$};
+\end{tikzpicture}
+\end{center}
+
+\vspace{2pt}
+\noindent
+\begin{tabularx}{\textwidth}{|C{1.6cm}|C{1.6cm}|C{1.6cm}|C{1.6cm}|X}
+  \cline{1-4}
+  \textbf{A} \; $5.2$ \tall & \textbf{B} \; $5.9$ & \textbf{C} \; $5.45$ &
+  \textbf{D} \; $5.05$ & \\
+  \cline{1-4}
+\end{tabularx}
+
+\vspace{6pt}
+\noindent \textbf{(b)} Now write the four numbers \textbf{in order of size, starting
+with the smallest}.
+\fr{(b) Range les quatre nombres par ordre de taille, en commen\c{c}ant par le plus
+petit (\eng{starting with the smallest}).}
+\ansline[9.0cm]
+
+% -- A2 ---------------------------------------------------------------------
+\qhead{A2}{Which is bigger?\frin{Lequel est le plus grand~?}}
+
+\begin{remember}[Compare decimals]
+  First look at the \key{whole-number parts}. If they are the same, \key{fill with
+  zeros} so both numbers have the same number of digits after the point, then
+  compare. \quad $3.3 = 3.30$, \; and $3.30 > 3.25$.
+  \fr{Regarde d'abord les parties enti\`eres (\eng{whole-number parts}). Si elles sont
+  pareilles, compl\`ete avec des z\'eros (\eng{fill with zeros}), puis compare.}
+\end{remember}
+
+\vspace{2pt}
+% A minipage so the instruction cannot be left at the foot of a page with the
+% six boxes on the next one (it was, on the first build).
+\noindent\begin{minipage}{\textwidth}
+Write $<$, $>$ or $=$ in each box.
+\fr{\'Ecris $<$, $>$ ou $=$ dans chaque case.}
+
+\vspace{4pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*), itemsep=11pt]
+  \item $7.4 \;\nbox\; 7.38$
+  \item $0.6 \;\nbox\; 0.59$
+  \item $3.05 \;\nbox\; 3.5$
+  \item $12.3 \;\nbox\; 9.99$
+  \item $0.70 \;\nbox\; 0.7$
+  \item $4.125 \;\nbox\; 4.13$
+\end{enumerate}
+\end{multicols}
+\end{minipage}
+
+\vspace{12pt}
+\noindent \textbf{(g)} Mr Bowen says: \emph{``6.18 is bigger than 6.2, because 18
+is bigger than 2.''}
+\fr{Mr Bowen dit~: \guillemotleft\,6.18 est plus grand que 6.2, parce que 18 est plus
+grand que 2.\,\guillemotright}
+
+\vspace{3pt}
+\noindent\hspace*{1.6em}(i) Write how you \textbf{say} each number in English.
+\frin{Comment dit-on chaque nombre en anglais~?}
+
+\vspace{4pt}
+\noindent\hspace*{1.6em}$6.18$: \blank[5.2cm] \hfill $6.2$: \blank[5.2cm]
+
+\vspace{6pt}
+\noindent\hspace*{1.6em}(ii) Is he right? Explain. \;
+Start: \eng{``Mr Bowen is \ldots\ because \ldots''}
+\fr{\hspace*{1.6em}A-t-il raison~? Explique, en anglais.}
+\qlines{2}
+
+% -- A3 ---------------------------------------------------------------------
+% Two lists, two directions. In the long jump the winner is the BIGGEST number
+% and it is the shortest-looking one (4.8). In the swim the winner is the
+% SMALLEST number and the loser is the shortest-looking one (31.4). (e) asks
+% for FOURTH, not the deck's "third": with five lanes the third is the middle
+% from either end and cannot catch a student counting from the wrong end.
+\qhead{A3}{Who won?\frin{Qui a gagn\'e~?}}
+
+\begin{wordhelp}[Word help --- the words that tell you which end]
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{16pt}}X@{}}
+    \eng{longest} & the biggest distance \frin{le plus long} \\
+    \eng{fastest} & the \textbf{smallest} time. Fast runners and swimmers take
+      \textbf{less} time \frin{le plus rapide = le plus petit temps} \\
+    \eng{fourth} & number 4 in the order. \emph{Fourth fastest}: the fourth smallest
+      time \frin{quatri\`eme} \\
+  \end{tabularx}
+\end{wordhelp}
+
+\vspace{4pt}
+\renewcommand{\arraystretch}{1.25}%
+\noindent
+\begin{minipage}[t]{0.47\textwidth}
+  \centering\textbf{Long jump}\par\vspace{3pt}
+  \begin{tabular}{|C{2.0cm}|C{2.6cm}|}
+    \hline
+    \textbf{Jumper} & \textbf{Distance (m)} \\ \hline
+    A & 4.8  \\ \hline
+    B & 4.08 \\ \hline
+    C & 4.75 \\ \hline
+    D & 4.79 \\ \hline
+    E & 4.5  \\ \hline
+  \end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\textwidth}
+  \centering\textbf{50 m swim}\par\vspace{3pt}
+  \begin{tabular}{|C{2.0cm}|C{2.6cm}|}
+    \hline
+    \textbf{Lane} & \textbf{Time (s)} \\ \hline
+    1 & 31.4  \\ \hline
+    2 & 30.95 \\ \hline
+    3 & 31.09 \\ \hline
+    4 & 30.9  \\ \hline
+    5 & 31.12 \\ \hline
+  \end{tabular}
+\end{minipage}
+\renewcommand{\arraystretch}{1.45}%
+
+\vspace{8pt}
+\begin{enumerate}[label=(\alph*), itemsep=8pt]
+  \item Write the five jumps in order of size, starting with the smallest.
+        \fr{Range les cinq sauts par ordre de taille, du plus petit au plus grand.}
+        \ansline[9.0cm]
+  \item The \textbf{longest} jump wins. Which jumper won? \hfill \blank[2.6cm]
+        \fr{Le saut le plus long gagne. Qui a gagn\'e~?}
+  \item Write the five swim times in order of size, starting with the smallest.
+        \fr{Range les cinq temps de natation, du plus petit au plus grand.}
+        \ansline[9.0cm]
+  \item Which lane was the \textbf{fastest}? \frin{le plus rapide} \hfill
+        \blank[2.6cm]
+  \item Which lane came \textbf{fourth}? \frin{quatri\`eme} \hfill \blank[2.6cm]
+  \item Which lane was the \textbf{slowest}? \frin{le plus lent} \hfill
+        \blank[2.6cm]
+\end{enumerate}
+
+% ===========================================================================
+% SECTION B -- MATHEMATICS 4.2
+% ===========================================================================
+\hwsection{Section B \textperiodcentered\ Mathematics 4.2 --- Adding and Subtracting}
+
+% -- B1 ---------------------------------------------------------------------
+\qhead{B1}{Use a written method}
+
+\begin{remember}[Line up the points]
+  A \key{written method} is in columns on paper. Write the numbers with the
+  \key{points in a line}. Fill the gaps with \key{zeros}. Work from the right, like
+  whole numbers. The point in the answer goes \key{straight down}.
+  \fr{M\'ethode \'ecrite (\eng{written method})~: en colonnes. Aligne les points.
+  Remplis les trous avec des z\'eros. Le point de la r\'eponse descend tout droit
+  (\eng{straight down}).}
+\end{remember}
+
+\vspace{4pt}
+\noindent
+\wsq[2.4cm]{a}{5.36 + 2.7}\hfill\wsq[2.4cm]{b}{14.8 + 3.65}\hfill\wsq[2.4cm]{c}{0.45 + 6 + 1.9}
+
+\vspace{4pt}
+\noindent
+\wsq[2.4cm]{d}{9.4 - 3.75}\hfill\wsq[2.4cm]{e}{12 - 4.36}\hfill\wsq[2.4cm]{f}{1 - 0.65}
+
+% -- B2 ---------------------------------------------------------------------
+% The 4.2 mental move: round to a whole number, then give back. The give-back
+% sign is the whole question -- (b) and (d) give back with a PLUS.
+\qhead{B2}{Use a mental method}
+
+\noindent A \eng{mental method} is in your head. Change one number to a whole
+number, then give back the difference. Write the easier calculation, then the answer.
+The first one is done for you.
+\fr{Calcul mental (\eng{mental method})~: dans ta t\^ete. Change un nombre en nombre
+entier, puis rends la diff\'erence. \'Ecris le calcul plus facile, puis la r\'eponse.
+Le premier est fait pour toi.}
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|C{3.0cm}|L|C{2.6cm}|}
+  \hline
+  \textbf{Calculation} & \textbf{The easier way} & \textbf{Answer} \\
+  \hline
+  $5.8 + 2.9$ \tall & $5.8 + 3 - 0.1$ & $8.7$ \\ \hline
+  $3.9 + 2.5$ \tall & & \\ \hline
+  $7.3 - 1.9$ \tall & & \\ \hline
+  $6.99 + 3.45$ \tall & & \\ \hline
+  $12.6 - 4.98$ \tall & & \\ \hline
+\end{tabularx}
+
+% ===========================================================================
+% SECTION C -- MATHEMATICS 4.3 AND 4.4
+% ===========================================================================
+\hwsection{Section C \textperiodcentered\ Mathematics 4.3--4.4 --- Multiplying and Dividing}
+
+% -- C1 ---------------------------------------------------------------------
+\qhead{C1}{Point out, point back}
+
+\begin{remember}[Multiplying a decimal]
+  Point out: $32 \times 7 = 224$. \; Point back, \key{same number of decimal
+  places}: $3.2 \times 7 = 22.4$ \\
+  \key{Estimate} to check: \; $3 \times 7 = 21$, and $22.4$ is close to 21.
+  \fr{Enl\`eve le point et multiplie. Remets le point avec le m\^eme nombre de
+  d\'ecimales (\eng{decimal places}). Estime (\eng{estimate}) pour v\'erifier.}
+\end{remember}
+
+\vspace{2pt}
+\noindent Fill in the table. The first one is done for you.
+\fr{Compl\`ete le tableau. Le premier est fait pour toi.}
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|C{2.6cm}|L|C{3.5cm}|C{2.4cm}|}
+  \hline
+  \textbf{Calculation} & \textbf{Estimate} & \textbf{Without the point} &
+  \textbf{Answer} \\
+  \hline
+  $4.6 \times 3$ \tall & $5 \times 3 = 15$ & $46 \times 3 = 138$ & $13.8$ \\ \hline
+  $6.4 \times 5$ \tall & & & \\ \hline
+  $0.7 \times 8$ \tall & & & \\ \hline
+  $2.35 \times 4$ \tall & & & \\ \hline
+  $8.15 \times 2$ \tall & & & \\ \hline
+\end{tabularx}
+
+% -- C2 ---------------------------------------------------------------------
+\qhead{C2}{The point goes straight up}
+
+\begin{remember}[Dividing a decimal]
+  Use short division. The point in the answer goes \key{straight up}. \\
+  If a digit is too small to divide, write \key{0} and carry it. \\
+  Check with the \key{inverse calculation}: \; $8.24 \div 4 = 2.06$ \; because \;
+  $2.06 \times 4 = 8.24$.
+  \fr{Le point monte tout droit (\eng{straight up}). Si un chiffre est trop petit pour
+  \^etre divis\'e, \'ecris 0. V\'erifie avec l'op\'eration inverse (\eng{inverse
+  calculation}).}
+\end{remember}
+
+\vspace{4pt}
+\noindent
+\wsq[2.45cm]{a}{7.56 \div 3}\hfill\wsq[2.45cm]{b}{6.24 \div 6}\hfill\wsq[2.45cm]{c}{0.84 \div 7}
+
+\vspace{4pt}
+\noindent
+\wsq[2.45cm]{d}{5.4 \div 4}\hfill\wsq[2.45cm]{e}{16.2 \div 5}\hfill\wsq[2.45cm]{f}{8.08 \div 8}
+
+\vspace{4pt}
+% One line, so (g) cannot be split from its blanks (it was, on the first build).
+\noindent \textbf{(g)} Check \textbf{(b)} with the inverse calculation. \hfill
+\blank[2.2cm] $\times$ \blank[1.4cm] $=$ \blank[2.2cm]
+\fr{(g) V\'erifie (b) avec l'op\'eration inverse.}
+
+% -- C3 ---------------------------------------------------------------------
+\qhead{C3}{One fact, five answers}
+
+\noindent You are given one fact. \textbf{Do not multiply again.} Use the fact, and
+an estimate to decide where the point goes.
+\fr{Tu as un seul calcul. \textbf{Ne multiplie pas encore une fois.} Utilise-le, avec
+une estimation, pour savoir o\`u va le point.}
+
+\vspace{6pt}
+\begin{center}
+\expr{38 \times 27 = 1026}
+\end{center}
+
+\vspace{4pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*), itemsep=12pt]
+  \item $3.8 \times 27 = \blank[1.7cm]$
+  \item $0.38 \times 27 = \blank[1.7cm]$
+  \item $38 \times 2.7 = \blank[1.7cm]$
+  \item $102.6 \div 27 = \blank[1.7cm]$
+  \item $10.26 \div 27 = \blank[1.7cm]$
+\end{enumerate}
+\end{multicols}
+
+\vspace{2pt}
+% A minipage: on one build the two lines landed on two different pages.
+\noindent\begin{minipage}{\textwidth}
+\textbf{(f)} Two of your answers are the same. Which two, and why?
+\fr{Deux de tes r\'eponses sont pareilles. Lesquelles, et pourquoi~?}
+\wlines{2}
+\end{minipage}
+
+% ===========================================================================
+% SECTION D -- MATHEMATICS 4.5
+% ===========================================================================
+\hwsection{Section D \textperiodcentered\ Mathematics 4.5 --- Making Calculations Easier}
+
+% -- D1 ---------------------------------------------------------------------
+\qhead{D1}{Decimals as fractions}
+
+\begin{wordhelp}[Word help]
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{16pt}}X@{}}
+    \eng{equivalent} & equal in value, but written differently. $0.3$ and
+      $\frac{3}{10}$ are equivalent \frin{\'equivalent} \\
+    \eng{tenths} \sep \eng{hundredths} & the column of the \textbf{last} digit is the
+      bottom number \frin{dixi\`emes, centi\`emes} \\
+  \end{tabularx}
+\end{wordhelp}
+
+\vspace{4pt}
+\noindent Write each decimal as a fraction, and each fraction as a decimal.
+\fr{\'Ecris chaque d\'ecimal en fraction, et chaque fraction en d\'ecimal.}
+
+\vspace{4pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*), itemsep=14pt]
+  \item $0.7 = \blank[1.6cm]$
+  \item $0.03 = \blank[1.6cm]$
+  \item $0.31 = \blank[1.6cm]$
+  \item $0.6 = \blank[1.6cm]$
+  \item $\frac{8}{100} = \blank[1.6cm]$
+  \item $\frac{51}{100} = \blank[1.6cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- D2 ---------------------------------------------------------------------
+% Calculation -> English in rows 2-3, English -> calculation in rows 4-6. The
+% English point is that "of" means x.
+\qhead{D2}{Half of, a quarter of, a tenth of}
+
+\begin{remember}[In English, ``of'' often means $\times$]
+  $\times\, 0.5$ = \key{half of} = $\div\, 2$ \qquad
+  $\times\, 0.25$ = \key{a quarter of} = $\div\, 4$ \qquad
+  $\times\, 0.1$ = \key{a tenth of} = $\div\, 10$
+  \fr{\eng{half of} = la moiti\'e de \quad \eng{a quarter of} = le quart de \quad
+  \eng{a tenth of} = le dixi\`eme de}
+\end{remember}
+
+\vspace{2pt}
+\noindent Fill in the table. The first one is done for you.
+\fr{Compl\`ete le tableau. Le premier est fait pour toi. \'Ecris la colonne
+\fq{In English} en anglais.}
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|C{3.4cm}|L|C{2.6cm}|}
+  \hline
+  \textbf{Calculation} & \textbf{In English} & \textbf{Answer} \\
+  \hline
+  $48 \times 0.5$ \tall & half of 48 & $24$ \\ \hline
+  $36 \times 0.25$ \tall & & \\ \hline
+  $70 \times 0.1$ \tall & & \\ \hline
+  \tall & a quarter of 2.8 & \\ \hline
+  \tall & a tenth of 4.5 & \\ \hline
+\end{tabularx}
+
+% -- D3 ---------------------------------------------------------------------
+\qhead{D3}{Multiplying by a decimal}
+
+\begin{remember}[Divide first, then multiply]
+  $\times\, 0.2$ means $\div\, 10$, then $\times\, 2$. \quad
+  $\times\, 0.03$ means $\div\, 100$, then $\times\, 3$. \\
+  So \; $250 \times 0.2 = 25 \times 2 = 50$. \;
+  Multiplying by a decimal \key{less than 1} makes a number \key{smaller}.
+  \fr{Divise d'abord, puis multiplie. Multiplier par un d\'ecimal plus petit que 1
+  rend le nombre plus petit (\eng{smaller}).}
+\end{remember}
+
+\vspace{4pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=12pt]
+  \item $40 \times 0.3 = \blank[1.4cm] \times \blank[1.0cm] = \blank[1.4cm]$
+  \item $150 \times 0.2 = \blank[1.4cm] \times \blank[1.0cm] = \blank[1.4cm]$
+  \item $600 \times 0.04 = \blank[1.4cm] \times \blank[1.0cm] = \blank[1.4cm]$
+  \item $90 \times 0.7 = \blank[1.4cm] \times \blank[1.0cm] = \blank[1.4cm]$
+  \item $1200 \times 0.05 = \blank[1.4cm] \times \blank[1.0cm] = \blank[1.4cm]$
+  \item $80 \times 0.6 = \blank[1.4cm] \times \blank[1.0cm] = \blank[1.4cm]$
+\end{enumerate}
+\end{multicols}
+
+% -- D4 ---------------------------------------------------------------------
+\qhead{D4}{Times 9, times 11, and partitioning}
+
+\begin{remember}[Three quick ways]
+  $\times\, 9$: do $\times\, 10$, then \key{take away} one lot. \;
+  $3.8 \times 9 = 38 - 3.8 = 34.2$ \\
+  $\times\, 11$: do $\times\, 10$, then \key{add} one lot. \;
+  $3.8 \times 11 = 38 + 3.8 = 41.8$ \\
+  \key{Partitioning}: split the number. \;
+  $4.3 \times 6 = 4 \times 6 + 0.3 \times 6 = 24 + 1.8 = 25.8$
+  \fr{$\times\, 9$~: fais $\times\, 10$, puis enl\`eve le nombre une fois. $\times\, 11$~:
+  fais $\times\, 10$, puis ajoute-le une fois. \eng{Partitioning} = d\'ecomposer le
+  nombre.}
+\end{remember}
+
+\vspace{2pt}
+\noindent Write the quick way, then the answer.
+\fr{\'Ecris la m\'ethode rapide, puis la r\'eponse.}
+
+\vspace{4pt}
+\begin{enumerate}[label=(\alph*), itemsep=10pt]
+  \item $4.6 \times 9 = $ \blank[8.4cm] $=$ \blank[2.2cm]
+  \item $2.3 \times 11 = $ \blank[8.2cm] $=$ \blank[2.2cm]
+  \item $6.2 \times 7 = $ \blank[8.4cm] $=$ \blank[2.2cm]
+  \item $3.8 \times 5 = $ \blank[8.4cm] $=$ \blank[2.2cm]
+\end{enumerate}
+
+% -- D5 ---------------------------------------------------------------------
+% One trap from each lesson, which makes this a five-minute diagnosis of the
+% whole unit. See the key.
+\qhead{D5}{Mr Bowen's homework}
+
+\noindent Mr Bowen gave himself 4 out of 4. Only \textbf{one} of these is right. Find
+it, and correct the other three.
+\fr{Mr Bowen s'est donn\'e 4 sur 4. Une seule r\'eponse est juste. Trouve-la, et
+corrige les trois autres.}
+
+\vspace{4pt}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*), itemsep=12pt]
+  \item $0.4 \times 7 = 0.28$ \; \blank[2.2cm]
+  \item $5.09 > 5.1$ \; \blank[2.2cm]
+  \item $7.2 \div 6 = 1.2$ \; \blank[2.2cm]
+  \item $50 \times 0.3 = 150$ \; \blank[2.2cm]
+\end{enumerate}
+\end{multicols}
+
+% ===========================================================================
+% SECTION E -- THE UNIT 4 REVIEW
+% ===========================================================================
+\hwsection{Section E \textperiodcentered\ Unit 4 Review --- Bigger Numbers, Real Problems}
+
+% -- E1 ---------------------------------------------------------------------
+\qhead{E1}{Two-digit numbers}
+
+\begin{remember}[Estimate, or write the table]
+  $\times$ a 2-digit number: take the point out, multiply, then use an
+  \key{estimate} to put it back. \; $4.7 \times 32$: \; $47 \times 32 = 1504$, and
+  $5 \times 30 = 150$, so \key{150.4}. \\
+  $\div$ a 2-digit number: write its \key{times table} first, then use short
+  division. The point goes straight up.
+  \fr{$\times$ un nombre \`a 2 chiffres~: l'estimation (\eng{estimate}) place le point.
+  $\div$ un nombre \`a 2 chiffres~: \'ecris d'abord sa table de multiplication
+  (\eng{times table}).}
+\end{remember}
+
+\vspace{4pt}
+\noindent
+\wsh{a}{5.8 \times 15}\hfill\wsh{b}{41.6 \div 13}
+
+% -- E2 ---------------------------------------------------------------------
+% THE HEART OF THE MATHS. The numbers are easy on purpose; every item is
+% decided by one English word. (c) is "Mr Bowen and two friends" = THREE, the
+% deck's slide 20 trap with new numbers. (e) is "subtract X from Y", which
+% puts the numbers in the opposite order to the sentence.
+\qhead{E2}{From English to a calculation}
+
+\begin{wordhelp}[Word help --- the words that choose the operation]
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{16pt}}X@{}}
+    \eng{change} & in a shop, the money you get \textbf{back} when you pay too much.
+      Take away \frin{la monnaie} \\
+    \eng{share equally} & give everyone the same amount. Divide --- and count the
+      people carefully \frin{partager en parts \'egales} \\
+    \eng{how much heavier} & the difference. Take away \frin{combien plus lourd} \\
+    \eng{subtract 2 from 9} & $9 - 2$. The \textbf{second} number comes
+      \textbf{first} \frin{soustrais 2 de 9} \\
+  \end{tabularx}
+\end{wordhelp}
+
+\vspace{2pt}
+\noindent Write the \textbf{calculation first}, then the answer. Give units.
+\fr{\'Ecris d'abord le calcul (\eng{calculation}), puis la r\'eponse. Donne les
+unit\'es.}
+
+\begin{enumerate}[label=(\alph*), itemsep=6pt]
+  \item Mr Bowen pays for a 3.65-dollar sandwich with a 5-dollar note. How much
+        change does he get?
+        \fr{Mr Bowen paie un sandwich \`a 3.65 dollars avec un billet de 5 dollars.
+        Combien de monnaie (\eng{change}) re\c{c}oit-il~?}
+        \calcans
+  \item A mango costs 1.20 dollars. How much do 6 mangoes cost?
+        \fr{Une mangue co\^ute 1.20 dollar. Combien co\^utent 6 mangues~?}
+        \calcans
+  \item Mr Bowen and two friends share a 13.50-dollar pizza equally. How much does
+        each person pay?
+        \fr{Mr Bowen et deux amis partagent une pizza \`a 13.50 dollars en parts
+        \'egales (\eng{share equally}). Combien paie chaque personne~?}
+        \calcans
+  \item A bag of rice weighs 2.4 kg. A bag of sugar weighs 0.85 kg. How much
+        heavier is the rice?
+        \fr{Un sac de riz p\`ese 2.4 kg. Un sac de sucre p\`ese 0.85 kg. Combien le
+        riz est-il plus lourd (\eng{how much heavier})~?}
+        \calcans
+  \item Subtract 2.6 from 9.1.
+        \fr{Soustrais 2.6 de 9.1 (\eng{subtract 2.6 from 9.1}).}
+        \calcans
+\end{enumerate}
+
+% -- E3 ---------------------------------------------------------------------
+\qhead{E3}{Money has two decimal places}
+
+\begin{remember}[Money]
+  Money is written to \key{2 decimal places}. \;
+  4.5 dollars is written \key{4.50} dollars. \\
+  $10 \div 3 = 3.333\ldots$, so three friends get \key{3.33} dollars each, and
+  1 cent is left over.
+  \fr{L'argent s'\'ecrit avec 2 d\'ecimales (\eng{2 decimal places})~: 4.5 dollars
+  s'\'ecrit 4.50 dollars.}
+\end{remember}
+
+\vspace{6pt}
+\noindent Write each one as money.
+\fr{\'Ecris chaque montant comme de l'argent.}
+
+\vspace{6pt}
+\noindent\hspace*{1.6em}\textbf{(a)} 4.8 dollars \; \blank[2.0cm] \hfill
+\textbf{(b)} 9.125 dollars \; \blank[2.0cm] \hfill
+\textbf{(c)} $15 \div 4$ dollars \; \blank[2.0cm]
+\par\vspace{10pt}
+
+\vspace{2pt}
+\noindent \textbf{(d)} Three friends share 25 dollars equally. How much does each
+friend get? How many cents are left over?
+\fr{(d) Trois amis partagent 25 dollars en parts \'egales. Combien re\c{c}oit chacun~?
+Combien de cents reste-t-il (\eng{left over})~?}
+
+\vspace{5pt}
+\noindent\hspace*{1.6em}Each friend: \blank[3.0cm] dollars \hfill
+Left over: \blank[2.4cm] cents
+
+% -- E4 ---------------------------------------------------------------------
+% (b) is the deadpan one. It needs nothing untaught: "a quarter of" is / 4
+% (D2), and 0.500 / 4 needs the zeros written (C2).
+\qhead{E4}{Word problems}
+
+\begin{enumerate}[label=(\alph*), itemsep=6pt]
+% Each item is a minipage, so its question cannot be left on one page with
+% its box on the next (it was, in the French copy).
+  \item \begin{minipage}[t]{\linewidth}
+        Mr Bowen buys 3 notebooks at 2.45 dollars each and one pen for 1.80
+        dollars. He pays with a 10-dollar note. How much change does he get?
+        \fr{Mr Bowen ach\`ete 3 cahiers \`a 2.45 dollars chacun et un stylo \`a 1.80
+        dollar. Il paie avec un billet de 10 dollars. Combien de monnaie
+        re\c{c}oit-il~?}
+        \begin{workspace}[2.7cm]\end{workspace}
+        \end{minipage}
+  \item \begin{minipage}[t]{\linewidth}
+        Mr Bowen buys 0.5 kg of grapes. He eats a quarter of them on the walk home,
+        which he calls ``quality control''. How many kilograms of grapes arrive at
+        his house?
+        \fr{Mr Bowen ach\`ete 0.5 kg de raisin. Il en mange un quart (\eng{a
+        quarter}) en rentrant, pour le \fq{contr\^ole qualit\'e}. Combien de kilos de
+        raisin arrivent chez lui~?}
+        \begin{workspace}[2.7cm]\end{workspace}
+        \end{minipage}
+\end{enumerate}
+
+% -- E5 ---------------------------------------------------------------------
+\qhead{E5}{Now you write the question}
+
+\begin{yourturn}[The rules]
+  A \textbf{real} situation --- a shop, a recipe, a race, a bag on a scale. Full
+  sentences, ending in a \textbf{question}. Use one of the \eng{words} from E2.
+  Give \textbf{units}. Your question must come out at the answer given.
+  \fr{Une situation r\'eelle, des phrases compl\`etes, une question \`a la fin, un mot
+  de E2, des unit\'es. \textbf{\'Ecris ton probl\`eme en anglais.}}
+\end{yourturn}
+
+\vspace{4pt}
+\noindent Write a word problem for \quad \expr{12.60 \div 4 = 3.15}
+\fr{\'Ecris un probl\`eme (\eng{word problem}) pour ce calcul, en anglais.}
+\qlines{3}
+
+% ===========================================================================
+% SECTION F -- SCIENCE 3.1 IN DECIMALS
+% ===========================================================================
+\hwsection[cbgreen]{Section F \textperiodcentered\ Science 3.1 in decimals --- Mr Bowen in Space}
+
+\begin{remember}[Weight and mass, from Science 3.1]
+  \key{weight (N) = mass (kg) $\times$ strength of gravity (N/kg)} \\
+  On Earth, the strength of gravity is \key{10 N/kg}. Say it: \eng{``ten newtons
+  per kilogram''}. \\
+  \key{Mass does not change} from planet to planet. Weight does.
+  \fr{Poids (\eng{weight}, en N) = masse (\eng{mass}, en kg) $\times$ intensit\'e de la
+  gravit\'e (\eng{strength of gravity}). La masse ne change pas d'une plan\`ete \`a
+  l'autre~; le poids, oui.}
+\end{remember}
+
+% -- F1 ---------------------------------------------------------------------
+\qhead[cbgreen]{F1}{How strong is gravity?}
+
+% A minipage, so the heading and its table cannot be split (they were).
+\noindent\begin{minipage}{\textwidth}
+These are the strengths of gravity from the lesson. A bigger number pulls harder.
+\fr{Voici l'intensit\'e de la gravit\'e de la le\c{c}on. Un nombre plus grand tire
+plus fort.}
+
+\vspace{8pt}
+\centering
+\setlength{\tabcolsep}{5pt}%
+\begin{tabular}{|l|*{7}{C{1.70cm}|}}
+  \hline
+  \textbf{Place} & Moon & Mars & Venus & Uranus & Earth & Neptune & Jupiter \\
+  \hline
+  \textbf{N/kg} & \textbf{1.6} & \textbf{3.7} & \textbf{8.9} & \textbf{8.7} &
+  \textbf{10} & \textbf{11} & \textbf{25} \\
+  \hline
+\end{tabular}
+\end{minipage}
+
+\vspace{4pt}
+\begin{enumerate}[label=(\alph*), itemsep=8pt]
+  \item Write the seven strengths in order of size, starting with the smallest.
+        \fr{Range les sept valeurs, de la plus petite \`a la plus grande.}
+        \ansline[11.0cm]
+  \item Which pulls harder, \textbf{Venus} or \textbf{Uranus}? By how much?
+        \hfill \blank[5.4cm]
+        \fr{Laquelle tire plus fort, V\'enus ou Uranus~? De combien~?}
+  \item How much stronger is gravity on the \textbf{Earth} than on the
+        \textbf{Moon}? \hfill \blank[4.0cm]
+        \fr{De combien la gravit\'e est-elle plus forte sur la Terre que sur la
+        Lune~?}
+\end{enumerate}
+
+% -- F2 ---------------------------------------------------------------------
+\qhead[cbgreen]{F2}{Mr Bowen's space backpack}
+
+\noindent Mr Bowen's space backpack has a mass of \textbf{15 kg}. \textbf{(a)} Find its weight in
+each place. Estimate first. The first one is done for you.
+\fr{Le sac \`a dos spatial de Mr Bowen a une masse de 15 kg. (a) Trouve son poids
+(\eng{weight}) \`a chaque endroit. Estime d'abord.}
+
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{|C{2.4cm}|C{3.0cm}|L|C{2.8cm}|}
+  \hline
+  \textbf{Place} & \textbf{Gravity (N/kg)} & \textbf{Calculation} &
+  \textbf{Weight (N)} \\
+  \hline
+  Earth \tall   & 10  & $15 \times 10$ & $150$ \\ \hline
+  Moon \tall    & 1.6 & & \\ \hline
+  Mars \tall    & 3.7 & & \\ \hline
+  Venus \tall   & 8.9 & & \\ \hline
+  Jupiter \tall & 25  & & \\ \hline
+\end{tabularx}
+
+\vspace{6pt}
+\noindent \textbf{(b)} How much \textbf{less} does the backpack weigh on the Moon than
+on the Earth? \hfill \blank[2.6cm]
+\fr{(b) De combien le sac p\`ese-t-il moins (\eng{less}) sur la Lune que sur la
+Terre~?}
+
+% -- F3 ---------------------------------------------------------------------
+% THE KEYSTONE. The light ball has the fastest single time (0.39 s), so a
+% student who looks at one number says the light ball is faster. Both means
+% are 1.80 / 4 = 0.45 s. The decimals answer the science question.
+\qhead[cbgreen]{F3}{Do heavy things fall faster?}
+
+\noindent Mr Bowen drops a \textbf{heavy} ball and a \textbf{light} ball, the same
+size, from 1 metre. He times each fall with a stopwatch, four times.
+\fr{Mr Bowen l\^ache une balle lourde (\eng{heavy}) et une balle l\'eg\`ere
+(\eng{light}) de m\^eme taille, d'un m\`etre. Il chronom\`etre chaque chute quatre
+fois.}
+
+\vspace{4pt}
+\begin{center}
+\begin{tabular}{|l|C{1.6cm}|C{1.6cm}|C{1.6cm}|C{1.6cm}|}
+  \hline
+  & \textbf{Drop 1} & \textbf{Drop 2} & \textbf{Drop 3} & \textbf{Drop 4} \\
+  \hline
+  \textbf{Heavy ball} (s) & 0.48 & 0.41 & 0.50 & 0.41 \\ \hline
+  \textbf{Light ball} (s) & 0.44 & 0.52 & 0.39 & 0.45 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{wordhelp}[Word help]
+  \begin{tabularx}{\linewidth}{@{}l@{\hspace{16pt}}X@{}}
+    \eng{conjecture} & a guess that you can test \frin{une conjecture} \\
+    \eng{mean} & add up all the values, then divide by how many there are
+      \frin{la moyenne} \\
+    \eng{reaction time} & how long you take to move. It is about \textbf{0.2 s}
+      \frin{le temps de r\'eaction} \\
+  \end{tabularx}
+\end{wordhelp}
+
+\vspace{4pt}
+\begin{enumerate}[label=(\alph*), itemsep=8pt]
+  \item Find the \textbf{fastest} time in the table. Which ball was it?
+        \hfill \blank[4.0cm]
+        \fr{Trouve le temps le plus rapide (\eng{fastest}). C'est quelle balle~?}
+  \item Make a \textbf{conjecture} from (a): which ball falls faster?
+        \hfill \blank[4.0cm]
+        \fr{Fais une conjecture avec (a)~: quelle balle tombe plus vite~?}
+  \item Now test it. Find the \textbf{mean} time for each ball.
+        \fr{Teste-la. Trouve le temps moyen (\eng{mean}) de chaque balle.}
+        \par\vspace{4pt}
+        \begin{minipage}[t]{0.47\linewidth}
+          \textbf{Heavy ball}
+          \begin{workspace}[3.3cm]\end{workspace}
+        \end{minipage}\hfill
+        \begin{minipage}[t]{0.47\linewidth}
+          \textbf{Light ball}
+          \begin{workspace}[3.3cm]\end{workspace}
+        \end{minipage}
+  \item Do heavy things fall faster? Use your two means. Answer in a full sentence.
+        \fr{Les objets lourds tombent-ils plus vite~? Utilise tes deux moyennes.
+        R\'eponds par une phrase compl\`ete, en anglais.}
+        \qlines{3}
+  \item The four times for the \textbf{same} ball are all different. Why? Use the
+        words \eng{reaction time}.
+        \fr{Les quatre temps de la m\^eme balle sont tous diff\'erents. Pourquoi~?
+        Utilise les mots \eng{reaction time}, en anglais.}
+        \qlines{3}
+\end{enumerate}
+
+% -- F4 ---------------------------------------------------------------------
+% The deck's "Mr Bowen in Space" run backwards: weight given, find the
+% strength of gravity, then read the place off F1. 296 / 80 = 29.6 / 8 = 3.7,
+% or try each place: 80 x 3.7 = 296. Mars is the only 3.7 in F1 on purpose.
+\qhead[cbgreen]{F4}{Mr Bowen moves house}
+
+\noindent Mr Bowen's mass is \textbf{80 kg}. He would like to weigh exactly
+\textbf{296 N} without eating any less. Which place in \textbf{F1} should he move
+to? Show your calculation.
+\fr{Mr Bowen a une masse de 80 kg. Il veut peser exactement 296 N sans manger moins.
+O\`u doit-il d\'em\'enager (choisis dans F1)~? Montre ton calcul.}
+
+\begin{workspace}[4.0cm]\end{workspace}
+
+\noindent He has started packing. What will his \textbf{mass} be when he gets there?
+\hfill \blank[3.0cm]
+\fr{Il a commenc\'e ses valises. Quelle sera sa masse (\eng{mass}) l\`a-bas~?}
+
+% ===========================================================================
+% ANSWER KEY -- TEACHER COPY ONLY
+% ===========================================================================
+\ifkey
+\clearpage
+
+\hwsection[cbred]{Answer Key --- Teacher Copy}
+
+\linespread{1.0}\selectfont
+\setlist[enumerate]{itemsep=2pt, topsep=3pt, leftmargin=*}
+\setlist[itemize]{itemsep=2pt, topsep=3pt, leftmargin=*}
+
+\qhead[cbred]{A1}{Put each number on the line}
+\noindent A on the 2nd small line \sep B on the 9th \sep C halfway between the 4th
+and 5th \sep D halfway between 5 and the 1st. \\
+\textbf{(b)} $5.05, \; 5.2, \; 5.45, \; 5.9$
+
+\smallskip
+\noindent{\small D is the one to watch. A student who puts $5.05$ \emph{after} $5.2$
+has read it as $5.5$ --- the zero after the point was not said --- and that is the
+whole of 4.1 in one mark. The line is there so they can see $5.05$ is the first thing
+after 5. If (b) is right but the line is wrong, they ordered by the rule and did not
+trust the picture; that is fine.}
+
+\qhead[cbred]{A2}{Which is bigger?}
+\noindent (a) $>$ \quad (b) $>$ \quad (c) $<$ \quad (d) $>$ \quad (e) $=$ \quad
+(f) $<$ \\
+\textbf{(g)(i)} six point one eight \sep six point two. \\
+\textbf{(ii)} He is wrong. $6.2 = 6.20$, and $6.20 > 6.18$: two tenths is more than
+one tenth.
+
+\smallskip
+\noindent{\small (g) is the deck's slide 3 with new numbers, and (i) is the point of
+it. Anyone who writes ``six point eighteen'' has found the cause of the mistake by
+themselves: English reads the digits after the point one at a time, and
+``eighteen'' is the French \emph{virgule dix-huit} (and the Vietnamese) leaking
+through. Read (i) before marking (ii). \\
+(d) is the one that goes wrong the other way: $9.99$ has more digits and more nines,
+and $12.3$ is bigger because the whole-number part is checked first. \\
+(f) needs \emph{two} zeros of filling: $4.125$ against $4.130$.}
+
+\qhead[cbred]{A3}{Who won?}
+\noindent (a) $4.08, \; 4.5, \; 4.75, \; 4.79, \; 4.8$ \quad (b) \textbf{A} \\
+(c) $30.9, \; 30.95, \; 31.09, \; 31.12, \; 31.4$ \quad (d) \textbf{Lane 4} \quad
+(e) \textbf{Lane 5} \quad (f) \textbf{Lane 1}
+
+\smallskip
+\noindent{\small Every answer here is the number that \emph{looks} wrong. The winning
+jump, $4.8$, is the shortest-looking number in the list; the slowest swim, $31.4$, is
+the shortest-looking time. A student who orders by length gets both upside down. \\
+(e) asks for \emph{fourth}, not the deck's \emph{third}, on purpose: with five lanes
+the third is the middle one from either end, so it cannot catch anyone counting from
+the wrong end. Fourth can. Expect Lane 2, which is fourth counted from the
+\emph{slowest}. (d) is the deck's ``fastest means smallest'' --- ask anyone who wrote
+Lane 1 whether a fast swimmer takes more time or less.}
+
+\qhead[cbred]{B1}{Use a written method}
+\noindent (a) $8.06$ \quad (b) $18.45$ \quad (c) $8.35$ \quad (d) $5.65$ \quad
+(e) $7.64$ \quad (f) $0.35$
+
+\smallskip
+\noindent{\small (a) is the alignment check: anyone who lines up the \emph{right-hand
+digits} instead of the points adds $536 + 27$ and writes $5.63$. \\
+(c) has a whole number with no point at all. $6$ is $6.00$; students who cannot see
+where its point is put the 6 under the 5 and get $2.41$. \\
+(d), (e) and (f) need the zeros \emph{written} before subtracting: $9.40$, $12.00$,
+$1.00$. (f) is the deck's $1 - 0.72$ with new numbers; the usual wrong answer is
+$0.45$ (borrowing from the tenths and forgetting the hundredths).}
+
+\qhead[cbred]{B2}{Use a mental method}
+\noindent $3.9 + 2.5 = 4 + 2.5 - 0.1 = 6.4$ \\
+$7.3 - 1.9 = 7.3 - 2 + 0.1 = 5.4$ \\
+$6.99 + 3.45 = 7 + 3.45 - 0.01 = 10.44$ \\
+$12.6 - 4.98 = 12.6 - 5 + 0.02 = 7.62$
+
+\smallskip
+\noindent{\small The sign of the give-back is the question. When you take away
+\emph{too much} you have to give some back, so the subtractions end in $+$. Expect
+$5.2$ for the second row and $7.58$ for the fourth --- the right move with the wrong
+sign. \\
+Row 4 gives back $0.02$, not $0.2$: $5 - 4.98$ is two hundredths. \\
+Accept any correct easier way (e.g.\ $3.9 + 2.5 = 3.9 + 2.1 + 0.4$). The column must
+show a calculation, not just the answer.}
+
+\qhead[cbred]{C1}{Point out, point back}
+\noindent
+\begin{tabular}{@{}llll@{}}
+  $6.4 \times 5$ & $6 \times 5 = 30$ & $64 \times 5 = 320$ & $\mathbf{32}$ \\
+  $0.7 \times 8$ & $1 \times 8 = 8$ & $7 \times 8 = 56$ & $\mathbf{5.6}$ \\
+  $2.35 \times 4$ & $2 \times 4 = 8$ & $235 \times 4 = 940$ & $\mathbf{9.4}$ \\
+  $8.15 \times 2$ & $8 \times 2 = 16$ & $815 \times 2 = 1630$ & $\mathbf{16.3}$ \\
+\end{tabular}
+
+\smallskip
+\noindent{\small Rows 1, 3 and 4 end in a zero after the point is put back ($32.0$,
+$9.40$, $16.30$). Accept those, and accept the zero dropped: nothing was rounded, as
+the deck's own practice answer says ($5.00 = 5$). \\
+Row 2 is the deck's vote ($0.3 \times 4$) in disguise. Expect $0.56$ from anyone who
+counts \emph{all} the digits instead of the decimal places, and the estimate catches
+it: the answer must be near 8. \\
+Estimates may differ ($2.35 \times 4$ could be $2.5 \times 4 = 10$); any sensible
+rounding is right.}
+
+\qhead[cbred]{C2}{The point goes straight up}
+\noindent (a) $2.52$ \quad (b) $\mathbf{1.04}$ \quad (c) $0.12$ \quad
+(d) $\mathbf{1.35}$ \quad (e) $\mathbf{3.24}$ \quad (f) $\mathbf{1.01}$ \\
+(g) $1.04 \times 6 = 6.24$
+
+\smallskip
+\noindent{\small (b) and (f) need a 0 in the answer where a digit does not divide: 6
+into 2 will not go. Expect $1.4$ and $1.1$, which is the deck's ``$2.6$ forgot the 0''
+exactly. The inverse check in (g) catches it: $1.4 \times 6 = 8.4$, not $6.24$. \\
+(d) and (e) run out of digits: write $5.40$ and $16.20$ and keep going. Expect
+``$1.3$ remainder 2'' --- the remainder belongs in the hundredths. \\
+(c) starts with $0$ in the ones: 7 into 0 will not go, so the answer begins $0.$}
+
+\qhead[cbred]{C3}{One fact, five answers}
+\noindent (a) $102.6$ \quad (b) $10.26$ \quad (c) $102.6$ \quad (d) $3.8$ \quad
+(e) $0.38$ \\
+(f) (a) and (c). Both have one decimal place in total, so both are $1026$ with one
+place put back. (Or: $3.8 \times 27$ and $38 \times 2.7$ are both about
+$4 \times 27 \approx 100$.)
+
+\smallskip
+\noindent{\small Estimates: (a) $4 \times 30 = 120$, so $102.6$ and not $10.26$ or
+$1026$. (d) is (a) undone, and (e) is (b) undone --- a student who sees that has the
+inverse calculation without being told. \\
+Anyone who multiplies $38 \times 27$ again has not read the instruction; it is the
+English of ``do not'' and worth one line.}
+
+\qhead[cbred]{D1}{Decimals as fractions}
+\noindent (a) $\frac{7}{10}$ \quad (b) $\frac{3}{100}$ \quad (c) $\frac{31}{100}$
+\quad (d) $\frac{6}{10}$ (or $\frac{3}{5}$) \quad (e) $0.08$ \quad (f) $0.51$
+
+\smallskip
+\noindent{\small (b) and (e) are the same trap in two directions: $0.03 =
+\frac{3}{10}$ and $\frac{8}{100} = 0.8$. Both come from reading the digit and
+ignoring the column. Send them back to the word-help line: the \emph{last} digit's
+column is the bottom number. Simplifying is not required.}
+
+\qhead[cbred]{D2}{Half of, a quarter of, a tenth of}
+\noindent a quarter of 36, $9$ \sep a tenth of 70, $7$ \sep $2.8 \times 0.25$,
+$0.7$ \sep $4.5 \times 0.1$, $0.45$
+
+\smallskip
+\noindent{\small Rows 4 and 5 are the English-to-calculation direction, and the
+column is ``calculation'': accept $2.8 \div 4$ as well as $2.8 \times 0.25$, but point
+out that the deck wrote it with $\times$ because ``of'' means $\times$. \\
+Row 5 is the one to watch: a tenth of $4.5$ is $0.45$, not $0.5$ or $4.4$. \\
+Row 4 needs the 0 in the ones: 4 into 2 will not go, so $0.7$ (C2(c) again).}
+
+\qhead[cbred]{D3}{Multiplying by a decimal}
+\noindent (a) $4 \times 3 = 12$ \quad (b) $15 \times 2 = 30$ \quad
+(c) $6 \times 4 = 24$ \quad (d) $9 \times 7 = 63$ \quad (e) $12 \times 5 = 60$ \quad
+(f) $8 \times 6 = 48$
+
+\smallskip
+\noindent{\small (c) and (e) divide by \textbf{100}, not 10. Expect $60 \times 4 = 240$
+and $120 \times 5 = 600$: the student divided by 10 for a hundredth. \\
+Every answer is smaller than the number it started from. Until this unit every
+multiplication the class has done made the number bigger (the deck's slide 6); it is
+worth asking aloud whether anyone noticed. D5(d) tests it.}
+
+\qhead[cbred]{D4}{Times 9, times 11, and partitioning}
+\noindent (a) $46 - 4.6 = 41.4$ \quad (b) $23 + 2.3 = 25.3$ \\
+(c) $6 \times 7 + 0.2 \times 7 = 42 + 1.4 = 43.4$ \quad
+(d) $3 \times 5 + 0.8 \times 5 = 15 + 4 = 19$
+
+\smallskip
+\noindent{\small (a) needs a decimal subtraction with a hidden zero: $46.0 - 4.6$.
+Expect $42.4$ from $46 - 4 + 0.6$. \\
+(d) is partitioning landing on a whole number: $0.8 \times 5 = 4.0$. Students who
+write $0.4$ have counted the decimal places in the question as if they were in the
+answer --- $8 \times 5 = 40$, one place back, $4.0$. \\
+Accept the column method for (c) and (d), but ask for the partition: the deck taught
+it as the faster way.}
+
+\qhead[cbred]{D5}{Mr Bowen's homework}
+\noindent (a) \textbf{wrong} --- $2.8$. One decimal place in, one decimal place out;
+the estimate is $0.5 \times 7 \approx 3$. \\
+(b) \textbf{wrong} --- $5.09 < 5.1$. Fill with zeros: $5.09$ against $5.10$. \\
+(c) \textbf{right.} \\
+(d) \textbf{wrong} --- $15$. Multiplying by a decimal less than 1 makes it smaller:
+$5 \times 3$.
+
+\smallskip
+\noindent{\small One trap each from C1, A2, C2 and D3, in that order. Whichever one a
+student gets wrong, send them to that question rather than explaining again. \\
+(c) is right on purpose, and it is the one with the most room for doubt: $7.2 \div 6$
+gives $1.2$ and a student who expects every division in this unit to need a 0 will
+``correct'' it to $1.02$.}
+
+\qhead[cbred]{E1}{Two-digit numbers}
+\noindent (a) $87$ \quad ($58 \times 15 = 870$; estimate $6 \times 15 = 90$) \\
+(b) $3.2$ \quad (13 table: $13 \times 3 = 39$, remainder $2.6 = 13 \times 0.2$)
+
+\smallskip
+\noindent{\small (a) lands on a whole number, $87.0$; expect $8.70$ from a student who
+put back two places because the question had ``two numbers''. The estimate, 90, is
+the fastest correction. \\
+For (b) the table is the method --- look for it written down. A student with no table
+and the right answer probably knew it; a student with no table and a wrong answer
+needs to be told to write the table, not shown the division.}
+
+\qhead[cbred]{E2}{From English to a calculation}
+\noindent (a) $5.00 - 3.65 = 1.35$ dollars \quad (b) $1.20 \times 6 = 7.20$ dollars \\
+(c) $13.50 \div 3 = 4.50$ dollars \quad (d) $2.4 - 0.85 = 1.55$ kg \\
+(e) $9.1 - 2.6 = 6.5$
+
+\smallskip
+\noindent{\small \textbf{Mark the calculation, not the answer.} This is the English
+question, and the numbers were chosen to be easy. \\
+(c) is the deck's slide 20 trap: \emph{Mr Bowen and two friends} is \textbf{three}
+people. $13.50 \div 2 = 6.75$ is an English error, not an arithmetic one --- make the
+student count the people out loud. \\
+(e) puts the numbers in the opposite order to the sentence. A student who writes
+$2.6 - 9.1$ has read left to right; ask what ``subtract 2 from 9'' is in the word-help
+box. \\
+(a) and (b): accept $5 - 3.65$ and $1.2 \times 6$, but the answers are money and
+should be $1.35$ and $7.20$ (E3).}
+
+\qhead[cbred]{E3}{Money has two decimal places}
+\noindent (a) $4.80$ \quad (b) $9.13$ \quad (c) $3.75$ \\
+(d) $25 \div 3 = 8.333\ldots$, so $\mathbf{8.33}$ dollars each, and $25.00 - 24.99 =
+0.01$, so \textbf{1 cent} is left over.
+
+\smallskip
+\noindent{\small (b) is rounding: the 5 in the thousandths rounds the 2 up. Expect
+$9.12$ (cut off, not rounded) and $9.125$ (left alone). \\
+(d) is the deck's slide 10 with 25 instead of 10. ``How many cents'' is the English:
+some will write $0.01$, which is right in dollars and should be turned into the word
+the question used.}
+
+\qhead[cbred]{E4}{Word problems}
+\noindent (a) $3 \times 2.45 = 7.35$; \; $7.35 + 1.80 = 9.15$; \; $10.00 - 9.15 =
+\mathbf{0.85}$ dollars. \\
+(b) A quarter of $0.5$ is $0.5 \div 4 = 0.125$ kg. \; $0.5 - 0.125 = \mathbf{0.375}$
+kg.
+
+\smallskip
+\noindent{\small (a) is three steps, and the usual slip is to stop after two and give
+$9.15$ as ``the change''. Ask what the question asked for. \\
+(b) is the deadpan one and the hardest item in E. $0.500 \div 4$ needs two zeros
+written to finish, and the question asks what \emph{arrives}, not what he ate. Expect
+$0.125$ as the final answer; that is the grapes Mr Bowen ate. Accept $0.5 \times 0.75$
+if anyone finds it, but nobody is expected to.}
+
+\qhead[cbred]{E5}{Now you write the question}
+\noindent Check, in order: a real situation; full sentences; ends in a question
+mark; uses a word from E2; gives units; and the student's own question really comes
+out at the answer.
+
+\smallskip
+\noindent{\small It wants \emph{share equally} with \textbf{four} people. A good
+answer: ``Mr Bowen and three friends share a 12.60-dollar pizza equally. How much does
+each person pay?'' \\
+Watch for ``Mr Bowen and four friends'', which is five, and is the E2(c) error made by
+the student who wrote the question. That one is worth reading aloud to the class. \\
+The other common failure is a question whose answer is $50.40$: ``each of 4 friends
+has 12.60 dollars --- how much altogether?'' Read it back to them.}
+
+\qhead[cbred]{F1}{How strong is gravity?}
+\noindent (a) $1.6, \; 3.7, \; 8.7, \; 8.9, \; 10, \; 11, \; 25$ \\
+(b) \textbf{Venus}, by $8.9 - 8.7 = 0.2$ N/kg. \quad
+(c) $10 - 1.6 = 8.4$ N/kg.
+
+\smallskip
+\noindent{\small (a): $8.7$ and $8.9$ are the pair to check, and $10$ and $11$ after
+the two eights. A student ordering by digit count puts $10$, $11$ and $25$ \emph{before}
+$8.9$. \\
+(c) needs $10.0 - 1.6$; expect $9.6$ or $8.6$ from anyone who did not write the zero.}
+
+\qhead[cbred]{F2}{Mr Bowen's space backpack}
+\noindent Moon $15 \times 1.6 = 24$ N \sep Mars $15 \times 3.7 = 55.5$ N \sep
+Venus $15 \times 8.9 = 133.5$ N \sep Jupiter $15 \times 25 = 375$ N \\
+(b) $150 - 24 = \mathbf{126}$ N
+
+\smallskip
+\noindent{\small Estimates: Moon $15 \times 2 = 30$; Mars $15 \times 4 = 60$; Venus
+$15 \times 9 = 135$. A student who writes $2.4$ or $240$ for the Moon has the digits
+right and the point wrong, and the estimate of 30 settles it. \\
+Venus invites $\times 9$: $15 \times 8.9 = 15 \times 9 - 1.5 = 133.5$ is D4 used without
+being asked --- worth praising aloud. \\
+The mass on every row is still 15 kg; F4's last line asks that, and it is worth
+saying here if anyone wrote a different mass for the Moon.}
+
+\qhead[cbred]{F3}{Do heavy things fall faster?}
+\noindent (a) $0.39$ s, the \textbf{light} ball. \quad (b) ``The light ball falls
+faster.'' \\
+(c) Heavy: $0.48 + 0.41 + 0.50 + 0.41 = 1.80$, \; $1.80 \div 4 = \mathbf{0.45}$ s. \;
+Light: $0.44 + 0.52 + 0.39 + 0.45 = 1.80$, \; $1.80 \div 4 = \mathbf{0.45}$ s. \\
+(d) ``No. Both balls have a mean time of 0.45 s, so they fall at the same speed.'' \\
+(e) ``Mr Bowen's reaction time is about 0.2 s, so he starts and stops the stopwatch
+a little early or late each time.''
+
+\smallskip
+\noindent{\small \textbf{This is the question the packet is built around.} The
+fastest single time belongs to the light ball, so the conjecture in (b) is
+\emph{supposed} to be wrong. That is what a conjecture is for: the mean tests it and
+throws it out. Expect some students to ``fix'' (b) after doing (c); ask them to leave
+it and say in (d) that it was wrong. \\
+(d) answers the question Science 3.1 opened on (Galileo, the hammer and the
+feather), and it lands on the same answer the deck gave --- in decimals, from
+numbers. It is worth putting both means on the board next to each other. \\
+(e) is slide 43: the times differ by up to $0.11$ s, about half a reaction time. Accept
+any sentence that blames the person with the stopwatch and uses ``reaction time''.}
+
+\qhead[cbred]{F4}{Mr Bowen moves house}
+\noindent $296 \div 80 = 29.6 \div 8 = 3.7$ N/kg, which is \textbf{Mars}. \;
+(Or try each place: $80 \times 3.7 = 296$.) \\
+His mass will be \textbf{80 kg} --- mass does not change.
+
+\smallskip
+\noindent{\small Either method is fine; trial with F1's list is perfectly good
+mathematics and probably the more common route. $296 \div 80$ is the deck's ``Mr
+Bowen in Space'' run backwards, and some students will remember 296 N from the lesson
+--- that also counts. \\
+\textbf{The second line is the science, and it is the one to discuss rather than
+mark.} Mass does not change, so it needs no calculation at all, and some students will
+distrust that: expect $296$, or $80 \times 3.7$ worked out again. Mercury (also 3.7) is
+left out of F1 so that the answer is a single place.}
+
+\fi
+\end{document}
