@@ -5,7 +5,8 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  // .claude/worktrees holds other branches' checkouts, half-built decks included.
+  globalIgnores(['dist', '.claude/worktrees']),
   {
     files: ['**/*.{js,jsx}'],
     extends: [
