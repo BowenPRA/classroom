@@ -28,6 +28,11 @@ import {
   // Added for the four operations on decimals (Y7 Maths 4.1–4.4). Minus and
   // Divide were already referenced by 2.2 and 3.1–3.2 and fell back to Info.
   Plus, Minus, X, Divide, ArrowUp, ArrowDown, Trophy, Coins,
+  // Already referenced by older decks (Algebra Track 1.1 and 1.4, Y7 Maths 2.1,
+  // 2.2 and 3.1–3.2, Y7 Science 2.1a, 2.1b and 2.3) and falling back to Info.
+  Table, ListChecks, PenTool, Coffee, Languages, Search, Superscript,
+  ListOrdered, Hash, ArrowLeft, ArrowDownUp, Gamepad2, Soup, CircleSlash,
+  ArrowUpRight, SlidersHorizontal, TrendingUp, MoveUp, FlipVertical, MoveRight,
 } from 'lucide-react'
 import WidgetRenderer, { WidgetErrorBoundary } from '../WidgetRenderer.jsx'
 import { parseInlineText, renderContent, NOTE_TONES } from './helpers.jsx'
@@ -47,6 +52,9 @@ const ICONS = {
   Hand,
   Parentheses, Square,
   Plus, Minus, X, Divide, ArrowUp, ArrowDown, Trophy, Coins,
+  Table, ListChecks, PenTool, Coffee, Languages, Search, Superscript,
+  ListOrdered, Hash, ArrowLeft, ArrowDownUp, Gamepad2, Soup, CircleSlash,
+  ArrowUpRight, SlidersHorizontal, TrendingUp, MoveUp, FlipVertical, MoveRight,
 }
 
 /** Render a lucide icon by name (falls back to Info). */
