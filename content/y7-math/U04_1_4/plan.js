@@ -16,7 +16,7 @@ export const plan = {
     'Mini whiteboards + markers (one per student, or one per pair)',
     'Student notebooks',
     'No calculators — every number in the deck is built to be done by hand',
-    'Workbook Unit 4, Sections 4.1–4.4 (pp. 51–61) for the homework',
+    'Workbook Unit 4, Sections 4.1–4.4 (pp. 51–61), unspent — no number in the deck comes from it',
   ],
   vocab: [
     { term: 'Compare', def: 'decide which number is bigger. Look at the whole-number parts first; if they match, fill with zeros and compare the decimal parts (French: comparer)' },
@@ -38,7 +38,7 @@ export const plan = {
     { time: '27–35 min', phase: 'Divide', detail: 'Slide 14: vote 4, A (2.06), B (2.6). Slide 15: the point goes straight up; 2 ÷ 4 is 0 remainder 2, so the 0 must be written. Both answers estimate to about 2, so only the inverse check (×4) separates them. Slide 16: copy DIVIDING, then a–d. Slide 17 (one fact, four answers) if there is time.' },
     { time: '35–42 min', phase: 'All four together', detail: 'Slide 18: pairs find Mr Bowen’s four mistakes, one from each section. Slide 19: read each row aloud; copy CHANGE and SHARE EQUALLY. Slide 20: two word problems on whiteboards.' },
     { time: '42–47 min', phase: 'Silly ones', detail: 'Slides 21–22: read both completely straight. 21 uses ×, then −, and comes out exactly 9.58. 22 is ÷, then ×, and the answer is the rope it started with (minus the knots).' },
-    { time: '47–50 min', phase: 'Close', detail: 'Slide 23: checklist, 6 written panels. Slide 24: homework. Slide 25: exit question on whiteboards.' },
+    { time: '47–50 min', phase: 'Close', detail: 'Slide 23: checklist, 6 written panels. Slide 24: exit question on whiteboards.' },
   ],
   answers: [
     { q: 'Slide 1 — starter', a: '3.05, 3.25, 3.252, 3.3.' },
@@ -66,6 +66,5 @@ export const plan = {
     'Every section opens with a vote and the votes alternate: the right answer is B, A, B, A. Do not settle a vote on the vote slide; the next slide does it. ' +
     'Slide 7 is the deck’s one widget. It starts with the numbers lined up on the RIGHT, the way a hurried student writes them; ask "is this lined up?" before the first press. Orange zeros are the ones the student writes in. ' +
     'Slide 13 d (1.25 × 4 = 5.00 = 5) will meet last unit’s "never delete a zero". That rule is about ROUNDED answers, where the zero shows the degree of accuracy. An exact answer can drop it. ' +
-    'Workbook key words not taught: "digits" (4.2) and "fill in" (4.3) need no teaching, and "conjecture" (4.4 Q14) is Challenge work. Section 4.5 (making decimal calculations easier) is not in this deck; slide 9’s mental method is its first step. ' +
-    'The homework slide sets all of 4.1–4.4. That is about ten Workbook pages; trim it to Focus and Practice, or spread it over the decimal days, as you see fit.',
+    'Workbook key words not taught: "digits" (4.2) and "fill in" (4.3) need no teaching, and "conjecture" (4.4 Q14) is Challenge work. Section 4.5 (making decimal calculations easier) is not in this deck; slide 9’s mental method is its first step.',
 }

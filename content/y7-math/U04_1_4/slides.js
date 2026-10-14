@@ -1,8 +1,8 @@
 // content/y7-math/U04_1_4/slides.js
 // Year 7 Mathematics · 4.1–4.4 Decimals. Thursday 15 October 2026, one period.
 // Source: Workbook Unit 4, Sections 4.1–4.4 (pp. 51–61). Every number used in
-// class is original or real-world; the exercise is the homework and is not
-// spent in advance.
+// class is original or real-world, so the Workbook exercise is still unspent.
+// No homework slide, at Mr Bowen's request (14 Oct).
 //
 // ENGLISH AND FRENCH ONLY. From Unit 4 the Year 7 lessons are taught in
 // English and French, so this deck sets meta.vietnamese: false and every string
@@ -626,30 +626,7 @@ export const slides = [
     ],
   },
 
-  // 24. Homework
-  {
-    layout: 'callout',
-    accent: RED,
-    icon: 'Home',
-    eyebrow: 'Homework Assignment',
-    eyebrowFr: 'Devoirs',
-    title: 'For Next Lesson',
-    titleFr: 'Pour le prochain cours',
-    content: 'Write an **estimate** before every answer. Is your answer close to it?',
-    contentFr: 'Écris une **estimation** avant chaque réponse. Ta réponse en est-elle proche ?',
-    notes: [
-      {
-        tone: 'homework',
-        badge: 'Workbook 4.1 to 4.4',
-        badgeFr: 'Cahier d’exercices 4.1 à 4.4',
-        icon: 'Pencil',
-        text: '**Focus** — everybody.\n**Practice** — everybody.\n**Challenge** — an attempt beats a blank.',
-        textFr: '**Focus** — tout le monde.\n**Practice** — tout le monde.\n**Challenge** — un essai vaut mieux qu’une page blanche.',
-      },
-    ],
-  },
-
-  // 25. Exit question
+  // 24. Exit question
   {
     layout: 'hero',
     color: TEAL,
