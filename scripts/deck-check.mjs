@@ -156,7 +156,10 @@ const { result } = await send('Runtime.evaluate', {
       const broken = [...document.querySelectorAll('img')]
         .filter((x) => !(x.complete && x.naturalWidth > 0)).length;
       rows.push({ n: i, title: title.slice(0, 38), overflow, broken });
-      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+      // Click the deck's own Next (the last button) rather than pressing →:
+      // a game slide locks the arrow keys, which used to end the walk there.
+      const bs = document.querySelectorAll('button');
+      bs[bs.length - 1].click();
     }
     return rows;
   })()`,

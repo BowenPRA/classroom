@@ -159,13 +159,10 @@ const rows = await evalJs(`(async () => {
       if (o > over) over = o;
     });
     out.push(String(i).padStart(2) + '  ' + title.slice(0, 34).padEnd(36) + (over > 16 ? 'OVERFLOW ' + over + 'px' : 'ok'));
-    if (${REVEALS}) {
-      // An open reveal can swallow the arrow key; the dock's Next is the last button.
-      const bs = document.querySelectorAll('button');
-      bs[bs.length - 1].click();
-    } else {
-      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
-    }
+    // The dock's Next is the last button. Clicking it, not pressing →, gets
+    // past an open reveal and past a game slide, which locks the arrow keys.
+    const bs = document.querySelectorAll('button');
+    bs[bs.length - 1].click();
   }
   return out.join('\\n');
 })()`)
