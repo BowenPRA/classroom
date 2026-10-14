@@ -145,20 +145,26 @@ Label leader-lines are the thing you will get wrong: dots land inside the
 shape, or point at the membrane when they mean the cytoplasm. Only the contact
 sheet shows this.
 
-## 5 · Write `slides.js`, in all three languages from the start
+## 5 · Write `slides.js`, in English and French from the start
 
-Every string gets its `…Vn` and `…Fr` twins inline, and `index.js` sets
-`meta.french: true` (which adds FR to the deck's switch). Retro-fitting twins
-is worse than writing them inline — you end up re-reading every slide.
-Vietnamese and French also run longer than English and overflow different
-slides, so writing them late hides layout problems until the end.
+**From Unit 4 (15 Oct 2026) the Year 7 lessons are English and French only.**
+Every string gets its `…Fr` twin inline and no `…Vn` twin, and `index.js` sets
+`meta.french: true` and `meta.vietnamese: false` (the switch then reads EN /
+FR). Older decks keep their Vietnamese; don't strip it. Retro-fitting twins is
+worse than writing them inline — you end up re-reading every slide. French
+runs longer than English and overflows different slides, so writing it late
+hides layout problems until the end. Maths 4.1–4.4 (`U04_1_4`, Decimals) is
+the first EN/FR deck.
 
 French conventions, so every deck reads alike: short everyday French; `tu`
 (*Recopie*, *Calcule*); **M. Bowen**; maths and decimal points exactly as the
 English (the class works from the English book); a no-break space before
-`? ! : ;` and inside « »; where a slide teaches English wording and the
-Vietnamese keeps the English phrase, the French keeps it too. Widgets use
-`tr(lang, en, vn, fr)` from `src/lib/lang.js`; diagrams stay English.
+`? ! : ;` and inside « » (in a template literal write it as ` ` —
+eslint rejects the literal character there); where a slide teaches English
+wording, the French keeps the English phrase beside its own. Widgets use
+`tr(lang, en, null, fr)` from `src/lib/lang.js`; diagrams stay English.
+French and Vietnamese both write 3,25 and say "vingt-cinq" / "hai mươi lăm"
+for it — a decimal lesson should say so (U04_1_4 slide 3).
 
 The non-negotiables are in `CLAUDE.md`. The one worth restating because it is
 the whole point of the deck: **anything a student must copy goes in a `write`
@@ -192,25 +198,34 @@ npm run audit:svg
 npm run check:deck -- "http://localhost:5173/#/lesson/<course>/<unit>"
 npm run check:deck -- "http://localhost:5173/#/lesson/<course>/<unit>" dark
 npm run check:deck -- "http://localhost:5173/#/lesson/<course>/<unit>" fr
-node .claude/skills/new-lesson/scripts/slides-lint.mjs content/<course>/<unit>/slides.js
+node .claude/skills/new-lesson/scripts/slides-lint.mjs content/<course>/<unit>/slides.js --no-vn
 ```
 
 `slides-lint.mjs` catches what eslint cannot: a user-facing string with no
-`…Vn` or `…Fr` twin, a French twin whose `$…$` maths differs from the English,
-and an unpaired `$` (balanced `$…$` pairs are real KaTeX and are left alone).
-Pass `--no-fr` for a maths task deck, which is EN/VN only.
+`…Fr` twin (and, without `--no-vn`, no `…Vn` twin; with it, a stray `…Vn`), a
+French twin whose `$…$` maths differs from the English, and an unpaired `$`
+(balanced `$…$` pairs are real KaTeX and are left alone). Pass `--no-fr` for a
+maths task deck, which is EN/VN only.
+
+The dev URL needs the `/classroom/` base, and Vite moves to 5174 when 5173 is
+taken — read its log line for the real port.
 
 Then **project mode**, which is what the class actually sees and which
 `check:deck` does not test — it measures windowed, 1440×900, English:
 
 ```bash
 node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>"
-node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>" vn
 node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>" fr
 WSIZE=1366,768 node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>"
-WSIZE=1366,768 node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>" vn
 WSIZE=1366,768 node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>" fr
+REVEALS=1 WSIZE=1366,768 node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>"
+REVEALS=1 WSIZE=1366,768 node .claude/skills/new-lesson/scripts/project-check.mjs "<lesson-url>" fr
 ```
+
+(Add `vn` runs for a deck that still offers Vietnamese.) `REVEALS=1` opens every
+"Check your answer(s)" box before measuring; every other check walks with them
+shut, and an open answer is the commonest overflow. A `reveal.prompt` does not
+keep line breaks — separate items with commas.
 
 Fullscreen swaps every layout to `clamp()` type ~40% larger, so a deck that is
 spotless windowed can scroll on a third of its slides on the projector. Expect

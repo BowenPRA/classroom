@@ -25,6 +25,9 @@ import {
   Hand,
   // Added for expanding brackets (Y7 Maths 2.4).
   Parentheses, Square,
+  // Added for the four operations on decimals (Y7 Maths 4.1–4.4). Minus and
+  // Divide were already referenced by 2.2 and 3.1–3.2 and fell back to Info.
+  Plus, Minus, X, Divide, ArrowUp, ArrowDown, Trophy, Coins,
 } from 'lucide-react'
 import WidgetRenderer, { WidgetErrorBoundary } from '../WidgetRenderer.jsx'
 import { parseInlineText, renderContent, NOTE_TONES } from './helpers.jsx'
@@ -43,6 +46,7 @@ const ICONS = {
   Thermometer, Droplets, Wind, Flame, Snowflake, Waves, CloudFog, Gauge,
   Hand,
   Parentheses, Square,
+  Plus, Minus, X, Divide, ArrowUp, ArrowDown, Trophy, Coins,
 }
 
 /** Render a lucide icon by name (falls back to Info). */

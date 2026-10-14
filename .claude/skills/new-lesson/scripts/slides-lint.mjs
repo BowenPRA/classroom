@@ -31,8 +31,10 @@ import { pathToFileURL } from 'url'
 
 const target = process.argv.slice(2).find((a) => !a.startsWith('--'))
 const FRENCH = !process.argv.includes('--no-fr')
+// An English-and-French deck (meta.vietnamese: false — Year 7 from Unit 4).
+const VIETNAMESE = !process.argv.includes('--no-vn')
 if (!target) {
-  console.error('usage: node slides-lint.mjs <path-to-slides.js> [--no-fr]')
+  console.error('usage: node slides-lint.mjs <path-to-slides.js> [--no-fr] [--no-vn]')
   process.exit(2)
 }
 const src = fs.readFileSync(target, 'utf8')
@@ -85,7 +87,8 @@ const walk = (node, at) => {
       if (n % 2 === 1) problems.push(`UNPAIRED-$ ${at2} — "${line.slice(0, 54)}"`)
     })
     if (/(Vn|Fr)$/.test(k) || SKIP.has(k)) continue
-    if (!(`${k}Vn` in node)) problems.push(`NO-VN    ${at}.${k} — "${v.slice(0, 48)}"`)
+    if (VIETNAMESE && !(`${k}Vn` in node)) problems.push(`NO-VN    ${at}.${k} — "${v.slice(0, 48)}"`)
+    if (!VIETNAMESE && `${k}Vn` in node) problems.push(`STRAY-VN ${at}.${k}Vn — this deck has no Vietnamese`)
     if (!FRENCH) continue
     const fr = node[`${k}Fr`]
     if (typeof fr !== 'string') { problems.push(`NO-FR    ${at}.${k} — "${v.slice(0, 48)}"`); continue }
@@ -103,4 +106,5 @@ if (problems.length) {
   console.log(`\n${slides.length} slides checked, ${problems.length} problem(s)`)
   process.exit(1)
 }
-console.log(`${slides.length} slides checked — every string has a Vn${FRENCH ? ' and an Fr' : ''} twin, every $ is paired`)
+const twins = [VIETNAMESE && 'a Vn', FRENCH && 'an Fr'].filter(Boolean).join(' and ')
+console.log(`${slides.length} slides checked — every string has ${twins || 'no'} twin, every $ is paired`)

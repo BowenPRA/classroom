@@ -34,6 +34,9 @@ const lessons = Object.entries(modules).map(([path, mod]) => {
     // `french: true` adds FR to the deck's EN/VN switch — set it once every
     // string in the lesson, widgets included, has its `…Fr` twin.
     french: meta.french === true,
+    // `vietnamese: false` takes VN off the switch. The Year 7 lessons are
+    // English and French from Unit 4 (15 October 2026); older decks keep VN.
+    vietnamese: meta.vietnamese !== false,
     slides: data.slides || [],
     plan: data.plan || null,
   }

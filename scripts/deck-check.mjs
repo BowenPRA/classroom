@@ -99,6 +99,20 @@ await sleep(200)
 await send('Page.navigate', { url: URL_ARG })
 await sleep(2000)
 
+// A cold dev server can take well over 2s to render the first slide, and an
+// English walk used to start measuring an empty #root ("1 slides checked,
+// (none)"). Wait for a slide title before anything else, in every language.
+await send('Runtime.evaluate', {
+  awaitPromise: true,
+  expression: `(async () => {
+    for (let i = 0; i < 80; i++) {
+      if (document.querySelector('h1, h2')) return true;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+    return false;
+  })()`,
+})
+
 // The language toggle's buttons are labelled with the language code. A cold
 // dev server can take ~12s to render the first deck, so wait for the button.
 if (LANG !== 'en') {

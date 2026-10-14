@@ -34,6 +34,9 @@ if (!URL_ARG) {
 }
 const LANG = flags.find((f) => f === 'vn' || f === 'fr') || 'en'
 const [VW, VH] = (process.env.WSIZE || '1920,1080').split(',').map(Number)
+// REVEALS=1 opens every "Check your answer(s)" box before measuring. Every
+// other check walks with reveals shut, which hid four overflows in Maths 1.5.
+const REVEALS = process.env.REVEALS === '1'
 const PORT = Number(process.env.PORT || 9455)
 
 const CANDIDATES = [
@@ -106,12 +109,18 @@ if (LANG !== 'en') {
   await sleep(400)
 }
 
-const rect = await evalJs(`(() => {
-  const b = [...document.querySelectorAll('button')].find(x => /full ?screen/i.test(x.textContent.trim()));
-  if (!b) return null;
-  const r = b.getBoundingClientRect();
-  return { x: Math.round(r.x + r.width / 2), y: Math.round(r.y + r.height / 2) };
-})()`, false)
+// Poll for it: in English nothing above has waited for a cold dev server.
+const rect = await evalJs(`(async () => {
+  for (let i = 0; i < 80; i++) {
+    const b = [...document.querySelectorAll('button')].find(x => /full ?screen/i.test(x.textContent.trim()));
+    if (b) {
+      const r = b.getBoundingClientRect();
+      return { x: Math.round(r.x + r.width / 2), y: Math.round(r.y + r.height / 2) };
+    }
+    await new Promise(r => setTimeout(r, 250));
+  }
+  return null;
+})()`)
 if (!rect) { console.error('No FULL SCREEN button found — is this a lesson URL?'); cleanup(); process.exit(2) }
 
 // A trusted gesture: synthetic el.click() will not satisfy requestFullscreen().
@@ -137,6 +146,12 @@ const rows = await evalJs(`(async () => {
     const title = ((document.querySelector('h1,h2') || {}).textContent || '(none)').trim();
     if (title === last && i > 1) break;
     last = title;
+    if (${REVEALS}) {
+      [...document.querySelectorAll('button')]
+        .filter((b) => /check your answer|vérifie t(a|es) réponse|kiểm tra đáp án/i.test(b.textContent))
+        .forEach((b) => b.click());
+      await wait(400);
+    }
     let over = 0;
     document.querySelectorAll('div').forEach((el) => {
       if (!/auto|scroll/.test(getComputedStyle(el).overflowY)) return;
@@ -144,7 +159,13 @@ const rows = await evalJs(`(async () => {
       if (o > over) over = o;
     });
     out.push(String(i).padStart(2) + '  ' + title.slice(0, 34).padEnd(36) + (over > 16 ? 'OVERFLOW ' + over + 'px' : 'ok'));
-    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+    if (${REVEALS}) {
+      // An open reveal can swallow the arrow key; the dock's Next is the last button.
+      const bs = document.querySelectorAll('button');
+      bs[bs.length - 1].click();
+    } else {
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+    }
   }
   return out.join('\\n');
 })()`)

@@ -175,10 +175,11 @@ A widget earns its place by doing one thing a static slide cannot.
 3. **Source the images** (§4) and record every one in `images/CREDITS.json` as
    you go, not afterwards.
 4. **Author the diagrams** (§5).
-5. **Write `slides.js`**, in all three languages from the start — every
-   string gets its `…Vn` and `…Fr` twin inline, and `index.js` sets
-   `meta.french: true`. Retro-fitting twins is worse than writing them
-   inline.
+5. **Write `slides.js`**, in every language from the start. From Unit 4
+   (15 Oct 2026) the Year 7 lessons are **English and French**: every string
+   gets its `…Fr` twin inline and no `…Vn`, and `index.js` sets
+   `meta.french: true` and `meta.vietnamese: false`. Decks built earlier keep
+   their `…Vn` twins. Retro-fitting twins is worse than writing them inline.
 6. **Update `plan.js`** so the teacher plan matches the deck. A stale timeline
    is worse than none.
 7. **Verify** (§6). Fix. Re-verify.
@@ -393,7 +394,7 @@ before measuring. Maths 2.3 hid two overflowing reveals this way.*
 ## 8. Definition of done
 
 - [ ] `lint`, `build`, `audit:svg`, `check:deck` all clean
-- [ ] Every user-facing string has a `…Vn` and a `…Fr` twin (`slides-lint.mjs` clean), and `meta.french: true` is set
+- [ ] Every user-facing string has its `…Fr` twin (and a `…Vn` twin on a pre-Unit-4 deck); `slides-lint.mjs` is clean (`--no-vn` for an EN/FR deck), and `meta.french: true` (plus `meta.vietnamese: false` from Unit 4) is set
 - [ ] Light **and** dark checked by eye
 - [ ] Read every slide against the exemplars: no sentence the class does not need
 - [ ] Every copy-down item is in a `write` note or an orange bumper

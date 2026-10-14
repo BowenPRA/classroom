@@ -98,6 +98,11 @@ export default {
 the lesson, widgets included, has its `…Fr` twin. Every Year 7 lesson has
 French; the Year 7 maths tasks (`T*`) and the other courses do not.
 
+`vietnamese: false` takes VN off the switch. The Year 7 lessons are English and
+French from Unit 4 (15 October 2026), so a new Year 7 deck sets
+`french: true, vietnamese: false` and writes no `…Vn` twins; the decks before it
+keep EN / VN / FR. (`deckLangs` in `src/lib/lang.js` decides the switch.)
+
 ## Slide schema (`slides.js`)
 
 Each slide is a plain object. Set **`layout`** to pick a shape. (A slide written

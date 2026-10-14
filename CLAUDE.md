@@ -75,11 +75,13 @@ where something simple was wanted.**
 
 - Copy-down content goes in a `write` note or an orange `>` bumper. **Nothing
   else.** A definition that looks like discussion prose does not get copied.
-- Every user-facing string needs a `…Vn` **and** a `…Fr` twin, written inline
+- **Year 7 lessons are English and French from Unit 4 (15 Oct 2026).** Every
+  user-facing string needs a `…Fr` twin and **no** `…Vn` twin, written inline
   from the start — including widget interface text, which receives the deck's
-  `lang` prop (`tr(lang, en, vn, fr)` from `src/lib/lang.js`). Set
-  `meta.french: true` so the deck offers FR. The Year 7 maths tasks (`T*`
-  folders) are EN/VN only.
+  `lang` prop (`tr(lang, en, null, fr)` from `src/lib/lang.js`). Set
+  `meta.french: true` and `meta.vietnamese: false`, so the switch reads EN / FR.
+  Decks built before Unit 4 keep their `…Vn` twins and EN / VN / FR; don't strip
+  them. The Year 7 maths tasks (`T*` folders) are EN/VN only.
 - Never put a `$` in prose. `parseInlineText` turns any two of them into a
   maths span and eats the words between. Write "20 dollars".
 - Write SVG label `<text>` out literally. `audit:svg` cannot see text emitted
@@ -101,8 +103,9 @@ npm run check:deck -- "http://localhost:5173/#/lesson/<course>/<unit>"
 `check:deck` walks the deck **windowed at 1440×900, in English** (it takes
 `dark`, and `vn` or `fr` to walk it in that language). Project mode is
 fullscreen with roughly 40% larger type, and it is what the class actually sees
-— check it separately, in all three languages, at the room's real resolution. See LESSON-PLAYBOOK §6 for why that check is
-awkward to automate.
+— check it separately, in every language the deck offers, at the room's real
+resolution, and once with `REVEALS=1` so the answer boxes are open. See
+LESSON-PLAYBOOK §6 for why that check is awkward to automate.
 
 Then commit to `main`, run `npm run deploy`, and confirm the live site is
 serving the new bundle before calling it done. Both `git push` and

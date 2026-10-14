@@ -3,13 +3,17 @@
 // twin falls back to English — never to another translation.
 //
 //   en  English      always
-//   vn  Vietnamese   every bilingual course
+//   vn  Vietnamese   every bilingual course, unless the lesson sets
+//                    `meta.vietnamese: false` (Year 7 from Unit 4, 15 Oct 2026)
 //   fr  French       lessons that set `meta.french: true`
 
 /** The languages a deck offers, in toggle order. */
 export function deckLangs(course, lesson) {
   if (course?.bilingual === false) return ['en']
-  return lesson?.french ? ['en', 'vn', 'fr'] : ['en', 'vn']
+  const langs = ['en']
+  if (lesson?.vietnamese !== false) langs.push('vn')
+  if (lesson?.french) langs.push('fr')
+  return langs
 }
 
 /** Choose one of three strings for `lang`, falling back to English. */
