@@ -1,0 +1,110 @@
+[
+  {
+    "file": "pot.jpg",
+    "name": "Cooking using fire wood.jpg",
+    "title": "Black cooking pots on an open wood fire",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Cooking_using_fire_wood.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Oratile Leipego",
+    "usage": "The cooking-pot slide (the book's p.112 example). 960 px thumbnail, re-encoded."
+  },
+  {
+    "file": "stairs.jpg",
+    "name": "Malaysia - 020 - KL - climbing the steps to the Batu Caves (3510540576).jpg",
+    "title": "People climbing the 272 steps to the Batu Caves, Kuala Lumpur",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Malaysia_-_020_-_KL_-_climbing_the_steps_to_the_Batu_Caves_(3510540576).jpg",
+    "license": "CC BY 2.0",
+    "artist": "McKay Savage from London, UK",
+    "usage": "The walking-up-stairs slide (the book's p.112 example). 960 px thumbnail, re-encoded."
+  },
+  {
+    "file": "gaspipes.jpg",
+    "name": "Natural Gas Pipeline Station.jpg",
+    "title": "Pipes at a natural gas pipeline station",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Natural_Gas_Pipeline_Station.jpg",
+    "license": "CC BY 4.0",
+    "artist": "Mbrickn",
+    "usage": "PowerChain widget, stage 1 (natural gas: chemical)."
+  },
+  {
+    "file": "flame.jpg",
+    "name": "Flame from the burner of a gas stove.jpg",
+    "title": "Blue gas flame on a stove burner",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Flame_from_the_burner_of_a_gas_stove.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "BogTar201213",
+    "usage": "PowerChain widget, stage 2 (burning: thermal)."
+  },
+  {
+    "file": "turbine.jpg",
+    "name": "Turbinenläufer Gasturbine G24.jpg",
+    "title": "The rotor of a G24 gas turbine, on display",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Turbinenl%C3%A4ufer_Gasturbine_G24.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Dergenaue",
+    "usage": "PowerChain widget, stage 3 (it spins: kinetic)."
+  },
+  {
+    "file": "pylons.jpg",
+    "name": "Transmission Lines at Sunset.jpg",
+    "title": "Transmission lines on lattice towers at sunset",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Transmission_Lines_at_Sunset.jpg",
+    "license": "CC BY 4.0",
+    "artist": "Kkiefuik",
+    "usage": "PowerChain widget, stage 4 (wires: electrical)."
+  },
+  {
+    "file": "hoabinh.jpg",
+    "name": "Trên đập thủy điện Hòa Bình nhìn toàn cảnh.jpg",
+    "title": "Hòa Bình Dam from the hillside: the reservoir high behind the dam, the river low below it",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Tr%C3%AAn_%C4%91%E1%BA%ADp_th%E1%BB%A7y_%C4%91i%E1%BB%87n_H%C3%B2a_B%C3%ACnh_nh%C3%ACn_to%C3%A0n_c%E1%BA%A3nh.jpg",
+    "license": "CC0",
+    "artist": "CactiStaccingCrane",
+    "usage": "DamChain widget, stage 1 (water held high: gravitational potential). Cropped from the 960 px thumbnail to the middle 470 px band."
+  },
+  {
+    "file": "generator.jpg",
+    "name": "Tua-bin quay thủy điện Hòa Bình.jpg",
+    "title": "Generator H-8 spinning inside the Hòa Bình hydropower plant",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Tua-bin_quay_th%E1%BB%A7y_%C4%91i%E1%BB%87n_H%C3%B2a_B%C3%ACnh.jpg",
+    "license": "CC0",
+    "artist": "CactiStaccingCrane",
+    "usage": "DamChain widget, stage 2 (the generators spin: kinetic)."
+  },
+  {
+    "file": "hbwires.jpg",
+    "name": "Hoa Binh Dam Power Plant.JPG",
+    "title": "The Hòa Bình hydropower company building, with power lines behind",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Hoa_Binh_Dam_Power_Plant.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Fargo888",
+    "usage": "DamChain widget, stage 3 (wires: electrical)."
+  },
+  {
+    "file": "yagi_space.jpg",
+    "name": "Typhoon Yagi Strengthens After Swiping the Philippines (MODIS 2024-09-05).jpg",
+    "title": "Typhoon Yagi over the South China Sea, seen by NASA's Aqua satellite, 4 September 2024",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Typhoon_Yagi_Strengthens_After_Swiping_the_Philippines_(MODIS_2024-09-05).jpg",
+    "license": "Public domain (PD-USGov-NASA)",
+    "artist": "MODIS Land Rapid Response Team, NASA GSFC",
+    "usage": "YAGI panel. 960 px thumbnail, top and bottom 8% cropped."
+  },
+  {
+    "file": "yagi_hanoi.jpg",
+    "name": "Typhoon-Yagi 3.jpg",
+    "title": "A tree uprooted by Typhoon Yagi leaning against a house across a street in Hà Nội, 8 September 2024",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Typhoon-Yagi_3.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Octagon",
+    "usage": "YAGI panel."
+  },
+  {
+    "file": "candle.jpg",
+    "name": "Candle flame 01.jpg",
+    "title": "A lit tea-light candle in the dark",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Candle_flame_01.jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Rafael Reviriego from Madrid, Spain",
+    "usage": "The Useful Energy Change slide: the book's own example, chemical to light."
+  }
+]
