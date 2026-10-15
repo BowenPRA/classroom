@@ -22,7 +22,7 @@
  * Baseline before panicking: a deck that teaches fine can still overflow a
  * slide at 1366x768. Run this against a known-good unit to calibrate.
  */
-import { spawn } from 'child_process'
+import { spawn, spawnSync } from 'child_process'
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
@@ -57,13 +57,14 @@ const chrome = spawn(chromePath, [
   `--remote-debugging-port=${PORT}`, `--user-data-dir=${profile}`, 'about:blank',
 ], { stdio: 'ignore' })
 const cleanup = () => {
-  try { chrome.kill() } catch { /* already gone */ }
+  // kill() alone leaves Chrome's child processes on Windows, holding the port.
+  try { if (process.platform === 'win32') spawnSync('taskkill', ['/PID', String(chrome.pid), '/T', '/F'], { stdio: 'ignore' }); else chrome.kill() } catch { /* already gone */ }
   try { fs.rmSync(profile, { recursive: true, force: true }) } catch { /* best effort */ }
 }
 process.on('exit', cleanup)
 
 let targets = null
-for (let i = 0; i < 40 && !targets; i++) {
+for (let i = 0; i < 80 && !targets; i++) {
   await sleep(250)
   try { targets = await (await fetch(`http://127.0.0.1:${PORT}/json/list`)).json() } catch { /* not up yet */ }
 }
@@ -98,7 +99,7 @@ await sleep(2600)
 if (LANG !== 'en') {
   // A cold dev server can take ~12s to render the first deck: wait for the button.
   const found = await evalJs(`(async () => {
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 160; i++) {
       const b = [...document.querySelectorAll('button')].find(x => x.textContent.trim().toLowerCase() === '${LANG}');
       if (b) { b.click(); return true }
       await new Promise(r => setTimeout(r, 250));
@@ -111,7 +112,7 @@ if (LANG !== 'en') {
 
 // Poll for it: in English nothing above has waited for a cold dev server.
 const rect = await evalJs(`(async () => {
-  for (let i = 0; i < 80; i++) {
+  for (let i = 0; i < 240; i++) {
     const b = [...document.querySelectorAll('button')].find(x => /full ?screen/i.test(x.textContent.trim()));
     if (b) {
       const r = b.getBoundingClientRect();
@@ -167,6 +168,8 @@ const rows = await evalJs(`(async () => {
   return out.join('\\n');
 })()`)
 
+// An empty walk is a failure, not a pass (a busy machine can return nothing).
+if (typeof rows !== 'string' || !rows) { console.error('The walk returned no slides — did the page render? Re-run.'); cleanup(); process.exit(2) }
 console.log(rows)
 const bad = rows.split('\n').filter((r) => r.includes('OVERFLOW')).length
 console.log(`\n${LANG.toUpperCase()} @ ${size}: ${bad} slide(s) overflowing`)
