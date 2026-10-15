@@ -75,17 +75,19 @@ const VACUUM = { id: 'E43-CfukEgs', air: [82, 107], vacuum: [158, 207] }
 
 export function VacuumClip({ lang = 'en' }) {
   const [part, setPart] = useState('air')
-  const [go, setGo] = useState(false) // autoplay only after a button press
+  // Counts presses: autoplay only after the first, and a new key on every press
+  // so pressing the same segment again replays it from its start.
+  const [plays, setPlays] = useState(0)
   const [start, end] = VACUUM[part]
-  const src = `https://www.youtube-nocookie.com/embed/${VACUUM.id}?start=${start}&end=${end}&rel=0&modestbranding=1&playsinline=1${go ? '&autoplay=1' : ''}`
-  const play = (p) => { setPart(p); setGo(true) }
+  const src = `https://www.youtube-nocookie.com/embed/${VACUUM.id}?start=${start}&end=${end}&rel=0&modestbranding=1&playsinline=1${plays ? '&autoplay=1' : ''}`
+  const play = (p) => { setPart(p); setPlays((n) => n + 1) }
 
   return (
     <div className="w-full h-full flex flex-col gap-3 select-none">
       <div className="flex-1 min-h-0 flex items-center justify-center">
         <div className="h-full max-w-full rounded-xl overflow-hidden bg-black" style={{ aspectRatio: '16 / 9' }}>
           <iframe
-            key={`${part}-${go}`}
+            key={`${part}-${plays}`}
             className="w-full h-full"
             src={src}
             title={t(lang, 'A bowling ball and feathers in a vacuum chamber (BBC)', 'Une boule de bowling et des plumes dans une chambre à vide (BBC)')}

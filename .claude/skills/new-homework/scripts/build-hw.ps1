@@ -6,12 +6,18 @@
 #
 #   pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw01
 #   pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw01 -SkipTeacher
+#   pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw09 -French
+#
+# -French also builds <packet>-fr.pdf with \FRENCH defined (the packet's \fr
+# lines switch on) and rasterises it to .preview/fr-N.png. Only packets that
+# define \fr have a French copy; HW 9 and EX 9 were the first.
 #
 # PNGs land in <packet>/.preview/. Read them with the Read tool.
 
 param(
   [Parameter(Mandatory = $true)][string]$Packet,
   [switch]$SkipTeacher,
+  [switch]$French,
   [int]$Dpi = 100
 )
 
@@ -61,6 +67,11 @@ if (-not $SkipTeacher) {
   Invoke-Latex @('-interaction=nonstopmode', "-jobname=$Packet-teacher",
                  "\def\TEACHER{}\input{$Packet.tex}") "$Packet-teacher" | Out-Null
 }
+if ($French) {
+  $frFailed = Invoke-Latex @('-interaction=nonstopmode', "-jobname=$Packet-fr",
+                 "\def\FRENCH{}\input{$Packet.tex}") "$Packet-fr"
+  if ($frFailed) { throw "French copy failed to build. Fix the errors above." }
+}
 if ($failed) { throw "Student copy failed to build. Fix the errors above before looking at pages." }
 
 # -- Rasterise, so the pages can be looked at rather than guessed about ------
@@ -69,14 +80,19 @@ if (Test-Path $preview) { Get-ChildItem "$preview\*.png" | Remove-Item }
 else { New-Item -ItemType Directory -Path $preview | Out-Null }
 
 & pdftoppm -png -r $Dpi "$Packet.pdf" (Join-Path $preview 'p')
+if ($French) { & pdftoppm -png -r $Dpi "$Packet-fr.pdf" (Join-Path $preview 'fr') }
 
-Write-Host "`n=== page density (bytes of PNG; a small number is a half-empty page) ===" -ForegroundColor Cyan
-$pngs = Get-ChildItem "$preview\p-*.png" | Sort-Object Name
-$max  = ($pngs | Measure-Object -Property Length -Maximum).Maximum
-foreach ($p in $pngs) {
-  $bar = '#' * [math]::Round(40 * $p.Length / $max)
-  $flag = if ($p.Length -lt 0.45 * $max) { '  <-- look at this one' } else { '' }
-  '{0,-10} {1,8}  {2}{3}' -f $p.Name, $p.Length, $bar, $flag
+$sets = @('p')
+if ($French) { $sets += 'fr' }
+foreach ($set in $sets) {
+  Write-Host "`n=== page density, $set-*.png (bytes of PNG; a small number is a half-empty page) ===" -ForegroundColor Cyan
+  $pngs = Get-ChildItem "$preview\$set-*.png" | Sort-Object Name
+  $max  = ($pngs | Measure-Object -Property Length -Maximum).Maximum
+  foreach ($p in $pngs) {
+    $bar = '#' * [math]::Round(40 * $p.Length / $max)
+    $flag = if ($p.Length -lt 0.45 * $max) { '  <-- look at this one' } else { '' }
+    '{0,-10} {1,8}  {2}{3}' -f $p.Name, $p.Length, $bar, $flag
+  }
 }
 
 Write-Host "`nPNGs in $preview - now READ them. The log does not show a bad page." -ForegroundColor Yellow

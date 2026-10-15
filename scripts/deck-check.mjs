@@ -15,7 +15,7 @@
  * Set CHROME to override the browser path. Exits non-zero if anything fails,
  * so it can gate a deploy.
  */
-import { spawn } from 'child_process'
+import { spawn, spawnSync } from 'child_process'
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
@@ -59,14 +59,15 @@ const chrome = spawn(chromePath, [
 ], { stdio: 'ignore' })
 
 const cleanup = () => {
-  try { chrome.kill() } catch { /* already gone */ }
+  // kill() alone leaves Chrome's child processes on Windows, holding the port.
+  try { if (process.platform === 'win32') spawnSync('taskkill', ['/PID', String(chrome.pid), '/T', '/F'], { stdio: 'ignore' }); else chrome.kill() } catch { /* already gone */ }
   try { fs.rmSync(profile, { recursive: true, force: true }) } catch { /* best effort */ }
 }
 process.on('exit', cleanup)
 
 // Wait for the debugger to come up.
 let targets = null
-for (let i = 0; i < 40 && !targets; i++) {
+for (let i = 0; i < 80 && !targets; i++) {
   await sleep(250)
   try { targets = await (await fetch(`http://127.0.0.1:${PORT}/json/list`)).json() } catch { /* not ready */ }
 }
@@ -106,7 +107,7 @@ await sleep(2000)
 await send('Runtime.evaluate', {
   awaitPromise: true,
   expression: `(async () => {
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 240; i++) {
       if (document.querySelector('h1, h2')) return true;
       await new Promise((r) => setTimeout(r, 250));
     }
@@ -121,7 +122,7 @@ if (LANG !== 'en') {
     awaitPromise: true,
     returnByValue: true,
     expression: `(async () => {
-      for (let i = 0; i < 60; i++) {
+      for (let i = 0; i < 160; i++) {
         const b = [...document.querySelectorAll('button')].find((x) => x.textContent.trim().toLowerCase() === '${LANG}');
         if (b) { b.click(); return true }
         await new Promise((r) => setTimeout(r, 250));
@@ -166,7 +167,10 @@ const { result } = await send('Runtime.evaluate', {
   })()`,
 })
 
-const rows = result.value || []
+// An empty walk is a failure, not a pass: on a busy machine the evaluate can
+// come back with no value at all ("rows is not iterable", or "0 slides, 0 issues").
+const rows = Array.isArray(result?.value) ? result.value : []
+if (!rows.length) { console.error('The walk returned no slides — did the page render? Re-run.'); cleanup(); process.exit(2) }
 let bad = 0
 for (const r of rows) {
   const problems = []
