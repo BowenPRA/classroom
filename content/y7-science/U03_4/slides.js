@@ -8,48 +8,60 @@
 //
 // TWO PERIODS, ONE DECK. Eight book pages, and the book's own Activity (cut out
 // a Sun, an Earth, a Moon and two sets of card "ocean" crescents, then turn
-// them) is a real hands-on model that needs half a period by itself.
-//   Part 1 (slides 1–17)  what a tide is, tidal range, and why there are two
-//                         high tides a day. Ends on its own exit slide.
-//   Part 2 (slides 18–37) the Activity, the Moon moving on, the Sun and the
-//                         Moon's phases, the effects of tides, and the three
+// them) is a real hands-on model that needs twelve honest minutes to make.
+//   Part 1 (slides 1–17)  what a tide is, tidal range, what tides do to
+//                         harbours and coasts, and why there are two high
+//                         tides a day. Ends on its own exit slide.
+//   Part 2 (slides 18–34) the Activity in groups, the Moon moving on, the Sun
+//                         and the Moon's phases, a real month of tides, Ho Chi
+//                         Minh City's floods, earth tides, and the three
 //                         scientists of "Think like a scientist".
 //
 // THE SCIENCE IS THE BOOK'S, AT THE BOOK'S LEVEL (p.99). The Moon's gravity
 // pulls the water more easily than the land; the pull is the tidal force; the
-// side nearest the Moon AND the side furthest away have high tide; the Earth
-// spins in 24 hours, so high tides are about 12 hours apart; the Sun's tidal
-// force is weaker; Sun, Moon and Earth in line (new moon, full moon) give a
-// bigger tidal range. The book does not explain WHY the far side bulges, and
-// neither does the deck — the honest one-line answer is in plan.js for the
-// teacher, if a student asks.
+// side nearest the Moon AND the side furthest away have high tide; a harbour
+// passes both high-tide sides as the Earth spins in 24 hours, so high tides are
+// about 12 hours apart; the Sun's tidal force is weaker; Sun, Moon and Earth in
+// line (new moon, full moon) give a bigger tidal range. The book does not say
+// WHY the far side bulges, and neither does the deck — slide 13 makes the class
+// commit to "one side" first, slide 14 shows two, and the honest one-line
+// reason is in plan.js for the teacher, if a student asks.
 //
 // REAL DATA, NOT INVENTED NUMBERS. The day graph (slide 5), the range (6), the
 // week of high tides (22) and the month of ranges (27) are NOAA predictions for
 // Eastport, at the mouth of the Bay of Fundy, for the very weeks of the lesson.
-// The month shows exactly two peaks: after the full moon (26 Oct) and at the
-// new moon (9 Nov).
+// They are heights of the water above chart datum, labelled as such; at a
+// harbour the depth rises and falls by the same amounts. The month shows
+// exactly two peaks: after the full moon (26 Oct) and at the new moon (9 Nov).
 //
 // THE MOVES, CHOSEN FOR THIS SECTION (not 3.1's order): spot the difference in
 // a photo pair → key words → a time-lapse loop → read a real tide graph → a
 // guess, then 16.3 m → a left/right-hand vote on the book's Question 6 (the
-// half-range trap) → Draw This → stand up and turn (you are a harbour) → the
-// one motion widget → in Part 2, the book's card model in groups → a week of
-// real high tides (how much later?) → a vote on new moon or full moon → a real
-// month graph → Ho Chi Minh City's high-tide floods → the scientists, ending
-// on planning a test of Kepler's magnetic idea.
+// half-range trap) → what tides do, and Question 4 on whiteboards → "where is
+// high tide?" before the drawing → Draw This → stand up and turn (you are a
+// harbour) → in Part 2, the book's card model in groups → a week of real high
+// tides (earlier or later?) → a vote on new moon or full moon → a real month
+// graph → Mid-Autumn Festival and Ho Chi Minh City's floods → the scientists,
+// ending on planning a test of Kepler's magnetic idea.
 //
-// COPY-DOWN, ON A BUDGET: 8 short write panels and 2 drawings — 4 and 1 in each
-// part. Slides 3, 6, 13 (drawing), 16; 26 (drawing), 30, 31, 34.
+// BOOK QUESTION NUMBERS CLASH (Questions 1–6 on p.100, Activity Questions 1–9
+// on pp.102–103, Think like a scientist 1–3 on pp.103–104), so every eyebrow
+// names its box and page: "Question 6 · page 100", "Activity Q6 · page 102".
+//
+// COPY-DOWN, ON A BUDGET: 8 short write panels and 2 drawings — 5 and 1 in
+// Part 1, 3 and 1 in Part 2. Slides 3, 6, 12, 14 (drawing), 16; 26 (drawing),
+// 29, 31.
 //
 // WRITING RULE (the 2.5 density): short sentences, one idea each, and the body
 // text never repeats the write note, a label or the caption.
 
 import { DIAGRAMS } from './diagrams.js'
-import { CausewayClip, TideTurn } from './widgets.jsx'
+import { CausewayClip } from './widgets.jsx'
 import earthMoon from './images/earthmoon.jpg'
 import saigonFlood from './images/saigonflood.jpg'
+import pytheas from './images/pytheas.jpg'
 import kepler from './images/kepler.jpg'
+import newton from './images/newton.jpg'
 
 const TEAL = '#0087a8'
 const PURPLE = '#5c2483'
@@ -59,7 +71,7 @@ const BLUE = '#1a5fa8'
 
 export const slides = [
   // ════════════════════════════════════════════════════════════════════════
-  // PART 1 — what a tide is, and why there are two a day
+  // PART 1 — what a tide is, what it does, and why there are two a day
   // ════════════════════════════════════════════════════════════════════════
 
   // 1. Hero + the book's Getting Started
@@ -91,11 +103,11 @@ export const slides = [
     icon: 'ScanEye',
     eyebrow: 'Spot the difference',
     eyebrowFr: 'Trouve la différence',
-    title: 'Same Place, Six Hours Apart',
-    titleFr: 'Même endroit, six heures plus tard',
+    title: 'What Changed?',
+    titleFr: 'Qu’est-ce qui a changé ?',
     inlineSvg: DIAGRAMS.PAIR,
-    caption: 'A harbour in Canada. What changed? Tell your partner.',
-    captionFr: 'Un port au Canada. Qu’est-ce qui a changé ? Dis-le à ton voisin.',
+    caption: 'A harbour in Canada. Tell your partner.',
+    captionFr: 'Un port au Canada. Dis-le à ton voisin.',
   },
 
   // 3. Depth and tide (write)
@@ -205,17 +217,17 @@ export const slides = [
     captionFr: 'Le plus grand marnage du monde. En Méditerranée et dans les Caraïbes : moins de **1 m**.',
   },
 
-  // 9. Question 6 as a vote: no answer on the slide
+  // 9. Question 6 (p.100) as a vote: no answer on the slide
   {
     layout: 'compare',
     accent: PURPLE,
     icon: 'Hand',
-    eyebrow: 'Question 6 · vote with one hand',
-    eyebrowFr: 'Question 6 · vote avec une main',
+    eyebrow: 'Question 6 · page 100 · vote with one hand',
+    eyebrowFr: 'Question 6 · page 100 · vote avec une main',
     title: 'Maximum Depth?',
     titleFr: 'Profondeur maximale ?',
-    text: 'Average depth **5.0 m**. Tidal range **2.0 m**. Maximum depth?',
-    textFr: 'Profondeur moyenne **5.0 m**. Marnage **2.0 m**. Profondeur maximale ?',
+    text: 'Average depth **5.0 m**. Largest tidal range **2.0 m**. Maximum depth?',
+    textFr: 'Profondeur moyenne **5.0 m**. Marnage maximal **2.0 m**. Profondeur maximale ?',
     columns: [
       {
         heading: 'A · left hand up',
@@ -249,43 +261,72 @@ export const slides = [
     contentFr: '**B : 6.0 m.**\n\nLa **moyenne** (average) est au milieu. La moitié du marnage est au-dessus, la moitié en dessous.\n\n5.0 + 1.0 = **6.0 m**',
   },
 
-  // ── WHAT CAUSES TIDES? ──────────────────────────────────────────────────
-  // 11. Question first
+  // ── EFFECTS OF TIDES ────────────────────────────────────────────────────
+  // 11. What tides do
   {
-    layout: 'statement',
-    accent: PURPLE,
-    eyebrow: 'Think',
-    eyebrowFr: 'Réfléchis',
-    title: 'What Pulls the Sea?',
-    titleFr: 'Qu’est-ce qui tire la mer ?',
-    text: 'Twice a day, the sea rises and falls.',
-    textFr: 'Deux fois par jour, la mer monte et descend.',
-    sub: 'Something **pulls** the water. What?',
-    subFr: 'Quelque chose **tire** l’eau. Quoi ?',
+    layout: 'showcase',
+    accent: TEAL,
+    icon: 'Waves',
+    eyebrow: 'Effects of tides · page 100',
+    eyebrowFr: 'Les effets des marées · page 100',
+    title: 'What Tides Do',
+    titleFr: 'Ce que font les marées',
+    inlineSvg: DIAGRAMS.EFFECTS,
+    caption: 'Fish follow the tides to find food. Fast tides are **dangerous** for small boats.',
+    captionFr: 'Les poissons suivent les marées pour trouver à manger. Les marées rapides sont **dangereuses** pour les petits bateaux.',
+  },
+
+  // 12. Question 4 + harbour and coastal (write)
+  {
+    layout: 'callout',
+    accent: GREEN,
+    icon: 'PenLine',
+    eyebrow: 'Question 4 · page 100 · whiteboards',
+    eyebrowFr: 'Question 4 · page 100 · ardoises',
+    title: 'Harbours and Coasts',
+    titleFr: 'Ports et côtes',
+    content: 'Explain why some **harbours** cannot be used at low tide.',
+    contentFr: 'Explique pourquoi certains **ports** (harbours) ne peuvent pas servir à marée basse.',
+    notes: [
+      {
+        tone: 'write',
+        text: '**Harbour:** a place where boats and ships load and unload.\n**Coastal:** close to the sea.',
+        textFr: '**Port (harbour) :** un endroit où les bateaux chargent et déchargent.\n**Côtier (coastal) :** près de la mer.',
+      },
+    ],
     reveal: {
-      label: 'Answer',
-      labelFr: 'Réponse',
-      answer: '**The Moon.** Its gravity pulls on the Earth.',
-      answerFr: '**La Lune.** Sa gravité attire la Terre.',
+      label: 'Check your answer',
+      labelFr: 'Vérifie ta réponse',
+      answer: 'The water is not **deep** enough: boats would hit the bottom.',
+      answerFr: 'L’eau n’est pas assez **profonde** : les bateaux toucheraient le fond.',
     },
   },
 
-  // 12. The Moon pulls the oceans most
+  // ── WHAT CAUSES TIDES? ──────────────────────────────────────────────────
+  // 13. The Moon pulls — and where is high tide? (they commit before 14)
   {
     layout: 'split',
     accent: TEAL,
     icon: 'Globe',
-    eyebrow: 'Why tides happen',
-    eyebrowFr: 'Pourquoi il y a des marées',
+    eyebrow: 'What causes tides?',
+    eyebrowFr: 'Qu’est-ce qui cause les marées ?',
     title: 'The Moon Pulls',
     titleFr: 'La Lune attire',
     ratio: 40,
     image: earthMoon,
     content: 'The Moon’s gravity pulls on the whole Earth.\n\nWater is easier to pull than land. So the **oceans** move.',
     contentFr: 'La gravité de la Lune attire toute la Terre.\n\nL’eau est plus facile à tirer que les terres. Donc ce sont les **océans** qui bougent.',
+    reveal: {
+      prompt: 'So where is high tide? Point at the photo.',
+      promptFr: 'Alors, où est la marée haute ? Montre sur la photo.',
+      label: 'Answer',
+      labelFr: 'Réponse',
+      answer: 'Not only on one side: there are **two** high tides. Look at the next drawing.',
+      answerFr: 'Pas d’un seul côté : il y a **deux** marées hautes. Regarde le dessin suivant.',
+    },
   },
 
-  // 13. Draw This: the book's figure (write)
+  // 14. Draw This: the book's figure (write)
   {
     layout: 'split',
     accent: ORANGE,
@@ -306,7 +347,7 @@ export const slides = [
     ],
   },
 
-  // 14. Act it out
+  // 15. Act it out
   {
     layout: 'statement',
     accent: GREEN,
@@ -326,20 +367,6 @@ export const slides = [
     },
   },
 
-  // 15. The motion: the Earth turns under the two bulges
-  {
-    layout: 'showcase',
-    accent: TEAL,
-    icon: 'Timer',
-    eyebrow: 'One turn = 24 hours',
-    eyebrowFr: 'Un tour = 24 heures',
-    title: 'The Earth Turns',
-    titleFr: 'La Terre tourne',
-    widget: TideTurn,
-    caption: 'Say **high** or **low** before each press.',
-    captionFr: 'Dis **high** ou **low** avant chaque appui.',
-  },
-
   // 16. Twice a day (write)
   {
     layout: 'callout',
@@ -352,13 +379,13 @@ export const slides = [
     notes: [
       {
         tone: 'write',
-        text: 'The Earth spins once every **24 hours**.\nSo there are **2 high tides** and **2 low tides** a day.\nHigh tides are about **12 hours** apart. High tide to low tide: about **6 hours**.',
-        textFr: 'La Terre fait un tour sur elle-même en **24 heures**.\nDonc il y a **2 marées hautes** et **2 marées basses** par jour.\nLes marées hautes sont à environ **12 heures** d’écart. De la marée haute à la marée basse : environ **6 heures**.',
+        text: 'The Earth spins once in **24 hours**.\nA harbour passes **both** high-tide sides: **2 high tides** and **2 low tides** a day, about **12 hours** apart.',
+        textFr: 'La Terre fait un tour sur elle-même en **24 heures**.\nUn port passe par les **deux** côtés de marée haute : **2 marées hautes** et **2 marées basses** par jour, à environ **12 heures** d’écart.',
       },
     ],
   },
 
-  // 17. End of Part 1
+  // 17. End of Part 1: the book's Question 2, and the times
   {
     layout: 'hero',
     color: TEAL,
@@ -372,7 +399,7 @@ export const slides = [
   },
 
   // ════════════════════════════════════════════════════════════════════════
-  // PART 2 — the model, the Sun, and why tides matter
+  // PART 2 — the model, the Sun, the land, and the scientists
   // ════════════════════════════════════════════════════════════════════════
 
   // 18. Hero + the book's Question 1, voted with fingers (answered on 26)
@@ -389,8 +416,8 @@ export const slides = [
     titleFr: 'La Lune et le Soleil',
     card: {
       icon: 'Hand',
-      badge: 'Starter · Question 1 · hold up fingers',
-      badgeFr: 'Pour commencer · Question 1 · lève tes doigts',
+      badge: 'Starter · Question 1, page 100 · hold up fingers',
+      badgeFr: 'Pour commencer · Question 1, page 100 · lève tes doigts',
       text: 'What causes the gravity for tides? **1** the Sun only **2** the Moon only **3** the Sun and Moon **4** the Sun, Moon and other stars',
       textFr: 'Qu’est-ce qui cause la gravité des marées ? **1** le Soleil seul **2** la Lune seule **3** le Soleil et la Lune **4** le Soleil, la Lune et d’autres étoiles',
     },
@@ -425,13 +452,13 @@ export const slides = [
     ],
   },
 
-  // 20. Activity Part 1 + its Question 1
+  // 20. Activity Part 1 + Activity Q1
   {
     layout: 'split',
     accent: PURPLE,
     icon: 'Users',
-    eyebrow: 'Activity · Part 1',
-    eyebrowFr: 'Activité · partie 1',
+    eyebrow: 'Activity · Part 1 · page 101',
+    eyebrowFr: 'Activité · partie 1 · page 101',
     title: 'Why Tides Happen',
     titleFr: 'Pourquoi il y a des marées',
     ratio: 40,
@@ -439,8 +466,8 @@ export const slides = [
     content: 'Put the Earth and the Moon about **30 cm** apart. Put **set 1** around the Earth.',
     contentFr: 'Place la Terre et la Lune à environ **30 cm** l’une de l’autre. Place le **set 1** autour de la Terre.',
     reveal: {
-      prompt: 'Question 1: why are the deepest parts in line with the Moon?',
-      promptFr: 'Question 1 : pourquoi les parties les plus profondes sont-elles alignées avec la Lune ?',
+      prompt: 'Activity Q1: why are the deepest parts in line with the Moon?',
+      promptFr: 'Activité Q1 : pourquoi les parties les plus profondes sont-elles alignées avec la Lune ?',
       label: 'Check your answer',
       labelFr: 'Vérifie ta réponse',
       answer: 'The Moon’s gravity pulls the water along that line: the **tidal force**.',
@@ -448,13 +475,13 @@ export const slides = [
     },
   },
 
-  // 21. Activity Part 2 + Questions 2–4
+  // 21. Activity Part 2 + Activity Q2–4
   {
     layout: 'split',
     accent: PURPLE,
     icon: 'RotateCcw',
-    eyebrow: 'Activity · Part 2',
-    eyebrowFr: 'Activité · partie 2',
+    eyebrow: 'Activity · Part 2 · page 102',
+    eyebrowFr: 'Activité · partie 2 · page 102',
     title: 'Times of the Tides',
     titleFr: 'Les heures des marées',
     ratio: 40,
@@ -462,8 +489,8 @@ export const slides = [
     content: 'Mark a point on the coast. Turn **only the Earth**, slowly, **anticlockwise**. One turn = 24 hours.',
     contentFr: 'Marque un point sur la côte. Tourne **seulement la Terre**, lentement, dans le sens **anticlockwise** (inverse des aiguilles d’une montre). Un tour = 24 heures.',
     reveal: {
-      prompt: 'Questions 2–4: how many high tides in one turn? How many low tides? So how far apart are the high tides?',
-      promptFr: 'Questions 2–4 : combien de marées hautes en un tour ? Combien de marées basses ? Donc quel écart entre les marées hautes ?',
+      prompt: 'Activity Q2–4: how many high tides in one turn? How many low tides? So how far apart are the high tides?',
+      promptFr: 'Activité Q2–4 : combien de marées hautes en un tour ? Combien de marées basses ? Donc quel écart entre les marées hautes ?',
       label: 'Check your answers',
       labelFr: 'Vérifie tes réponses',
       answer: '**2** Two. **3** Two. **4** 24 ÷ 2 = **12 hours**, for high tides and for low tides.',
@@ -471,34 +498,34 @@ export const slides = [
     },
   },
 
-  // 22. Question 5, with a real week of high tides
+  // 22. Activity Q5, with a real week of high tides
   {
     layout: 'split',
     accent: PURPLE,
     icon: 'Timer',
-    eyebrow: 'Question 5 · real tides',
-    eyebrowFr: 'Question 5 · vraies marées',
+    eyebrow: 'Activity Q5 · page 102 · real tides',
+    eyebrowFr: 'Activité Q5 · page 102 · vraies marées',
     title: 'Same Time Tomorrow?',
     titleFr: 'À la même heure demain ?',
     ratio: 45,
     inlineSvg: DIAGRAMS.HIGH_TIMES,
-    content: 'The Moon moves too: it orbits the Earth.\n\nIs high tide at the **same time** every day? How much **later** is it?',
-    contentFr: 'La Lune bouge aussi : elle tourne autour de la Terre.\n\nLa marée haute est-elle à la **même heure** chaque jour ? Combien **plus tard** ?',
+    content: 'The Moon moves too: it orbits the Earth.\n\nIs high tide at the **same time** every day? **Earlier** or **later**? By how much?',
+    contentFr: 'La Lune bouge aussi : elle tourne autour de la Terre.\n\nLa marée haute est-elle à la **même heure** chaque jour ? Plus **tôt** ou plus **tard** ? De combien ?',
     reveal: {
       label: 'Check your answer',
       labelFr: 'Vérifie ta réponse',
-      answer: 'No: about **50 minutes later** each day (57, 54, 49, 45).\nThe Moon moves on, so the Earth turns a little more to face it.',
-      answerFr: 'Non : environ **50 minutes plus tard** chaque jour (57, 54, 49, 45).\nLa Lune avance, donc la Terre tourne un peu plus pour lui faire face.',
+      answer: 'Later: about **50 minutes later** each day (57, 54, 49, 45).\nThe Moon moves on, so the Earth turns a little more to face it.',
+      answerFr: 'Plus tard : environ **50 minutes plus tard** chaque jour (57, 54, 49, 45).\nLa Lune avance, donc la Terre tourne un peu plus pour lui faire face.',
     },
   },
 
-  // 23. Activity Part 3 + Question 6
+  // 23. Activity Part 3 + Activity Q6
   {
     layout: 'split',
     accent: PURPLE,
     icon: 'Sun',
-    eyebrow: 'Activity · Part 3',
-    eyebrowFr: 'Activité · partie 3',
+    eyebrow: 'Activity · Part 3 · page 102',
+    eyebrowFr: 'Activité · partie 3 · page 102',
     title: 'Add the Sun',
     titleFr: 'Ajoute le Soleil',
     ratio: 40,
@@ -506,8 +533,8 @@ export const slides = [
     content: 'Change to **set 2**. Put the Earth, the Moon and the Sun in a line.',
     contentFr: 'Prends le **set 2**. Aligne la Terre, la Lune et le Soleil.',
     reveal: {
-      prompt: 'Question 6: why is set 2 better now?',
-      promptFr: 'Question 6 : pourquoi le set 2 est-il mieux maintenant ?',
+      prompt: 'Activity Q6: why is set 2 better now?',
+      promptFr: 'Activité Q6 : pourquoi le set 2 est-il mieux maintenant ?',
       label: 'Check your answer',
       labelFr: 'Vérifie ta réponse',
       answer: 'The Sun pulls too. Sun and Moon together make a **bigger tidal force**: higher high tides, lower low tides.',
@@ -516,13 +543,13 @@ export const slides = [
   },
 
   // ── THE MOON'S PHASES ───────────────────────────────────────────────────
-  // 24. Question 7 as a vote
+  // 24. Activity Q7 as a vote (A is right this time; Question 6's was B)
   {
     layout: 'compare',
     accent: PURPLE,
     icon: 'Hand',
-    eyebrow: 'Question 7 · vote with one hand',
-    eyebrowFr: 'Question 7 · vote avec une main',
+    eyebrow: 'Activity Q7 · page 102 · vote with one hand',
+    eyebrowFr: 'Activité Q7 · page 102 · vote avec une main',
     title: 'Which Moon Do We See?',
     titleFr: 'Quelle Lune voit-on ?',
     text: 'The Moon is **between** the Earth and the Sun. What do we see?',
@@ -533,31 +560,39 @@ export const slides = [
         headingFr: 'A · main gauche levée',
         accent: BLUE,
         icon: 'Hand',
-        inlineSvg: DIAGRAMS.ANS_FULL,
+        inlineSvg: DIAGRAMS.ANS_NEW,
       },
       {
         heading: 'B · right hand up',
         headingFr: 'B · main droite levée',
         accent: ORANGE,
         icon: 'Hand',
-        inlineSvg: DIAGRAMS.ANS_NEW,
+        inlineSvg: DIAGRAMS.ANS_FULL,
       },
     ],
   },
 
-  // 25. Questions 7 and 8 answered
+  // 25. Activity Q7 answered; Q8 asked, then revealed
   {
     layout: 'split',
     accent: TEAL,
     icon: 'Lightbulb',
-    eyebrow: 'Questions 7 and 8',
-    eyebrowFr: 'Questions 7 et 8',
-    title: 'New Moon, Full Moon',
-    titleFr: 'Nouvelle lune, pleine lune',
+    eyebrow: 'Activity Q7 and Q8 · pages 102–103',
+    eyebrowFr: 'Activité Q7 et Q8 · pages 102–103',
+    title: 'A New Moon',
+    titleFr: 'Une nouvelle lune',
     ratio: 40,
     inlineSvg: DIAGRAMS.PHASES,
-    content: '**B: a new moon.** Its lit side faces the Sun, away from us.\n\nMove the Moon **behind** the Earth: now we see the lit side. A **full moon**.',
-    contentFr: '**B : une nouvelle lune (new moon).** Sa face éclairée regarde le Soleil, pas nous.\n\nPlace la Lune **derrière** la Terre : on voit la face éclairée. Une **pleine lune (full moon)**.',
+    content: '**A: a new moon.** Its lit side faces the Sun, away from us.',
+    contentFr: '**A : une nouvelle lune (new moon).** Sa face éclairée regarde le Soleil, pas nous.',
+    reveal: {
+      prompt: 'Activity Q8: move the Moon to the other side of the Earth. Name this phase.',
+      promptFr: 'Activité Q8 : place la Lune de l’autre côté de la Terre. Comment s’appelle cette phase ?',
+      label: 'Check your answer',
+      labelFr: 'Vérifie ta réponse',
+      answer: 'A **full moon**: now we see the lit side.',
+      answerFr: 'Une **pleine lune (full moon)** : maintenant, on voit la face éclairée.',
+    },
   },
 
   // 26. Draw This: in line (write)
@@ -573,7 +608,7 @@ export const slides = [
     inlineSvg: DIAGRAMS.IN_LINE,
     drawThis: true,
     content: 'Starter answer: **3**, the Sun **and** the Moon.',
-    contentFr: 'Réponse du départ : **3**, le Soleil **et** la Lune.',
+    contentFr: 'Réponse à la question de départ : **3**, le Soleil **et** la Lune.',
     notes: [
       {
         tone: 'write',
@@ -583,83 +618,55 @@ export const slides = [
     ],
   },
 
-  // 27. Questions 9a and 9b: a real month
+  // 27. Activity Q9a and Q9b: a real month
   {
-    layout: 'showcase',
+    layout: 'split',
     accent: PURPLE,
     icon: 'TrendingUp',
-    eyebrow: 'Question 9 · read the graph',
-    eyebrowFr: 'Question 9 · lis le graphique',
-    title: 'A Month of Tides',
-    titleFr: 'Un mois de marées',
+    eyebrow: 'Activity Q9 · page 103 · read the graph',
+    eyebrowFr: 'Activité Q9 · page 103 · lis le graphique',
+    title: 'When Are Tides Biggest?',
+    titleFr: 'Quand les marées sont-elles les plus grandes ?',
+    ratio: 40,
     inlineSvg: DIAGRAMS.MONTH,
-    caption: 'When is the tidal range biggest? How many times in one lunar month (29 days)?',
-    captionFr: 'Quand le marnage est-il le plus grand ? Combien de fois par mois lunaire (29 jours) ?',
+    content: '**a** When is the tidal range biggest? Look at the Moon.\n\n**b** How many times in one lunar month (29 days)?',
+    contentFr: '**a** Quand le marnage est-il le plus grand ? Regarde la Lune.\n\n**b** Combien de fois par mois lunaire (29 jours) ?',
+    reveal: {
+      label: 'Check your answers',
+      labelFr: 'Vérifie tes réponses',
+      answer: '**a** Near the **full moon** and the **new moon**.\n**b** **Twice** a lunar month.',
+      answerFr: '**a** Près de la **pleine lune** et de la **nouvelle lune**.\n**b** **Deux fois** par mois lunaire.',
+    },
   },
 
-  // 28. The answer, and Vietnam
+  // 28. Vietnam: they work out when Ho Chi Minh City floods
   {
     layout: 'split',
     accent: TEAL,
     icon: 'MapPin',
-    eyebrow: 'Question 9 · and in Vietnam',
-    eyebrowFr: 'Question 9 · et au Vietnam',
-    title: 'Twice a Month',
-    titleFr: 'Deux fois par mois',
+    eyebrow: 'In Vietnam',
+    eyebrowFr: 'Au Vietnam',
+    title: 'Floods in Ho Chi Minh City',
+    titleFr: 'Inondations à Hô-Chi-Minh-Ville',
     ratio: 45,
     image: saigonFlood,
-    content: 'The biggest tides come near the **full moon** and the **new moon**: **twice** a lunar month.\n\nIn Ho Chi Minh City, high tides flood streets most around the **1st** and the **15th** of the lunar month. Strong wind or rain makes it worse.',
-    contentFr: 'Les plus grandes marées arrivent près de la **pleine lune** et de la **nouvelle lune** : **deux fois** par mois lunaire.\n\nÀ Hô-Chi-Minh-Ville, les marées hautes inondent les rues surtout vers le **1er** et le **15** du mois lunaire. Le vent fort ou la pluie aggravent tout.',
-  },
-
-  // ── EFFECTS OF TIDES ────────────────────────────────────────────────────
-  // 29. What tides do
-  {
-    layout: 'showcase',
-    accent: TEAL,
-    icon: 'Waves',
-    eyebrow: 'Effects of tides · page 100',
-    eyebrowFr: 'Les effets des marées · page 100',
-    title: 'What Tides Do',
-    titleFr: 'Ce que font les marées',
-    inlineSvg: DIAGRAMS.EFFECTS,
-    caption: 'Fish follow the tides to find food. Fast tides are **dangerous** for small boats.',
-    captionFr: 'Les poissons suivent les marées pour trouver à manger. Les marées rapides sont **dangereuses** pour les petits bateaux.',
-  },
-
-  // 30. Question 4 + harbour and coastal (write)
-  {
-    layout: 'callout',
-    accent: GREEN,
-    icon: 'PenLine',
-    eyebrow: 'Question 4 · whiteboards',
-    eyebrowFr: 'Question 4 · ardoises',
-    title: 'Harbours and Coasts',
-    titleFr: 'Ports et côtes',
-    content: 'Explain why some **harbours** cannot be used at low tide.',
-    contentFr: 'Explique pourquoi certains **ports** (harbours) ne peuvent pas servir à marée basse.',
-    notes: [
-      {
-        tone: 'write',
-        text: '**Harbour:** a place where boats and ships load and unload.\n**Coastal:** close to the sea.',
-        textFr: '**Port (harbour) :** un endroit où les bateaux chargent et déchargent.\n**Côtier (coastal) :** près de la mer.',
-      },
-    ],
+    content: 'Mid-Autumn Festival is on the **15th** of the lunar month. Which Moon is it?\n\nSo when do the streets flood at high tide?',
+    contentFr: 'La fête de la mi-automne a lieu le **15** du mois lunaire. Quelle Lune est-ce ?\n\nAlors, quand les rues sont-elles inondées à marée haute ?',
     reveal: {
-      label: 'Check your answer',
-      labelFr: 'Vérifie ta réponse',
-      answer: 'The water is not **deep** enough: boats would hit the bottom.',
-      answerFr: 'L’eau n’est pas assez **profonde** : les bateaux toucheraient le fond.',
+      label: 'Answer',
+      labelFr: 'Réponse',
+      answer: 'Around the **15th** (full moon) and the **1st** (new moon): the biggest tides. Strong wind or rain makes it worse.',
+      answerFr: 'Vers le **15** (pleine lune) et le **1er** (nouvelle lune) : les plus grandes marées. Le vent fort ou la pluie aggravent tout.',
     },
   },
 
-  // 31. Earth tide (write)
+  // 29. Earth tide (write)
   {
     layout: 'split',
     accent: TEAL,
     icon: 'Globe',
-    eyebrow: 'Key word',
-    eyebrowFr: 'Mot clé',
+    eyebrow: 'Key word · page 98',
+    eyebrowFr: 'Mot clé · page 98',
     title: 'The Land Moves Too',
     titleFr: 'Le sol bouge aussi',
     ratio: 45,
@@ -676,60 +683,50 @@ export const slides = [
   },
 
   // ── THINK LIKE A SCIENTIST ──────────────────────────────────────────────
-  // 32. Three people, 2000 years
+  // 30. Pytheas: Think like a scientist Q1
   {
-    layout: 'showcase',
-    accent: PURPLE,
-    icon: 'GraduationCap',
-    eyebrow: 'Think like a scientist · page 103',
-    eyebrowFr: 'Pense comme un scientifique · page 103',
-    title: 'Who Found the Cause?',
-    titleFr: 'Qui a trouvé la cause ?',
-    inlineSvg: DIAGRAMS.TIMELINE,
-    caption: 'Pytheas was a Greek sailor from Massalia: today, Marseille in France.',
-    captionFr: 'Pythéas était un marin grec de Massalia : aujourd’hui, Marseille.',
-  },
-
-  // 33. Think like a scientist, Question 1
-  {
-    layout: 'callout',
+    layout: 'split',
     accent: PURPLE,
     icon: 'PenLine',
-    eyebrow: 'Think like a scientist · Question 1',
-    eyebrowFr: 'Pense comme un scientifique · Question 1',
+    eyebrow: 'Think like a scientist · Q1 · page 103',
+    eyebrowFr: 'Pense comme un scientifique · Q1 · page 103',
     title: 'Observation or Conclusion?',
     titleFr: 'Observation ou conclusion ?',
+    ratio: 60,
+    image: pytheas,
     content:
-      'Choose from: **a conclusion · an observation · a prediction · a measurement · an explanation · a model**\n\n' +
-      '**1.** The sailor noticed that the depth of water changed. This was …\n' +
-      '**2.** He thought that the change was caused by the Moon. This was …\n' +
+      '330 BCE: Pytheas, a Greek sailor, saw the sea rise to a maximum **twice a day**.\n\n' +
+      'Choose: **a conclusion · an observation · a prediction · a measurement · an explanation · a model**\n\n' +
+      '**1.** He noticed that the depth changed. This was …\n' +
+      '**2.** He thought the Moon caused it. This was …\n' +
       '**3.** He did not know about gravity, so he could not give … for the tides.',
     contentFr:
-      'Choisis parmi : **a conclusion · an observation · a prediction · a measurement · an explanation · a model**\n\n' +
-      '**1.** Le marin a remarqué que la profondeur de l’eau changeait. C’était …\n' +
-      '**2.** Il pensait que la Lune causait ce changement. C’était …\n' +
+      '330 av. J.-C. : Pythéas, un marin grec de Massalia (Marseille), a vu la mer monter au maximum **deux fois par jour**.\n\n' +
+      'Choisis : **une conclusion · une observation · une prédiction · une mesure · une explication · un modèle**\n\n' +
+      '**1.** Il a remarqué que la profondeur changeait. C’était …\n' +
+      '**2.** Il pensait que la Lune en était la cause. C’était …\n' +
       '**3.** Il ne connaissait pas la gravité, donc il ne pouvait pas donner … des marées.',
     reveal: {
       label: 'Check your answers',
       labelFr: 'Vérifie tes réponses',
       answer: '**1** an observation · **2** a conclusion · **3** an explanation',
-      answerFr: '**1** an observation · **2** a conclusion · **3** an explanation',
+      answerFr: '**1** une observation (an observation) · **2** une conclusion (a conclusion) · **3** une explication (an explanation)',
     },
   },
 
-  // 34. Kepler: force of attraction (write) + Question 2, plan a test
+  // 31. Kepler: force of attraction (write) + Think like a scientist Q2
   {
     layout: 'split',
     accent: PURPLE,
     icon: 'FlaskConical',
-    eyebrow: 'Question 2 · plan a test',
-    eyebrowFr: 'Question 2 · prépare un test',
+    eyebrow: 'Think like a scientist · Q2 · plan a test',
+    eyebrowFr: 'Pense comme un scientifique · Q2 · prépare un test',
     title: 'Was Kepler Right?',
     titleFr: 'Kepler avait-il raison ?',
     ratio: 60,
     image: kepler,
     content: 'About 1600, Johannes Kepler said a **force of attraction** between the Moon and the water causes tides. He thought it was **magnetic**.',
-    contentFr: 'Vers 1600, Johannes Kepler a dit qu’une **force d’attraction** entre la Lune et l’eau cause les marées. Il pensait qu’elle était **magnétique**.',
+    contentFr: 'Vers 1600, Johannes Kepler a dit qu’une **force d’attraction** entre la Lune et l’eau causait les marées. Il pensait qu’elle était **magnétique**.',
     notes: [
       {
         tone: 'write',
@@ -747,23 +744,25 @@ export const slides = [
     },
   },
 
-  // 35. Think like a scientist, Question 3
+  // 32. Newton: Think like a scientist Q3
   {
-    layout: 'callout',
+    layout: 'split',
     accent: PURPLE,
     icon: 'HelpCircle',
-    eyebrow: 'Think like a scientist · Question 3',
-    eyebrowFr: 'Pense comme un scientifique · Question 3',
+    eyebrow: 'Think like a scientist · Q3 · page 104',
+    eyebrowFr: 'Pense comme un scientifique · Q3 · page 104',
     title: 'Why Believe Newton?',
     titleFr: 'Pourquoi croire Newton ?',
+    ratio: 60,
+    image: newton,
     content:
-      'Which **two** explain why people accepted Newton’s ideas?\n\n' +
+      '1687: Newton **calculated** the tides from gravity. Which **two** explain why people accepted his ideas?\n\n' +
       '**A** Newton did experiments on the tides that were fair tests.\n' +
       '**B** Newton provided evidence to support a hypothesis.\n' +
       '**C** Newton made observations, but earlier scientists did not.\n' +
       '**D** Newton made predictions that were shown to be accurate.',
     contentFr:
-      'Quelles **deux** phrases expliquent pourquoi on a accepté les idées de Newton ?\n\n' +
+      '1687 : Newton a **calculé** les marées grâce à la gravité. Quelles **deux** phrases expliquent pourquoi on a accepté ses idées ?\n\n' +
       '**A** Newton a fait des expériences justes (fair tests) sur les marées.\n' +
       '**B** Newton a donné des preuves pour soutenir une hypothèse.\n' +
       '**C** Newton a fait des observations, mais pas les scientifiques d’avant.\n' +
@@ -777,7 +776,7 @@ export const slides = [
   },
 
   // ── CLOSE ───────────────────────────────────────────────────────────────
-  // 36. Checklist (the book's summary checklist)
+  // 33. Checklist (the book's summary checklist)
   {
     layout: 'stack',
     variant: 'checklist',
@@ -799,7 +798,7 @@ export const slides = [
     ],
   },
 
-  // 37. Exit question: the book's Question 5
+  // 34. Exit question: the book's Question 5
   {
     layout: 'hero',
     color: TEAL,
@@ -808,7 +807,7 @@ export const slides = [
     brandFr: 'Sciences 7e année',
     title: 'Lesson Complete!',
     titleFr: 'Leçon terminée !',
-    subtitle: 'Exit question: why are the biggest tidal ranges at a **full moon** or a **new moon**?',
-    subtitleFr: 'Question de sortie : pourquoi les plus grands marnages ont-ils lieu à la **pleine lune** ou à la **nouvelle lune** ?',
+    subtitle: 'Exit (Question 5, page 100): why are the biggest tidal ranges at a **full moon** or a **new moon**?',
+    subtitleFr: 'Sortie (Question 5, page 100) : pourquoi les plus grands marnages ont-ils lieu à la **pleine lune** ou à la **nouvelle lune** ?',
   },
 ]

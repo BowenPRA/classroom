@@ -6,7 +6,7 @@
     "descUrl": "https://commons.wikimedia.org/wiki/File:Bay_of_Fundy_-_Tide_Out.jpg",
     "license": "CC BY 2.0",
     "artist": "Dylan Kereluk from White Rock, Canada",
-    "usage": "960 px thumbnail. PAIR (slide 2) and EFFECTS (harbours). The two Alma photos were taken 5 h 54 min apart (EXIF 09:40:26 and 15:34:37), which is why the slide says about 6 hours."
+    "usage": "960 px thumbnail. PAIR (slide 2) and EFFECTS (harbours). The two Alma photos were taken 5 h 54 min apart (EXIF 09:40:26 and 15:34:37): about 6 hours, as the book says of its own pair."
   },
   {
     "file": "alma_in.jpg",
@@ -51,7 +51,7 @@
     "descUrl": "https://commons.wikimedia.org/wiki/File:Earth_%26_Moon_by_Galileo.jpg",
     "license": "Public domain (NASA/JPL)",
     "artist": "NASA/JPL",
-    "usage": "Cropped to the lower half (Earth's edge and the Moon), 1200 px. Tidal force slide. NASA notes the view is made from separate Earth and Moon images combined, so the sizes and distance are not to scale."
+    "usage": "Cropped to the lower half (Earth's edge and the Moon), 1200 px. Slide 13 (The Moon Pulls). NASA notes the view is made from separate Earth and Moon images combined, so the sizes and distance are not to scale."
   },
   {
     "file": "fullmoon.jpg",
@@ -60,7 +60,7 @@
     "descUrl": "https://commons.wikimedia.org/wiki/File:Pournami.jpg",
     "license": "CC0",
     "artist": "Sudora",
-    "usage": "Cropped square round the disc, 460 px. Vote card ANS_FULL, PHASES and MONTH."
+    "usage": "Cropped square round the disc, 460 px. Vote card ANS_FULL (slide 24) and MONTH (slide 27)."
   },
   {
     "file": "pytheas.jpg",
@@ -69,7 +69,7 @@
     "descUrl": "https://commons.wikimedia.org/wiki/File:Pyth%C3%A9as_(cropped).jpg",
     "license": "CC BY-SA 3.0",
     "artist": "Rvalette (photo); statue by Auguste Ottin (1811-1890), public domain",
-    "usage": "Top 75% of the image, 600 px. TIMELINE."
+    "usage": "Top 75% of the image, 600 px. Slide 30 (Think like a scientist Q1)."
   },
   {
     "file": "kepler.jpg",
@@ -78,7 +78,7 @@
     "descUrl": "https://commons.wikimedia.org/wiki/File:Johannes_Kepler1.jpg",
     "license": "Public domain",
     "artist": "Unknown engraver (reproduced in the New Catholic Encyclopedia)",
-    "usage": "TIMELINE and the Kepler slide. Chosen over File:JKepler.jpg, whose file page credits a 1910 copy by August Koehler, so its public-domain status is less certain."
+    "usage": "Slide 31 (Was Kepler Right?). Chosen over File:JKepler.jpg, whose file page credits a 1910 copy by August Koehler, so its public-domain status is less certain."
   },
   {
     "file": "newton.jpg",
@@ -87,7 +87,7 @@
     "descUrl": "https://commons.wikimedia.org/wiki/File:Portrait_of_Sir_Isaac_Newton,_1689_(brightened).jpg",
     "license": "Public domain",
     "artist": "Godfrey Kneller",
-    "usage": "Head and shoulders cropped square from the 960 px thumbnail, 600 px. TIMELINE."
+    "usage": "Head and shoulders cropped square from the 960 px thumbnail, 600 px. Slide 32 (Think like a scientist Q3)."
   },
   {
     "file": "oystercatcher.jpg",

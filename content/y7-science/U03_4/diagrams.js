@@ -1,28 +1,27 @@
 // content/y7-science/U03_4/diagrams.js
 // Teaching diagrams for 3.4 Tides (Learner's Book pp. 97–104).
 //
-//   Part 1 — what tides are, and why
+//   Part 1 — what tides are, what they do, and why there are two a day
 //     PAIR        — Alma harbour, Bay of Fundy: the same place at 09:40 and 15:34 (photos)
 //     DEPTH       — depth = surface to bottom, at high tide and at low tide
 //     DAY         — a real day of tides: Eastport, Bay of Fundy, 21 October 2026 (NOAA)
 //     RANGE       — the same day: tidal range = high − low = 4.1 m
 //     FUNDY       — Hopewell Rocks at low and high tide, and 16.3 m as a building (photos)
-//     ANS_7M / ANS_6M — Question 6 vote cards (left hand / right hand)
+//     ANS_7M / ANS_6M — Question 6 (p.100) vote cards (left hand / right hand)
 //     HALF        — Question 6 answered: half the range above the average, half below
+//     EFFECTS     — harbours, food chains, electricity (photos)
 //     TWO_TIDES   — Draw This: the book's figure on p.99, Earth from above the North Pole
-//   Part 2 — the model, the Sun, and why tides matter
+//   Part 2 — the card model, the Sun, the land, and the scientists
 //     PIECES      — the Activity's cut-outs: Sun, Earth, Moon, set 1, set 2
 //     SETUP       — Activity Part 1: Earth and Moon 30 cm apart, set 1 in line
 //     TURN        — Activity Part 2: mark a point, turn only the Earth, anticlockwise
 //     HIGH_TIMES  — real first high tide each day, Mon 19 – Fri 23 Oct 2026 (NOAA)
 //     LINE_UP     — Activity Part 3: Earth, Moon and Sun in a line, set 2
-//     ANS_FULL / ANS_NEW — Question 7 vote cards
-//     PHASES      — Moon between Earth and Sun: new moon; behind the Earth: full moon
+//     ANS_NEW / ANS_FULL — Activity Q7 vote cards (A, left = new moon, the answer)
+//     PHASES      — Moon between Earth and Sun: new moon; the other side left as "?" (Q8)
 //     IN_LINE     — Draw This: the book's second figure on p.99, bigger tidal range in line
 //     MONTH       — real tidal range each day, 19 Oct – 17 Nov 2026, with the Moon's phases
-//     EFFECTS     — harbours, food chains, electricity (photos)
 //     EARTH_TIDE  — the ground rises about 30 cm; volcano photo
-//     TIMELINE    — Pytheas, Kepler, Newton (photos)
 //
 // The tide numbers are NOAA predictions for Eastport, Maine (station 8410140),
 // at the mouth of the Bay of Fundy — public domain, fetched 14 Oct 2026. Graph
@@ -38,9 +37,6 @@ import almaIn from './images/alma_in.jpg'
 import hopeLow from './images/hope_low.jpg'
 import hopeHigh from './images/hope_high.jpg'
 import fullMoon from './images/fullmoon.jpg'
-import pytheas from './images/pytheas.jpg'
-import kepler from './images/kepler.jpg'
-import newton from './images/newton.jpg'
 import oystercatcher from './images/oystercatcher.jpg'
 import rance from './images/rance.jpg'
 import kilauea from './images/kilauea.jpg'
@@ -146,11 +142,12 @@ const DAY_PATH = 'M 110.0 351.7 L 124.2 368.8 L 138.3 379.4 L 152.5 382.4 L 166.
 const RANGE_PATH = 'M 110.0 351.7 L 121.2 368.8 L 132.5 379.4 L 143.8 382.4 L 155.0 377.4 L 166.2 365.4 L 177.5 348.1 L 188.8 327.2 L 200.0 304.1 L 211.2 279.6 L 222.5 254.3 L 233.8 229.5 L 245.0 206.6 L 256.2 187.9 L 267.5 175.3 L 278.8 169.8 L 290.0 171.8 L 301.2 180.6 L 312.5 194.7 L 323.8 212.8 L 335.0 233.7 L 346.2 256.5 L 357.5 280.1 L 368.8 304.1 L 380.0 327.1 L 391.2 347.4 L 402.5 363.3 L 413.8 372.6 L 425.0 374.1 L 436.2 367.8 L 447.5 354.5 L 458.8 336.1 L 470.0 314.3 L 481.2 290.4 L 492.5 265.0 L 503.8 239.2 L 515.0 213.8 L 526.2 191.2 L 537.5 173.3 L 548.8 162.1 L 560.0 158.7 L 571.2 163.2 L 582.5 174.6 L 593.8 191.6 L 605.0 212.9 L 616.2 236.9 L 627.5 262.9 L 638.8 289.8 L 650.0 316.5'
 
 // Tidal range each day, 19 Oct – 17 Nov 2026 (highest high − lowest low,
-// NOAA), as the y of the top of each bar: 0 m at y = 380, 35 px a metre.
-const MONTH_TOPS = [247.3, 232.7, 223.2, 210.2, 193.4, 174.5, 155.7, 141.7, 135.0, 135.7, 143.4, 156.7, 172.5, 186.4, 195.9, 208.5, 197.3, 192.4, 180.2, 170.0, 165.5, 166.1, 171.1, 179.4, 190.0, 200.5, 210.6, 219.3, 225.3, 227.4]
+// NOAA), as the y of the top of each bar: 0 m at y = 470, 40 px a metre,
+// 24 px a day.
+const MONTH_TOPS = [318.4, 301.6, 290.8, 276.0, 256.8, 235.2, 213.6, 197.6, 190.0, 190.8, 199.6, 214.8, 232.8, 248.8, 259.6, 274.0, 261.2, 255.6, 241.6, 230.0, 224.8, 225.6, 231.2, 240.8, 252.8, 264.8, 276.4, 286.4, 293.2, 295.6]
 const bars = () => MONTH_TOPS.map((top, i) => {
   const peak = i === 8 || i === 20 // 27 Oct and 8 Nov, the biggest ranges
-  return `<rect x="${124 + i * 32}" y="${top}" width="22" height="${f1(380 - top)}" rx="3" fill="${peak ? KEY : SEA}" fill-opacity="${peak ? 1 : 0.75}"/>`
+  return `<rect x="${104 + i * 24}" y="${top}" width="16" height="${f1(470 - top)}" rx="3" fill="${peak ? KEY : SEA}" fill-opacity="${peak ? 1 : 0.75}"/>`
 }).join('')
 
 // A cut-out crescent pair: the parts of an oval that stick out past a circle.
@@ -173,8 +170,6 @@ export const DIAGRAMS = {
     ${plate(1120, 440)}
     <text x="280" y="38" font-family="${FONT}" font-size="32" font-weight="bold" fill="${INK}" text-anchor="middle">09:40</text>
     <text x="840" y="38" font-family="${FONT}" font-size="32" font-weight="bold" fill="${INK}" text-anchor="middle">15:34</text>
-    <text x="560" y="36" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}" text-anchor="middle">about 6 hours later</text>
-    ${arrow(450, 46, 670, 46, KEY, 4, 14)}
     ${photo('u34-pair-a', almaOut, 20, 56, 520, 372)}
     ${photo('u34-pair-b', almaIn, 580, 56, 520, 372)}
   </svg>`,
@@ -210,6 +205,7 @@ export const DIAGRAMS = {
   DAY: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
     <text x="420" y="44" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">Eastport, Bay of Fundy · 21 October 2026</text>
+    <text x="24" y="92" font-family="${FONT}" font-size="20" fill="${MUTED}">height of the water</text>
     ${axes(110, 790, 420, 100, [110, 280, 450, 620, 790], [320, 220, 120])}
     <path d="${DAY_PATH} L 790 420 L 110 420 Z" fill="${SEA_T}"/>
     <path d="${DAY_PATH}" fill="none" stroke="${SEA}" stroke-width="5" stroke-linejoin="round"/>
@@ -240,6 +236,7 @@ export const DIAGRAMS = {
 
   RANGE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
+    <text x="24" y="72" font-family="${FONT}" font-size="20" fill="${MUTED}">height of the water</text>
     ${axes(110, 650, 420, 100, [110, 245, 380, 515, 650], [320, 220, 120])}
     <path d="${RANGE_PATH} L 650 420 L 110 420 Z" fill="${SEA_T}"/>
     <path d="${RANGE_PATH}" fill="none" stroke="${SEA}" stroke-width="5" stroke-linejoin="round"/>
@@ -345,17 +342,17 @@ export const DIAGRAMS = {
   // ══ PART 2 ══════════════════════════════════════════════════════════════
   PIECES: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 560" class="w-full h-full">
     ${plate(760, 560)}
-    <circle cx="150" cy="150" r="110" fill="${SUN}" stroke="${INK}" stroke-width="3"/>
-    <circle cx="390" cy="160" r="62" fill="#cfe5f5" stroke="${INK}" stroke-width="3"/>
-    <circle cx="560" cy="170" r="28" fill="${MOON}" stroke="${INK}" stroke-width="3"/>
-    <text x="150" y="296" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}" text-anchor="middle">Sun: large</text>
-    <text x="390" y="262" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}" text-anchor="middle">Earth: medium</text>
-    <text x="580" y="240" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}" text-anchor="middle">Moon: small</text>
+    <circle cx="140" cy="132" r="108" fill="${SUN}" stroke="${INK}" stroke-width="3"/>
+    <circle cx="390" cy="132" r="64" fill="#cfe5f5" stroke="${INK}" stroke-width="3"/>
+    <circle cx="610" cy="132" r="30" fill="${MOON}" stroke="${INK}" stroke-width="3"/>
+    <text x="140" y="290" font-family="${FONT}" font-size="44" font-weight="bold" fill="${INK}" text-anchor="middle">Sun</text>
+    <text x="390" y="252" font-family="${FONT}" font-size="44" font-weight="bold" fill="${INK}" text-anchor="middle">Earth</text>
+    <text x="610" y="214" font-family="${FONT}" font-size="44" font-weight="bold" fill="${INK}" text-anchor="middle">Moon</text>
 
-    ${crescents(200, 430, 62, 84)}
-    ${crescents(540, 430, 62, 112)}
-    <text x="200" y="534" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">set 1: thin</text>
-    <text x="540" y="534" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">set 2: thick</text>
+    ${crescents(200, 410, 64, 86)}
+    ${crescents(550, 410, 64, 118)}
+    <text x="200" y="534" font-family="${FONT}" font-size="44" font-weight="bold" fill="${KEY}" text-anchor="middle">set 1</text>
+    <text x="550" y="534" font-family="${FONT}" font-size="44" font-weight="bold" fill="${KEY}" text-anchor="middle">set 2</text>
   </svg>`,
 
   SETUP: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
@@ -403,7 +400,7 @@ export const DIAGRAMS = {
     <rect x="40" y="66" width="760" height="70" rx="10" fill="#0087a8"/>
     <text x="180" y="112" font-family="${FONT}" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle">day</text>
     <text x="440" y="112" font-family="${FONT}" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle">high tide</text>
-    <text x="670" y="112" font-family="${FONT}" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle">how much later?</text>
+    <text x="670" y="112" font-family="${FONT}" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle">difference</text>
 
     <rect x="40" y="140" width="760" height="76" fill="#f7f9fa"/>
     <text x="180" y="190" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">Mon 19 Oct</text>
@@ -443,21 +440,21 @@ export const DIAGRAMS = {
     <text x="420" y="510" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">Earth, Moon and Sun in a line</text>
   </svg>`,
 
-  // ── Question 7 vote ─────────────────────────────────────────────────────
-  ANS_FULL: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
+  // ── Activity Q7 vote (A = left hand = new moon, the answer; B = full moon) ─
+  ANS_NEW: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
     ${plate(720, 320)}
     ${leftHand(BLUE)}
     <rect x="382" y="14" width="160" height="160" rx="16" fill="#0b1220"/>
-    ${roundPhoto('u34-ans-full', fullMoon, 462, 94, 66)}
-    <text x="462" y="262" font-family="${FONT}" font-size="54" font-weight="bold" fill="${BLUE}" text-anchor="middle">full moon</text>
+    <circle cx="462" cy="94" r="66" fill="#2a2f36" stroke="#59616b" stroke-width="2"/>
+    <text x="462" y="262" font-family="${FONT}" font-size="54" font-weight="bold" fill="${BLUE}" text-anchor="middle">new moon</text>
   </svg>`,
 
-  ANS_NEW: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
+  ANS_FULL: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
     ${plate(720, 320)}
     ${rightHand(KEY)}
     <rect x="180" y="14" width="160" height="160" rx="16" fill="#0b1220"/>
-    <circle cx="260" cy="94" r="66" fill="#2a2f36" stroke="#59616b" stroke-width="2"/>
-    <text x="262" y="262" font-family="${FONT}" font-size="54" font-weight="bold" fill="${KEY}" text-anchor="middle">new moon</text>
+    ${roundPhoto('u34-ans-full', fullMoon, 260, 94, 66)}
+    <text x="262" y="262" font-family="${FONT}" font-size="54" font-weight="bold" fill="${KEY}" text-anchor="middle">full moon</text>
   </svg>`,
 
   PHASES: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
@@ -476,9 +473,8 @@ export const DIAGRAMS = {
     <circle cx="560" cy="136" r="54" fill="#2a2f36" stroke="#59616b" stroke-width="2"/>
     <text x="560" y="36" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">new moon</text>
     ${leader(560, 218, 560, 296)}
-    <rect x="90" y="66" width="140" height="140" rx="14" fill="#0b1220"/>
-    ${roundPhoto('u34-ph-full', fullMoon, 160, 136, 54)}
-    <text x="160" y="36" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">full moon</text>
+    <rect x="90" y="66" width="140" height="140" rx="14" fill="#f7f9fa" stroke="${RULE}" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="160" y="160" font-family="${FONT}" font-size="72" font-weight="bold" fill="${MUTED}" text-anchor="middle">?</text>
     ${leader(160, 218, 160, 296)}
 
     <text x="300" y="494" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="middle">The half of the Moon facing the Sun</text>
@@ -506,28 +502,28 @@ export const DIAGRAMS = {
     <text x="816" y="540" font-family="${FONT}" font-size="18" fill="${MUTED}" text-anchor="end">not to scale</text>
   </svg>`,
 
-  MONTH: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
-    ${plate(1120, 440)}
-    ${axes(110, 1090, 380, 90, [], [310, 240, 170, 100])}
+  MONTH: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
+    ${plate(840, 560)}
+    ${axes(96, 824, 470, 140, [], [390, 310, 230, 150])}
     ${bars()}
-    <text x="98" y="387" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="end">0 m</text>
-    <text x="98" y="317" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="end">2 m</text>
-    <text x="98" y="247" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="end">4 m</text>
-    <text x="98" y="177" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="end">6 m</text>
-    <text x="98" y="107" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="end">8 m</text>
-    <text x="135" y="410" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">19 Oct</text>
-    <text x="359" y="410" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">26 Oct</text>
-    <text x="583" y="410" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">2 Nov</text>
-    <text x="807" y="410" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">9 Nov</text>
-    <text x="1031" y="410" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">16 Nov</text>
-    <text x="600" y="434" font-family="${FONT}" font-size="18" fill="${MUTED}" text-anchor="middle">tidal range each day · Eastport, Bay of Fundy · 2026</text>
+    <text x="86" y="477" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="end">0 m</text>
+    <text x="86" y="397" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="end">2 m</text>
+    <text x="86" y="317" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="end">4 m</text>
+    <text x="86" y="237" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="end">6 m</text>
+    <text x="86" y="157" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="end">8 m</text>
+    <text x="112" y="500" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">19 Oct</text>
+    <text x="280" y="500" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">26 Oct</text>
+    <text x="448" y="500" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">2 Nov</text>
+    <text x="616" y="500" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">9 Nov</text>
+    <text x="784" y="500" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">16 Nov</text>
+    <text x="420" y="540" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">tidal range each day · Eastport, Bay of Fundy · 2026</text>
 
-    <rect x="333" y="28" width="52" height="52" rx="10" fill="#0b1220"/>
-    ${roundPhoto('u34-month-full', fullMoon, 359, 54, 22)}
-    <text x="400" y="62" font-family="${FONT}" font-size="22" font-weight="bold" fill="${KEY}">full moon</text>
-    <rect x="781" y="28" width="52" height="52" rx="10" fill="#0b1220"/>
-    <circle cx="807" cy="54" r="22" fill="#2a2f36" stroke="#59616b" stroke-width="2"/>
-    <text x="848" y="62" font-family="${FONT}" font-size="22" font-weight="bold" fill="${KEY}">new moon</text>
+    <rect x="252" y="40" width="56" height="56" rx="10" fill="#0b1220"/>
+    ${roundPhoto('u34-month-full', fullMoon, 280, 68, 24)}
+    <text x="318" y="76" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}">full moon</text>
+    <rect x="588" y="40" width="56" height="56" rx="10" fill="#0b1220"/>
+    <circle cx="616" cy="68" r="24" fill="#2a2f36" stroke="#59616b" stroke-width="2"/>
+    <text x="654" y="76" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}">new moon</text>
   </svg>`,
 
   EFFECTS: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
@@ -555,26 +551,5 @@ export const DIAGRAMS = {
     <text x="240" y="462" font-family="${FONT}" font-size="34" font-weight="bold" fill="${KEY}" text-anchor="middle">about 30 cm</text>
     ${photo('u34-lava', kilauea, 490, 30, 320, 440)}
     <text x="650" y="510" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="middle">Kīlauea volcano, Hawaii</text>
-  </svg>`,
-
-  TIMELINE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
-    ${plate(1120, 440)}
-    <rect x="20" y="16" width="350" height="408" rx="14" fill="#ffffff" stroke="${RULE}" stroke-width="2"/>
-    ${photo('u34-tl-p', pytheas, 30, 26, 330, 260, 'xMidYMin slice')}
-    <text x="195" y="322" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">330 BCE · Pytheas</text>
-    <text x="195" y="358" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}" text-anchor="middle">Twice a day.</text>
-    <text x="195" y="390" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}" text-anchor="middle">The Moon?</text>
-
-    <rect x="385" y="16" width="350" height="408" rx="14" fill="#ffffff" stroke="${RULE}" stroke-width="2"/>
-    ${photo('u34-tl-k', kepler, 395, 26, 330, 260, 'xMidYMin slice')}
-    <text x="560" y="322" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">about 1600 · Kepler</text>
-    <text x="560" y="358" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}" text-anchor="middle">A force of attraction.</text>
-    <text x="560" y="390" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}" text-anchor="middle">Magnetic?</text>
-
-    <rect x="750" y="16" width="350" height="408" rx="14" fill="#ffffff" stroke="${RULE}" stroke-width="2"/>
-    ${photo('u34-tl-n', newton, 760, 26, 330, 260, 'xMidYMin slice')}
-    <text x="925" y="322" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">1687 · Newton</text>
-    <text x="925" y="358" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}" text-anchor="middle">Gravity: his maths</text>
-    <text x="925" y="390" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}" text-anchor="middle">matched the tides.</text>
   </svg>`,
 }

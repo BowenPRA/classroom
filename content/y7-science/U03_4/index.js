@@ -3,7 +3,7 @@
 //
 // Science 3.4 Tides, Unit 3 Forces and energy. English and French only (Year 7
 // from Unit 4), so the deck's switch reads EN / FR. One deck, two periods:
-// Part 1 (slides 1–17) on 21 October, Part 2 (18–37) the next science lesson,
+// Part 1 (slides 1–17) on 21 October, Part 2 (18–34) the next science lesson,
 // 23 October, after the Thursday lab. Both dates are provisional.
 import { slides } from './slides.js'
 import { plan } from './plan.js'
