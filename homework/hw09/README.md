@@ -15,7 +15,7 @@ Goes out with **`../hw09x/`**, the Extra Homework sheet.
 | File | What it is |
 | --- | --- |
 | `hw09.pdf` | Student copy, English. **10 pages.** |
-| `hw09-fr.pdf` | Student copy with a **grey French line under every instruction and question**. **13 pages.** |
+| `hw09-fr.pdf` | Student copy with a **grey French line under every instruction and question**. **14 pages.** |
 | `hw09-teacher.pdf` | English copy plus the answer key. **15 pages.** Not linked from the site. |
 
 The French copy is the teacher's request from 14 October 2026, when the lessons moved to
@@ -28,9 +28,27 @@ So the English stays exactly where it was and the French is support underneath i
 - **The English key word is left inside the French line, in blue** — *Combien de
   monnaie (**change**) reçoit-il ?* That is the point of the mix: the student reads the
   French, and the word they have to learn is still the English one.
-- Numbers keep the **English decimal point** (0.85, not 0,85), as the class does.
+- Numbers keep the **English decimal point** (0.85, not 0,85), as the class does. The
+  French *words* say **la virgule**, which is what a French speaker calls the decimal
+  separator; the cover explains once that English calls it *the point* and writes it
+  with a dot.
 - Questions that ask for writing say **"en anglais"**. The answers are English either way.
 - The answer key is English only; there is no French teacher copy.
+
+**The French was rewritten on 15 October** after the teacher found the first version
+awkward. It now reads as French a teacher would write for 12-year-olds, not as
+word-for-word English: *ordre croissant*, *droite graduée*, *se partager
+équitablement*, *combien de monnaie lui rend-on ?*, *la première ligne est faite pour
+toi*. The rewrite was done from a table of old → new lines (every line matched; none
+was changed silently).
+
+**Even page count.** The French copy gets more room to write as well as the French
+lines — leading 1.10 instead of 1.06, table rows 2.4em instead of 1.9em, working boxes
+a third taller — which lands it on **14 pages**, whole double-sided sheets. F4 has the
+last page to itself with a taller box. All of this sits in an `\iffr` block after the
+`\tall` definition; none of it touches the English copy. Minipages keep each
+instruction with its table (A1(b), C1, C3, D2, E4, F4) because the longer French copy
+split all of them across pages.
 
 ## Section F is why this packet exists
 
@@ -104,6 +122,6 @@ powershell -c '& "C:\Users\bowen\lessons\.claude\skills\new-homework\scripts\bui
 rasterises it to `.preview/fr-N.png`. All three copies take a few minutes together; the
 French one is the slowest.
 
-Built and verified with MiKTeX: English **10 pages**, French **13**, teacher **15**, no
+Built and verified with MiKTeX: English **10 pages**, French **14**, teacher **15**, no
 errors, no overfull boxes. Every page of the English and French copies was rasterised
 and read; every answer in the key was checked arithmetically.

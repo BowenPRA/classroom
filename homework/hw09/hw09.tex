@@ -120,6 +120,31 @@
 % -- A table row tall enough to write in -------------------------------------
 \newcommand{\tall}{\rule[-0.6em]{0pt}{1.9em}}
 
+% -- More room in the French copy --------------------------------------------
+% The French copy carries a second line under every question, so it gets more
+% room to write as well: looser leading, taller table rows, wider writing lines
+% and working boxes a third taller. It also lands the copy on an even number of
+% pages (14), so it prints on whole double-sided sheets. The English copy is
+% untouched by all of this.
+\iffr
+  \linespread{1.10}\selectfont
+  \renewcommand{\tall}{\rule[-0.8em]{0pt}{2.4em}}
+  \renewtcolorbox{workspace}[1][3.4cm]{%
+    colback=white, colframe=rulegray, boxrule=0.5pt, arc=5pt,
+    height={1.33\dimexpr #1\relax}, left=6pt, right=6pt, top=4pt, bottom=4pt,
+    before skip=9pt, after skip=11pt}
+  \makeatletter
+  \renewcommand{\wlines}[1]{%
+    \par\vspace{0.75em}%
+    \@tempcnta=0\relax
+    \@whilenum\@tempcnta<#1\do{%
+      \hbox to \linewidth{\color{rulegray}\leaders\hrule height 0.5pt\hfill}%
+      \vspace{1.9em}%
+      \advance\@tempcnta by 1\relax}%
+    \par\vspace{-0.8em}}
+  \makeatother
+\fi
+
 \begin{document}
 
 % ===========================================================================
@@ -134,8 +159,8 @@
   {\color{cbpurple}\Huge\bfseries Lighter on the Moon}\\[7pt]
   {\color{black!70}Mathematics 4.1--4.5 and the Unit 4 review --- decimals}\\
   {\color{black!70}Section F --- Science 3.1 in decimals: weight, gravity and falling}
-  \iffr\\[4pt]{\small\itshape\color{black!60}Plus l\'eger sur la Lune~: les
-  d\'ecimaux, et la gravit\'e en d\'ecimaux}\fi
+  \iffr\\[4pt]{\small\itshape\color{black!60}Plus l\'eger sur la Lune~: les nombres
+  d\'ecimaux (unit\'e 4), et la gravit\'e en nombres d\'ecimaux (sciences 3.1)}\fi
 \end{tcolorbox}
 
 \vspace{4pt}
@@ -150,17 +175,20 @@
 \begin{activity}
   Six sections. A to E are the decimal lessons. F is the science from 3.1, and
   \key{every answer in F is a decimal}.
-  \fr{Six parties. A \`a E~: les le\c{c}ons sur les d\'ecimaux. F~: la science de la
-  le\c{c}on 3.1 --- toutes les r\'eponses sont des d\'ecimaux.}
+  \fr{Six parties. Les parties A \`a E reprennent les le\c{c}ons sur les nombres
+  d\'ecimaux. La partie F reprend la le\c{c}on de sciences 3.1, et toutes ses
+  r\'eponses sont des nombres d\'ecimaux.}
   \begin{itemize}
     \item \key{Write the calculation before you write the answer.}
-          \frin{\'Ecris le calcul avant la r\'eponse.}
+          \frin{\'Ecris le calcul avant le r\'esultat.}
     \item \key{Estimate first.} The estimate tells you where the point goes.
-          \frin{Estime d'abord~: l'estimation te dit o\`u va le point.}
+          \frin{Commence par une estimation~: elle te dit o\`u placer la virgule. En
+          anglais, la virgule s'appelle \eng{the point} et s'\'ecrit avec un point~:
+          3.25.}
     \item \eng{No calculator.} In F, answer in \key{full English sentences}
           where it says so.
-          \frin{Pas de calculatrice. Dans F, r\'eponds par des phrases compl\`etes
-          \textbf{en anglais}.}
+          \frin{Calculatrice interdite. Dans la partie F, r\'eponds par des phrases
+          compl\`etes, \textbf{en anglais}.}
   \end{itemize}
 \end{activity}
 
@@ -177,8 +205,8 @@
 
 \noindent The line goes from \textbf{5} to \textbf{6}. Every small line is
 \textbf{0.1}. \textbf{(a)} Draw an arrow to each number and write its letter.
-\fr{La droite va de 5 \`a 6. Chaque petit trait vaut 0.1. (a) Dessine une fl\`eche
-vers chaque nombre et \'ecris sa lettre.}
+\fr{La droite gradu\'ee va de 5 \`a 6~; chaque petite graduation vaut 0.1. (a) Place
+chaque nombre avec une fl\`eche et \'ecris sa lettre.}
 
 \vspace{4pt}
 \begin{center}
@@ -205,11 +233,15 @@ vers chaque nombre et \'ecris sa lettre.}
 \end{tabularx}
 
 \vspace{6pt}
-\noindent \textbf{(b)} Now write the four numbers \textbf{in order of size, starting
+% Minipages from here on keep an instruction with the thing it is about; the
+% French copy, which is longer, split each of them across a page.
+\noindent\begin{minipage}{\textwidth}
+\textbf{(b)} Now write the four numbers \textbf{in order of size, starting
 with the smallest}.
-\fr{(b) Range les quatre nombres par ordre de taille, en commen\c{c}ant par le plus
-petit (\eng{starting with the smallest}).}
+\fr{(b) Range les quatre nombres dans l'ordre croissant, du plus petit au plus grand
+(\eng{starting with the smallest}).}
 \ansline[9.0cm]
+\end{minipage}
 
 % -- A2 ---------------------------------------------------------------------
 \qhead{A2}{Which is bigger?\frin{Lequel est le plus grand~?}}
@@ -218,8 +250,9 @@ petit (\eng{starting with the smallest}).}
   First look at the \key{whole-number parts}. If they are the same, \key{fill with
   zeros} so both numbers have the same number of digits after the point, then
   compare. \quad $3.3 = 3.30$, \; and $3.30 > 3.25$.
-  \fr{Regarde d'abord les parties enti\`eres (\eng{whole-number parts}). Si elles sont
-  pareilles, compl\`ete avec des z\'eros (\eng{fill with zeros}), puis compare.}
+  \fr{Compare d'abord les parties enti\`eres (\eng{whole-number parts}). Si elles
+  sont \'egales, ajoute des z\'eros (\eng{fill with zeros}) pour avoir autant de
+  chiffres apr\`es la virgule, puis compare.}
 \end{remember}
 
 \vspace{2pt}
@@ -245,12 +278,11 @@ Write $<$, $>$ or $=$ in each box.
 \vspace{12pt}
 \noindent \textbf{(g)} Mr Bowen says: \emph{``6.18 is bigger than 6.2, because 18
 is bigger than 2.''}
-\fr{Mr Bowen dit~: \guillemotleft\,6.18 est plus grand que 6.2, parce que 18 est plus
-grand que 2.\,\guillemotright}
+\fr{Mr Bowen dit~: \guillemotleft\,6.18 est plus grand que 6.2, parce que 18 est plus grand que 2.\,\guillemotright}
 
 \vspace{3pt}
 \noindent\hspace*{1.6em}(i) Write how you \textbf{say} each number in English.
-\frin{Comment dit-on chaque nombre en anglais~?}
+\frin{\'Ecris comment on lit chaque nombre en anglais.}
 
 \vspace{4pt}
 \noindent\hspace*{1.6em}$6.18$: \blank[5.2cm] \hfill $6.2$: \blank[5.2cm]
@@ -258,7 +290,7 @@ grand que 2.\,\guillemotright}
 \vspace{6pt}
 \noindent\hspace*{1.6em}(ii) Is he right? Explain. \;
 Start: \eng{``Mr Bowen is \ldots\ because \ldots''}
-\fr{\hspace*{1.6em}A-t-il raison~? Explique, en anglais.}
+\fr{\hspace*{1.6em}A-t-il raison~? Explique ta r\'eponse en anglais.}
 \qlines{2}
 
 % -- A3 ---------------------------------------------------------------------
@@ -273,7 +305,7 @@ Start: \eng{``Mr Bowen is \ldots\ because \ldots''}
   \begin{tabularx}{\linewidth}{@{}l@{\hspace{16pt}}X@{}}
     \eng{longest} & the biggest distance \frin{le plus long} \\
     \eng{fastest} & the \textbf{smallest} time. Fast runners and swimmers take
-      \textbf{less} time \frin{le plus rapide = le plus petit temps} \\
+      \textbf{less} time \frin{le plus rapide = le temps le plus court} \\
     \eng{fourth} & number 4 in the order. \emph{Fourth fastest}: the fourth smallest
       time \frin{quatri\`eme} \\
   \end{tabularx}
@@ -311,12 +343,13 @@ Start: \eng{``Mr Bowen is \ldots\ because \ldots''}
 \vspace{8pt}
 \begin{enumerate}[label=(\alph*), itemsep=8pt]
   \item Write the five jumps in order of size, starting with the smallest.
-        \fr{Range les cinq sauts par ordre de taille, du plus petit au plus grand.}
+        \fr{Range les cinq sauts dans l'ordre croissant, du plus court au plus long.}
         \ansline[9.0cm]
   \item The \textbf{longest} jump wins. Which jumper won? \hfill \blank[2.6cm]
-        \fr{Le saut le plus long gagne. Qui a gagn\'e~?}
+        \fr{Le saut le plus long gagne. Quel sauteur a gagn\'e~?}
   \item Write the five swim times in order of size, starting with the smallest.
-        \fr{Range les cinq temps de natation, du plus petit au plus grand.}
+        \fr{Range les cinq temps dans l'ordre croissant, du plus petit au plus
+        grand.}
         \ansline[9.0cm]
   \item Which lane was the \textbf{fastest}? \frin{le plus rapide} \hfill
         \blank[2.6cm]
@@ -337,9 +370,9 @@ Start: \eng{``Mr Bowen is \ldots\ because \ldots''}
   A \key{written method} is in columns on paper. Write the numbers with the
   \key{points in a line}. Fill the gaps with \key{zeros}. Work from the right, like
   whole numbers. The point in the answer goes \key{straight down}.
-  \fr{M\'ethode \'ecrite (\eng{written method})~: en colonnes. Aligne les points.
-  Remplis les trous avec des z\'eros. Le point de la r\'eponse descend tout droit
-  (\eng{straight down}).}
+  \fr{M\'ethode \'ecrite (\eng{written method})~: on pose le calcul en colonnes,
+  virgule sous virgule, et on compl\`ete les cases vides avec des z\'eros. Dans le
+  r\'esultat, la virgule descend tout droit (\eng{straight down}).}
 \end{remember}
 
 \vspace{4pt}
@@ -358,9 +391,9 @@ Start: \eng{``Mr Bowen is \ldots\ because \ldots''}
 \noindent A \eng{mental method} is in your head. Change one number to a whole
 number, then give back the difference. Write the easier calculation, then the answer.
 The first one is done for you.
-\fr{Calcul mental (\eng{mental method})~: dans ta t\^ete. Change un nombre en nombre
-entier, puis rends la diff\'erence. \'Ecris le calcul plus facile, puis la r\'eponse.
-Le premier est fait pour toi.}
+\fr{Calcul mental (\eng{mental method})~: de t\^ete. Arrondis un des nombres \`a
+l'unit\'e, puis corrige l'\'ecart. \'Ecris le calcul plus simple, puis le
+r\'esultat. La premi\`ere ligne est faite pour toi.}
 
 \vspace{4pt}
 \noindent
@@ -387,13 +420,15 @@ Le premier est fait pour toi.}
   Point out: $32 \times 7 = 224$. \; Point back, \key{same number of decimal
   places}: $3.2 \times 7 = 22.4$ \\
   \key{Estimate} to check: \; $3 \times 7 = 21$, and $22.4$ is close to 21.
-  \fr{Enl\`eve le point et multiplie. Remets le point avec le m\^eme nombre de
-  d\'ecimales (\eng{decimal places}). Estime (\eng{estimate}) pour v\'erifier.}
+  \fr{Multiplie sans la virgule, puis remets-la~: le r\'esultat a autant de chiffres
+  apr\`es la virgule (\eng{decimal places}) que le nombre de d\'epart. V\'erifie
+  avec une estimation (\eng{estimate}).}
 \end{remember}
 
 \vspace{2pt}
-\noindent Fill in the table. The first one is done for you.
-\fr{Compl\`ete le tableau. Le premier est fait pour toi.}
+\noindent\begin{minipage}{\textwidth}
+Fill in the table. The first one is done for you.
+\fr{Compl\`ete le tableau. La premi\`ere ligne est faite pour toi.}
 
 \vspace{4pt}
 \noindent
@@ -408,6 +443,7 @@ Le premier est fait pour toi.}
   $2.35 \times 4$ \tall & & & \\ \hline
   $8.15 \times 2$ \tall & & & \\ \hline
 \end{tabularx}
+\end{minipage}
 
 % -- C2 ---------------------------------------------------------------------
 \qhead{C2}{The point goes straight up}
@@ -417,9 +453,9 @@ Le premier est fait pour toi.}
   If a digit is too small to divide, write \key{0} and carry it. \\
   Check with the \key{inverse calculation}: \; $8.24 \div 4 = 2.06$ \; because \;
   $2.06 \times 4 = 8.24$.
-  \fr{Le point monte tout droit (\eng{straight up}). Si un chiffre est trop petit pour
-  \^etre divis\'e, \'ecris 0. V\'erifie avec l'op\'eration inverse (\eng{inverse
-  calculation}).}
+  \fr{Pose la division~: dans le quotient, la virgule monte tout droit
+  (\eng{straight up}). Si un chiffre est trop petit pour \^etre divis\'e, \'ecris 0.
+  V\'erifie avec l'op\'eration inverse (\eng{inverse calculation}).}
 \end{remember}
 
 \vspace{4pt}
@@ -439,10 +475,11 @@ Le premier est fait pour toi.}
 % -- C3 ---------------------------------------------------------------------
 \qhead{C3}{One fact, five answers}
 
-\noindent You are given one fact. \textbf{Do not multiply again.} Use the fact, and
-an estimate to decide where the point goes.
-\fr{Tu as un seul calcul. \textbf{Ne multiplie pas encore une fois.} Utilise-le, avec
-une estimation, pour savoir o\`u va le point.}
+\noindent\begin{minipage}{\textwidth}
+You are given one fact. \textbf{Do not multiply again.} Use the fact, and an
+estimate to decide where the point goes.
+\fr{On te donne un seul r\'esultat. \textbf{Ne refais pas la multiplication~:}
+utilise ce r\'esultat et une estimation pour placer la virgule.}
 
 \vspace{6pt}
 \begin{center}
@@ -459,12 +496,13 @@ une estimation, pour savoir o\`u va le point.}
   \item $10.26 \div 27 = \blank[1.7cm]$
 \end{enumerate}
 \end{multicols}
+\end{minipage}
 
-\vspace{2pt}
+\vspace{10pt}
 % A minipage: on one build the two lines landed on two different pages.
 \noindent\begin{minipage}{\textwidth}
 \textbf{(f)} Two of your answers are the same. Which two, and why?
-\fr{Deux de tes r\'eponses sont pareilles. Lesquelles, et pourquoi~?}
+\fr{Deux de tes r\'eponses sont identiques. Lesquelles~? Pourquoi~?}
 \wlines{2}
 \end{minipage}
 
@@ -487,7 +525,8 @@ une estimation, pour savoir o\`u va le point.}
 
 \vspace{4pt}
 \noindent Write each decimal as a fraction, and each fraction as a decimal.
-\fr{\'Ecris chaque d\'ecimal en fraction, et chaque fraction en d\'ecimal.}
+\fr{\'Ecris chaque nombre d\'ecimal sous forme de fraction, et chaque fraction sous
+forme de nombre d\'ecimal.}
 
 \vspace{4pt}
 \begin{multicols}{3}
@@ -510,14 +549,14 @@ une estimation, pour savoir o\`u va le point.}
   $\times\, 0.5$ = \key{half of} = $\div\, 2$ \qquad
   $\times\, 0.25$ = \key{a quarter of} = $\div\, 4$ \qquad
   $\times\, 0.1$ = \key{a tenth of} = $\div\, 10$
-  \fr{\eng{half of} = la moiti\'e de \quad \eng{a quarter of} = le quart de \quad
-  \eng{a tenth of} = le dixi\`eme de}
+  \fr{\eng{half of} = la moiti\'e de \quad \eng{a quarter of} = le quart de \quad \eng{a tenth of} = le dixi\`eme de}
 \end{remember}
 
 \vspace{2pt}
-\noindent Fill in the table. The first one is done for you.
-\fr{Compl\`ete le tableau. Le premier est fait pour toi. \'Ecris la colonne
-\fq{In English} en anglais.}
+\noindent\begin{minipage}{\textwidth}
+Fill in the table. The first one is done for you.
+\fr{Compl\`ete le tableau (la premi\`ere ligne est faite pour toi). Remplis la
+colonne \fq{In English} en anglais.}
 
 \vspace{4pt}
 \noindent
@@ -531,6 +570,7 @@ une estimation, pour savoir o\`u va le point.}
   \tall & a quarter of 2.8 & \\ \hline
   \tall & a tenth of 4.5 & \\ \hline
 \end{tabularx}
+\end{minipage}
 
 % -- D3 ---------------------------------------------------------------------
 \qhead{D3}{Multiplying by a decimal}
@@ -540,8 +580,8 @@ une estimation, pour savoir o\`u va le point.}
   $\times\, 0.03$ means $\div\, 100$, then $\times\, 3$. \\
   So \; $250 \times 0.2 = 25 \times 2 = 50$. \;
   Multiplying by a decimal \key{less than 1} makes a number \key{smaller}.
-  \fr{Divise d'abord, puis multiplie. Multiplier par un d\'ecimal plus petit que 1
-  rend le nombre plus petit (\eng{smaller}).}
+  \fr{Divise d'abord, puis multiplie. Multiplier par un nombre d\'ecimal inf\'erieur
+  \`a 1 donne un r\'esultat plus petit (\eng{smaller}).}
 \end{remember}
 
 \vspace{4pt}
@@ -566,14 +606,14 @@ une estimation, pour savoir o\`u va le point.}
   $3.8 \times 11 = 38 + 3.8 = 41.8$ \\
   \key{Partitioning}: split the number. \;
   $4.3 \times 6 = 4 \times 6 + 0.3 \times 6 = 24 + 1.8 = 25.8$
-  \fr{$\times\, 9$~: fais $\times\, 10$, puis enl\`eve le nombre une fois. $\times\, 11$~:
-  fais $\times\, 10$, puis ajoute-le une fois. \eng{Partitioning} = d\'ecomposer le
-  nombre.}
+  \fr{$\times\, 9$~: multiplie par 10, puis retire le nombre une fois. $\times\,
+  11$~: multiplie par 10, puis ajoute-le une fois. \eng{Partitioning}~: d\'ecomposer
+  le nombre en parties faciles.}
 \end{remember}
 
 \vspace{2pt}
 \noindent Write the quick way, then the answer.
-\fr{\'Ecris la m\'ethode rapide, puis la r\'eponse.}
+\fr{\'Ecris le calcul rapide, puis le r\'esultat.}
 
 \vspace{4pt}
 \begin{enumerate}[label=(\alph*), itemsep=10pt]
@@ -590,7 +630,7 @@ une estimation, pour savoir o\`u va le point.}
 
 \noindent Mr Bowen gave himself 4 out of 4. Only \textbf{one} of these is right. Find
 it, and correct the other three.
-\fr{Mr Bowen s'est donn\'e 4 sur 4. Une seule r\'eponse est juste. Trouve-la, et
+\fr{Mr Bowen s'est mis 4 sur 4. Une seule r\'eponse est juste~: trouve-la, puis
 corrige les trois autres.}
 
 \vspace{4pt}
@@ -617,9 +657,9 @@ corrige les trois autres.}
   $5 \times 30 = 150$, so \key{150.4}. \\
   $\div$ a 2-digit number: write its \key{times table} first, then use short
   division. The point goes straight up.
-  \fr{$\times$ un nombre \`a 2 chiffres~: l'estimation (\eng{estimate}) place le point.
-  $\div$ un nombre \`a 2 chiffres~: \'ecris d'abord sa table de multiplication
-  (\eng{times table}).}
+  \fr{Pour multiplier par un nombre \`a 2 chiffres, l'estimation (\eng{estimate})
+  indique o\`u placer la virgule. Pour diviser par un nombre \`a 2 chiffres, \'ecris
+  d'abord sa table de multiplication (\eng{times table}).}
 \end{remember}
 
 \vspace{4pt}
@@ -638,39 +678,39 @@ corrige les trois autres.}
     \eng{change} & in a shop, the money you get \textbf{back} when you pay too much.
       Take away \frin{la monnaie} \\
     \eng{share equally} & give everyone the same amount. Divide --- and count the
-      people carefully \frin{partager en parts \'egales} \\
-    \eng{how much heavier} & the difference. Take away \frin{combien plus lourd} \\
+      people carefully \frin{partager \'equitablement} \\
+    \eng{how much heavier} & the difference. Take away \frin{de combien plus lourd} \\
     \eng{subtract 2 from 9} & $9 - 2$. The \textbf{second} number comes
-      \textbf{first} \frin{soustrais 2 de 9} \\
+      \textbf{first} \frin{soustraire 2 de 9} \\
   \end{tabularx}
 \end{wordhelp}
 
 \vspace{2pt}
 \noindent Write the \textbf{calculation first}, then the answer. Give units.
-\fr{\'Ecris d'abord le calcul (\eng{calculation}), puis la r\'eponse. Donne les
-unit\'es.}
+\fr{\'Ecris d'abord le calcul (\eng{calculation}), puis le r\'esultat avec son
+unit\'e.}
 
 \begin{enumerate}[label=(\alph*), itemsep=6pt]
   \item Mr Bowen pays for a 3.65-dollar sandwich with a 5-dollar note. How much
         change does he get?
         \fr{Mr Bowen paie un sandwich \`a 3.65 dollars avec un billet de 5 dollars.
-        Combien de monnaie (\eng{change}) re\c{c}oit-il~?}
+        Combien de monnaie (\eng{change}) lui rend-on~?}
         \calcans
   \item A mango costs 1.20 dollars. How much do 6 mangoes cost?
         \fr{Une mangue co\^ute 1.20 dollar. Combien co\^utent 6 mangues~?}
         \calcans
   \item Mr Bowen and two friends share a 13.50-dollar pizza equally. How much does
         each person pay?
-        \fr{Mr Bowen et deux amis partagent une pizza \`a 13.50 dollars en parts
-        \'egales (\eng{share equally}). Combien paie chaque personne~?}
+        \fr{Mr Bowen et deux amis se partagent \'equitablement (\eng{share equally})
+        une pizza \`a 13.50 dollars. Combien chacun paie-t-il~?}
         \calcans
   \item A bag of rice weighs 2.4 kg. A bag of sugar weighs 0.85 kg. How much
         heavier is the rice?
-        \fr{Un sac de riz p\`ese 2.4 kg. Un sac de sucre p\`ese 0.85 kg. Combien le
+        \fr{Un sac de riz p\`ese 2.4 kg et un sac de sucre 0.85 kg. De combien le
         riz est-il plus lourd (\eng{how much heavier})~?}
         \calcans
   \item Subtract 2.6 from 9.1.
-        \fr{Soustrais 2.6 de 9.1 (\eng{subtract 2.6 from 9.1}).}
+        \fr{Soustrais 2.6 de 9.1.}
         \calcans
 \end{enumerate}
 
@@ -682,13 +722,13 @@ unit\'es.}
   4.5 dollars is written \key{4.50} dollars. \\
   $10 \div 3 = 3.333\ldots$, so three friends get \key{3.33} dollars each, and
   1 cent is left over.
-  \fr{L'argent s'\'ecrit avec 2 d\'ecimales (\eng{2 decimal places})~: 4.5 dollars
-  s'\'ecrit 4.50 dollars.}
+  \fr{Une somme d'argent s'\'ecrit avec 2 chiffres apr\`es la virgule (\eng{2
+  decimal places})~: 4.5 dollars s'\'ecrit 4.50 dollars.}
 \end{remember}
 
 \vspace{6pt}
 \noindent Write each one as money.
-\fr{\'Ecris chaque montant comme de l'argent.}
+\fr{\'Ecris chaque somme avec 2 chiffres apr\`es la virgule.}
 
 \vspace{6pt}
 \noindent\hspace*{1.6em}\textbf{(a)} 4.8 dollars \; \blank[2.0cm] \hfill
@@ -699,8 +739,8 @@ unit\'es.}
 \vspace{2pt}
 \noindent \textbf{(d)} Three friends share 25 dollars equally. How much does each
 friend get? How many cents are left over?
-\fr{(d) Trois amis partagent 25 dollars en parts \'egales. Combien re\c{c}oit chacun~?
-Combien de cents reste-t-il (\eng{left over})~?}
+\fr{(d) Trois amis se partagent \'equitablement 25 dollars. Combien chacun
+re\c{c}oit-il~? Combien de cents reste-t-il (\eng{left over})~?}
 
 \vspace{5pt}
 \noindent\hspace*{1.6em}Each friend: \blank[3.0cm] dollars \hfill
@@ -718,17 +758,17 @@ Left over: \blank[2.4cm] cents
         Mr Bowen buys 3 notebooks at 2.45 dollars each and one pen for 1.80
         dollars. He pays with a 10-dollar note. How much change does he get?
         \fr{Mr Bowen ach\`ete 3 cahiers \`a 2.45 dollars chacun et un stylo \`a 1.80
-        dollar. Il paie avec un billet de 10 dollars. Combien de monnaie
-        re\c{c}oit-il~?}
+        dollar. Il paie avec un billet de 10 dollars. Combien de monnaie lui
+        rend-on~?}
         \begin{workspace}[2.7cm]\end{workspace}
         \end{minipage}
   \item \begin{minipage}[t]{\linewidth}
         Mr Bowen buys 0.5 kg of grapes. He eats a quarter of them on the walk home,
         which he calls ``quality control''. How many kilograms of grapes arrive at
         his house?
-        \fr{Mr Bowen ach\`ete 0.5 kg de raisin. Il en mange un quart (\eng{a
-        quarter}) en rentrant, pour le \fq{contr\^ole qualit\'e}. Combien de kilos de
-        raisin arrivent chez lui~?}
+        \fr{Mr Bowen ach\`ete 0.5 kg de raisin. Sur le chemin du retour, il en mange
+        un quart (\eng{a quarter})~: c'est du \fq{contr\^ole qualit\'e}, dit-il.
+        Combien de kilogrammes de raisin arrivent chez lui~?}
         \begin{workspace}[2.7cm]\end{workspace}
         \end{minipage}
 \end{enumerate}
@@ -740,13 +780,14 @@ Left over: \blank[2.4cm] cents
   A \textbf{real} situation --- a shop, a recipe, a race, a bag on a scale. Full
   sentences, ending in a \textbf{question}. Use one of the \eng{words} from E2.
   Give \textbf{units}. Your question must come out at the answer given.
-  \fr{Une situation r\'eelle, des phrases compl\`etes, une question \`a la fin, un mot
-  de E2, des unit\'es. \textbf{\'Ecris ton probl\`eme en anglais.}}
+  \fr{Une situation de la vie r\'eelle, des phrases compl\`etes, une question \`a la
+  fin, un mot de E2 et des unit\'es. \textbf{\'Ecris ton probl\`eme en anglais.}}
 \end{yourturn}
 
 \vspace{4pt}
 \noindent Write a word problem for \quad \expr{12.60 \div 4 = 3.15}
-\fr{\'Ecris un probl\`eme (\eng{word problem}) pour ce calcul, en anglais.}
+\fr{Invente, en anglais, un probl\`eme (\eng{word problem}) qui correspond \`a ce
+calcul.}
 \qlines{3}
 
 % ===========================================================================
@@ -759,9 +800,9 @@ Left over: \blank[2.4cm] cents
   On Earth, the strength of gravity is \key{10 N/kg}. Say it: \eng{``ten newtons
   per kilogram''}. \\
   \key{Mass does not change} from planet to planet. Weight does.
-  \fr{Poids (\eng{weight}, en N) = masse (\eng{mass}, en kg) $\times$ intensit\'e de la
-  gravit\'e (\eng{strength of gravity}). La masse ne change pas d'une plan\`ete \`a
-  l'autre~; le poids, oui.}
+  \fr{Poids (\eng{weight}, en N) = masse (\eng{mass}, en kg) $\times$ intensit\'e de
+  la gravit\'e (\eng{strength of gravity}). La masse ne change pas d'une plan\`ete
+  \`a l'autre~; le poids, si.}
 \end{remember}
 
 % -- F1 ---------------------------------------------------------------------
@@ -770,8 +811,8 @@ Left over: \blank[2.4cm] cents
 % A minipage, so the heading and its table cannot be split (they were).
 \noindent\begin{minipage}{\textwidth}
 These are the strengths of gravity from the lesson. A bigger number pulls harder.
-\fr{Voici l'intensit\'e de la gravit\'e de la le\c{c}on. Un nombre plus grand tire
-plus fort.}
+\fr{Voici l'intensit\'e de la gravit\'e sur chaque astre, vue en classe. Plus le
+nombre est grand, plus l'astre attire fort.}
 
 \vspace{8pt}
 \centering
@@ -789,15 +830,14 @@ plus fort.}
 \vspace{4pt}
 \begin{enumerate}[label=(\alph*), itemsep=8pt]
   \item Write the seven strengths in order of size, starting with the smallest.
-        \fr{Range les sept valeurs, de la plus petite \`a la plus grande.}
+        \fr{Range les sept valeurs dans l'ordre croissant.}
         \ansline[11.0cm]
   \item Which pulls harder, \textbf{Venus} or \textbf{Uranus}? By how much?
         \hfill \blank[5.4cm]
-        \fr{Laquelle tire plus fort, V\'enus ou Uranus~? De combien~?}
+        \fr{Laquelle attire le plus fort~: V\'enus ou Uranus~? De combien~?}
   \item How much stronger is gravity on the \textbf{Earth} than on the
         \textbf{Moon}? \hfill \blank[4.0cm]
-        \fr{De combien la gravit\'e est-elle plus forte sur la Terre que sur la
-        Lune~?}
+        \fr{De combien la gravit\'e est-elle plus forte sur la Terre que sur la Lune~?}
 \end{enumerate}
 
 % -- F2 ---------------------------------------------------------------------
@@ -805,8 +845,9 @@ plus fort.}
 
 \noindent Mr Bowen's space backpack has a mass of \textbf{15 kg}. \textbf{(a)} Find its weight in
 each place. Estimate first. The first one is done for you.
-\fr{Le sac \`a dos spatial de Mr Bowen a une masse de 15 kg. (a) Trouve son poids
-(\eng{weight}) \`a chaque endroit. Estime d'abord.}
+\fr{Le sac \`a dos spatial de Mr Bowen a une masse de 15 kg. (a) Calcule son poids
+(\eng{weight}) sur chaque astre, en commen\c{c}ant par une estimation. La premi\`ere
+ligne est faite pour toi.}
 
 \vspace{4pt}
 \noindent
@@ -825,7 +866,7 @@ each place. Estimate first. The first one is done for you.
 \vspace{6pt}
 \noindent \textbf{(b)} How much \textbf{less} does the backpack weigh on the Moon than
 on the Earth? \hfill \blank[2.6cm]
-\fr{(b) De combien le sac p\`ese-t-il moins (\eng{less}) sur la Lune que sur la
+\fr{(b) Sur la Lune, combien le sac p\`ese-t-il de moins (\eng{less}) que sur la
 Terre~?}
 
 % -- F3 ---------------------------------------------------------------------
@@ -836,9 +877,9 @@ Terre~?}
 
 \noindent Mr Bowen drops a \textbf{heavy} ball and a \textbf{light} ball, the same
 size, from 1 metre. He times each fall with a stopwatch, four times.
-\fr{Mr Bowen l\^ache une balle lourde (\eng{heavy}) et une balle l\'eg\`ere
-(\eng{light}) de m\^eme taille, d'un m\`etre. Il chronom\`etre chaque chute quatre
-fois.}
+\fr{Mr Bowen l\^ache, d'une hauteur de 1 m\`etre, une balle lourde (\eng{heavy}) et
+une balle l\'eg\`ere (\eng{light}) de m\^eme taille. Il chronom\`etre quatre chutes
+de chaque balle.}
 
 \vspace{4pt}
 \begin{center}
@@ -865,12 +906,14 @@ fois.}
 \begin{enumerate}[label=(\alph*), itemsep=8pt]
   \item Find the \textbf{fastest} time in the table. Which ball was it?
         \hfill \blank[4.0cm]
-        \fr{Trouve le temps le plus rapide (\eng{fastest}). C'est quelle balle~?}
+        \fr{Trouve le temps le plus court (\eng{fastest}). De quelle balle
+        s'agit-il~?}
   \item Make a \textbf{conjecture} from (a): which ball falls faster?
         \hfill \blank[4.0cm]
-        \fr{Fais une conjecture avec (a)~: quelle balle tombe plus vite~?}
+        \fr{D'apr\`es (a), fais une conjecture~: quelle balle tombe le plus vite~?}
   \item Now test it. Find the \textbf{mean} time for each ball.
-        \fr{Teste-la. Trouve le temps moyen (\eng{mean}) de chaque balle.}
+        \fr{Teste ta conjecture~: calcule le temps moyen (\eng{mean}) de chaque
+        balle.}
         \par\vspace{4pt}
         \begin{minipage}[t]{0.47\linewidth}
           \textbf{Heavy ball}
@@ -881,13 +924,13 @@ fois.}
           \begin{workspace}[3.3cm]\end{workspace}
         \end{minipage}
   \item Do heavy things fall faster? Use your two means. Answer in a full sentence.
-        \fr{Les objets lourds tombent-ils plus vite~? Utilise tes deux moyennes.
-        R\'eponds par une phrase compl\`ete, en anglais.}
+        \fr{Les objets lourds tombent-ils plus vite~? Appuie-toi sur tes deux
+        moyennes et r\'eponds par une phrase compl\`ete, en anglais.}
         \qlines{3}
   \item The four times for the \textbf{same} ball are all different. Why? Use the
         words \eng{reaction time}.
-        \fr{Les quatre temps de la m\^eme balle sont tous diff\'erents. Pourquoi~?
-        Utilise les mots \eng{reaction time}, en anglais.}
+        \fr{Pour une m\^eme balle, les quatre temps sont tous diff\'erents.
+        Pourquoi~? R\'eponds en anglais, avec les mots \eng{reaction time}.}
         \qlines{3}
 \end{enumerate}
 
@@ -897,17 +940,25 @@ fois.}
 % or try each place: 80 x 3.7 = 296. Mars is the only 3.7 in F1 on purpose.
 \qhead[cbgreen]{F4}{Mr Bowen moves house}
 
-\noindent Mr Bowen's mass is \textbf{80 kg}. He would like to weigh exactly
-\textbf{296 N} without eating any less. Which place in \textbf{F1} should he move
-to? Show your calculation.
-\fr{Mr Bowen a une masse de 80 kg. Il veut peser exactement 296 N sans manger moins.
-O\`u doit-il d\'em\'enager (choisis dans F1)~? Montre ton calcul.}
+% A minipage, so the question and its box cannot be split (they were, in the
+% French copy). The French copy has the last page to itself, so its box is
+% taller.
+\newlength{\fourbox}
+\iffr\setlength{\fourbox}{6.0cm}\else\setlength{\fourbox}{4.0cm}\fi
+\noindent\begin{minipage}{\textwidth}
+Mr Bowen's mass is \textbf{80 kg}. He would like to weigh exactly \textbf{296 N}
+without eating any less. Which place in \textbf{F1} should he move to? Show your
+calculation.
+\fr{Mr Bowen a une masse de 80 kg. Il voudrait peser exactement 296 N, sans manger
+moins. Sur quel astre de F1 doit-il d\'em\'enager~? Montre ton calcul.}
 
-\begin{workspace}[4.0cm]\end{workspace}
+\begin{workspace}[\fourbox]\end{workspace}
 
 \noindent He has started packing. What will his \textbf{mass} be when he gets there?
 \hfill \blank[3.0cm]
-\fr{Il a commenc\'e ses valises. Quelle sera sa masse (\eng{mass}) l\`a-bas~?}
+\fr{Il a commenc\'e \`a faire ses valises. Quelle sera sa masse (\eng{mass})
+l\`a-bas~?}
+\end{minipage}
 
 % ===========================================================================
 % ANSWER KEY -- TEACHER COPY ONLY

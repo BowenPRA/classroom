@@ -264,7 +264,24 @@ are the reference.
 - Accents as ASCII: `\'e \`a \^e \c{c}`; French quotes as
   `\guillemotleft\,...\,\guillemotright` (`\og`/`\fg` need babel and fail);
   `~?` and `~:` for the French space before punctuation.
-- The French copy runs 25–30% longer (HW 9: 10 → 13 pages). Do not squeeze the
-  English to make room; a minipage round a question and its box (HW 9's E4)
-  stops the longer French splitting them.
+- **Write it as French, not as translated English.** The first HW 9 French was
+  word-for-word and the teacher called it awkward. Use the classroom terms:
+  *ordre croissant*, *droite graduée*, *la virgule* (and say once that English
+  calls it *the point* and writes it with a dot), *se partager équitablement*,
+  *combien de monnaie lui rend-on ?*, *la première ligne est faite pour toi*.
+- **The French copy must have an even page count** (teacher, 15 Oct 2026), so it
+  prints on whole double-sided sheets. Do not remove questions to get there —
+  the two copies should stay question-for-question identical. Give the French
+  copy more room instead, in an `\iffr` block: `\linespread{1.10}`, taller
+  `\tall` rows, `\renewtcolorbox{workspace}` with
+  `height={1.33\dimexpr #1\relax}` (tcolorbox heights are TeX dimensions, not
+  pgfmath — `1.33*(#1)` fails), and a taller last box. HW 9 went 13 → 14, EX 9
+  9 → 10.
+- The longer French splits things the English never did. Wrap each instruction
+  with its table, and each question with its box, in a minipage (HW 9's A1(b),
+  C1, C3, D2, E4, F4). Check the English densities again afterwards: a minipage
+  can tighten the space below a multicols (it did, C3(f)).
+- For a quick layout loop, build only the French copy (two pdflatex runs with
+  `-jobname=<packet>-fr "\def\FRENCH{}\input{<packet>.tex}"`) and tile the
+  PNGs into one contact sheet to see every page break at once.
 - Link both on the shelf (`content/homework.js`), labelled `FR 9` / `FR X9`.

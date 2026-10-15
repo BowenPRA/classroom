@@ -188,7 +188,8 @@ export const HOMEWORK = [
   },
   // The same two packets built with \FRENCH defined: every question keeps its
   // English and gains a grey French line underneath, with the English key word
-  // left in. Same questions, same answers, longer (HW 9 is 13 pages, EX 9 is 9).
+  // left in. Same questions, same answers, with more room to write: HW 9 is 14
+  // pages and EX 9 is 10, both even so they print on whole double-sided sheets.
   {
     id: 'hw09fr',
     label: 'FR 9',

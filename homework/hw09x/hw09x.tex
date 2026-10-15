@@ -87,6 +87,19 @@
 % -- A table row tall enough to write in -------------------------------------
 \newcommand{\tall}{\rule[-0.6em]{0pt}{1.9em}}
 
+% -- More room in the French copy --------------------------------------------
+% Same scheme as hw09.tex: looser leading, taller table rows and working boxes
+% a third taller in the French copy only, which also lands it on an even number
+% of pages (10). The English copy is untouched.
+\iffr
+  \linespread{1.10}\selectfont
+  \renewcommand{\tall}{\rule[-0.8em]{0pt}{2.4em}}
+  \renewtcolorbox{workspace}[1][3.4cm]{%
+    colback=white, colframe=rulegray, boxrule=0.5pt, arc=5pt,
+    height={1.33\dimexpr #1\relax}, left=6pt, right=6pt, top=4pt, bottom=4pt,
+    before skip=9pt, after skip=11pt}
+\fi
+
 % ---------------------------------------------------------------------------
 % COLUMN GRID. \colgrid{op}{row 1}{row 2}{answer row}
 % Each row is four entries: tens, ones, tenths, hundredths. The point column
@@ -171,8 +184,9 @@
   {\color{cbgreen!70!black}\Huge\bfseries Where the Point Goes}\\[10pt]
   {\color{black!70}Comparing\sep adding and subtracting\sep multiplying and
   dividing\sep the words that choose}
-  \iffr\\[4pt]{\small\itshape\color{black!60}O\`u va le point~: comparer, additionner
-  et soustraire, multiplier et diviser, les mots qui choisissent l'op\'eration}\fi
+  \iffr\\[4pt]{\small\itshape\color{black!60}O\`u placer la virgule~? Comparer,
+  additionner, soustraire, multiplier, diviser --- et les mots qui indiquent
+  l'op\'eration}\fi
 \end{tcolorbox}
 
 \vspace{6pt}
@@ -188,25 +202,25 @@
   There is \key{nothing new to calculate} in Unit 4. $3.2 \times 7$ is $32 \times 7$,
   and you already know how to do that. $8.24 \div 4$ is short division. The one new
   question is \key{where the point goes}.
-  \fr{Il n'y a \textbf{rien de nouveau \`a calculer} dans l'unit\'e 4. $3.2 \times 7$,
-  c'est $32 \times 7$, et tu sais d\'ej\`a le faire. La seule nouvelle question~:
-  \textbf{o\`u va le point} (\eng{where the point goes})~?}
+  \fr{Dans l'unit\'e 4, il n'y a \textbf{rien de nouveau \`a calculer}. $3.2 \times
+  7$, c'est $32 \times 7$, et tu sais d\'ej\`a le faire. La seule nouvelle question,
+  c'est~: \textbf{o\`u placer la virgule} (\eng{where the point goes})~? En anglais,
+  la virgule s'appelle \eng{the point} et s'\'ecrit avec un point~: 3.25.}
 
   \medskip
   Every question on this sheet prints its steps as \key{boxes}. Fill the boxes ---
   that \emph{is} the method. An \key{orange box} means: write a \key{0} here.
-  \fr{Chaque question montre les \'etapes dans des cases. Remplis les cases~: c'est la
-  m\'ethode. Une case orange veut dire~: \'ecris un 0 ici.}
+  \fr{Chaque question pr\'esente ses \'etapes dans des cases~: remplir les cases,
+  c'est appliquer la m\'ethode. Une case orange veut dire~: \'ecris un 0 ici.}
 
   \medskip
-  \eng{No calculator.} \frin{Pas de calculatrice.}
+  \eng{No calculator.} \frin{Calculatrice interdite.}
 \end{activity}
 
 % ===========================================================================
 % PART 1 -- WHICH IS BIGGER?
 % ===========================================================================
-\hwsection[cbgreen]{Part 1 \textperiodcentered\ Which is bigger?\frin{Lequel est le
-plus grand~?}}
+\hwsection[cbgreen]{Part 1 \textperiodcentered\ Which is bigger?\frin{Lequel est le plus grand~?}}
 
 % -- X1 ---------------------------------------------------------------------
 \qhead[cbgreen]{X1}{Two parts of a number}
@@ -214,7 +228,7 @@ plus grand~?}}
 \noindent Write the \textbf{whole-number part} and the \textbf{decimal part}. The first
 one is done for you.
 \fr{\'Ecris la partie enti\`ere (\eng{whole-number part}) et la partie d\'ecimale
-(\eng{decimal part}). Le premier est fait pour toi.}
+(\eng{decimal part}) de chaque nombre. La premi\`ere ligne est faite pour toi.}
 
 \vspace{4pt}
 \begin{center}
@@ -238,15 +252,16 @@ one is done for you.
   First look at the \key{whole-number parts}. If they are the same, \key{fill with
   zeros} so both numbers have the same number of digits after the point. Then
   compare. \quad $3.3 = 3.30$, \; and $3.30 > 3.25$.
-  \fr{Regarde d'abord les parties enti\`eres. Si elles sont pareilles, compl\`ete
-  avec des z\'eros (\eng{fill with zeros}), puis compare.}
+  \fr{Compare d'abord les parties enti\`eres. Si elles sont \'egales, ajoute des
+  z\'eros (\eng{fill with zeros}) pour avoir autant de chiffres apr\`es la virgule,
+  puis compare.}
 \end{remember}
 
 \vspace{2pt}
 \noindent Write a 0 in each orange box. Then write the \textbf{bigger} number. The
 first one is done for you.
-\fr{\'Ecris un 0 dans chaque case orange. Puis \'ecris le plus grand nombre
-(\eng{the bigger number}). Le premier est fait pour toi.}
+\fr{\'Ecris un 0 dans chaque case orange, puis \'ecris le plus grand des deux
+nombres (\eng{the bigger number}). La premi\`ere ligne est faite pour toi.}
 
 \vspace{4pt}
 \begin{center}
@@ -267,8 +282,8 @@ first one is done for you.
 
 \noindent \textbf{Step 1.} Fill with zeros, so every number has three digits after the
 point.
-\fr{\'Etape 1. Compl\`ete avec des z\'eros~: trois chiffres apr\`es le point pour
-chaque nombre.}
+\fr{\'Etape 1. Ajoute des z\'eros pour que chaque nombre ait trois chiffres apr\`es
+la virgule.}
 
 \vspace{8pt}
 \noindent\hspace*{1.6em}$2.4$\zb\zb \qquad\quad $2.38$\zb \qquad\quad $2.405$
@@ -277,8 +292,8 @@ chaque nombre.}
 \vspace{10pt}
 \noindent \textbf{Step 2.} Write the four numbers \textbf{in order of size, starting
 with the smallest}.
-\fr{\'Etape 2. Range les quatre nombres par ordre de taille, en commen\c{c}ant par le
-plus petit (\eng{starting with the smallest}).}
+\fr{\'Etape 2. Range les quatre nombres dans l'ordre croissant, du plus petit au
+plus grand (\eng{starting with the smallest}).}
 
 \vspace{8pt}
 \noindent\hspace*{1.6em}\blank[2.6cm] \quad \blank[2.6cm] \quad \blank[2.6cm] \quad
@@ -288,14 +303,14 @@ plus petit (\eng{starting with the smallest}).}
 \qhead[cbgreen]{X4}{The snail race}
 
 \noindent Three snails race 1 metre across Mr Bowen's desk. These are their times.
-\fr{Trois escargots font une course d'un m\`etre sur le bureau de Mr Bowen. Voici
+\fr{Trois escargots font la course sur un m\`etre, sur le bureau de Mr Bowen. Voici
 leurs temps.}
 
 \begin{wordhelp}[Word help]
   \eng{fastest} = the \textbf{smallest} time. \quad \eng{slowest} = the
   \textbf{biggest} time.
-  \fr{\eng{fastest} = le plus rapide = le plus petit temps. \quad \eng{slowest} = le
-  plus lent = le plus grand temps.}
+  \fr{\eng{fastest} = le plus rapide = le temps le plus court. \quad \eng{slowest} =
+  le plus lent = le temps le plus long.}
 \end{wordhelp}
 
 \vspace{4pt}
@@ -321,14 +336,15 @@ leurs temps.}
 % PART 2 -- LINE UP THE POINTS
 % ===========================================================================
 \hwsection[cbgreen]{Part 2 \textperiodcentered\ Line up the points\frin{Aligne les
-points}}
+virgules}}
 
 \begin{remember}[Adding and subtracting]
   Write the numbers with the \key{points in a line}. Fill the gaps with \key{zeros}.
   Work from the right, like whole numbers. The point in the answer goes
   \key{straight down}.
-  \fr{Aligne les points. Remplis les trous avec des z\'eros. Calcule en partant de la
-  droite. Le point de la r\'eponse descend tout droit (\eng{straight down}).}
+  \fr{Pose le calcul virgule sous virgule et compl\`ete les cases vides avec des
+  z\'eros. Calcule de droite \`a gauche. Dans le r\'esultat, la virgule descend tout
+  droit (\eng{straight down}).}
 \end{remember}
 
 % -- X5 ---------------------------------------------------------------------
@@ -336,8 +352,7 @@ points}}
 
 \noindent Write a 0 in every orange box. Then add or subtract. The first one is done
 for you.
-\fr{\'Ecris un 0 dans chaque case orange. Puis additionne ou soustrais. Le premier est
-fait pour toi.}
+\fr{\'Ecris un 0 dans chaque case orange, puis calcule. Le (a) est fait pour toi.}
 
 \vspace{8pt}
 \noindent
@@ -371,7 +386,7 @@ fait pour toi.}
 
 \vspace{8pt}
 \noindent \textbf{(g)} In \textbf{(c)}, where is the point in the number 7?
-\frin{O\`u est le point dans le nombre 7~?}
+\frin{O\`u est la virgule dans le nombre 7~?}
 \ansline[8.0cm]
 
 % -- X6 ---------------------------------------------------------------------
@@ -380,8 +395,8 @@ fait pour toi.}
 \begin{wordhelp}[Word help]
   \eng{change}: in a shop, the money you get \textbf{back} when you pay too much.
   \; 10 dollars is written \textbf{10.00}.
-  \fr{\eng{change} = la monnaie~: l'argent qu'on te rend quand tu paies trop. 10
-  dollars s'\'ecrit 10.00.}
+  \fr{\eng{change} = la monnaie~: l'argent qu'on te rend quand tu donnes plus que le
+  prix. 10 dollars s'\'ecrit 10.00.}
 \end{wordhelp}
 
 \vspace{4pt}
@@ -390,7 +405,7 @@ fait pour toi.}
   \textbf{(a)} Mr Bowen pays for a 6.45-dollar book with a 10-dollar note. How much
   change does he get?
   \fr{Mr Bowen paie un livre \`a 6.45 dollars avec un billet de 10 dollars. Combien
-  de monnaie (\eng{change}) re\c{c}oit-il~?}
+  de monnaie (\eng{change}) lui rend-on~?}
   \par\vspace{8pt}\centering
   \colgrid{-}{1,0,z,z}{,6,4,5}{,,,}
 \end{minipage}\hfill
@@ -398,7 +413,7 @@ fait pour toi.}
   \textbf{(b)} Mr Bowen pays for 12.80-dollar shoes with a 20-dollar note. How much
   change does he get?
   \fr{Mr Bowen paie des chaussures \`a 12.80 dollars avec un billet de 20 dollars.
-  Combien de monnaie re\c{c}oit-il~?}
+  Combien de monnaie lui rend-on~?}
   \par\vspace{8pt}\centering
   \colgrid{-}{2,0,z,z}{1,2,8,0}{,,,}
 \end{minipage}
@@ -414,8 +429,8 @@ fait pour toi.}
 \noindent\begin{minipage}{\textwidth}
 Write the numbers in the grid yourself. The point goes in the point column. Write a
 0 in any gap after the point. Then work it out.
-\fr{\'Ecris toi-m\^eme les nombres dans la grille. Le point va dans la colonne du
-point. \'Ecris un 0 dans chaque trou apr\`es le point. Puis calcule.}
+\fr{\'Ecris toi-m\^eme les nombres dans la grille, la virgule dans sa colonne.
+Ajoute un 0 dans chaque case vide apr\`es la virgule, puis calcule.}
 
 \vspace{8pt}
 \noindent
@@ -436,15 +451,16 @@ point. \'Ecris un 0 dans chaque trou apr\`es le point. Puis calcule.}
 % ===========================================================================
 % PART 3 -- POINT OUT, POINT BACK
 % ===========================================================================
-\hwsection[cbgreen]{Part 3 \textperiodcentered\ Point out, point back\frin{Enl\`eve le
-point, remets le point}}
+\hwsection[cbgreen]{Part 3 \textperiodcentered\ Point out, point back\frin{Enl\`eve
+la virgule, puis remets-la}}
 
 \begin{remember}[Multiplying a decimal]
   $3.2 \times 7$. \; Take the point out: $32 \times 7 = 224$. \; There is
   \key{1 decimal place} in $3.2$, so put \key{1} back: $22.4$. \\
   \key{Estimate} to check: $3 \times 7 = 21$. \; $22.4$ is close to 21. \checkmark
-  \fr{Enl\`eve le point et multiplie. Remets le point avec le m\^eme nombre de
-  d\'ecimales (\eng{decimal places}). Estime (\eng{estimate}) pour v\'erifier.}
+  \fr{Multiplie sans la virgule, puis remets-la~: le r\'esultat a autant de chiffres
+  apr\`es la virgule (\eng{decimal places}) que le nombre de d\'epart. V\'erifie
+  avec une estimation (\eng{estimate}).}
 \end{remember}
 
 % -- X8 ---------------------------------------------------------------------
@@ -453,7 +469,7 @@ point, remets le point}}
 \qhead[cbgreen]{X8}{Four steps}
 
 \noindent Fill in the table. The first one is done for you.
-\fr{Compl\`ete le tableau. Le premier est fait pour toi.}
+\fr{Compl\`ete le tableau. La premi\`ere ligne est faite pour toi.}
 
 \vspace{4pt}
 \noindent
@@ -475,8 +491,8 @@ point, remets le point}}
 
 \noindent All three answers have the same digits. Work out the estimate, then
 \textbf{circle} the answer that is close to it.
-\fr{Les trois r\'eponses ont les m\^emes chiffres. Calcule l'estimation, puis entoure
-(\eng{circle}) la r\'eponse qui en est proche.}
+\fr{Les trois r\'eponses ont les m\^emes chiffres. Fais une estimation, puis entoure
+(\eng{circle}) la r\'eponse la plus proche.}
 
 \vspace{4pt}
 \noindent
@@ -498,7 +514,7 @@ point, remets le point}}
 
 \noindent On the Moon, weight $=$ mass $\times$ \textbf{1.6}. On Mars, weight $=$ mass
 $\times$ \textbf{3.7}. Fill in the steps.
-\fr{Sur la Lune, poids (\eng{weight}) $=$ masse $\times$ 1.6. Sur Mars, poids $=$
+\fr{Sur la Lune, poids (\eng{weight}) $=$ masse $\times$ 1.6~; sur Mars, poids $=$
 masse $\times$ 3.7. Compl\`ete les \'etapes.}
 
 \vspace{4pt}
@@ -517,17 +533,17 @@ masse $\times$ 3.7. Compl\`ete les \'etapes.}
 % ===========================================================================
 % PART 4 -- THE POINT GOES STRAIGHT UP
 % ===========================================================================
-\hwsection[cbgreen]{Part 4 \textperiodcentered\ The point goes straight up\frin{Le
-point monte tout droit}}
+\hwsection[cbgreen]{Part 4 \textperiodcentered\ The point goes straight up\frin{La
+virgule monte tout droit}}
 
 \begin{remember}[Dividing a decimal]
   Use short division. The point in the answer goes \key{straight up}. \\
   If a digit is too small to divide, write \key{0} in the answer and carry. \\
   Check with the \key{inverse calculation}: \; $8.24 \div 4 = 2.06$, because $2.06
   \times 4 = 8.24$.
-  \fr{Le point monte tout droit (\eng{straight up}). Si un chiffre est trop petit pour
-  \^etre divis\'e, \'ecris 0. V\'erifie avec l'op\'eration inverse (\eng{inverse
-  calculation}).}
+  \fr{Pose la division~: dans le quotient, la virgule monte tout droit
+  (\eng{straight up}). Si un chiffre est trop petit pour \^etre divis\'e, \'ecris 0.
+  V\'erifie avec l'op\'eration inverse (\eng{inverse calculation}).}
 \end{remember}
 
 % -- X11 ---------------------------------------------------------------------
@@ -537,8 +553,9 @@ point monte tout droit}}
 
 \noindent The point is already in the answer. Write one digit in each box. In
 \textbf{(f)}, write a 0 in the orange box first. Then check.
-\fr{Le point est d\'ej\`a dans la r\'eponse. \'Ecris un chiffre dans chaque case. Dans
-\textbf{(f)}, \'ecris d'abord un 0 dans la case orange. Puis v\'erifie.}
+\fr{La virgule est d\'ej\`a plac\'ee dans le r\'esultat. \'Ecris un chiffre par
+case. Dans \textbf{(f)}, \'ecris d'abord un 0 dans la case orange. Ensuite,
+v\'erifie.}
 
 \vspace{8pt}
 \noindent
@@ -584,8 +601,8 @@ point monte tout droit}}
 \noindent\begin{minipage}{\textwidth}
 This time the point is \textbf{not} in the answer. Put it there yourself --- straight
 up. Then fill the boxes.
-\fr{Cette fois, le point n'est \textbf{pas} dans la r\'eponse. Mets-le toi-m\^eme ---
-tout droit vers le haut. Puis remplis les cases.}
+\fr{Cette fois, la virgule n'est \textbf{pas} dans le r\'esultat~: place-la
+toi-m\^eme, tout droit au-dessus de celle du nombre. Puis remplis les cases.}
 
 \vspace{8pt}
 \noindent
@@ -611,23 +628,22 @@ tout droit vers le haut. Puis remplis les cases.}
 \begin{remember}[The mean]
   \key{Step 1:} add up all the values. \quad \key{Step 2:} divide by how many there
   are.
-  \fr{La moyenne (\eng{mean})~: additionne toutes les valeurs, puis divise par le
-  nombre de valeurs.}
+  \fr{La moyenne (\eng{mean})~: additionne toutes les valeurs, puis divise par le nombre de valeurs.}
 \end{remember}
 
 \vspace{2pt}
 \begin{enumerate}[label=(\alph*), itemsep=10pt]
   \item Mr Bowen drops a ball three times and times it. The times are
         \textbf{0.46 s}, \textbf{0.44 s} and \textbf{0.45 s}. Find the mean.
-        \fr{Mr Bowen l\^ache une balle trois fois et chronom\`etre la chute. Trouve la
-        moyenne.}
+        \fr{Mr Bowen l\^ache une balle trois fois et chronom\`etre chaque chute.
+        Calcule la moyenne.}
         \par\vspace{6pt}\hspace*{1.6em}Step 1: \; $0.46 + 0.44 + 0.45 =$ \blank[2.0cm]
         \par\vspace{6pt}\hspace*{1.6em}Step 2: \; \blank[2.0cm] $\div\ 3 =$
         \blank[2.0cm] s
   \item His reaction times in the ruler catch are \textbf{0.21 s}, \textbf{0.19 s},
         \textbf{0.23 s} and \textbf{0.17 s}. Find the mean.
-        \fr{Ses temps de r\'eaction (\eng{reaction times}) avec la r\`egle. Trouve la
-        moyenne.}
+        \fr{Voici ses temps de r\'eaction (\eng{reaction times}) au test de la
+        r\`egle. Calcule la moyenne.}
         \par\vspace{6pt}\hspace*{1.6em}Step 1: \; \blank[6.0cm] $=$ \blank[2.0cm]
         \par\vspace{6pt}\hspace*{1.6em}Step 2: \; \blank[2.0cm] $\div$ \nbox $=$
         \blank[2.0cm] s
@@ -636,8 +652,7 @@ tout droit vers le haut. Puis remplis les cases.}
 % ===========================================================================
 % PART 5 -- MAKING IT EASIER
 % ===========================================================================
-\hwsection[cbgreen]{Part 5 \textperiodcentered\ Making it easier\frin{Calculer plus
-facilement}}
+\hwsection[cbgreen]{Part 5 \textperiodcentered\ Making it easier\frin{Calculer plus facilement}}
 
 % -- X14 --------------------------------------------------------------------
 \qhead[cbgreen]{X14}{``Of'' means $\times$}
@@ -646,13 +661,12 @@ facilement}}
   \key{half of} = $\div\, 2$ = $\times\, 0.5$ \qquad
   \key{a quarter of} = $\div\, 4$ = $\times\, 0.25$ \qquad
   \key{a tenth of} = $\div\, 10$ = $\times\, 0.1$
-  \fr{\eng{half of} = la moiti\'e de \quad \eng{a quarter of} = le quart de \quad
-  \eng{a tenth of} = le dixi\`eme de}
+  \fr{\eng{half of} = la moiti\'e de \quad \eng{a quarter of} = le quart de \quad \eng{a tenth of} = le dixi\`eme de}
 \end{remember}
 
 \vspace{2pt}
 \noindent Fill in the table. The first one is done for you.
-\fr{Compl\`ete le tableau. Le premier est fait pour toi.}
+\fr{Compl\`ete le tableau. La premi\`ere ligne est faite pour toi.}
 
 \vspace{4pt}
 \begin{center}
@@ -673,8 +687,8 @@ facilement}}
 \begin{remember}[Start from $\times\, 10$]
   $\times\, 9$: do $\times\, 10$, then \key{take away} one lot. \qquad
   $\times\, 11$: do $\times\, 10$, then \key{add} one lot.
-  \fr{$\times\, 9$~: fais $\times\, 10$, puis enl\`eve le nombre une fois.
-  \quad $\times\, 11$~: fais $\times\, 10$, puis ajoute le nombre une fois.}
+  \fr{$\times\, 9$~: multiplie par 10, puis retire le nombre une fois. \quad
+  $\times\, 11$~: multiplie par 10, puis ajoute-le une fois.}
 \end{remember}
 
 \vspace{4pt}
@@ -690,7 +704,7 @@ facilement}}
 
 \noindent \textbf{Partitioning} means splitting a number into easy parts:
 $4.3 = 4 + 0.3$.
-\fr{\eng{Partitioning} = d\'ecomposer un nombre en parties faciles.}
+\fr{\eng{Partitioning}~: d\'ecomposer un nombre en parties faciles \`a calculer.}
 
 \vspace{6pt}
 \begin{enumerate}[label=(\alph*), itemsep=12pt]
@@ -704,16 +718,16 @@ $4.3 = 4 + 0.3$.
 % ===========================================================================
 % PART 6 -- THE WORDS THAT CHOOSE
 % ===========================================================================
-\hwsection[cbgreen]{Part 6 \textperiodcentered\ The words that choose\frin{Les mots qui
-choisissent}}
+\hwsection[cbgreen]{Part 6 \textperiodcentered\ The words that choose\frin{Les mots
+qui indiquent l'op\'eration}}
 
 % -- X17 --------------------------------------------------------------------
 \qhead[cbgreen]{X17}{Which operation?}
 
 \noindent Write $+$, $-$, $\times$ or $\div$ for each one. The first one is done for
 you.
-\fr{\'Ecris $+$, $-$, $\times$ ou $\div$ pour chaque mot. Le premier est fait pour
-toi.}
+\fr{Pour chaque expression, \'ecris $+$, $-$, $\times$ ou $\div$. La premi\`ere
+ligne est faite pour toi.}
 
 \vspace{4pt}
 % The words column is wider in the French copy, which adds a gloss to each row.
@@ -725,9 +739,9 @@ toi.}
   \textbf{The words} & \textbf{Operation} \\ \hline
   altogether \frin{en tout} \tall & $+$ \\ \hline
   change \frin{la monnaie} \tall & \\ \hline
-  share equally \frin{partager en parts \'egales} \tall & \\ \hline
-  how much do 4 cost? \frin{combien co\^utent 4~?} \tall & \\ \hline
-  how much heavier? \frin{combien plus lourd~?} \tall & \\ \hline
+  share equally \frin{partager \'equitablement} \tall & \\ \hline
+  how much do 4 cost? \frin{combien co\^utent 4 objets~?} \tall & \\ \hline
+  how much heavier? \frin{de combien plus lourd~?} \tall & \\ \hline
   the total \frin{le total} \tall & \\ \hline
 \end{tabular}
 \end{center}
@@ -736,30 +750,29 @@ toi.}
 \qhead[cbgreen]{X18}{Calculation first}
 
 \noindent Write the calculation in the boxes: number, sign, number. Then the answer.
-\fr{\'Ecris le calcul dans les cases~: nombre, signe, nombre. Puis la r\'eponse.}
+\fr{\'Ecris le calcul~: un nombre, un signe dans la case, un nombre. Puis le
+r\'esultat.}
 
 \begin{enumerate}[label=(\alph*), itemsep=8pt]
   \item A bottle of water costs 0.85 dollars. Mr Bowen buys 4. How much does he pay?
-        \fr{Une bouteille d'eau co\^ute 0.85 dollar. Mr Bowen en ach\`ete 4. Combien
-        paie-t-il~?}
+        \fr{Une bouteille d'eau co\^ute 0.85 dollar. Mr Bowen en ach\`ete 4. Combien paie-t-il~?}
         \par\vspace{6pt}\hspace*{1.6em}\blank[2.0cm] \nbox \blank[1.6cm] $=$
         \blank[2.2cm] dollars
   \item Mr Bowen pays for a 2.65-dollar juice with a 5-dollar note. How much change
         does he get?
-        \fr{Mr Bowen paie un jus \`a 2.65 dollars avec un billet de 5 dollars. Combien
-        de monnaie (\eng{change}) re\c{c}oit-il~?}
+        \fr{Mr Bowen paie un jus de fruits \`a 2.65 dollars avec un billet de 5
+        dollars. Combien de monnaie (\eng{change}) lui rend-on~?}
         \par\vspace{6pt}\hspace*{1.6em}\blank[2.0cm] \nbox \blank[1.6cm] $=$
         \blank[2.2cm] dollars
   \item Mr Bowen and three friends share 9.20 dollars equally. How much does each
         person get?
-        \fr{Mr Bowen et trois amis partagent 9.20 dollars en parts \'egales
-        (\eng{share equally}). Combien re\c{c}oit chaque personne~?}
+        \fr{Mr Bowen et trois amis se partagent \'equitablement (\eng{share
+        equally}) 9.20 dollars. Combien chacun re\c{c}oit-il~?}
         \par\vspace{6pt}\hspace*{1.6em}How many people? \nbox \hfill
         \blank[2.0cm] \nbox \blank[1.6cm] $=$ \blank[2.2cm] dollars
   \item A bag of sugar has a mass of 0.5 kg. What is its \textbf{weight} on Earth?
         Weight $=$ mass $\times$ 10.
-        \fr{Un sac de sucre a une masse de 0.5 kg. Quel est son poids (\eng{weight})
-        sur Terre~?}
+        \fr{Un sac de sucre a une masse de 0.5 kg. Quel est son poids (\eng{weight}) sur Terre~?}
         \par\vspace{6pt}\hspace*{1.6em}\blank[2.0cm] \nbox \blank[1.6cm] $=$
         \blank[2.2cm] N
 \end{enumerate}
@@ -767,30 +780,34 @@ toi.}
 % -- X19 --------------------------------------------------------------------
 % The sheet in miniature: a multiplication with the point taken out and put
 % back, then a subtraction with the zeros written. Last on purpose.
+% In the French copy it starts the last page, so its working box is not left
+% on a page of its own (it was).
+\iffr\clearpage\fi
 \qhead[cbgreen]{X19}{The whole sheet in one question}
 
 \noindent Mr Bowen buys 3 mangoes at 1.45 dollars each. He pays with a 5-dollar note.
 How much change does he get?
-\fr{Mr Bowen ach\`ete 3 mangues \`a 1.45 dollar chacune. Il paie avec un billet de 5
-dollars. Combien de monnaie re\c{c}oit-il~?}
+\fr{Mr Bowen ach\`ete 3 mangues \`a 1.45 dollar pi\`ece. Il paie avec un billet de 5
+dollars. Combien de monnaie lui rend-on~?}
 
 \vspace{8pt}
 \noindent\hspace*{1.6em}\textbf{Step 1.} The mangoes: \quad $145 \times 3 =$
 \blank[1.8cm], \; so $1.45 \times 3 =$ \blank[1.8cm] dollars.
-\fr{\'Etape 1. Les mangues.}
+\fr{\'Etape 1~: le prix des mangues.}
 
 \vspace{10pt}
 \noindent\hspace*{1.6em}\textbf{Step 2.} The change: \quad $5.00 \;-$ \blank[1.8cm]
 $=$ \blank[1.8cm] dollars.
-\fr{\'Etape 2. La monnaie.}
+\fr{\'Etape 2~: la monnaie.}
 
 \vspace{12pt}
 \noindent Work it out here. Write $5$ as $5.00$ and line up the points.
-\fr{Calcule ici. \'Ecris 5 comme 5.00 et aligne les points.}
+\fr{Calcule ici. \'Ecris 5 sous la forme 5.00 et pose le calcul virgule sous
+virgule.}
 
 % Taller in the English copy, which has the room on its last page.
 \newlength{\finalboxht}
-\iffr\setlength{\finalboxht}{4.2cm}\else\setlength{\finalboxht}{7.0cm}\fi
+\iffr\setlength{\finalboxht}{8.0cm}\else\setlength{\finalboxht}{7.0cm}\fi
 \begin{workspace}[\finalboxht]\end{workspace}
 
 % ===========================================================================

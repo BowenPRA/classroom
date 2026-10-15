@@ -53,8 +53,11 @@ X1–X19.
 `hw09x-fr.pdf` is the same source built with `\FRENCH` defined: a grey French line under
 each instruction and question, with the English key word left in, in blue. The English
 copy is unchanged by it (the macros are empty and `\unskip` their leading space). See
-`../hw09/README.md` for the scheme. The X17 word column widens in the French copy to fit
-the glosses, and X19's working box is taller in the English copy, which has the room.
+`../hw09/README.md` for the scheme and the 15 October rewrite of the French. The French
+copy also gets more room (looser leading, taller table rows and working boxes) and starts
+X19 on its own last page with a large box, which makes it **10 pages** — an even number,
+so it prints on whole double-sided sheets. The X17 word column widens in the French copy
+to fit the glosses.
 
 ## Building
 
@@ -62,7 +65,7 @@ the glosses, and X19's working box is taller in the English copy, which has the 
 powershell -c '& "C:\Users\bowen\lessons\.claude\skills\new-homework\scripts\build-hw.ps1" hw09x -French'
 ```
 
-Built and verified with MiKTeX: English **8 pages**, French **9**, teacher **11**, no
+Built and verified with MiKTeX: English **8 pages**, French **10**, teacher **11**, no
 errors, no overfull boxes. Every page was rasterised and read.
 
 ## What's in it
