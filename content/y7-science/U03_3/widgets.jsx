@@ -54,10 +54,13 @@ const CY = 220
 const PX_PER_AU = 128 // Mars's orbit (1.52 AU) is 195 px
 const DAYS_PER_SECOND = 30 // one Earth year takes about 12 seconds
 const PLANETS = [
-  { en: 'Mercury', fr: 'Mercure', au: 0.387, days: 88, r: 7, fill: '#b5b5b5', trail: '#6f7780', start: 100 },
-  { en: 'Venus', fr: 'Vénus', au: 0.723, days: 225, r: 10, fill: '#e8c27a', trail: '#b8892f', start: 215 },
-  { en: 'Earth', fr: 'Terre', au: 1.0, days: 365, r: 10, fill: '#4f8fbf', trail: '#2f6d9c', start: 330 },
-  { en: 'Mars', fr: 'Mars', au: 1.524, days: 687, r: 8, fill: '#d0643b', trail: '#b14a24', start: 40 },
+  // Sizes are not to scale (they could not be): big enough to see from the back.
+  // Start angles were chosen so the four never line up in the first 14 seconds:
+  // whenever the teacher presses Gravity off, they leave in different directions.
+  { en: 'Mercury', fr: 'Mercure', au: 0.387, days: 88, r: 12, fill: '#b5b5b5', trail: '#6f7780', start: 100 },
+  { en: 'Venus', fr: 'Vénus', au: 0.723, days: 225, r: 13, fill: '#e8c27a', trail: '#b8892f', start: 30 },
+  { en: 'Earth', fr: 'Terre', au: 1.0, days: 365, r: 13, fill: '#4f8fbf', trail: '#2f6d9c', start: 0 },
+  { en: 'Mars', fr: 'Mars', au: 1.524, days: 687, r: 12, fill: '#d0643b', trail: '#b14a24', start: 285 },
 ]
 const rad = (d) => (d * Math.PI) / 180
 
@@ -126,23 +129,28 @@ export function LetGo({ lang = 'en' }) {
           <rect x="0" y="0" width={W} height={H} rx="14" fill="#ffffff" />
           <g clipPath="url(#u33-letgo-clip)">
             {PLANETS.map((p) => (
-              <circle key={`o-${p.en}`} cx={CX} cy={CY} r={p.au * PX_PER_AU} fill="none" stroke={freedAt === null ? RULE : '#e8edf1'} strokeWidth="2" strokeDasharray={freedAt === null ? 'none' : '6 6'} />
+              <circle key={`o-${p.en}`} cx={CX} cy={CY} r={p.au * PX_PER_AU} fill="none" stroke={RULE} strokeWidth="2.5" />
             ))}
             <circle cx={CX} cy={CY} r="20" fill="#fde58a" stroke="#c99a06" strokeWidth="3" />
 
-            {/* the straight line each planet leaves along */}
+            {/* the straight line each planet leaves along, from a dot where it let go:
+                the orbit stays drawn, so the class sees the line leave the circle */}
             {now.map((q, i) => q.from && (
-              <line key={`l-${PLANETS[i].en}`} x1={q.from.x} y1={q.from.y} x2={q.x} y2={q.y} stroke={PLANETS[i].trail} strokeWidth="4" strokeDasharray="12 8" strokeLinecap="round" />
+              <g key={`l-${PLANETS[i].en}`}>
+                <line x1={q.from.x} y1={q.from.y} x2={q.x} y2={q.y} stroke={PLANETS[i].trail} strokeWidth="4" strokeDasharray="12 8" strokeLinecap="round" />
+                <circle cx={q.from.x} cy={q.from.y} r="6" fill={PLANETS[i].trail} />
+              </g>
             ))}
           </g>
 
-          {/* the clock */}
+          {/* the clock, on a plate so a line can pass behind it */}
+          <rect x="24" y="28" width="250" height="112" rx="12" fill="#ffffff" fillOpacity="0.92" />
           <text x="36" y="62" fontFamily={FONT} fontSize="24" fill={MUTED}>{t(lang, 'Earth days', 'Jours terrestres')}</text>
           <text x="36" y="120" fontFamily={FONT} fontSize="54" fontWeight="bold" fill={INK}>{shownDay}</text>
 
           {/* the key: name and number of laps, on a plate so a line can pass behind it */}
           <rect x="818" y="30" width="284" height="242" rx="12" fill="#ffffff" fillOpacity="0.92" />
-          <text x="830" y="62" fontFamily={FONT} fontSize="24" fill={MUTED}>{t(lang, 'Times round the Sun', 'Tours du Soleil')}</text>
+          <text x="830" y="62" fontFamily={FONT} fontSize="24" fill={MUTED}>{t(lang, 'Times round the Sun', 'Tours autour du Soleil')}</text>
           {PLANETS.map((p, i) => (
             <g key={`k-${p.en}`}>
               <circle cx="846" cy={104 + i * 52} r="11" fill={p.fill} stroke={INK} strokeWidth="2" />
@@ -174,7 +182,7 @@ export function LetGo({ lang = 'en' }) {
           {running ? t(lang, 'Pause', 'Pause') : t(lang, 'Play', 'Lancer')}
         </Btn>
         <Btn tone="red" icon={PowerOff} disabled={freedAt !== null} onClick={letGo}>{t(lang, 'Gravity off', 'Sans gravité')}</Btn>
-        <Btn tone="slate" icon={RotateCcw} disabled={day === 0 && freedAt === null} onClick={reset}>{t(lang, 'Reset', 'Remettre')}</Btn>
+        <Btn tone="slate" icon={RotateCcw} disabled={day === 0 && freedAt === null} onClick={reset}>{t(lang, 'Reset', 'Recommencer')}</Btn>
       </div>
     </div>
   )

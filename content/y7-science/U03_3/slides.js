@@ -5,28 +5,32 @@
 // ENGLISH AND FRENCH ONLY (meta.vietnamese: false): every string has an …Fr
 // twin and no …Vn twin. Diagrams stay in English.
 //
-// ONE PERIOD, THREE QUESTIONS — the book's three objectives, in its order:
+// ONE PERIOD, 23 SLIDES, THREE QUESTIONS — the book's three objectives, in its
+// order:
 //   1. What keeps the planets in orbit?  Ask, then Mr Bowen swings a ball on a
 //      string: the class votes on where it goes when he lets go (left hand: away
 //      from the centre; right hand: straight on), he lets go, and the LetGo
-//      widget does the same to four planets. Then the book's diagram, drawn.
+//      widget does the same to four planets. Then the book's diagram, drawn,
+//      with the straight line a planet would take without gravity.
 //   2. Why do planets move at different speeds?  The book's Activity: the class
-//      draws the bar graph and finds the pattern themselves; the reason
-//      (weaker pull far away) comes after.
-//   3. Why don't things in space slow down?  Feel air resistance with an open
+//      draws the bar graph (the scale is given) and says the pattern
+//      themselves; the reason (weaker pull far away) comes after.
+//   3. Why don't things in space slow down?  Feel air resistance with a closed
 //      exercise book, then the vacuum, Juno and Voyager 1 (one light-day away on
 //      18 November 2026, four weeks after this lesson).
 //   Last, the book's Think like a scientist on Neptune is an English lesson:
-//   observation, prediction, conclusion.
+//   observation, prediction, conclusion. Its Question 4 (a written cloze) is an
+//   extension in plan.js, not a slide: the period has no room for it.
 //
 // DIFFERENT MOVES FROM 3.1 ON PURPOSE: a teacher demo instead of a desk drop,
 // a graph to draw, a feel-it moment, a four-finger vote, a story with a French
 // connection (Bouvard and Le Verrier). No film: the motion that matters is the
-// live demo and the widget.
+// live demo and the widget (plan.js and the report say why the Juno moons film
+// was left out).
 //
 // COPY-DOWN: 4 short write panels (circular + the Sun's pull, speed, air
-// resistance, vacuum), 1 drawing (the orbit, slide 9) and 1 bar graph
-// (slide 11). Everything else is said, voted, felt or written on whiteboards.
+// resistance, vacuum), 1 drawing (the orbit, slide 8) and 1 bar graph
+// (slide 10). Everything else is said, voted, felt or written on whiteboards.
 //
 // WRITING RULE (the 2.5 density): short sentences, one idea each, and the body
 // text never repeats the write note, a label or the caption.
@@ -82,7 +86,7 @@ export const slides = [
   },
 
   // ── THE SUN ─────────────────────────────────────────────────────────────
-  // 3. The biggest mass, the strongest gravity (3.1's N/kg)
+  // 3. A quick recall of 3.2 and 3.1's N/kg, then the book's Question 3
   {
     layout: 'split',
     accent: TEAL,
@@ -94,45 +98,25 @@ export const slides = [
     ratio: 50,
     image: sunPhoto,
     content:
-      'Mass: **330\u00a0000 times** the Earth’s. More than all the planets together.\n\n' +
-      'Gravity: **270\u00a0N/kg**, 27 times the Earth’s.\n\n' +
+      'Mass: **330 000 times** the Earth’s. More than all the planets together.\n\n' +
+      'Gravity: **270 N/kg**, 27 times the Earth’s.\n\n' +
       '**Never** look straight at the Sun.',
     contentFr:
-      'Masse\u00a0: **330\u00a0000 fois** celle de la Terre. Plus que toutes les planètes réunies.\n\n' +
-      'Gravité\u00a0: **270\u00a0N/kg**, 27 fois celle de la Terre.\n\n' +
+      'Masse : **330 000 fois** celle de la Terre. Plus que toutes les planètes réunies.\n\n' +
+      'Gravité : **270 N/kg**, 27 fois celle de la Terre.\n\n' +
       'Ne regarde **jamais** le Soleil en face.',
     reveal: {
-      prompt: 'Mr Bowen (80\u00a0kg) visits the Sun. What is his weight there?',
-      promptFr: 'M. Bowen (80\u00a0kg) va sur le Soleil. Quel est son poids là-bas ?',
+      prompt: 'Question 3, in pairs: which object has the **second** strongest gravity?',
+      promptFr: 'Question 3, à deux : quel objet a la **deuxième** gravité la plus forte ?',
       label: 'Answer',
       labelFr: 'Réponse',
-      answer: '80 × 270 = **21\u00a0600\u00a0N**. On Earth: 800\u00a0N.',
-      answerFr: '80 × 270 = **21\u00a0600\u00a0N**. Sur Terre : 800\u00a0N.',
-    },
-  },
-
-  // 4. Question 3, in pairs
-  {
-    layout: 'statement',
-    accent: PURPLE,
-    eyebrow: 'Question 3 · talk in pairs',
-    eyebrowFr: 'Question 3 · parles-en à deux',
-    title: 'Second Strongest Gravity',
-    titleFr: 'La deuxième gravité',
-    text: 'The **Sun** has the strongest gravity in the Solar System.',
-    textFr: 'Le **Soleil** a la gravité la plus forte du système solaire.',
-    sub: 'Which object has the **second** strongest?',
-    subFr: 'Quel objet a la **deuxième** plus forte ?',
-    reveal: {
-      label: 'Answer',
-      labelFr: 'Réponse',
-      answer: '**Jupiter.** After the Sun, it has the most mass. Its gravity: 25\u00a0N/kg.',
-      answerFr: '**Jupiter.** Après le Soleil, c’est lui qui a le plus de masse. Sa gravité : 25\u00a0N/kg.',
+      answer: '**Jupiter.** After the Sun, it has the most mass. Its gravity: 25 N/kg.',
+      answerFr: '**Jupiter.** Après le Soleil, c’est lui qui a le plus de masse. Sa gravité : 25 N/kg.',
     },
   },
 
   // ── WHAT KEEPS THE PLANETS IN ORBIT? ────────────────────────────────────
-  // 5. Question first
+  // 4. Question first
   {
     layout: 'statement',
     accent: PURPLE,
@@ -147,7 +131,7 @@ export const slides = [
     subFr: 'Alors pourquoi ne s’envolent-elles pas dans l’espace ?',
   },
 
-  // 6. The demo, set up
+  // 5. The demo, set up
   {
     layout: 'split',
     accent: GREEN,
@@ -162,7 +146,7 @@ export const slides = [
     contentFr: 'Sa main, c’est le **Soleil**. La balle, c’est une **planète**.',
   },
 
-  // 7. Vote: left hand A, right hand B, all at once. He lets go after it.
+  // 6. Vote: left hand A, right hand B, all at once. He lets go after it.
   {
     layout: 'compare',
     accent: PURPLE,
@@ -191,7 +175,7 @@ export const slides = [
     ],
   },
 
-  // 8. The same, for planets
+  // 7. The same, for planets. Speeds are for later: the graph finds them.
   {
     layout: 'showcase',
     accent: TEAL,
@@ -201,11 +185,11 @@ export const slides = [
     title: 'Switch Off the Sun’s Gravity',
     titleFr: 'Coupe la gravité du Soleil',
     widget: LetGo,
-    caption: 'Press **Play**. Which planet is fastest? Then press **Gravity off**.',
-    captionFr: 'Appuie sur **Lancer**. Quelle planète va le plus vite ? Puis appuie sur **Sans gravité**.',
+    caption: 'What happens if gravity stops?',
+    captionFr: 'Que se passe-t-il si la gravité s’arrête ?',
   },
 
-  // 9. Draw This: the book's diagram (p.92)
+  // 8. Draw This: the book's diagram (p.92), plus the line with no gravity
   {
     layout: 'split',
     accent: ORANGE,
@@ -217,8 +201,8 @@ export const slides = [
     ratio: 40,
     inlineSvg: DIAGRAMS.ORBIT_DRAW,
     drawThis: true,
-    content: 'Without this force, the planet would go off in a **straight line**.',
-    contentFr: 'Sans cette force, la planète partirait en **ligne droite**.',
+    content: 'Draw the Sun, the orbit, a planet, the two arrows and the dashed line.',
+    contentFr: 'Dessine le Soleil, l’orbite, une planète, les deux flèches et la ligne pointillée.',
     notes: [
       {
         tone: 'write',
@@ -228,13 +212,13 @@ export const slides = [
     ],
   },
 
-  // 10. Questions 1 and 2
+  // 9. Questions 1 and 2, aloud
   {
     layout: 'callout',
     accent: GREEN,
-    icon: 'PenLine',
-    eyebrow: 'Whiteboards · page 94',
-    eyebrowFr: 'Ardoises · page 94',
+    icon: 'MessageSquare',
+    eyebrow: 'Say it · page 94',
+    eyebrowFr: 'Dis-le · page 94',
     title: 'Questions 1 and 2',
     titleFr: 'Questions 1 et 2',
     content:
@@ -252,7 +236,7 @@ export const slides = [
   },
 
   // ── WHY DIFFERENT SPEEDS? ───────────────────────────────────────────────
-  // 11. The book's Activity: draw the bar graph
+  // 10. The book's Activity: draw the bar graph, scale given
   {
     layout: 'showcase',
     accent: BLUE,
@@ -262,11 +246,11 @@ export const slides = [
     title: 'Planet Speeds',
     titleFr: 'La vitesse des planètes',
     inlineSvg: DIAGRAMS.SPEED_TABLE,
-    caption: 'Draw the bar graph. **km/s** = kilometres **per** second: Mercury goes 48\u00a0km **every** second!',
-    captionFr: 'Trace le diagramme en barres. **km/s** = kilomètres **par** seconde : Mercure parcourt 48\u00a0km **chaque** seconde !',
+    caption: 'Draw the bar graph. **km/s** = kilometres **per** second: Mercury goes 48 km **every** second!',
+    captionFr: 'Trace le diagramme en barres. **km/s** = kilomètres **par** seconde : Mercure parcourt 48 km **chaque** seconde !',
   },
 
-  // 12. Check it; the pattern is theirs to say
+  // 11. Check it; the pattern is theirs to say (slide 12's panel settles it)
   {
     layout: 'showcase',
     accent: BLUE,
@@ -276,11 +260,11 @@ export const slides = [
     title: 'Is Yours the Same?',
     titleFr: 'Le tien est-il pareil ?',
     inlineSvg: DIAGRAMS.SPEED_GRAPH,
-    caption: 'Complete: “As the distance from the Sun increases, the speed of orbit of the planets …” Then say **why**.',
-    captionFr: 'Complète en anglais : « As the distance from the Sun increases, the speed of orbit of the planets … » Puis dis **pourquoi**.',
+    caption: 'Complete the sentence on your whiteboard. Then say **why**.',
+    captionFr: 'Complète la phrase sur ton ardoise (en anglais). Puis dis **pourquoi**.',
   },
 
-  // 13. Speed (write) and the reason
+  // 12. Speed (write) and the reason; the book's km/h figure as a calculation
   {
     layout: 'split',
     accent: TEAL,
@@ -291,8 +275,6 @@ export const slides = [
     titleFr: 'La vitesse',
     ratio: 45,
     inlineSvg: DIAGRAMS.SPEED_PULL,
-    content: 'Mercury: **170\u00a0000\u00a0km/h**. The Earth: about **100\u00a0000\u00a0km/h**.',
-    contentFr: 'Mercure : **170\u00a0000\u00a0km/h**. La Terre : environ **100\u00a0000\u00a0km/h**.',
     notes: [
       {
         tone: 'write',
@@ -300,15 +282,23 @@ export const slides = [
         textFr: '**Vitesse (speed) :** la rapidité avec laquelle un objet se déplace.\nPlus on s’éloigne du Soleil, plus la vitesse des planètes **diminue**.\nL’attraction du Soleil est **plus faible** au loin.',
       },
     ],
+    reveal: {
+      prompt: 'Whiteboards: Mercury goes 48 km every second. How far does it go in one hour?',
+      promptFr: 'Ardoises : Mercure parcourt 48 km chaque seconde. Quelle distance en une heure ?',
+      label: 'Answer',
+      labelFr: 'Réponse',
+      answer: '48 × 3600 = 172 800, about **170 000 km**. So 170 000 km/h.',
+      answerFr: '48 × 3600 = 172 800, environ **170 000 km**. Donc 170 000 km/h.',
+    },
   },
 
-  // 14. The Activity's Questions 2 and 4
+  // 13. The Activity's Questions 2 and 4, aloud
   {
     layout: 'callout',
     accent: BLUE,
     icon: 'HelpCircle',
-    eyebrow: 'Activity · Questions 2 and 4',
-    eyebrowFr: 'Activité · Questions 2 et 4',
+    eyebrow: 'Activity · Questions 2 and 4 · say it',
+    eyebrowFr: 'Activité · Questions 2 et 4 · dis-le',
     title: 'Why a Bar Graph?',
     titleFr: 'Pourquoi des barres ?',
     content:
@@ -326,7 +316,7 @@ export const slides = [
   },
 
   // ── WHY DON'T THINGS IN SPACE SLOW DOWN? ────────────────────────────────
-  // 15. Feel it
+  // 14. Feel it
   {
     layout: 'statement',
     accent: GREEN,
@@ -334,19 +324,19 @@ export const slides = [
     eyebrowFr: 'Essaie à ta place',
     title: 'Feel the Air',
     titleFr: 'Sens l’air',
-    text: 'Wave your open exercise book: **slowly**, then **fast**.',
-    textFr: 'Agite ton cahier ouvert : **lentement**, puis **vite**.',
+    text: 'Wave your closed exercise book: **slowly**, then **fast**.',
+    textFr: 'Agite ton cahier fermé : **lentement**, puis **vite**.',
     sub: 'Then move it **edge first**. What do you feel?',
-    subFr: 'Puis fais-le passer **par la tranche**. Que sens-tu ?',
+    subFr: 'Puis **tranche en avant**. Que sens-tu ?',
     reveal: {
       label: 'What did you feel?',
       labelFr: 'Qu’as-tu senti ?',
-      answer: 'A push **against** your hand. Bigger when you go **faster**, and when the flat side pushes more **particles** of air.',
-      answerFr: 'Une poussée **contre** ta main. Plus forte quand tu vas **plus vite**, et quand le côté plat pousse plus de **particules** d’air.',
+      answer: 'A push **against** your hand. Bigger when you go **faster**. Bigger flat side first: it pushes more **air**.',
+      answerFr: 'Une poussée **contre** ta main. Plus forte quand tu vas **plus vite**. Plus forte côté plat devant : il pousse plus d’**air**.',
     },
   },
 
-  // 16. Air resistance (write)
+  // 15. Air resistance (write)
   {
     layout: 'split',
     accent: TEAL,
@@ -368,7 +358,7 @@ export const slides = [
     ],
   },
 
-  // 17. Question first
+  // 16. Question first
   {
     layout: 'statement',
     accent: PURPLE,
@@ -388,7 +378,7 @@ export const slides = [
     },
   },
 
-  // 18. Vacuum (write) — Question 4 is its definition
+  // 17. Vacuum (write) — Question 4 is its definition. Slide 18 asks the "why".
   {
     layout: 'split',
     accent: TEAL,
@@ -399,8 +389,8 @@ export const slides = [
     titleFr: 'Le vide',
     ratio: 45,
     image: juno,
-    content: 'In 2016, the **Juno** probe passed Jupiter at **266\u00a0000\u00a0km/h**. On Earth, air resistance makes that impossible.',
-    contentFr: 'En 2016, la sonde **Juno** est passée près de Jupiter à **266\u00a0000\u00a0km/h**. Sur Terre, la résistance de l’air rend cela impossible.',
+    content: 'In 2016, the **Juno** probe passed Jupiter at **266 000 km/h**.',
+    contentFr: 'En 2016, la sonde **Juno** est passée près de Jupiter à **266 000 km/h**.',
     notes: [
       {
         tone: 'write',
@@ -410,7 +400,7 @@ export const slides = [
     ],
   },
 
-  // 19. Voyager 1 — Question 5
+  // 18. Voyager 1 — Question 5
   {
     layout: 'split',
     accent: TEAL,
@@ -422,22 +412,22 @@ export const slides = [
     ratio: 50,
     image: voyager,
     content:
-      'Launched in **1977**. Now outside the Solar System, at **64\u00a0000\u00a0km/h**.\n\n' +
+      'Launched in **1977**. Now outside the Solar System, at **64 000 km/h**.\n\n' +
       'On **18 November 2026** it will be so far away that a radio message takes a **whole day** to reach it.',
     contentFr:
-      'Lancée en **1977**. Aujourd’hui hors du système solaire, à **64\u00a0000\u00a0km/h**.\n\n' +
+      'Lancée en **1977**. Aujourd’hui hors du système solaire, à **64 000 km/h**.\n\n' +
       'Le **18 novembre 2026**, elle sera si loin qu’un message radio mettra **une journée entière** pour l’atteindre.',
     reveal: {
       prompt: 'Why could Voyager 1 not travel this fast on Earth?',
       promptFr: 'Pourquoi Voyager 1 ne pourrait-elle pas aller aussi vite sur Terre ?',
       label: 'Answer',
       labelFr: 'Réponse',
-      answer: '**Air resistance.** At 64\u00a0000\u00a0km/h it would be huge and slow Voyager down. In space there is no air.',
-      answerFr: '**La résistance de l’air.** À 64\u00a0000\u00a0km/h, elle serait énorme et ralentirait Voyager. Dans l’espace, il n’y a pas d’air.',
+      answer: '**Air resistance.** At 64 000 km/h it would be huge and slow Voyager down. In space there is no air.',
+      answerFr: '**La résistance de l’air.** À 64 000 km/h, elle serait énorme et ralentirait Voyager. Dans l’espace, il n’y a pas d’air.',
     },
   },
 
-  // 20. Question 6 — four answers, so fingers, not hands
+  // 19. Question 6 — four answers, so fingers, not hands
   {
     layout: 'callout',
     accent: PURPLE,
@@ -467,7 +457,7 @@ export const slides = [
   },
 
   // ── THINK LIKE A SCIENTIST: DISCOVERING NEPTUNE ─────────────────────────
-  // 21. The story
+  // 20. The story
   {
     layout: 'showcase',
     accent: PURPLE,
@@ -481,7 +471,7 @@ export const slides = [
     captionFr: 'Quelque chose tirait Uranus hors de son chemin. C’était la gravité de **Neptune**. Bouvard et Le Verrier étaient français !',
   },
 
-  // 22. Questions 1–3: three science words
+  // 21. Questions 1–3: three science words
   {
     layout: 'split',
     accent: PURPLE,
@@ -493,12 +483,12 @@ export const slides = [
     ratio: 50,
     inlineSvg: DIAGRAMS.WORDS3,
     content:
-      '**1.** Bouvard **calculated** where Uranus would be.\n\n' +
-      '**2.** Uranus was **seen** further from the Sun. The results were recorded.\n\n' +
+      '**1.** Bouvard calculated where Uranus would be.\n\n' +
+      '**2.** Uranus was seen further from the Sun. The results were recorded.\n\n' +
       '**3.** “Another source of gravity is pulling Uranus.”',
     contentFr:
-      '**1.** Bouvard a **calculé** où serait Uranus.\n\n' +
-      '**2.** On a **vu** Uranus plus loin du Soleil. On a noté les résultats.\n\n' +
+      '**1.** Bouvard a calculé où serait Uranus.\n\n' +
+      '**2.** On a vu Uranus plus loin du Soleil. On a noté les résultats.\n\n' +
       '**3.** « Une autre source de gravité tire Uranus. »',
     reveal: {
       label: 'Check your answers',
@@ -508,33 +498,8 @@ export const slides = [
     },
   },
 
-  // 23. Question 4
-  {
-    layout: 'callout',
-    accent: PURPLE,
-    icon: 'PenLine',
-    eyebrow: 'Question 4 · whiteboards',
-    eyebrowFr: 'Question 4 · ardoises, en anglais',
-    title: 'Complete the Sentences',
-    titleFr: 'Complète les phrases',
-    content:
-      'Uranus moving further from the Sun ________ the prediction about its orbit.\n\n' +
-      'Scientists found Neptune using careful ________.\n\n' +
-      '**testable** · **a fair test** · **contradicted** · **results** · **conclusions** · **supported** · **observations** · **measurements**',
-    contentFr:
-      'Uranus moving further from the Sun ________ the prediction about its orbit.\n\n' +
-      'Scientists found Neptune using careful ________.\n\n' +
-      '**testable** · **a fair test** · **contradicted** · **results** · **conclusions** · **supported** · **observations** · **measurements**',
-    reveal: {
-      label: 'Check your answers',
-      labelFr: 'Vérifie tes réponses',
-      answer: '**contradicted** (it went against the prediction) · **measurements** (or **observations**)',
-      answerFr: '**contradicted** (contredit) · **measurements** (des mesures) ou **observations**',
-    },
-  },
-
   // ── CLOSE ───────────────────────────────────────────────────────────────
-  // 24. Checklist (the book's summary checklist, plus the vacuum)
+  // 22. Checklist (the book's summary checklist, plus the vacuum)
   {
     layout: 'stack',
     variant: 'checklist',
@@ -555,7 +520,7 @@ export const slides = [
     ],
   },
 
-  // 25. Exit question — the book's Question 7
+  // 23. Exit question — the book's Question 7
   {
     layout: 'hero',
     color: TEAL,

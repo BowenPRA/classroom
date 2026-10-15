@@ -9,7 +9,9 @@
 //     ANS_OUT / ANS_ON — the vote: when he lets go, away from the centre, or
 //                     straight on the way it was going?
 //     ORBIT_DRAW    — Draw This: the book's p.92 diagram, gravity towards the
-//                     Sun and the direction of orbit
+//                     Sun and the direction of orbit, plus the dashed straight
+//                     line the planet would take with no gravity (the planet
+//                     sits at 3 o'clock so that line runs clear of the orbit)
 //   Speed
 //     SPEED_TABLE   — the book's Activity table, with axes ready to draw on
 //     SPEED_GRAPH   — the finished bar graph, to check against
@@ -202,23 +204,27 @@ export const DIAGRAMS = {
   // Draw This: the book's p.92 diagram.
   ORBIT_DRAW: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
-    <circle cx="320" cy="290" r="220" fill="none" stroke="${INK}" stroke-width="3"/>
-    ${sun(320, 290, 36)}
-    ${dot(461, 122, 15, '#8ec5e8')}
-    ${arrow(448, 137, 371, 229, RED, 6, 20)}
-    ${arrow(446, 109, 369, 45, BLUE, 6, 20)}
+    <circle cx="290" cy="300" r="210" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${sun(290, 300, 36)}
+    <line x1="500" y1="188" x2="500" y2="34" stroke="${MUTED}" stroke-width="4" stroke-dasharray="11 9" stroke-linecap="round"/>
+    ${dot(500, 300, 15, '#8ec5e8')}
+    ${arrow(482, 300, 372, 300, RED, 6, 20)}
+    ${arrow(500, 282, 500, 186, BLUE, 6, 20)}
 
-    <text x="592" y="60" font-family="${FONT}" font-size="24" font-weight="bold" fill="${BLUE}">direction</text>
-    <text x="592" y="90" font-family="${FONT}" font-size="24" font-weight="bold" fill="${BLUE}">of orbit</text>
-    ${leader(584, 68, 396, 68)}
-    <text x="592" y="138" font-family="${FONT}" font-size="24" fill="${KEY}">planet</text>
-    ${leader(584, 130, 478, 124)}
-    <text x="592" y="232" font-family="${FONT}" font-size="24" font-weight="bold" fill="${RED}">force from the</text>
-    <text x="592" y="262" font-family="${FONT}" font-size="24" font-weight="bold" fill="${RED}">Sun’s gravity</text>
-    ${leader(584, 240, 412, 182)}
-    <text x="592" y="352" font-family="${FONT}" font-size="24" fill="${KEY}">Sun</text>
-    ${leader(584, 344, 354, 300)}
-    <text x="824" y="540" font-family="${FONT}" font-size="18" fill="${MUTED}" text-anchor="end">not to scale</text>
+    <text x="560" y="58" font-family="${FONT}" font-size="24" font-weight="bold" fill="${MUTED}">no gravity:</text>
+    <text x="560" y="88" font-family="${FONT}" font-size="24" font-weight="bold" fill="${MUTED}">straight on</text>
+    ${leader(552, 70, 506, 70)}
+    <text x="560" y="214" font-family="${FONT}" font-size="24" font-weight="bold" fill="${BLUE}">direction</text>
+    <text x="560" y="244" font-family="${FONT}" font-size="24" font-weight="bold" fill="${BLUE}">of orbit</text>
+    ${leader(552, 224, 506, 236)}
+    <text x="560" y="318" font-family="${FONT}" font-size="24" fill="${KEY}">planet</text>
+    ${leader(552, 310, 517, 300)}
+    <text x="560" y="398" font-family="${FONT}" font-size="24" font-weight="bold" fill="${RED}">force from the</text>
+    <text x="560" y="428" font-family="${FONT}" font-size="24" font-weight="bold" fill="${RED}">Sun’s gravity</text>
+    ${leader(552, 406, 430, 304)}
+    <text x="290" y="550" font-family="${FONT}" font-size="24" fill="${KEY}" text-anchor="middle">Sun</text>
+    ${leader(290, 530, 290, 338)}
+    <text x="824" y="548" font-family="${FONT}" font-size="18" fill="${MUTED}" text-anchor="end">not to scale</text>
   </svg>`,
 
   // ── Speed ─────────────────────────────────────────────────────────────────
@@ -269,8 +275,9 @@ export const DIAGRAMS = {
     <text x="588" y="58" font-family="${FONT}" font-size="18" fill="${MUTED}" text-anchor="end">50</text>
     <rect x="611" y="64.8" width="40" height="307.2" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="2.5" stroke-dasharray="7 5"/>
     <text x="631" y="56" font-family="${FONT}" font-size="20" font-weight="bold" fill="${KEY}" text-anchor="middle">48</text>
-    <text x="680" y="104" font-family="${FONT}" font-size="20" fill="${MUTED}">Mercury is done for you.</text>
-    <text x="680" y="132" font-family="${FONT}" font-size="20" fill="${MUTED}">Same width. Not touching.</text>
+    <text x="680" y="100" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}">Up the side: 1 cm = 5 km/s</text>
+    <text x="680" y="134" font-family="${FONT}" font-size="20" fill="${MUTED}">Mercury: 48 km/s = 9.6 cm, done for you.</text>
+    <text x="680" y="164" font-family="${FONT}" font-size="20" fill="${MUTED}">Bars 1 cm wide. Not touching.</text>
     <line x1="600" y1="40" x2="600" y2="372" stroke="${INK}" stroke-width="3"/>
     <line x1="600" y1="372" x2="1100" y2="372" stroke="${INK}" stroke-width="3"/>
     <text x="637" y="392" font-family="${FONT}" font-size="17" font-weight="bold" fill="${INK}" text-anchor="end" transform="rotate(-35 637 392)">Mercury</text>
@@ -327,6 +334,13 @@ export const DIAGRAMS = {
     <text x="922" y="400" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">Uranus</text>
     <text x="1041" y="400" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">Neptune</text>
     <text x="625" y="430" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">planet, in order from the Sun</text>
+
+    <rect x="620" y="30" width="480" height="150" rx="14" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="2.5"/>
+    <text x="640" y="74" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}">As the distance from the Sun</text>
+    <text x="640" y="112" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}">increases, the speed of orbit</text>
+    <text x="640" y="150" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}">of the planets</text>
+    <line x1="826" y1="152" x2="996" y2="152" stroke="${KEY}" stroke-width="4" stroke-linecap="round"/>
+    <text x="1004" y="150" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}">.</text>
   </svg>`,
 
   SPEED_PULL: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
