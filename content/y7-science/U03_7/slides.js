@@ -14,12 +14,17 @@
 // elastic potential, gravitational potential, electrical, sound, light) and an
 // energy change is written the 3.6 way: boxes and arrows, "chemical to light".
 //
-// THE MOVES, CHOSEN FOR THIS CONTENT (not 3.1's sequence): talk in pairs → a
-// real photo with a question (the power station: smoke or steam?) → a vote
-// (1/4 or 3/4?) → draw the motorbike → rub your hands → a thermal-camera film
-// with a prediction between its two parts → English check → predict a bounce
-// and watch Mr Bowen drop a ball → point at the lamp → a second thermal film →
-// find 5 places in a photo → a game → whiteboards.
+// THE WORDS COME FIRST. The four key words are everyday English (waste, useful,
+// dissipate, recover), so the English check sits on slide 3, before any of
+// them is used, and "recover" gets its trap (= get better) named.
+//
+// THE MOVES, CHOSEN FOR THIS CONTENT (not 3.1's sequence): talk in pairs →
+// English check → a real photo with a question (the power station: smoke or
+// steam?) → a vote (1/4 or 3/4?) → draw the motorbike → rub your hands, then a
+// thermal-camera film answers "where did the warmth go?" → predict a bounce
+// and watch Mr Bowen drop a ball → point at the lamp → a second thermal film
+// → a hand near the projector's vent → find 5 places in a photo → a game →
+// whiteboards.
 //
 // COPY-DOWN: 3 short write panels — useful and wasted energy · dissipated and
 // cannot be recovered · every change wastes some thermal energy — and 1
@@ -59,8 +64,8 @@ export const slides = [
       icon: 'Users',
       badge: 'Starter · with a partner',
       badgeFr: 'Pour commencer · avec ton voisin',
-      text: 'Where does the energy come from? What **useful** energy is it changed to? **Burning wood for cooking · walking up stairs · cycling on a level road**',
-      textFr: 'D’où vient l’énergie ? En quelle énergie **utile** est-elle changée ? **Brûler du bois pour cuisiner · monter un escalier · faire du vélo sur une route plate**',
+      text: 'Where does the energy come from? What **useful** energy is it changed to? **Burning wood for cooking · walking up stairs · cycling on a level (flat) road**',
+      textFr: 'D’où vient l’énergie ? En quelle énergie **utile** est-elle changée ? **Brûler du bois pour cuisiner · monter un escalier · faire du vélo sur une route plate (level)**',
     },
   },
 
@@ -74,11 +79,25 @@ export const slides = [
     title: 'Where It Comes From',
     titleFr: 'D’où elle vient',
     inlineSvg: DIAGRAMS.GS,
-    caption: 'All three start with **chemical** energy: in wood, or in your food. A **level** road is a flat road.',
-    captionFr: 'Les trois commencent par de l’énergie **chimique** : dans le bois ou dans ta nourriture. Une route **level** est une route plate.',
+    caption: 'All three start with **chemical** energy.',
+    captionFr: 'Les trois commencent par de l’énergie **chimique**. Une route **level** est une route plate.',
   },
 
-  // 3. The book's opener photo, as a question
+  // 3. English check, before any of the four key words is used
+  {
+    layout: 'showcase',
+    accent: PURPLE,
+    icon: 'MessageSquare',
+    eyebrow: 'English check',
+    eyebrowFr: 'Point d’anglais',
+    title: 'Four Everyday Words',
+    titleFr: 'Quatre mots de tous les jours',
+    inlineSvg: DIAGRAMS.WORDS,
+    caption: 'Careful: "I **recovered** from a cold" means I got **better**. In science, recover means **get back**.',
+    captionFr: 'Attention : « I **recovered** from a cold » veut dire « je suis **guéri** ». En sciences, recover veut dire **récupérer**.',
+  },
+
+  // 4. The book's opener photo, as a question
   {
     layout: 'split',
     accent: TEAL,
@@ -100,15 +119,15 @@ export const slides = [
   },
 
   // ── USEFUL AND WASTED: THE MOTORBIKE ────────────────────────────────────
-  // 4. What does the engine change the petrol's energy into?
+  // 5. What does the engine change the petrol's energy into?
   {
     layout: 'split',
     accent: PURPLE,
     icon: 'Droplet',
     eyebrow: 'Book page 118',
     eyebrowFr: 'Livre page 118',
-    title: 'Fill It Up',
-    titleFr: 'Le plein',
+    title: 'Petrol for the Motorbike',
+    titleFr: 'De l’essence pour la moto',
     ratio: 45,
     image: petrol,
     content: 'Petrol is a store of **chemical** energy.\n\nThe engine changes it. Into **which** energies? Make a list with a partner.',
@@ -121,7 +140,7 @@ export const slides = [
     },
   },
 
-  // 5. Vote: no answer on the slide
+  // 6. Vote: no answer on the slide
   {
     layout: 'compare',
     accent: PURPLE,
@@ -150,7 +169,7 @@ export const slides = [
     ],
   },
 
-  // 6. Useful and wasted (write)
+  // 7. Useful and wasted (write)
   {
     layout: 'split',
     accent: TEAL,
@@ -161,8 +180,8 @@ export const slides = [
     titleFr: 'Utile et perdue',
     ratio: 45,
     inlineSvg: DIAGRAMS.MOTO_QUARTER,
-    content: '**A: about 1/4.** The other 3/4 is wasted.',
-    contentFr: '**A : environ 1/4.** Les 3/4 restants sont perdus.',
+    content: '**A: about 1/4 (25%).** The other 3/4 (75%) is wasted.',
+    contentFr: '**A : environ 1/4 (25%).** Les 3/4 restants (75%) sont perdus.',
     notes: [
       {
         tone: 'write',
@@ -172,7 +191,7 @@ export const slides = [
     ],
   },
 
-  // 7. Draw This: the 3.6 diagram, with useful and wasted
+  // 8. Draw This: the 3.6 diagram, with useful and wasted
   {
     layout: 'split',
     accent: ORANGE,
@@ -189,7 +208,7 @@ export const slides = [
   },
 
   // ── DISSIPATED ──────────────────────────────────────────────────────────
-  // 8. Do it: warm hands, then wait
+  // 9. Do it: warm hands, then wait. No answer here — slide 10's film is it.
   {
     layout: 'statement',
     accent: GREEN,
@@ -201,15 +220,9 @@ export const slides = [
     textFr: 'Frotte tes mains, **vite**, pendant 10 secondes.',
     sub: 'Feel the warmth. Now wait 30 seconds. Where did it go?',
     subFr: 'Sens la chaleur. Attends 30 secondes. Où est-elle partie ?',
-    reveal: {
-      label: 'Check your answer',
-      labelFr: 'Vérifie ta réponse',
-      answer: 'Into the **air** around your hands. It spread out. Can you get it back? **No.**',
-      answerFr: 'Dans l’**air** autour de tes mains. Elle s’est répandue. Peux-tu la récupérer ? **Non.**',
-    },
   },
 
-  // 9. See it: a warm hand print on a thermal camera, predict between the parts
+  // 10. See it: a warm hand print on a thermal camera, predict between the parts
   {
     layout: 'showcase',
     accent: TEAL,
@@ -223,20 +236,6 @@ export const slides = [
     captionFr: 'Lance **1**. Devine : que va devenir l’empreinte chaude ? Puis lance **2**.',
   },
 
-  // 10. English check: the key words are everyday words
-  {
-    layout: 'showcase',
-    accent: PURPLE,
-    icon: 'MessageSquare',
-    eyebrow: 'English check',
-    eyebrowFr: 'Point d’anglais',
-    title: 'Four Everyday Words',
-    titleFr: 'Quatre mots de tous les jours',
-    inlineSvg: DIAGRAMS.WORDS,
-    caption: 'Careful: "I **recovered** from a cold" means I got **better**. In science, recover means **get back**.',
-    captionFr: 'Attention : « I **recovered** from a cold » veut dire « je suis **guéri** ». En sciences, recover veut dire **récupérer**.',
-  },
-
   // 11. Dissipated (write)
   {
     layout: 'split',
@@ -248,8 +247,8 @@ export const slides = [
     titleFr: 'Dissipée',
     ratio: 45,
     inlineSvg: DIAGRAMS.DISSIPATE,
-    content: 'Like the warm hand print on the tile.',
-    contentFr: 'Comme l’empreinte de main chaude sur le carreau.',
+    content: 'Your warm hands, 30 seconds later.',
+    contentFr: 'Tes mains chaudes, 30 secondes plus tard.',
     notes: [
       {
         tone: 'write',
@@ -268,8 +267,8 @@ export const slides = [
     eyebrowFr: 'Devine, puis regarde',
     title: 'How High Will It Bounce?',
     titleFr: 'Jusqu’où va-t-elle rebondir ?',
-    text: 'Mr Bowen drops a ball from **1 metre**.',
-    textFr: 'M. Bowen lâche une balle d’une hauteur de **1 mètre**.',
+    text: 'Mr Bowen drops a ball from **1 metre**.',
+    textFr: 'M. Bowen lâche une balle d’une hauteur de **1 mètre**.',
     sub: 'How high does it bounce? Write your guess in **cm**.',
     subFr: 'Jusqu’où rebondit-elle ? Écris ton estimation en **cm**.',
   },
@@ -309,7 +308,7 @@ export const slides = [
     titleFr: 'Deux lampes',
     inlineSvg: DIAGRAMS.LAMPS,
     caption: 'A and B give the **same** light. Which one **wastes** more energy? Point at it.',
-    captionFr: 'A et B donnent la **même** lumière. Laquelle **gaspille** le plus d’énergie ? Montre-la du doigt.',
+    captionFr: 'A et B donnent la **même** lumière. Laquelle **perd** le plus d’énergie ? Montre-la du doigt.',
   },
 
   // 15. Both lamps on a thermal camera
@@ -322,8 +321,8 @@ export const slides = [
     title: 'Switch Them On',
     titleFr: 'Allume-les',
     widget: LampsClip,
-    caption: 'Lamp **A** is on the **right**. Watch the **thermal** energy. (The film is 4 times faster.)',
-    captionFr: 'La lampe **A** est à **droite**. Regarde l’énergie **thermique**. (Le film est 4 fois plus rapide.)',
+    caption: 'Lamp **A** is on the **right**. Watch the **thermal** energy.',
+    captionFr: 'La lampe **A** est à **droite**. Regarde l’énergie **thermique**.',
   },
 
   // 16. The book's numbers
@@ -334,14 +333,34 @@ export const slides = [
     eyebrow: 'Electrical to light',
     eyebrowFr: 'De l’électrique à la lumière',
     title: 'Lamp A Wastes More',
-    titleFr: 'La lampe A gaspille plus',
+    titleFr: 'La lampe A perd plus',
     inlineSvg: DIAGRAMS.LAMP_BARS,
     caption: 'Each lamp uses **100 J** of electrical energy. How many joules does each one waste?',
     captionFr: 'Chaque lampe utilise **100 J** d’énergie électrique. Combien de joules chacune perd-elle ?',
   },
 
+  // 17. Feel it in the room: the projector has a lamp inside
+  {
+    layout: 'statement',
+    accent: GREEN,
+    eyebrow: 'Try it · do not touch',
+    eyebrowFr: 'Essaie · sans toucher',
+    title: 'Our Projector',
+    titleFr: 'Notre projecteur',
+    text: 'Hold your hand **near** the projector’s air vent.',
+    textFr: 'Approche ta main **près** de la grille d’aération du projecteur.',
+    sub: 'What is its **useful** energy? What is **wasted**?',
+    subFr: 'Quelle est son énergie **utile** ? Laquelle est **perdue** ?',
+    reveal: {
+      label: 'Check your answer',
+      labelFr: 'Vérifie ta réponse',
+      answer: 'Useful: **light** (the picture). Wasted: **thermal** (the warm air) and **sound** (the fan).',
+      answerFr: 'Utile : la **lumière** (l’image). Perdues : l’énergie **thermique** (l’air chaud) et **sonore** (le ventilateur).',
+    },
+  },
+
   // ── THE POT ON THE FIRE ─────────────────────────────────────────────────
-  // 17. Find 5 places
+  // 18. Find 5 places
   {
     layout: 'showcase',
     accent: PURPLE,
@@ -352,10 +371,10 @@ export const slides = [
     titleFr: 'De l’eau sur un feu de bois',
     inlineSvg: DIAGRAMS.POT_Q,
     caption: 'Burning wood heats the water. Where **else** does the energy go? Find **5** places.',
-    captionFr: 'Le bois qui brûle chauffe l’eau. Où va l’énergie **d’autre** ? Trouve **5** endroits.',
+    captionFr: 'Le bois qui brûle chauffe l’eau. Où va le **reste** de l’énergie ? Trouve **5** endroits.',
   },
 
-  // 18. The five places, labelled
+  // 19. The five places, labelled
   {
     layout: 'showcase',
     accent: TEAL,
@@ -369,7 +388,7 @@ export const slides = [
     captionFr: 'Seule l’eau chaude est **utile**. Le reste est perdu, et dissipé.',
   },
 
-  // 19. The rule (write)
+  // 20. The rule (write)
   {
     layout: 'callout',
     accent: ORANGE,
@@ -377,7 +396,7 @@ export const slides = [
     eyebrow: 'Key idea',
     eyebrowFr: 'Idée clé',
     title: 'Always Some Wasted',
-    titleFr: 'Toujours un peu de perdu',
+    titleFr: 'Toujours de l’énergie perdue',
     content: 'The motorbike, the lamps, the bouncing ball, the fire: every one wasted some energy.',
     contentFr: 'La moto, les lampes, la balle, le feu : chacun a perdu de l’énergie.',
     notes: [
@@ -389,7 +408,7 @@ export const slides = [
     ],
   },
 
-  // 20. Game: same energy, different job
+  // 21. Game: same energy, different job
   {
     layout: 'game',
     title: 'Useful or Wasted?',
@@ -398,23 +417,23 @@ export const slides = [
   },
 
   // ── THE BOOK'S QUESTIONS ────────────────────────────────────────────────
-  // 21. Question 1
+  // 22. Question 1
   {
     layout: 'callout',
     accent: PURPLE,
     icon: 'HelpCircle',
-    eyebrow: 'Book page 119 · show 1 to 4 fingers',
-    eyebrowFr: 'Livre page 119 · montre 1 à 4 doigts',
+    eyebrow: 'Book page 119',
+    eyebrowFr: 'Livre page 119',
     title: 'Question 1',
     titleFr: 'Question 1',
     content:
-      'Which of these describes energy that is **dissipated**?\n\n' +
+      'Which of these describes energy that is **dissipated**? Show **1, 2, 3 or 4** fingers.\n\n' +
       '**1** energy that spreads out and becomes less useful\n' +
       '**2** energy that becomes more useful\n' +
       '**3** energy that can be used later\n' +
       '**4** energy that is not useful but can be stored',
     contentFr:
-      'Laquelle décrit une énergie **dissipée** ?\n\n' +
+      'Laquelle décrit une énergie **dissipée** ? Montre **1, 2, 3 ou 4** doigts.\n\n' +
       '**1** de l’énergie qui se répand et devient moins utile\n' +
       '**2** de l’énergie qui devient plus utile\n' +
       '**3** de l’énergie qu’on peut utiliser plus tard\n' +
@@ -427,7 +446,7 @@ export const slides = [
     },
   },
 
-  // 22. Question 2
+  // 23. Question 2
   {
     layout: 'callout',
     accent: PURPLE,
@@ -445,12 +464,12 @@ export const slides = [
     reveal: {
       label: 'Check your answer',
       labelFr: 'Vérifie ta réponse',
-      answer: '**Thermal, light and sound.** They spread out. Chemical and elastic are **stores**: they stay in one place.',
-      answerFr: '**Thermique, lumineuse et sonore.** Elles se répandent. Chimique et élastique sont des **réserves** : elles restent au même endroit.',
+      answer: '**Thermal, light and sound.** They spread out. Chemical and elastic are **stores**: they stay inside the object until they are used.',
+      answerFr: '**Thermal, light, sound** (thermique, lumineuse, sonore). Elles se répandent. Chemical et elastic sont des **réserves** : elles restent dans l’objet jusqu’à ce qu’on les utilise.',
     },
   },
 
-  // 23. Question 3
+  // 24. Question 3
   {
     layout: 'callout',
     accent: PURPLE,
@@ -463,24 +482,24 @@ export const slides = [
       'List all the energy changes. Write **useful** or **wasted** for each one.\n\n' +
       '**a** a lamp · **b** a petrol car engine · **c** an electric motor',
     contentFr:
-      'Liste tous les changements d’énergie. Écris **useful** ou **wasted** pour chacun.\n\n' +
-      '**a** une lampe · **b** un moteur de voiture à essence · **c** un moteur électrique',
+      'Liste les changements d’énergie. Écris **useful** ou **wasted** pour chacun.\n\n' +
+      '**a** une lampe · **b** un moteur à essence · **c** un moteur électrique',
     reveal: {
       label: 'Check your answers',
       labelFr: 'Vérifie tes réponses',
       answer:
-        '**a** electrical → light (useful), thermal (wasted)\n' +
-        '**b** chemical → kinetic (useful), thermal and sound (wasted)\n' +
-        '**c** electrical → kinetic (useful), thermal and sound (wasted)',
+        '**a** electrical to light (useful) · electrical to thermal (wasted)\n' +
+        '**b** chemical to kinetic (useful) · chemical to thermal and sound (wasted)\n' +
+        '**c** electrical to kinetic (useful) · electrical to thermal and sound (wasted)',
       answerFr:
-        '**a** electrical → light (useful), thermal (wasted)\n' +
-        '**b** chemical → kinetic (useful), thermal and sound (wasted)\n' +
-        '**c** electrical → kinetic (useful), thermal and sound (wasted)',
+        '**a** electrical to light (useful) · electrical to thermal (wasted)\n' +
+        '**b** chemical to kinetic (useful) · chemical to thermal and sound (wasted)\n' +
+        '**c** electrical to kinetic (useful) · electrical to thermal and sound (wasted)',
     },
   },
 
   // ── CLOSE ───────────────────────────────────────────────────────────────
-  // 24. Checklist (the book's two objectives, and what the lesson practised)
+  // 25. Checklist (the book's two objectives, and what the lesson practised)
   {
     layout: 'stack',
     variant: 'checklist',
@@ -503,7 +522,7 @@ export const slides = [
     ],
   },
 
-  // 25. Exit question: looks back over 3.5, 3.6 and 3.7
+  // 26. Exit question: looks back over 3.5, 3.6 and 3.7
   {
     layout: 'hero',
     color: TEAL,

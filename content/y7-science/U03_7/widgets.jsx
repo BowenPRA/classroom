@@ -4,7 +4,8 @@
 //
 // Two films, both from YouTube and never downloaded (they are not openly
 // licensed). Each button plays exactly one segment, so the class can predict
-// between them. The timestamps were read off YouTube's storyboard thumbnails
+// between them, and pressing a button again replays its segment. The
+// timestamps were read off YouTube's storyboard thumbnails
 // (frame i of the sprite sheet is at i × the interval), so they are good to
 // the interval: ±2 s for the hand print, ±1 s for the lamps. Neither film has
 // a caption track, so neither is narrated; the hand print has background music.
@@ -28,13 +29,14 @@
 //                   hand wasted — then Show colours the energy and gives the
 //                   reason. The cards come in pairs on purpose (a lamp's light,
 //                   then a lamp's thermal energy; a speaker's sound, then a
-//                   motorbike's sound): the same energy is useful in one job and
-//                   wasted in another, which is Question 3's whole skill. A
-//                   clicker's Right arrow shows, then moves on.
+//                   motorbike's sound; Mr Bowen's kettle, then his alarm clock):
+//                   the same energy is useful in one job and wasted in another,
+//                   which is Question 3's whole skill. 13 cards, 7 useful and 6
+//                   wasted. A clicker's Right arrow shows, then moves on.
 import { useState, useEffect, useCallback } from 'react'
 import {
   Hand, Shuffle, Eye, ArrowRight, RotateCcw, Sparkles, Zap, Play,
-  Lightbulb, Speaker, Motorbike, CookingPot, Smartphone, Wind, Flame, Fan, AlarmClock,
+  Lightbulb, Speaker, Motorbike, CookingPot, Smartphone, Wind, Flame, Fan, Coffee, AlarmClock,
 } from 'lucide-react'
 import { tr } from '../../../src/lib/lang.js'
 
@@ -68,17 +70,18 @@ function Btn({ onClick, disabled, tone = 'teal', icon: Icon, children }) {
 // panel. The frame is sized from the HEIGHT it is given and centred.
 function Clip({ lang, id, title, segments }) {
   const [part, setPart] = useState(0)
-  const [go, setGo] = useState(false) // autoplay only after a button press
+  const [plays, setPlays] = useState(0) // 0 = not pressed yet: no autoplay
   const seg = segments[part]
-  const src = `https://www.youtube-nocookie.com/embed/${id}?start=${seg.start}&end=${seg.end}&rel=0&modestbranding=1&playsinline=1${go ? '&autoplay=1' : ''}`
-  const play = (i) => { setPart(i); setGo(true) }
+  const src = `https://www.youtube-nocookie.com/embed/${id}?start=${seg.start}&end=${seg.end}&rel=0&modestbranding=1&playsinline=1${plays ? '&autoplay=1' : ''}`
+  // Every press bumps the key, so pressing the same button again replays it.
+  const play = (i) => { setPart(i); setPlays((n) => n + 1) }
 
   return (
     <div className="w-full h-full flex flex-col gap-3 select-none">
       <div className="flex-1 min-h-0 flex items-center justify-center">
         <div className="h-full max-w-full rounded-xl overflow-hidden bg-black" style={{ aspectRatio: '16 / 9' }}>
           <iframe
-            key={`${part}-${go}`}
+            key={`${part}-${plays}`}
             className="w-full h-full"
             src={src}
             title={title}
@@ -91,7 +94,7 @@ function Clip({ lang, id, title, segments }) {
       </div>
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap">
         {segments.map((s, i) => (
-          <Btn key={s.en} tone={go && part === i ? 'orange' : 'slate'} icon={Play} onClick={() => play(i)}>{t(lang, s.en, s.fr)}</Btn>
+          <Btn key={s.en} tone={plays && part === i ? 'orange' : 'slate'} icon={Play} onClick={() => play(i)}>{t(lang, s.en, s.fr)}</Btn>
         ))}
       </div>
     </div>
@@ -160,6 +163,8 @@ const CARDS = [
     why: 'Light does not cook the food.', whyFr: 'La lumière ne cuit pas la nourriture.' },
   { icon: Fan, en: 'a fan', fr: 'un ventilateur', energy: 'kinetic', useful: true,
     why: 'It moves the air.', whyFr: 'Il fait bouger l’air.' },
+  { icon: Coffee, en: 'Mr Bowen’s kettle', fr: 'la bouilloire de M. Bowen', energy: 'sound', useful: false,
+    why: 'He only wants tea.', whyFr: 'Il veut juste du thé.' },
   { icon: AlarmClock, en: 'Mr Bowen’s alarm clock', fr: 'le réveil de M. Bowen', energy: 'sound', useful: true,
     why: 'He has to wake up.', whyFr: 'Il doit se réveiller.' },
 ]
@@ -228,10 +233,10 @@ export function UsefulOrWasted({ lang = 'en', isDisplayMode = false }) {
           </div>
           <div className="min-w-0">
             <div className={`font-black tracking-tight text-slate-800 dark:text-slate-100 leading-none ${big ? 'text-2xl' : 'text-lg sm:text-xl'}`}>
-              {t(lang, 'Useful or Wasted?', 'Utile ou perdue ?')}
+              {t(lang, 'Useful or Wasted?', 'Utile ou perdue\u00a0?')}
             </div>
             <div className={`font-bold text-slate-400 dark:text-slate-500 truncate ${big ? 'text-base' : 'text-xs'}`}>
-              {t(lang, 'Left hand: useful. Right hand: wasted. Everyone at once.', 'Main gauche : utile. Main droite : perdue. Tous ensemble.')}
+              {t(lang, 'Left hand: useful. Right hand: wasted. Everyone at once.', 'Main gauche\u00a0: utile. Main droite\u00a0: perdue. Tous ensemble.')}
             </div>
           </div>
         </div>
@@ -247,7 +252,7 @@ export function UsefulOrWasted({ lang = 'en', isDisplayMode = false }) {
         {done ? (
           <div className="flex flex-col items-center gap-4">
             <div className="p-4 rounded-2xl bg-emerald-500 text-white"><Sparkles className="w-12 h-12" strokeWidth={2} /></div>
-            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{t(lang, 'All 12 done!', 'Les 12 sont faites !')}</div>
+            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{t(lang, `All ${CARDS.length} done!`, `Les ${CARDS.length} cartes, c\u2019est fini\u00a0!`)}</div>
           </div>
         ) : (
           <>

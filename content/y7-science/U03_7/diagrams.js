@@ -238,7 +238,7 @@ export const DIAGRAMS = {
     ${heatSpread(452, 80, 352, 236, 30, { x: 628, y: 196 })}
     ${palms(628, 196)}
 
-    <text x="212" y="340" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">hot hands: the energy</text>
+    <text x="212" y="340" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">warm hands: the energy</text>
     <text x="212" y="372" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">is in one place</text>
     <text x="628" y="340" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">spread out in the air:</text>
     <text x="628" y="372" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">dissipated</text>
@@ -258,35 +258,36 @@ export const DIAGRAMS = {
     <rect x="16" y="16" width="260" height="408" rx="14" fill="#ffffff" stroke="${RULE}" stroke-width="2"/>
     <text x="146" y="66" font-family="${FONT}" font-size="40" font-weight="bold" fill="${KEY}" text-anchor="middle">waste</text>
     ${tap(130, 170)}
-    <text x="146" y="300" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">Don't waste</text>
-    <text x="146" y="330" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">water!</text>
-    <text x="146" y="380" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">= use it for</text>
-    <text x="146" y="408" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">nothing</text>
+    <text x="146" y="290" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">Don't waste</text>
+    <text x="146" y="318" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">water!</text>
+    <text x="146" y="360" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">= use it for</text>
+    <text x="146" y="386" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">nothing</text>
 
     <!-- useful -->
     <rect x="292" y="16" width="260" height="408" rx="14" fill="#ffffff" stroke="${RULE}" stroke-width="2"/>
     <text x="422" y="66" font-family="${FONT}" font-size="40" font-weight="bold" fill="${KEY}" text-anchor="middle">useful</text>
     ${umbrella(422, 186)}
-    <text x="422" y="300" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">An umbrella</text>
-    <text x="422" y="330" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">is useful.</text>
-    <text x="422" y="380" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">= it helps you</text>
+    <text x="422" y="290" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">An umbrella</text>
+    <text x="422" y="318" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">is useful.</text>
+    <text x="422" y="360" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">= it helps you</text>
 
     <!-- dissipate -->
     <rect x="568" y="16" width="260" height="408" rx="14" fill="#ffffff" stroke="${RULE}" stroke-width="2"/>
     <text x="698" y="66" font-family="${FONT}" font-size="40" font-weight="bold" fill="${KEY}" text-anchor="middle">dissipate</text>
     ${fog(690, 170)}
-    <text x="698" y="300" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">The fog</text>
-    <text x="698" y="330" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">dissipates.</text>
-    <text x="698" y="380" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">= it spreads out</text>
-    <text x="698" y="408" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">and is gone</text>
+    <text x="698" y="290" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">The fog</text>
+    <text x="698" y="318" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">dissipates.</text>
+    <text x="698" y="360" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">= it spreads out</text>
+    <text x="698" y="386" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">until you cannot</text>
+    <text x="698" y="412" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">see it</text>
 
     <!-- recover -->
     <rect x="844" y="16" width="260" height="408" rx="14" fill="#ffffff" stroke="${RULE}" stroke-width="2"/>
     <text x="974" y="66" font-family="${FONT}" font-size="40" font-weight="bold" fill="${KEY}" text-anchor="middle">recover</text>
     ${phone(974, 172)}
-    <text x="974" y="300" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">I recovered</text>
-    <text x="974" y="330" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">my lost phone.</text>
-    <text x="974" y="380" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">= I got it back</text>
+    <text x="974" y="290" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">I recovered</text>
+    <text x="974" y="318" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">my lost phone.</text>
+    <text x="974" y="360" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">= I got it back</text>
   </svg>`,
 
   // ── Photographs ───────────────────────────────────────────────────────────
