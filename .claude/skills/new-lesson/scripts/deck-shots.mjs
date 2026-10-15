@@ -16,7 +16,7 @@
  * box before the shot. PORT is the Chrome debugging port: give each run that
  * happens at the same time its own.
  */
-import { spawn } from 'child_process'
+import { spawn, spawnSync } from 'child_process'
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
@@ -54,13 +54,14 @@ const chrome = spawn(chromePath, [
   `--remote-debugging-port=${PORT}`, `--user-data-dir=${profile}`, 'about:blank',
 ], { stdio: 'ignore' })
 const cleanup = () => {
-  try { chrome.kill() } catch { /* already gone */ }
+  // kill() alone leaves Chrome's child processes on Windows, holding the port.
+  try { if (process.platform === 'win32') spawnSync('taskkill', ['/PID', String(chrome.pid), '/T', '/F'], { stdio: 'ignore' }); else chrome.kill() } catch { /* already gone */ }
   try { fs.rmSync(profile, { recursive: true, force: true }) } catch { /* best effort */ }
 }
 process.on('exit', cleanup)
 
 let targets = null
-for (let i = 0; i < 40 && !targets; i++) {
+for (let i = 0; i < 80 && !targets; i++) {
   await sleep(250)
   try { targets = await (await fetch(`http://127.0.0.1:${PORT}/json/list`)).json() } catch { /* not up yet */ }
 }
@@ -97,7 +98,7 @@ await sleep(2600)
 
 // Wait for the deck to render (a cold dev server can take ~12 s).
 const ready = await evalJs(`(async () => {
-  for (let i = 0; i < 80; i++) {
+  for (let i = 0; i < 240; i++) {
     if ([...document.querySelectorAll('button')].some(x => /full ?screen/i.test(x.textContent.trim()))) return true;
     await new Promise(r => setTimeout(r, 250));
   }
