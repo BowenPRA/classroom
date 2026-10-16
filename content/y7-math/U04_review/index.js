@@ -20,6 +20,10 @@ export default {
     order: 16,
     french: true,
     vietnamese: false,
+    // Not a section of its own: its × and ÷ by a 2-digit number and its
+    // money problems went into the Dashboard's 4.3 and 4.4 units. The link
+    // names 4.3; 4.4 is the next card down.
+    dashboard: { track: 'Y7_MATH', unit: 'U04_3' },
   },
   slides,
   plan,

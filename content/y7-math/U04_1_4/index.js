@@ -23,6 +23,10 @@ export default {
     order: 14,
     french: true,
     vietnamese: false,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js). This one
+    // deck is four Dashboard units, U04_1 to U04_4 (one per section); the link
+    // names the first, and the rest are the next cards down.
+    dashboard: { track: 'Y7_MATH', unit: 'U04_1' },
   },
   slides,
   plan,
