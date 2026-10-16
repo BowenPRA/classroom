@@ -9,6 +9,7 @@ export const slides = [
     layout: 'game',
     title: 'Jeopardy',
     titleVn: 'Jeopardy',
+    titleFr: 'Jeopardy',
     widget: JeopardyGame,
   },
 ]

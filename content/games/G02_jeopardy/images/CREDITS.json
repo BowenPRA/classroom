@@ -1299,5 +1299,34 @@
     "source": "Hand-written SVG, generated for the Mathematics Unit 2 + 3.1–3.2 Jeopardy board, in the style of the Maths 2.6 number lines. No third-party material.",
     "usage": "Mathematics Unit 2 + 3.1–3.2 board, Inequalities 300 (question picture): an open circle at 3 and an arrow to the right, on a line from 0 to 6.",
     "bytes": 1680
+  },
+  {
+    "name": "sci31-strobe.jpg",
+    "title": "Multi-flash photo of a falling ball, 20 flashes a second",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Falling_ball.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "MichaelMaggs",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U03_1/images/strobe.jpg, the same picture the class saw on the Accelerate slide of Science 3.1, copied so this folder carries its own licence.",
+    "usage": "Science 3.1 + Maths 4.1–4.2 board, Falling 500 (question picture): the gaps between the flashes get bigger, so the ball is speeding up.",
+    "bytes": 28152
+  },
+  {
+    "name": "ma4-bolt.jpg",
+    "title": "Usain Bolt at the 2009 World Championships in Berlin (cropped to the top 410 px of the 514 × 640 original)",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Usain_Bolt_smiling_Berlin_2009.JPG",
+    "license": "GFDL",
+    "artist": "Erik van Leeuwen (erki.nl)",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-math/U04_1_4/images/bolt.jpg, the same picture the class saw on Mr Bowen vs Usain Bolt in Maths 4.1–4.4, copied so this folder carries its own licence.",
+    "usage": "Science 3.1 + Maths 4.1–4.2 board, Subtracting 500 (question picture): Usain Bolt, named in the clue.",
+    "bytes": 38984
+  },
+  {
+    "name": "ma4-column-add.svg",
+    "title": "Drawn for this board",
+    "license": "Original work for this repository",
+    "artist": "Mr Bowen (with Claude)",
+    "source": "Hand-written SVG, generated for the Science 3.1 + Maths 4.1–4.2 Jeopardy board. No third-party material.",
+    "usage": "Science 3.1 + Maths 4.1–4.2 board, Adding 400 (question picture): 4.65 + 3.2 worked with the last digits lined up instead of the points, giving the wrong answer 4.97.",
+    "bytes": 780
   }
 ]
