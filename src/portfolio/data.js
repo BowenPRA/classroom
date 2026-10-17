@@ -41,9 +41,11 @@ export const PROFILE = {
   role: 'Upper Secondary Coordinator, Palm River Academy',
   place: 'Hội An, Việt Nam',
   bio: [
-    'I teach Year 7 Cambridge Lower Secondary maths and science at Palm River Academy in Hội An, where I am also the Upper Secondary Coordinator. My students learn in English; their first language is Vietnamese.',
-    'I started out as an adjunct professor, moved into maths education through a GK-12 research program running Math Circles out of San Francisco State University, and later did outreach at the American Institute of Mathematics.',
-    'This portfolio holds my work for the Moreland University TEACH-NOW certificate, next to the lessons I teach every week.',
+    'I teach Year 7 Cambridge maths and science at Palm River Academy in Hội An, and I’m the Upper Secondary Coordinator there too. My students are Vietnamese, and they learn everything in English.',
+    'I also have a student who arrived speaking only French. I translate all my slides into French using Claude, and when I have to tell the class no, that student says it for me: “Non !”',
+    'The maths is usually fine. It’s the language that makes it hard, and subtraction shows it best. Put “Subtract 5 from 8” on the screen and I get 5 − 8, because English says the numbers backwards. So I teach the wording on purpose.',
+    'I started out as an adjunct professor. I got into maths education through a GK-12 research program running Math Circles out of San Francisco State University, and later did outreach at the American Institute of Mathematics.',
+    'This portfolio is my work for the Moreland University TEACH-NOW certificate, next to the lessons I teach every week.',
   ],
 }
 
@@ -53,25 +55,25 @@ export const PRINCIPLES = [
   {
     icon: 'Languages',
     title: 'Plain English first',
-    body: 'My students’ arithmetic is fine; the barrier is the English of the question. Each slide carries one idea in short sentences, and every key word comes with its translation.',
+    body: 'One idea per slide, in short sentences. Every key word has its translation next to it, in Vietnamese or French.',
     lesson: ['y7-math', 'U02_3'],
   },
   {
     icon: 'CircleHelp',
     title: 'Ask before you tell',
-    body: 'The question gets a slide of its own, with no numbers on it, before anything works it out. The gap between the class’s guess and the answer is the lesson.',
+    body: 'The question goes on a slide by itself, with no numbers on it, and the class guesses before we work anything out. The guesses go on the board, and then we find out how close they were.',
     lesson: ['y7-science', 'U01_1'],
   },
   {
     icon: 'Hand',
     title: 'Everyone answers',
-    body: 'When the class chooses between two answers, everyone votes at once: left hand for A, right hand for B. Nobody copies a neighbour, and I see the split at a glance.',
+    body: 'When there are two possible answers, everyone votes at once. Left hand for A, right hand for B. Nobody can copy a neighbour, and I can see the split straight away.',
     lesson: ['y7-math', 'U02_3'],
   },
   {
     icon: 'NotebookPen',
     title: 'Write it down',
-    body: 'Anything students must learn sits in an orange “Write This Down” note, and each lesson ends with a count they can check: seven panels in your notebook today.',
+    body: 'Anything they have to learn goes in an orange “Write This Down” note. The lesson ends with a count they can check, like “seven panels in your notebook today”.',
     lesson: ['y7-math', 'U02_3'],
   },
 ]
@@ -79,10 +81,10 @@ export const PRINCIPLES = [
 // Lessons shown under "From my classroom". Titles and units come from the
 // registry, so they never drift from the decks themselves.
 export const FEATURED = [
-  { course: 'y7-math', slug: 'U02_3', why: 'Everyday words with a maths meaning (“like” is not “thích”), a hands-up vote, and algebra pyramids at three levels of challenge.' },
-  { course: 'y7-science', slug: 'U02_5', why: 'Period and group mean something else in everyday English, so the lesson teaches both meanings side by side.' },
-  { course: 'y7-math', slug: 'U04_1_4', why: 'Among the first decks taught in English and French. Decimals read aloud digit by digit, and multiplication checked with an estimate.' },
-  { course: 'y7-science', slug: 'U03_1', why: 'Weight is a force, measured in newtons; mass is the amount of matter, measured in kilograms. The lesson keeps the two apart.' },
+  { course: 'y7-math', slug: 'U02_3', why: '“Like terms” has nothing to do with “thích”. In maths, “like” means the same kind, and I say both meanings out loud.' },
+  { course: 'y7-science', slug: 'U02_5', why: 'Period and group already mean something in everyday English: a lesson, and a group of friends. In the Periodic Table they’re a row and a column, so we learn both meanings side by side.' },
+  { course: 'y7-math', slug: 'U04_1_4', why: 'One of the first decks I taught in English and French. We read decimals aloud digit by digit and check the multiplication with an estimate.' },
+  { course: 'y7-science', slug: 'U03_1', why: 'Weight is a force, measured in newtons. Mass is the amount of matter, in kilograms. Everyday English uses “weight” for both, so the lesson keeps them apart.' },
 ]
 
 // kind → icon, in Artifact.jsx

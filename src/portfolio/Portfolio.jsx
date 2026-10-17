@@ -159,7 +159,7 @@ function About() {
   return (
     <section className="mt-14 grid gap-8 lg:grid-cols-[1.1fr_1fr]">
       <div>
-        <SectionTitle kicker="About me" title="A maths teacher in a second language" />
+        <SectionTitle kicker="About me" title="Every class is English class" />
         <div className="space-y-4 max-w-prose">
           {PROFILE.bio.map((p) => <p key={p.slice(0, 24)} className={prose}>{p}</p>)}
         </div>
@@ -190,7 +190,7 @@ function LessonLink({ course, slug }) {
 function Principles() {
   return (
     <section className="mt-16">
-      <SectionTitle kicker="How I teach" title="Four habits in every lesson" color={CAMBRIDGE.purple} />
+      <SectionTitle kicker="How I teach" title="Four things I do every lesson" color={CAMBRIDGE.purple} />
       <div className="grid gap-4 sm:grid-cols-2">
         {PRINCIPLES.map((p) => {
           const Icon = PRINCIPLE_ICONS[p.icon]
@@ -250,7 +250,7 @@ function Featured() {
     <section className="mt-16">
       <SectionTitle kicker="From my classroom" title="Lessons I teach" color={CAMBRIDGE.blue} />
       <p className={`${prose} max-w-prose mb-5`}>
-        Every lesson is an interactive deck I build and project in class, with a printable teacher plan. These four show the habits above at work.
+        I build every lesson as a deck I project in class, with a teacher plan you can print. These four show the habits above.
       </p>
       <ul className="grid gap-3 sm:grid-cols-2">
         {FEATURED.map((f) => {
@@ -285,12 +285,12 @@ function Shortcuts() {
     <section className="mt-16 grid gap-4 sm:grid-cols-2">
       <Link to="/portfolio/maths-in-action" className="block hover:-translate-y-0.5 transition-transform">
         <Box color={CAMBRIDGE.orange} tint={CAMBRIDGE.orangeTint} head={<><Calculator className="w-5 h-5" strokeWidth={2.5} />Secondary Mathematics in Action</>}>
-          <p className={prose}>My methods work for Secondary Mathematics 7–12, in one place.</p>
+          <p className={prose}>All my maths methods coursework for Secondary Mathematics 7–12.</p>
         </Box>
       </Link>
       <Link to="/portfolio/literacy-guide" className="block hover:-translate-y-0.5 transition-transform">
         <Box color={CAMBRIDGE.green} tint={CAMBRIDGE.greenTint} head={<><FileText className="w-5 h-5" strokeWidth={2.5} />Literacy Guide</>}>
-          <p className={prose}>The guide my cohort builds together, one module at a time.</p>
+          <p className={prose}>The literacy guide my cohort writes together, a module at a time.</p>
         </Box>
       </Link>
     </section>
@@ -436,7 +436,7 @@ export default function Portfolio() {
                 kicker="Secondary Mathematics 7–12"
                 color={CAMBRIDGE.orange}
                 title="Mathematics in Action"
-                intro="My methods work for my certification area. Each piece starts from a lesson I have taught, so the maths, the mistakes and the language support are real."
+                intro="My methods coursework for Secondary Mathematics 7–12. Every piece starts from a lesson I’ve actually taught."
                 items={artifactsFor('maths')}
               />
             }
@@ -448,7 +448,7 @@ export default function Portfolio() {
                 kicker="Built with my cohort"
                 color={CAMBRIDGE.green}
                 title="Literacy Guide"
-                intro="Each module, my cohort adds the literacy terms we study to one shared guide. These are the sections I contributed to."
+                intro="Every module, my cohort adds the literacy terms we’ve studied to one shared guide. These are the parts I worked on."
                 items={artifactsFor('literacy')}
               />
             }
