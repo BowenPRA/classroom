@@ -76,7 +76,7 @@ function Header() {
         </Link>
         <nav className="hidden md:flex items-center gap-1 ml-auto">
           <NavLink end to="/portfolio" className={tab}>Overview</NavLink>
-          <NavLink to="/portfolio/maths-in-action" className={tab}>Maths in Action</NavLink>
+          <NavLink to="/portfolio/maths-in-action" className={tab}>Math in Action</NavLink>
           <NavLink to="/portfolio/literacy-guide" className={tab}>Literacy Guide</NavLink>
         </nav>
         <button
@@ -89,7 +89,7 @@ function Header() {
       </div>
       <nav className={`${wrap} md:hidden flex gap-1 pb-2 -mt-1`}>
         <NavLink end to="/portfolio" className={tab}>Overview</NavLink>
-        <NavLink to="/portfolio/maths-in-action" className={tab}>Maths</NavLink>
+        <NavLink to="/portfolio/maths-in-action" className={tab}>Math</NavLink>
         <NavLink to="/portfolio/literacy-guide" className={tab}>Literacy</NavLink>
       </nav>
     </header>
@@ -179,7 +179,7 @@ function About() {
 function LessonLink({ course, slug }) {
   const lesson = getLesson(course, slug)
   if (!lesson) return null
-  const subject = course === 'y7-math' ? 'Maths' : 'Science'
+  const subject = course === 'y7-math' ? 'Math' : 'Science'
   return (
     <Link to={`/lesson/${course}/${slug}`} className="inline-flex items-center gap-1 text-sm font-black hover:underline" style={{ color: CAMBRIDGE.purple }}>
       See it in {subject} {lesson.unit}: {lesson.title} <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
@@ -250,7 +250,7 @@ function Featured() {
     <section className="mt-16">
       <SectionTitle kicker="From my classroom" title="Lessons I teach" color={CAMBRIDGE.blue} />
       <p className={`${prose} max-w-prose mb-5`}>
-        I build every lesson as a deck I project in class, with a teacher plan you can print. These four show the habits above.
+        Decks I built and teach, each with a plan you can print.
       </p>
       <ul className="grid gap-3 sm:grid-cols-2">
         {FEATURED.map((f) => {
@@ -285,12 +285,12 @@ function Shortcuts() {
     <section className="mt-16 grid gap-4 sm:grid-cols-2">
       <Link to="/portfolio/maths-in-action" className="block hover:-translate-y-0.5 transition-transform">
         <Box color={CAMBRIDGE.orange} tint={CAMBRIDGE.orangeTint} head={<><Calculator className="w-5 h-5" strokeWidth={2.5} />Secondary Mathematics in Action</>}>
-          <p className={prose}>All my maths methods coursework for Secondary Mathematics 7–12.</p>
+          <p className={prose}>My math methods work.</p>
         </Box>
       </Link>
       <Link to="/portfolio/literacy-guide" className="block hover:-translate-y-0.5 transition-transform">
         <Box color={CAMBRIDGE.green} tint={CAMBRIDGE.greenTint} head={<><FileText className="w-5 h-5" strokeWidth={2.5} />Literacy Guide</>}>
-          <p className={prose}>The literacy guide my cohort writes together, a module at a time.</p>
+          <p className={prose}>My cohort’s shared literacy guide.</p>
         </Box>
       </Link>
     </section>
@@ -455,7 +455,7 @@ export default function Portfolio() {
                 kicker="Secondary Mathematics 7–12"
                 color={CAMBRIDGE.orange}
                 title="Mathematics in Action"
-                intro="My methods coursework for Secondary Mathematics 7–12. Every piece starts from a lesson I’ve actually taught."
+                intro="Math methods work. Every piece comes from a lesson I’ve taught."
                 items={artifactsFor('maths')}
               />
             }
@@ -467,7 +467,7 @@ export default function Portfolio() {
                 kicker="Built with my cohort"
                 color={CAMBRIDGE.green}
                 title="Literacy Guide"
-                intro="Every module, my cohort adds the literacy terms we’ve studied to one shared guide. These are the parts I worked on."
+                intro="Each module, my cohort adds terms to one shared guide. These are my parts."
                 items={artifactsFor('literacy')}
               />
             }

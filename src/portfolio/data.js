@@ -23,14 +23,14 @@ const LITERACY_GUIDE = 'https://docs.google.com/document/d/1Z9Tdh-OuZTgQ4LEkigYQ
 export const PHOTOS = {
   portrait: {
     src: prizeWinner,
-    alt: 'Mr. Bowen giving a thumbs-up beside the winner of the guess-how-many maths challenge at March Mathness',
+    alt: 'Mr. Bowen giving a thumbs-up beside the winner of the guess-how-many math challenge at March Mathness',
     caption: 'March Mathness: the guess-how-many winner',
   },
   teaching: [
     {
       src: cutShapes,
-      alt: 'Mr. Bowen working through a cut-and-fold shapes activity with a Primary maths group',
-      caption: 'Cut-and-fold shapes with a Primary maths group',
+      alt: 'Mr. Bowen working through a cut-and-fold shapes activity with a Primary math group',
+      caption: 'Cut-and-fold shapes with a Primary math group',
     },
     {
       src: natureWalk,
@@ -49,11 +49,8 @@ export const PROFILE = {
   role: 'Upper Secondary Coordinator, Palm River Academy',
   place: 'Hội An, Việt Nam',
   bio: [
-    'I teach Year 7 Cambridge maths and science at Palm River Academy in Hội An, and I’m the Upper Secondary Coordinator there too. My students are Vietnamese, and they learn everything in English.',
-    'I also have a student who arrived speaking only French. I translate all my slides into French using Claude, and when I have to tell the class no, that student says it for me: “Non !”',
-    'The maths is usually fine. It’s the language that makes it hard, and subtraction shows it best. Put “Subtract 5 from 8” on the screen and I get 5 − 8, because English says the numbers backwards. So I teach the wording on purpose.',
-    'I started out as an adjunct professor. I got into maths education through a GK-12 research program running Math Circles out of San Francisco State University, and later did outreach at the American Institute of Mathematics.',
-    'This portfolio is my work for the Moreland University TEACH-NOW certificate, next to the lessons I teach every week.',
+    'I teach math and science at Palm River Academy in Hội An, and I’m also the Upper Secondary Coordinator. Our students are here to learn English first, so I teach the words as much as the math.',
+    'I started out as an adjunct professor. After that I ran Math Circles through a GK-12 program at San Francisco State and did outreach at the American Institute of Mathematics.',
   ],
 }
 
@@ -63,25 +60,25 @@ export const PRINCIPLES = [
   {
     icon: 'Languages',
     title: 'Plain English first',
-    body: 'One idea per slide, in short sentences. Every key word has its translation next to it, in Vietnamese or French.',
+    body: 'One idea per slide, and every key word comes with a translation.',
     lesson: ['y7-math', 'U02_3'],
   },
   {
     icon: 'CircleHelp',
     title: 'Ask before you tell',
-    body: 'The question goes on a slide by itself, with no numbers on it, and the class guesses before we work anything out. The guesses go on the board, and then we find out how close they were.',
+    body: 'The question goes up on its own, and the class guesses before we work it out.',
     lesson: ['y7-science', 'U01_1'],
   },
   {
     icon: 'Hand',
     title: 'Everyone answers',
-    body: 'When there are two possible answers, everyone votes at once. Left hand for A, right hand for B. Nobody can copy a neighbour, and I can see the split straight away.',
+    body: 'When there are two answers, everyone votes at once with their hands.',
     lesson: ['y7-math', 'U02_3'],
   },
   {
     icon: 'NotebookPen',
     title: 'Write it down',
-    body: 'Anything they have to learn goes in an orange “Write This Down” note. The lesson ends with a count they can check, like “seven panels in your notebook today”.',
+    body: 'Anything they need to learn goes in a note they copy into their notebooks.',
     lesson: ['y7-math', 'U02_3'],
   },
 ]
@@ -89,10 +86,10 @@ export const PRINCIPLES = [
 // Lessons shown under "From my classroom". Titles and units come from the
 // registry, so they never drift from the decks themselves.
 export const FEATURED = [
-  { course: 'y7-math', slug: 'U02_3', why: '“Like terms” has nothing to do with “thích”. In maths, “like” means the same kind, and I say both meanings out loud.' },
-  { course: 'y7-science', slug: 'U02_5', why: 'Period and group already mean something in everyday English: a lesson, and a group of friends. In the Periodic Table they’re a row and a column, so we learn both meanings side by side.' },
-  { course: 'y7-math', slug: 'U04_1_4', why: 'One of the first decks I taught in English and French. We read decimals aloud digit by digit and check the multiplication with an estimate.' },
-  { course: 'y7-science', slug: 'U03_1', why: 'Weight is a force, measured in newtons. Mass is the amount of matter, in kilograms. Everyday English uses “weight” for both, so the lesson keeps them apart.' },
+  { course: 'y7-math', slug: 'U02_3', why: 'In math, “like” means the same kind, so we go over both meanings.' },
+  { course: 'y7-science', slug: 'U02_5', why: 'Period and group mean something else in everyday English, so we learn both.' },
+  { course: 'y7-math', slug: 'U04_1_4', why: 'One of my first decks in English and French.' },
+  { course: 'y7-science', slug: 'U03_1', why: 'Everyday English mixes up weight and mass. This lesson keeps them apart.' },
 ]
 
 // kind → icon, in Artifact.jsx
@@ -113,8 +110,8 @@ export const MODULES = [
     status: 'progress',
     artifacts: [
       { id: 'm2-law', activity: 'U1 · A2', kind: 'video', title: 'A law that shapes teaching', blurb: 'A 4–5 minute video on one law or policy: what it says, where it came from, its strengths and weaknesses, and what it changes in a classroom.' },
-      { id: 'm2-modelling', activity: 'U1 · A1', kind: 'image', title: 'Modelling vs models in mathematics', blurb: 'A one-page visual on the difference between the mathematical modelling process and models in mathematics.', page: 'maths' },
-      { id: 'm2-literacy-pres', activity: 'U2 · A2', kind: 'presentation', title: 'Promoting literacy in maths', blurb: 'Why literacy matters in every subject, the signs of a struggling reader in Year 7 maths, and a plan of action for my school.' },
+      { id: 'm2-modelling', activity: 'U1 · A1', kind: 'image', title: 'Modeling vs models in math', blurb: 'A one-page visual on the difference between the math modeling process and models in math.', page: 'maths' },
+      { id: 'm2-literacy-pres', activity: 'U2 · A2', kind: 'presentation', title: 'Promoting literacy in math', blurb: 'Why literacy matters in every subject, the signs of a struggling reader in Year 7 math, and a plan of action for my school.' },
       { id: 'm2-writing', activity: 'U2 · A3', kind: 'image', title: 'From letters to essays', blurb: 'An infographic on how writing develops, with interventions for my grade and subject.' },
       { id: 'm2-flowchart', activity: 'U3 · A1', kind: 'flowchart', title: 'Helping a struggling learner', blurb: 'The process I follow to identify and support a struggling student, including how I tell a language need from a learning disability, and when I bring in families.' },
       { id: 'm2-whiteboard', activity: 'U3 · A3', kind: 'video', title: 'Solving it on the whiteboard', blurb: 'Two Year 7 algebra problems, solved aloud, with the mistakes my students really make and a second strategy for each.', page: 'maths' },
