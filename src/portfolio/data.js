@@ -9,6 +9,7 @@
 import prizeWinner from './images/march-mathness-prize.webp'
 import cutShapes from './images/maths-cut-shapes.webp'
 import natureWalk from './images/nature-walk-jetty.webp'
+import m3Vlog from './media/m3u2a2-vlog.mp4'
 
 // Photos from Palm River Academy's About page, kept in ./images. See
 // CREDITS.json for each one's source and the consent note.
@@ -121,7 +122,7 @@ export const MODULES = [
     artifacts: [
       { id: 'm3-representations', activity: 'U1 · A1', kind: 'image', title: 'One standard, five representations', blurb: 'CCSS 7.EE.A.1 shown physically, visually, symbolically, verbally and in context, all from my Collecting Like Terms lesson.', page: 'maths' },
       { id: 'm3-ebp', activity: 'U1 · A2', kind: 'audio', title: 'Three evidence-based practices', blurb: 'Solved problems with errors, comparing strategies, and keeping the cognitive demand high, with examples from my algebra unit.' },
-      { id: 'm3-vlog', activity: 'U2 · A2', kind: 'video', title: 'Understanding multilingual learners', blurb: 'A short vlog: scaffolding discussion, using the home language as a resource, and teaching academic vocabulary.' },
+      { id: 'm3-vlog', activity: 'U2 · A2', kind: 'video', title: 'Understanding multilingual learners', blurb: 'A short vlog: scaffolding discussion, using the home language as a resource, and teaching academic vocabulary.', url: m3Vlog },
       { id: 'm3-literacy', activity: 'U1 · A1', kind: 'doc', title: 'Cohort Literacy Guide: Module 3', blurb: 'Module 3 literacy terms, built with my cohort.', page: 'literacy' },
     ],
   },
