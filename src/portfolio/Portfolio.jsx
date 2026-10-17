@@ -314,6 +314,8 @@ function Artifact({ a, showModule = false }) {
   const kind = KIND[a.kind]
   const Icon = kind.icon
   const ready = Boolean(a.url)
+  // A video served from this site plays in place; a Drive or YouTube link stays a link.
+  const playable = ready && a.kind === 'video' && /\.(mp4|webm)$/i.test(a.url)
   return (
     <li className="rounded-2xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-5 flex gap-4">
       <span className="flex items-center justify-center w-11 h-11 rounded-xl shrink-0" style={{ backgroundColor: CAMBRIDGE.tealTint, color: CAMBRIDGE.tealDark }}>
@@ -329,6 +331,18 @@ function Artifact({ a, showModule = false }) {
           <a href={a.url} target="_blank" rel="noopener noreferrer" className="block mt-3">
             <img src={a.url} alt={a.alt ?? a.title} loading="lazy" className="w-full rounded-xl border-2 border-slate-200 dark:border-slate-800" />
           </a>
+        )}
+        {playable && (
+          <video
+            src={a.url}
+            poster={a.poster}
+            controls
+            playsInline
+            preload="none"
+            className="block w-full aspect-video mt-3 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-black"
+          >
+            <a href={a.url}>Download the video</a>
+          </video>
         )}
         <div className="mt-3">
           {ready ? (
