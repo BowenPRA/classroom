@@ -125,7 +125,7 @@ export const MODULES = [
     status: 'current',
     artifacts: [
       { id: 'm3-representations', activity: 'U1 · A1', kind: 'image', title: 'One standard, five representations', blurb: 'CCSS 7.EE.A.1 shown physically, visually, symbolically, verbally and in context, all from my Collecting Like Terms lesson.', page: 'maths', url: m3Representations, alt: 'Poster: the standard CCSS 7.EE.A.1 written out in full, with 7x + 5y − 3x + y = 4x + 6y shown five ways: paper strips, sorting baskets, find-move-collect steps, sentence frames with Vietnamese key words, and two word problems.' },
-      { id: 'm3-ebp', activity: 'U1 · A2', kind: 'video', title: 'Three evidence-based practices', blurb: 'Solved problems with errors, comparing strategies, and keeping the cognitive demand high, with examples from my algebra unit.', url: m3Ebp, poster: m3EbpPoster },
+      { id: 'm3-ebp', activity: 'U1 · A2', kind: 'video', title: 'Three evidence-based practices', blurb: 'Solved problems with errors, comparing strategies, and keeping the cognitive demand high, with examples from my algebra unit.', page: 'maths', url: m3Ebp, poster: m3EbpPoster },
       { id: 'm3-vlog', activity: 'U2 · A2', kind: 'video', title: 'Understanding multilingual learners', blurb: 'A short vlog: scaffolding discussion, using the home language as a resource, and teaching academic vocabulary.', url: m3Vlog, poster: m3VlogPoster },
       { id: 'm3-literacy', activity: 'U1 · A1', kind: 'doc', title: 'Cohort Literacy Guide: Module 3', blurb: 'Module 3 literacy terms, built with my cohort. My entry: academic vocabulary.', page: 'literacy', url: LITERACY_GUIDE },
     ],
