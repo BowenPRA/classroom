@@ -325,6 +325,11 @@ function Artifact({ a, showModule = false }) {
         </p>
         <h3 className="font-black tracking-tight text-lg leading-snug mt-0.5">{a.title}</h3>
         <p className={`${prose} text-sm mt-1`}>{a.blurb}</p>
+        {ready && a.kind === 'image' && (
+          <a href={a.url} target="_blank" rel="noopener noreferrer" className="block mt-3">
+            <img src={a.url} alt={a.alt ?? a.title} loading="lazy" className="w-full rounded-xl border-2 border-slate-200 dark:border-slate-800" />
+          </a>
+        )}
         <div className="mt-3">
           {ready ? (
             <a href={a.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-sm font-black text-white" style={{ backgroundColor: CAMBRIDGE.teal }}>
