@@ -12,6 +12,9 @@ import natureWalk from './images/nature-walk-jetty.webp'
 import m3Vlog from './media/m3u2a2-vlog.mp4'
 import m3Representations from './media/m3-representations.png'
 
+// The cohort's shared Literacy Guide: one Google Doc with a section per module.
+const LITERACY_GUIDE = 'https://docs.google.com/document/d/1Z9Tdh-OuZTgQ4LEkigYQtu0iWqQmhe0z/edit'
+
 // Photos from Palm River Academy's About page, kept in ./images. See
 // CREDITS.json for each one's source and the consent note.
 export const PHOTOS = {
@@ -97,7 +100,7 @@ export const MODULES = [
     when: 'September 2026',
     status: 'complete',
     artifacts: [
-      { id: 'm1-literacy', activity: 'U1 · A3', kind: 'doc', title: 'Cohort Literacy Guide: Module 1', blurb: 'The definition and elements of literacy, built with my cohort.', page: 'literacy' },
+      { id: 'm1-literacy', activity: 'U1 · A3', kind: 'doc', title: 'Cohort Literacy Guide: Module 1', blurb: 'The definition and elements of literacy, built with my cohort.', page: 'literacy', url: LITERACY_GUIDE },
     ],
   },
   {
@@ -124,7 +127,7 @@ export const MODULES = [
       { id: 'm3-representations', activity: 'U1 · A1', kind: 'image', title: 'One standard, five representations', blurb: 'CCSS 7.EE.A.1 shown physically, visually, symbolically, verbally and in context, all from my Collecting Like Terms lesson.', page: 'maths', url: m3Representations, alt: 'Poster: the standard CCSS 7.EE.A.1 written out in full, with 7x + 5y − 3x + y = 4x + 6y shown five ways: paper strips, sorting baskets, find-move-collect steps, sentence frames with Vietnamese key words, and two word problems.' },
       { id: 'm3-ebp', activity: 'U1 · A2', kind: 'audio', title: 'Three evidence-based practices', blurb: 'Solved problems with errors, comparing strategies, and keeping the cognitive demand high, with examples from my algebra unit.' },
       { id: 'm3-vlog', activity: 'U2 · A2', kind: 'video', title: 'Understanding multilingual learners', blurb: 'A short vlog: scaffolding discussion, using the home language as a resource, and teaching academic vocabulary.', url: m3Vlog },
-      { id: 'm3-literacy', activity: 'U1 · A1', kind: 'doc', title: 'Cohort Literacy Guide: Module 3', blurb: 'Module 3 literacy terms, built with my cohort.', page: 'literacy' },
+      { id: 'm3-literacy', activity: 'U1 · A1', kind: 'doc', title: 'Cohort Literacy Guide: Module 3', blurb: 'Module 3 literacy terms, built with my cohort. My entry: academic vocabulary.', page: 'literacy', url: LITERACY_GUIDE },
     ],
   },
   { n: 4, title: 'Managing the Learning Environment', status: 'upcoming', artifacts: [] },
