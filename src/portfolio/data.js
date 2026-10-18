@@ -11,6 +11,7 @@ import cutShapes from './images/maths-cut-shapes.webp'
 import natureWalk from './images/nature-walk-jetty.webp'
 import m3Vlog from './media/m3u2a2-vlog.mp4'
 import m3Representations from './media/m3-representations.png'
+import m2Modeling from './media/m2-modeling.png'
 import m3Ebp from './media/m3u1a2-ebp.mp4'
 import m3VlogPoster from './media/m3u2a2-vlog-poster.jpg'
 import m3EbpPoster from './media/m3u1a2-ebp-poster.jpg'
@@ -110,7 +111,7 @@ export const MODULES = [
     status: 'progress',
     artifacts: [
       { id: 'm2-law', activity: 'U1 · A2', kind: 'video', title: 'A law that shapes teaching', blurb: 'A 4–5 minute video on one law or policy: what it says, where it came from, its strengths and weaknesses, and what it changes in a classroom.' },
-      { id: 'm2-modelling', activity: 'U1 · A1', kind: 'image', title: 'Modeling vs models in math', blurb: 'A one-page visual on the difference between the math modeling process and models in math.', page: 'maths' },
+      { id: 'm2-modelling', activity: 'U1 · A1', kind: 'image', title: 'Modeling vs models in math', blurb: 'A one-page visual on the difference between the math modeling process and models in math.', page: 'maths', url: m2Modeling, alt: 'Poster: on the left, a model in math, shown as a box model for "twice as many" and as layers of centimeter cubes in a tank; on the right, the six stages of the modeling process worked through for "How far away is the storm?" with d = t ÷ 3; below, a table comparing the two.' },
       { id: 'm2-literacy-pres', activity: 'U2 · A2', kind: 'presentation', title: 'Promoting literacy in math', blurb: 'Why literacy matters in every subject, the signs of a struggling reader in Year 7 math, and a plan of action for my school.' },
       { id: 'm2-writing', activity: 'U2 · A3', kind: 'image', title: 'From letters to essays', blurb: 'An infographic on how writing develops, with interventions for my grade and subject.' },
       { id: 'm2-flowchart', activity: 'U3 · A1', kind: 'flowchart', title: 'Helping a struggling learner', blurb: 'The process I follow to identify and support a struggling student, including how I tell a language need from a learning disability, and when I bring in families.' },
