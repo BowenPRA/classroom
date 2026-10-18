@@ -13,15 +13,22 @@
 //                11–21 s lift-off, 21–29 s climbing, 29–33 s the trail seen
 //                from far away (checked frame by frame; see CREDITS.json).
 //
+//   DanBauClip   12 seconds of a đàn bầu, for slide 13 (sound): the photo,
+//                and a Listen button that always plays from the start. The
+//                source and how the segment was checked are above it.
+//
 //   ActItOut     The deck's "way to remember" (the book's question on p.107),
-//                played from the front. A thing appears; the class does that
-//                energy's action from slides 7–14 all at once and says its
-//                name; Show names it and says store or transfer. A clicker's
-//                Right arrow shows, then moves on. Full-slide `game` layout.
-import { useState, useEffect, useCallback } from 'react'
-import { Eye, ArrowRight, Shuffle, Sparkles, RotateCcw, Zap } from 'lucide-react'
+//                played from the front. One card per energy, eight in all. A
+//                thing appears; the class does that energy's action from
+//                slides 7–14 all at once and says its name; Show names it and
+//                says store or transfer. A clicker's Right arrow shows, then
+//                moves on. Full-slide `game` layout.
+import { useState, useEffect, useCallback, useRef } from 'react'
+import { Eye, ArrowRight, Shuffle, Sparkles, RotateCcw, Zap, Play, Volume2 } from 'lucide-react'
 import { tr } from '../../../src/lib/lang.js'
 import launch from './images/launch.webm'
+import danbauSound from './images/danbau.webm'
+import danbauPhoto from './images/danbau.jpg'
 
 const t = (lang, en, fr) => tr(lang, en, null, fr)
 
@@ -73,33 +80,67 @@ export function LaunchClip({ lang = 'en' }) {
 }
 
 /* ============================================================= *
+ * THE ĐÀN BẦU — slide 13, sound
+ * ============================================================= */
+// "Lên ngàn", Nguyễn Thanh Tùng, from Wikimedia Commons (CC BY 3.0; "a special
+// composition for monochord by Nguyen Thanh Tung, a noted Vietnamese monochord
+// performer"). Trimmed to 1.7–13.4 s of the 229 s file. Checked by analysis,
+// not by ear: one melodic line (one or two strong spectral peaks, nearly pure
+// tones, as the đàn bầu's harmonics are), each note plucked and then decaying
+// slowly, and the pitch sliding after the pluck — 705 → 797 Hz at 2–4.3 s, a
+// vibrato around 620 Hz at 11–13 s — which is what the đàn bầu's rod does.
+// The button always restarts the clip, so a second press replays it.
+export function DanBauClip({ lang = 'en' }) {
+  const audio = useRef(null)
+  const [playing, setPlaying] = useState(false)
+  const play = () => {
+    const a = audio.current
+    if (!a) return
+    a.currentTime = 0
+    a.play().catch(() => { /* a browser that blocks sound: the button simply does nothing */ })
+  }
+  return (
+    <div className="w-full h-full flex flex-col gap-3 select-none">
+      <div className="flex-1 min-h-0 flex items-center justify-center">
+        <img src={danbauPhoto} alt={t(lang, 'A man playing the đàn bầu', 'Un homme joue du đàn bầu')} className="block max-w-full max-h-full rounded-xl object-contain" draggable={false} />
+      </div>
+      <div className="shrink-0 flex items-center justify-center">
+        <Btn tone={playing ? 'teal' : 'orange'} icon={playing ? Volume2 : Play} onClick={play}>
+          {t(lang, 'Listen: 12 seconds', 'Écoute : 12 secondes')}
+        </Btn>
+      </div>
+      <audio ref={audio} src={danbauSound} preload="auto" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)} />
+    </div>
+  )
+}
+
+/* ============================================================= *
  * ACT IT OUT — name the energy with your body
  * ============================================================= */
-// The eight, with the action each one was given on slides 7–14.
+/// The eight, with the action each one was given on slides 7–14. The class
+// invents its own action for chemical (slide 8) and light (slide 14), so the
+// game names those as "your class's action".
 const ENERGY = {
   kinetic: { en: 'kinetic', fr: 'énergie cinétique', store: 'store', act: 'Run on the spot', actFr: 'Cours sur place' },
-  chemical: { en: 'chemical', fr: 'énergie chimique', store: 'store', act: 'Pretend to eat', actFr: 'Fais semblant de manger' },
+  chemical: { en: 'chemical', fr: 'énergie chimique', store: 'store', act: 'Your class’s action', actFr: 'Le geste de ta classe' },
   thermal: { en: 'thermal', fr: 'énergie thermique', store: 'both', act: 'Rub your hands', actFr: 'Frotte tes mains' },
-  elastic: { en: 'elastic potential', fr: 'énergie potentielle élastique', store: 'store', act: 'Stretch your hands apart', actFr: 'Écarte les mains, comme un élastique' },
+  elastic: { en: 'elastic potential', fr: 'énergie potentielle élastique', store: 'store', act: 'Stretch your hands apart', actFr: 'Écarte les mains' },
   gravitational: { en: 'gravitational potential', fr: 'énergie potentielle de pesanteur', store: 'store', act: 'Lift both hands up high', actFr: 'Lève les deux mains bien haut' },
   electrical: { en: 'electrical', fr: 'énergie électrique', store: 'transfer', act: 'Draw a zigzag in the air', actFr: 'Dessine un zigzag dans l’air' },
   sound: { en: 'sound', fr: 'énergie sonore', store: 'transfer', act: 'Hum with a hand on your throat', actFr: 'Fredonne, la main sur la gorge' },
-  light: { en: 'light', fr: 'énergie lumineuse', store: 'transfer', act: 'Open your hands like a flash', actFr: 'Ouvre les mains comme un flash' },
+  light: { en: 'light', fr: 'énergie lumineuse', store: 'transfer', act: 'Your class’s action', actFr: 'Le geste de ta classe' },
 }
 
+// One card per energy, so eight cards fit the three minutes the plan gives.
 const CARDS = [
-  { en: 'A motorbike speeding down the road', fr: 'Une moto qui roule vite', e: 'kinetic' },
-  { en: 'A bánh mì', fr: 'Un bánh mì', e: 'chemical' },
   { en: 'A cup of hot tea', fr: 'Une tasse de thé chaud', e: 'thermal' },
-  { en: 'A stretched rubber band', fr: 'Un élastique tendu', e: 'elastic' },
   { en: 'A coconut high up in a tree', fr: 'Une noix de coco en haut d’un arbre', e: 'gravitational' },
-  { en: 'Current in a phone charger cable', fr: 'Le courant dans un câble de chargeur', e: 'electrical' },
-  { en: 'A drum when you hit it', fr: 'Un tambour quand on le frappe', e: 'sound' },
   { en: 'A firefly at night', fr: 'Une luciole la nuit', e: 'light' },
-  { en: 'A trampoline when you land on it', fr: 'Un trampoline quand tu atterris dessus', e: 'elastic' },
-  { en: 'Wood for a fire', fr: 'Du bois pour faire du feu', e: 'chemical' },
-  { en: 'A child at the top of a slide', fr: 'Un enfant en haut d’un toboggan', e: 'gravitational' },
   { en: 'A dog running after a ball', fr: 'Un chien qui court après une balle', e: 'kinetic' },
+  { en: 'A drum when you hit it', fr: 'Un tambour quand on le frappe', e: 'sound' },
+  { en: 'A trampoline when you land on it', fr: 'Un trampoline quand tu atterris dessus', e: 'elastic' },
+  { en: 'A bánh mì', fr: 'Un bánh mì', e: 'chemical' },
+  { en: 'Current in a phone charger cable', fr: 'Le courant dans un câble de chargeur', e: 'electrical' },
 ]
 
 const storeWord = (lang, s) =>
@@ -159,7 +200,7 @@ export function ActItOut({ lang = 'en', isDisplayMode = false }) {
               {t(lang, 'Act It Out', 'Mime-le')}
             </div>
             <div className={`font-bold text-slate-400 dark:text-slate-500 truncate ${big ? 'text-base' : 'text-xs'}`}>
-              {t(lang, 'Everyone at once: do the action, say the word.', 'Tous ensemble : fais le geste, dis le mot.')}
+              {t(lang, 'Everyone at once: do the action, say the word.', 'Tous ensemble : fais le geste, dis le mot.')}
             </div>
           </div>
         </div>
@@ -175,7 +216,7 @@ export function ActItOut({ lang = 'en', isDisplayMode = false }) {
         {done ? (
           <div className="flex flex-col items-center gap-4">
             <div className="p-4 rounded-2xl bg-emerald-500 text-white"><Sparkles className="w-12 h-12" strokeWidth={2} /></div>
-            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{t(lang, 'All 12 done!', 'Les 12 sont faits !')}</div>
+            <div className={`font-black text-slate-800 dark:text-slate-100 ${big ? 'text-5xl' : 'text-3xl'}`}>{t(lang, 'All 8 done!', 'Les 8 cartes, c’est fini !')}</div>
           </div>
         ) : (
           <>

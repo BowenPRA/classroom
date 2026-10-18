@@ -10,11 +10,12 @@
 //     CHEMICAL      — food, fuels, batteries (photos)
 //     ANS_YES / ANS_NO — vote cards: is the Moon luminous?
 //     LUMINOUS      — the Sun gives out light; the Moon is lit by it (photos)
-//     TABLE_BLANK   — Draw This: the book's eight, two empty columns to fill
+//     TABLE_BLANK   — Draw This: the book's eight, two columns to fill; one model row (fuels)
 //     TABLE_FULL    — the same table, filled in
 //     BUS           — the book's bus going uphill (p.107), seven labels
 //   Storing energy
-//     KEEP_ASK      — six stores, photographed: which keep their energy?
+//     KEEP_ASK      — six stores, photographed, under a left-hand / right-hand key
+//     ROOF_TANK     — stainless water tanks on a Saigon roof: gravitational potential
 //     KEEP_SORTED   — the same six, sorted: lasts a long time / does not last
 //
 // Split diagrams are drawn at about 1.4:1 (840×560), showcase ones at about
@@ -34,7 +35,8 @@ import batteries from './images/batteries.jpg'
 import rice from './images/rice.jpg'
 import pho from './images/pho.jpg'
 import ball from './images/ball.jpg'
-import tower from './images/tower.jpg'
+import roof from './images/roof.jpg'
+import rooftank from './images/rooftank.jpg'
 import moon from './images/moon.jpg'
 import sun from './images/sun.jpg'
 
@@ -153,7 +155,7 @@ export const DIAGRAMS = {
     <circle cx="200" cy="158" r="27" fill="#e04b3a" stroke="#8e2a1f" stroke-width="3"/>
     <path d="M 200 131 L 205 114" stroke="#6d4c2e" stroke-width="5" stroke-linecap="round"/>
     <ellipse cx="222" cy="120" rx="15" ry="8" transform="rotate(-30 222 120)" fill="#6abf4b" stroke="#3e7c27" stroke-width="2"/>
-    <text x="200" y="76" font-family="${FONT}" font-size="24" fill="${MUTED}" text-anchor="middle">an apple: about 1 N</text>
+    <text x="200" y="76" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}" text-anchor="middle">an apple: about 1 N</text>
 
     <line x1="320" y1="158" x2="320" y2="442" stroke="${INK}" stroke-width="3"/>
     <line x1="306" y1="158" x2="334" y2="158" stroke="${INK}" stroke-width="3"/>
@@ -294,6 +296,7 @@ export const DIAGRAMS = {
     <text x="36" y="315" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}">electrical</text>
     <text x="36" y="359" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}">sound</text>
     <text x="36" y="403" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}">light</text>
+    <text x="696" y="139" font-family="${FONT}" font-size="23" fill="${INK}">fuels: wood, coal, oil</text>
   </svg>`,
 
   TABLE_FULL: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
@@ -319,10 +322,10 @@ export const DIAGRAMS = {
     <text x="416" y="359" font-family="${FONT}" font-size="23" fill="${INK}">transfer</text>
     <text x="416" y="403" font-family="${FONT}" font-size="23" fill="${INK}">transfer</text>
     <text x="696" y="95" font-family="${FONT}" font-size="23" fill="${INK}">a moving motorbike</text>
-    <text x="696" y="139" font-family="${FONT}" font-size="23" fill="${INK}">food, fuels, batteries</text>
+    <text x="696" y="139" font-family="${FONT}" font-size="23" fill="${INK}">fuels: wood, coal, oil</text>
     <text x="696" y="183" font-family="${FONT}" font-size="23" fill="${INK}">a hot bowl of phở</text>
     <text x="696" y="227" font-family="${FONT}" font-size="23" fill="${INK}">a stretched bow</text>
-    <text x="696" y="271" font-family="${FONT}" font-size="23" fill="${INK}">water high up in a tower</text>
+    <text x="696" y="271" font-family="${FONT}" font-size="23" fill="${INK}">water in a tank on the roof</text>
     <text x="696" y="315" font-family="${FONT}" font-size="23" fill="${INK}">current in a wire</text>
     <text x="696" y="359" font-family="${FONT}" font-size="23" fill="${INK}">a vibrating string</text>
     <text x="696" y="403" font-family="${FONT}" font-size="23" fill="${INK}">the Sun, a lamp</text>
@@ -385,20 +388,39 @@ export const DIAGRAMS = {
   </svg>`,
 
   // ── Storing energy ────────────────────────────────────────────────────────
+  // The vote key sits across the top, big enough for the back row.
   KEEP_ASK: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
     ${plate(1120, 440)}
-    ${photo('u35-keep-1', rice, 16, 16, 356, 164)}
-    ${photo('u35-keep-2', pho, 382, 16, 356, 164)}
-    ${photo('u35-keep-3', coal, 748, 16, 356, 164)}
-    <text x="194" y="210" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">uncooked rice</text>
-    <text x="560" y="210" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">a hot bowl of phở</text>
-    <text x="926" y="210" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">coal</text>
-    ${photo('u35-keep-4', ball, 16, 228, 356, 164)}
-    ${photo('u35-keep-5', battery, 382, 228, 356, 164)}
-    ${photo('u35-keep-6', tower, 748, 228, 356, 164)}
-    <text x="194" y="422" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">a bouncing ball</text>
-    <text x="560" y="422" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">a battery</text>
-    <text x="926" y="422" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">water in a tower</text>
+    <rect x="16" y="10" width="536" height="52" rx="12" fill="#e9f1fa" stroke="${BLUE}" stroke-width="2"/>
+    <g transform="translate(70 14) scale(-1.8 1.8)" fill="none" stroke="${BLUE}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${HAND_PATHS}</g>
+    <text x="84" y="46" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}">Left hand: a long time</text>
+    <rect x="568" y="10" width="536" height="52" rx="12" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="2"/>
+    <g transform="translate(1052 14) scale(1.8)" fill="none" stroke="${KEY}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${HAND_PATHS}</g>
+    <text x="1040" y="46" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="end">Right hand: not for long</text>
+
+    ${photo('u35-keep-1', rice, 16, 74, 356, 132)}
+    ${photo('u35-keep-2', pho, 382, 74, 356, 132)}
+    ${photo('u35-keep-3', coal, 748, 74, 356, 132)}
+    <text x="194" y="232" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">uncooked rice</text>
+    <text x="560" y="232" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">a hot bowl of phở</text>
+    <text x="926" y="232" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">coal</text>
+    ${photo('u35-keep-4', ball, 16, 250, 356, 132)}
+    ${photo('u35-keep-5', battery, 382, 250, 356, 132)}
+    ${photo('u35-keep-6', rooftank, 748, 250, 356, 132)}
+    <text x="194" y="410" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">a bouncing ball</text>
+    <text x="560" y="410" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">a battery</text>
+    <text x="926" y="410" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}" text-anchor="middle">water in a roof tank</text>
+  </svg>`,
+
+  // Slide 11: stainless water tanks on a Saigon roof. Every house has one, and
+  // it is why the taps run without a pump: the water is stored up high.
+  ROOF_TANK: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
+    ${plate(840, 560)}
+    ${photo('u35-roof', roof, 0, 0, 840, 560)}
+    <rect x="20" y="20" width="340" height="60" rx="14" fill="#ffffff" fill-opacity="0.94"/>
+    <text x="190" y="60" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">water tanks on a roof</text>
+    ${leader(240, 80, 405, 262)}
+    ${leader(320, 80, 528, 240)}
   </svg>`,
 
   KEEP_SORTED: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
@@ -411,9 +433,9 @@ export const DIAGRAMS = {
     <text x="150" y="286" font-family="${FONT}" font-size="21" fill="${KEY}" text-anchor="middle">chemical</text>
     <text x="402" y="258" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}" text-anchor="middle">coal</text>
     <text x="402" y="286" font-family="${FONT}" font-size="21" fill="${KEY}" text-anchor="middle">chemical</text>
-    ${photo('u35-sort-6', tower, 32, 304, 236, 150)}
+    ${photo('u35-sort-6', rooftank, 32, 304, 236, 150)}
     ${photo('u35-sort-5', battery, 284, 304, 236, 150)}
-    <text x="150" y="486" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}" text-anchor="middle">water in a tower</text>
+    <text x="150" y="486" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}" text-anchor="middle">a roof tank</text>
     <text x="150" y="514" font-family="${FONT}" font-size="21" fill="${KEY}" text-anchor="middle">gravitational potential</text>
     <text x="402" y="486" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}" text-anchor="middle">a battery</text>
     <text x="402" y="514" font-family="${FONT}" font-size="21" fill="${KEY}" text-anchor="middle">chemical</text>

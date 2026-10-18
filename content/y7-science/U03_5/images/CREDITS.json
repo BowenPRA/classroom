@@ -64,12 +64,12 @@
   },
   {
     "file": "rice.jpg",
-    "name": "Rice in bags in the market Vietnam.jpg",
-    "title": "Rice in open sacks at a market in Vietnam",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Rice_in_bags_in_the_market_Vietnam.jpg",
-    "license": "CC0",
-    "artist": "Dinkum",
-    "usage": "KEEP_ASK and KEEP_SORTED: uncooked rice keeps its chemical energy (the book's rice-market photo, p.108)."
+    "name": "Uncooked ST25 rice on bamboo surface.jpg",
+    "title": "Uncooked ST25 rice (a Vietnamese rice from Sóc Trăng) in a ceramic bowl on bamboo",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Uncooked_ST25_rice_on_bamboo_surface.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "VinhNguyen.1257",
+    "usage": "KEEP_ASK and KEEP_SORTED: uncooked rice keeps its chemical energy (the book’s rice-market example, p.108). Cropped to 24–70% of the height from the 960 px thumbnail; the long grains are visible. Replaces an earlier market photo that showed sugar."
   },
   {
     "file": "traffic.jpg",
@@ -126,22 +126,13 @@
     "usage": "CHEMICAL, panel 'batteries' (a tall crop, so standing batteries suit it)."
   },
   {
-    "file": "tower.jpg",
-    "name": "Mauston water tower with cellular tower on top.jpg",
-    "title": "A water tower above the town of Mauston, Wisconsin, seen from the air",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Mauston_water_tower_with_cellular_tower_on_top.jpg",
-    "license": "CC0",
-    "artist": "Wikideas1",
-    "usage": "Slide 11 (gravitational potential), KEEP_ASK and KEEP_SORTED — the book's water-tower example, p.108."
-  },
-  {
     "file": "sun.jpg",
-    "name": "Image of Sun From NASA’s Solar Dynamics Observatory (PIA26681).jpg",
-    "title": "The Sun, 10 September 2025, NASA Solar Dynamics Observatory (AIA 171, extreme-ultraviolet, false colour)",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Image_of_Sun_From_NASA%E2%80%99s_Solar_Dynamics_Observatory_(PIA26681).jpg",
+    "name": "SDO 20240810 000000 4096 HMIIC (HMI).jpg",
+    "title": "The Sun in visible light, 10 August 2024, SDO Helioseismic and Magnetic Imager (coloured intensitygram, with sunspots)",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:SDO_20240810_000000_4096_HMIIC_(HMI).jpg",
     "license": "Public domain (NASA)",
-    "artist": "NASA/GSFC/Solar Dynamics Observatory",
-    "usage": "LUMINOUS, clipped to a circle; cropped to 3–97% wide and 3–94% high to drop the caption strip."
+    "artist": "NASA/SDO and the AIA, EVE, and HMI science teams",
+    "usage": "LUMINOUS, clipped to a circle; cropped to the disc. Visible light (the HMI continuum), coloured orange by NASA. Replaces the extreme-ultraviolet AIA 171 image."
   },
   {
     "file": "archer.jpg",
@@ -178,5 +169,32 @@
     "license": "Public domain (PD-USGov-NASA)",
     "artist": "NASA Kennedy Space Center",
     "usage": "Trimmed 1.0 s to 33.6 s from the 1280x720 original, re-encoded as VP9/Opus WebM with its sound; 0.5 s fades at the end. 0–3 s on the pad, 3–11 s engine start, 11–21 s lift-off, 21–29 s climbing, 29–33 s the trail from far away (checked from frame grabs every 2 s)."
+  },
+  {
+    "file": "roof.jpg",
+    "name": "Rooftops by Igor Ovsyannykov.jpg",
+    "title": "Stainless water tanks on a rooftop in Ho Chi Minh City",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Rooftops_by_Igor_Ovsyannykov.jpg",
+    "license": "CC0",
+    "artist": "Igor Ovsyannykov",
+    "usage": "ROOF_TANK (slide 11, gravitational potential): cropped from the 2048 px original to 52–88% wide, 38–74% high, with a label and leaders on the tanks."
+  },
+  {
+    "file": "rooftank.jpg",
+    "name": "Rooftops by Igor Ovsyannykov.jpg",
+    "title": "Stainless water tanks on a rooftop in Ho Chi Minh City (close crop)",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Rooftops_by_Igor_Ovsyannykov.jpg",
+    "license": "CC0",
+    "artist": "Igor Ovsyannykov",
+    "usage": "KEEP_ASK and KEEP_SORTED tile: cropped to 60–84% wide, 48–60% high, the tanks only."
+  },
+  {
+    "file": "danbau.webm",
+    "name": "Len ngan - Thanh Tung.ogg",
+    "title": "Audio: “Lên ngàn”, a composition for the đàn bầu (Vietnamese monochord) by Nguyễn Thanh Tùng, uploaded by him as his own work",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Len_ngan_-_Thanh_Tung.ogg",
+    "license": "CC BY 3.0",
+    "artist": "Nguyen Thanh Tung",
+    "usage": "DanBauClip (slide 13): trimmed 1.7 s to 13.4 s of the 229 s Vorbis file and re-encoded as Opus in WebM, 0.5 s fade at the end. The file page calls it “a special composition for monochord by Nguyen Thanh Tung, a noted Vietnamese monochord performer”. Not checked by ear; checked by analysis — one melodic line of near-pure plucked tones whose pitch slides after the pluck (705 to 797 Hz at 2–4.3 s), as the đàn bầu’s rod bends it."
   }
 ]

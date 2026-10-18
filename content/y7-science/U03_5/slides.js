@@ -9,30 +9,38 @@
 // ENGLISH AND FRENCH ONLY (meta.vietnamese: false): every string has an …Fr
 // twin and no …Vn twin. Diagrams stay in English.
 //
-// THE SHAPE: FEEL IT, NAME IT, FIND IT, KEEP IT.
+/// THE SHAPE: FEEL IT, NAME IT, FIND IT, KEEP IT.
 //   Feel it    — the starter is the book's Getting Started. Then the joule,
 //                ask before tell: lift an apple 1 m (about 1 J; 3.1's apple
 //                was 1 N), then RANK stairs, a 100 m run and a litre of
 //                boiling water on whiteboards before the book's numbers
 //                appear as a pictogram — the kettle is 200 floors of stairs.
 //   Name it    — an English check (stored / transferred: "store" is not a
-//                shop), then the book's eight, one per slide, each with a real
-//                photo (Vietnam where there is one), one line in the same
+//                shop), then the book's eight, one per slide, about 45 s each:
+//                a real photo (Vietnam where there is one — the rooftop water
+//                tank every student has at home), one line in the same
 //                pattern ("… store it" / "… transfer it"), and an ACTION the
-//                whole class does, in a purple Do it panel: run, eat, rub
-//                hands, stretch, lift, zigzag, hum, flash. The actions are the
-//                book's "way to help you remember" (p.107). A vote on "is the Moon luminous?" catches the word
-//                that looks like "bright". Then the book's table, drawn and
-//                completed from memory.
+//                whole class does in a purple Do it panel. Six actions are
+//                given (run, rub hands, stretch, lift, zigzag, hum) and are the
+//                same gestures the game asks for; for chemical and light the
+//                class INVENTS its own — the book's own question on p.107, "can
+//                you think of a way to help you remember them?". Sound is the
+//                one slide that changes medium: 12 seconds of a đàn bầu. A vote
+//                on "is the Moon luminous?" catches the word that looks like
+//                "bright". Then the book's table, drawn books-closed and
+//                completed from memory, with one model row (fuels).
 //   Find it    — the book's bus (p.107) as the model, then the class's turn on
-//                33 seconds of the last space-shuttle launch, with its sound.
-//   Keep it    — the book's "Storing energy": vote on six photos, then sort
-//                them. Then Act It Out (the actions, from the front), the
-//                book's Questions 1–5, checklist, exit.
+//                33 seconds of the last space-shuttle launch, with its sound —
+//                the book's poster Activity (p.109), done from the front.
+//   Keep it    — the book's "Storing energy": vote on six photos, sort them,
+//                drop a real tennis ball. Then Act It Out (the actions, eight
+//                cards), the book's Questions 1–4, checklist, exit. Question 5
+//                is a discussion: if it is not reached, it is the next
+//                lesson's spoken warm-up.
 //
 // COPY-DOWN, ON A BUDGET: 4 short write panels (energy + joule · stored and
 // transferred · luminous · which stores last) and 1 drawing (the table). The
-// other key words — the eight names and "fuel" — are copied in the table.
+// other key words — the eight names and "fuels" — are copied in the table.
 //
 // WRITING RULE (the 2.5 density): short sentences, one idea each, and the body
 // text never repeats the write note, a label or the caption.
@@ -41,14 +49,12 @@
 // most of a period: they are in plan.js as an extension, not in the deck.
 
 import { DIAGRAMS } from './diagrams.js'
-import { LaunchClip, ActItOut } from './widgets.jsx'
+import { LaunchClip, DanBauClip, ActItOut } from './widgets.jsx'
 import fireworks from './images/fireworks.jpg'
 import traffic from './images/traffic.jpg'
 import pho from './images/pho.jpg'
 import archer from './images/archer.jpg'
-import tower from './images/tower.jpg'
 import wires from './images/wires.jpg'
-import danbau from './images/danbau.jpg'
 import lanterns from './images/lanterns.jpg'
 
 const TEAL = '#0087a8'
@@ -91,13 +97,13 @@ export const slides = [
     titleFr: 'Qu’est-ce que l’énergie ?',
     ratio: 50,
     image: fireworks,
-    content: 'Running, cooking, a phone, a firework: everything on your lists needs **energy**.',
-    contentFr: 'Courir, cuisiner, un téléphone, un feu d’artifice : tout ce qui est sur tes listes demande de l’**énergie**.',
+    content: 'Running, cooking, a phone, a firework: they all need **energy**.',
+    contentFr: 'Courir, cuisiner, un téléphone, un feu d’artifice : tout cela demande de l’**énergie**.',
     notes: [
       {
         tone: 'write',
         text: '**Energy:** something that must be changed or transferred to do something.\nEnergy is measured in **joules (J)**.',
-        textFr: '**Énergie (energy) :** quelque chose qui doit être transformé ou transféré pour faire quelque chose.\nL’énergie se mesure en **joules (J)**.',
+        textFr: '**Énergie (energy) :** quelque chose qui doit être transformé ou transféré pour faire quelque chose.\nL’énergie se mesure en **joules (J)**.',
       },
     ],
   },
@@ -108,7 +114,7 @@ export const slides = [
     accent: GREEN,
     icon: 'Ruler',
     eyebrow: 'Feel a joule',
-    eyebrowFr: 'Sens un joule',
+    eyebrowFr: 'Ressens un joule',
     title: 'How Big Is a Joule?',
     titleFr: 'Un joule, c’est combien ?',
     ratio: 40,
@@ -173,7 +179,7 @@ export const slides = [
       {
         tone: 'write',
         text: '**Stored:** kept to use later.\n**Transferred:** moved from one place to another.',
-        textFr: '**Stockée (stored) :** gardée pour plus tard.\n**Transférée (transferred) :** déplacée d’un endroit à un autre.',
+        textFr: '**Stockée (stored) :** gardée pour plus tard.\n**Transférée (transferred) :** déplacée d’un endroit à un autre.',
       },
     ],
   },
@@ -184,9 +190,9 @@ export const slides = [
     accent: TEAL,
     icon: 'Gauge',
     eyebrow: 'Energy store',
-    eyebrowFr: 'Stock d’énergie · kinetic',
+    eyebrowFr: 'Stock d’énergie',
     title: 'Kinetic Energy',
-    titleFr: 'L’énergie cinétique',
+    titleFr: 'Kinetic · l’énergie cinétique',
     ratio: 40,
     image: traffic,
     content: 'Things that **move** store it.',
@@ -209,9 +215,9 @@ export const slides = [
     accent: TEAL,
     icon: 'FlaskConical',
     eyebrow: 'Energy store',
-    eyebrowFr: 'Stock d’énergie · chemical',
+    eyebrowFr: 'Stock d’énergie',
     title: 'Chemical Energy',
-    titleFr: 'L’énergie chimique',
+    titleFr: 'Chemical · l’énergie chimique',
     ratio: 40,
     inlineSvg: DIAGRAMS.CHEMICAL,
     content: 'All three store it.\n\n**Fuels** are things we burn, like wood, coal, oil and gas.',
@@ -222,8 +228,8 @@ export const slides = [
         badge: 'Do it',
         badgeFr: 'Fais-le',
         icon: 'Hand',
-        text: 'Pretend to eat!',
-        textFr: 'Fais semblant de manger !',
+        text: 'With a partner, invent an action for chemical energy. The class picks the best one!',
+        textFr: 'Avec ton voisin, invente un geste pour l’énergie chimique. La classe choisit le meilleur !',
       },
     ],
   },
@@ -234,9 +240,9 @@ export const slides = [
     accent: TEAL,
     icon: 'Flame',
     eyebrow: 'Energy store or transfer',
-    eyebrowFr: 'Stock ou transfert · thermal',
+    eyebrowFr: 'Stock ou transfert',
     title: 'Thermal Energy',
-    titleFr: 'L’énergie thermique',
+    titleFr: 'Thermal · l’énergie thermique',
     ratio: 40,
     image: pho,
     content: '**Hot** things store it. It is transferred to **colder** things.',
@@ -259,21 +265,21 @@ export const slides = [
     accent: TEAL,
     icon: 'ArrowLeftRight',
     eyebrow: 'Energy store',
-    eyebrowFr: 'Stock d’énergie · elastic potential',
+    eyebrowFr: 'Stock d’énergie',
     title: 'Elastic Potential Energy',
-    titleFr: 'L’énergie potentielle élastique',
+    titleFr: 'Elastic potential · l’énergie potentielle élastique',
     ratio: 40,
     image: archer,
     content: 'Things that are **stretched** or **squeezed** store it.',
-    contentFr: 'Les objets **étirés** ou **écrasés** la stockent.',
+    contentFr: 'Les objets **étirés** ou **comprimés** la stockent.',
     notes: [
       {
         tone: 'task',
         badge: 'Do it',
         badgeFr: 'Fais-le',
         icon: 'Hand',
-        text: 'Stretch a rubber band. Do not let go!',
-        textFr: 'Étire un élastique. Ne le lâche pas !',
+        text: 'Stretch your hands apart, like a rubber band.',
+        textFr: 'Écarte les mains, comme un élastique qu’on étire.',
       },
     ],
   },
@@ -284,21 +290,21 @@ export const slides = [
     accent: TEAL,
     icon: 'ArrowUp',
     eyebrow: 'Energy store',
-    eyebrowFr: 'Stock d’énergie · gravitational potential',
+    eyebrowFr: 'Stock d’énergie',
     title: 'Gravitational Potential Energy',
-    titleFr: 'L’énergie potentielle de pesanteur',
+    titleFr: 'Gravitational potential · l’énergie potentielle de pesanteur',
     ratio: 40,
-    image: tower,
-    content: 'Things **lifted up**, away from the Earth, store it.\n\n**Potential**: it **could** happen. Let go, and it falls.',
-    contentFr: 'Les objets **soulevés**, loin de la Terre, la stockent.\n\n**Potential** (potentielle) : ça **pourrait** arriver. Lâche-le, et il tombe.',
+    inlineSvg: DIAGRAMS.ROOF_TANK,
+    content: 'Things **lifted up**, away from the Earth, store it. So does the water in the tank on your roof.\n\n**Potential**: it **could** happen. Let go, and it falls.',
+    contentFr: 'Les objets **soulevés**, loin de la Terre, la stockent. L’eau du réservoir sur ton toit aussi.\n\n**Potential** (potentielle) : ça **pourrait** arriver. Lâche-le, et il tombe.',
     notes: [
       {
         tone: 'task',
         badge: 'Do it',
         badgeFr: 'Fais-le',
         icon: 'Hand',
-        text: 'Hold your book up high. Do not drop it!',
-        textFr: 'Tiens ton livre bien haut. Ne le lâche pas !',
+        text: 'Lift both hands up high, as if you are lifting a book.',
+        textFr: 'Lève les deux mains bien haut, comme pour soulever un livre.',
       },
     ],
   },
@@ -309,9 +315,9 @@ export const slides = [
     accent: BLUE,
     icon: 'Zap',
     eyebrow: 'Energy transfer',
-    eyebrowFr: 'Transfert d’énergie · electrical',
+    eyebrowFr: 'Transfert d’énergie',
     title: 'Electrical Energy',
-    titleFr: 'L’énergie électrique',
+    titleFr: 'Electrical · l’énergie électrique',
     ratio: 40,
     image: wires,
     content: 'The **current** in a circuit transfers it.',
@@ -334,13 +340,13 @@ export const slides = [
     accent: BLUE,
     icon: 'Waves',
     eyebrow: 'Energy transfer',
-    eyebrowFr: 'Transfert d’énergie · sound',
+    eyebrowFr: 'Transfert d’énergie',
     title: 'Sound Energy',
-    titleFr: 'L’énergie sonore',
+    titleFr: 'Sound · l’énergie sonore',
     ratio: 40,
-    image: danbau,
-    content: 'Things that **vibrate** (shake fast) transfer it, like the string of a đàn bầu.',
-    contentFr: 'Les objets qui **vibrent** (bougent très vite) la transfèrent, comme la corde d’un đàn bầu.',
+    widget: DanBauClip,
+    content: 'Things that **vibrate** (shake fast) transfer it. Listen to the string of a đàn bầu.',
+    contentFr: 'Les objets qui **vibrent** (tremblent très vite) la transfèrent. Écoute la corde d’un đàn bầu.',
     notes: [
       {
         tone: 'task',
@@ -359,9 +365,9 @@ export const slides = [
     accent: BLUE,
     icon: 'Lightbulb',
     eyebrow: 'Energy transfer',
-    eyebrowFr: 'Transfert d’énergie · light',
+    eyebrowFr: 'Transfert d’énergie',
     title: 'Light Energy',
-    titleFr: 'L’énergie lumineuse',
+    titleFr: 'Light · l’énergie lumineuse',
     ratio: 40,
     image: lanterns,
     content: '**Luminous** things transfer it, like the Sun or a lantern.',
@@ -372,8 +378,8 @@ export const slides = [
         badge: 'Do it',
         badgeFr: 'Fais-le',
         icon: 'Hand',
-        text: 'Open your hands like a flash!',
-        textFr: 'Ouvre les mains comme un flash !',
+        text: 'With a partner, invent an action for light energy. The class picks the best one!',
+        textFr: 'Avec ton voisin, invente un geste pour l’énergie lumineuse. La classe choisit le meilleur !',
       },
     ],
   },
@@ -424,7 +430,7 @@ export const slides = [
       {
         tone: 'write',
         text: '**Luminous:** gives out its own light.\nThe Sun is luminous. The Moon is not.',
-        textFr: '**Lumineux (luminous) :** qui produit sa propre lumière.\nLe Soleil est lumineux. La Lune ne l’est pas.',
+        textFr: '**Lumineux (luminous) :** qui produit sa propre lumière.\nLe Soleil est lumineux. La Lune ne l’est pas.',
       },
       {
         tone: 'task',
@@ -442,14 +448,14 @@ export const slides = [
     layout: 'showcase',
     accent: ORANGE,
     icon: 'Pencil',
-    eyebrow: 'Draw this · the table on page 107',
-    eyebrowFr: 'À dessiner · le tableau de la page 107',
+    eyebrow: 'Draw this · books closed',
+    eyebrowFr: 'À dessiner · livres fermés',
     title: 'Copy and Complete',
     titleFr: 'Recopie et complète',
     inlineSvg: DIAGRAMS.TABLE_BLANK,
     drawThis: true,
-    caption: 'Copy the table. Fill the empty boxes **from memory**, with your own examples.',
-    captionFr: 'Recopie le tableau. Remplis les cases vides **de mémoire**, avec tes propres exemples.',
+    caption: 'Copy the table. Fill the empty boxes **from memory**. One example is done for you.',
+    captionFr: 'Recopie le tableau. Remplis les cases vides **de mémoire**. Un exemple est déjà donné.',
   },
 
   // 18. The answers
@@ -477,8 +483,8 @@ export const slides = [
     title: 'Seven on One Bus',
     titleFr: 'Sept dans un seul bus',
     inlineSvg: DIAGRAMS.BUS,
-    caption: 'Read each label aloud, like this: "**kinetic**: the bus is moving".',
-    captionFr: 'Lis chaque étiquette à voix haute, comme ceci : « **kinetic**: the bus is moving ».',
+    caption: 'Read each label aloud: "**kinetic** – the bus is moving".',
+    captionFr: 'Lis chaque étiquette à voix haute : « **kinetic** – the bus is moving ».',
   },
 
   // 20. Their turn: the last shuttle launch, with sound
@@ -486,31 +492,31 @@ export const slides = [
     layout: 'split',
     accent: GREEN,
     icon: 'Clapperboard',
-    eyebrow: 'Your turn · whiteboards',
-    eyebrowFr: 'À toi · ardoises',
+    eyebrow: 'Activity · page 109',
+    eyebrowFr: 'Activité · page 109',
     title: 'Find Them in a Launch',
     titleFr: 'Trouve-les dans un décollage',
     ratio: 40,
     widget: LaunchClip,
-    content: 'Watch and **listen**. Write every store and transfer you find, like the bus: **sound: the engines roar**.',
-    contentFr: 'Regarde et **écoute**. Écris chaque stock et chaque transfert, comme pour le bus : **sound: the engines roar**.',
+    content: 'Watch and **listen**. Write every store and transfer you find, like the bus.\n\nExample: **sound** – the engines roar.',
+    contentFr: 'Regarde et **écoute**. Écris chaque stock et chaque transfert, comme pour le bus.\n\nExemple : **sound** – the engines roar.',
     reveal: {
       label: 'Mr Bowen’s list',
       labelFr: 'La liste de M. Bowen',
       answer:
-        '**chemical:** the fuel in the orange tank\n' +
-        '**kinetic:** it moves\n' +
-        '**gravitational potential:** it goes up\n' +
-        '**thermal:** hot flames\n' +
-        '**light:** bright flames\n' +
-        '**sound:** the roar',
+        '**chemical** – the fuel in the orange tank\n' +
+        '**kinetic** – it moves\n' +
+        '**gravitational potential** – it goes up\n' +
+        '**thermal** – hot flames\n' +
+        '**light** – bright flames\n' +
+        '**sound** – the roar',
       answerFr:
-        '**chemical :** le carburant du réservoir orange\n' +
-        '**kinetic :** elle bouge\n' +
-        '**gravitational potential :** elle monte\n' +
-        '**thermal :** des flammes chaudes\n' +
-        '**light :** des flammes brillantes\n' +
-        '**sound :** le grondement',
+        '**chemical** – le carburant du réservoir orange\n' +
+        '**kinetic** – elle bouge\n' +
+        '**gravitational potential** – elle monte\n' +
+        '**thermal** – des flammes chaudes\n' +
+        '**light** – des flammes brillantes\n' +
+        '**sound** – le grondement',
     },
   },
 
@@ -525,8 +531,8 @@ export const slides = [
     title: 'Which Keep Their Energy?',
     titleFr: 'Lesquels gardent leur énergie ?',
     inlineSvg: DIAGRAMS.KEEP_ASK,
-    caption: '**Left hand**: it keeps its energy a long time. **Right hand**: not for long.',
-    captionFr: '**Main gauche** : il garde son énergie longtemps. **Main droite** : pas longtemps.',
+    caption: 'Mr Bowen points to each photo. Everyone votes **at once**.',
+    captionFr: 'M. Bowen montre chaque photo. Tout le monde vote **en même temps**.',
   },
 
   // 22. Storing energy (write)
@@ -537,16 +543,24 @@ export const slides = [
     eyebrow: 'Storing energy',
     eyebrowFr: 'Stocker l’énergie',
     title: 'Some Stores Last Longer',
-    titleFr: 'Certains stocks durent plus',
+    titleFr: 'Certains stocks durent plus longtemps',
     ratio: 40,
     inlineSvg: DIAGRAMS.KEEP_SORTED,
-    content: 'Coal and oil formed **millions of years** ago. They still store chemical energy!',
-    contentFr: 'Le charbon et le pétrole se sont formés il y a des **millions d’années**. Ils stockent toujours de l’énergie chimique !',
+    content: 'Coal and oil formed **millions of years** ago, and they still store energy!',
+    contentFr: 'Le charbon et le pétrole datent de **millions d’années**, et stockent toujours de l’énergie !',
     notes: [
       {
         tone: 'write',
         text: 'Chemical and gravitational potential stores can last a **long time**.\nThermal and kinetic stores do **not** last long.',
-        textFr: 'Les stocks chimiques et potentiels de pesanteur peuvent durer **longtemps**.\nLes stocks thermiques et cinétiques ne durent **pas** longtemps.',
+        textFr: 'L’énergie chimique et l’énergie potentielle de pesanteur se gardent **longtemps**.\nL’énergie thermique et l’énergie cinétique, **non**.',
+      },
+      {
+        tone: 'task',
+        badge: 'Watch',
+        badgeFr: 'Regarde',
+        icon: 'Hand',
+        text: 'Mr Bowen drops a tennis ball. Count the bounces.',
+        textFr: 'M. Bowen lâche une balle de tennis. Compte les rebonds.',
       },
     ],
   },
@@ -639,10 +653,10 @@ export const slides = [
     title: 'Question 5',
     titleFr: 'Question 5',
     content:
-      'The world has more people every year, and countries like Vietnam are growing fast.\n\n' +
+      'The world has more people every year, and countries like Vietnam are developing fast: more cities and factories.\n\n' +
       'How does this change the energy we use? Use stores and transfers in your answer.',
     contentFr:
-      'Il y a chaque année plus de gens sur Terre, et des pays comme le Vietnam se développent vite.\n\n' +
+      'Il y a chaque année plus de gens sur Terre, et des pays comme le Vietnam se développent vite : plus de villes et d’usines.\n\n' +
       'Qu’est-ce que ça change à l’énergie qu’on utilise ? Parle de stocks et de transferts.',
     reveal: {
       label: 'Ideas',
@@ -685,6 +699,6 @@ export const slides = [
     title: 'Lesson Complete!',
     titleFr: 'Leçon terminée !',
     subtitle: 'Exit question: name the energy store in a **battery**, a **squeezed** sponge and a **hot** iron.',
-    subtitleFr: 'Question de sortie : nomme le stock d’énergie dans une **pile**, une éponge **écrasée** et un fer à repasser **chaud**.',
+    subtitleFr: 'Question de sortie : nomme le stock d’énergie dans une **pile**, une éponge **comprimée** et un fer à repasser **chaud**.',
   },
 ]
