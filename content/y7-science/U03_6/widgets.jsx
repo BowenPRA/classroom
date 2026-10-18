@@ -80,17 +80,17 @@ const GAS = [
   {
     img: flame, en: 'it burns', capFr: 'il brûle', name: ['thermal'], fr: 'thermique',
     say: 'Burning changes chemical energy to thermal energy.',
-    sayFr: 'La combustion change l’énergie chimique en énergie thermique.',
+    sayFr: 'La combustion transforme l’énergie chimique en énergie thermique.',
   },
   {
     img: turbine, en: 'it spins', capFr: 'ça tourne', name: ['kinetic'], fr: 'cinétique',
     say: 'Thermal energy changes to kinetic energy: the generators spin.',
-    sayFr: 'L’énergie thermique devient cinétique : les générateurs tournent.',
+    sayFr: 'L’énergie thermique se transforme en énergie cinétique.',
   },
   {
     img: pylons, en: 'wires', capFr: 'les câbles', name: ['electrical'], fr: 'électrique',
     say: 'The generators change kinetic energy to electrical energy.',
-    sayFr: 'Les générateurs changent l’énergie cinétique en électrique.',
+    sayFr: 'Les générateurs transforment l’énergie cinétique en électrique.',
   },
 ]
 
@@ -108,7 +108,7 @@ const DAM = [
   {
     img: hbwires, en: 'wires', capFr: 'les câbles', name: ['electrical'], fr: 'électrique',
     say: 'The generators change kinetic energy to electrical energy.',
-    sayFr: 'Les générateurs changent l’énergie cinétique en électrique.',
+    sayFr: 'Les générateurs transforment l’énergie cinétique en électrique.',
   },
 ]
 
@@ -225,11 +225,14 @@ const PARTS = [
 
 export function PageTurner({ lang = 'en', isDisplayMode = false }) {
   const [part, setPart] = useState(0)
-  const [go, setGo] = useState(false) // autoplay only after a button press
+  // Counts presses: autoplay only after the first, and a new key on every
+  // press, so pressing the same part again replays it from its start
+  // (the same fix as 3.1's VacuumClip, e28f516).
+  const [plays, setPlays] = useState(0)
   const [open, setOpen] = useState(false)
   const p = PARTS[part]
-  const src = `https://www.youtube-nocookie.com/embed/${FILM_ID}?start=${p.start}&end=${p.end}&rel=0&modestbranding=1&playsinline=1${go ? '&autoplay=1' : ''}`
-  const play = (i) => { setPart(i); setGo(true); setOpen(false) }
+  const src = `https://www.youtube-nocookie.com/embed/${FILM_ID}?start=${p.start}&end=${p.end}&rel=0&modestbranding=1&playsinline=1${plays ? '&autoplay=1' : ''}`
+  const play = (i) => { setPart(i); setPlays((n) => n + 1); setOpen(false) }
   const big = isDisplayMode
 
   return (
@@ -237,7 +240,7 @@ export function PageTurner({ lang = 'en', isDisplayMode = false }) {
       <div className="flex-1 min-h-0 flex items-stretch justify-center gap-4">
         <div className="h-full max-w-[64%] rounded-xl overflow-hidden bg-black shrink-0" style={{ aspectRatio: '16 / 9' }}>
           <iframe
-            key={`${p.key}-${go}`}
+            key={`${p.key}-${plays}`}
             className="w-full h-full"
             src={src}
             title={t(lang, 'The Page Turner, a chain-reaction machine by Joseph Herscher', 'The Page Turner, une machine en réaction en chaîne de Joseph Herscher')}
@@ -268,7 +271,7 @@ export function PageTurner({ lang = 'en', isDisplayMode = false }) {
       </div>
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap">
         {PARTS.map((q, i) => (
-          <Btn key={q.key} tone={part === i && go ? 'orange' : 'slate'} icon={q.icon} onClick={() => play(i)}>{t(lang, q.en, q.fr)}</Btn>
+          <Btn key={q.key} tone={part === i && plays ? 'orange' : 'slate'} icon={q.icon} onClick={() => play(i)}>{t(lang, q.en, q.fr)}</Btn>
         ))}
       </div>
     </div>

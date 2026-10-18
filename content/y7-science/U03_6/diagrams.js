@@ -5,7 +5,7 @@
 //     EIGHT          — the eight stores and transfers from 3.5, the book's own names
 //   Changes
 //     HANDS_CHAIN    — breakfast → moving hands → warm hands: chemical, kinetic, thermal
-//     DRAW_DIAGRAMS  — Draw This: the book's fire and television diagrams (p.113)
+//     DRAW_DIAGRAMS  — Draw This: the book's television diagram (p.113), with how to say it
 //     WORDS          — English check: change, process, event, everyday vs science
 //     PROCESS_EVENT  — burning goes on (process); a book falls (event), with chains
 //     YAGI           — Typhoon Yagi from space and a fallen tree in Hà Nội (photos)
@@ -239,26 +239,18 @@ export const DIAGRAMS = {
   DRAW_DIAGRAMS: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
 
-    <text x="40" y="70" font-family="${FONT}" font-size="28" font-weight="bold" fill="${KEY}">A wood fire</text>
-    ${box(40, 100, 220, 76)}
-    <text x="150" y="149" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">chemical</text>
-    ${arrow(268, 138, 402, 138, INK, 4, 18)}
-    ${box(410, 100, 220, 76)}
-    <text x="520" y="149" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">thermal</text>
-    ${fire(738, 168, 0.62)}
+    <text x="40" y="66" font-family="${FONT}" font-size="30" font-weight="bold" fill="${KEY}">A television</text>
+    ${tv(96, 120)}
+    ${box(40, 252, 250, 90)}
+    <text x="165" y="310" font-family="${FONT}" font-size="36" font-weight="bold" fill="${INK}" text-anchor="middle">electrical</text>
+    ${arrow(298, 280, 472, 184, INK, 5, 22)}
+    ${arrow(298, 314, 472, 410, INK, 5, 22)}
+    ${box(480, 124, 300, 90)}
+    <text x="630" y="182" font-family="${FONT}" font-size="36" font-weight="bold" fill="${INK}" text-anchor="middle">sound</text>
+    ${box(480, 380, 300, 90)}
+    <text x="630" y="438" font-family="${FONT}" font-size="36" font-weight="bold" fill="${INK}" text-anchor="middle">light</text>
 
-    <line x1="40" y1="222" x2="800" y2="222" stroke="${RULE}" stroke-width="2"/>
-
-    <text x="40" y="282" font-family="${FONT}" font-size="28" font-weight="bold" fill="${KEY}">A television</text>
-    ${box(40, 378, 220, 76)}
-    <text x="150" y="427" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">electrical</text>
-    ${arrow(266, 404, 402, 350, INK, 4, 18)}
-    ${arrow(266, 428, 402, 482, INK, 4, 18)}
-    ${box(410, 304, 220, 76)}
-    <text x="520" y="353" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">sound</text>
-    ${box(410, 448, 220, 76)}
-    <text x="520" y="497" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">light</text>
-    ${tv(684, 368)}
+    <text x="420" y="530" font-family="${FONT}" font-size="26" fill="${KEY}" text-anchor="middle">say: "electrical to sound and light"</text>
   </svg>`,
 
   WORDS: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
@@ -272,7 +264,7 @@ export const DIAGRAMS = {
     <line x1="40" y1="212" x2="344" y2="212" stroke="${RULE}" stroke-width="2"/>
     <text x="40" y="250" font-family="${FONT}" font-size="18" font-weight="bold" fill="${TEAL}">IN SCIENCE</text>
     <text x="40" y="284" font-family="${FONT}" font-size="24" fill="${INK}">Energy changes from</text>
-    <text x="40" y="314" font-family="${FONT}" font-size="24" fill="${INK}">one store to another:</text>
+    <text x="40" y="314" font-family="${FONT}" font-size="24" fill="${INK}">one kind to another:</text>
     <text x="40" y="360" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}">chemical → thermal</text>
 
     <rect x="384" y="16" width="352" height="408" rx="14" fill="#ffffff" stroke="${RULE}" stroke-width="2"/>
@@ -282,8 +274,8 @@ export const DIAGRAMS = {
     <text x="408" y="182" font-family="${FONT}" font-size="24" fill="${INK}">process: many steps.</text>
     <line x1="408" y1="212" x2="712" y2="212" stroke="${RULE}" stroke-width="2"/>
     <text x="408" y="250" font-family="${FONT}" font-size="18" font-weight="bold" fill="${TEAL}">IN SCIENCE</text>
-    <text x="408" y="284" font-family="${FONT}" font-size="24" fill="${INK}">Something that goes on</text>
-    <text x="408" y="314" font-family="${FONT}" font-size="24" fill="${INK}">and changes energy:</text>
+    <text x="408" y="284" font-family="${FONT}" font-size="24" fill="${INK}">Something that keeps</text>
+    <text x="408" y="314" font-family="${FONT}" font-size="24" fill="${INK}">going and changes energy:</text>
     <text x="408" y="360" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}">burning</text>
 
     <rect x="752" y="16" width="352" height="408" rx="14" fill="#ffffff" stroke="${RULE}" stroke-width="2"/>
@@ -294,7 +286,7 @@ export const DIAGRAMS = {
     <line x1="776" y1="212" x2="1080" y2="212" stroke="${RULE}" stroke-width="2"/>
     <text x="776" y="250" font-family="${FONT}" font-size="18" font-weight="bold" fill="${TEAL}">IN SCIENCE</text>
     <text x="776" y="284" font-family="${FONT}" font-size="24" fill="${INK}">Something that happens</text>
-    <text x="776" y="314" font-family="${FONT}" font-size="24" fill="${INK}">and changes energy:</text>
+    <text x="776" y="314" font-family="${FONT}" font-size="24" fill="${INK}">once and changes energy:</text>
     <text x="776" y="360" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}">a book falls</text>
   </svg>`,
 
@@ -303,7 +295,7 @@ export const DIAGRAMS = {
 
     <rect x="16" y="16" width="396" height="528" rx="14" fill="#fbfcfd" stroke="${RULE}" stroke-width="2"/>
     <text x="214" y="62" font-family="${FONT}" font-size="34" font-weight="bold" fill="${KEY}" text-anchor="middle">process</text>
-    <text x="214" y="96" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="middle">burning goes on</text>
+    <text x="214" y="96" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="middle">burning: it keeps going</text>
     ${fire(214, 262, 0.95)}
     ${box(64, 300, 300, 64)}
     <text x="214" y="343" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">chemical</text>
@@ -313,7 +305,7 @@ export const DIAGRAMS = {
 
     <rect x="428" y="16" width="396" height="528" rx="14" fill="#fbfcfd" stroke="${RULE}" stroke-width="2"/>
     <text x="626" y="62" font-family="${FONT}" font-size="34" font-weight="bold" fill="${KEY}" text-anchor="middle">event</text>
-    <text x="626" y="96" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="middle">a book falls</text>
+    <text x="626" y="96" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="middle">a book falls: it happens once</text>
     ${shelf(470, 150, 150)}
     <rect x="510" y="112" width="26" height="38" rx="2" fill="${RED}" stroke="${INK}" stroke-width="2.5"/>
     <rect x="538" y="118" width="22" height="32" rx="2" fill="${BLUE}" stroke="${INK}" stroke-width="2.5"/>

@@ -6,9 +6,15 @@
 // (meta.vietnamese: false), so every string has an …Fr twin and no …Vn twin.
 // The store names are the book's 3.5 names, in English everywhere: kinetic,
 // chemical, thermal, elastic potential, gravitational potential, electrical,
-// sound, light. The French gives its own name beside them.
+// sound, light. The French gives its own name beside them, and says
+// "transformer" for the English "change".
 //
-// ONE PERIOD. Six book pages, one 50-minute lesson, 25 slides.
+// ONE LESSON, THEN A LAB SECTION. Slides 1–23 are the 50-minute lesson and end
+// on their own exit slide. Slides 24–31 are "Lab day: Candle Energy", the
+// book's Think like a scientist, for whenever the class does the practical —
+// its own starter, method, safety, questions and wrap-up. The lesson only sets
+// the experiment up and has the class commit to a guess (slide 21), so it does
+// not spoil the lab; the sample results (slide 29) are backup data there.
 //
 // ONE IDEA HOLDS IT TOGETHER: FOLLOW THE ENERGY. Every example asks the same two
 // things — where did the energy come from, and what did it change to? — and
@@ -17,21 +23,18 @@
 // predicts it one press at a time (the gas power station, then Vietnam's Hòa
 // Bình dam on whiteboards), names it in a film (The Page Turner), and meets the
 // harmful side (Typhoon Yagi). The book's questions 1–3 are done on
-// whiteboards, and its Think like a scientist (candle heating cooking oil) is
-// planned and evaluated on screen with Mr Bowen's results: why not stir with
-// the thermometer, where did the energy come from, bar chart or line graph.
-// The book's Activity (a display about freezing water) is in plan.js as an
-// extension: there is no room for it in one period.
+// whiteboards. The book's Activity (a display about freezing water) is in
+// plan.js as an extension.
 //
 // NOT LIKE 3.1. 3.1 ran vote → desk test → film → story. This deck runs
 // feel it → see it in a photo → predict it, one step at a time → draw it →
-// spot it in a film → plan an experiment, and keeps its one vote for the
-// graph, where two good-looking answers really compete.
+// spot it in a film → plan an experiment and guess, and keeps its one vote
+// for the lab (bar chart or line graph), where two good answers compete.
 //
 // COPY-DOWN, ON A BUDGET: 4 short write panels (energy is changed or
 // transferred · energy diagram · process and event · useful energy change)
-// and 2 small drawings (the fire and television diagrams; the power station
-// chain). Everything else is on whiteboards or said aloud.
+// and 2 small drawings (the television diagram; the power station chain).
+// Everything else is on whiteboards or said aloud.
 //
 // WRITING RULE (the 2.5 density): short sentences, one idea each, and the body
 // text never repeats the write note, a label or the caption.
@@ -47,8 +50,13 @@ const PURPLE = '#5c2483'
 const ORANGE = '#c25e12'
 const GREEN = '#4a8b23'
 const BLUE = '#1a5fa8'
+const RED = '#c8102e'
 
 export const slides = [
+  // ══════════════════════════════════════════════════════════════════════════
+  // THE LESSON (one period, slides 1–23)
+  // ══════════════════════════════════════════════════════════════════════════
+
   // ── START: WHAT DO YOU REMEMBER? ────────────────────────────────────────
   // 1. Hero + the book's Getting started
   {
@@ -102,19 +110,39 @@ export const slides = [
       label: 'What changed?',
       labelFr: 'Qu’est-ce qui a changé ?',
       answer: '**Warm hands!** Movement (**kinetic** energy) changed to **thermal** energy.',
-      answerFr: '**Mains chaudes !** L’énergie **cinétique** (le mouvement) est devenue **thermique**.',
+      answerFr: '**Mains chaudes !** L’énergie **cinétique** (le mouvement) s’est transformée en **thermique**.',
     },
   },
 
-  // 4. The book's first sentence (Question 1), with the chain drawn the book's way
+  // 4. The book's Question 1, asked before it is answered
+  {
+    layout: 'statement',
+    accent: PURPLE,
+    eyebrow: 'Whiteboards',
+    eyebrowFr: 'Ardoises',
+    title: 'Finish the Sentence',
+    titleFr: 'Complète la phrase',
+    text: 'When something happens, energy is ______ or ______.',
+    textFr: 'When something happens, energy is ______ or ______.',
+    sub: 'Question 1: finish it on your whiteboard.',
+    subFr: 'Question 1 : complète-la en anglais sur ton ardoise.',
+    reveal: {
+      label: 'Answer',
+      labelFr: 'Réponse',
+      answer: '**changed** · **transferred**',
+      answerFr: '**changed** (transformée) · **transferred** (transférée)',
+    },
+  },
+
+  // 5. The key word, with the chain drawn the book's way
   {
     layout: 'split',
     accent: ORANGE,
     icon: 'Pencil',
-    eyebrow: 'Key word · Question 1',
-    eyebrowFr: 'Mot clé · Question 1',
+    eyebrow: 'Key word',
+    eyebrowFr: 'Mot clé',
     title: 'Energy Changes',
-    titleFr: 'L’énergie change',
+    titleFr: 'L’énergie se transforme',
     ratio: 40,
     inlineSvg: DIAGRAMS.HANDS_CHAIN,
     content: 'Your **breakfast** gave your hands the energy to move.',
@@ -123,12 +151,12 @@ export const slides = [
       {
         tone: 'write',
         text: 'When something happens, energy is **changed** or **transferred**.\nRubbing your hands changes **kinetic** energy to **thermal** energy.',
-        textFr: 'Quand quelque chose se passe, l’énergie est **changée** (changed) ou **transférée** (transferred).\nSe frotter les mains change l’énergie **cinétique** en énergie **thermique**.',
+        textFr: 'Quand quelque chose se passe, l’énergie est **transformée** (changed) ou **transférée** (transferred).\nSe frotter les mains transforme l’énergie **cinétique** en énergie **thermique**.',
       },
     ],
   },
 
-  // 5. The book's cooking pot: ask, then follow the energy
+  // 6. The book's cooking pot: ask, then follow the energy
   {
     layout: 'split',
     accent: TEAL,
@@ -139,17 +167,17 @@ export const slides = [
     titleFr: 'La marmite',
     ratio: 40,
     image: pot,
-    content: 'Pots on a wood fire.\n\nWhere does the energy **come from**? Where does it **go**?',
-    contentFr: 'Des marmites sur un feu de bois.\n\nD’où **vient** l’énergie ? Où **va**-t-elle ?',
+    content: 'Where does the energy **come from**? Where does it **go**?',
+    contentFr: 'D’où **vient** l’énergie ? Où **va**-t-elle ?',
     reveal: {
       label: 'Follow the energy',
       labelFr: 'Suis l’énergie',
       answer: '**Wood** stores **chemical** energy.\n**Burning** changes it to **thermal** energy.\nThe thermal energy is **transferred** to the pot and the food.',
-      answerFr: 'Le **bois** stocke de l’énergie **chimique**.\nLa **combustion** la change en énergie **thermique**.\nL’énergie thermique est **transférée** à la marmite et à la nourriture.',
+      answerFr: 'Le **bois** stocke de l’énergie **chimique**.\nLa **combustion** la transforme en énergie **thermique**.\nL’énergie thermique est **transférée** à la marmite et à la nourriture.',
     },
   },
 
-  // 6. The book's stairs, acted out
+  // 7. The book's stairs, acted out
   {
     layout: 'split',
     accent: GREEN,
@@ -161,7 +189,7 @@ export const slides = [
     ratio: 40,
     image: stairs,
     content: 'Batu Caves, Malaysia: **272 steps**.\n\nStand up, slowly. Your head is now **higher**.',
-    contentFr: 'Batu Caves, Malaisie : **272 marches**.\n\nLève-toi, lentement. Ta tête est maintenant plus **haut**.',
+    contentFr: 'Batu Caves, Malaisie : **272 marches**.\n\nLève-toi, lentement. Ta tête est maintenant plus **haute**.',
     reveal: {
       label: 'Three energies',
       labelFr: 'Trois énergies',
@@ -171,7 +199,7 @@ export const slides = [
   },
 
   // ── DRAW IT THE BOOK'S WAY ──────────────────────────────────────────────
-  // 7. Draw This: the book's fire and television diagrams (p.113)
+  // 8. Draw This: the book's television diagram (p.113), and how to say it
   {
     layout: 'split',
     accent: ORANGE,
@@ -184,17 +212,17 @@ export const slides = [
     inlineSvg: DIAGRAMS.DRAW_DIAGRAMS,
     drawThis: true,
     content: 'A television changes **one** energy into **two**.',
-    contentFr: 'Une télévision change **une** énergie en **deux**.',
+    contentFr: 'Une télévision transforme **une** énergie en **deux**.',
     notes: [
       {
         tone: 'write',
         text: '**Energy diagram:** write each energy in a **box**. Draw an **arrow** for each change.',
-        textFr: '**Diagramme d’énergie (energy diagram) :** écris chaque énergie dans une **case**. Trace une **flèche** pour chaque changement.',
+        textFr: '**Diagramme d’énergie (energy diagram) :** écris chaque énergie dans une **case**. Trace une **flèche** pour chaque transformation.',
       },
     ],
   },
 
-  // 8. The book's power station, one store at a time — then draw the chain
+  // 9. The book's power station, one store at a time — then draw the chain
   {
     layout: 'showcase',
     accent: TEAL,
@@ -209,7 +237,7 @@ export const slides = [
     captionFr: 'Dis l’énergie suivante **avant** le clic de M. Bowen. Puis dessine la chaîne.',
   },
 
-  // 9. Your turn: Vietnam's Hòa Bình hydropower dam
+  // 10. Your turn: Vietnam's Hòa Bình hydropower dam
   {
     layout: 'showcase',
     accent: GREEN,
@@ -224,7 +252,7 @@ export const slides = [
   },
 
   // ── NOT ALWAYS HELPFUL ──────────────────────────────────────────────────
-  // 10. Typhoon Yagi, September 2024
+  // 11. Typhoon Yagi, September 2024
   {
     layout: 'showcase',
     accent: TEAL,
@@ -234,11 +262,11 @@ export const slides = [
     title: 'Typhoon Yagi, 2024',
     titleFr: 'Le typhon Yagi, 2024',
     inlineSvg: DIAGRAMS.YAGI,
-    caption: 'Strong wind can transfer energy in a damaging way. **Thousands** of trees fell in Hà Nội.',
-    captionFr: 'Un vent fort peut transférer de l’énergie et faire des dégâts. Des **milliers** d’arbres sont tombés à Hà Nội.',
+    caption: 'Strong wind can transfer energy in a damaging way. A tree falls: what energy change?',
+    captionFr: 'Un vent fort peut transférer de l’énergie et faire des dégâts. Un arbre tombe : quelle transformation ?',
   },
 
-  // 11. Question only: where did the wind's energy come from?
+  // 12. Question only: where did the wind's energy come from?
   {
     layout: 'statement',
     accent: PURPLE,
@@ -253,13 +281,13 @@ export const slides = [
     reveal: {
       label: 'Answer',
       labelFr: 'Réponse',
-      answer: 'From the **warm sea**. Its **thermal** energy changes to **kinetic** energy in the wind.',
-      answerFr: 'De la **mer chaude** : son énergie **thermique** devient **cinétique** dans le vent.',
+      answer: 'From the **warm sea** (the Sun heated it). Its **thermal** energy changes to **kinetic** energy in the wind.',
+      answerFr: 'De la **mer chaude** (le Soleil l’a chauffée) : son énergie **thermique** se transforme en **cinétique** dans le vent.',
     },
   },
 
   // ── THE KEY WORDS: CHANGE, PROCESS, EVENT ───────────────────────────────
-  // 12. English check: three words that mean something else at home
+  // 13. English check: three words that mean something else at home
   {
     layout: 'showcase',
     accent: PURPLE,
@@ -269,11 +297,11 @@ export const slides = [
     title: 'Change, Process, Event',
     titleFr: 'Change, process, event',
     inlineSvg: DIAGRAMS.WORDS,
-    caption: 'Same words. A different meaning in science.',
-    captionFr: 'Mêmes mots, autre sens en sciences : change = changer, process = processus, event = événement.',
+    caption: 'Same words. In science, they are about energy.',
+    captionFr: 'Mêmes mots. En sciences, ils parlent d’énergie : change = transformer, process = processus, event = événement.',
   },
 
-  // 13. Process and event (write), with Mr Bowen's book
+  // 14. Process and event (write), with Mr Bowen's book
   {
     layout: 'split',
     accent: ORANGE,
@@ -289,13 +317,13 @@ export const slides = [
     notes: [
       {
         tone: 'write',
-        text: '**Process:** something that goes on and changes energy, like burning.\n**Event:** something that happens and changes energy, like a book falling.',
-        textFr: '**Processus (process) :** quelque chose qui dure et change l’énergie, comme la combustion.\n**Événement (event) :** quelque chose qui arrive et change l’énergie, comme un livre qui tombe.',
+        text: '**Process:** something that keeps going and changes energy, like burning.\n**Event:** something that happens once and changes energy, like a book falling.',
+        textFr: '**Processus (process) :** quelque chose qui dure et transforme l’énergie, comme la combustion.\n**Événement (event) :** quelque chose qui arrive une fois et transforme l’énergie, comme un livre qui tombe.',
       },
     ],
   },
 
-  // 14. Spot the changes in a film: The Page Turner
+  // 15. Spot the changes in a film: The Page Turner
   {
     layout: 'showcase',
     accent: TEAL,
@@ -305,12 +333,13 @@ export const slides = [
     title: 'The Page Turner',
     titleFr: 'The Page Turner',
     widget: PageTurner,
-    caption: 'A machine to turn one page. After each part, write the energy change.',
-    captionFr: 'Une machine pour tourner une page. Après chaque partie, écris le changement d’énergie.',
+    caption: 'A machine to turn one page.',
+    captionFr: 'Une machine pour tourner une page.',
   },
 
   // ── USEFUL CHANGES AND THE BOOK'S QUESTIONS ─────────────────────────────
-  // 15. Useful energy change (write): the book's own candle
+  // 16. Useful energy change (write): the book's own candle, lit at the front.
+  // Ask "what do we want from it?" BEFORE showing the slide (the note answers it).
   {
     layout: 'split',
     accent: ORANGE,
@@ -321,18 +350,18 @@ export const slides = [
     titleFr: 'Un changement d’énergie utile',
     ratio: 45,
     image: candle,
-    content: 'Mr Bowen lights a candle. What do we **want** from it?',
-    contentFr: 'M. Bowen allume une bougie. Qu’est-ce qu’on **attend** d’elle ?',
+    content: 'It gives light **and** heat. We light it for the **light**.',
+    contentFr: 'Elle donne de la lumière **et** de la chaleur. On l’allume pour la **lumière**.',
     notes: [
       {
         tone: 'write',
         text: '**Useful energy change:** energy is changed in a way that we **want**.\nA candle: **chemical to light**.',
-        textFr: '**Changement d’énergie utile (useful energy change) :** l’énergie change comme on le **veut**.\nUne bougie : **chimique → lumineuse** (chemical to light).',
+        textFr: '**Changement d’énergie utile (useful energy change) :** l’énergie est transformée comme on le **veut**.\nUne bougie : **chimique → lumineuse** (chemical to light).',
       },
     ],
   },
 
-  // 16. Question 2, with a lamp and a phone at the front
+  // 17. Question 2, with a lamp and a phone at the front
   {
     layout: 'callout',
     accent: GREEN,
@@ -343,23 +372,19 @@ export const slides = [
     titleFr: 'Question 2',
     content:
       'Write the **useful** energy change, like **chemical to light**.\n\n' +
-      '**a** an electric lamp\n' +
-      '**b** a bus\n' +
-      '**c** a radio',
+      '**a** an electric lamp · **b** a bus · **c** a radio',
     contentFr:
       'Écris le changement d’énergie **utile**, comme **chemical to light**.\n\n' +
-      '**a** une lampe électrique\n' +
-      '**b** un bus\n' +
-      '**c** une radio',
+      '**a** une lampe électrique · **b** un bus · **c** une radio',
     reveal: {
       label: 'Check your answers',
       labelFr: 'Vérifie tes réponses',
       answer: '**a** electrical to light · **b** chemical to kinetic · **c** electrical to sound',
-      answerFr: '**a** électrique → lumineuse · **b** chimique → cinétique · **c** électrique → sonore',
+      answerFr: '**a** electrical to light (électrique → lumineuse)\n**b** chemical to kinetic (chimique → cinétique)\n**c** electrical to sound (électrique → sonore)',
     },
   },
 
-  // 17. Question 3 a–b: draw the diagrams on whiteboards
+  // 18. Question 3 a–b: draw a, say b (the fire chain has been drawn already)
   {
     layout: 'callout',
     accent: GREEN,
@@ -369,22 +394,22 @@ export const slides = [
     title: 'Question 3, Parts a and b',
     titleFr: 'Question 3, a et b',
     content:
-      'Draw an energy diagram for:\n\n' +
-      '**a** a motorcycle that uses petrol to move\n' +
-      '**b** a wood fire for cooking',
+      'Energy diagrams, on your whiteboard.\n\n' +
+      '**a** a motorcycle that uses petrol to move: **draw it**\n' +
+      '**b** a wood fire for cooking: **say it**',
     contentFr:
-      'Dessine un diagramme d’énergie pour :\n\n' +
-      '**a** une moto qui roule à l’essence\n' +
-      '**b** un feu de bois pour cuisiner',
+      'Des diagrammes d’énergie, sur ton ardoise.\n\n' +
+      '**a** une moto qui roule à l’essence : **dessine-le**\n' +
+      '**b** un feu de bois pour cuisiner : **dis-le**',
     reveal: {
       label: 'Check your answers',
       labelFr: 'Vérifie tes réponses',
-      answer: '**a** chemical → kinetic\n**b** chemical → thermal',
-      answerFr: '**a** chimique → cinétique\n**b** chimique → thermique',
+      answer: '**a** chemical → kinetic\n**b** "chemical to thermal"',
+      answerFr: '**a** chimique → cinétique\n**b** « chemical to thermal » (chimique → thermique)',
     },
   },
 
-  // 18. Question 3 c–d
+  // 19. Question 3 c–d
   {
     layout: 'callout',
     accent: GREEN,
@@ -409,8 +434,8 @@ export const slides = [
     },
   },
 
-  // ── THINK LIKE A SCIENTIST: CANDLE ENERGY ───────────────────────────────
-  // 19. The set-up, and why not stir with the thermometer (Question 1)
+  // ── THINK LIKE A SCIENTIST: SET IT UP AND GUESS ─────────────────────────
+  // 20. The set-up, and why not stir with the thermometer (Question 1)
   {
     layout: 'split',
     accent: PURPLE,
@@ -421,19 +446,133 @@ export const slides = [
     titleFr: 'L’énergie d’une bougie',
     ratio: 40,
     inlineSvg: DIAGRAMS.CANDLE_SETUP,
-    content: 'Heat cooking oil with a candle. Read the temperature **every minute**. Stop at **10 °C** hotter.',
-    contentFr: 'Chauffe de l’huile avec une bougie. Lis la température **chaque minute**. Arrête à **10 °C** de plus.',
+    content: 'Heat cooking oil with a candle. Read the temperature **every minute**. Stop at **10 °C** hotter.',
+    contentFr: 'Chauffe de l’huile avec une bougie. Lis la température **chaque minute**. Arrête à **10 °C** de plus.',
     reveal: {
       prompt: 'Stir with the rod, **not** the thermometer. Why?',
-      promptFr: 'Mélange avec la baguette, **pas** avec le thermomètre. Pourquoi ?',
+      promptFr: 'Remue avec l’agitateur, **pas** avec le thermomètre. Pourquoi ?',
       label: 'Answer',
       labelFr: 'Réponse',
       answer: 'It can **break**: it is thin glass. It is for measuring, not stirring.',
-      answerFr: 'Il peut **casser** : c’est du verre fin. Il sert à mesurer, pas à mélanger.',
+      answerFr: 'Il peut **casser** : c’est du verre fin. Il sert à mesurer, pas à remuer.',
     },
   },
 
-  // 20. Questions 2 and 3: where did the energy come from?
+  // 21. Commit to a guess before any data exists
+  {
+    layout: 'statement',
+    accent: PURPLE,
+    eyebrow: 'Predict',
+    eyebrowFr: 'Prédis',
+    title: 'How Long Will It Take?',
+    titleFr: 'Combien de temps ?',
+    text: 'How many **minutes** will one candle take to make the oil **10 °C** hotter?',
+    textFr: 'Combien de **minutes** faut-il à une bougie pour chauffer l’huile de **10 °C** ?',
+    sub: 'Write your guess in your notebook. The lab will tell us.',
+    subFr: 'Écris ton estimation dans ton cahier. Le labo nous le dira.',
+  },
+
+  // ── CLOSE ───────────────────────────────────────────────────────────────
+  // 22. Checklist (the book's summary checklist, plus the key words)
+  {
+    layout: 'stack',
+    variant: 'checklist',
+    accent: TEAL,
+    icon: 'CheckCircle2',
+    columns: 2,
+    eyebrow: 'Before you leave',
+    eyebrowFr: 'Avant de partir',
+    title: 'Can You Do These?',
+    titleFr: 'Sais-tu faire ceci ?',
+    content: '> Check your notebook: **4 written panels** and **2 drawings**.',
+    contentFr: '> Vérifie ton cahier : **4 encadrés recopiés** et **2 dessins**.',
+    items: [
+      { text: 'Say that energy is **changed** or **transferred** when something happens.', textFr: 'Dire que l’énergie est **transformée** ou **transférée** quand quelque chose se passe.' },
+      { text: 'Give **examples** of changes in energy.', textFr: 'Donner des **exemples** de transformations d’énergie.' },
+      { text: 'Draw **diagrams** to show energy changes.', textFr: 'Dessiner des **diagrammes** de transformations d’énergie.' },
+      { text: 'Tell a **process** from an **event**.', textFr: 'Distinguer un **processus** d’un **événement**.' },
+      { text: 'Name a **useful** energy change.', textFr: 'Nommer un changement d’énergie **utile**.' },
+    ],
+  },
+
+  // 23. Exit question
+  {
+    layout: 'hero',
+    color: TEAL,
+    icon: 'CheckCircle2',
+    brand: 'Year 7 Science',
+    brandFr: 'Sciences 7e année',
+    title: 'Lesson Complete!',
+    titleFr: 'Leçon terminée !',
+    subtitle: 'Exit question: draw an energy diagram for a **torch**. Clue: it has a battery.',
+    subtitleFr: 'Question de sortie : dessine un diagramme d’énergie pour une **lampe de poche** (torch). Indice : elle a une pile.',
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // LAB DAY: CANDLE ENERGY (slides 24–31) — the book's Think like a scientist,
+  // pp. 115–116, for the lab period. Its own starter and its own wrap-up.
+  // ══════════════════════════════════════════════════════════════════════════
+
+  // 24. Lab starter: back to the guess
+  {
+    layout: 'hero',
+    color: PURPLE,
+    icon: 'FlaskConical',
+    brand: 'Year 7 Science',
+    brandFr: 'Sciences 7e année',
+    eyebrow: '3.6 · Lab day',
+    eyebrowFr: '3.6 · Jour de labo',
+    title: 'Lab Day: Candle Energy',
+    titleFr: 'Labo : l’énergie d’une bougie',
+    card: {
+      icon: 'Pencil',
+      badge: 'Starter',
+      badgeFr: 'Pour commencer',
+      text: 'Find your guess: how many minutes to make the oil **10 °C** hotter? Tell a partner **why**.',
+      textFr: 'Retrouve ton estimation : combien de minutes pour chauffer l’huile de **10 °C** ? Dis à ton voisin **pourquoi**.',
+    },
+  },
+
+  // 25. The book's method, steps 1–7
+  {
+    layout: 'steps',
+    accent: PURPLE,
+    icon: 'ListOrdered',
+    eyebrow: 'Think like a scientist · page 115',
+    eyebrowFr: 'Pense comme un scientifique · page 115',
+    title: 'The Method',
+    titleFr: 'La méthode',
+    inlineSvg: DIAGRAMS.CANDLE_SETUP,
+    steps: [
+      { text: 'Measure the temperature of the oil. Write it down.', textFr: 'Mesure la température de l’huile. Note-la.' },
+      { text: 'Light the candle under the beaker. Start the timer.', textFr: 'Allume la bougie sous le bécher. Lance le chrono.' },
+      { text: 'Every minute: stir with the **rod**, then write the time and temperature in a **table**.', textFr: 'Chaque minute : remue avec l’**agitateur**, puis note le temps et la température dans un **tableau**.' },
+      { text: 'Stop at **10 °C** hotter. Blow out the candle carefully.', textFr: 'Arrête à **10 °C** de plus. Souffle la bougie avec soin.' },
+    ],
+  },
+
+  // 26. The book's safety box
+  {
+    layout: 'callout',
+    accent: RED,
+    icon: 'ShieldCheck',
+    eyebrow: 'Before you light it',
+    eyebrowFr: 'Avant d’allumer',
+    title: 'Work Safely',
+    titleFr: 'Travaille en sécurité',
+    content:
+      '**Glasses** on. Hair tied back.\n' +
+      '**Candle** on the mat: it must not fall over.\n' +
+      '**Paper** away from the flame.\n' +
+      '**Hot!** Touch nothing until it is cool.',
+    contentFr:
+      '**Lunettes** sur le nez. Cheveux attachés.\n' +
+      '**Bougie** sur la plaque : elle ne doit pas tomber.\n' +
+      '**Papier** loin de la flamme.\n' +
+      '**Chaud !** Ne touche à rien avant que ça refroidisse.',
+  },
+
+  // 27. Questions 2 and 3, after the experiment
   {
     layout: 'statement',
     accent: PURPLE,
@@ -441,19 +580,19 @@ export const slides = [
     eyebrowFr: 'Questions 2 et 3',
     title: 'Where Did It Come From?',
     titleFr: 'D’où vient-elle ?',
-    text: 'The oil got **10 °C** hotter.',
-    textFr: 'L’huile a chauffé de **10 °C**.',
+    text: 'The oil got **10 °C** hotter.',
+    textFr: 'L’huile a chauffé de **10 °C**.',
     sub: 'Where did the energy come from? What happened to the candle?',
     subFr: 'D’où vient l’énergie ? Qu’est-il arrivé à la bougie ?',
     reveal: {
       label: 'Answer',
       labelFr: 'Réponse',
       answer: 'The wax is a fuel: it stores **chemical** energy. Burning changed it to **thermal** energy.\nThe candle got **shorter**: the wax was used up.',
-      answerFr: 'La cire est un combustible : elle stocke de l’énergie **chimique**. La combustion l’a changée en énergie **thermique**.\nLa bougie a **raccourci** : la cire a été utilisée.',
+      answerFr: 'La cire est un combustible : elle stocke de l’énergie **chimique**. La combustion l’a transformée en énergie **thermique**.\nLa bougie a **raccourci** : la cire a été utilisée.',
     },
   },
 
-  // 21. Vote (Question 6): no answer on the slide
+  // 28. Vote (Question 6): no answer on the slide
   {
     layout: 'compare',
     accent: PURPLE,
@@ -462,8 +601,8 @@ export const slides = [
     eyebrowFr: 'Vote avec une main',
     title: 'Bar Chart or Line Graph?',
     titleFr: 'Barres ou courbe ?',
-    text: 'Which shows the candle results better?',
-    textFr: 'Lequel montre le mieux les résultats de la bougie ?',
+    text: 'Which shows your candle results better?',
+    textFr: 'Lequel montre le mieux tes résultats ?',
     columns: [
       {
         heading: 'A · left hand up',
@@ -482,30 +621,30 @@ export const slides = [
     ],
   },
 
-  // 22. Mr Bowen's results: why the line wins
+  // 29. Why the line wins, on sample results (backup if a group's are missing)
   {
     layout: 'split',
     accent: TEAL,
     icon: 'TrendingUp',
-    eyebrow: 'Mr Bowen’s results',
-    eyebrowFr: 'Les résultats de M. Bowen',
+    eyebrow: 'Sample results',
+    eyebrowFr: 'Résultats d’exemple',
     title: 'Why a Line Graph?',
     titleFr: 'Pourquoi une courbe ?',
     ratio: 40,
     inlineSvg: DIAGRAMS.RESULTS_GRAPH,
-    content: '**B.** Time and temperature change **smoothly**. A line shows the **trend**.',
-    contentFr: '**B.** Le temps et la température changent **en continu**. Une courbe montre la **tendance** (trend).',
+    content: '**B.** Time and temperature change **smoothly**: a line shows the **trend**.\n\nDraw yours: temperature on the **vertical** axis.',
+    contentFr: '**B.** Le temps et la température changent **en continu** : une courbe montre la **tendance** (trend).\n\nTrace la tienne : la température sur l’axe **vertical**.',
     reveal: {
-      prompt: 'What was the temperature at **2.5 minutes**?',
-      promptFr: 'Quelle était la température à **2.5 minutes** ?',
+      prompt: 'Here: what was the temperature at **2.5 minutes**?',
+      promptFr: 'Ici : quelle était la température à **2.5 minutes** ?',
       label: 'Answer',
       labelFr: 'Réponse',
-      answer: 'About **29.5 °C**. A bar chart cannot tell you that.',
-      answerFr: 'Environ **29.5 °C**. Un diagramme en barres ne peut pas te le dire.',
+      answer: 'About **29.5 °C**. A bar chart cannot tell you that.',
+      answerFr: 'Environ **29.5 °C**. Un diagramme en barres ne peut pas te le dire.',
     },
   },
 
-  // 23. Questions 4 and 5: not all the energy went into the oil
+  // 30. Questions 4 and 5: not all the energy went into the oil
   {
     layout: 'callout',
     accent: PURPLE,
@@ -528,39 +667,16 @@ export const slides = [
     },
   },
 
-  // ── CLOSE ───────────────────────────────────────────────────────────────
-  // 24. Checklist (the book's summary checklist, plus the key words)
-  {
-    layout: 'stack',
-    variant: 'checklist',
-    accent: TEAL,
-    icon: 'CheckCircle2',
-    columns: 2,
-    eyebrow: 'Before you leave',
-    eyebrowFr: 'Avant de partir',
-    title: 'Can You Do These?',
-    titleFr: 'Sais-tu faire ceci ?',
-    content: '> Check your notebook: **4 written panels** and **2 drawings**.',
-    contentFr: '> Vérifie ton cahier : **4 encadrés recopiés** et **2 dessins**.',
-    items: [
-      { text: 'Say that energy is **changed** or **transferred** when something happens.', textFr: 'Dire que l’énergie est **changée** ou **transférée** quand quelque chose se passe.' },
-      { text: 'Give **examples** of changes in energy.', textFr: 'Donner des **exemples** de changements d’énergie.' },
-      { text: 'Draw **diagrams** to show energy changes.', textFr: 'Dessiner des **diagrammes** de changements d’énergie.' },
-      { text: 'Tell a **process** from an **event**.', textFr: 'Distinguer un **processus** d’un **événement**.' },
-      { text: 'Name a **useful** energy change.', textFr: 'Nommer un changement d’énergie **utile**.' },
-    ],
-  },
-
-  // 25. Exit question
+  // 31. Lab wrap-up
   {
     layout: 'hero',
-    color: TEAL,
+    color: PURPLE,
     icon: 'CheckCircle2',
     brand: 'Year 7 Science',
     brandFr: 'Sciences 7e année',
-    title: 'Lesson Complete!',
-    titleFr: 'Leçon terminée !',
-    subtitle: 'Exit question: draw an energy diagram for a **torch**. Clue: it has a battery.',
-    subtitleFr: 'Question de sortie : dessine un diagramme d’énergie pour une **lampe de poche** (torch). Indice : elle a une pile.',
+    title: 'Lab Complete!',
+    titleFr: 'Labo terminé !',
+    subtitle: 'Write: "I guessed … minutes. It took … minutes." Was your guess close? Why?',
+    subtitleFr: 'Écris : « I guessed … minutes. It took … minutes. » Ton estimation était-elle proche ? Pourquoi ?',
   },
 ]

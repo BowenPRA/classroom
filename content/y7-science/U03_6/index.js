@@ -1,7 +1,8 @@
 // A lesson module: default-exports { meta, slides, plan }. The registry
 // auto-discovers this file (content/<course>/<unit>/index.js).
 //
-// Science 3.6 Changes in energy: one period. English and French only — from
+// Science 3.6 Changes in energy: one period (slides 1–23), then a separate
+// "Lab day: Candle Energy" section (slides 24–31). English and French only — from
 // 15 October the Year 7 lessons drop Vietnamese, so the deck's switch reads
 // EN / FR.
 import { slides } from './slides.js'
@@ -18,7 +19,8 @@ export default {
       'Explain that when something happens, energy is changed or transferred; give examples of energy ' +
       'changes (a cooking fire, walking upstairs, a gas power station, a hydropower dam, a typhoon); draw ' +
       'energy diagrams with a box for each energy and an arrow for each change; tell a process from an ' +
-      'event; name the useful energy change in a device; and plan and evaluate the candle experiment.',
+      'event; name the useful energy change in a device; and plan the candle experiment and predict its ' +
+      'result (the deck ends with a separate lab section that carries it out).',
     order: 20,
     french: true,
     vietnamese: false,
