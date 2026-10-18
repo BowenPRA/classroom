@@ -10,17 +10,23 @@
 //                  between them: 1 the cloud (0–29.2 s), 2 a new star and its
 //                  disc (29.2–52.9 s), 3 planets (52.9–84.0 s). Times checked
 //                  against NASA's caption file and frame grabs of the trimmed file.
+//                  NASA's own English captions play with it (a <track>, moved
+//                  3.5 s earlier to match the trim): the narration is hard
+//                  English over music.
 //
 //   StillCloud     The book's chain — more mass, stronger gravity, pulls in even
-//   SpinningCloud  more — as a model that MOVES. 240 dust grains pull on each
+//                  more — as a model that MOVES. 240 dust grains pull on each
 //                  other and stick when they touch (sim.js). A graph beside it
-//                  draws the mass of the biggest clump as it grows: the line
-//                  bends upwards, faster and faster. Still: everything ends as
-//                  one star. Spinning: a star in the middle and a few planets,
-//                  all going round the same way, with faint trails to show it.
-//                  It is also the class's own example of a MODEL for the Think
-//                  like a scientist questions: a strength (millions of years in
-//                  seconds) and limitations (flat, 240 grains, no gas, no heat).
+//                  draws the mass of the biggest clump: the line bends upwards,
+//                  faster and faster, and everything ends as one star.
+//   SpinningCloud  The same model with the cloud turning: no graph, the whole
+//                  stage for the dust, so the planets' trails read from the
+//                  back. It stops at model second 16 (sim.js says why) on a star
+//                  with four planets going round it the same way.
+//                  The model is also the class's own example of a MODEL for the
+//                  Think like a scientist questions: a strength (millions of
+//                  years in seconds) and limitations (flat, 240 grains, no gas,
+//                  no heat, and the two clouds started differently).
 //
 // The model stages are one wide SVG with a white plate, so their text scales
 // with the panel and reads on a light or dark slide; only the buttons are HTML.
@@ -28,9 +34,10 @@
 import { useState, useEffect, useRef } from 'react'
 import { Cloud, Sun, Orbit, Play, Pause, RotateCcw } from 'lucide-react'
 import { tr } from '../../../src/lib/lang.js'
-import { CLOUDS, DT, N_GRAINS, STAR_MASS, makeCloud, step, biggest, radiusOf } from './sim.js'
+import { CLOUDS, DT, N_GRAINS, STAR_MASS, makeCloud, step, biggest, radiusOf, isFinished } from './sim.js'
 import starbirth from './images/starbirth.webm'
 import starbirthPoster from './images/starbirth-poster.jpg'
+import starbirthCaptions from './images/starbirth-captions.vtt?url'
 
 const t = (lang, en, fr) => tr(lang, en, null, fr)
 
@@ -116,7 +123,9 @@ export function StarBirth({ lang = 'en' }) {
             preload="auto"
             onPlay={() => { cancelAnimationFrame(raf.current); raf.current = requestAnimationFrame(watch) }}
             aria-label={t(lang, 'Animation: how stars and planets form (NASA, ESA, CSA, STScI)', 'Animation : comment se forment les étoiles et les planètes (NASA, ESA, CSA, STScI)')}
-          />
+          >
+            <track kind="captions" src={starbirthCaptions} srcLang="en" label="English" default />
+          </video>
         </div>
       </div>
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap">
@@ -131,9 +140,12 @@ export function StarBirth({ lang = 'en' }) {
 /* ============================================================= *
  * THE CLUMP MODEL — dust grains, gravity, and sticking
  * ============================================================= */
-const ARENA = { x: 16, y: 16, w: 520, h: 408 }
-const CX = ARENA.x + ARENA.w / 2
-const CY = ARENA.y + ARENA.h / 2
+// Still: the dust on the left, the graph on the right. Spinning: the whole
+// stage for the dust, drawn a little larger, so the trails read from the back.
+const LAYOUT = {
+  still: { arena: { x: 16, y: 16, w: 520, h: 408 }, scale: 1, graph: true },
+  spinning: { arena: { x: 16, y: 16, w: 1088, h: 408 }, scale: 1.15, graph: false },
+}
 const G_LEFT = 628 // graph plot area
 const G_RIGHT = 1072
 const G_TOP = 232
@@ -146,7 +158,7 @@ const TRAIL_LEN = 80
 function newEngine(kind) {
   return { kind, sim: makeCloud(kind), hist: [[0, 1]], trails: new Map(), steps: 0, acc: 0, last: 0 }
 }
-const isFinished = (e) => (e.kind === 'still' ? e.sim.grains.length === 1 : e.sim.t > 60)
+const done = (e) => isFinished(e.sim, e.kind)
 function snapshot(e) {
   const s = e.sim
   const big = biggest(s)
@@ -157,12 +169,17 @@ function snapshot(e) {
     hist: e.hist.slice(),
     trails: [...e.trails.entries()].filter(([id]) => alive.has(id) && id !== big.id).map(([id, pts]) => [id, pts.slice()]),
     steps: e.steps,
-    done: isFinished(e),
+    done: done(e),
   }
 }
 
 function ClumpModel({ lang, kind }) {
   const cfg = CLOUDS[kind]
+  const { arena, scale, graph } = LAYOUT[kind]
+  const cx = arena.x + arena.w / 2
+  const cy = arena.y + arena.h / 2
+  const X = (x) => (cx + x * scale).toFixed(1)
+  const Y = (y) => (cy + y * scale).toFixed(1)
   const engine = useRef(null)
   const raf = useRef(0)
   const [view, setView] = useState(() => snapshot(newEngine(kind)))
@@ -170,13 +187,15 @@ function ClumpModel({ lang, kind }) {
 
   useEffect(() => () => cancelAnimationFrame(raf.current), [])
 
+  // Fixed steps, as many as the clock asks for, and never past the end: the
+  // run finishes on exactly the same frame on every screen.
   const advance = (e, now) => {
     const real = Math.min(0.05, (now - e.last) / 1000)
     e.last = now
     e.acc += real * cfg.speed
     const s = e.sim
     let n = 0
-    while (e.acc >= DT && n < 14) {
+    while (e.acc >= DT && n < 14 && !done(e)) {
       step(s)
       e.acc -= DT
       n++
@@ -198,12 +217,12 @@ function ClumpModel({ lang, kind }) {
   const start = () => {
     if (!engine.current) engine.current = newEngine(kind)
     const e = engine.current
-    if (isFinished(e)) return
+    if (done(e)) return
     cancelAnimationFrame(raf.current)
     const loop = (now) => {
       advance(e, now)
       setView(snapshot(e))
-      if (isFinished(e)) { setRunning(false); return }
+      if (done(e)) { setRunning(false); return }
       raf.current = requestAnimationFrame(loop)
     }
     raf.current = requestAnimationFrame((now) => { e.last = now; raf.current = requestAnimationFrame(loop) })
@@ -230,46 +249,50 @@ function ClumpModel({ lang, kind }) {
           aria-label={t(lang, 'A model: dust grains pull on each other and stick together', 'Un modèle : des grains de poussière s’attirent et se collent')}>
           <rect x="0" y="0" width="1120" height="440" rx="14" fill="#ffffff" />
           <defs>
-            <clipPath id={`u32-arena-${kind}`}><rect x={ARENA.x} y={ARENA.y} width={ARENA.w} height={ARENA.h} rx="14" /></clipPath>
+            <clipPath id={`u32-arena-${kind}`}><rect x={arena.x} y={arena.y} width={arena.w} height={arena.h} rx="14" /></clipPath>
           </defs>
-          <rect x={ARENA.x} y={ARENA.y} width={ARENA.w} height={ARENA.h} rx="14" fill="#fbfaf7" stroke={RULE} strokeWidth="2" />
+          <rect x={arena.x} y={arena.y} width={arena.w} height={arena.h} rx="14" fill="#fbfaf7" stroke={RULE} strokeWidth="2" />
 
           <g clipPath={`url(#u32-arena-${kind})`}>
             {view.trails.map(([id, pts]) => (
-              <polyline key={`t${id}`} points={pts.map(([x, y]) => `${(CX + x).toFixed(1)},${(CY + y).toFixed(1)}`).join(' ')}
-                fill="none" stroke={CLUMP} strokeOpacity="0.45" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+              <polyline key={`t${id}`} points={pts.map(([x, y]) => `${X(x)},${Y(y)}`).join(' ')}
+                fill="none" stroke={CLUMP} strokeOpacity="0.5" strokeWidth={graph ? 4 : 6} strokeLinecap="round" strokeLinejoin="round" />
             ))}
-            {isStar && <circle cx={CX + big.x} cy={CY + big.y} r={radiusOf(big.m) + 12} fill={SUNFILL} fillOpacity="0.3" />}
+            {isStar && <circle cx={X(big.x)} cy={Y(big.y)} r={(radiusOf(big.m) + 12) * scale} fill={SUNFILL} fillOpacity="0.3" />}
             {view.grains.map((g) => {
               const star = g.id === big.id && isStar
               const clump = g.m >= 4
               return (
-                <circle key={g.id} cx={CX + g.x} cy={CY + g.y} r={Math.max(3.6, radiusOf(g.m))}
+                <circle key={g.id} cx={X(g.x)} cy={Y(g.y)} r={Math.max(3.6, radiusOf(g.m) * scale * (clump && !star && !graph ? 1.3 : 1))}
                   fill={star ? SUNFILL : clump ? CLUMP : DUST}
                   stroke={star ? SUNLINE : clump ? INK : 'none'} strokeWidth={star ? 3 : 1.5} />
               )
             })}
           </g>
 
-          <text x="572" y="58" fontFamily={FONT} fontSize="24" fontWeight="bold" fill={MUTED}>{t(lang, 'Biggest clump', 'Le plus gros amas')}</text>
-          <text x="572" y="128" fontFamily={FONT} fontWeight="bold" fill={isStar ? KEY : INK}>
-            <tspan fontSize="62">{big.m}</tspan>
-            <tspan fontSize="26" dx="12">{big.m === 1 ? t(lang, 'grain', 'grain') : t(lang, 'grains', 'grains')}</tspan>
-          </text>
-          {isStar && (
-            <text x="1088" y="122" fontFamily={FONT} fontSize="30" fontWeight="bold" fill={KEY} textAnchor="end">{t(lang, 'A star!', 'Une étoile !')}</text>
-          )}
+          {graph && (
+            <>
+              <text x="572" y="58" fontFamily={FONT} fontSize="24" fontWeight="bold" fill={MUTED}>{t(lang, 'Biggest clump', 'Le plus gros amas')}</text>
+              <text x="572" y="128" fontFamily={FONT} fontWeight="bold" fill={isStar ? KEY : INK}>
+                <tspan fontSize="62">{big.m}</tspan>
+                <tspan fontSize="26" dx="12">{big.m === 1 ? t(lang, 'grain', 'grain') : t(lang, 'grains', 'grains')}</tspan>
+              </text>
+              {isStar && (
+                <text x="1088" y="122" fontFamily={FONT} fontSize="30" fontWeight="bold" fill={KEY} textAnchor="end">{t(lang, 'A star!', 'Une étoile !')}</text>
+              )}
 
-          <text x="572" y="206" fontFamily={FONT} fontSize="20" fontWeight="bold" fill={MUTED}>{t(lang, 'Mass of the biggest clump', 'Masse du plus gros amas')}</text>
-          {[0, 120, 240].map((m) => (
-            <g key={m}>
-              <line x1={G_LEFT} y1={gy(m)} x2={G_RIGHT} y2={gy(m)} stroke={m === 0 ? INK : RULE} strokeWidth={m === 0 ? 2.5 : 1.5} />
-              <text x={G_LEFT - 10} y={gy(m) + 6} fontFamily={FONT} fontSize="17" fill={MUTED} textAnchor="end">{m}</text>
-            </g>
-          ))}
-          <line x1={G_LEFT} y1={G_TOP - 8} x2={G_LEFT} y2={G_BOTTOM} stroke={INK} strokeWidth="2.5" />
-          <polyline points={line} fill="none" stroke={KEY} strokeWidth="5" strokeLinejoin="round" strokeLinecap="round" />
-          <text x={G_RIGHT} y="414" fontFamily={FONT} fontSize="19" fill={MUTED} textAnchor="end">{t(lang, 'time →', 'temps →')}</text>
+              <text x="572" y="206" fontFamily={FONT} fontSize="20" fontWeight="bold" fill={MUTED}>{t(lang, 'Mass of the biggest clump', 'Masse du plus gros amas')}</text>
+              {[0, 120, 240].map((m) => (
+                <g key={m}>
+                  <line x1={G_LEFT} y1={gy(m)} x2={G_RIGHT} y2={gy(m)} stroke={m === 0 ? INK : RULE} strokeWidth={m === 0 ? 2.5 : 1.5} />
+                  <text x={G_LEFT - 10} y={gy(m) + 6} fontFamily={FONT} fontSize="17" fill={MUTED} textAnchor="end">{m}</text>
+                </g>
+              ))}
+              <line x1={G_LEFT} y1={G_TOP - 8} x2={G_LEFT} y2={G_BOTTOM} stroke={INK} strokeWidth="2.5" />
+              <polyline points={line} fill="none" stroke={KEY} strokeWidth="5" strokeLinejoin="round" strokeLinecap="round" />
+              <text x={G_RIGHT} y="414" fontFamily={FONT} fontSize="19" fill={MUTED} textAnchor="end">{t(lang, 'time →', 'temps →')}</text>
+            </>
+          )}
         </svg>
       </div>
 

@@ -5,7 +5,7 @@
 //     ANS_SIZE / ANS_MASS — Getting started Q1 as a vote: a large size or a large mass?
 //     OPTIONS             — Getting started Q2: Earth, Jupiter, the Sun, Neptune (photos)
 //   How can we know?
-//     CAKE_CLUES          — Mr Bowen's cake: a hypothesis and three clues (vote on each)
+//     CAKE_CLUES          — Mr Bowen's cake: a hypothesis, three clues, and the vote key
 //     CAKE_VERDICT        — the clues sorted: support or contradict
 //   The facts (the evidence)
 //     SOLAR_SYSTEM        — the book's p. 86 diagram, redrawn: eight orbits, one way round
@@ -14,15 +14,19 @@
 //   How it formed
 //     LOOP                — more mass → stronger gravity → pulls in more
 //     STAR_PLANET         — the Sun and Jupiter drawn to scale (photos)
-//     SPIN_ODD            — Earth, Venus and Uranus: two that spin the wrong way (photos)
+//     SPIN_ODD            — Earth, Venus and Uranus: two that spin the wrong way (photos),
+//                           with the vote key
 //   Models
-//     MODEL_REAL          — the real thing (HL Tauri) beside a computer model
+//     MODEL_REAL          — the real thing (HL Tauri) beside a computer model: only the
+//                           time (millions of years / a few seconds), so the other
+//                           reasons in Think like a scientist Q1 are the class's to find
 //     FOUR_WORDS          — Think like a scientist Q2: error, mistake, limitation, strength
-//   Activity
-//     STORYBOARD          — Draw This: the book's storyboard in four frames
 //
 // Split diagrams are drawn at about 1.4:1 (840×560), showcase ones at about
 // 2.5:1 (1120×440) — the shapes those layouts give a picture in project mode.
+//
+// A vote picture carries its own key (a left hand and a right hand with the two
+// answers), as the ANS_* cards do, so the question is not only in the caption.
 //
 // Label <text> is written out literally so `npm run audit:svg` can measure it.
 // Helpers below draw shapes only. Labels that sit on top of orbit lines get a
@@ -154,32 +158,12 @@ const lockedDoor = (cx, cy) => `<rect x="${cx - 52}" y="${cy - 82}" width="104" 
     <path d="M ${cx + 26} ${cy + 18} a 12 12 0 0 1 24 0" fill="none" stroke="${INK}" stroke-width="4"/>
     <rect x="${cx + 22}" y="${cy + 18}" width="32" height="26" rx="4" fill="#f1c232" stroke="${INK}" stroke-width="2.5"/>`
 
-// ── Small sketches for the storyboard ────────────────────────────────────────
+// Dust grains.
 const dots = (pts, r = 4, fill = DUST) => pts.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}"/>`).join('')
-const SB_DUST = [[-80, -30], [-60, 10], [-45, -55], [-30, 35], [-15, -15], [0, 55], [10, -45], [20, 15], [35, -20], [50, 40], [62, -50], [75, 5], [-70, 45], [88, -22], [-95, 0], [30, 60], [-20, -70], [55, 70]]
-const sbNebula = (cx, cy) => `<g transform="translate(${cx} ${cy}) scale(0.8) translate(${-cx} ${-cy})"><path d="M ${cx - 110} ${cy + 10} C ${cx - 120} ${cy - 60} ${cx - 40} ${cy - 95} ${cx + 10} ${cy - 75} C ${cx + 70} ${cy - 100} ${cx + 125} ${cy - 40} ${cx + 105} ${cy + 15} C ${cx + 130} ${cy + 70} ${cx + 40} ${cy + 100} ${cx - 10} ${cy + 80} C ${cx - 70} ${cy + 100} ${cx - 125} ${cy + 60} ${cx - 110} ${cy + 10} Z" fill="#efe4d6" stroke="#b49a7c" stroke-width="2.5"/>
-    ${dots(SB_DUST.map(([x, y]) => [cx + x, cy + y]))}</g>`
-const sbClumps = (cx, cy) => `${dots([[cx - 70, cy - 40], [cx + 75, cy - 30], [cx - 60, cy + 55], [cx + 70, cy + 50], [cx, cy - 75], [cx + 5, cy + 78]], 5)}
-    <circle cx="${cx}" cy="${cy}" r="24" fill="${DUST}" stroke="${INK}" stroke-width="2.5"/>
-    <circle cx="${cx - 62}" cy="${cy + 8}" r="11" fill="${DUST}" stroke="${INK}" stroke-width="2"/>
-    <circle cx="${cx + 60}" cy="${cy - 2}" r="9" fill="${DUST}" stroke="${INK}" stroke-width="2"/>
-    ${arrow(cx - 70, cy - 40, cx - 30, cy - 18, RED, 3.5, 12)}
-    ${arrow(cx + 75, cy - 30, cx + 32, cy - 12, RED, 3.5, 12)}
-    ${arrow(cx - 60, cy + 55, cx - 26, cy + 24, RED, 3.5, 12)}
-    ${arrow(cx + 70, cy + 50, cx + 30, cy + 20, RED, 3.5, 12)}
-    ${arrow(cx, cy - 75, cx, cy - 32, RED, 3.5, 12)}`
-const sbStarDisc = (cx, cy) => `<ellipse cx="${cx}" cy="${cy}" rx="112" ry="34" fill="#efe4d6" stroke="#b49a7c" stroke-width="2.5"/>
-    <ellipse cx="${cx}" cy="${cy}" rx="70" ry="20" fill="none" stroke="#b49a7c" stroke-width="2" stroke-dasharray="5 6"/>
-    <circle cx="${cx}" cy="${cy}" r="26" fill="${SUNFILL}" stroke="${SUNLINE}" stroke-width="3"/>
-    ${orbitArrow(cx, cy, 112, 34, 90, BLUE, 4, 46, 3.5)}`
-const sbPlanets = (cx, cy) => `${orbit(cx, cy, 52, 16)}${orbit(cx, cy, 82, 25)}${orbit(cx, cy, 112, 34)}
-    <circle cx="${cx}" cy="${cy}" r="22" fill="${SUNFILL}" stroke="${SUNLINE}" stroke-width="3"/>
-    <circle cx="${f1(cx + 52 * Math.cos(2.2))}" cy="${f1(cy + 16 * Math.sin(2.2))}" r="6" fill="${PLANETC}" stroke="${INK}" stroke-width="1.5"/>
-    <circle cx="${f1(cx + 82 * Math.cos(0.5))}" cy="${f1(cy + 25 * Math.sin(0.5))}" r="8" fill="#d0643b" stroke="${INK}" stroke-width="1.5"/>
-    <circle cx="${f1(cx + 112 * Math.cos(2.8))}" cy="${f1(cy + 34 * Math.sin(2.8))}" r="12" fill="#d9a066" stroke="${INK}" stroke-width="1.5"/>
-    ${orbitArrow(cx, cy, 52, 16, 126, BLUE, 8, 30, 3)}
-    ${orbitArrow(cx, cy, 82, 25, 29, BLUE, 10, 34, 3)}
-    ${orbitArrow(cx, cy, 112, 34, 160, BLUE, 14, 40, 3)}`
+
+// A small hand for a vote key, 62 px tall, top-left at (x, y). The left hand
+// is the same drawing mirrored, as on the answer cards.
+const smallHand = (x, y, color, left) => `<g transform="translate(${left ? x + 62 : x} ${y}) scale(${left ? -2.6 : 2.6} 2.6)" fill="none" stroke="${color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${HAND_PATHS}</g>`
 
 // A laptop with a tiny model on its screen.
 const laptop = (cx, cy) => `<rect x="${cx - 140}" y="${cy - 110}" width="280" height="180" rx="12" fill="#3a4148" stroke="${INK}" stroke-width="3"/>
@@ -219,8 +203,8 @@ export const DIAGRAMS = {
   </svg>`,
 
   // ── How can we know? ────────────────────────────────────────────────────
-  CAKE_CLUES: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
-    ${plate(1120, 440)}
+  CAKE_CLUES: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" class="w-full h-full">
+    ${plate(1120, 520)}
 
     <rect x="20" y="16" width="370" height="408" rx="14" fill="#ffffff" stroke="${RULE}" stroke-width="2"/>
     <text x="205" y="62" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">Mr Bowen’s cake</text>
@@ -257,6 +241,14 @@ export const DIAGRAMS = {
     <text x="990" y="310" font-family="${FONT}" font-size="23" fill="${INK}" text-anchor="middle">The cat was</text>
     <text x="990" y="342" font-family="${FONT}" font-size="23" fill="${INK}" text-anchor="middle">locked outside</text>
     <text x="990" y="374" font-family="${FONT}" font-size="23" fill="${INK}" text-anchor="middle">all day.</text>
+    <rect x="20" y="438" width="530" height="70" rx="14" fill="#e9f1fa" stroke="${BLUE}" stroke-width="2.5"/>
+    ${smallHand(36, 442, BLUE, true)}
+    <text x="114" y="484" font-family="${FONT}" font-size="30" font-weight="bold" fill="${BLUE}">supports</text>
+    <text x="262" y="484" font-family="${FONT}" font-size="24" fill="${MUTED}">= agrees with it</text>
+    <rect x="570" y="438" width="530" height="70" rx="14" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="2.5"/>
+    <text x="590" y="484" font-family="${FONT}" font-size="30" font-weight="bold" fill="${KEY}">contradicts</text>
+    <text x="784" y="484" font-family="${FONT}" font-size="24" fill="${MUTED}">= goes against it</text>
+    ${smallHand(1022, 442, KEY, false)}
   </svg>`,
 
   CAKE_VERDICT: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 624" class="w-full h-full">
@@ -352,7 +344,7 @@ export const DIAGRAMS = {
     <rect x="0" y="0" width="840" height="589" rx="14" fill="#ffffff"/>
     <defs><clipPath id="u32-side"><rect x="0" y="0" width="840" height="589" rx="14"/></clipPath></defs>
     <image href="${ecliptic}" x="0" y="0" width="840" height="589" preserveAspectRatio="xMidYMid slice" clip-path="url(#u32-side)"/>
-    <path d="M 0 534 Q 170 448 350 488" fill="none" stroke="${KEY}" stroke-width="3" stroke-dasharray="10 9" opacity="0.9"/>
+    <path d="M 0 524 Q 170 410 330 492" fill="none" stroke="${KEY}" stroke-width="2.5" stroke-dasharray="10 9" opacity="0.75"/>
 
     <rect x="14" y="398" width="132" height="44" rx="10" fill="#ffffff" fill-opacity="0.94"/>
     <text x="80" y="429" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}" text-anchor="middle">Mercury</text>
@@ -409,8 +401,8 @@ export const DIAGRAMS = {
     <text x="814" y="532" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="end">drawn to scale</text>
   </svg>`,
 
-  SPIN_ODD: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
-    ${plate(1120, 440)}
+  SPIN_ODD: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" class="w-full h-full">
+    ${plate(1120, 520)}
 
     <rect x="20" y="16" width="350" height="408" rx="14" fill="#ffffff" stroke="${RULE}" stroke-width="2"/>
     <line x1="168" y1="62" x2="222" y2="290" stroke="${INK}" stroke-width="3" stroke-dasharray="9 6"/>
@@ -432,6 +424,14 @@ export const DIAGRAMS = {
     ${spinArc(925, 176, 112, 30, 87, 1, RED, 5)}
     <text x="925" y="350" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">Uranus</text>
     <text x="925" y="390" font-family="${FONT}" font-size="22" fill="${RED}" text-anchor="middle">spins on its side</text>
+    <rect x="20" y="438" width="530" height="70" rx="14" fill="#e9f1fa" stroke="${BLUE}" stroke-width="2.5"/>
+    ${smallHand(36, 442, BLUE, true)}
+    <text x="114" y="484" font-family="${FONT}" font-size="30" font-weight="bold" fill="${BLUE}">supports</text>
+    <text x="262" y="484" font-family="${FONT}" font-size="24" fill="${MUTED}">= agrees with it</text>
+    <rect x="570" y="438" width="530" height="70" rx="14" fill="${ORANGE_T}" stroke="${KEY}" stroke-width="2.5"/>
+    <text x="590" y="484" font-family="${FONT}" font-size="30" font-weight="bold" fill="${KEY}">contradicts</text>
+    <text x="784" y="484" font-family="${FONT}" font-size="24" fill="${MUTED}">= goes against it</text>
+    ${smallHand(1022, 442, KEY, false)}
   </svg>`,
 
   // ── Models ──────────────────────────────────────────────────────────────
@@ -439,17 +439,13 @@ export const DIAGRAMS = {
     ${plate(840, 600)}
     <rect x="16" y="16" width="398" height="568" rx="14" fill="#ffffff" stroke="${RULE}" stroke-width="2"/>
     <text x="215" y="66" font-family="${FONT}" font-size="34" font-weight="bold" fill="${INK}" text-anchor="middle">The real thing</text>
-    ${disc('u32-model-hl', hltau, 215, 246, 140, 1)}
-    <text x="215" y="452" font-family="${FONT}" font-size="30" font-weight="bold" fill="${KEY}" text-anchor="middle">millions of years</text>
-    <text x="215" y="496" font-family="${FONT}" font-size="26" fill="${MUTED}" text-anchor="middle">far too big</text>
-    <text x="215" y="534" font-family="${FONT}" font-size="26" fill="${MUTED}" text-anchor="middle">for a lab</text>
+    ${disc('u32-model-hl', hltau, 215, 268, 160, 1)}
+    <text x="215" y="510" font-family="${FONT}" font-size="36" font-weight="bold" fill="${KEY}" text-anchor="middle">millions of years</text>
 
     <rect x="426" y="16" width="398" height="568" rx="14" fill="${TEAL_T}" stroke="${TEAL}" stroke-width="2.5"/>
     <text x="625" y="66" font-family="${FONT}" font-size="34" font-weight="bold" fill="${INK}" text-anchor="middle">A computer model</text>
-    ${laptop(625, 250)}
-    <text x="625" y="452" font-family="${FONT}" font-size="30" font-weight="bold" fill="${KEY}" text-anchor="middle">a few seconds</text>
-    <text x="625" y="496" font-family="${FONT}" font-size="26" fill="${MUTED}" text-anchor="middle">run it again</text>
-    <text x="625" y="534" font-family="${FONT}" font-size="26" fill="${MUTED}" text-anchor="middle">and again</text>
+    ${laptop(625, 270)}
+    <text x="625" y="510" font-family="${FONT}" font-size="36" font-weight="bold" fill="${KEY}" text-anchor="middle">a few seconds</text>
   </svg>`,
 
   FOUR_WORDS: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
@@ -476,40 +472,5 @@ export const DIAGRAMS = {
     <circle cx="972.5" cy="236" r="52" fill="${TEAL}"/>
     <text x="972.5" y="257" font-family="${FONT}" font-size="60" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
     <text x="972.5" y="364" font-family="${FONT}" font-size="34" font-weight="bold" fill="${INK}" text-anchor="middle">a strength</text>
-  </svg>`,
-
-  // ── Activity: the storyboard ────────────────────────────────────────────
-  STORYBOARD: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
-    ${plate(1120, 440)}
-
-    <rect x="20" y="16" width="260" height="408" rx="14" fill="#ffffff" stroke="${INK}" stroke-width="2.5"/>
-    <circle cx="48" cy="44" r="18" fill="${KEY}"/>
-    <text x="48" y="52" font-family="${FONT}" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
-    ${sbNebula(150, 186)}
-    <path d="M 74 128 A 92 70 0 0 1 226 128" fill="none" stroke="${BLUE}" stroke-width="3.5"/>
-    ${head(226, 128, 0.62, BLUE, 14)}
-    <text x="150" y="350" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">A nebula: a cloud</text>
-    <text x="150" y="380" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">of dust and gas</text>
-
-    <rect x="290" y="16" width="260" height="408" rx="14" fill="#ffffff" stroke="${INK}" stroke-width="2.5"/>
-    <circle cx="318" cy="44" r="18" fill="${KEY}"/>
-    <text x="318" y="52" font-family="${FONT}" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
-    ${sbClumps(420, 190)}
-    <text x="420" y="350" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">Gravity pulls</text>
-    <text x="420" y="380" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">it together</text>
-
-    <rect x="560" y="16" width="260" height="408" rx="14" fill="#ffffff" stroke="${INK}" stroke-width="2.5"/>
-    <circle cx="588" cy="44" r="18" fill="${KEY}"/>
-    <text x="588" y="52" font-family="${FONT}" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
-    ${sbStarDisc(690, 190)}
-    <text x="690" y="350" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">A hot star in</text>
-    <text x="690" y="380" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">a flat disc</text>
-
-    <rect x="830" y="16" width="270" height="408" rx="14" fill="#ffffff" stroke="${INK}" stroke-width="2.5"/>
-    <circle cx="858" cy="44" r="18" fill="${KEY}"/>
-    <text x="858" y="52" font-family="${FONT}" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
-    ${sbPlanets(965, 190)}
-    <text x="965" y="350" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">Planets: all go</text>
-    <text x="965" y="380" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">the same way round</text>
   </svg>`,
 }

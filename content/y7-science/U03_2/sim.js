@@ -14,8 +14,15 @@
 //             the middle. The middle still makes a star, but the grains further
 //             out keep going round it, all the same way, and stick into a few
 //             planets. (The two clouds differ in more than spin — a uniform
-//             spinning cloud makes planets as big as its star. Say so if a
-//             student asks: it is a limitation of the model.)
+//             spinning cloud makes planets as big as its star. Slide 24's
+//             limitations say so: "the two clouds started differently".)
+//
+// THE SPINNING RUN STOPS AT MODEL SECOND 16 (stopAt). With only 240 grains and
+// no gas, the planets do not stay put for ever: left running, one falls into
+// the star at about 21 s, another at about 25 s, and the last is flung out of
+// the picture. At 16 s the star is 183 grains and four planets (20, 10, 10 and
+// 7 grains) are going round it anticlockwise, all inside the frame — the end
+// the lesson needs. The still run ends when only one clump is left.
 //
 // Everything is deterministic: a seeded random generator and a fixed time step,
 // so the class sees the same film every time, whatever the screen's frame rate,
@@ -47,9 +54,16 @@ function rng(seed) {
 
 // conc: 0.5 spreads grains evenly over the disc; higher packs the middle.
 // speed: model seconds per real second on the projector.
+// stopAt: model second the run ends (null: when one clump is left).
 export const CLOUDS = {
-  still: { seed: 7, spin: 0, jiggle: 9, conc: 0.5, speed: 0.6, plotFor: 8 },
-  spinning: { seed: 7, spin: 0.9, jiggle: 5, conc: 1.1, speed: 1.4, plotFor: 12 },
+  still: { seed: 7, spin: 0, jiggle: 9, conc: 0.5, speed: 0.6, plotFor: 8, stopAt: null },
+  spinning: { seed: 7, spin: 0.9, jiggle: 5, conc: 1.1, speed: 1.4, plotFor: 12, stopAt: 16 },
+}
+
+/** Has this cloud's run reached its end? */
+export function isFinished(state, kind) {
+  const { stopAt } = CLOUDS[kind]
+  return stopAt === null ? state.grains.length === 1 : state.t >= stopAt
 }
 
 /** A fresh cloud of grains, nearly at rest (or turning slowly). */
