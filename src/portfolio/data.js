@@ -6,16 +6,17 @@
 // on this site). Until then it shows as "In progress". Only finished,
 // submitted work goes here — never a draft.
 
+import prizeWinner from './images/march-mathness-prize.webp'
 import cutShapes from './images/maths-cut-shapes.webp'
 import natureWalk from './images/nature-walk-jetty.webp'
 
-// Photos from Palm River Academy's About page. The teaching shots live in
-// ./images; the portrait is still linked from the school's site. See
+// Photos from Palm River Academy's About page, kept in ./images. See
 // CREDITS.json for each one's source and the consent note.
 export const PHOTOS = {
   portrait: {
-    src: 'https://pra.edu.vn/assets/img/team/bowen-720.webp',
-    alt: 'Spencer Bowen',
+    src: prizeWinner,
+    alt: 'Mr. Bowen giving a thumbs-up beside the winner of the guess-how-many maths challenge at March Mathness',
+    caption: 'March Mathness: the guess-how-many winner',
   },
   teaching: [
     {

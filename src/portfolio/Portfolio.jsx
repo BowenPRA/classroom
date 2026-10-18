@@ -140,9 +140,17 @@ function Hero() {
           </li>
         </ul>
       </div>
-      <div className="mx-auto md:mx-0 w-56 sm:w-64 rounded-3xl overflow-hidden border-2" style={{ borderColor: CAMBRIDGE.teal, backgroundColor: CAMBRIDGE.tealTint }}>
-        <img src={PHOTOS.portrait.src} alt={PHOTOS.portrait.alt} width="720" height="828" className="block w-full h-auto" />
-      </div>
+      <figure className="w-full md:w-[26rem] lg:w-[30rem]">
+        <img
+          src={PHOTOS.portrait.src}
+          alt={PHOTOS.portrait.alt}
+          width="1600"
+          height="1200"
+          className="block w-full aspect-[4/3] object-cover rounded-3xl border-2"
+          style={{ borderColor: CAMBRIDGE.teal }}
+        />
+        <figcaption className="mt-1.5 text-xs font-bold text-slate-500 dark:text-slate-400">{PHOTOS.portrait.caption}</figcaption>
+      </figure>
     </section>
   )
 }
