@@ -17,6 +17,8 @@ import m2LiteracyPres from './media/m2-literacy-presentation.pdf?url'
 import m2Flowchart from './media/m2-flowchart.pdf?url'
 import m2Whiteboard from './media/m2u3a3-whiteboard.mp4'
 import m2WhiteboardPoster from './media/m2u3a3-whiteboard-poster.jpg'
+import m2Laws from './media/m2u1a2-laws.mp4'
+import m2LawsPoster from './media/m2u1a2-laws-poster.jpg'
 import m3Ebp from './media/m3u1a2-ebp.mp4'
 import m3VlogPoster from './media/m3u2a2-vlog-poster.jpg'
 import m3EbpPoster from './media/m3u1a2-ebp-poster.jpg'
@@ -92,7 +94,7 @@ export const PRINCIPLES = [
 
 // Artifact ids shown under "Latest work" on the overview, newest first. Each
 // needs a picture: a video poster or an image url.
-export const RECENT = ['m2-whiteboard', 'm3-vlog', 'm3-ebp', 'm3-representations']
+export const RECENT = ['m2-law', 'm2-whiteboard', 'm3-vlog', 'm3-ebp']
 
 // The Highlights tab of the lesson scroller. Titles and units come from the
 // registry, so they never drift from the decks themselves.
@@ -120,7 +122,7 @@ export const MODULES = [
     when: '13 September – 3 October 2026',
     status: 'progress',
     artifacts: [
-      { id: 'm2-law', activity: 'U1 · A2', kind: 'video', title: 'A law that shapes teaching', blurb: 'A 4–5 minute video on one law or policy: what it says, where it came from, its strengths and weaknesses, and what it changes in a classroom.' },
+      { id: 'm2-law', activity: 'U1 · A2', kind: 'video', title: 'English as Vietnam’s second language', blurb: 'Decision 2371, Vietnam’s plan to make English the second language in its schools: where it came from, how people see it now, its strengths and weaknesses, and what it already changes in my integers lessons.', url: m2Laws, poster: m2LawsPoster },
       { id: 'm2-modelling', activity: 'U1 · A1', kind: 'image', title: 'Modeling vs models in math', blurb: 'A one-page visual on the difference between the math modeling process and models in math.', page: 'maths', url: m2Modeling, alt: 'Poster: on the left, a model in math, shown as a box model for "twice as many" and as layers of centimeter cubes in a tank; on the right, the six stages of the modeling process worked through for "How far away is the storm?" with d = t ÷ 3; below, a table comparing the two.' },
       { id: 'm2-literacy-pres', activity: 'U2 · A2', kind: 'presentation', title: 'Promoting literacy in math', blurb: 'Why literacy matters in every subject, the signs of a struggling reader in Year 7 math, and a plan of action for PRA.', url: m2LiteracyPres },
       { id: 'm2-writing', activity: 'U2 · A3', kind: 'image', title: 'From letters to essays', blurb: 'An infographic on how writing develops, with interventions for my grade and subject.', url: m2Writing, alt: 'Infographic: six stages of writing development, from marks to letters through letter formation, letters and sounds, spelling by word parts and sentences to whole texts and essays, each beside what it looks like in my Grade 7 math room; then photos of two finished student posters, on integers and on HCF and LCM; below, signs a student is struggling and one more strategy to add.' },
