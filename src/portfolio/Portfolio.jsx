@@ -454,7 +454,7 @@ export default function Portfolio() {
               <CollectionPage
                 kicker="Secondary Mathematics 7–12"
                 color={CAMBRIDGE.orange}
-                title="Mathematics in Action"
+                title="Secondary Math in Action"
                 intro="Math methods work. Every piece comes from a lesson I’ve taught."
                 items={artifactsFor('maths')}
               />
