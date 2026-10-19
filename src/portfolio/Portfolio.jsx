@@ -1,14 +1,14 @@
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Routes, Route, Link, NavLink, Navigate, useParams } from 'react-router-dom'
 import {
-  ArrowLeft, ArrowRight, Calculator, ChevronRight, CircleCheck, CircleDashed, CircleHelp,
+  ArrowLeft, ArrowRight, Calculator, ChevronLeft, ChevronRight, CircleCheck, CircleDashed, CircleHelp,
   ExternalLink, FileText, FlaskConical, Hand, Image as ImageIcon, Languages, MapPin,
-  MessageSquare, Mic, Moon, NotebookPen, Presentation, Sun, Video, Workflow,
+  MessageSquare, Mic, Moon, NotebookPen, Play, Presentation, Sun, Video, Workflow,
 } from 'lucide-react'
 import { useDarkMode } from '../lib/useDarkMode.js'
 import { CAMBRIDGE } from '../components/layouts/helpers.jsx'
-import { getCourse, getLesson } from '../../content/registry.js'
-import { PHOTOS, PROFILE, PRINCIPLES, FEATURED, MODULES, artifactsFor } from './data.js'
+import { getCatalog, getCourse, getLesson } from '../../content/registry.js'
+import { PHOTOS, PROFILE, PRINCIPLES, FEATURED, RECENT, MODULES, artifactById, artifactsFor } from './data.js'
 
 // The Moreland teaching portfolio. Unlisted: reachable only at #/portfolio,
 // never linked from the classroom pages, and marked noindex while open.
@@ -176,32 +176,64 @@ function About() {
   )
 }
 
-function LessonLink({ course, slug }) {
-  const lesson = getLesson(course, slug)
-  if (!lesson) return null
-  const subject = course === 'y7-math' ? 'Math' : 'Science'
+// The four habits, kept small at the foot of the overview.
+function HowITeach() {
   return (
-    <Link to={`/lesson/${course}/${slug}`} className="inline-flex items-center gap-1 text-sm font-black hover:underline" style={{ color: CAMBRIDGE.purple }}>
-      See it in {subject} {lesson.unit}: {lesson.title} <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
-    </Link>
-  )
-}
-
-function Principles() {
-  return (
-    <section className="mt-16">
-      <SectionTitle kicker="How I teach" title="Four things I do every lesson" color={CAMBRIDGE.purple} />
-      <div className="grid gap-4 sm:grid-cols-2">
+    <section className="mt-16 pt-8 border-t-2 border-slate-200 dark:border-slate-800">
+      <p className={`${eyebrow} mb-3`} style={{ color: CAMBRIDGE.purple }}>How I teach: four things I do every lesson</p>
+      <ul className="grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
         {PRINCIPLES.map((p) => {
           const Icon = PRINCIPLE_ICONS[p.icon]
           return (
-            <Box key={p.title} color={CAMBRIDGE.purple} tint={CAMBRIDGE.purpleTint} head={<><Icon className="w-5 h-5" strokeWidth={2.5} />{p.title}</>}>
-              <p className={`${prose} mb-3`}>{p.body}</p>
-              <LessonLink course={p.lesson[0]} slug={p.lesson[1]} />
-            </Box>
+            <li key={p.title} className="flex items-start gap-2 min-w-0">
+              <Icon className="w-4 h-4 mt-0.5 shrink-0" style={{ color: CAMBRIDGE.purple }} strokeWidth={2.5} />
+              <div className="min-w-0">
+                <p className="text-sm font-black tracking-tight">{p.title}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-medium leading-snug mt-0.5">{p.body}</p>
+              </div>
+            </li>
           )
         })}
-      </div>
+      </ul>
+    </section>
+  )
+}
+
+// The newest finished artifacts, each with its picture, linking to its module.
+function LatestWork() {
+  const items = RECENT.map(artifactById).filter((a) => a?.url)
+  if (!items.length) return null
+  return (
+    <section className="mt-16">
+      <SectionTitle kicker="Latest work" title="What I’ve made recently" color={CAMBRIDGE.orange} />
+      <ul className="grid gap-3 grid-cols-2 lg:grid-cols-4">
+        {items.map((a) => {
+          const picture = a.poster ?? (a.kind === 'image' ? a.url : null)
+          const Icon = KIND[a.kind].icon
+          return (
+            <li key={a.id} className="min-w-0">
+              <Link to={`/portfolio/module/${a.module}`} className="group block h-full rounded-2xl overflow-hidden border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:-translate-y-0.5 transition-transform">
+                <div className="relative aspect-video bg-slate-100 dark:bg-slate-800">
+                  {picture && <img src={picture} alt="" loading="lazy" className="w-full h-full object-cover object-top" />}
+                  {a.kind === 'video' && (
+                    <span className="absolute inset-0 flex items-center justify-center">
+                      <span className="flex items-center justify-center w-11 h-11 rounded-full bg-black/60 text-white">
+                        <Play className="w-5 h-5 ml-0.5" strokeWidth={2.5} fill="currentColor" />
+                      </span>
+                    </span>
+                  )}
+                </div>
+                <div className="p-3">
+                  <p className={`${eyebrow} !text-[10px] text-slate-400 dark:text-slate-500 flex items-center gap-1`}>
+                    <Icon className="w-3.5 h-3.5" strokeWidth={2.5} /> Module {a.module} · {KIND[a.kind].label}
+                  </p>
+                  <h3 className="font-black tracking-tight leading-snug mt-1 text-sm sm:text-base group-hover:underline">{a.title}</h3>
+                </div>
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
     </section>
   )
 }
@@ -245,32 +277,75 @@ function ModuleGrid() {
   )
 }
 
-function Featured() {
+// A sideways scroller of decks: a few highlights with a note on each, or a
+// whole course in teaching order.
+function LessonScroller() {
+  const [tab, setTab] = useState('highlights')
+  const rail = useRef(null)
+  const catalog = getCatalog()
+  const highlights = FEATURED.map((f) => {
+    const lesson = getLesson(f.course, f.slug)
+    return lesson && { ...lesson, note: f.why }
+  }).filter(Boolean)
+  const tabs = [
+    { id: 'highlights', label: 'Highlights', lessons: highlights },
+    ...['y7-math', 'y7-science'].map((id) => ({
+      id,
+      label: id === 'y7-math' ? 'Math' : 'Science',
+      lessons: catalog.find((c) => c.id === id)?.lessons ?? [],
+    })),
+  ]
+  const lessons = tabs.find((t) => t.id === tab).lessons
+  const total = tabs.slice(1).reduce((n, t) => n + t.lessons.length, 0)
+
+  useEffect(() => { rail.current?.scrollTo({ left: 0 }) }, [tab])
+  const nudge = (dir) => rail.current?.scrollBy({ left: dir * rail.current.clientWidth * 0.8, behavior: 'smooth' })
+
+  const pill = (active) =>
+    `px-3 py-1.5 rounded-xl text-sm font-black tracking-tight border-2 transition-colors ${
+      active ? 'text-white border-transparent' : 'text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
+    }`
+  const arrow = 'p-2 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-500 hover:text-slate-800 dark:hover:text-slate-100'
+
   return (
     <section className="mt-16">
       <SectionTitle kicker="From my classroom" title="Lessons I teach" color={CAMBRIDGE.blue} />
       <p className={`${prose} max-w-prose mb-5`}>
-        Decks I built and teach, each with a plan you can print.
+        {total} Year 7 decks I built and teach by projector, each with a Vietnamese or French switch.
       </p>
-      <ul className="grid gap-3 sm:grid-cols-2">
-        {FEATURED.map((f) => {
-          const lesson = getLesson(f.course, f.slug)
-          const course = getCourse(f.course)
-          if (!lesson || !course) return null
+      <div className="flex items-center gap-2 mb-4">
+        {tabs.map((t) => (
+          <button key={t.id} onClick={() => setTab(t.id)} className={pill(t.id === tab)} style={t.id === tab ? { backgroundColor: CAMBRIDGE.blue } : undefined}>
+            {t.label}
+          </button>
+        ))}
+        <span className="ml-auto hidden sm:flex gap-2">
+          <button onClick={() => nudge(-1)} className={arrow} title="Scroll left"><ChevronLeft className="w-4 h-4" strokeWidth={3} /></button>
+          <button onClick={() => nudge(1)} className={arrow} title="Scroll right"><ChevronRight className="w-4 h-4" strokeWidth={3} /></button>
+        </span>
+      </div>
+      <ul ref={rail} className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-3 custom-scrollbar">
+        {lessons.map((l) => {
+          const course = getCourse(l.course)
+          const langs = ['EN', l.vietnamese && 'VN', l.french && 'FR'].filter(Boolean).join(' · ')
           return (
-            <li key={`${f.course}/${f.slug}`} className="rounded-2xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-5 flex flex-col">
-              <p className={eyebrow} style={{ color: course.color }}>{course.title} · {lesson.unit}</p>
-              <h3 className="text-lg font-black tracking-tight mt-1">{lesson.title}</h3>
-              <p className={`${prose} text-sm mt-2 mb-4`}>{f.why}</p>
-              <div className="mt-auto flex flex-wrap gap-2">
-                <Link to={`/lesson/${f.course}/${f.slug}`} className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-sm font-black text-white" style={{ backgroundColor: CAMBRIDGE.blue }}>
-                  Open the deck <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
-                </Link>
-                {lesson.plan && (
-                  <Link to={`/plan/${f.course}/${f.slug}`} className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-sm font-black border-2" style={{ borderColor: CAMBRIDGE.blue, color: CAMBRIDGE.blue }}>
-                    Teacher plan
+            <li key={`${l.course}/${l.slug}`} className="snap-start shrink-0 w-64 sm:w-72 rounded-2xl overflow-hidden border-2 bg-white dark:bg-slate-900 flex flex-col" style={{ borderColor: course.color }}>
+              <div className="px-4 py-2 text-white flex items-center justify-between gap-2" style={{ backgroundColor: course.color }}>
+                <span className="font-black tracking-tight text-sm truncate">{l.course === 'y7-math' ? 'Math' : 'Science'} {l.unit}</span>
+                <span className="text-[11px] font-black uppercase tracking-widest opacity-90 shrink-0">{langs}</span>
+              </div>
+              <div className="p-4 flex-1 flex flex-col">
+                <h3 className="font-black tracking-tight leading-snug">{l.title}</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-300 font-medium leading-snug mt-1.5 mb-4 line-clamp-3">{l.note ?? (l.objective || l.subtitle)}</p>
+                <div className="mt-auto flex items-center gap-3 text-sm font-black">
+                  <Link to={`/lesson/${l.course}/${l.slug}`} className="inline-flex items-center gap-1 hover:underline" style={{ color: CAMBRIDGE.blue }}>
+                    Open the deck <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
                   </Link>
-                )}
+                  {l.plan && (
+                    <Link to={`/plan/${l.course}/${l.slug}`} className="text-slate-500 dark:text-slate-400 hover:underline">Plan</Link>
+                  )}
+                  <span className="ml-auto text-xs text-slate-400 dark:text-slate-500">{l.slides.length} slide{l.slides.length === 1 ? '' : 's'}</span>
+                </div>
               </div>
             </li>
           )
@@ -302,10 +377,11 @@ function Overview() {
     <>
       <Hero />
       <About />
-      <Principles />
+      <LatestWork />
       <ModuleGrid />
-      <Featured />
+      <LessonScroller />
       <Shortcuts />
+      <HowITeach />
     </>
   )
 }

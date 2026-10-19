@@ -60,8 +60,9 @@ export const PROFILE = {
   ],
 }
 
-// Four habits that run through every deck, each pointing at a lesson that
-// shows it. Source: docs/LESSON-PLAYBOOK.md §1.
+// Four habits that run through every deck, shown small at the foot of the
+// overview, each pointing at a lesson that shows it. Source:
+// docs/LESSON-PLAYBOOK.md §1.
 export const PRINCIPLES = [
   {
     icon: 'Languages',
@@ -89,7 +90,11 @@ export const PRINCIPLES = [
   },
 ]
 
-// Lessons shown under "From my classroom". Titles and units come from the
+// Artifact ids shown under "Latest work" on the overview, newest first. Each
+// needs a picture: a video poster or an image url.
+export const RECENT = ['m2-whiteboard', 'm3-vlog', 'm3-ebp', 'm3-representations']
+
+// The Highlights tab of the lesson scroller. Titles and units come from the
 // registry, so they never drift from the decks themselves.
 export const FEATURED = [
   { course: 'y7-math', slug: 'U02_3', why: 'In math, “like” means the same kind, so we go over both meanings.' },
@@ -142,6 +147,15 @@ export const MODULES = [
   { n: 7, title: 'Introduction to Clinical Practice', status: 'upcoming', artifacts: [] },
   { n: 8, title: 'Teaching Practice and Proficiency', status: 'upcoming', artifacts: [] },
 ]
+
+/** One artifact by id, with its module, or undefined. */
+export function artifactById(id) {
+  for (const m of MODULES) {
+    const a = m.artifacts.find((x) => x.id === id)
+    if (a) return { ...a, module: m.n }
+  }
+  return undefined
+}
 
 /** Every artifact tagged for a page (`maths` or `literacy`), with its module. */
 export function artifactsFor(page) {
