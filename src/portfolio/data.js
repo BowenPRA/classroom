@@ -14,6 +14,11 @@ import m3Representations from './media/m3-representations.png'
 import m2Modeling from './media/m2-modeling.png'
 import m2Writing from './media/m2-writing.png'
 import m2LiteracyPres from './media/m2-literacy-presentation.pdf?url'
+import m2Flowchart from './media/m2-flowchart.pdf?url'
+import m2Whiteboard from './media/m2u3a3-whiteboard.mp4'
+import m2WhiteboardPoster from './media/m2u3a3-whiteboard-poster.jpg'
+import m2Laws from './media/m2u1a2-laws.mp4'
+import m2LawsPoster from './media/m2u1a2-laws-poster.jpg'
 import m3Ebp from './media/m3u1a2-ebp.mp4'
 import m3VlogPoster from './media/m3u2a2-vlog-poster.jpg'
 import m3EbpPoster from './media/m3u1a2-ebp-poster.jpg'
@@ -57,8 +62,9 @@ export const PROFILE = {
   ],
 }
 
-// Four habits that run through every deck, each pointing at a lesson that
-// shows it. Source: docs/LESSON-PLAYBOOK.md §1.
+// Four habits that run through every deck, shown small at the foot of the
+// overview, each pointing at a lesson that shows it. Source:
+// docs/LESSON-PLAYBOOK.md §1.
 export const PRINCIPLES = [
   {
     icon: 'Languages',
@@ -86,7 +92,11 @@ export const PRINCIPLES = [
   },
 ]
 
-// Lessons shown under "From my classroom". Titles and units come from the
+// Artifact ids shown under "Latest work" on the overview, newest first. Each
+// needs a picture: a video poster or an image url.
+export const RECENT = ['m2-law', 'm2-whiteboard', 'm3-vlog', 'm3-ebp']
+
+// The Highlights tab of the lesson scroller. Titles and units come from the
 // registry, so they never drift from the decks themselves.
 export const FEATURED = [
   { course: 'y7-math', slug: 'U02_3', why: 'In math, “like” means the same kind, so we go over both meanings.' },
@@ -112,13 +122,13 @@ export const MODULES = [
     when: '13 September – 3 October 2026',
     status: 'progress',
     artifacts: [
-      { id: 'm2-law', activity: 'U1 · A2', kind: 'video', title: 'A law that shapes teaching', blurb: 'A 4–5 minute video on one law or policy: what it says, where it came from, its strengths and weaknesses, and what it changes in a classroom.' },
+      { id: 'm2-law', activity: 'U1 · A2', kind: 'video', title: 'English as Vietnam’s second language', blurb: 'Decision 2371, Vietnam’s plan to make English the second language in its schools: where it came from, how people see it now, its strengths and weaknesses, and what it already changes in my integers lessons.', url: m2Laws, poster: m2LawsPoster },
       { id: 'm2-modelling', activity: 'U1 · A1', kind: 'image', title: 'Modeling vs models in math', blurb: 'A one-page visual on the difference between the math modeling process and models in math.', page: 'maths', url: m2Modeling, alt: 'Poster: on the left, a model in math, shown as a box model for "twice as many" and as layers of centimeter cubes in a tank; on the right, the six stages of the modeling process worked through for "How far away is the storm?" with d = t ÷ 3; below, a table comparing the two.' },
-      { id: 'm2-literacy-pres', activity: 'U2 · A2', kind: 'presentation', title: 'Promoting literacy in math', blurb: 'Why literacy matters in every subject, the signs of a struggling reader in Year 7 math, and a plan of action for my school.', url: m2LiteracyPres },
-      { id: 'm2-writing', activity: 'U2 · A3', kind: 'image', title: 'From letters to essays', blurb: 'An infographic on how writing develops, with interventions for my grade and subject.', url: m2Writing, alt: 'Infographic: six stages of writing development, from marks to letters through letter formation, letters and sounds, spelling by word parts and sentences to whole texts and essays, each beside what it looks like in my Grade 7 math room; below, signs a student is struggling and one more strategy to add.' },
-      { id: 'm2-flowchart', activity: 'U3 · A1', kind: 'flowchart', title: 'Helping a struggling learner', blurb: 'The process I follow to identify and support a struggling student, including how I tell a language need from a learning disability, and when I bring in families.' },
-      { id: 'm2-whiteboard', activity: 'U3 · A3', kind: 'video', title: 'Solving it on the whiteboard', blurb: 'Two Year 7 algebra problems, solved aloud, with the mistakes my students really make and a second strategy for each.', page: 'maths' },
-      { id: 'm2-literacy', activity: 'U3 · A3', kind: 'doc', title: 'Cohort Literacy Guide: Module 2', blurb: 'Literacy terms and definitions, built with my cohort.', page: 'literacy' },
+      { id: 'm2-literacy-pres', activity: 'U2 · A2', kind: 'presentation', title: 'Promoting literacy in math', blurb: 'Why literacy matters in every subject, the signs of a struggling reader in Year 7 math, and a plan of action for PRA.', url: m2LiteracyPres },
+      { id: 'm2-writing', activity: 'U2 · A3', kind: 'image', title: 'From letters to essays', blurb: 'An infographic on how writing develops, with interventions for my grade and subject.', url: m2Writing, alt: 'Infographic: six stages of writing development, from marks to letters through letter formation, letters and sounds, spelling by word parts and sentences to whole texts and essays, each beside what it looks like in my Grade 7 math room; then photos of two finished student posters, on integers and on HCF and LCM; below, signs a student is struggling and one more strategy to add.' },
+      { id: 'm2-flowchart', activity: 'U3 · A1', kind: 'flowchart', title: 'Helping a struggling learner', blurb: 'The process I follow to identify and support a struggling student, including how I tell a language need from a learning disability, and when I bring in families.', url: m2Flowchart },
+      { id: 'm2-whiteboard', activity: 'U3 · A3', kind: 'video', title: 'The freshman\'s dream, on the whiteboard', blurb: 'Two algebra problems worked aloud on a whiteboard: (2x − 3)² and √(x + 7) = x + 1. The mistake every one of my A level students has made, (a + b)² = a² + b², and how I help them out of it: write the brackets out, check with a number, and check every answer.', page: 'maths', url: m2Whiteboard, poster: m2WhiteboardPoster },
+      { id: 'm2-literacy', activity: 'U3 · A3', kind: 'doc', title: 'Cohort Literacy Guide: Module 2', blurb: 'Literacy terms and definitions, built with my cohort. My entries: phonemes and phonemic analysis.', page: 'literacy', url: LITERACY_GUIDE },
     ],
   },
   {
@@ -139,6 +149,15 @@ export const MODULES = [
   { n: 7, title: 'Introduction to Clinical Practice', status: 'upcoming', artifacts: [] },
   { n: 8, title: 'Teaching Practice and Proficiency', status: 'upcoming', artifacts: [] },
 ]
+
+/** One artifact by id, with its module, or undefined. */
+export function artifactById(id) {
+  for (const m of MODULES) {
+    const a = m.artifacts.find((x) => x.id === id)
+    if (a) return { ...a, module: m.n }
+  }
+  return undefined
+}
 
 /** Every artifact tagged for a page (`maths` or `literacy`), with its module. */
 export function artifactsFor(page) {
