@@ -214,8 +214,8 @@ export const slides = [
     titleFr: 'Sois une planète',
     text: 'Mr Bowen is the **Sun**. Walk round him: **orbit**. Turn on the spot: **spin**.',
     textFr: 'M. Bowen est le **Soleil**. Marche autour de lui : **orbit**. Tourne sur place : **spin**.',
-    sub: 'Four planets, four distances: all the same way round, all on one floor.',
-    subFr: 'Quatre planètes, quatre distances : toutes dans le même sens, toutes sur le même sol.',
+    sub: 'Four planets: all the same way round, all on one floor.',
+    subFr: 'Quatre planètes : toutes dans le même sens, sur le même sol.',
     reveal: {
       label: 'Now be Venus',
       labelFr: 'Maintenant, sois Vénus',
@@ -324,8 +324,8 @@ export const slides = [
     titleFr: 'Le modèle',
     ratio: 45,
     inlineSvg: DIAGRAMS.MODEL_REAL,
-    content: 'Nobody can watch a star form. So scientists make a **model**. Here is one.',
-    contentFr: 'Personne ne peut regarder une étoile se former. Alors les scientifiques font un **modèle**. En voici un.',
+    content: 'Nobody can watch a star form. So scientists make a **model**.',
+    contentFr: 'Personne ne peut voir une étoile se former. Alors les scientifiques font un **modèle**.',
     notes: [
       {
         tone: 'write',
@@ -467,7 +467,7 @@ export const slides = [
       label: 'Why is it flat?',
       labelFr: 'Pourquoi est-ce plat ?',
       answer: 'A spinning cloud **flattens**, like spun pizza dough.',
-      answerFr: 'Un nuage qui tourne **s’aplatit**, comme une pâte à pizza qu’on fait tourner.',
+      answerFr: 'Un nuage qui tourne **s’aplatit**, comme une pâte à pizza.',
     },
   },
 
@@ -534,10 +534,10 @@ export const slides = [
     sub: 'An **error** = a **mistake**: someone got it wrong. A **strength**: a good point.',
     subFr: '**An error** = **a mistake** : une erreur. **A strength** : un point fort.',
     reveal: {
-      label: 'Our dust model: a limitation? A strength?',
-      labelFr: 'Notre modèle : une limite ? Un point fort ?',
-      answer: '**Limitations:** flat, only 240 grains, no gas or heat, and the two clouds started differently. **A strength:** millions of years in a few seconds.',
-      answerFr: '**Limites :** plat, 240 grains seulement, ni gaz ni chaleur, et les deux nuages étaient différents au départ. **Un point fort :** des millions d’années en quelques secondes.',
+      label: 'Our dust model',
+      labelFr: 'Notre modèle de poussière',
+      answer: '**Limitations:** flat, only 240 grains, no gas or heat. **A strength:** millions of years in a few seconds.',
+      answerFr: '**Limites :** plat, 240 grains seulement, ni gaz ni chaleur. **Un point fort :** des millions d’années en quelques secondes.',
     },
   },
 
@@ -565,8 +565,8 @@ export const slides = [
     reveal: {
       label: 'Check your answers',
       labelFr: 'Vérifie tes réponses',
-      answer: '**b** and **c**. Most evidence supports it, like the cake, but not Venus and Uranus. It cannot be proven: nobody was there.',
-      answerFr: '**b** et **c**. La plupart des preuves la confirment, comme pour le gâteau, mais pas Vénus et Uranus. On ne peut pas la prouver : personne n’était là.',
+      answer: '**b** and **c**. Most evidence supports it, but not Venus and Uranus. It cannot be proven: nobody was there.',
+      answerFr: '**b** et **c**. La plupart des preuves la confirment, mais pas Vénus et Uranus. On ne peut pas la prouver : personne n’était là.',
     },
   },
 

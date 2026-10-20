@@ -14,8 +14,8 @@
 //             the middle. The middle still makes a star, but the grains further
 //             out keep going round it, all the same way, and stick into a few
 //             planets. (The two clouds differ in more than spin — a uniform
-//             spinning cloud makes planets as big as its star. Slide 24's
-//             limitations say so: "the two clouds started differently".)
+//             spinning cloud makes planets as big as its star. The teacher
+//             plan lists it as a limitation, for a student who asks.)
 //
 // THE SPINNING RUN STOPS AT MODEL SECOND 16 (stopAt). With only 240 grains and
 // no gas, the planets do not stay put for ever: left running, one falls into

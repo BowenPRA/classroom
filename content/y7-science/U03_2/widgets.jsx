@@ -26,7 +26,7 @@
 //                  The model is also the class's own example of a MODEL for the
 //                  Think like a scientist questions: a strength (millions of
 //                  years in seconds) and limitations (flat, 240 grains, no gas,
-//                  no heat, and the two clouds started differently).
+//                  no heat; and, in the plan, the two clouds started differently).
 //
 // The model stages are one wide SVG with a white plate, so their text scales
 // with the panel and reads on a light or dark slide; only the buttons are HTML.
