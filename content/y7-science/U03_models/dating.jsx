@@ -17,13 +17,14 @@
 //                 scientist" hands the class real samples to date from the
 //                 graph: Ötzi, the Lascaux charcoal, a mammoth, a dinosaur.
 //
-//   CoinDecay     The class ARE the atoms: everyone stands, everyone flips a
-//                 coin each round, tails sits down. Mr Bowen enters how many
-//                 are left; the graph puts the class beside the prediction,
-//                 and beside 1 000 and 1 000 000 computer atoms — random for
-//                 one, predictable for a crowd.
+//   LastAtom      Last Atom Standing. Every student gets 5 coins (5 atoms);
+//                 each round everyone flips what they have left and puts the
+//                 tails away. Mr Bowen enters the heads left and the students
+//                 still in; the graph sets the class beside "half each round"
+//                 and a million computer atoms — random for one, predictable
+//                 for a crowd. The last student with a head wins a ticket.
 import { useState, useRef, useEffect, useMemo } from 'react'
-import { Plus, Minus, Undo2, RotateCcw, Play, Pause, Coffee, Snowflake, Search, Eye, ChevronRight, Shuffle, Users, Coins } from 'lucide-react'
+import { Undo2, RotateCcw, Play, Pause, Coffee, Snowflake, Search, Eye, ChevronRight, Shuffle, Coins } from 'lucide-react'
 import { tr } from '../../../src/lib/lang.js'
 import { mulberry32, fmt } from './data.js'
 import { Btn } from './ui.jsx'
@@ -31,7 +32,7 @@ import { Btn } from './ui.jsx'
 const t = (lang, en, fr) => tr(lang, en, null, fr)
 const FONT = "Inter, 'Segoe UI', system-ui, sans-serif"
 const INK = '#2b2b2b', KEY = '#c25e12', MUTED = '#5b6770', RULE = '#d5dbe1', TEAL = '#0087a8', BLUE = '#1a5fa8'
-const C14 = '#e07a1f', N14 = '#7f9bb8'
+const C14 = '#e07a1f', N14 = '#7f9bb8', GREEN_DARK = '#3d731c'
 
 /* ============================================================= *
  * 1 · MR BOWEN'S COFFEE
@@ -310,6 +311,9 @@ export function CarbonClock({ lang = 'en', isDisplayMode = false }) {
               <text x="40" y="58" fontFamily={FONT} fontSize="28" fontWeight="900" fill={dead ? BLUE : '#4a8b23'}>
                 {dead ? t(lang, 'DEAD: no more top-ups', 'MORT : plus de recharge') : t(lang, 'ALIVE: eating, drinking, breathing', 'VIVANT : il mange, boit, respire')}
               </text>
+              <text x="250" y="104" fontFamily={FONT} fontSize="20" fontStyle="italic" fontWeight="600" fill={MUTED} textAnchor="middle">
+                {t(lang, 'This is what the AI thinks Mr Bowen looks like ↓', 'Voici M. Bowen tel que l’IA l’imagine ↓')}
+              </text>
               {dead ? (
                 <g>
                   {/* the glacier */}
@@ -516,15 +520,21 @@ export function CarbonClock({ lang = 'en', isDisplayMode = false }) {
 }
 
 /* ============================================================= *
- * 3 · BE THE ATOMS — a coin each, the whole class
+ * 3 · LAST ATOM STANDING — five coins each, the whole class
  * ============================================================= */
-const ROUNDS = 6
+// Every student gets 5 coins: 5 atoms. Each round everyone flips all the coins
+// they still have. Tails: that atom broke down, put it away. Heads: keep it.
+// Mr Bowen enters the class's total heads (and how many students still have
+// any); the graph sets the class beside "half each round" and, if he wants,
+// a million computer atoms. The last student with a head wins a prize ticket.
+const COINS_EACH = 5
+const MAX_ROUNDS = 10
 function binomialRun(n0, seed) {
   // Each round every atom left has a 1 in 2 chance of breaking down.
   const rnd = mulberry32(seed)
   const out = [n0]
   let n = n0
-  for (let k = 0; k < ROUNDS; k++) {
+  for (let k = 0; k < MAX_ROUNDS; k++) {
     if (n < 2000) {
       let m = 0
       for (let i = 0; i < n; i++) if (rnd() < 0.5) m++
@@ -539,118 +549,153 @@ function binomialRun(n0, seed) {
   return out
 }
 
-export function CoinDecay({ lang = 'en', isDisplayMode = false }) {
-  const [start, setStart] = useState(20)
-  const [counts, setCounts] = useState([20])
-  const [compare, setCompare] = useState(0) // 0 none, 1 thousand, 2 million
+// A small SVG button: a rounded box with a label, for the tallies.
+function Step({ x, y, w = 74, label, onClick, disabled }) {
+  return (
+    <g role="button" aria-label={label} aria-disabled={disabled} onClick={disabled ? undefined : onClick} style={{ cursor: disabled ? 'default' : 'pointer' }} opacity={disabled ? 0.35 : 1}>
+      <rect x={x} y={y} width={w} height="58" rx="12" fill="#ffffff" stroke={INK} strokeWidth="2.5" />
+      <text x={x + w / 2} y={y + 40} fontFamily={FONT} fontSize="28" fontWeight="900" fill={INK} textAnchor="middle">{label}</text>
+    </g>
+  )
+}
+
+export function LastAtom({ lang = 'en', isDisplayMode = false }) {
+  const [rows, setRows] = useState([{ atoms: 20 * COINS_EACH, players: 20 }])
+  const [compare, setCompare] = useState(false)
   const [seed, setSeed] = useState(3)
-  const round = counts.length - 1
-  const cur = counts[round]
   const big = isDisplayMode
-  const sims = useMemo(() => ({ 1: binomialRun(1000, seed), 2: binomialRun(1_000_000, seed + 99) }), [seed])
+  const round = rows.length - 1
+  const cur = rows[round]
+  const prev = round > 0 ? rows[round - 1] : null
+  const start = rows[0].atoms
+  const sim = useMemo(() => binomialRun(1_000_000, seed), [seed])
 
-  const setCur = (v) => setCounts((c) => [...c.slice(0, -1), Math.max(0, Math.min(v, round === 0 ? 60 : c[c.length - 2]))])
-  const nextRound = () => setCounts((c) => (c.length > ROUNDS ? c : [...c, Math.round(c[c.length - 1] / 2)]))
-  const undo = () => setCounts((c) => (c.length > 1 ? c.slice(0, -1) : c))
-  const restart = () => { setCounts([start]); setSeed((s) => s + 1) }
-  const changeStart = (v) => { const n = Math.max(2, Math.min(60, v)); setStart(n); setCounts([n]) }
+  const setClass = (n) => {
+    const k = Math.max(2, Math.min(40, n))
+    setRows([{ atoms: k * COINS_EACH, players: k }])
+  }
+  const edit = (atoms, players) => setRows((r) => {
+    const p = r.length > 1 ? r[r.length - 2] : null
+    const a = Math.max(0, Math.min(atoms, p ? p.atoms : atoms))
+    let pl = Math.max(0, Math.min(players, p ? p.players : players, a))
+    if (a > 0 && pl === 0) pl = 1
+    return [...r.slice(0, -1), { atoms: a, players: pl }]
+  })
+  const flip = () => setRows((r) => {
+    const last = r[r.length - 1]
+    if (r.length > MAX_ROUNDS || last.atoms === 0) return r
+    // a first guess for the new round: half the atoms; never more students than atoms
+    const atoms = Math.round(last.atoms / 2)
+    return [...r, { atoms, players: atoms === 0 ? 0 : Math.max(1, Math.min(last.players, atoms)) }]
+  })
+  const undo = () => setRows((r) => (r.length > 1 ? r.slice(0, -1) : r))
+  const restart = () => { setRows((r) => [r[0]]); setSeed((v) => v + 1) }
 
-  // chart: percent left, so a class of 20 and a crowd of a million share axes
-  const C = { x0: 760, x1: 1540, y0: 470, y1: 70 }
-  const cx = (k) => C.x0 + 40 + (k / ROUNDS) * (C.x1 - C.x0 - 80)
+  // what to say now
+  let msg = [t(lang, 'Everyone stand up: 5 coins each = 5 atoms.', 'Tout le monde debout : 5 pièces chacun = 5 atomes.'), KEY]
+  if (round > 0) msg = [t(lang, 'Count your heads. Put your tails away: they broke down.', 'Compte tes faces. Range tes piles : elles se sont désintégrées.'), INK]
+  if (round > 0 && cur.players === 1) msg = [t(lang, 'LAST ATOM STANDING! One student left: a prize ticket!', 'DERNIER ATOME DEBOUT ! Un seul élève : un ticket gagnant !'), GREEN_DARK]
+  if (round > 0 && cur.atoms === 0 && prev && prev.players > 1) msg = [t(lang, 'Everyone out at once! Last round’s players flip again.', 'Tout le monde sort en même temps ! Les derniers joueurs relancent.'), BLUE]
+  if (round > 0 && cur.atoms === 0 && prev && prev.players === 1) msg = [t(lang, 'All the atoms are gone. We have a winner!', 'Tous les atomes ont disparu. On a un gagnant !'), GREEN_DARK]
+
+  // chart: percent left, so the class and a million atoms share one axis
+  const C = { x0: 790, x1: 1550, y0: 470, y1: 70 }
+  const cx = (k) => C.x0 + 30 + (k / MAX_ROUNDS) * (C.x1 - C.x0 - 60)
   const cy = (p) => C.y0 - (p / 100) * (C.y0 - C.y1)
   const pct = (n, n0) => (n0 ? (100 * n) / n0 : 0)
-  const bw = 34
+  const bw = 30
 
   return (
     <div className="w-full h-full flex flex-col gap-3 select-none">
       <div className="flex-1 min-h-0 w-full">
         <svg viewBox="0 0 1580 560" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
           <rect x="0" y="0" width="1580" height="560" rx="16" fill="#ffffff" />
-          {/* left: the round */}
-          <text x="40" y="64" fontFamily={FONT} fontSize="26" fontWeight="800" fill={MUTED}>{t(lang, 'Round', 'Tour')} {round} · {t(lang, `${fmt(round * HALF)} years`, `${fmt(round * HALF)} ans`)}</text>
-          <text x="40" y="150" fontFamily={FONT} fontSize="34" fontWeight="900" fill={INK}>{round === 0 ? t(lang, 'Everyone standing:', 'Tout le monde debout :') : t(lang, 'Still standing:', 'Encore debout :')}</text>
-          <text x="330" y="300" fontFamily={FONT} fontSize="150" fontWeight="900" fill={C14} textAnchor="middle">{cur}</text>
-          {round > 0 && (
-            <text x="330" y="360" fontFamily={FONT} fontSize="26" fill={MUTED} textAnchor="middle">
-              {t(lang, `prediction: ${fmt(counts[0] / 2 ** round, 1)}`, `prévision\u00a0: ${fmt(counts[0] / 2 ** round, 1)}`)}
-            </text>
-          )}
-          <g fontFamily={FONT} fontSize="22" fill={INK}>
-            <text x="40" y="430" fontWeight="800">{t(lang, 'Each round = one half-life', 'Chaque tour = une demi-vie')}</text>
-            <text x="40" y="466">{t(lang, 'Flip your coin. Tails: you broke down. Sit.', 'Lance ta pièce. Pile : tu t’es désintégré. Assieds-toi.')}</text>
-            <text x="40" y="502">{t(lang, 'Heads: stay standing.', 'Face : reste debout.')}</text>
-          </g>
 
-          {/* right: the chart */}
+          {/* left: the tallies */}
+          <text x="40" y="60" fontFamily={FONT} fontSize="26" fontWeight="800" fill={MUTED}>
+            {round === 0 ? t(lang, 'Before the first flip', 'Avant le premier lancer') : t(lang, `Round ${round} · ${round} half-lives`, `Tour ${round} · ${round} demi-vies`)}
+          </text>
+          {round === 0 ? (
+            <g>
+              <text x="40" y="128" fontFamily={FONT} fontSize="30" fontWeight="900" fill={INK}>{t(lang, 'Students', 'Élèves')}</text>
+              <text x="190" y="250" fontFamily={FONT} fontSize="120" fontWeight="900" fill={INK} textAnchor="middle">{cur.players}</text>
+              <Step x={350} y={170} label="−" onClick={() => setClass(cur.players - 1)} disabled={cur.players <= 2} />
+              <Step x={440} y={170} label="+" onClick={() => setClass(cur.players + 1)} disabled={cur.players >= 40} />
+              <text x="40" y="340" fontFamily={FONT} fontSize="30" fontWeight="900" fill={INK}>{t(lang, '× 5 coins =', '× 5 pièces =')}</text>
+              <text x="250" y="340" fontFamily={FONT} fontSize="44" fontWeight="900" fill={C14}>{t(lang, `${cur.atoms} atoms`, `${cur.atoms} atomes`)}</text>
+            </g>
+          ) : (
+            <g>
+              <text x="40" y="128" fontFamily={FONT} fontSize="30" fontWeight="900" fill={INK}>{t(lang, 'Atoms left (heads)', 'Atomes restants (faces)')}</text>
+              <text x="170" y="250" fontFamily={FONT} fontSize="120" fontWeight="900" fill={C14} textAnchor="middle">{cur.atoms}</text>
+              <Step x={330} y={170} label="−5" onClick={() => edit(cur.atoms - 5, cur.players)} disabled={cur.atoms === 0} />
+              <Step x={414} y={170} label="−1" onClick={() => edit(cur.atoms - 1, cur.players)} disabled={cur.atoms === 0} />
+              <Step x={498} y={170} label="+1" onClick={() => edit(cur.atoms + 1, cur.players)} disabled={cur.atoms >= prev.atoms} />
+              <Step x={582} y={170} label="+5" onClick={() => edit(cur.atoms + 5, cur.players)} disabled={cur.atoms >= prev.atoms} />
+              <text x="330" y="270" fontFamily={FONT} fontSize="21" fill={MUTED}>
+                {t(lang, `half of ${prev.atoms} = ${fmt(prev.atoms / 2, prev.atoms % 2 ? 1 : 0)}`, `la moitié de ${prev.atoms} = ${fmt(prev.atoms / 2, prev.atoms % 2 ? 1 : 0)}`)}
+              </text>
+              <text x="40" y="330" fontFamily={FONT} fontSize="26" fontWeight="800" fill={INK}>{t(lang, 'Students still in', 'Élèves encore en jeu')}</text>
+              <text x="170" y="410" fontFamily={FONT} fontSize="72" fontWeight="900" fill={INK} textAnchor="middle">{cur.players}</text>
+              <Step x={330} y={356} label="−" onClick={() => edit(cur.atoms, cur.players - 1)} disabled={cur.players <= (cur.atoms > 0 ? 1 : 0)} />
+              <Step x={414} y={356} label="+" onClick={() => edit(cur.atoms, cur.players + 1)} disabled={cur.players >= Math.min(prev.players, cur.atoms)} />
+            </g>
+          )}
+          <rect x="30" y="460" width="720" height="70" rx="14" fill={msg[1] === GREEN_DARK ? '#eef6e6' : '#fdf1e3'} stroke={msg[1]} strokeWidth="2.5" />
+          <text x="390" y="504" fontFamily={FONT} fontSize="24" fontWeight="900" fill={msg[1]} textAnchor="middle">{msg[0]}</text>
+
+          {/* right: the graph */}
           {[0, 25, 50, 75, 100].map((p) => (
             <g key={p}>
               <line x1={C.x0} y1={cy(p)} x2={C.x1} y2={cy(p)} stroke={p === 0 ? INK : '#edf0f3'} strokeWidth={p === 0 ? 2.5 : 1.5} />
               <text x={C.x0 - 10} y={cy(p) + 6} fontFamily={FONT} fontSize="17" fill={MUTED} textAnchor="end">{p}%</text>
             </g>
           ))}
-          <text x={C.x0 - 50} y={C.y1 - 22} fontFamily={FONT} fontSize="18" fontWeight="700" fill={MUTED}>{t(lang, 'atoms left', 'atomes restants')}</text>
-          {Array.from({ length: ROUNDS + 1 }, (_, k) => (
+          <text x={C.x0 - 50} y={C.y1 - 38} fontFamily={FONT} fontSize="18" fontWeight="700" fill={MUTED}>{t(lang, 'atoms left', 'atomes restants')}</text>
+          {Array.from({ length: MAX_ROUNDS + 1 }, (_, k) => (
             <text key={k} x={cx(k)} y={C.y0 + 30} fontFamily={FONT} fontSize="18" fill={MUTED} textAnchor="middle">{k}</text>
           ))}
-          <text x={C.x1} y={C.y0 + 62} fontFamily={FONT} fontSize="18" fontWeight="700" fill={MUTED} textAnchor="end">{t(lang, 'round (half-lives)', 'tour (demi-vies)')}</text>
-          {/* prediction */}
+          <text x={C.x1} y={C.y0 + 62} fontFamily={FONT} fontSize="18" fontWeight="700" fill={MUTED} textAnchor="end">{t(lang, 'round (= half-lives)', 'tour (= demi-vies)')}</text>
           <polyline
-            points={Array.from({ length: 61 }, (_, i) => `${cx(i / 10).toFixed(1)},${cy(100 * 0.5 ** (i / 10)).toFixed(1)}`).join(' ')}
+            points={Array.from({ length: MAX_ROUNDS * 10 + 1 }, (_, i) => `${cx(i / 10).toFixed(1)},${cy(100 * 0.5 ** (i / 10)).toFixed(1)}`).join(' ')}
             fill="none" stroke={KEY} strokeWidth="3" strokeDasharray="8 6" opacity="0.8"
           />
-          {/* the class */}
-          {counts.map((n, k) => (
+          {rows.map((r, k) => (
             <g key={k}>
-              <rect x={cx(k) - bw / 2} y={cy(pct(n, counts[0]))} width={bw} height={C.y0 - cy(pct(n, counts[0]))} rx="5" fill={C14} />
-              <text x={cx(k)} y={cy(pct(n, counts[0])) - 10} fontFamily={FONT} fontSize="20" fontWeight="900" fill={C14} textAnchor="middle">{n}</text>
+              <rect x={cx(k) - bw / 2} y={cy(pct(r.atoms, start))} width={bw} height={C.y0 - cy(pct(r.atoms, start))} rx="5" fill={C14} />
+              <text x={cx(k)} y={cy(pct(r.atoms, start)) - 10} fontFamily={FONT} fontSize="19" fontWeight="900" fill={C14} textAnchor="middle">{r.atoms}</text>
             </g>
           ))}
-          {/* the computer's atoms */}
-          {compare > 0 && (
+          {compare && (
             <g>
               <polyline
-                points={sims[compare].slice(0, counts.length).map((n, k) => `${cx(k).toFixed(1)},${cy(pct(n, sims[compare][0])).toFixed(1)}`).join(' ')}
+                points={sim.slice(0, rows.length).map((n, k) => `${cx(k).toFixed(1)},${cy(pct(n, sim[0])).toFixed(1)}`).join(' ')}
                 fill="none" stroke={BLUE} strokeWidth="4"
               />
-              {sims[compare].slice(0, counts.length).map((n, k) => (
-                <circle key={k} cx={cx(k)} cy={cy(pct(n, sims[compare][0]))} r="7" fill={BLUE} stroke="#ffffff" strokeWidth="2" />
+              {sim.slice(0, rows.length).map((n, k) => (
+                <circle key={k} cx={cx(k)} cy={cy(pct(n, sim[0]))} r="7" fill={BLUE} stroke="#ffffff" strokeWidth="2" />
               ))}
               <text x={C.x1 - 6} y={C.y1 + 4} fontFamily={FONT} fontSize="20" fontWeight="900" fill={BLUE} textAnchor="end">
-                {compare === 1 ? t(lang, '1 000 computer atoms', '1 000 atomes simulés') : t(lang, '1 000 000 computer atoms', '1 000 000 d’atomes simulés')}
-                {': '}{fmt(sims[compare][counts.length - 1])}
+                {t(lang, '1 000 000 computer atoms', '1 000 000 d’atomes simulés')}{': '}{fmt(sim[rows.length - 1])}
               </text>
             </g>
           )}
-          <g transform={`translate(${C.x1 - 330} ${C.y1 + 30})`}>
+          <g transform={`translate(${C.x1 - 360} ${C.y1 + 34})`}>
             <rect x="0" y="-12" width="22" height="22" rx="4" fill={C14} />
             <text x="32" y="6" fontFamily={FONT} fontSize="18" fill={INK}>{t(lang, 'our class', 'notre classe')}</text>
             <line x1="150" y1="0" x2="186" y2="0" stroke={KEY} strokeWidth="3" strokeDasharray="8 6" />
-            <text x="196" y="6" fontFamily={FONT} fontSize="18" fill={INK}>{t(lang, 'half each time', 'la moitié à chaque fois')}</text>
+            <text x="196" y="6" fontFamily={FONT} fontSize="18" fill={INK}>{t(lang, 'half each round', 'la moitié à chaque tour')}</text>
           </g>
         </svg>
       </div>
 
       <div className="shrink-0 flex items-center justify-center gap-2.5 flex-wrap">
-        {round === 0 && (
-          <span className={`inline-flex items-center gap-2 font-black text-slate-600 dark:text-slate-300 ${big ? 'text-lg' : 'text-sm'}`}>
-            <Users className="w-5 h-5" />{t(lang, 'Class size', 'Effectif')}
-            <Btn big={big} tone="slate" icon={Minus} onClick={() => changeStart(start - 1)} />
-            <Btn big={big} tone="slate" icon={Plus} onClick={() => changeStart(start + 1)} />
-          </span>
-        )}
-        {round > 0 && (
-          <>
-            <Btn big={big} tone="slate" icon={Minus} disabled={cur === 0} onClick={() => setCur(cur - 1)}>{t(lang, 'One fewer', 'Un de moins')}</Btn>
-            <Btn big={big} tone="slate" icon={Plus} disabled={cur >= counts[round - 1]} onClick={() => setCur(cur + 1)}>{t(lang, 'One more', 'Un de plus')}</Btn>
-          </>
-        )}
-        <Btn big={big} tone="orange" icon={Coins} disabled={round >= ROUNDS || cur === 0} onClick={nextRound}>{t(lang, 'Flip! Next round', 'Lancez ! Tour suivant')}</Btn>
+        <Btn big={big} tone="orange" icon={Coins} disabled={round >= MAX_ROUNDS || cur.atoms === 0} onClick={flip}>{t(lang, 'Flip! Next round', 'Lancez ! Tour suivant')}</Btn>
         <Btn big={big} tone="teal" icon={Undo2} disabled={round === 0} onClick={undo}>{t(lang, 'Undo', 'Annuler')}</Btn>
-        <Btn big={big} tone="blue" icon={Shuffle} onClick={() => setCompare((c) => (c + 1) % 3)}>
-          {compare === 0 ? t(lang, 'Add 1 000 atoms', 'Ajouter 1 000 atomes') : compare === 1 ? t(lang, 'Try 1 000 000', 'Essayer 1 000 000') : t(lang, 'Hide the computer', 'Cacher l’ordinateur')}
+        <Btn big={big} tone="blue" icon={Shuffle} onClick={() => setCompare((c) => !c)}>
+          {compare ? t(lang, 'Hide the computer', 'Cacher l’ordinateur') : t(lang, 'Add 1 000 000 atoms', 'Ajouter 1 000 000 d’atomes')}
         </Btn>
-        <Btn big={big} tone="slate" icon={RotateCcw} onClick={restart}>{t(lang, 'Start again', 'Recommencer')}</Btn>
+        <Btn big={big} tone="slate" icon={RotateCcw} disabled={round === 0} onClick={restart}>{t(lang, 'Start again', 'Recommencer')}</Btn>
       </div>
     </div>
   )

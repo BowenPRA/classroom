@@ -2,14 +2,16 @@
 // Teaching diagrams for "Models: Space and Time".
 //
 //   What a model is
-//     MODEL_KINDS   four models the class already knows: a globe, a particle
-//                   drawing (2.1), a computer model, a formula (3.1)
+//     MODEL_TWO     the two meanings from 3.2: a model represents something
+//                   (a globe, the football Sun, a particle drawing); a model
+//                   uses maths to work out what we cannot see (÷ 6.3 billion,
+//                   W = m × 10)
 //     GLOBE         a globe on its stand — "what does it get wrong?"
 //   The Solar System
 //     ANS_TENNIS / ANS_PIN   vote: the Sun is a football, so the Earth is …
-//     ORBIT         Draw This: the Sun, a planet, its orbit; gravity pulls in
-//     ANS_BALL / ANS_PLATE   vote: are the orbits a ball or a plate?
-//     PLANE         Draw This: from above, all go the same way; from the side, flat
+//     ORBIT         the Sun, a planet, its orbit — and a "?" for 3.3 (why
+//                   doesn't it fall in?), so no arrows give the answer away
+//     ANS_BALL / ANS_PLATE   vote (a 3.2 review): are the orbits a ball or a plate?
 //   How it formed
 //     SPIN_FLAT     arms in, spin faster (the skater); spinning dough goes flat
 //     NEBULA_STEPS  Draw This: cloud → shrinking ball → disc → Sun and planets
@@ -111,29 +113,29 @@ const dots = (x0, y0, cols, rows, gap, r, fillFor) => {
 
 export const DIAGRAMS = {
   // ── What a model is ───────────────────────────────────────────────────────
-  MODEL_KINDS: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
+  MODEL_TWO: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
-    <rect x="24" y="24" width="384" height="246" rx="16" fill="#e2f2f6" stroke="${RULE}" stroke-width="2"/>
-    <rect x="432" y="24" width="384" height="246" rx="16" fill="#fdf1e3" stroke="${RULE}" stroke-width="2"/>
-    <rect x="24" y="290" width="384" height="246" rx="16" fill="#f2ecf7" stroke="${RULE}" stroke-width="2"/>
-    <rect x="432" y="290" width="384" height="246" rx="16" fill="#eef6e6" stroke="${RULE}" stroke-width="2"/>
-    <circle cx="216" cy="122" r="70" fill="#9fd0ff" stroke="${INK}" stroke-width="3"/>
-    <path d="M 176 82 q 30 -12 40 10 q 6 24 -20 34 q -24 -4 -20 -44 z M 230 120 q 26 -6 30 18 q -4 24 -26 26 q -14 -18 -4 -44 z" fill="#7cc36a" stroke="${INK}" stroke-width="2"/>
-    <path d="M 216 192 v 26 M 176 222 h 80" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>
-    <text x="216" y="254" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}" text-anchor="middle">a globe</text>
-    ${dots(552, 70, 6, 4, 26, 10, () => '#f2b880')}
-    <text x="624" y="210" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">particles in a solid (2.1)</text>
-    <text x="624" y="254" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}" text-anchor="middle">a drawing</text>
-    <rect x="96" y="320" width="240" height="150" rx="12" fill="#0b1228" stroke="${INK}" stroke-width="3"/>
-    <ellipse cx="216" cy="395" rx="90" ry="40" fill="none" stroke="#7dd3fc" stroke-width="2"/>
-    <ellipse cx="216" cy="395" rx="50" ry="22" fill="none" stroke="#fcd34d" stroke-width="2"/>
-    <circle cx="216" cy="395" r="10" fill="#ffd45c"/>
-    <circle cx="306" cy="395" r="6" fill="#60a5fa"/>
-    <circle cx="190" cy="374" r="4" fill="#fcd34d"/>
-    <text x="216" y="520" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}" text-anchor="middle">a computer model</text>
-    <text x="624" y="420" font-family="${FONT}" font-size="58" font-weight="bold" fill="${GREEN}" text-anchor="middle">W = m × 10</text>
-    <text x="624" y="470" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">weight (3.1)</text>
-    <text x="624" y="520" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}" text-anchor="middle">a maths model</text>
+    <rect x="24" y="24" width="384" height="512" rx="16" fill="#e2f2f6" stroke="${RULE}" stroke-width="2"/>
+    <rect x="432" y="24" width="384" height="512" rx="16" fill="#eef6e6" stroke="${RULE}" stroke-width="2"/>
+    <text x="216" y="66" font-family="${FONT}" font-size="27" font-weight="bold" fill="${TEAL}" text-anchor="middle">1 · It represents</text>
+    <text x="624" y="66" font-family="${FONT}" font-size="27" font-weight="bold" fill="${GREEN}" text-anchor="middle">2 · It uses maths</text>
+    <circle cx="140" cy="160" r="56" fill="#9fd0ff" stroke="${INK}" stroke-width="3"/>
+    <path d="M 108 128 q 24 -10 32 8 q 5 19 -16 27 q -19 -3 -16 -35 z M 152 158 q 21 -5 24 14 q -3 19 -21 21 q -11 -14 -3 -35 z" fill="#7cc36a" stroke="${INK}" stroke-width="2"/>
+    <path d="M 140 216 v 18 M 108 238 h 64" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>
+    <text x="140" y="276" font-family="${FONT}" font-size="21" font-weight="bold" fill="${INK}" text-anchor="middle">a globe</text>
+    ${football(300, 160, 50)}
+    <circle cx="300" cy="236" r="3" fill="${BLUE}"/>
+    <text x="300" y="276" font-family="${FONT}" font-size="21" font-weight="bold" fill="${INK}" text-anchor="middle">a football Sun</text>
+    ${dots(150, 330, 6, 3, 26, 10, () => '#f2b880')}
+    <text x="216" y="440" font-family="${FONT}" font-size="21" font-weight="bold" fill="${INK}" text-anchor="middle">a particle drawing</text>
+    <text x="216" y="500" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">shows what is hard to see</text>
+    <text x="624" y="170" font-family="${FONT}" font-size="34" font-weight="bold" fill="${GREEN}" text-anchor="middle">12 756 km</text>
+    <text x="624" y="214" font-family="${FONT}" font-size="34" font-weight="bold" fill="${GREEN}" text-anchor="middle">÷ 6 300 000 000</text>
+    <text x="624" y="258" font-family="${FONT}" font-size="34" font-weight="bold" fill="${GREEN}" text-anchor="middle">= 2 mm</text>
+    <text x="624" y="296" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">the pinhead Earth</text>
+    <text x="624" y="400" font-family="${FONT}" font-size="46" font-weight="bold" fill="${GREEN}" text-anchor="middle">W = m × 10</text>
+    <text x="624" y="440" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">your weight on any planet (3.1)</text>
+    <text x="624" y="500" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">works out what we cannot see</text>
   </svg>`,
 
   GLOBE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
@@ -154,24 +156,18 @@ export const DIAGRAMS = {
   ANS_TENNIS: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
     ${plate(720, 320)}
     ${leftHand(BLUE)}
-    ${football(330, 90, 46)}
-    <circle cx="560" cy="110" r="22" fill="#d8ec4f" stroke="${INK}" stroke-width="3"/>
-    <path d="M 542 98 q 18 12 36 0 M 542 122 q 18 -12 36 0" fill="none" stroke="#ffffff" stroke-width="3"/>
-    <line x1="380" y1="158" x2="538" y2="158" stroke="${MUTED}" stroke-width="2" stroke-dasharray="5 5"/>
-    <text x="459" y="150" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">2 m</text>
-    <text x="452" y="236" font-family="${FONT}" font-size="44" font-weight="bold" fill="${BLUE}" text-anchor="middle">a tennis ball,</text>
-    <text x="452" y="290" font-family="${FONT}" font-size="44" font-weight="bold" fill="${BLUE}" text-anchor="middle">2 m away</text>
+    ${football(390, 96, 50)}
+    <circle cx="520" cy="122" r="24" fill="#d8ec4f" stroke="${INK}" stroke-width="3"/>
+    <path d="M 501 109 q 19 13 38 0 M 501 135 q 19 -13 38 0" fill="none" stroke="#ffffff" stroke-width="3"/>
+    <text x="452" y="250" font-family="${FONT}" font-size="48" font-weight="bold" fill="${BLUE}" text-anchor="middle">a tennis ball</text>
   </svg>`,
 
   ANS_PIN: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
     ${plate(720, 320)}
     ${rightHand(KEY)}
-    ${football(80, 90, 46)}
-    <circle cx="400" cy="110" r="3" fill="${BLUE}"/>
-    <line x1="132" y1="158" x2="396" y2="158" stroke="${MUTED}" stroke-width="2" stroke-dasharray="5 5"/>
-    <text x="264" y="150" font-family="${FONT}" font-size="22" font-weight="bold" fill="${MUTED}" text-anchor="middle">24 m</text>
-    <text x="260" y="236" font-family="${FONT}" font-size="44" font-weight="bold" fill="${KEY}" text-anchor="middle">a pinhead,</text>
-    <text x="260" y="290" font-family="${FONT}" font-size="44" font-weight="bold" fill="${KEY}" text-anchor="middle">24 m away</text>
+    ${football(200, 96, 50)}
+    <circle cx="300" cy="140" r="3" fill="${BLUE}"/>
+    <text x="260" y="250" font-family="${FONT}" font-size="48" font-weight="bold" fill="${KEY}" text-anchor="middle">a pinhead</text>
   </svg>`,
 
   ORBIT: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
@@ -179,10 +175,7 @@ export const DIAGRAMS = {
     <ellipse cx="400" cy="290" rx="300" ry="190" fill="none" stroke="${INK}" stroke-width="3" stroke-dasharray="10 8"/>
     ${sun(400, 290, 52)}
     ${planet(640, 176, 26, '#9fd0ff')}
-    ${arrow(624, 190, 474, 258, RED, 5, 20)}
-    ${arrow(666, 176, 760, 252, BLUE, 5, 20)}
-    <text x="586" y="266" font-family="${FONT}" font-size="22" font-weight="bold" fill="${RED}" text-anchor="middle">gravity</text>
-    <text x="760" y="296" font-family="${FONT}" font-size="22" font-weight="bold" fill="${BLUE}" text-anchor="middle">moving</text>
+    <text x="720" y="150" font-family="${FONT}" font-size="64" font-weight="bold" fill="${PURPLE}" text-anchor="middle">?</text>
     ${leader(250, 520, 250, 445)}
     <text x="262" y="534" font-family="${FONT}" font-size="22" font-weight="bold" fill="${KEY}">orbit</text>
     <text x="400" y="390" font-family="${FONT}" font-size="22" font-weight="bold" fill="${KEY}" text-anchor="middle">the Sun</text>
@@ -209,32 +202,6 @@ export const DIAGRAMS = {
     <ellipse cx="260" cy="98" rx="60" ry="6" fill="none" stroke="${KEY}" stroke-width="2.5"/>
     <text x="260" y="236" font-family="${FONT}" font-size="44" font-weight="bold" fill="${KEY}" text-anchor="middle">flat,</text>
     <text x="260" y="290" font-family="${FONT}" font-size="44" font-weight="bold" fill="${KEY}" text-anchor="middle">like a plate</text>
-  </svg>`,
-
-  PLANE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
-    ${plate(840, 560)}
-    <text x="210" y="48" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}" text-anchor="middle">From above</text>
-    <circle cx="210" cy="250" r="70" fill="none" stroke="${INK}" stroke-width="2.5" stroke-dasharray="7 6"/>
-    <circle cx="210" cy="250" r="120" fill="none" stroke="${INK}" stroke-width="2.5" stroke-dasharray="7 6"/>
-    <circle cx="210" cy="250" r="170" fill="none" stroke="${INK}" stroke-width="2.5" stroke-dasharray="7 6"/>
-    ${sun(210, 250, 22)}
-    ${arcArrow(210, 250, 70, 70, 20, -50, BLUE, 4, 14)}
-    ${arcArrow(210, 250, 120, 120, 150, 80, BLUE, 4, 16)}
-    ${arcArrow(210, 250, 170, 170, 260, 200, BLUE, 4, 16)}
-    ${planet(280, 250, 9, '#9fd0ff')}
-    ${planet(110, 320, 11, '#e2a76f')}
-    ${planet(210, 420, 14, '#e3cc94')}
-    <text x="210" y="470" font-family="${FONT}" font-size="21" font-weight="bold" fill="${BLUE}" text-anchor="middle">all go round</text>
-    <text x="210" y="498" font-family="${FONT}" font-size="21" font-weight="bold" fill="${BLUE}" text-anchor="middle">the same way</text>
-    <line x1="420" y1="40" x2="420" y2="520" stroke="${RULE}" stroke-width="2"/>
-    <text x="630" y="48" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}" text-anchor="middle">From the side</text>
-    <line x1="450" y1="250" x2="810" y2="250" stroke="${INK}" stroke-width="2.5" stroke-dasharray="7 6"/>
-    ${sun(630, 250, 22)}
-    ${planet(700, 250, 9, '#9fd0ff')}
-    ${planet(520, 250, 11, '#e2a76f')}
-    ${planet(790, 250, 14, '#e3cc94')}
-    <text x="630" y="470" font-family="${FONT}" font-size="21" font-weight="bold" fill="${KEY}" text-anchor="middle">almost flat:</text>
-    <text x="630" y="498" font-family="${FONT}" font-size="21" font-weight="bold" fill="${KEY}" text-anchor="middle">one plane</text>
   </svg>`,
 
   // ── How it formed ─────────────────────────────────────────────────────────

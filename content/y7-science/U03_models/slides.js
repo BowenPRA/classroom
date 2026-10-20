@@ -1,35 +1,36 @@
 // content/y7-science/U03_models/slides.js
-// Year 7 Science · Models: Space and Time. A Unit 3 modelling deck, after 3.1
-// (gravity), 3.2 (formation of the Solar System) and 3.3 (movement in space).
+// Year 7 Science · Models: Space and Time. A Unit 3 modelling deck, taught
+// after 3.2 (formation of the Solar System) and before 3.3 (movement in space).
 //
 // ENGLISH AND FRENCH ONLY, like every Year 7 deck from Unit 4 / 15 October:
 // every string has an …Fr twin and no …Vn twin. The diagrams stay in English.
 //
-// FOUR PARTS, ONE DECK, about three periods (plan.js has the timings):
-//   1 Space           what a model is; how big and how far (the football Sun);
-//                     the working Solar System model; why it is flat — asked
-//   2 How it formed   the nebula model answers the question from Part 1
-//   3 Time            half-life from Mr Bowen's coffee; Mr Bowen, tragically
-//                     without his coffee, frozen in a glacier: carbon dating;
-//                     the class becomes the atoms; why not dinosaurs
-//   4 The oldest      clocks with longer half-lives; the age of the Earth
-//     things          (crystals, meteorites, Patterson); the age of the Sun
-//                     (a model Sun that must match the real one); all of
-//                     Earth's history as one year
+// TWO PARTS (plan.js has the timings):
+//   1 Space   how big (the football Sun, asked as a size vote first); the
+//             two kinds of model from 3.2; the Solar System, with 3.2's words
+//             and 3.3's question left open; the plane, reviewed; the working
+//             Solar System model; limitations (Cambridge asks for them); then
+//             the nebula, reviewed from 3.2, and the formation model.
+//   2 Time    half-life from Mr Bowen's coffee; Mr Bowen, tragically without
+//             his coffee, frozen in a glacier: carbon dating; Last Atom
+//             Standing with coins; why not dinosaurs; longer clocks; the age
+//             of the Earth (crystals, meteorites, Patterson) and of the Sun (a
+//             model Sun that must match the real one); Earth's history as a year.
 //
-// THE THREAD IS MODELLING. Every part uses a model, and every part asks what
-// that model gets wrong (slides 3, 11, 19) and how we know it is right
-// (evidence on 18, agreeing methods on 44). Models are named as models.
+// THE THREAD IS MODELLING. Both meanings from 3.2 are used — a model that
+// represents (the globe, the football Sun, the formation model) and a model
+// that uses maths to work out what nobody could see (÷ 6.3 billion, half-lives,
+// the model Sun). Limitations come once, just before the class judges the
+// Solar System model, and are used again for the formation model.
 //
 // WRITING RULE (the 2.5 density): one hook line, short sentences, and the body
-// never repeats the write note, a label or the caption. The widgets carry the
-// detail; the slides carry the questions.
+// never repeats the write note, a label or the caption.
 
 import { DIAGRAMS } from './diagrams.js'
 import { SolarSystem } from './solar.jsx'
 import { PlanetSizes, ScaleShrink } from './sizes.jsx'
 import { Formation } from './formation.jsx'
-import { CoffeeClock, CarbonClock, CoinDecay } from './dating.jsx'
+import { CoffeeClock, CarbonClock, LastAtom } from './dating.jsx'
 import { SunModel, EarthYear } from './deeptime.jsx'
 
 const TEAL = '#0087a8'
@@ -41,10 +42,10 @@ const INDIGO = '#3949ab'
 
 export const slides = [
   // ════════════════════════════════════════════════════════════════════════
-  // PART 1 — SPACE: what a model is, how big, how far, how it moves
+  // PART 1 — SPACE: how big, what a model is, the Solar System, how it formed
   // ════════════════════════════════════════════════════════════════════════
 
-  // 1. Hero + starter: guess the size before anything is shown
+  // 1. Hero + starter: a size guess, nothing else
   {
     layout: 'hero',
     color: TEAL,
@@ -59,62 +60,12 @@ export const slides = [
       icon: 'Pencil',
       badge: 'Starter',
       badgeFr: 'Pour commencer',
-      text: 'The Sun is the size of a **football**. How big is the Earth? How far away is it? Write: **I think … because …**',
-      textFr: 'Le Soleil a la taille d’un **ballon de foot**. Quelle taille a la Terre ? À quelle distance est-elle ? Écris : **I think … because …**',
+      text: 'The Sun is the size of a **football**. How big is the **Earth**? Write: **I think … because …**',
+      textFr: 'Le Soleil a la taille d’un **ballon de foot**. Quelle taille a la **Terre** ? Écris : **I think … because …**',
     },
   },
 
-  // 2. What a model is (write)
-  {
-    layout: 'split',
-    accent: TEAL,
-    icon: 'Boxes',
-    eyebrow: 'Key word',
-    eyebrowFr: 'Mot clé',
-    title: 'What Is a Model?',
-    titleFr: 'Qu’est-ce qu’un modèle ?',
-    ratio: 45,
-    inlineSvg: DIAGRAMS.MODEL_KINDS,
-    content: 'You have used models all year.\nWe need one when the real thing is too **big**, too **small**, too **slow** or too **old** to see.',
-    contentFr: 'Tu utilises des modèles depuis septembre.\nOn en a besoin quand la vraie chose est trop **grande**, trop **petite**, trop **lente** ou trop **ancienne** pour être vue.',
-    notes: [
-      {
-        tone: 'write',
-        text: '**Model:** a simple version of something real. It helps us **explain** and **predict**.',
-        textFr: '**Modèle (model) :** une version simple de quelque chose de réel. Il nous aide à **expliquer** et à **prévoir**.',
-      },
-    ],
-  },
-
-  // 3. Every model is wrong somehow (write)
-  {
-    layout: 'split',
-    accent: PURPLE,
-    icon: 'Globe',
-    eyebrow: 'Think',
-    eyebrowFr: 'Réfléchis',
-    title: 'What Does a Globe Get Wrong?',
-    titleFr: 'Qu’est-ce qu’un globe a de faux ?',
-    ratio: 50,
-    inlineSvg: DIAGRAMS.GLOBE,
-    content: 'A globe is a **model** of the Earth. Find **three** things it gets wrong.',
-    contentFr: 'Un globe est un **modèle** de la Terre. Trouve **trois** choses fausses.',
-    notes: [
-      {
-        tone: 'write',
-        text: '**Limitation:** something a model gets wrong or leaves out. Every model has limitations.',
-        textFr: '**Limite (limitation) :** ce qu’un modèle montre mal ou oublie. Tous les modèles ont des limites.',
-      },
-    ],
-    reveal: {
-      label: 'Some answers',
-      labelFr: 'Quelques réponses',
-      answer: 'It is about **40 million times** too small.\nIt does not **spin** by itself.\nNo clouds, no weather, no night.\nThe mountains are **flat**.',
-      answerFr: 'Il est environ **40 millions de fois** trop petit.\nIl ne **tourne** pas tout seul.\nPas de nuages, pas de météo, pas de nuit.\nLes montagnes sont **plates**.',
-    },
-  },
-
-  // 4. Vote: the football Sun
+  // 2. Vote: the size of the Earth
   {
     layout: 'compare',
     accent: PURPLE,
@@ -131,7 +82,7 @@ export const slides = [
     ],
   },
 
-  // 5. The football model, one object at a time
+  // 3. The football model, one object at a time
   {
     layout: 'showcase',
     accent: TEAL,
@@ -141,11 +92,11 @@ export const slides = [
     title: 'Shrink the Solar System',
     titleFr: 'Réduis le système solaire',
     widget: ScaleShrink,
-    caption: 'Answer: **B**. Say each answer **before** it is shown.',
-    captionFr: 'Réponse : **B**. Dis chaque réponse **avant** qu’elle s’affiche.',
+    caption: 'Answer: **B**, a pinhead. Now guess how **far** away, **before** each one is shown.',
+    captionFr: 'Réponse : **B**, une tête d’épingle. Devine maintenant à quelle **distance**, **avant** chaque réponse.',
   },
 
-  // 6. True sizes, then the Sun
+  // 4. True sizes, then the Sun
   {
     layout: 'showcase',
     accent: TEAL,
@@ -159,47 +110,84 @@ export const slides = [
     captionFr: 'Clique sur une planète. Puis ajoute le **Soleil**.',
   },
 
-  // 7. The Solar System and orbit (write + Draw This)
+  // 5. The two meanings of "model" from 3.2
   {
     layout: 'split',
-    accent: ORANGE,
-    icon: 'Pencil',
-    eyebrow: 'Draw this',
-    eyebrowFr: 'À dessiner',
-    title: 'The Solar System',
-    titleFr: 'Le système solaire',
+    accent: TEAL,
+    icon: 'Boxes',
+    eyebrow: 'Review · 3.2',
+    eyebrowFr: 'Révision · 3.2',
+    title: 'Two Kinds of Model',
+    titleFr: 'Deux sortes de modèles',
     ratio: 45,
-    inlineSvg: DIAGRAMS.ORBIT,
-    drawThis: true,
-    content: 'Remember 3.1: **gravity** pulls things together.',
-    contentFr: 'Souviens-toi de 3.1 : la **gravité** attire les objets les uns vers les autres.',
+    inlineSvg: DIAGRAMS.MODEL_TWO,
+    content: 'You just used **both** kinds.',
+    contentFr: 'Tu viens d’utiliser les **deux** sortes.',
     notes: [
       {
-        tone: 'write',
-        text: '**Solar System:** the Sun and everything that orbits it: 8 planets, their moons, dwarf planets, asteroids and comets.\n**Orbit:** the path of a planet around the Sun. The Sun’s **gravity** keeps it there.',
-        textFr: '**Système solaire (Solar System) :** le Soleil et tout ce qui tourne autour : 8 planètes, leurs lunes, des planètes naines, des astéroïdes et des comètes.\n**Orbite (orbit) :** le chemin d’une planète autour du Soleil. La **gravité** du Soleil l’y retient.',
+        tone: 'info',
+        badge: 'From 3.2',
+        badgeFr: 'Vu en 3.2',
+        text: '**1 · A model represents something.** It shows something that is hard to observe directly. The football Sun is one.',
+        textFr: '**1 · Un modèle représente quelque chose.** Il montre ce qu’on ne peut pas bien observer directement. Le Soleil-ballon en est un.',
+      },
+      {
+        tone: 'info',
+        badge: 'From 3.2',
+        badgeFr: 'Vu en 3.2',
+        text: '**2 · A model can use maths** to work out something we could never see. Dividing by 6 300 000 000 told us the Earth is a pinhead.',
+        textFr: '**2 · Un modèle peut utiliser les maths** pour trouver ce qu’on ne pourra jamais voir. Diviser par 6 300 000 000 nous a dit que la Terre est une tête d’épingle.',
       },
     ],
   },
 
-  // 8. Vote before the model is turned: ball or plate?
+  // 6. The Solar System: 3.2's words, and 3.3's question
+  {
+    layout: 'split',
+    accent: TEAL,
+    icon: 'Sun',
+    eyebrow: 'Key word',
+    eyebrowFr: 'Mot clé',
+    title: 'The Solar System',
+    titleFr: 'Le système solaire',
+    ratio: 45,
+    inlineSvg: DIAGRAMS.ORBIT,
+    content: 'Words from 3.2: **orbit** · **spin** · **axis** · **plane**',
+    contentFr: 'Mots vus en 3.2 : **orbit** (orbite) · **spin** (tourner) · **axis** (axe) · **plane** (plan)',
+    notes: [
+      {
+        tone: 'write',
+        text: '**Solar System:** the Sun and everything that orbits it: 8 planets, their moons, dwarf planets, asteroids and comets.',
+        textFr: '**Système solaire (Solar System) :** le Soleil et tout ce qui tourne autour : 8 planètes, leurs lunes, des planètes naines, des astéroïdes et des comètes.',
+      },
+      {
+        tone: 'theory',
+        badge: 'Coming up in 3.3',
+        badgeFr: 'À venir en 3.3',
+        text: 'Why don’t the planets **fall into the Sun**? Why do they **keep going round**? We answer that in 3.3.',
+        textFr: 'Pourquoi les planètes ne **tombent-elles pas sur le Soleil** ? Pourquoi **continuent-elles de tourner** ? On répond en 3.3.',
+      },
+    ],
+  },
+
+  // 7. Vote, as a 3.2 review: ball or plate?
   {
     layout: 'compare',
     accent: PURPLE,
     icon: 'Hand',
-    eyebrow: 'Vote with one hand',
-    eyebrowFr: 'Vote avec une main',
+    eyebrow: 'Review · 3.2 · vote with one hand',
+    eyebrowFr: 'Révision · 3.2 · vote avec une main',
     title: 'Ball or Plate?',
     titleFr: 'Boule ou assiette ?',
-    text: 'Look at all the orbits from the **side**. They are …',
-    textFr: 'Regarde toutes les orbites **de côté**. Elles sont …',
+    text: 'Remember 3.2: from the **side**, all the orbits are …',
+    textFr: 'Souviens-toi de 3.2 : vues **de côté**, toutes les orbites sont …',
     columns: [
       { heading: 'A · left hand up', headingFr: 'A · main gauche levée', accent: BLUE, icon: 'Hand', inlineSvg: DIAGRAMS.ANS_BALL },
       { heading: 'B · right hand up', headingFr: 'B · main droite levée', accent: ORANGE, icon: 'Hand', inlineSvg: DIAGRAMS.ANS_PLATE },
     ],
   },
 
-  // 9. The working model (full slide)
+  // 8. The working model (full slide)
   {
     layout: 'game',
     title: 'A Working Model of the Solar System',
@@ -207,30 +195,42 @@ export const slides = [
     widget: SolarSystem,
   },
 
-  // 10. Flat, and the same way (write + Draw This)
+  // 9. Limitations, just before the class judges the model (write)
   {
     layout: 'split',
-    accent: ORANGE,
-    icon: 'Pencil',
-    eyebrow: 'Draw this',
-    eyebrowFr: 'À dessiner',
-    title: 'Flat, and the Same Way',
-    titleFr: 'Plat, et dans le même sens',
-    ratio: 45,
-    inlineSvg: DIAGRAMS.PLANE,
-    drawThis: true,
-    content: 'Answer: **B**, a plate. But **why**? Keep that question for Part 2.',
-    contentFr: 'Réponse : **B**, une assiette. Mais **pourquoi** ? Garde cette question pour la partie 2.',
+    accent: PURPLE,
+    icon: 'Globe',
+    eyebrow: 'Key word',
+    eyebrowFr: 'Mot clé',
+    title: 'What Does a Globe Get Wrong?',
+    titleFr: 'Qu’est-ce qu’un globe a de faux ?',
+    ratio: 50,
+    inlineSvg: DIAGRAMS.GLOBE,
+    content: 'A globe is a **model** of the Earth. Find **three** things it gets wrong.',
+    contentFr: 'Un globe est un **modèle** de la Terre. Trouve **trois** choses fausses.',
     notes: [
       {
         tone: 'write',
-        text: 'The planets orbit the Sun in the **same direction**, in almost the **same flat plane**.',
-        textFr: 'Les planètes tournent autour du Soleil dans le **même sens**, presque dans le **même plan**.',
+        text: '**Limitation:** something a model cannot do, gets wrong or leaves out. Every model has limitations.',
+        textFr: '**Limite (limitation) :** ce qu’un modèle ne peut pas faire, montre mal ou oublie. Tous les modèles ont des limites.',
+      },
+      {
+        tone: 'theory',
+        badge: 'Exam tip',
+        badgeFr: 'Conseil pour l’examen',
+        text: 'Cambridge **loves** this question: *Give one limitation of this model.*',
+        textFr: 'Cambridge **adore** cette question : *Give one limitation of this model.* (Donne une limite de ce modèle.)',
       },
     ],
+    reveal: {
+      label: 'Some answers',
+      labelFr: 'Quelques réponses',
+      answer: 'It is about **40 million times** too small.\nIt does not **spin** by itself.\nNo clouds, no weather, no night.\nThe mountains are **flat**.',
+      answerFr: 'Il est environ **40 millions de fois** trop petit.\nIl ne **tourne** pas tout seul.\nPas de nuages, pas de météo, pas de nuit.\nLes montagnes sont **plates**.',
+    },
   },
 
-  // 11. What does our computer model get wrong?
+  // 10. What does our computer model get wrong?
   {
     layout: 'statement',
     accent: PURPLE,
@@ -249,46 +249,24 @@ export const slides = [
     },
   },
 
-  // ════════════════════════════════════════════════════════════════════════
-  // PART 2 — HOW IT FORMED: the nebula model answers "why flat?"
-  // ════════════════════════════════════════════════════════════════════════
-
-  // 12. Hero + starter: the spinning chair
-  {
-    layout: 'hero',
-    color: BLUE,
-    icon: 'Sparkles',
-    brand: 'Year 7 Science',
-    brandFr: 'Sciences 7e année',
-    eyebrow: 'Models · Part 2',
-    eyebrowFr: 'Modèles · Partie 2',
-    title: 'How Did It Form?',
-    titleFr: 'Comment s’est-il formé ?',
-    card: {
-      icon: 'Pencil',
-      badge: 'Starter',
-      badgeFr: 'Pour commencer',
-      text: 'Mr Bowen spins on a chair with his arms **out**. Then he pulls them **in**. What happens? Write: **I think … because …**',
-      textFr: 'M. Bowen tourne sur une chaise, les bras **écartés**. Puis il les **ramène**. Que se passe-t-il ? Écris : **I think … because …**',
-    },
-  },
-
-  // 13. The question, with no answer on it
+  // 11. Before the Sun — a 3.2 review
   {
     layout: 'statement',
     accent: BLUE,
-    icon: 'Sparkles',
     eyebrow: '4.6 billion years ago',
     eyebrowFr: 'Il y a 4.6 milliards d’années',
     title: 'Before the Sun',
     titleFr: 'Avant le Soleil',
-    text: 'There was no Sun and no Earth. Only a huge **cloud** of gas and dust.',
-    textFr: 'Il n’y avait ni Soleil ni Terre. Seulement un énorme **nuage** de gaz et de poussière.',
+    label: 'Review · 3.2',
+    labelFr: 'Révision · 3.2',
+    labelIcon: 'Repeat',
+    text: 'There was no Sun and no Earth. Only a huge **cloud** of gas and dust: a **nebula**.',
+    textFr: 'Il n’y avait ni Soleil ni Terre. Seulement un énorme **nuage** de gaz et de poussière : une **nébuleuse**.',
     sub: 'How do you make a Sun and 8 planets from a cloud?',
     subFr: 'Comment faire un Soleil et 8 planètes avec un nuage ?',
   },
 
-  // 14. The formation model (full slide)
+  // 12. The formation model (full slide)
   {
     layout: 'game',
     title: 'How the Solar System Formed',
@@ -296,7 +274,7 @@ export const slides = [
     widget: Formation,
   },
 
-  // 15. Why it spun faster and went flat
+  // 13. Why it spun faster and went flat
   {
     layout: 'showcase',
     accent: GREEN,
@@ -310,7 +288,7 @@ export const slides = [
     captionFr: 'Le nuage qui rétrécit a fait **les deux**. Voilà pourquoi les planètes sont dans un plan et tournent toutes dans le **même sens**.',
   },
 
-  // 16. The four steps (write + Draw This)
+  // 14. The four steps (write + Draw This)
   {
     layout: 'split',
     accent: ORANGE,
@@ -325,19 +303,19 @@ export const slides = [
     notes: [
       {
         tone: 'write',
-        text: '**Nebula:** a huge cloud of gas and dust in space.\n1. Gravity pulls the nebula together. It spins faster.\n2. It flattens into a spinning disc.\n3. The hot middle becomes the Sun.\n4. Dust sticks together and grows into planets.',
-        textFr: '**Nébuleuse (nebula) :** un énorme nuage de gaz et de poussière dans l’espace.\n1. La gravité rassemble la nébuleuse. Elle tourne plus vite.\n2. Elle s’aplatit en un disque qui tourne.\n3. Le centre chaud devient le Soleil.\n4. La poussière s’agglomère et forme des planètes.',
+        text: '1. Gravity pulls the nebula together. It spins faster.\n2. It flattens into a spinning disc.\n3. The hot middle becomes the Sun.\n4. Dust sticks together and grows into planets.',
+        textFr: '1. La gravité rassemble la nébuleuse. Elle tourne plus vite.\n2. Elle s’aplatit en un disque qui tourne.\n3. Le centre chaud devient le Soleil.\n4. La poussière s’agglomère et forme des planètes.',
       },
     ],
   },
 
-  // 17. Rocky or giant: the frost line
+  // 15. Rocky or giant: the frost line
   {
     layout: 'compare',
     accent: TEAL,
     icon: 'Thermometer',
-    eyebrow: 'Step 3 of the model',
-    eyebrowFr: 'Étape 3 du modèle',
+    eyebrow: 'Step 4 of the model',
+    eyebrowFr: 'Étape 4 du modèle',
     title: 'Rocky or Giant?',
     titleFr: 'Rocheuse ou géante ?',
     columns: [
@@ -362,29 +340,22 @@ export const slides = [
     ],
   },
 
-  // 18. Evidence: we can see it happening
+  // 16. Evidence: HL Tauri again, now as a check on the model
   {
     layout: 'split',
     accent: TEAL,
     icon: 'Telescope',
-    eyebrow: 'Evidence',
-    eyebrowFr: 'Une preuve',
+    eyebrow: 'Evidence · you saw it in 3.2',
+    eyebrowFr: 'Une preuve · vue en 3.2',
     title: 'We Can See It Happening',
     titleFr: 'On peut le voir en ce moment',
     ratio: 45,
     inlineSvg: DIAGRAMS.HL_TAU,
-    content: 'A model must match what we **see**.\nTelescopes find young stars with dusty discs **today**. The dark gaps are where planets are growing.',
-    contentFr: 'Un modèle doit correspondre à ce qu’on **voit**.\nLes télescopes trouvent **aujourd’hui** de jeunes étoiles entourées de disques de poussière. Les espaces sombres sont là où des planètes grandissent.',
-    notes: [
-      {
-        tone: 'info',
-        text: '**HL Tauri:** a star about 1 million years old, 450 light years away. Photographed by the ALMA telescope in 2014.',
-        textFr: '**HL Tauri :** une étoile d’environ 1 million d’années, à 450 années-lumière. Photographiée par le télescope ALMA en 2014.',
-      },
-    ],
+    content: 'A model must match what we **see**.\nHL Tauri is a young star with a dusty disc **today**. The dark gaps are where planets are growing.',
+    contentFr: 'Un modèle doit correspondre à ce qu’on **voit**.\nHL Tauri est une jeune étoile entourée d’un disque de poussière, **aujourd’hui**. Les espaces sombres sont là où des planètes grandissent.',
   },
 
-  // 19. Limitations of the formation model
+  // 17. Limitations of the formation model
   {
     layout: 'statement',
     accent: PURPLE,
@@ -393,8 +364,8 @@ export const slides = [
     eyebrowFr: 'Pense comme un scientifique',
     title: 'What Does Our Model Get Wrong?',
     titleFr: 'Qu’est-ce que notre modèle a de faux ?',
-    text: 'Find **two** limitations of the formation model.',
-    textFr: 'Trouve **deux** limites du modèle de formation.',
+    text: 'Give **two** limitations of the formation model.',
+    textFr: 'Donne **deux** limites du modèle de formation.',
     reveal: {
       label: 'Some answers',
       labelFr: 'Quelques réponses',
@@ -404,18 +375,18 @@ export const slides = [
   },
 
   // ════════════════════════════════════════════════════════════════════════
-  // PART 3 — TIME: half-life, Mr Bowen's coffee, Mr Bowen's carbon
+  // PART 2 — TIME: half-life, Mr Bowen's coffee, Mr Bowen's carbon, the oldest things
   // ════════════════════════════════════════════════════════════════════════
 
-  // 20. Hero + starter: when is the coffee gone?
+  // 18. Hero + starter: when is the coffee gone?
   {
     layout: 'hero',
     color: PURPLE,
     icon: 'Hourglass',
     brand: 'Year 7 Science',
     brandFr: 'Sciences 7e année',
-    eyebrow: 'Models · Part 3',
-    eyebrowFr: 'Modèles · Partie 3',
+    eyebrow: 'Unit 3 · Models · Part 2',
+    eyebrowFr: 'Unité 3 · Modèles · Partie 2',
     title: 'How Old Is It?',
     titleFr: 'Quel âge a-t-il ?',
     card: {
@@ -427,7 +398,7 @@ export const slides = [
     },
   },
 
-  // 21. The coffee stepper
+  // 19. The coffee stepper
   {
     layout: 'showcase',
     accent: ORANGE,
@@ -441,7 +412,7 @@ export const slides = [
     captionFr: 'Une tasse de café : environ **100 mg** de caféine. Dis le nombre suivant **avant** qu’il s’affiche.',
   },
 
-  // 22. Half-life (write)
+  // 20. Half-life (write)
   {
     layout: 'split',
     accent: TEAL,
@@ -463,7 +434,7 @@ export const slides = [
     ],
   },
 
-  // 23. English check
+  // 21. English check
   {
     layout: 'statement',
     accent: PURPLE,
@@ -480,7 +451,7 @@ export const slides = [
     subFr: '« Toutes les 5 heures, la caféine est **divisée par deux** (halves). Sa **demi-vie** (half-life) est de 5 heures. »',
   },
 
-  // 24. The story begins (deadpan)
+  // 22. The story begins (deadpan)
   {
     layout: 'statement',
     accent: ORANGE,
@@ -495,7 +466,7 @@ export const slides = [
     subFr: 'Il n’a pas survécu.',
   },
 
-  // 25. Frozen — and the question
+  // 23. Frozen — and the question
   {
     layout: 'statement',
     accent: BLUE,
@@ -503,8 +474,8 @@ export const slides = [
     eyebrowFr: 'Ensuite',
     title: 'Frozen',
     titleFr: 'Congelé',
-    text: 'He wandered into the mountains and was frozen in a **glacier**.',
-    textFr: 'Il s’est perdu dans les montagnes et a été pris dans un **glacier**.',
+    text: 'Dying, delirious and coffee‑less, he wandered into a **glacier**, just as he died.',
+    textFr: 'Mourant, délirant et sans café, il s’est égaré dans un **glacier**, juste au moment de mourir.',
     sub: '11 400 years later, scientists find him. How can they tell **when** he died?',
     subFr: '11 400 ans plus tard, des scientifiques le retrouvent. Comment savoir **quand** il est mort ?',
     reveal: {
@@ -515,7 +486,7 @@ export const slides = [
     },
   },
 
-  // 26. Carbon-14 (write)
+  // 24. Carbon-14 (write)
   {
     layout: 'split',
     accent: TEAL,
@@ -537,7 +508,7 @@ export const slides = [
     ],
   },
 
-  // 27. Where it comes from
+  // 25. Where it comes from
   {
     layout: 'showcase',
     accent: GREEN,
@@ -551,7 +522,7 @@ export const slides = [
     captionFr: 'Tant que tu es vivant, la nourriture et les boissons **rechargent** ton carbone 14. Même le café.',
   },
 
-  // 28. The carbon clock model
+  // 26. The carbon clock model
   {
     layout: 'showcase',
     accent: ORANGE,
@@ -565,7 +536,7 @@ export const slides = [
     captionFr: 'Avant chaque demi-vie, devine : combien d’atomes resteront ?',
   },
 
-  // 29. Carbon dating (write + Draw This)
+  // 27. Carbon dating (write + Draw This)
   {
     layout: 'split',
     accent: ORANGE,
@@ -588,21 +559,21 @@ export const slides = [
     ],
   },
 
-  // 30. The class are the atoms
+  // 28. Last Atom Standing
   {
     layout: 'showcase',
     accent: GREEN,
     icon: 'Coins',
-    eyebrow: 'Everyone stand up',
-    eyebrowFr: 'Tout le monde debout',
-    title: 'Be the Atoms',
-    titleFr: 'Deviens un atome',
-    widget: CoinDecay,
-    caption: 'Each round is one half-life. Flip your coin. **Tails:** you broke down. Sit down.',
-    captionFr: 'Chaque tour est une demi-vie. Lance ta pièce. **Pile :** tu t’es désintégré. Assieds-toi.',
+    eyebrow: 'A game · 5 coins each',
+    eyebrowFr: 'Un jeu · 5 pièces chacun',
+    title: 'Last Atom Standing',
+    titleFr: 'Le dernier atome debout',
+    widget: LastAtom,
+    caption: 'Flip all your coins each round. **Tails:** that atom broke down. The last student with a **head** wins a prize ticket!',
+    captionFr: 'Lance toutes tes pièces à chaque tour. **Pile :** cet atome s’est désintégré. Le dernier élève avec une **face** gagne un ticket !',
   },
 
-  // 31. Random or predictable?
+  // 29. Random or predictable?
   {
     layout: 'statement',
     accent: PURPLE,
@@ -611,8 +582,8 @@ export const slides = [
     eyebrowFr: 'Réfléchis',
     title: 'Random or Predictable?',
     titleFr: 'Hasard ou prévisible ?',
-    text: 'Can anyone say **which** atom will break down next?',
-    textFr: 'Peut-on dire **quel** atome va se désintégrer ensuite ?',
+    text: 'Could anyone say **who** would win before we started?',
+    textFr: 'Pouvait-on dire **qui** allait gagner avant de commencer ?',
     reveal: {
       label: 'Answer',
       labelFr: 'Réponse',
@@ -621,7 +592,7 @@ export const slides = [
     },
   },
 
-  // 32. Vote: the dinosaur
+  // 30. Vote: the dinosaur
   {
     layout: 'compare',
     accent: PURPLE,
@@ -638,7 +609,7 @@ export const slides = [
     ],
   },
 
-  // 33. Too old for carbon (write)
+  // 31. Too old for carbon (write)
   {
     layout: 'split',
     accent: TEAL,
@@ -660,31 +631,25 @@ export const slides = [
     ],
   },
 
-  // ════════════════════════════════════════════════════════════════════════
-  // PART 4 — THE OLDEST THINGS: longer clocks, the Earth, the Sun
-  // ════════════════════════════════════════════════════════════════════════
-
-  // 34. Hero + starter
+  // 32. A clock for billions of years? (the question before the clocks)
   {
-    layout: 'hero',
-    color: ORANGE,
-    icon: 'Globe',
-    brand: 'Year 7 Science',
-    brandFr: 'Sciences 7e année',
-    eyebrow: 'Models · Part 4',
-    eyebrowFr: 'Modèles · Partie 4',
+    layout: 'statement',
+    accent: INDIGO,
+    eyebrow: 'Think',
+    eyebrowFr: 'Réfléchis',
     title: 'Clocks in Rocks',
     titleFr: 'Des horloges dans les roches',
-    card: {
-      icon: 'Pencil',
-      badge: 'Starter',
-      badgeFr: 'Pour commencer',
-      text: 'Carbon-14 is a clock for **50 000 years**. What would a clock for **4 billion years** need? Write: **It needs …**',
-      textFr: 'Le carbone 14 est une horloge pour **50 000 ans**. De quoi aurait besoin une horloge pour **4 milliards d’années** ? Écris : **It needs …**',
+    text: 'Carbon-14 is a clock for **50 000 years**. What would a clock for **4 billion years** need?',
+    textFr: 'Le carbone 14 est une horloge pour **50 000 ans**. De quoi aurait besoin une horloge pour **4 milliards d’années** ?',
+    reveal: {
+      label: 'Answer',
+      labelFr: 'Réponse',
+      answer: 'A much **longer half-life**: billions of years, not thousands.',
+      answerFr: 'Une **demi-vie** beaucoup plus **longue** : des milliards d’années, pas des milliers.',
     },
   },
 
-  // 35. Three clocks
+  // 33. Three clocks
   {
     layout: 'showcase',
     accent: INDIGO,
@@ -698,7 +663,7 @@ export const slides = [
     captionFr: 'On ne chronomètre pas un 100 m avec un calendrier. Choisis l’horloge avec la bonne **demi-vie**.',
   },
 
-  // 36. Dating a dinosaur
+  // 34. Dating a dinosaur
   {
     layout: 'split',
     accent: TEAL,
@@ -719,7 +684,7 @@ export const slides = [
     },
   },
 
-  // 37. Why not the oldest rock?
+  // 35. Why not the oldest rock?
   {
     layout: 'statement',
     accent: PURPLE,
@@ -738,7 +703,7 @@ export const slides = [
     },
   },
 
-  // 38. A clock inside a crystal
+  // 36. A clock inside a crystal
   {
     layout: 'split',
     accent: TEAL,
@@ -760,7 +725,7 @@ export const slides = [
     ],
   },
 
-  // 39. Meteorites
+  // 37. Meteorites
   {
     layout: 'split',
     accent: TEAL,
@@ -771,8 +736,8 @@ export const slides = [
     titleFr: 'Les météorites',
     ratio: 45,
     inlineSvg: DIAGRAMS.METEORITE,
-    content: 'Meteorites are **leftover** building blocks of the planets (Part 2, step 4). They were **never** melted or recycled.',
-    contentFr: 'Les météorites sont des **restes** des briques qui ont fait les planètes (partie 2, étape 4). Elles n’ont **jamais** fondu ni été recyclées.',
+    content: 'Meteorites are **leftover** building blocks of the planets (the formation model, step 7). They were **never** melted or recycled.',
+    contentFr: 'Les météorites sont des **restes** des briques qui ont fait les planètes (le modèle de formation, étape 7). Elles n’ont **jamais** fondu ni été recyclées.',
     notes: [
       {
         tone: 'info',
@@ -782,7 +747,7 @@ export const slides = [
     ],
   },
 
-  // 40. Work it out: one half-life
+  // 38. Work it out: one half-life
   {
     layout: 'statement',
     accent: PURPLE,
@@ -802,7 +767,7 @@ export const slides = [
     },
   },
 
-  // 41. Clair Patterson
+  // 39. Clair Patterson
   {
     layout: 'callout',
     accent: GREEN,
@@ -815,7 +780,7 @@ export const slides = [
     contentFr: 'En 1953, **Clair Patterson** a mesuré le plomb des météorites. La Terre avait **4.55 milliards d’années**.\nMais le plomb de l’essence des voitures était partout, même dans son labo. Il a donc construit l’un des premiers labos **ultra-propres**.\nPuis il s’est battu pendant des années contre l’**essence au plomb**. Le monde entier a arrêté de la vendre pour les voitures en **2021**.',
   },
 
-  // 42. The age of the Earth (write)
+  // 40. The age of the Earth (write)
   {
     layout: 'statement',
     accent: TEAL,
@@ -834,7 +799,7 @@ export const slides = [
     ],
   },
 
-  // 43. The Sun: the question
+  // 41. The Sun: the question
   {
     layout: 'statement',
     accent: ORANGE,
@@ -855,13 +820,13 @@ export const slides = [
     },
   },
 
-  // 44. The model Sun
+  // 42. The model Sun
   {
     layout: 'showcase',
     accent: ORANGE,
     icon: 'Sun',
-    eyebrow: 'A computer model',
-    eyebrowFr: 'Un modèle informatique',
+    eyebrow: 'A maths model',
+    eyebrowFr: 'Un modèle mathématique',
     title: 'Build a Sun, Then Let It Age',
     titleFr: 'Construis un Soleil, puis fais-le vieillir',
     widget: SunModel,
@@ -869,7 +834,7 @@ export const slides = [
     captionFr: 'Le Soleil transforme l’**hydrogène** en **hélium**. Fais glisser jusqu’à ce que le modèle corresponde aux mesures.',
   },
 
-  // 45. Three methods, one answer (write)
+  // 43. Three methods, one answer (write)
   {
     layout: 'stack',
     accent: ORANGE,
@@ -909,7 +874,7 @@ export const slides = [
     ],
   },
 
-  // 46. All of Earth's history in one year
+  // 44. All of Earth's history in one year
   {
     layout: 'showcase',
     accent: TEAL,
@@ -923,7 +888,7 @@ export const slides = [
     captionFr: 'Devine la **date** de chaque événement avant qu’elle s’affiche.',
   },
 
-  // 47. Checklist
+  // 45. Checklist
   {
     layout: 'stack',
     variant: 'checklist',
@@ -934,11 +899,11 @@ export const slides = [
     eyebrowFr: 'Avant de partir',
     title: 'Can You Do These?',
     titleFr: 'Sais-tu faire ceci ?',
-    content: '> Check your notebook: **11 written panels** and **4 drawings**.',
-    contentFr: '> Vérifie ton cahier : **11 encadrés recopiés** et **4 dessins**.',
+    content: '> Check your notebook: **9 written panels** and **2 drawings**.',
+    contentFr: '> Vérifie ton cahier : **9 encadrés recopiés** et **2 dessins**.',
     items: [
-      { text: 'Say what a **model** is, and give one **limitation**.', textFr: 'Dire ce qu’est un **modèle**, et donner une **limite**.' },
-      { text: 'Say why the planets are in one **flat plane**.', textFr: 'Dire pourquoi les planètes sont dans un même **plan**.' },
+      { text: 'Give the **two** kinds of model, and one **limitation**.', textFr: 'Donner les **deux** sortes de modèles, et une **limite**.' },
+      { text: 'Use a scale model to compare **sizes**.', textFr: 'Utiliser un modèle à l’échelle pour comparer des **tailles**.' },
       { text: 'Describe how a **nebula** became the Solar System.', textFr: 'Décrire comment une **nébuleuse** est devenue le système solaire.' },
       { text: 'Use a **half-life** to find what is left.', textFr: 'Utiliser une **demi-vie** pour trouver ce qui reste.' },
       { text: 'Explain **carbon dating**, and why it fails for dinosaurs.', textFr: 'Expliquer la **datation au carbone 14**, et pourquoi elle ne marche pas pour les dinosaures.' },
@@ -946,7 +911,7 @@ export const slides = [
     ],
   },
 
-  // 48. Exit
+  // 46. Exit
   {
     layout: 'hero',
     color: PURPLE,
