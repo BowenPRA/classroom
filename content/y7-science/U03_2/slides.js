@@ -1,6 +1,6 @@
 // content/y7-science/U03_2/slides.js
-// Year 7 Science · 3.2 Formation of the Solar System. Monday 19 October 2026
-// (provisional), one period.
+// Year 7 Science · 3.2 Formation of the Solar System. Tuesday 20 October 2026,
+// one period.
 // Source: Learner's Book pages 85–90 (Unit 3 Forces and energy).
 //
 // ENGLISH AND FRENCH ONLY (meta.vietnamese: false): every string has an …Fr
@@ -58,7 +58,7 @@ export const slides = [
     icon: 'Sun',
     brand: 'Year 7 Science',
     brandFr: 'Sciences 7e année',
-    date: '19 Oct 2026',
+    date: '20 Oct 2026',
     eyebrow: '3.2 · Forces and energy',
     eyebrowFr: '3.2 · Forces et énergie',
     title: 'Formation of the Solar System',

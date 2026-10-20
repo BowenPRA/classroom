@@ -1,7 +1,7 @@
 // content/y7-science/U03_2/plan.js
 // One-page teacher lesson plan, rendered by src/pages/Plan.jsx.
 export const plan = {
-  duration: '50 minutes — one period (Monday 19 October 2026, provisional). The timeline below adds up to 47 minutes, leaving 3 to spare. The book’s storyboard Activity is an extension for another lesson (see the notes).',
+  duration: '50 minutes — one period (Tuesday 20 October 2026). The timeline below adds up to 47 minutes, leaving 3 to spare. The book’s storyboard Activity is an extension for another lesson (see the notes).',
   objective:
     'Students can recall that there are clouds of dust and gas (nebulas) in space and that stars and planets form from them; ' +
     'explain that gravity pulls dust and gas together, and that as a clump gains mass its gravity grows, so it pulls in even more; ' +
