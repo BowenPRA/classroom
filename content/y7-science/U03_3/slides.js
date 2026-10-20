@@ -331,7 +331,7 @@ export const slides = [
     reveal: {
       label: 'What did you feel?',
       labelFr: 'Qu’as-tu senti ?',
-      answer: 'A push **against** your hand. Bigger when you go **faster**. Bigger flat side first: it pushes more **air**.',
+      answer: 'A push **against** your hand. Bigger when you go **faster**. Bigger with the **flat side** first: it pushes more air.',
       answerFr: 'Une poussée **contre** ta main. Plus forte quand tu vas **plus vite**. Plus forte côté plat devant : il pousse plus d’**air**.',
     },
   },
@@ -478,8 +478,8 @@ export const slides = [
     icon: 'MessageSquare',
     eyebrow: 'Questions 1–3 · English check',
     eyebrowFr: 'Questions 1–3 · point d’anglais',
-    title: 'Three Science Words',
-    titleFr: 'Trois mots de science',
+    title: 'Which Word Fits?',
+    titleFr: 'Quel mot convient ?',
     ratio: 50,
     inlineSvg: DIAGRAMS.WORDS3,
     content:
@@ -493,8 +493,8 @@ export const slides = [
     reveal: {
       label: 'Check your answers',
       labelFr: 'Vérifie tes réponses',
-      answer: '**1.** predictions **2.** observations **3.** a conclusion',
-      answerFr: '**1.** predictions (des prédictions) **2.** observations **3.** a conclusion (une conclusion)',
+      answer: '**1.** predictions\n**2.** observations\n**3.** a conclusion',
+      answerFr: '**1.** predictions (des prédictions)\n**2.** observations\n**3.** a conclusion (une conclusion)',
     },
   },
 
