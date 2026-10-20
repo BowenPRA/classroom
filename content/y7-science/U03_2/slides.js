@@ -12,28 +12,28 @@
 //   words of the answer: observe, evidence, support, contradict, model. So the
 //   deck teaches those words first, on something everyday — Mr Bowen's cake,
 //   a hypothesis (the cat ate it) and three clues, voted on one at a time —
-//   and then does the science the same way: the FACTS (orbit, spin, axis,
-//   plane: acted out with bodies, then drawn), the HYPOTHESIS (a nebula, a
-//   model the class watches clump into a star, NASA's film, a real young star
-//   with a flat disc, the model again with spin), and the two facts that seem
-//   to CONTRADICT it (Venus, Uranus), which are the cake's "locked outside".
-//   Then the book's Think like a scientist on models — and the class's own
-//   dust model is the model they judge — and the book's storyboard Activity
-//   as the period's second drawing.
+//   and then does the science the same way: the FACTS (orbit and spin acted
+//   out, the same plane found at the desk, then drawn), the HYPOTHESIS (a
+//   nebula; a model the class watches clump into a star; NASA's film; a real
+//   young star with a flat disc; the model again with spin), and the two facts
+//   that seem to CONTRADICT it (Venus, Uranus), which are the cake's "locked
+//   outside". The book's Think like a scientist questions on models are asked
+//   where they fit, and the class's own dust model is the model they judge.
 //
 // THE MOVES, SO THE DECK IS NOT 3.1 AGAIN: vote with one hand (Getting
-// started), a detective story with a vote per clue, act it out (orbit and
-// spin round Mr Bowen), a desk test at eye level (the same plane), a real
-// spacecraft photo, a model that moves (twice: still, then spinning), a film
-// in three parts with a prediction between, a real photo of a young star,
-// a four-finger vote and an English check (error / mistake / limitation /
-// strength), whiteboards, and the storyboard.
+// started, the cake, Venus and Uranus), act it out (four planets round Mr
+// Bowen), a desk test at eye level, a real spacecraft photo, a model that
+// moves (twice: still, then spinning), a film in three parts with a
+// prediction between, a real photo of a young star, a four-finger vote and an
+// English check (error / mistake / limitation / strength), whiteboards.
 //
-// COPY-DOWN: 5 short write panels and 2 drawings —
-//   observe + evidence + hypothesis + support/contradict (slide 6) ·
-//   the facts: orbit, plane, spin, axes (slide 9, with the orbit/spin/axis
-//   drawing) · nebula (12) · more mass → stronger gravity (14) · model (22) ·
-//   and the storyboard (26). "Formed" is glossed on slide 4, not copied.
+// COPY-DOWN: 4 short write panels and 1 drawing —
+//   evidence + hypothesis + support/contradict (slide 6) · the facts and the
+//   orbit/spin/axis drawing (10) · model (13) · nebula + more mass → stronger
+//   gravity (15). "Formed" and "observe" are glossed on slide 4, not copied.
+//   The book's storyboard Activity is NOT in this period: it is an extension
+//   in plan.js for a spare lesson (the group A3 version, with its
+//   self-assessment).
 //
 // WRITING RULE (the 2.5 density): short sentences, one idea each, and the body
 // text never repeats the write note, a label or the caption.
@@ -77,8 +77,8 @@ export const slides = [
     layout: 'compare',
     accent: PURPLE,
     icon: 'Hand',
-    eyebrow: 'Question 1 · vote with one hand',
-    eyebrowFr: 'Question 1 · vote avec une main',
+    eyebrow: 'Question 1 · page 85 · vote with one hand',
+    eyebrowFr: 'Question 1 · page 85 · vote avec une main',
     title: 'Strong Gravity',
     titleFr: 'Une gravité forte',
     text: 'An object has a **strong** force of gravity. What must it have?',
@@ -106,8 +106,8 @@ export const slides = [
     layout: 'split',
     accent: TEAL,
     icon: 'Sun',
-    eyebrow: 'Questions 2 and 3',
-    eyebrowFr: 'Questions 2 et 3',
+    eyebrow: 'Questions 2 and 3 · page 85',
+    eyebrowFr: 'Questions 2 et 3 · page 85',
     title: 'The Biggest Mass',
     titleFr: 'La plus grande masse',
     ratio: 45,
@@ -129,7 +129,7 @@ export const slides = [
   },
 
   // ── NOBODY WAS THERE: HOW CAN WE KNOW? ─────────────────────────────────
-  // 4. The book's own problem, asked and left open
+  // 4. The book's own problem, asked and left open: the question is the big line
   {
     layout: 'statement',
     accent: PURPLE,
@@ -137,13 +137,13 @@ export const slides = [
     eyebrowFr: 'Réfléchis avec ton voisin',
     title: 'Nobody Was There',
     titleFr: 'Personne n’était là',
-    text: 'The Solar System **formed** (was made) 4.6 billion years ago. Nobody was there to **observe** (watch) it.',
-    textFr: 'Le système solaire s’est **formé** (formed) il y a 4.6 milliards d’années. Personne n’était là pour l’**observer** (observe).',
-    sub: 'So how can scientists know what happened?',
-    subFr: 'Alors comment les scientifiques peuvent-ils savoir ce qui s’est passé ?',
+    text: 'Nobody was there to **observe** (watch) it. So how do we know?',
+    textFr: 'Personne n’était là pour l’**observer** (observe). Alors comment le savoir ?',
+    sub: 'The Solar System **formed** (was made) 4.6 billion years ago.',
+    subFr: 'Le système solaire s’est **formé** (formed) il y a 4.6 milliards d’années.',
   },
 
-  // 5. The same problem, everyday: a hypothesis and three clues
+  // 5. The same problem, everyday: a hypothesis and three clues, the key on the picture
   {
     layout: 'showcase',
     accent: PURPLE,
@@ -153,8 +153,8 @@ export const slides = [
     title: 'Who Ate the Cake?',
     titleFr: 'Qui a mangé le gâteau ?',
     inlineSvg: DIAGRAMS.CAKE_CLUES,
-    caption: 'Each clue: left hand if it **supports** (agrees with) the hypothesis, right hand if it **contradicts** (goes against) it.',
-    captionFr: 'Pour chaque indice : main gauche s’il **confirme** (supports) l’hypothèse, main droite s’il la **contredit** (contradicts).',
+    caption: 'Does each clue **support** the hypothesis, or **contradict** it?',
+    captionFr: 'Chaque indice **confirme**-t-il (supports) l’hypothèse, ou la **contredit**-il (contradicts) ?',
   },
 
   // 6. The verdict, and the words (write)
@@ -172,12 +172,10 @@ export const slides = [
       {
         tone: 'write',
         text:
-          '**Observe:** watch something happening.\n' +
           '**Evidence:** facts from observations or experiments.\n' +
           '**Hypothesis:** an idea that can be tested.\n' +
           'Evidence can **support** (agree with) or **contradict** (go against) a hypothesis.',
         textFr:
-          '**Observer (observe) :** regarder quelque chose qui se passe.\n' +
           '**Preuves (evidence, pas « évidence ») :** des faits tirés d’observations ou d’expériences.\n' +
           '**Hypothèse (hypothesis) :** une idée qu’on peut tester.\n' +
           'Les preuves peuvent **confirmer** (support) ou **contredire** (contradict) une hypothèse.',
@@ -206,7 +204,7 @@ export const slides = [
     captionFr: 'Trouve **deux choses** qui sont pareilles pour toutes les planètes.',
   },
 
-  // 8. Orbit and spin, with bodies
+  // 8. Orbit and spin, with bodies: four planets, one floor
   {
     layout: 'statement',
     accent: GREEN,
@@ -216,8 +214,8 @@ export const slides = [
     titleFr: 'Sois une planète',
     text: 'Mr Bowen is the **Sun**. Walk round him: **orbit**. Turn on the spot: **spin**.',
     textFr: 'M. Bowen est le **Soleil**. Marche autour de lui : **orbit**. Tourne sur place : **spin**.',
-    sub: 'Now do both at once, the same way round.',
-    subFr: 'Maintenant, fais les deux, dans le même sens.',
+    sub: 'Four planets, four distances: all the same way round, all on one floor.',
+    subFr: 'Quatre planètes, quatre distances : toutes dans le même sens, toutes sur le même sol.',
     reveal: {
       label: 'Now be Venus',
       labelFr: 'Maintenant, sois Vénus',
@@ -226,40 +224,13 @@ export const slides = [
     },
   },
 
-  // 9. Draw This: orbit, spin, axis — and the facts (write)
-  {
-    layout: 'split',
-    accent: ORANGE,
-    icon: 'Pencil',
-    eyebrow: 'Draw this · the facts',
-    eyebrowFr: 'À dessiner · les faits',
-    title: 'Orbit, Spin, Axis',
-    titleFr: 'Orbite, rotation, axe',
-    ratio: 40,
-    inlineSvg: DIAGRAMS.ORBIT_SPIN,
-    drawThis: true,
-    content: 'These facts are our **evidence**.',
-    contentFr: 'Ces faits sont nos **preuves** (evidence).',
-    notes: [
-      {
-        tone: 'write',
-        text:
-          'All the planets **orbit** the Sun in the same direction, in the same **plane** (one flat surface).\n' +
-          'Most planets **spin** on their **axes** in the same direction too.',
-        textFr:
-          'Toutes les planètes **orbitent** autour du Soleil dans le même sens, dans le même **plan** (plane : une seule surface plate).\n' +
-          'La plupart des planètes **tournent** sur leur **axe** (axis, pluriel axes) dans le même sens aussi.',
-      },
-    ],
-  },
-
-  // 10. Question 2: the same plane, at the desk and from a spacecraft
+  // 9. Question 2: the same plane, at the desk and from a spacecraft (asked before the panel defines it)
   {
     layout: 'split',
     accent: TEAL,
     icon: 'ScanEye',
-    eyebrow: 'Question 2 · try it',
-    eyebrowFr: 'Question 2 · essaie',
+    eyebrow: 'Question 2 · page 88 · try it',
+    eyebrowFr: 'Question 2 · page 88 · essaie',
     title: 'The Same Plane',
     titleFr: 'Le même plan',
     ratio: 45,
@@ -278,6 +249,33 @@ export const slides = [
     },
   },
 
+  // 10. Draw This: orbit, spin, axis — and the facts (write)
+  {
+    layout: 'split',
+    accent: ORANGE,
+    icon: 'Pencil',
+    eyebrow: 'Draw this · the facts',
+    eyebrowFr: 'À dessiner · les faits',
+    title: 'Orbit, Spin, Axis',
+    titleFr: 'Orbite, rotation, axe',
+    ratio: 40,
+    inlineSvg: DIAGRAMS.ORBIT_SPIN,
+    drawThis: true,
+    content: 'These facts are our **evidence**. The Sun spins the same way too, and most moons orbit the same way.',
+    contentFr: 'Ces faits sont nos **preuves** (evidence). Le Soleil tourne aussi dans ce sens, et la plupart des lunes aussi.',
+    notes: [
+      {
+        tone: 'write',
+        text:
+          'All the planets **orbit** the Sun in the same direction, in the same **plane** (one flat surface).\n' +
+          'Most planets **spin** on their **axes** in the same direction too.',
+        textFr:
+          'Toutes les planètes **orbitent** autour du Soleil dans le même sens, dans le même **plan** (plane : une seule surface plate).\n' +
+          'La plupart des planètes **tournent** sur leur **axe** (axis, pluriel axes) dans le même sens aussi.',
+      },
+    ],
+  },
+
   // ── THE HYPOTHESIS: HOW IT FORMED ──────────────────────────────────────
   // 11. Question first
   {
@@ -294,7 +292,7 @@ export const slides = [
     subFr: 'Un hasard ? Ou est-ce que quelque chose l’a causé ?',
   },
 
-  // 12. Nebula (write), the book's own photo, sharper
+  // 12. A nebula, the book's own photo, sharper (defined in slide 15's panel)
   {
     layout: 'split',
     accent: TEAL,
@@ -305,38 +303,61 @@ export const slides = [
     titleFr: 'La nébuleuse',
     ratio: 45,
     image: orion,
-    content: 'The **Orion Nebula**, seen by the Hubble telescope.',
-    contentFr: 'La **nébuleuse d’Orion**, vue par le télescope Hubble.',
-    notes: [
-      {
-        tone: 'write',
-        text: '**Nebula:** a cloud of dust and gas in space. Stars and planets form from it.',
-        textFr: '**Nébuleuse (nebula) :** un nuage de poussière et de gaz dans l’espace. Les étoiles et les planètes s’y forment.',
-      },
-    ],
+    content: 'The **Orion Nebula**: a cloud of dust and gas where new stars are forming. Seen by the Hubble telescope.',
+    contentFr: 'La **nébuleuse d’Orion** : un nuage de poussière et de gaz où naissent des étoiles. Vue par le télescope Hubble.',
     reveal: {
       label: 'Can I see it?',
       labelFr: 'Puis-je la voir ?',
-      answer: 'Yes! On a dark January evening, find **Orion’s belt**: three stars in a row. The fuzzy patch next to it is this cloud.',
-      answerFr: 'Oui ! Un soir de janvier, loin des lumières, cherche la **ceinture d’Orion** : trois étoiles en ligne. La tache floue à côté, c’est ce nuage.',
+      answer: 'Yes! On a dark January evening, find **Orion’s belt**: three stars in a row. The fuzzy patch just below it is this cloud.',
+      answerFr: 'Oui ! Un soir de janvier, loin des lumières, cherche la **ceinture d’Orion** : trois étoiles en ligne. La tache floue juste en dessous, c’est ce nuage.',
     },
   },
 
-  // 13. The model, still: predict, then watch the clumps grow
+  // 13. Model (write) + Think like a scientist Question 1: the book's p. 87 order, just before one
+  {
+    layout: 'split',
+    accent: TEAL,
+    icon: 'Lightbulb',
+    eyebrow: 'Key word · page 87',
+    eyebrowFr: 'Mot clé · page 87',
+    title: 'Model',
+    titleFr: 'Le modèle',
+    ratio: 45,
+    inlineSvg: DIAGRAMS.MODEL_REAL,
+    content: 'Nobody can watch a star form. So scientists make a **model**. Here is one.',
+    contentFr: 'Personne ne peut regarder une étoile se former. Alors les scientifiques font un **modèle**. En voici un.',
+    notes: [
+      {
+        tone: 'write',
+        text: '**Model:** a way of showing something that is hard to observe directly.',
+        textFr: '**Modèle (model) :** une façon de montrer quelque chose qu’on ne peut pas bien observer directement.',
+      },
+    ],
+    reveal: {
+      prompt: '**Question 1 (page 90):** a model speeds up millions of years. Suggest **one other** reason to use one.',
+      promptFr: '**Question 1 (page 90) :** un modèle accélère des millions d’années. Donne **une autre** raison.',
+      label: 'Ideas',
+      labelFr: 'Des idées',
+      answer: 'Nobody can watch it happen · too big for a lab · you can change the cloud and run it again',
+      answerFr: 'Personne ne peut le voir se faire · trop grand pour un labo · on peut changer le nuage et recommencer',
+    },
+  },
+
+  // 14. The model, still: Question 4 asked, then predict and watch
   {
     layout: 'showcase',
     accent: TEAL,
     icon: 'Atom',
-    eyebrow: 'A model · predict first',
-    eyebrowFr: 'Un modèle · devine d’abord',
+    eyebrow: 'A model · Question 4, page 88',
+    eyebrowFr: 'Un modèle · Question 4, page 88',
     title: 'From Dust to a Star',
     titleFr: 'De la poussière à une étoile',
     widget: StillCloud,
-    caption: 'Every grain pulls on every other grain. Predict: which clumps grow **fastest**, small or big?',
-    captionFr: 'Chaque grain attire tous les autres. Devine : quels amas grossissent le **plus vite**, les petits ou les gros ?',
+    caption: '**Question 4:** which force pulls the grains together? Predict: will the biggest clump grow **steadily**, or **faster and faster**?',
+    captionFr: '**Question 4 :** quelle force rassemble les grains ? Devine : le plus gros amas va-t-il grossir **régulièrement** ou **de plus en plus vite** ?',
   },
 
-  // 14. Question 4 and the book's chain (write)
+  // 15. Question 4 answered, and the book's chain (write: nebula + gravity)
   {
     layout: 'split',
     accent: ORANGE,
@@ -347,18 +368,18 @@ export const slides = [
     titleFr: 'Plus de masse, plus d’attraction',
     ratio: 45,
     inlineSvg: DIAGRAMS.LOOP,
-    content: 'The big clumps grew **fastest**: the graph bent upwards. Why? Remember 3.1.',
-    contentFr: 'Les gros amas ont grossi le **plus vite** : la courbe montait de plus en plus. Pourquoi ? Souviens-toi de 3.1.',
+    content: 'The clump grew **faster and faster**. Why?',
+    contentFr: 'L’amas a grossi **de plus en plus vite**. Pourquoi ?',
     notes: [
       {
         tone: 'write',
-        text: '**Gravity** pulls dust and gas together.\nMore mass → stronger gravity → it pulls in even more.',
-        textFr: 'La **gravité** rassemble la poussière et le gaz.\nPlus de masse → gravité plus forte → elle attire encore plus.',
+        text: '**Nebula:** a cloud of dust and gas in space.\n**Gravity** pulls it together: more mass → stronger gravity → it pulls in even more.',
+        textFr: '**Nébuleuse (nebula) :** un nuage de poussière et de gaz dans l’espace.\nLa **gravité** le rassemble : plus de masse → gravité plus forte → elle attire encore plus.',
       },
     ],
   },
 
-  // 15. Star or planet (p. 88), the Sun and Jupiter to scale
+  // 16. Star or planet (p. 88), the Sun and Jupiter to scale
   {
     layout: 'split',
     accent: TEAL,
@@ -383,7 +404,7 @@ export const slides = [
     },
   },
 
-  // 16. NASA's film in three parts, a prediction between each
+  // 17. NASA's film in three parts, a prediction between each, NASA's captions on
   {
     layout: 'showcase',
     accent: TEAL,
@@ -397,7 +418,7 @@ export const slides = [
     captionFr: 'Lance une partie à la fois. Avant chaque partie, devine : **que va-t-il se passer ?**',
   },
 
-  // 17. The real thing: a young star with a flat disc (p. 87)
+  // 18. The real thing: a young star with a flat disc (p. 87)
   {
     layout: 'split',
     accent: TEAL,
@@ -416,7 +437,7 @@ export const slides = [
       'Les anneaux sombres sont peut-être là où de nouvelles **planètes** ramassent la poussière.',
   },
 
-  // 18. The model again, spinning: answers slide 11
+  // 19. The model again, spinning: answers slide 11. It ends on a star and four planets.
   {
     layout: 'showcase',
     accent: TEAL,
@@ -430,7 +451,7 @@ export const slides = [
     captionFr: 'Devine : les planètes vont-elles tourner dans des **sens différents** ou dans le **même sens** ?',
   },
 
-  // 19. The hypothesis, said plainly
+  // 20. The hypothesis, said plainly
   {
     layout: 'statement',
     accent: TEAL,
@@ -446,26 +467,26 @@ export const slides = [
       label: 'Why is it flat?',
       labelFr: 'Pourquoi est-ce plat ?',
       answer: 'A spinning cloud **flattens**, like spun pizza dough.',
-      answerFr: 'Ce qui tourne **s’aplatit**, comme une pâte à pizza.',
+      answerFr: 'Un nuage qui tourne **s’aplatit**, comme une pâte à pizza qu’on fait tourner.',
     },
   },
 
   // ── EVIDENCE THAT CONTRADICTS ──────────────────────────────────────────
-  // 20. Venus and Uranus: vote, no answer on the slide
+  // 21. Venus and Uranus: vote, the key on the picture, no answer on the slide
   {
     layout: 'showcase',
     accent: PURPLE,
     icon: 'Hand',
-    eyebrow: 'Vote with one hand',
-    eyebrowFr: 'Vote avec une main',
+    eyebrow: 'Question 3 · page 90 · vote with one hand',
+    eyebrowFr: 'Question 3 · page 90 · vote avec une main',
     title: 'Two Odd Ones Out',
     titleFr: 'Deux exceptions',
     inlineSvg: DIAGRAMS.SPIN_ODD,
-    caption: 'Do these two facts **support** the hypothesis (left hand) or **contradict** it (right hand)?',
-    captionFr: 'Ces deux faits **confirment**-ils l’hypothèse (main gauche) ou la **contredisent**-ils (main droite) ?',
+    caption: 'Do these two facts **support** the hypothesis, or **contradict** it?',
+    captionFr: 'Ces deux faits **confirment**-ils l’hypothèse, ou la **contredisent**-ils ?',
   },
 
-  // 21. Think like a scientist, Question 3: the answer, and the cake again
+  // 22. Question 3: the answer, and 3b asked before it is told
   {
     layout: 'statement',
     accent: PURPLE,
@@ -475,54 +496,24 @@ export const slides = [
     titleFr: 'Seem to contradict : sembler contredire',
     text: 'Venus and Uranus **seem to contradict** the hypothesis.',
     textFr: 'Vénus et Uranus **semblent contredire** l’hypothèse.',
-    sub: 'One spinning cloud should make them all spin the same way.',
-    subFr: 'Un seul nuage qui tourne devrait toutes les faire tourner pareil.',
+    sub: 'Why? (Question 3b)',
+    subFr: 'Pourquoi ? (Question 3b)',
     reveal: {
-      label: 'So is the hypothesis wrong?',
-      labelFr: 'Alors, l’hypothèse est-elle fausse ?',
-      answer: 'Not yet: **most** evidence supports it, like the cake. Maybe giant crashes knocked them over.',
-      answerFr: 'Pas encore : la **plupart** des preuves la confirment, comme pour le gâteau. Peut-être que d’énormes chocs les ont renversées.',
+      label: 'Answer',
+      labelFr: 'Réponse',
+      answer: 'One spinning cloud should make them all spin the same way.',
+      answerFr: 'Un seul nuage qui tourne devrait toutes les faire tourner pareil.',
     },
   },
 
   // ── THINK LIKE A SCIENTIST: MODELS ─────────────────────────────────────
-  // 22. Model (write) + Question 1
-  {
-    layout: 'split',
-    accent: TEAL,
-    icon: 'Lightbulb',
-    eyebrow: 'Key word · page 87',
-    eyebrowFr: 'Mot clé · page 87',
-    title: 'Model',
-    titleFr: 'Le modèle',
-    ratio: 45,
-    inlineSvg: DIAGRAMS.MODEL_REAL,
-    content: 'Our dust game was a **model** too!',
-    contentFr: 'Notre jeu de poussière était un **modèle**, lui aussi !',
-    notes: [
-      {
-        tone: 'write',
-        text: '**Model:** a way of showing something that is hard to observe directly.',
-        textFr: '**Modèle (model) :** une façon de montrer quelque chose qu’on ne peut pas bien observer directement.',
-      },
-    ],
-    reveal: {
-      prompt: '**Question 1:** a model speeds up millions of years. Suggest **one other** reason to use one.',
-      promptFr: '**Question 1 :** un modèle accélère des millions d’années. Donne **une autre** raison.',
-      label: 'Ideas',
-      labelFr: 'Des idées',
-      answer: 'Nobody can watch it happen · too big for a lab · you can change the cloud and run it again',
-      answerFr: 'Personne ne peut le voir se faire · trop grand pour un labo · on peut changer le nuage et recommencer',
-    },
-  },
-
   // 23. Question 2: four words, four fingers
   {
     layout: 'showcase',
     accent: PURPLE,
     icon: 'Hand',
-    eyebrow: 'Question 2 · show with your fingers',
-    eyebrowFr: 'Question 2 · montre avec tes doigts',
+    eyebrow: 'Question 2 · page 90 · show with your fingers',
+    eyebrowFr: 'Question 2 · page 90 · montre avec tes doigts',
     title: 'Which Word?',
     titleFr: 'Quel mot ?',
     inlineSvg: DIAGRAMS.FOUR_WORDS,
@@ -543,30 +534,30 @@ export const slides = [
     sub: 'An **error** = a **mistake**: someone got it wrong. A **strength**: a good point.',
     subFr: '**An error** = **a mistake** : une erreur. **A strength** : un point fort.',
     reveal: {
-      label: 'Our dust model',
-      labelFr: 'Notre modèle de poussière',
-      answer: '**Limitations:** flat, only 240 grains, no gas, no heat. **A strength:** millions of years in 20 seconds.',
-      answerFr: '**Limites :** plat, 240 grains seulement, ni gaz ni chaleur. **Un point fort :** des millions d’années en 20 secondes.',
+      label: 'Our dust model: a limitation? A strength?',
+      labelFr: 'Notre modèle : une limite ? Un point fort ?',
+      answer: '**Limitations:** flat, only 240 grains, no gas or heat, and the two clouds started differently. **A strength:** millions of years in a few seconds.',
+      answerFr: '**Limites :** plat, 240 grains seulement, ni gaz ni chaleur, et les deux nuages étaient différents au départ. **Un point fort :** des millions d’années en quelques secondes.',
     },
   },
 
-  // 25. Question 4: two statements
+  // 25. Question 4: two statements, and "most, but not all" brings back the cake
   {
     layout: 'callout',
     accent: GREEN,
     icon: 'PenLine',
-    eyebrow: 'Whiteboards · page 90',
-    eyebrowFr: 'Ardoises · page 90',
+    eyebrow: 'Question 4 · page 90 · whiteboards',
+    eyebrowFr: 'Question 4 · page 90 · ardoises',
     title: 'Which Two?',
     titleFr: 'Lesquelles ?',
     content:
-      '**Question 4.** Which **two** statements describe the hypothesis?\n\n' +
+      'Which **two** statements describe the hypothesis?\n\n' +
       '**a** It has been proven to be correct.\n' +
       '**b** Most, but not all, of the evidence supports it.\n' +
       '**c** The model that is used has limitations.\n' +
       '**d** It can be fully tested by experiments.',
     contentFr:
-      '**Question 4.** Quelles **deux** phrases décrivent l’hypothèse ?\n\n' +
+      'Quelles **deux** phrases décrivent l’hypothèse ?\n\n' +
       '**a** On a prouvé qu’elle est juste.\n' +
       '**b** La plupart des preuves, mais pas toutes, la confirment.\n' +
       '**c** Le modèle utilisé a des limites.\n' +
@@ -574,29 +565,13 @@ export const slides = [
     reveal: {
       label: 'Check your answers',
       labelFr: 'Vérifie tes réponses',
-      answer: '**b** and **c**. Nobody can prove it fully: nobody was there.',
-      answerFr: '**b** et **c**. Personne ne peut la prouver entièrement : personne n’était là.',
+      answer: '**b** and **c**. Most evidence supports it, like the cake, but not Venus and Uranus. It cannot be proven: nobody was there.',
+      answerFr: '**b** et **c**. La plupart des preuves la confirment, comme pour le gâteau, mais pas Vénus et Uranus. On ne peut pas la prouver : personne n’était là.',
     },
   },
 
-  // ── ACTIVITY: THE STORYBOARD ───────────────────────────────────────────
-  // 26. Draw This: the book's storyboard, four frames
-  {
-    layout: 'showcase',
-    accent: ORANGE,
-    icon: 'Pencil',
-    eyebrow: 'Activity · page 89',
-    eyebrowFr: 'Activité · page 89',
-    title: 'Solar System Storyboard',
-    titleFr: 'Le storyboard du système solaire',
-    inlineSvg: DIAGRAMS.STORYBOARD,
-    drawThis: true,
-    caption: 'Draw **4 boxes** in your notebook. In each one: a picture and a sentence.',
-    captionFr: 'Dessine **4 cases** dans ton cahier. Dans chacune : un dessin et une phrase.',
-  },
-
   // ── CLOSE ──────────────────────────────────────────────────────────────
-  // 27. Checklist (the book's summary checklist, p. 90)
+  // 26. Checklist (the book's summary checklist, p. 90)
   {
     layout: 'stack',
     variant: 'checklist',
@@ -607,8 +582,8 @@ export const slides = [
     eyebrowFr: 'Avant de partir',
     title: 'Can You Do These?',
     titleFr: 'Sais-tu faire ceci ?',
-    content: '> Check your notebook: **5 written panels** and **2 drawings**.',
-    contentFr: '> Vérifie ton cahier : **5 encadrés recopiés** et **2 dessins**.',
+    content: '> Check your notebook: **4 written panels** and **1 drawing**.',
+    contentFr: '> Vérifie ton cahier : **4 encadrés recopiés** et **1 dessin**.',
     items: [
       { text: 'Say what a **nebula** is.', textFr: 'Dire ce qu’est une **nébuleuse**.' },
       { text: 'Recall that stars and planets **form** from dust and gas.', textFr: 'Savoir que les étoiles et les planètes se **forment** à partir de poussière et de gaz.' },
@@ -619,7 +594,7 @@ export const slides = [
     ],
   },
 
-  // 28. Exit question
+  // 27. Exit question
   {
     layout: 'hero',
     color: TEAL,
