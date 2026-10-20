@@ -44,9 +44,10 @@ import {
   Calculator, FlaskConical, Trophy, Gamepad2, ArrowLeft, Plus, X,
   Play, Pause, Eye, Check, Timer, Flag, RotateCcw, Crown, Users, Sparkles,
   Music, Volume2, VolumeX, Pencil, CookingPot, Apple, Atom, Rocket, Globe,
-  Variable, Droplets,
+  Variable, Droplets, Orbit,
 } from 'lucide-react'
 
+import { tr, field } from '../../../src/lib/lang.js'
 import { BOARDS } from './boards.js'
 
 // Clue pictures. A clue may carry `qImage` (shown as soon as the clue opens,
@@ -85,12 +86,12 @@ function PictureClue({ clue, lang, big, revealed }) {
         {clue.qImage && (
           <img
             src={clue.qImage.src}
-            alt={pick(lang, clue.qImage.alt, clue.qImage.altVn)}
+            alt={field(clue.qImage, 'alt', lang)}
             className="shrink-0 h-[1.5em] w-auto rounded-md border-2 border-slate-200 dark:border-slate-700"
           />
         )}
         <p className="min-w-0 text-center">
-          {pick(lang, clue.q, clue.qVn)}
+          {glue(field(clue, 'q', lang))}
         </p>
       </div>
       <div className="flex-1 min-h-0 flex gap-2 sm:gap-4">
@@ -111,13 +112,13 @@ function PictureClue({ clue, lang, big, revealed }) {
               <div className="relative flex-1 min-h-0">
                 <img
                   src={image.src}
-                  alt={pick(lang, image.alt, image.altVn)}
+                  alt={field(image, 'alt', lang)}
                   className="absolute inset-0 w-full h-full object-contain"
                 />
               </div>
               {image.label && (
                 <figcaption className={`shrink-0 text-center font-black tracking-tight leading-tight text-slate-800 dark:text-slate-100 ${big ? 'text-[clamp(1.3rem,2.6vw,2.8rem)]' : 'text-lg sm:text-2xl'}`}>
-                  {pick(lang, image.label, image.labelVn)}
+                  {field(image, 'label', lang)}
                 </figcaption>
               )}
               {right && (
@@ -152,7 +153,7 @@ import bossBattle from './audio/boss-battle.opus'
 import timeAttack from './audio/time-attack.ogg'
 import phonk from './audio/phonk.opus'
 
-const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot, Apple, Atom, Rocket, Globe, Variable, Droplets }
+const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot, Apple, Atom, Rocket, Globe, Variable, Droplets, Orbit }
 
 // The clue countdown, and the music that runs with it.
 const TIMER_SECONDS = 30
@@ -169,12 +170,12 @@ const TRACKS = [
   // The descriptor line has about twenty characters before it truncates at
   // three cards across. The longer advice — which track suits which row of the
   // board — lives in the teacher plan, where there is room to say it properly.
-  { id: 'study-and-relax', src: studyAndRelax, name: 'Study And Relax', nameVn: 'Study And Relax', by: 'lofi · warped tape', byVn: 'lofi · băng cũ' },
-  { id: 'lofi', src: lofi, name: 'Lofi', nameVn: 'Lofi', by: 'lofi · straight up', byVn: 'lofi · thuần chất' },
-  { id: 'lift-motif', src: liftMotif, name: 'Lift Motif', nameVn: 'Lift Motif', by: 'the thinking one', byVn: 'nhạc để suy nghĩ' },
-  { id: 'boss-battle', src: bossBattle, name: 'Boss Battle', nameVn: 'Boss Battle', by: '8-bit · heavy', byVn: '8-bit · nặng đô' },
-  { id: 'time-attack', src: timeAttack, name: 'Time Attack', nameVn: 'Time Attack', by: 'chiptune · 40s', byVn: 'chiptune · 40 giây' },
-  { id: 'phonk', src: phonk, name: 'Current', nameVn: 'Current', by: 'phonk · their music', byVn: 'phonk · gu các em' },
+  { id: 'study-and-relax', src: studyAndRelax, name: 'Study And Relax', nameVn: 'Study And Relax', by: 'lofi · warped tape', byVn: 'lofi · băng cũ', byFr: 'lofi · bande usée' },
+  { id: 'lofi', src: lofi, name: 'Lofi', nameVn: 'Lofi', by: 'lofi · straight up', byVn: 'lofi · thuần chất', byFr: 'lofi · pur et simple' },
+  { id: 'lift-motif', src: liftMotif, name: 'Lift Motif', nameVn: 'Lift Motif', by: 'the thinking one', byVn: 'nhạc để suy nghĩ', byFr: 'pour réfléchir' },
+  { id: 'boss-battle', src: bossBattle, name: 'Boss Battle', nameVn: 'Boss Battle', by: '8-bit · heavy', byVn: '8-bit · nặng đô', byFr: '8-bit · intense' },
+  { id: 'time-attack', src: timeAttack, name: 'Time Attack', nameVn: 'Time Attack', by: 'chiptune · 40s', byVn: 'chiptune · 40 giây', byFr: 'chiptune · 40 s' },
+  { id: 'phonk', src: phonk, name: 'Current', nameVn: 'Current', by: 'phonk · their music', byVn: 'phonk · gu các em', byFr: 'phonk · leur musique' },
 ]
 
 // Fade rather than cut. A clip that stops dead sounds like something broke,
@@ -191,43 +192,55 @@ function fadeOutAndStop(audio, ms = 450) {
   }, step)
 }
 
-const pick = (lang, en, vn) => (lang === 'vn' ? (vn ?? en) : en)
-
-// Bilingual interface strings, kept in one place so nothing ships English-only.
+// Interface strings in English, Vietnamese and French, kept in one place so
+// nothing ships English-only. The deck's switch reads EN / VN / FR: the older
+// boards carry Vietnamese twins and the boards built from Unit 4 on carry
+// French ones, and a clue with no twin in the chosen language falls back to
+// English (`field`), never to the other translation.
 const T = {
-  brand: ['Jeopardy', 'Jeopardy'],
-  chooseBoard: ['Choose a board', 'Chọn bảng chơi'],
-  teams: ['Teams', 'Các đội'],
-  team: ['Team', 'Đội'],
-  addTeam: ['Add a team', 'Thêm một đội'],
-  start: ['Start the game', 'Bắt đầu chơi'],
-  setup: ['Setup', 'Cài đặt'],
-  finish: ['Finish', 'Kết thúc'],
-  left: ['clues left', 'câu còn lại'],
-  reveal: ['Show the answer', 'Hiện đáp án'],
-  answer: ['Answer', 'Đáp án'],
-  close: ['Close', 'Đóng'],
-  whoGotIt: ['Who answered correctly?', 'Đội nào trả lời đúng?'],
-  award: ['Award', 'Cộng'],
-  points: ['points', 'điểm'],
-  noPoints: ['Nobody — no points', 'Không đội nào — không cộng điểm'],
-  startTimer: ['Start 30 seconds', 'Bấm giờ 30 giây'],
-  stopTimer: ['Stop the timer', 'Dừng đồng hồ'],
-  timeUp: ['Time is up!', 'Hết giờ rồi!'],
-  music: ['Thinking music', 'Nhạc suy nghĩ'],
-  soundOff: ['Sound off', 'Tắt tiếng'],
-  soundOn: ['Sound on', 'Bật tiếng'],
-  autoTimer: ['The timer starts by itself', 'Đồng hồ tự chạy khi mở câu hỏi'],
-  editScores: ['Edit scores', 'Sửa điểm'],
-  done: ['Done', 'Xong'],
-  finalTitle: ['Final scores', 'Điểm chung cuộc'],
-  winner: ['Winner', 'Đội thắng'],
-  tie: ['It is a tie!', 'Hoà nhau rồi!'],
-  sameBoard: ['Play this board again', 'Chơi lại bảng này'],
-  otherBoard: ['Choose another board', 'Chọn bảng khác'],
-  minTeams: ['Two teams at least', 'Cần ít nhất hai đội'],
+  brand: ['Jeopardy', 'Jeopardy', 'Jeopardy'],
+  chooseBoard: ['Choose a board', 'Chọn bảng chơi', 'Choisis un plateau'],
+  teams: ['Teams', 'Các đội', 'Équipes'],
+  team: ['Team', 'Đội', 'Équipe'],
+  addTeam: ['Add a team', 'Thêm một đội', 'Ajouter une équipe'],
+  start: ['Start the game', 'Bắt đầu chơi', 'Commencer la partie'],
+  setup: ['Setup', 'Cài đặt', 'Réglages'],
+  finish: ['Finish', 'Kết thúc', 'Terminer'],
+  left: ['clues left', 'câu còn lại', 'questions restantes'],
+  reveal: ['Show the answer', 'Hiện đáp án', 'Montrer la réponse'],
+  answer: ['Answer', 'Đáp án', 'Réponse'],
+  close: ['Close', 'Đóng', 'Fermer'],
+  whoGotIt: ['Who answered correctly?', 'Đội nào trả lời đúng?', 'Qui a bien répondu ?'],
+  award: ['Award', 'Cộng', 'Donner'],
+  points: ['points', 'điểm', 'points'],
+  noPoints: ['Nobody — no points', 'Không đội nào — không cộng điểm', 'Personne — pas de points'],
+  startTimer: ['Start 30 seconds', 'Bấm giờ 30 giây', 'Lancer 30 secondes'],
+  stopTimer: ['Stop the timer', 'Dừng đồng hồ', 'Arrêter le chrono'],
+  timeUp: ['Time is up!', 'Hết giờ rồi!', 'Temps écoulé !'],
+  music: ['Thinking music', 'Nhạc suy nghĩ', 'Musique de réflexion'],
+  soundOff: ['Sound off', 'Tắt tiếng', 'Couper le son'],
+  soundOn: ['Sound on', 'Bật tiếng', 'Remettre le son'],
+  autoTimer: ['The timer starts by itself', 'Đồng hồ tự chạy khi mở câu hỏi', 'Le chrono démarre tout seul'],
+  editScores: ['Edit scores', 'Sửa điểm', 'Modifier les scores'],
+  done: ['Done', 'Xong', 'Terminé'],
+  finalTitle: ['Final scores', 'Điểm chung cuộc', 'Scores finaux'],
+  winner: ['Winner', 'Đội thắng', 'Gagnant'],
+  tie: ['It is a tie!', 'Hoà nhau rồi!', 'Égalité !'],
+  sameBoard: ['Play this board again', 'Chơi lại bảng này', 'Rejouer ce plateau'],
+  otherBoard: ['Choose another board', 'Chọn bảng khác', 'Choisir un autre plateau'],
+  minTeams: ['Two teams at least', 'Cần ít nhất hai đội', 'Au moins deux équipes'],
 }
-const t = (lang, key) => T[key][lang === 'vn' ? 1 : 0]
+const t = (lang, key) => tr(lang, ...T[key])
+
+// Keep a sum on one line. The space either side of an operator becomes a
+// no-break space, so "40.0 − 6.4" can never wrap as "40.0 −" over "6.4" —
+// which on a projector reads as two different numbers. French puts a space
+// before : ? ! ; and inside « », and those become no-break spaces too, so a
+// line never starts with ": 31.2" or a lone "?".
+const glue = (text) => text
+  ?.replace(/ ([−+×÷=<>]) /g, ' $1 ')
+  .replace(/ ([:?!;»])/g, ' $1')
+  .replace(/« /g, '« ')
 
 // Six team colours, legible as a bar or a dot on light and on dark. Handed out
 // in team order, so a team keeps its colour from the scoreboard to the award
@@ -291,8 +304,9 @@ function useConfetti(canvasRef) {
 // board moved the music picker over to the teams column instead of shaving
 // this again. By the ninth the column was 100px over, so the boards now sit
 // two across in the wider of two columns, and eleven fit a 1440×900 window
-// with about 30px to spare in Vietnamese, the longer language. A twelfth adds
-// no row; a thirteenth does, and should start by checking that height again.
+// with about 30px to spare in Vietnamese, the longer language. The twelfth
+// filled the last row without adding one; a thirteenth adds a row, and should
+// start by checking that height again.
 function BoardCard({ board, lang, selected, onPick }) {
   return (
     <button
@@ -312,10 +326,10 @@ function BoardCard({ board, lang, selected, onPick }) {
       </span>
       <span className="min-w-0 flex-1">
         <span className="block font-black text-sm sm:text-base leading-tight tracking-tight text-slate-800 dark:text-slate-100">
-          {pick(lang, board.title, board.titleVn)}
+          {field(board, 'title', lang)}
         </span>
         <span className="block font-bold text-[11px] sm:text-xs leading-snug text-slate-400 dark:text-slate-500">
-          {pick(lang, board.subtitle, board.subtitleVn)}
+          {field(board, 'subtitle', lang)}
         </span>
       </span>
       {selected && (
@@ -473,11 +487,11 @@ function Setup({
                           ? <Pause className="w-3.5 h-3.5 shrink-0 text-[#f59e0b]" strokeWidth={3} />
                           : <Music className={`w-3.5 h-3.5 shrink-0 ${i === trackIndex ? 'text-[#f59e0b]' : 'text-slate-300 dark:text-slate-600'}`} strokeWidth={3} />}
                         <span className="min-w-0 truncate font-black text-[11px] sm:text-xs text-slate-800 dark:text-slate-100">
-                          {pick(lang, track.name, track.nameVn)}
+                          {field(track, 'name', lang)}
                         </span>
                       </span>
                       <span className="block pl-5 truncate font-bold text-[10px] text-slate-400 dark:text-slate-500">
-                        {pick(lang, track.by, track.byVn)}
+                        {field(track, 'by', lang)}
                       </span>
                     </button>
                   ))}
@@ -804,7 +818,7 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
 
         <div className="min-w-0 flex-1">
           <h2 className={`font-black tracking-tight text-slate-800 dark:text-slate-100 leading-tight truncate ${big ? 'text-[clamp(1.2rem,2vw,2rem)]' : 'text-base sm:text-xl'}`}>
-            {pick(lang, board.title, board.titleVn)}
+            {field(board, 'title', lang)}
           </h2>
           <p className={`font-bold text-slate-400 dark:text-slate-500 leading-tight truncate ${big ? 'text-[clamp(0.85rem,1.2vw,1.2rem)]' : 'text-[10px] sm:text-xs'}`}>
             {total - used.length} {t(lang, 'left')}
@@ -867,7 +881,7 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
             className="rounded-lg sm:rounded-xl bg-[#0a1e6b] px-1.5 py-2 flex items-center justify-center text-center"
           >
             <span className={`font-black uppercase tracking-wide leading-tight text-[#ffd34d] break-words ${big ? 'text-[clamp(0.7rem,1.05vw,1.15rem)]' : 'text-[9px] sm:text-[11px] lg:text-xs'}`}>
-              {pick(lang, category.name, category.nameVn)}
+              {glue(field(category, 'name', lang))}
             </span>
           </div>
         ))}
@@ -912,7 +926,7 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
           <div className="w-full h-full max-w-5xl mx-auto flex flex-col rounded-[1.5rem] bg-white dark:bg-slate-900 border-4 border-slate-100 dark:border-slate-800 shadow-2xl p-3 sm:p-5 lg:p-6 animate-in zoom-in-95 duration-200">
             <div className="shrink-0 flex items-center gap-3 mb-2 sm:mb-3">
               <span className={`min-w-0 flex-1 truncate font-black uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500 ${big ? 'text-[clamp(0.85rem,1.2vw,1.25rem)]' : 'text-[10px] sm:text-xs'}`}>
-                {pick(lang, open.category.name, open.category.nameVn)}
+                {glue(field(open.category, 'name', lang))}
               </span>
               <span
                 className={`shrink-0 font-black tabular-nums text-[#0e3fa8] dark:text-[#ffc800] ${big ? 'text-[clamp(1.3rem,2.2vw,2.3rem)]' : 'text-lg sm:text-2xl'}`}
@@ -989,12 +1003,12 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
                 <p className={`flex-1 min-w-0 font-black tracking-tight leading-snug text-slate-800 dark:text-slate-100 ${shownImage
                   ? (big ? 'text-[clamp(1.15rem,2.1vw,2.3rem)]' : 'text-base sm:text-xl')
                   : (big ? 'text-[clamp(1.5rem,2.8vw,3rem)]' : 'text-lg sm:text-2xl')}`}>
-                  {pick(lang, open.clue.q, open.clue.qVn)}
+                  {glue(field(open.clue, 'q', lang))}
                 </p>
                 {shownImage && (
                   <img
                     src={shownImage.src}
-                    alt={pick(lang, shownImage.alt, shownImage.altVn)}
+                    alt={field(shownImage, 'alt', lang)}
                     className="shrink-0 min-h-0 max-h-full w-auto max-w-[48%] object-contain rounded-2xl border-4 border-slate-100 dark:border-slate-800 animate-in fade-in duration-300"
                   />
                 )}
@@ -1023,7 +1037,7 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
                     </span>
                   </div>
                   <p className={`font-bold leading-snug text-[#14532d] dark:text-emerald-100 ${big ? 'text-[clamp(1.15rem,1.9vw,2rem)]' : 'text-base sm:text-lg'}`}>
-                    {pick(lang, open.clue.a, open.clue.aVn)}
+                    {glue(field(open.clue, 'a', lang))}
                   </p>
                 </div>
 

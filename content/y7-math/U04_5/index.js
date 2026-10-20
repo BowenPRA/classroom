@@ -20,6 +20,8 @@ export default {
     order: 15,
     french: true,
     vietnamese: false,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js).
+    dashboard: { track: 'Y7_MATH', unit: 'U04_5' },
   },
   slides,
   plan,

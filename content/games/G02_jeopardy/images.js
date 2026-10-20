@@ -193,6 +193,14 @@ import antacid from './images/sci28-antacid.jpg'
 // 0 to 6, not further, for the same 48% reason: fewer ticks, bigger numbers.
 import numberLine from './images/ma2-number-line.svg'
 
+// ── Year 7 · Science 3.1 + Maths 4.1–4.2 ──────────────────────────────────────
+// Two photographs copied byte for byte from the decks that showed them (the
+// multi-flash ball from Science 3.1, Usain Bolt from Maths 4.1–4.4), and one
+// drawing: 4.65 + 3.2 worked with the last digits lined up, not the points.
+import fallingBall from './images/sci31-strobe.jpg'
+import usainBolt from './images/ma4-bolt.jpg'
+import columnAdd from './images/ma4-column-add.svg'
+
 // ── Teens ─────────────────────────────────────────────────────────────────────
 // Ha Long Bay again (limestone is CaCO₃), and six drawings: nuclide notation,
 // an equation to balance, a parallel circuit, two powers, a chessboard and a
@@ -338,6 +346,10 @@ export const IMAGES = {
   antacid,
   // Year 7 · Mathematics Unit 2 + 3.1–3.2
   numberLine,
+  // Year 7 · Science 3.1 + Maths 4.1–4.2
+  fallingBall,
+  usainBolt,
+  columnAdd,
   // Teens
   teenHalong,
   teenNuclideNa,

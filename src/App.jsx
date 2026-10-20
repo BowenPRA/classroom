@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route, useParams, useNavigate, Navigate } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import CoursePage from './pages/CoursePage.jsx'
@@ -5,6 +6,11 @@ import HomeworkPage from './pages/HomeworkPage.jsx'
 import Plan from './pages/Plan.jsx'
 import Deck from './components/Deck.jsx'
 import { getCourse, getLesson } from '../content/registry.js'
+
+// Mr Bowen's Moreland teaching portfolio. Unlisted on purpose: nothing on the
+// classroom site links to #/portfolio, and it loads as its own chunk, so a
+// student opening a lesson never downloads it.
+const Portfolio = lazy(() => import('./portfolio/Portfolio.jsx'))
 
 function LessonView() {
   const { courseId, slug } = useParams()
@@ -34,6 +40,7 @@ export default function App() {
       <Route path="/course/:courseId" element={<CoursePage />} />
       <Route path="/lesson/:courseId/:slug" element={<LessonView />} />
       <Route path="/plan/:courseId/:slug" element={<PlanView />} />
+      <Route path="/portfolio/*" element={<Suspense fallback={null}><Portfolio /></Suspense>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

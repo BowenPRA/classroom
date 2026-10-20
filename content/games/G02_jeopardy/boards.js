@@ -1,5 +1,5 @@
 // content/games/G02_jeopardy/boards.js
-// Eleven Jeopardy boards of five clues a category.
+// Twelve Jeopardy boards of five clues a category.
 //
 //   1. Mathematics 1.1–1.3   — integers, sign rules, multiples and the LCM
 //   2. Science 1.1–1.3       — cells, plant vs animal, specialised cells
@@ -13,9 +13,11 @@
 //   8. Mathematics Unit 2    — Maths 2.1–2.6 and 3.1–3.2: expressions, like
 //                              terms, brackets, equations, inequalities, rounding
 //   9. Science 2.4 + 2.8     — the water cycle, then acids, alkalis and pH
-//  10. Teens                 — IGCSE chemistry and physics, word history, pop
+//  10. Science 3.1 + Maths   — gravity, weight and mass; comparing, adding and
+//      4.1–4.2                 subtracting decimals. English and French only
+//  11. Teens                 — IGCSE chemistry and physics, word history, pop
 //                              songs and big numbers; the hardest board
-//  11. Teens 2               — myth or fact, celebrity couples, famous covers,
+//  12. Teens 2               — myth or fact, celebrity couples, famous covers,
 //                              geography and accidental inventions
 //
 // The board grid takes its column count from `categories.length`, so a board
@@ -32,7 +34,9 @@
 // twenty-one stop speaking. Animal Records and Big Numbers are answerable by
 // anyone, and are still answered in English, in a sentence, with a reason.
 //
-// A clue is { value, q, qVn, a, aVn }. Nothing here goes through
+// A clue is { value, q, qVn, a, aVn }, or { value, q, qFr, a, aFr } on a board
+// built from Unit 4 on, when Year 7 went English and French. A missing twin
+// falls back to English, never to the other language. Nothing here goes through
 // `parseInlineText` — the widget prints these as plain text — but the house
 // rule still holds: write "dollars", never a dollar sign, and use the Unicode
 // minus (−) so a negative number reads as a number and not as a hyphen.
@@ -41,6 +45,8 @@
 //
 //   qImage: { src, alt, altVn }   shown the moment the clue opens
 //   aImage: { src, alt, altVn }   held back until the teacher reveals
+//
+// (altFr in place of altVn on an English-and-French board.)
 //
 // Which of the two depends on one question: does seeing it give the answer
 // away? "Which animal has three hearts?" gets an aImage, because a photograph
@@ -2695,7 +2701,305 @@ export const BOARDS = [
     ],
   },
 
-  // ── 10 · TEENS ────────────────────────────────────────────────────────────
+  // ── 10 · SCIENCE 3.1 + MATHS 4.1–4.2 ──────────────────────────────────────
+  // The week of 15 October: Science 3.1 (Gravity, Weight and Mass) in three
+  // columns, and the first half of the decimals speed run (compare, add,
+  // subtract) in three more. Multiplying and dividing are not on it.
+  //
+  // ENGLISH AND FRENCH, the first board that is. From Unit 4 the Year 7
+  // lessons drop Vietnamese, so every clue has a …Fr twin and no …Vn twin. In
+  // VN this board falls back to English; in FR the other boards do.
+  //
+  // The traps are the decks' own: heavy and light land together, the crumpled
+  // paper is not heavier, "My mass is 40 kg", 3.25 said as "three point two
+  // five", 4.6 against 4.52, fastest = smallest, 0.12 for 0.7 + 0.5, digits
+  // lined up instead of points, subtract FROM, and 0.38 for 1 − 0.72. The 200s
+  // are the English: drop / falls / lands, mass against weight, saying a
+  // decimal, "the sum", "subtract from".
+  //
+  // Two clues join the subjects, as Homework 9 did: the cat's weight on the
+  // Moon (40.0 − 6.4) and the contact force under a bag and a laptop
+  // (45.5 + 18.75). Mr Bowen is in the 500s, deadpan, as in the decks.
+  //
+  // Every decimal is written with a point in French too, as the decks do: the
+  // class is learning to read them the English way.
+  {
+    id: 'gravity-decimals',
+    title: 'Science 3.1 + Maths 4.1–4.2',
+    titleFr: 'Sciences 3.1 + Maths 4.1–4.2',
+    subtitle: 'Gravity, weight and mass; compare, add and subtract decimals',
+    subtitleFr: 'Gravité, poids et masse ; comparer, additionner et soustraire des décimaux',
+    icon: 'Orbit',
+    accent: '#a21caf',
+    categories: [
+      {
+        name: 'Gravity',
+        nameFr: 'La gravité',
+        clues: [
+          {
+            value: 100,
+            q: 'You drop a ball. What force pulls it down?',
+            qFr: 'Tu lâches une balle. Quelle force la tire vers le bas ?',
+            a: 'Gravity. The Earth pulls the ball towards it.',
+            aFr: 'La gravité (gravity). La Terre attire la balle vers elle.',
+          },
+          {
+            value: 200,
+            q: 'A ball is dropped at the South Pole. Which way does it fall?',
+            qFr: 'On lâche une balle au pôle Sud. Dans quel sens tombe-t-elle ?',
+            a: 'Towards the centre of the Earth. Gravity always pulls that way, so nobody falls off.',
+            aFr: 'Vers le centre de la Terre. La gravité tire toujours dans ce sens : personne ne tombe dans le vide.',
+          },
+          {
+            value: 300,
+            q: 'A rocket flies away from the Earth. Does the Earth’s gravity pull on it more, or less?',
+            qFr: 'Une fusée s’éloigne de la Terre. La gravité de la Terre l’attire-t-elle plus, ou moins ?',
+            a: 'Less. The further away it is, the weaker the pull.',
+            aFr: 'Moins. Plus elle est loin, plus l’attraction est faible.',
+          },
+          {
+            value: 400,
+            q: 'Some people say there is no gravity on the Moon. Are they right?',
+            qFr: 'Certains disent qu’il n’y a pas de gravité sur la Lune. Ont-ils raison ?',
+            a: 'No. The Moon has a big mass, so it has gravity. The astronaut’s hammer still fell!',
+            aFr: 'Non. La Lune a une grande masse, donc elle a une gravité. Le marteau de l’astronaute est bien tombé !',
+          },
+          {
+            value: 500,
+            q: 'Leaving the Earth takes a bigger force than leaving the Moon. The spacecraft’s mass is the same. Why?',
+            qFr: 'Quitter la Terre demande une force plus grande que quitter la Lune. La masse de la fusée est la même. Pourquoi ?',
+            a: 'Gravity is stronger on Earth: 10 N/kg, not 1.6 N/kg. So the spacecraft’s weight is bigger on Earth.',
+            aFr: 'La gravité est plus forte sur Terre : 10 N/kg, pas 1.6 N/kg. Donc le poids de la fusée est plus grand sur Terre.',
+          },
+        ],
+      },
+      {
+        name: 'Falling',
+        nameFr: 'La chute',
+        clues: [
+          {
+            value: 100,
+            q: 'Mr Bowen drops a bowling ball and a football at the same time. Which one lands first?',
+            qFr: 'M. Bowen lâche une boule de bowling et un ballon de foot en même temps. Lequel touche le sol en premier ?',
+            a: 'Neither. They land at the same time. Heavy things do not fall faster.',
+            aFr: 'Aucun. Ils touchent le sol en même temps. Les objets lourds ne tombent pas plus vite.',
+          },
+          {
+            value: 200,
+            q: 'Use drop, falls and lands: “You ___ the ball. It ___. Then it ___.”',
+            qFr: 'Utilise drop, falls et lands : « You ___ the ball. It ___. Then it ___. »',
+            a: 'You drop the ball. It falls. Then it lands. You drop it, but it falls by itself.',
+            aFr: 'You drop the ball. It falls. Then it lands. Toi, tu lâches (drop) ; la balle tombe (falls) toute seule.',
+          },
+          {
+            value: 300,
+            q: 'Drop a book and a flat sheet of paper together. The paper lands last. Why?',
+            qFr: 'Lâche ensemble un livre et une feuille de papier à plat. La feuille touche le sol en dernier. Pourquoi ?',
+            a: 'The air pushes up on the flat paper and slows it down.',
+            aFr: 'L’air pousse sous la feuille à plat et la ralentit.',
+          },
+          {
+            value: 400,
+            q: 'Now crumple the paper into a ball. It lands with the book. Is the paper heavier now?',
+            qFr: 'Maintenant, froisse la feuille en boule. Elle touche le sol avec le livre. Le papier est-il plus lourd ?',
+            a: 'No. Same paper, same mass. The air cannot slow a ball down much.',
+            aFr: 'Non. Même papier, même masse. L’air ne peut presque pas ralentir une boule.',
+          },
+          {
+            value: 500,
+            q: 'One photo, a flash 20 times a second. Does the ball fall at the same speed all the way down? Use the word “accelerate”.',
+            qFr: 'Une photo, un flash 20 fois par seconde. La balle tombe-t-elle à la même vitesse jusqu’en bas ? Utilise le mot « accelerate ».',
+            // A question picture, not an answer picture: it is a tall, thin
+            // photo, and beside a revealed answer it shrinks to a sliver. The
+            // class reasons from it, as the Accelerate slide had them do.
+            qImage: {
+              src: IMAGES.fallingBall,
+              alt: 'One photo of a falling ball, with a flash 20 times a second. The gaps between the balls get bigger.',
+              altFr: 'Une photo d’une balle qui tombe, avec un flash 20 fois par seconde. Les écarts entre les balles grandissent.',
+            },
+            a: 'No. It accelerates: the gaps get bigger, so it goes further in each flash. Gravity makes falling objects accelerate.',
+            aFr: 'Non. Elle accélère (accelerates) : les écarts grandissent, donc elle va plus loin à chaque flash. La gravité fait accélérer les objets qui tombent.',
+          },
+        ],
+      },
+      {
+        name: 'Weight & Mass',
+        nameFr: 'Poids et masse',
+        clues: [
+          {
+            value: 100,
+            q: 'Newtons or kilograms: which unit is for weight?',
+            qFr: 'Newtons ou kilogrammes : quelle unité pour le poids ?',
+            a: 'Newtons (N). Kilograms (kg) are for mass.',
+            aFr: 'Les newtons (N). Les kilogrammes (kg), c’est pour la masse.',
+          },
+          {
+            value: 200,
+            q: 'Which sentence is right in science: “My weight is 40 kg” or “My mass is 40 kg”?',
+            qFr: 'Quelle phrase est juste en sciences : « My weight is 40 kg » ou « My mass is 40 kg » ?',
+            a: '“My mass is 40 kg.” Kilograms measure mass. Weight is in newtons.',
+            aFr: '« My mass is 40 kg. » Les kilogrammes mesurent la masse. Le poids se mesure en newtons.',
+          },
+          {
+            value: 300,
+            q: 'A bag of rice has a mass of 5 kg. What is its weight on Earth?',
+            qFr: 'Un sac de riz a une masse de 5 kg. Quel est son poids sur Terre ?',
+            a: '50 N. Weight = mass × 10, so 5 × 10 = 50.',
+            aFr: '50 N. Poids = masse × 10, donc 5 × 10 = 50.',
+          },
+          {
+            value: 400,
+            q: 'A motorbike stands still on the road. Its weight is 1500 N. What is the contact force from the road? What is its mass?',
+            qFr: 'Une moto est à l’arrêt sur la route. Son poids est de 1500 N. Quelle est la force de contact de la route ? Quelle est sa masse ?',
+            a: 'Contact force: 1500 N, pushing up. Nothing moves, so contact force = weight. Mass: 1500 ÷ 10 = 150 kg.',
+            aFr: 'Force de contact : 1500 N, vers le haut. Rien ne bouge, donc force de contact = poids. Masse : 1500 ÷ 10 = 150 kg.',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen takes his cat (4 kg) to the Moon. Gravity there is 1.6 N/kg. How much less does the cat weigh on the Moon than on Earth?',
+            qFr: 'M. Bowen emmène son chat (4 kg) sur la Lune. Là-bas, la gravité est de 1.6 N/kg. Combien le chat pèse-t-il de moins sur la Lune que sur Terre ?',
+            a: '33.6 N less. Earth: 4 × 10 = 40 N. Moon: 4 × 1.6 = 6.4 N. Then 40.0 − 6.4 = 33.6. Its mass is still 4 kg. The cat is not impressed.',
+            aFr: '33.6 N de moins. Terre : 4 × 10 = 40 N. Lune : 4 × 1.6 = 6.4 N. Puis 40.0 − 6.4 = 33.6. Sa masse est toujours de 4 kg. Le chat n’est pas impressionné.',
+          },
+        ],
+      },
+      {
+        name: 'Bigger or Smaller?',
+        nameFr: 'Plus grand ou plus petit ?',
+        clues: [
+          {
+            value: 100,
+            q: 'Which is bigger: 4.6 or 4.52?',
+            qFr: 'Lequel est le plus grand : 4.6 ou 4.52 ?',
+            a: '4.6. Fill with zeros: 4.60 is bigger than 4.52.',
+            aFr: '4.6. Complète avec des zéros : 4.60 est plus grand que 4.52.',
+          },
+          {
+            value: 200,
+            q: 'Say 3.25 in English.',
+            qFr: 'Dis 3.25 en anglais.',
+            a: '“Three point two five.” Say each digit after the point on its own. Not “three point twenty-five”.',
+            aFr: '« Three point two five. » Après le point, on lit chiffre par chiffre. Pas « three point twenty-five ».',
+          },
+          {
+            value: 300,
+            q: 'Write in order, starting with the smallest: 0.5, 0.45, 0.405, 0.54',
+            qFr: 'Range du plus petit au plus grand : 0.5, 0.45, 0.405, 0.54',
+            a: '0.405, 0.45, 0.5, 0.54. Fill with zeros first: 0.405, 0.450, 0.500, 0.540.',
+            aFr: '0.405, 0.45, 0.5, 0.54. Complète d’abord avec des zéros : 0.405, 0.450, 0.500, 0.540.',
+          },
+          {
+            value: 400,
+            q: 'Four swimmers’ times, in seconds: 31.2, 30.95, 31.09, 30.9. Which time wins the race?',
+            qFr: 'Les temps de quatre nageurs, en secondes : 31.2, 30.95, 31.09, 30.9. Quel temps gagne la course ?',
+            a: '30.9 s. The fastest time is the smallest number, and 30.90 is smaller than 30.95.',
+            aFr: '30.9 s. Le temps le plus rapide est le plus petit nombre, et 30.90 est plus petit que 30.95.',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen says: “7.125 is bigger than 7.2, because 125 is bigger than 2.” Is he right? Say why.',
+            qFr: 'M. Bowen dit : « 7.125 est plus grand que 7.2, parce que 125 est plus grand que 2. » A-t-il raison ? Explique.',
+            a: 'No. Fill with zeros: 7.2 = 7.200, and 7.200 is bigger than 7.125. You cannot compare 125 with 2.',
+            aFr: 'Non. Complète avec des zéros : 7.2 = 7.200, et 7.200 est plus grand que 7.125. On ne peut pas comparer 125 et 2.',
+          },
+        ],
+      },
+      {
+        name: 'Adding',
+        nameFr: 'Additionner',
+        clues: [
+          {
+            value: 100,
+            q: 'What is 0.7 + 0.5?',
+            qFr: 'Combien font 0.7 + 0.5 ?',
+            a: '1.2. Seven tenths and five tenths make twelve tenths. Not 0.12.',
+            aFr: '1.2. Sept dixièmes et cinq dixièmes font douze dixièmes. Pas 0.12.',
+          },
+          {
+            value: 200,
+            q: 'What is the sum of 3.5 and 2.25?',
+            qFr: 'Quelle est la somme (the sum) de 3.5 et 2.25 ?',
+            a: '5.75. “The sum” means add: 3.50 + 2.25 = 5.75.',
+            aFr: '5.75. « The sum » veut dire additionner : 3.50 + 2.25 = 5.75.',
+          },
+          {
+            value: 300,
+            q: 'Use a mental method: 5.9 + 2.7',
+            qFr: 'Utilise le calcul mental (mental method) : 5.9 + 2.7',
+            a: '8.6. 5.9 is nearly 6: 6 + 2.7 = 8.7, then take away 0.1.',
+            aFr: '8.6. 5.9, c’est presque 6 : 6 + 2.7 = 8.7, puis enlève 0.1.',
+          },
+          {
+            value: 400,
+            q: 'Mr Bowen worked out 4.65 + 3.2 like this. What did he do wrong?',
+            qFr: 'M. Bowen a calculé 4.65 + 3.2 comme ça. Quelle est son erreur ?',
+            qImage: {
+              src: IMAGES.columnAdd,
+              alt: '4.65 plus 3.2 in columns, with the 3.2 pushed right, under the 6 and the 5. The answer written is 4.97.',
+              altFr: '4.65 plus 3.2 en colonnes, avec 3.2 décalé à droite, sous le 6 et le 5. La réponse écrite est 4.97.',
+            },
+            a: 'He lined up the last digits, not the points. Line up the points: 4.65 + 3.20 = 7.85.',
+            aFr: 'Il a aligné les derniers chiffres, pas les points. Aligne les points : 4.65 + 3.20 = 7.85.',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen puts his bag (45.5 N) and his laptop (18.75 N) on a table. Nothing moves. What is the contact force from the table?',
+            qFr: 'M. Bowen pose son sac (45.5 N) et son ordinateur portable (18.75 N) sur une table. Rien ne bouge. Quelle est la force de contact de la table ?',
+            a: '64.25 N. 45.50 + 18.75 = 64.25. Nothing moves, so the contact force = the total weight.',
+            aFr: '64.25 N. 45.50 + 18.75 = 64.25. Rien ne bouge, donc force de contact = poids total.',
+          },
+        ],
+      },
+      {
+        name: 'Subtracting',
+        nameFr: 'Soustraire',
+        clues: [
+          {
+            value: 100,
+            q: 'What is 5.8 − 2.3?',
+            qFr: 'Combien font 5.8 − 2.3 ?',
+            a: '3.5. Line up the points.',
+            aFr: '3.5. Aligne les points.',
+          },
+          {
+            value: 200,
+            q: 'Subtract 1.2 from 4.6.',
+            qFr: '« Subtract 1.2 from 4.6. » Calcule.',
+            a: '3.4. “From 4.6” means start at 4.6: 4.6 − 1.2 = 3.4.',
+            aFr: '3.4. « From 4.6 » veut dire : commence à 4.6. 4.6 − 1.2 = 3.4.',
+          },
+          {
+            value: 300,
+            q: 'Work out 1 − 0.72. Then check by adding.',
+            qFr: 'Calcule 1 − 0.72. Puis vérifie en additionnant.',
+            a: '0.28. Write 1 as 1.00. Check: 0.28 + 0.72 = 1. (Not 0.38.)',
+            aFr: '0.28. Écris 1 comme 1.00. Vérifie : 0.28 + 0.72 = 1. (Pas 0.38.)',
+          },
+          {
+            value: 400,
+            q: 'Mr Bowen pays for a 4.85-dollar sandwich with a 20-dollar note. How much change does he get?',
+            qFr: 'M. Bowen paie un sandwich à 4.85 dollars avec un billet de 20 dollars. Combien de monnaie (change) reçoit-il ?',
+            a: '15.15 dollars. Change is the money you get back: 20.00 − 4.85 = 15.15.',
+            aFr: '15.15 dollars. La monnaie (change), c’est l’argent qu’on te rend : 20.00 − 4.85 = 15.15.',
+          },
+          {
+            value: 500,
+            q: 'Usain Bolt runs 100 m in 9.58 s. Mr Bowen runs it in 16.04 s. How many seconds faster is Usain Bolt?',
+            qFr: 'Usain Bolt court le 100 m en 9.58 s. M. Bowen le court en 16.04 s. De combien de secondes Usain Bolt est-il plus rapide ?',
+            qImage: {
+              src: IMAGES.usainBolt,
+              alt: 'Usain Bolt, smiling, in Berlin in 2009.',
+              altFr: 'Usain Bolt, souriant, à Berlin en 2009.',
+            },
+            a: '6.46 s. 16.04 − 9.58 = 6.46. Check: 9.58 + 6.46 = 16.04. Mr Bowen is still training.',
+            aFr: '6.46 s. 16.04 − 9.58 = 6.46. Vérifie : 9.58 + 6.46 = 16.04. M. Bowen s’entraîne encore.',
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── 11 · TEENS ────────────────────────────────────────────────────────────
   // The hardest board. IGCSE chemistry and physics that need a calculation or
   // a reason, then three rounds anyone can win: word history, pop songs, and
   // big numbers. The trivia rounds do the same job as Board 4's: they stop the
@@ -2935,7 +3239,7 @@ export const BOARDS = [
     ],
   },
 
-  // ── 11 · TEENS 2 ──────────────────────────────────────────────────────────
+  // ── 12 · TEENS 2 ──────────────────────────────────────────────────────────
   // Trivia only, no syllabus: Myth or Fact, Celebrity Couples, Famous Covers,
   // Geography and Accidental Inventions. Every answer still wants a reason.
   //

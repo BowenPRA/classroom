@@ -18,3 +18,9 @@ planning/**/*.aux
 planning/**/*.log
 planning/**/*.out
 planning/**/*.toc
+
+# Same for one-off handouts in handouts/.
+handouts/**/.preview/
+handouts/**/*.aux
+handouts/**/*.log
+handouts/**/*.out
