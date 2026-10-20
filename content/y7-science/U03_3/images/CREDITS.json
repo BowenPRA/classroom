@@ -10,21 +10,21 @@
   },
   {
     "file": "venus.jpg",
-    "name": "Venus from Mariner 10.jpg",
-    "title": "Venus from Mariner 10, newly processed view (2020)",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Venus_from_Mariner_10.jpg",
-    "license": "Public domain (NASA)",
-    "artist": "NASA / JPL-Caltech",
-    "usage": "PLANET_ROW tile; downscaled to 420 px."
+    "name": "PIA23791-Venus-NewlyProcessedView-20200608 (cropped).jpg",
+    "title": "Venus from Mariner 10, newly processed view (PIA23791)",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:PIA23791-Venus-NewlyProcessedView-20200608_(cropped).jpg",
+    "license": "Public domain",
+    "artist": "NASA/JPL-Caltech",
+    "usage": "PLANET_ROW tile. The same file as 3.2’s venus.jpg."
   },
   {
     "file": "earth.jpg",
     "name": "The Blue Marble, AS17-148-22727.jpg",
     "title": "The Blue Marble: Earth photographed from Apollo 17, 1972",
     "descUrl": "https://commons.wikimedia.org/wiki/File:The_Blue_Marble,_AS17-148-22727.jpg",
-    "license": "Public domain (NASA)",
+    "license": "Public domain",
     "artist": "NASA / Apollo 17 crew (Harrison Schmitt)",
-    "usage": "PLANET_ROW tile; downscaled to 420 px. The same photograph as 3.1's earth.jpg."
+    "usage": "PLANET_ROW tile. The same file as 3.2’s earth.jpg (and the same photograph as 3.1’s)."
   },
   {
     "file": "mars.jpg",
@@ -37,12 +37,12 @@
   },
   {
     "file": "jupiter.jpg",
-    "name": "Jupiter and its shrunken Great Red Spot.jpg",
-    "title": "Jupiter and its Great Red Spot, Hubble Space Telescope, 2014",
-    "descUrl": "https://commons.wikimedia.org/wiki/File:Jupiter_and_its_shrunken_Great_Red_Spot.jpg",
-    "license": "Public domain (NASA)",
-    "artist": "NASA, ESA, and A. Simon (Goddard Space Flight Center)",
-    "usage": "PLANET_ROW tile; downscaled to 420 px."
+    "name": "Jupiter OPAL 2024.png",
+    "title": "Jupiter in true colour, Hubble OPAL programme, 5 January 2024",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Jupiter_OPAL_2024.png",
+    "license": "Public domain",
+    "artist": "NASA/STScI (Hubble OPAL)",
+    "usage": "PLANET_ROW tile. The same file as 3.2’s jupiter.jpg, so the class sees the same Jupiter two lessons running."
   },
   {
     "file": "saturn.jpg",
@@ -58,9 +58,9 @@
     "name": "Uranus2.jpg",
     "title": "Uranus photographed by Voyager 2, 1986",
     "descUrl": "https://commons.wikimedia.org/wiki/File:Uranus2.jpg",
-    "license": "Public domain (NASA)",
-    "artist": "NASA / JPL-Caltech",
-    "usage": "PLANET_ROW tile and NEPTUNE_STORY; downscaled to 420 px."
+    "license": "Public domain",
+    "artist": "NASA/JPL-Caltech",
+    "usage": "PLANET_ROW tile and NEPTUNE_STORY. The same file as 3.2’s uranus.jpg."
   },
   {
     "file": "neptune.jpg",
@@ -69,7 +69,7 @@
     "descUrl": "https://commons.wikimedia.org/wiki/File:Neptune_Full.jpg",
     "license": "Public domain (NASA)",
     "artist": "NASA / JPL",
-    "usage": "PLANET_ROW tile and NEPTUNE_STORY; downscaled to 420 px. The familiar deep-blue processing, chosen so Neptune is easy to tell from Uranus; the true colour is paler."
+    "usage": "PLANET_ROW tile and NEPTUNE_STORY; downscaled to 420 px. The familiar deep-blue processing, chosen so Neptune is easy to tell from Uranus beside it in the row. 3.2 showed the paler true-colour Neptune; plan.js says so in case a student notices."
   },
   {
     "file": "moon.jpg",
@@ -96,7 +96,7 @@
     "descUrl": "https://commons.wikimedia.org/wiki/File:Spoilers_Activated_on_Landing,_William_P._Hobby_Airport,_Houston,_Texas_(16075468149).jpg",
     "license": "CC BY-SA 2.0",
     "artist": "Ken Lund",
-    "usage": "Slide 16, Air resistance — the same idea as the book's aeroplane-wing photo (p.93); downscaled to 960 px."
+    "usage": "Slide 15, Air resistance — the same idea as the book's aeroplane-wing photo (p.93); downscaled to 960 px."
   },
   {
     "file": "juno.jpg",
@@ -105,7 +105,7 @@
     "descUrl": "https://commons.wikimedia.org/wiki/File:JUNO_-_PIA13746.jpg",
     "license": "Public domain (NASA)",
     "artist": "NASA / JPL",
-    "usage": "Slide 18, Vacuum — the book's Juno picture (p.93) is this same NASA artwork; downscaled to 960 px."
+    "usage": "Slide 17, Vacuum — the book's Juno picture (p.93) is this same NASA artwork; downscaled to 960 px."
   },
   {
     "file": "voyager.jpg",
@@ -114,7 +114,7 @@
     "descUrl": "https://commons.wikimedia.org/wiki/File:Voyager_spacecraft.jpg",
     "license": "Public domain (NASA)",
     "artist": "NASA / JPL",
-    "usage": "Slide 19, Voyager 1 (Question 5); downscaled to 960 px."
+    "usage": "Slide 18, Voyager 1 (Question 5); downscaled to 960 px."
   },
   {
     "file": "bouvard.jpg",

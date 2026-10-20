@@ -1,5 +1,5 @@
 // content/y7-science/U03_3/slides.js
-// Year 7 Science · 3.3 Movement in space. Tuesday 20 October 2026 (provisional).
+// Year 7 Science · 3.3 Movement in space. Wednesday 21 October 2026, one period.
 // Source: Learner's Book pages 91–96 (Unit 3 Forces and energy).
 //
 // ENGLISH AND FRENCH ONLY (meta.vietnamese: false): every string has an …Fr
@@ -57,7 +57,7 @@ export const slides = [
     icon: 'Globe',
     brand: 'Year 7 Science',
     brandFr: 'Sciences 7e année',
-    date: '20 Oct 2026',
+    date: '21 Oct 2026',
     eyebrow: '3.3 · Forces and energy',
     eyebrowFr: '3.3 · Forces et énergie',
     title: 'Movement in Space',
@@ -478,8 +478,8 @@ export const slides = [
     icon: 'MessageSquare',
     eyebrow: 'Questions 1–3 · English check',
     eyebrowFr: 'Questions 1–3 · point d’anglais',
-    title: 'Which Word?',
-    titleFr: 'Quel mot ?',
+    title: 'Three Science Words',
+    titleFr: 'Trois mots de science',
     ratio: 50,
     inlineSvg: DIAGRAMS.WORDS3,
     content:
