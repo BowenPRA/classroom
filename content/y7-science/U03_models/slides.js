@@ -1,6 +1,6 @@
 // content/y7-science/U03_models/slides.js
 // Year 7 Science · Models: Space and Time. A Unit 3 modelling deck, after 3.1
-// (gravity) and its lab.
+// (gravity), 3.2 (formation of the Solar System) and 3.3 (movement in space).
 //
 // ENGLISH AND FRENCH ONLY, like every Year 7 deck from Unit 4 / 15 October:
 // every string has an …Fr twin and no …Vn twin. The diagrams stay in English.
