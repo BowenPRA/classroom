@@ -1,11 +1,13 @@
-// content/y7-science/U03_models/dating.jsx
+// content/y7-science/U03_coffee/dating.jsx
 // Models of TIME: half-life, from Mr Bowen's coffee to Mr Bowen himself.
 //
 //   CoffeeClock   Mr Bowen's 7 a.m. coffee: 100 mg of caffeine, half gone
 //                 every 5 hours. One press = 5 hours. The mug empties by half
 //                 each time and the graph grows a point. The class says the
-//                 next number before it is pressed. HALF-LIFE, met on
-//                 something they drink, before anything radioactive.
+//                 next number before it is pressed; the dashed curve through
+//                 the points waits until 3 a.m. (6.25 mg), once they have the
+//                 pattern. HALF-LIFE, met on something they drink, before
+//                 anything radioactive.
 //
 //   CarbonClock   The story. Alive, Mr Bowen's carbon-14 breaks down and is
 //                 topped up from his food and drink, so it stays at 100%.
@@ -15,7 +17,8 @@
 //                 shows 144 of his carbon-14 atoms (each with its own random
 //                 moment to break down), the graph, and the year. "Be the
 //                 scientist" hands the class real samples to date from the
-//                 graph: Ötzi, the Lascaux charcoal, a mammoth, a dinosaur.
+//                 graph: a bowl, Ötzi, the Lascaux charcoal, a mammoth. Mr
+//                 Bowen and the dinosaur have slides of their own.
 //
 //   LastAtom      Last Atom Standing. Every student gets 5 coins (5 atoms);
 //                 each round everyone flips what they have left and puts the
@@ -23,11 +26,18 @@
 //                 still in; the graph sets the class beside "half each round"
 //                 and a million computer atoms — random for one, predictable
 //                 for a crowd. The last student with a head wins a ticket.
-import { useState, useRef, useEffect, useMemo } from 'react'
-import { Undo2, RotateCcw, Play, Pause, Coffee, Snowflake, Search, Eye, ChevronRight, Shuffle, Coins } from 'lucide-react'
+//                 Every game is kept as a TRIAL.
+//
+//   AtomTrials    The next slide: every trial in a results table and on one
+//                 graph, beside "half each round". Each trial is different;
+//                 all of them halve.
+//
+// The shared pieces (mulberry32, fmt, Btn) live with the Models deck.
+import { useState, useRef, useEffect, useMemo, useSyncExternalStore } from 'react'
+import { Undo2, RotateCcw, Play, Pause, Coffee, Snowflake, Search, Eye, ChevronRight, Shuffle, Coins, Trash2 } from 'lucide-react'
 import { tr } from '../../../src/lib/lang.js'
-import { mulberry32, fmt } from './data.js'
-import { Btn } from './ui.jsx'
+import { mulberry32, fmt } from '../U03_models/data.js'
+import { Btn } from '../U03_models/ui.jsx'
 
 const t = (lang, en, fr) => tr(lang, en, null, fr)
 const FONT = "Inter, 'Segoe UI', system-ui, sans-serif"
@@ -47,7 +57,7 @@ const NOTES = [
   ['Coffee time!', 'L’heure du café !'],
   ['Lunch', 'Le déjeuner'],
   ['Home time', 'Fin des cours'],
-  ['Bedtime — still keeping him awake', 'Au lit — ça le tient encore éveillé'],
+  ['Late at night', 'Tard le soir'],
   ['Middle of the night', 'Au milieu de la nuit'],
   ['Next morning: time for another coffee', 'Le lendemain : l’heure d’un autre café'],
 ]
@@ -115,7 +125,8 @@ export function CoffeeClock({ lang = 'en' }) {
           ))}
           <text x={gx(0) - 50} y={gy(105) - 14} fontFamily={FONT} fontSize="20" fontWeight="700" fill={MUTED}>{t(lang, 'mg of caffeine', 'mg de caféine')}</text>
           <text x={gx(25)} y={gy(0) + 64} fontFamily={FONT} fontSize="20" fontWeight="700" fill={MUTED} textAnchor="end">{t(lang, 'hours after the coffee', 'heures après le café')}</text>
-          {k >= 2 && <polyline points={COFFEE_CURVE} fill="none" stroke={KEY} strokeWidth="2.5" strokeDasharray="7 7" opacity="0.55" />}
+          {/* the curve joins the dots only once the class has the pattern: 3 a.m., 6.25 mg */}
+          {k >= 4 && <polyline points={COFFEE_CURVE} fill="none" stroke={KEY} strokeWidth="2.5" strokeDasharray="7 7" opacity="0.55" />}
           {Array.from({ length: k + 1 }, (_, i) => (
             <g key={i}>
               <line x1={gx(i * HALF_H)} y1={gy(0)} x2={gx(i * HALF_H)} y2={gy(mg(i))} stroke={KEY} strokeWidth="2" strokeDasharray="4 5" opacity="0.5" />
@@ -154,14 +165,14 @@ const NOW_YEAR = 2026
 // Real samples for "Be the scientist". `pct` is the carbon-14 left compared
 // with a living thing; the age follows from it. Ötzi: radiocarbon age about
 // 5 300 years; Lascaux's charcoal about 17 000; mammoths on the mainland died
-// out about 10 000 years ago.
+// out about 10 000 years ago. Mr Bowen (25%) and the dinosaur are left out on
+// purpose: each is asked on its own slide afterwards, and this would give the
+// answer away.
 const SAMPLES = [
   { pct: 50, en: 'A wooden bowl', fr: 'Un bol en bois', icon: 'bowl' },
   { pct: 52.5, en: 'Ötzi the Iceman (found in 1991)', fr: 'Ötzi, l’homme des glaces (trouvé en 1991)', icon: 'otzi' },
-  { pct: 25, en: 'Mr Bowen, found in the ice', fr: 'M. Bowen, retrouvé dans la glace', icon: 'bowen' },
   { pct: 12.5, en: 'Charcoal from the Lascaux cave paintings', fr: 'Du charbon des peintures de Lascaux', icon: 'cave' },
   { pct: 30, en: 'A woolly mammoth tooth', fr: 'Une dent de mammouth laineux', icon: 'mammoth' },
-  { pct: 0, en: 'A dinosaur bone', fr: 'Un os de dinosaure', icon: 'dino' },
 ]
 const G = { x0: 1000, x1: 1560, y0: 560, y1: 110 }
 const gx = (y) => G.x0 + (y / T_MAX) * (G.x1 - G.x0)
@@ -219,10 +230,8 @@ function SampleIcon({ kind, x, y }) {
   switch (kind) {
     case 'bowl': return <g transform={`translate(${x} ${y})`}><path d="M -26 -6 h 52 q -4 28 -26 28 q -22 0 -26 -28 z" fill="#b5835a" {...s} /><path d="M -14 4 q 14 6 28 0" fill="none" stroke="#7a5233" strokeWidth="2" /></g>
     case 'otzi': return <g transform={`translate(${x} ${y})`}><rect x="-28" y="-20" width="56" height="40" rx="10" fill="#cfe7f5" {...s} /><circle cx="0" cy="-4" r="9" fill="#b89a7e" /><rect x="-6" y="4" width="12" height="12" rx="3" fill="#8b6b4f" /></g>
-    case 'bowen': return <g transform={`translate(${x} ${y})`}><rect x="-28" y="-20" width="56" height="40" rx="10" fill="#d7ecf8" {...s} /><circle cx="0" cy="-4" r="9" fill="#cfe0ec" stroke={INK} strokeWidth="1.5" /><circle cx="-4" cy="-4" r="3" fill="none" stroke={INK} strokeWidth="1.2" /><circle cx="4" cy="-4" r="3" fill="none" stroke={INK} strokeWidth="1.2" /><rect x="-7" y="5" width="14" height="11" rx="3" fill="#9db8cf" /></g>
     case 'cave': return <g transform={`translate(${x} ${y})`}><path d="M -28 18 q 0 -40 28 -40 q 28 0 28 40 z" fill="#e9d3b4" {...s} /><path d="M -14 4 q 6 -10 16 -6 q 6 -6 10 2 l -4 10 h -18 z" fill="#7a3e1c" /></g>
     case 'mammoth': return <g transform={`translate(${x} ${y})`}><path d="M -18 16 q -8 -30 14 -36 q 26 -4 28 22 q 0 14 -10 14 z" fill="#efe6d6" {...s} /><path d="M -10 -6 v 14 M 0 -10 v 18 M 10 -8 v 16" stroke="#b9ad98" strokeWidth="2" /></g>
-    case 'dino': return <g transform={`translate(${x} ${y})`}><path d="M -26 6 q 10 -10 26 -6 q 16 -10 26 0 q -10 8 -26 4 q -14 10 -26 2 z" fill="#efe6d6" {...s} /><circle cx="-24" cy="4" r="6" fill="#efe6d6" {...s} /><circle cx="24" cy="2" r="6" fill="#efe6d6" {...s} /></g>
     default: return null
   }
 }
@@ -559,8 +568,51 @@ function Step({ x, y, w = 74, label, onClick, disabled }) {
   )
 }
 
+// Every game is a TRIAL, kept so the next slide (AtomTrials) can graph them
+// together. A small module store shared by the two slides, saved to
+// localStorage so a reload or a slip of the arrow key keeps the lesson's
+// trials. Trials more than 12 hours old are dropped when the page loads, so
+// yesterday's practice runs never reach the class. The last trial is the game
+// being played.
+const TRIALS_KEY = 'classroom:y7-science:last-atom-trials'
+const TRIAL_TTL = 12 * 3600 * 1000
+const MAX_TRIALS = 6
+const freshTrial = (players = 20) => ({ at: Date.now(), rows: [{ atoms: players * COINS_EACH, players }] })
+function loadTrials() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(TRIALS_KEY) || '[]')
+    const kept = Array.isArray(saved)
+      ? saved.filter((x) => x && Array.isArray(x.rows) && x.rows.length > 0 && Date.now() - x.at < TRIAL_TTL)
+      : []
+    return kept.length ? kept : [freshTrial()]
+  } catch {
+    return [freshTrial()]
+  }
+}
+let trialList = null
+const trialListeners = new Set()
+const getTrials = () => (trialList ??= loadTrials())
+function setTrials(update) {
+  trialList = update(getTrials())
+  try {
+    localStorage.setItem(TRIALS_KEY, JSON.stringify(trialList))
+  } catch {
+    // a private window: the trials still last until the page is closed
+  }
+  trialListeners.forEach((fn) => fn())
+}
+const subscribeTrials = (fn) => {
+  trialListeners.add(fn)
+  return () => trialListeners.delete(fn)
+}
+const useTrials = () => useSyncExternalStore(subscribeTrials, getTrials, getTrials)
+// change the rows of the game being played
+const setRows = (update) => setTrials((ts) => [...ts.slice(0, -1), { ...ts[ts.length - 1], rows: update(ts[ts.length - 1].rows) }])
+
 export function LastAtom({ lang = 'en', isDisplayMode = false }) {
-  const [rows, setRows] = useState([{ atoms: 20 * COINS_EACH, players: 20 }])
+  const trials = useTrials()
+  const trialNo = trials.length
+  const rows = trials[trialNo - 1].rows
   const [compare, setCompare] = useState(false)
   const [seed, setSeed] = useState(3)
   const big = isDisplayMode
@@ -572,7 +624,7 @@ export function LastAtom({ lang = 'en', isDisplayMode = false }) {
 
   const setClass = (n) => {
     const k = Math.max(2, Math.min(40, n))
-    setRows([{ atoms: k * COINS_EACH, players: k }])
+    setRows(() => [{ atoms: k * COINS_EACH, players: k }])
   }
   const edit = (atoms, players) => setRows((r) => {
     const p = r.length > 1 ? r[r.length - 2] : null
@@ -589,7 +641,14 @@ export function LastAtom({ lang = 'en', isDisplayMode = false }) {
     return [...r, { atoms, players: atoms === 0 ? 0 : Math.max(1, Math.min(last.players, atoms)) }]
   })
   const undo = () => setRows((r) => (r.length > 1 ? r.slice(0, -1) : r))
-  const restart = () => { setRows((r) => [r[0]]); setSeed((v) => v + 1) }
+  // a new trial with the same class; the finished one is kept for the graph
+  const newTrial = () => {
+    setTrials((ts) => {
+      const last = ts[ts.length - 1]
+      return last.rows.length > 1 ? [...ts, freshTrial(last.rows[0].players)].slice(-MAX_TRIALS) : ts
+    })
+    setSeed((v) => v + 1)
+  }
 
   // what to say now
   let msg = [t(lang, 'Everyone stand up: 5 coins each = 5 atoms.', 'Tout le monde debout : 5 pièces chacun = 5 atomes.'), KEY]
@@ -613,7 +672,9 @@ export function LastAtom({ lang = 'en', isDisplayMode = false }) {
 
           {/* left: the tallies */}
           <text x="40" y="60" fontFamily={FONT} fontSize="26" fontWeight="800" fill={MUTED}>
-            {round === 0 ? t(lang, 'Before the first flip', 'Avant le premier lancer') : t(lang, `Round ${round} · ${round} half-lives`, `Tour ${round} · ${round} demi-vies`)}
+            {round === 0
+              ? t(lang, `Trial ${trialNo} · before the first flip`, `Essai ${trialNo} · avant le premier lancer`)
+              : t(lang, `Trial ${trialNo} · round ${round} · ${round} half-lives`, `Essai ${trialNo} · tour ${round} · ${round} demi-vies`)}
           </text>
           {round === 0 ? (
             <g>
@@ -695,7 +756,129 @@ export function LastAtom({ lang = 'en', isDisplayMode = false }) {
         <Btn big={big} tone="blue" icon={Shuffle} onClick={() => setCompare((c) => !c)}>
           {compare ? t(lang, 'Hide the computer', 'Cacher l’ordinateur') : t(lang, 'Add 1 000 000 atoms', 'Ajouter 1 000 000 d’atomes')}
         </Btn>
-        <Btn big={big} tone="slate" icon={RotateCcw} disabled={round === 0} onClick={restart}>{t(lang, 'Start again', 'Recommencer')}</Btn>
+        <Btn big={big} tone="slate" icon={RotateCcw} disabled={round === 0} onClick={newTrial}>{t(lang, 'New trial', 'Nouvel essai')}</Btn>
+      </div>
+    </div>
+  )
+}
+
+/* ============================================================= *
+ * 4 · OUR TRIALS — every game of Last Atom Standing, together
+ * ============================================================= */
+// The results table on the left, one line per trial on the graph. The row
+// labels are the graph's key: one colour per trial, the dashed orange line is
+// the model, half each round. A trial with no flips yet is not shown.
+const TRIAL_COLORS = [BLUE, '#5c2483', GREEN_DARK, TEAL, '#c8102e', '#8a5a3c']
+const niceStep = (top) => (top <= 60 ? 10 : top <= 120 ? 25 : 50)
+const halfText = (v) => (Number.isInteger(v) ? fmt(v) : fmt(v, 1))
+
+export function AtomTrials({ lang = 'en', isDisplayMode = false }) {
+  const trials = useTrials()
+  const [armed, setArmed] = useState(false) // Clear needs a second press
+  useEffect(() => {
+    if (!armed) return undefined
+    const id = setTimeout(() => setArmed(false), 3000)
+    return () => clearTimeout(id)
+  }, [armed])
+  const big = isDisplayMode
+  const shown = trials.map((x, i) => ({ ...x, n: i + 1 })).filter((x) => x.rows.length > 1)
+  const start = shown.length ? shown[shown.length - 1].rows[0].atoms : 100
+  const top = Math.max(start, ...shown.map((x) => x.rows[0].atoms))
+  const rounds = Math.max(4, ...shown.map((x) => x.rows.length - 1))
+  const clear = () => {
+    if (armed) {
+      setArmed(false)
+      setTrials((ts) => [freshTrial(ts[ts.length - 1].rows[0].players)])
+    } else {
+      setArmed(true)
+    }
+  }
+
+  // the table
+  const colX = (k) => 250 + (k + 0.5) * ((790 - 250) / (rounds + 1))
+  const rowY = (i) => 168 + i * 50
+  // the graph
+  const C = { x0: 870, x1: 1550, y0: 470, y1: 80 }
+  const cx = (k) => C.x0 + 20 + (k / rounds) * (C.x1 - C.x0 - 40)
+  const cy = (n) => C.y0 - (n / top) * (C.y0 - C.y1)
+  const step = niceStep(top)
+  const grid = Array.from({ length: Math.floor(top / step) + 1 }, (_, i) => i * step)
+
+  return (
+    <div className="w-full h-full flex flex-col gap-3 select-none">
+      <div className="flex-1 min-h-0 w-full">
+        <svg viewBox="0 0 1580 560" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+          <rect x="0" y="0" width="1580" height="560" rx="16" fill="#ffffff" />
+
+          {/* left: the results table */}
+          <text x="40" y="60" fontFamily={FONT} fontSize="26" fontWeight="800" fill={MUTED}>{t(lang, 'Atoms left after each round', 'Atomes restants après chaque tour')}</text>
+          <text x="40" y="118" fontFamily={FONT} fontSize="21" fontWeight="900" fill={INK}>{t(lang, 'Round', 'Tour')}</text>
+          {Array.from({ length: rounds + 1 }, (_, k) => (
+            <text key={k} x={colX(k)} y="118" fontFamily={FONT} fontSize="21" fontWeight="900" fill={INK} textAnchor="middle">{k}</text>
+          ))}
+          <line x1="36" y1="134" x2="790" y2="134" stroke={INK} strokeWidth="2" />
+          {shown.map((x, i) => {
+            const color = TRIAL_COLORS[i % TRIAL_COLORS.length]
+            return (
+              <g key={x.n}>
+                <line x1="40" y1={rowY(i) - 7} x2="66" y2={rowY(i) - 7} stroke={color} strokeWidth="5" strokeLinecap="round" />
+                <text x="76" y={rowY(i)} fontFamily={FONT} fontSize="21" fontWeight="900" fill={color}>{t(lang, `Trial ${x.n}`, `Essai ${x.n}`)}</text>
+                {x.rows.map((r, k) => k <= rounds && (
+                  <text key={k} x={colX(k)} y={rowY(i)} fontFamily={FONT} fontSize="21" fontWeight={r.atoms === 0 ? 900 : 700} fill={INK} textAnchor="middle">{r.atoms}</text>
+                ))}
+              </g>
+            )
+          })}
+          {shown.length > 0 && (
+            <g>
+              <line x1="40" y1={rowY(shown.length) - 7} x2="66" y2={rowY(shown.length) - 7} stroke={KEY} strokeWidth="3" strokeDasharray="6 4" />
+              <text x="76" y={rowY(shown.length)} fontFamily={FONT} fontSize="19" fontWeight="900" fill={KEY}>{t(lang, 'Half each round', 'Moitié par tour')}</text>
+              {Array.from({ length: rounds + 1 }, (_, k) => (
+                <text key={k} x={colX(k)} y={rowY(shown.length)} fontFamily={FONT} fontSize="19" fontWeight="800" fill={KEY} textAnchor="middle">{halfText(start / 2 ** k)}</text>
+              ))}
+            </g>
+          )}
+          {shown.length === 0 && (
+            <g>
+              <rect x="40" y="170" width="740" height="130" rx="16" fill="#f7fafc" stroke={RULE} strokeWidth="2" />
+              <text x="410" y="226" fontFamily={FONT} fontSize="28" fontWeight="900" fill={INK} textAnchor="middle">{t(lang, 'No trials yet.', 'Pas encore d’essai.')}</text>
+              <text x="410" y="266" fontFamily={FONT} fontSize="21" fill={MUTED} textAnchor="middle">{t(lang, 'Play Last Atom Standing on the slide before.', 'Joue au Dernier atome debout, sur la diapo d’avant.')}</text>
+            </g>
+          )}
+
+          {/* right: the graph */}
+          {grid.map((n) => (
+            <g key={n}>
+              <line x1={C.x0} y1={cy(n)} x2={C.x1} y2={cy(n)} stroke={n === 0 ? INK : '#edf0f3'} strokeWidth={n === 0 ? 2.5 : 1.5} />
+              <text x={C.x0 - 10} y={cy(n) + 6} fontFamily={FONT} fontSize="17" fill={MUTED} textAnchor="end">{n}</text>
+            </g>
+          ))}
+          <text x={C.x0 - 50} y={C.y1 - 34} fontFamily={FONT} fontSize="18" fontWeight="700" fill={MUTED}>{t(lang, 'atoms left', 'atomes restants')}</text>
+          {Array.from({ length: rounds + 1 }, (_, k) => (
+            <text key={k} x={cx(k)} y={C.y0 + 30} fontFamily={FONT} fontSize="18" fill={MUTED} textAnchor="middle">{k}</text>
+          ))}
+          <text x={C.x1} y={C.y0 + 62} fontFamily={FONT} fontSize="18" fontWeight="700" fill={MUTED} textAnchor="end">{t(lang, 'round (= half-lives)', 'tour (= demi-vies)')}</text>
+          <polyline
+            points={Array.from({ length: rounds * 10 + 1 }, (_, i) => `${cx(i / 10).toFixed(1)},${cy(start * 0.5 ** (i / 10)).toFixed(1)}`).join(' ')}
+            fill="none" stroke={KEY} strokeWidth="3.5" strokeDasharray="9 7" opacity="0.9"
+          />
+          {shown.map((x, i) => {
+            const color = TRIAL_COLORS[i % TRIAL_COLORS.length]
+            const pts = x.rows.slice(0, rounds + 1)
+            return (
+              <g key={x.n}>
+                <polyline points={pts.map((r, k) => `${cx(k).toFixed(1)},${cy(r.atoms).toFixed(1)}`).join(' ')} fill="none" stroke={color} strokeWidth="4" strokeLinejoin="round" />
+                {pts.map((r, k) => <circle key={k} cx={cx(k)} cy={cy(r.atoms)} r="7" fill={color} stroke="#ffffff" strokeWidth="2" />)}
+              </g>
+            )
+          })}
+        </svg>
+      </div>
+
+      <div className="shrink-0 flex items-center justify-center gap-2.5 flex-wrap">
+        <Btn big={big} tone={armed ? 'orange' : 'slate'} icon={Trash2} disabled={shown.length === 0} onClick={clear}>
+          {armed ? t(lang, 'Press again to clear', 'Appuie encore pour effacer') : t(lang, 'Clear all trials', 'Effacer tous les essais')}
+        </Btn>
       </div>
     </div>
   )

@@ -3,11 +3,12 @@
 // auto-discovers this file (content/<course>/<unit>/index.js).
 //
 // A Unit 3 modelling deck, taught after 3.2 Formation of the Solar System and
-// before 3.3 Movement in Space (order 16.5). Two parts: Part 1, space — the
-// Solar System as a working scale model, the two kinds of model, limitations
-// and the nebula model; Part 2, time — half-life and carbon dating told
-// through Mr Bowen and his coffee, and how we know the ages of the Earth and
-// the Sun. English and French only, like every Year 7 deck from 15 October.
+// before 3.3 Movement in Space (order 16.5): the Solar System as a working
+// scale model, the two kinds of model, limitations and the nebula model.
+// Its old Part 2 on time is now two decks of its own: Coffee, Carbon and Stars
+// (U03_coffee, 16.6) and How Old Is the Earth? (U03_earth, 16.7), which borrow
+// this folder's shared pieces (data.js, ui.jsx, space.js). English and French
+// only, like every Year 7 deck from 15 October.
 import { slides } from './slides.js'
 import { plan } from './plan.js'
 
@@ -16,13 +17,12 @@ export default {
     course: 'y7-science',
     unit: 'Models',
     id: 'U03_MODELS',
-    title: 'Models: Space and Time',
-    subtitle: 'The Solar System to scale, how it formed, and how we know how old things are',
+    title: 'Models: Space',
+    subtitle: 'The Solar System to scale, and how it formed',
     objective:
       'Explain the two kinds of model and name their limitations; describe the sizes and distances in the Solar System with a ' +
-      'scale model, and that the planets orbit the same way in almost one flat plane; describe how the Solar System ' +
-      'formed from a spinning nebula; use half-life to find what is left; explain carbon dating and its limits; and ' +
-      'explain how radioactive dating, meteorites and a model Sun give the ages of the Earth and the Sun.',
+      'scale model, and that the planets orbit the same way in almost one flat plane; and describe how the Solar System ' +
+      'formed from a spinning nebula.',
     order: 16.5,
     french: true,
     vietnamese: false,
