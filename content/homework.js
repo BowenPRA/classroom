@@ -33,6 +33,8 @@ import alg13 from '../homework/alg13/alg13.pdf?url'
 import alg13p3 from '../homework/alg13p3/alg13p3.pdf?url'
 import lab31 from '../homework/lab31/lab31.pdf?url'
 import caffeine from '../homework/caffeine/caffeine.pdf?url'
+import hw10 from '../homework/hw10/hw10.pdf?url'
+import hw10fr from '../homework/hw10/hw10-fr.pdf?url'
 
 export const HOMEWORK = [
   {
@@ -266,5 +268,23 @@ export const HOMEWORK = [
     title: 'Why Is Mr Bowen Still Awake?',
     subtitle: 'Challenge · Science Models · caffeine, an interview, carbon dating',
     pdf: caffeine,
+  },
+  // Unit 4 again with new numbers, then Science 3.2, 3.3 and the football model.
+  // No Extra sheet this week: the caffeine challenge above is the extra.
+  // Section F is the reason this packet exists: the Earth goes 30.3 km/s in
+  // January and 29.3 in July, and the mean, 29.8, rounds to the book's 30.
+  {
+    id: 'hw10',
+    label: 'HW 10',
+    title: 'Faster in January',
+    subtitle: 'Maths Unit 4 review · Science 3.2–3.3 and the football model, in decimals',
+    pdf: hw10,
+  },
+  {
+    id: 'hw10fr',
+    label: 'FR 10',
+    title: 'Faster in January — English / Français',
+    subtitle: 'HW 10 with a French line under every question',
+    pdf: hw10fr,
   },
 ]
