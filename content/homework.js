@@ -32,6 +32,7 @@ import q1sci from '../homework/q1sci/q1sci.pdf?url'
 import alg13 from '../homework/alg13/alg13.pdf?url'
 import alg13p3 from '../homework/alg13p3/alg13p3.pdf?url'
 import lab31 from '../homework/lab31/lab31.pdf?url'
+import caffeine from '../homework/caffeine/caffeine.pdf?url'
 
 export const HOMEWORK = [
   {
@@ -255,5 +256,15 @@ export const HOMEWORK = [
     title: 'Drop It!',
     subtitle: 'Science 3.1 lab · ruler, lab and balcony · print double-sided',
     pdf: lab31,
+  },
+  // The challenge after Science Models Part 2. Mr Bowen's real coffee in
+  // half-life steps, the hour-by-hour rule, then the main task: interview an
+  // adult at home and estimate their caffeine at bedtime. Carbon dating last.
+  {
+    id: 'caffeine',
+    label: 'CH',
+    title: 'Why Is Mr Bowen Still Awake?',
+    subtitle: 'Challenge · Science Models · caffeine, an interview, carbon dating',
+    pdf: caffeine,
   },
 ]
