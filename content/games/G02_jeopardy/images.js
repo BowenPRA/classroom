@@ -201,6 +201,15 @@ import fallingBall from './images/sci31-strobe.jpg'
 import usainBolt from './images/ma4-bolt.jpg'
 import columnAdd from './images/ma4-column-add.svg'
 
+// ── Year 7 · Maths Unit 4 + Science 3.1–3.2 ───────────────────────────────────
+// Four photographs, every one a byte-identical copy of the picture the class
+// saw in the deck: the bathroom scales from Science 3.1, and the Orion Nebula,
+// Jupiter and the young star HL Tauri from Science 3.2.
+import bathroomScales from './images/sci31-scales.jpg'
+import orionNebula from './images/sci32-orion.jpg'
+import jupiter from './images/sci32-jupiter.jpg'
+import hlTauri from './images/sci32-hltau.jpg'
+
 // ── Teens ─────────────────────────────────────────────────────────────────────
 // Ha Long Bay again (limestone is CaCO₃), and six drawings: nuclide notation,
 // an equation to balance, a parallel circuit, two powers, a chessboard and a
@@ -350,6 +359,11 @@ export const IMAGES = {
   fallingBall,
   usainBolt,
   columnAdd,
+  // Year 7 · Maths Unit 4 + Science 3.1–3.2
+  bathroomScales,
+  orionNebula,
+  jupiter,
+  hlTauri,
   // Teens
   teenHalong,
   teenNuclideNa,

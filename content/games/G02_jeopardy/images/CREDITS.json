@@ -1328,5 +1328,45 @@
     "source": "Hand-written SVG, generated for the Science 3.1 + Maths 4.1–4.2 Jeopardy board. No third-party material.",
     "usage": "Science 3.1 + Maths 4.1–4.2 board, Adding 400 (question picture): 4.65 + 3.2 worked with the last digits lined up instead of the points, giving the wrong answer 4.97.",
     "bytes": 780
+  },
+  {
+    "name": "sci31-scales.jpg",
+    "title": "A white digital bathroom scale",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Dretec_digital_bathroom_scale_BS-164.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Qurren",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U03_1/images/scales.jpg, the picture on What Do Scales Measure? in Science 3.1, copied so this folder carries its own licence.",
+    "usage": "Maths Unit 4 + Science 3.1–3.2 board, Forces 400 (question picture): the scales are named in the clue.",
+    "bytes": 72226
+  },
+  {
+    "name": "sci32-orion.jpg",
+    "title": "The Orion Nebula, Hubble Space Telescope mosaic, 2006",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Orion_Nebula_-_Hubble_2006_mosaic_18000.jpg",
+    "license": "Public domain",
+    "artist": "NASA, ESA, M. Robberto (Space Telescope Science Institute/ESA) and the Hubble Space Telescope Orion Treasury Project Team",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U03_2/images/orion.jpg, the picture on the Nebula slide of Science 3.2.",
+    "usage": "Maths Unit 4 + Science 3.1–3.2 board, The Solar System 100 (answer picture): held back, because a cloud beside “What is a nebula?” is the answer.",
+    "bytes": 118265
+  },
+  {
+    "name": "sci32-jupiter.jpg",
+    "title": "Jupiter in true colour, Hubble OPAL programme, 5 January 2024",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Jupiter_OPAL_2024.png",
+    "license": "Public domain",
+    "artist": "NASA/STScI (Hubble OPAL)",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U03_2/images/jupiter.jpg (a 480 px square crop), drawn in Science 3.2’s Star or Planet? diagram.",
+    "usage": "Maths Unit 4 + Science 3.1–3.2 board, The Solar System 400 (question picture): Jupiter is named in the clue.",
+    "bytes": 24661
+  },
+  {
+    "name": "sci32-hltau.jpg",
+    "title": "ALMA image of the protoplanetary disc around the young star HL Tauri (eso1436a), 2014",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:HL_Tau_protoplanetary_disk.jpg",
+    "license": "CC BY 4.0",
+    "artist": "ALMA (ESO/NAOJ/NRAO)",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U03_2/images/hltau.jpg, the picture on A Young Star: HL Tauri in Science 3.2.",
+    "usage": "Maths Unit 4 + Science 3.1–3.2 board, Evidence & Models 300 (question picture): the photograph is the evidence the clue asks about.",
+    "bytes": 36886
   }
 ]

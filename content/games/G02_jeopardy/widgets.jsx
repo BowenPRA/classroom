@@ -44,7 +44,7 @@ import {
   Calculator, FlaskConical, Trophy, Gamepad2, ArrowLeft, Plus, X,
   Play, Pause, Eye, Check, Timer, Flag, RotateCcw, Crown, Users, Sparkles,
   Music, Volume2, VolumeX, Pencil, CookingPot, Apple, Atom, Rocket, Globe,
-  Variable, Droplets, Orbit,
+  Variable, Droplets, Orbit, Sun,
 } from 'lucide-react'
 
 import { tr, field } from '../../../src/lib/lang.js'
@@ -153,7 +153,7 @@ import bossBattle from './audio/boss-battle.opus'
 import timeAttack from './audio/time-attack.ogg'
 import phonk from './audio/phonk.opus'
 
-const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot, Apple, Atom, Rocket, Globe, Variable, Droplets, Orbit }
+const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot, Apple, Atom, Rocket, Globe, Variable, Droplets, Orbit, Sun }
 
 // The clue countdown, and the music that runs with it.
 const TIMER_SECONDS = 30
@@ -305,8 +305,11 @@ function useConfetti(canvasRef) {
 // this again. By the ninth the column was 100px over, so the boards now sit
 // two across in the wider of two columns, and eleven fit a 1440×900 window
 // with about 30px to spare in Vietnamese, the longer language. The twelfth
-// filled the last row without adding one; a thirteenth adds a row, and should
-// start by checking that height again.
+// filled the last row without adding one. The thirteenth added a row and ran
+// 26px over in English, so from xl up the boards column takes three quarters
+// of the width, not five sevenths: that puts all but the two Teens subtitles
+// on one line, and the teams column still has 300px. A fourteenth fills the
+// last row; a fifteenth should check this height again.
 function BoardCard({ board, lang, selected, onPick }) {
   return (
     <button
@@ -398,7 +401,7 @@ function Setup({
           </p>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-[5fr_2fr]">
+        <div className="grid gap-5 lg:grid-cols-[5fr_2fr] xl:grid-cols-[3fr_1fr]">
           <section>
             <h2 className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500 mb-1.5">
               {t(lang, 'chooseBoard')}

@@ -1,5 +1,5 @@
 // content/games/G02_jeopardy/boards.js
-// Twelve Jeopardy boards of five clues a category.
+// Thirteen Jeopardy boards of five clues a category.
 //
 //   1. Mathematics 1.1–1.3   — integers, sign rules, multiples and the LCM
 //   2. Science 1.1–1.3       — cells, plant vs animal, specialised cells
@@ -15,9 +15,11 @@
 //   9. Science 2.4 + 2.8     — the water cycle, then acids, alkalis and pH
 //  10. Science 3.1 + Maths   — gravity, weight and mass; comparing, adding and
 //      4.1–4.2                 subtracting decimals. English and French only
-//  11. Teens                 — IGCSE chemistry and physics, word history, pop
+//  11. Maths Unit 4 +        — × and ÷ decimals, shortcuts, money and the mean;
+//      Science 3.1–3.2         forces, and how the Solar System formed. EN/FR
+//  12. Teens                 — IGCSE chemistry and physics, word history, pop
 //                              songs and big numbers; the hardest board
-//  12. Teens 2               — myth or fact, celebrity couples, famous covers,
+//  13. Teens 2               — myth or fact, celebrity couples, famous covers,
 //                              geography and accidental inventions
 //
 // The board grid takes its column count from `categories.length`, so a board
@@ -2999,7 +3001,307 @@ export const BOARDS = [
     ],
   },
 
-  // ── 11 · TEENS ────────────────────────────────────────────────────────────
+  // ── 11 · MATHS UNIT 4 + SCIENCE 3.1–3.2 ───────────────────────────────────
+  // The week of 19 October: the rest of the decimals unit (4.3–4.5 and the
+  // review day) in three columns, and Science 3.1–3.2 in three more. Nothing
+  // repeats Board 10, which already has 4.1–4.2 and the falling half of 3.1:
+  // here 3.1 is the contact force, N/kg, the scales and Mars, and two columns
+  // are 3.2 — the facts and how it formed, then the evidence and the model.
+  //
+  // English and French, like Board 10. The traps are the decks' own: 0.28 for
+  // 0.7 × 4, 2.6 for 6.18 ÷ 3, the right digits with the point in the wrong
+  // place (6.44), 900 for 450 × 0.2, taking away 4 instead of 4.80, "Mr Bowen
+  // and four friends" is five people, money to 2 decimal places, scales that
+  // show kg but feel newtons, the biggest planet that is not a star, and Venus
+  // and Uranus, which only SEEM to contradict. The 200s are the English:
+  // "share equally", "of", "conjecture", "per", orbit against spin, "observe".
+  //
+  // Two clues join the subjects: the mean of four fall times (Money & the
+  // Mean 400) and the Curiosity rover's weight on Mars, 900 × 3.7 by
+  // partitioning (Forces 500).
+  {
+    id: 'decimals-solar-system',
+    title: 'Maths Unit 4 + Science 3.1–3.2',
+    titleFr: 'Maths unité 4 + Sciences 3.1–3.2',
+    subtitle: 'Multiply, divide, shortcuts, the mean; forces and the Solar System',
+    subtitleFr: 'Multiplier, diviser, raccourcis, moyenne ; forces et système solaire',
+    icon: 'Sun',
+    accent: '#475569',
+    categories: [
+      {
+        name: 'Multiply & Divide',
+        nameFr: 'Multiplier et diviser',
+        clues: [
+          {
+            value: 100,
+            q: 'What is 0.7 × 4?',
+            qFr: 'Combien font 0.7 × 4 ?',
+            a: '2.8. Four lots of 0.7 go past 1. Not 0.28.',
+            aFr: '2.8. Quatre fois 0.7, ça dépasse 1. Pas 0.28.',
+          },
+          {
+            value: 200,
+            q: 'Share 7.2 kg of rice equally between 3 bags. How much rice goes in each bag?',
+            qFr: 'Partage 7.2 kg de riz en parts égales (share equally) dans 3 sacs. Combien de riz va dans chaque sac ?',
+            a: '2.4 kg. “Share equally” means divide: 7.2 ÷ 3 = 2.4.',
+            aFr: '2.4 kg. « Share equally » veut dire diviser : 7.2 ÷ 3 = 2.4.',
+          },
+          {
+            value: 300,
+            q: 'Work out 6.18 ÷ 3. Then check with the inverse calculation.',
+            qFr: 'Calcule 6.18 ÷ 3. Puis vérifie avec le calcul inverse (inverse calculation).',
+            a: '2.06. 1 ÷ 3 does not go, so write 0. Check: 2.06 × 3 = 6.18. (Not 2.6.)',
+            aFr: '2.06. 1 ÷ 3, ça ne va pas, donc écris 0. Vérifie : 2.06 × 3 = 6.18. (Pas 2.6.)',
+          },
+          {
+            value: 400,
+            q: 'Work out 57.6 ÷ 16. Write the 16 times table first.',
+            qFr: 'Calcule 57.6 ÷ 16. Écris d’abord la table de 16.',
+            a: '3.6. The table: 16, 32, 48, 64. 57 ÷ 16 = 3, remainder 9. Then 96 ÷ 16 = 6.',
+            aFr: '3.6. La table : 16, 32, 48, 64. 57 ÷ 16 = 3, reste 9. Puis 96 ÷ 16 = 6.',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen says 2.8 × 23 = 6.44, because 28 × 23 = 644. Is he right? How can you tell without working it out?',
+            qFr: 'M. Bowen dit que 2.8 × 23 = 6.44, parce que 28 × 23 = 644. A-t-il raison ? Comment le savoir sans calculer ?',
+            a: 'No. Estimate: 3 × 20 = 60, so the answer is near 60, not near 6. 2.8 × 23 = 64.4.',
+            aFr: 'Non. Estime : 3 × 20 = 60, donc la réponse est proche de 60, pas de 6. 2.8 × 23 = 64.4.',
+          },
+        ],
+      },
+      {
+        name: 'Shortcuts',
+        nameFr: 'Raccourcis',
+        clues: [
+          {
+            value: 100,
+            q: 'Write 0.09 as a fraction.',
+            qFr: 'Écris 0.09 en fraction.',
+            a: '9/100. The 9 is in the hundredths column.',
+            aFr: '9/100. Le 9 est dans la colonne des centièmes.',
+          },
+          {
+            value: 200,
+            q: 'In “a quarter of 60”, what does “of” mean? Work it out.',
+            qFr: 'Dans « a quarter of 60 », que veut dire « of » ? Calcule.',
+            a: '“Of” means ×. A quarter of 60 = 60 × 0.25 = 60 ÷ 4 = 15.',
+            aFr: '« Of » veut dire ×. Le quart de 60 : 60 × 0.25 = 60 ÷ 4 = 15.',
+          },
+          {
+            value: 300,
+            q: 'Work out 450 × 0.2 in your head.',
+            qFr: 'Calcule 450 × 0.2 de tête.',
+            a: '90. × 0.2 means ÷ 10, then × 2: 45 × 2 = 90. Not 900: multiplying by 0.2 makes it smaller.',
+            aFr: '90. × 0.2 veut dire ÷ 10, puis × 2 : 45 × 2 = 90. Pas 900 : multiplier par 0.2 rend plus petit.',
+          },
+          {
+            value: 400,
+            q: 'What does “partitioning” mean? Use it to work out 7.2 × 6.',
+            qFr: 'Que veut dire « partitioning » ? Utilise-le pour calculer 7.2 × 6.',
+            a: 'Splitting a number into parts that are easy to work with. 7.2 × 6 = 7 × 6 + 0.2 × 6 = 42 + 1.2 = 43.2.',
+            aFr: 'Décomposer : couper un nombre en parties faciles à calculer. 7.2 × 6 = 7 × 6 + 0.2 × 6 = 42 + 1.2 = 43.2.',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen buys 9 bowls of phở. Each one costs 4.80 dollars. Use a quick way to find the total.',
+            qFr: 'M. Bowen achète 9 bols de phở. Chacun coûte 4.80 dollars. Utilise un moyen rapide pour trouver le total.',
+            a: '43.20 dollars. × 10, then take away one lot: 48.00 − 4.80 = 43.20. Take away 4.80, not 4. All nine are for him.',
+            aFr: '43.20 dollars. × 10, puis enlève une fois le prix : 48.00 − 4.80 = 43.20. Enlève 4.80, pas 4. Les neuf sont pour lui.',
+          },
+        ],
+      },
+      {
+        name: 'Money & the Mean',
+        nameFr: 'L’argent et la moyenne',
+        clues: [
+          {
+            value: 100,
+            q: 'Write 6.5 dollars the way a shop would.',
+            qFr: 'Écris 6.5 dollars comme dans un magasin.',
+            a: '6.50 dollars. Money is written to 2 decimal places.',
+            aFr: '6.50 dollars. L’argent s’écrit avec 2 décimales.',
+          },
+          {
+            value: 200,
+            q: 'What is a conjecture?',
+            qFr: 'Qu’est-ce qu’une conjecture ?',
+            a: 'A guess that you can test, like a hypothesis in science.',
+            aFr: 'Une supposition que l’on peut vérifier, comme une hypothèse en sciences.',
+          },
+          {
+            value: 300,
+            q: 'Mr Bowen and four friends share a 13-dollar taxi equally. How much does each person pay?',
+            qFr: 'M. Bowen et quatre amis partagent un taxi à 13 dollars en parts égales. Combien paie chaque personne ?',
+            a: '2.60 dollars. That is 5 people: 13 ÷ 5 = 2.6. Money has 2 decimal places.',
+            aFr: '2.60 dollars. Ça fait 5 personnes : 13 ÷ 5 = 2.6. L’argent a 2 décimales.',
+          },
+          {
+            value: 400,
+            q: 'Mr Bowen drops a ball 4 times and times each fall: 0.48 s, 0.52 s, 0.45 s and 0.55 s. What is the mean time?',
+            qFr: 'M. Bowen lâche une balle 4 fois et chronomètre chaque chute : 0.48 s, 0.52 s, 0.45 s et 0.55 s. Quel est le temps moyen (the mean) ?',
+            a: '0.5 s. Add them: 0.48 + 0.52 + 0.45 + 0.55 = 2.00. Then divide by how many: 2.00 ÷ 4 = 0.50.',
+            aFr: '0.5 s. Additionne : 0.48 + 0.52 + 0.45 + 0.55 = 2.00. Puis divise par leur nombre : 2.00 ÷ 4 = 0.50.',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen buys 3 notebooks at 1.85 dollars each and a pen at 0.95 dollars. He pays with a 10-dollar note. How much change does he get?',
+            qFr: 'M. Bowen achète 3 cahiers à 1.85 dollar chacun et un stylo à 0.95 dollar. Il paie avec un billet de 10 dollars. Combien de monnaie (change) reçoit-il ?',
+            a: '3.50 dollars. 3 × 1.85 = 5.55, then 5.55 + 0.95 = 6.50, then 10.00 − 6.50 = 3.50.',
+            aFr: '3.50 dollars. 3 × 1.85 = 5.55, puis 5.55 + 0.95 = 6.50, puis 10.00 − 6.50 = 3.50.',
+          },
+        ],
+      },
+      {
+        name: 'Forces',
+        nameFr: 'Les forces',
+        clues: [
+          {
+            value: 100,
+            q: 'A book sits on a desk. Gravity pulls it down. What pushes it up?',
+            qFr: 'Un livre est posé sur une table. La gravité le tire vers le bas. Qu’est-ce qui le pousse vers le haut ?',
+            a: 'The desk. Its push is called the contact force.',
+            aFr: 'La table. Sa poussée s’appelle la force de contact (contact force).',
+          },
+          {
+            value: 200,
+            q: 'Say “10 N/kg” in words. What does “per” mean?',
+            qFr: 'Dis « 10 N/kg » en anglais. Que veut dire « per » ?',
+            a: '“Ten newtons per kilogram.” “Per” means “for every”: 10 N for every 1 kg.',
+            aFr: '« Ten newtons per kilogram. » « Per » veut dire « pour chaque » : 10 N pour chaque kilogramme.',
+          },
+          {
+            value: 300,
+            q: 'A table weighs 600 N. It stands on 4 legs, and the weight is shared equally. What is the contact force on each leg?',
+            qFr: 'Une table pèse 600 N. Elle tient sur 4 pieds, et le poids est partagé également. Quelle est la force de contact sur chaque pied ?',
+            a: '150 N. Shared equally means divide: 600 ÷ 4 = 150.',
+            aFr: '150 N. Partagé également : on divise. 600 ÷ 4 = 150.',
+          },
+          {
+            value: 400,
+            q: 'Mr Bowen stands on his bathroom scales. They show 80 kg. What pushes down on the scales: his mass or his weight? How big is it?',
+            qFr: 'M. Bowen monte sur sa balance. Elle affiche 80 kg. Qu’est-ce qui appuie sur la balance : sa masse ou son poids ? Combien ?',
+            // A question picture: the clue names the scales, and "scales" for
+            // one object is English the class has to see to believe.
+            qImage: {
+              src: IMAGES.bathroomScales,
+              alt: 'A white digital bathroom scale.',
+              altFr: 'Une balance de salle de bain numérique, blanche.',
+            },
+            a: 'His weight: 80 × 10 = 800 N. The scales divide it by 10 and show kg.',
+            aFr: 'Son poids : 80 × 10 = 800 N. La balance le divise par 10 et affiche des kg.',
+          },
+          {
+            value: 500,
+            q: 'The Curiosity rover has a mass of 900 kg. Gravity on Mars is 3.7 N/kg. What is its weight on Mars? And its mass there?',
+            qFr: 'Le rover Curiosity a une masse de 900 kg. Sur Mars, la gravité est de 3.7 N/kg. Quel est son poids sur Mars ? Et sa masse là-bas ?',
+            a: '3330 N. Partition 3.7: 900 × 3 + 900 × 0.7 = 2700 + 630 = 3330. Its mass is still 900 kg.',
+            aFr: '3330 N. Décompose 3.7 : 900 × 3 + 900 × 0.7 = 2700 + 630 = 3330. Sa masse est toujours de 900 kg.',
+          },
+        ],
+      },
+      {
+        name: 'The Solar System',
+        nameFr: 'Le système solaire',
+        clues: [
+          {
+            value: 100,
+            q: 'What is a nebula?',
+            qFr: 'Qu’est-ce qu’une nébuleuse (nebula) ?',
+            // Held back: a glowing cloud beside "What is a nebula?" answers it.
+            aImage: {
+              src: IMAGES.orionNebula,
+              alt: 'The Orion Nebula, photographed by the Hubble telescope: a glowing cloud of dust and gas.',
+              altFr: 'La nébuleuse d’Orion, photographiée par le télescope Hubble : un nuage brillant de poussière et de gaz.',
+            },
+            a: 'A cloud of dust and gas in space. This is the Orion Nebula: new stars are forming in it.',
+            aFr: 'Un nuage de poussière et de gaz dans l’espace. Voici la nébuleuse d’Orion : de nouvelles étoiles s’y forment.',
+          },
+          {
+            value: 200,
+            q: 'The Earth goes round the Sun once a year. It also turns on its axis once a day. Which is the orbit, and which is the spin?',
+            qFr: 'La Terre fait le tour du Soleil une fois par an. Elle tourne aussi sur son axe une fois par jour. Lequel est l’orbite (orbit), et lequel est la rotation (spin) ?',
+            a: 'Going round the Sun is the orbit. Turning on its axis is the spin.',
+            aFr: 'Faire le tour du Soleil, c’est l’orbite (orbit). Tourner sur son axe, c’est la rotation (spin).',
+          },
+          {
+            value: 300,
+            q: 'Gravity pulls the dust in a nebula into clumps. Why does the biggest clump grow faster and faster?',
+            qFr: 'La gravité rassemble la poussière d’une nébuleuse en amas. Pourquoi le plus gros amas grossit-il de plus en plus vite ?',
+            a: 'More mass → stronger gravity → it pulls in even more dust and gas.',
+            aFr: 'Plus de masse → gravité plus forte → il attire encore plus de poussière et de gaz.',
+          },
+          {
+            value: 400,
+            q: 'Jupiter is the biggest planet. So why is it not a star?',
+            qFr: 'Jupiter est la plus grosse planète. Alors pourquoi n’est-ce pas une étoile ?',
+            qImage: {
+              src: IMAGES.jupiter,
+              alt: 'Jupiter, photographed by the Hubble telescope in 2024.',
+              altFr: 'Jupiter, photographiée par le télescope Hubble en 2024.',
+            },
+            a: 'Not enough mass. Only a clump with enough mass gets hot and becomes a star. Jupiter would need about 80 times more.',
+            aFr: 'Pas assez de masse. Seul un amas avec assez de masse chauffe assez pour devenir une étoile. Il faudrait à Jupiter environ 80 fois plus de masse.',
+          },
+          {
+            value: 500,
+            q: 'Why do all the planets orbit the Sun the same way, in one flat plane?',
+            qFr: 'Pourquoi toutes les planètes tournent-elles autour du Soleil dans le même sens, dans un seul plan ?',
+            a: 'The Sun and the planets formed from one spinning cloud. A spinning cloud flattens, like pizza dough, and everything in it keeps going round the same way.',
+            aFr: 'Le Soleil et les planètes viennent d’un seul nuage qui tournait. Un nuage qui tourne s’aplatit, comme une pâte à pizza, et tout ce qu’il contient continue de tourner dans le même sens.',
+          },
+        ],
+      },
+      {
+        name: 'Evidence & Models',
+        nameFr: 'Preuves et modèles',
+        clues: [
+          {
+            value: 100,
+            q: 'Evidence or hypothesis: which one is “an idea that can be tested”?',
+            qFr: 'Evidence ou hypothesis : lequel est « une idée qu’on peut tester » ?',
+            a: 'A hypothesis. Evidence is facts from observations or experiments.',
+            aFr: 'L’hypothèse (hypothesis). Les preuves (evidence) sont des faits tirés d’observations ou d’expériences.',
+          },
+          {
+            value: 200,
+            q: 'What does “observe” mean? Why could nobody observe the Solar System forming?',
+            qFr: 'Que veut dire « observe » ? Pourquoi personne n’a-t-il pu observer la formation du système solaire ?',
+            a: '“Observe” means watch. It formed 4.6 billion years ago: nobody was there.',
+            aFr: '« Observe » veut dire regarder, observer. Il s’est formé il y a 4.6 milliards d’années : personne n’était là.',
+          },
+          {
+            value: 300,
+            q: 'A real photo of a young star, HL Tauri, and its flat disc of dust. Does it support or contradict the hypothesis?',
+            qFr: 'Une vraie photo d’une jeune étoile, HL Tauri, et de son disque plat de poussière. Confirme-t-elle (support) ou contredit-elle (contradict) l’hypothèse ?',
+            // A question picture: the photograph IS the evidence being judged.
+            qImage: {
+              src: IMAGES.hlTauri,
+              alt: 'The young star HL Tauri, photographed by the ALMA telescopes in 2014: a bright centre in a flat disc of dust with dark rings.',
+              altFr: 'La jeune étoile HL Tauri, photographiée par les télescopes ALMA en 2014 : un centre brillant dans un disque plat de poussière, avec des anneaux sombres.',
+            },
+            a: 'It supports it. The hypothesis says everything formed from one spinning cloud, and a spinning cloud makes a flat disc. The dark rings may be new planets.',
+            aFr: 'Elle la confirme (supports). L’hypothèse dit que tout vient d’un seul nuage qui tournait, et un nuage qui tourne forme un disque plat. Les anneaux sombres sont peut-être de nouvelles planètes.',
+          },
+          {
+            value: 400,
+            q: 'Venus spins the opposite way. Uranus spins on its side. Do these facts support or contradict the hypothesis?',
+            qFr: 'Vénus tourne dans le sens opposé. Uranus tourne sur le côté. Ces faits confirment-ils ou contredisent-ils l’hypothèse ?',
+            a: 'They seem to contradict it: one spinning cloud should make every planet spin the same way. So most, but not all, of the evidence supports it.',
+            aFr: 'Ils semblent la contredire (seem to contradict) : un seul nuage qui tourne devrait faire tourner toutes les planètes dans le même sens. Donc la plupart des preuves, mais pas toutes, la confirment.',
+          },
+          {
+            value: 500,
+            q: 'Our dust model was flat and had only 240 grains. Is that a mistake, a limitation or a strength? Then give the model one strength.',
+            qFr: 'Notre modèle de poussière était plat, avec 240 grains seulement. Est-ce une erreur (a mistake), une limite (a limitation) ou un point fort (a strength) ? Puis donne un point fort du modèle.',
+            a: 'A limitation: something a model cannot do. Nobody got it wrong. A strength: it shows millions of years in a few seconds.',
+            aFr: 'Une limite (a limitation) : ce qu’un modèle ne peut pas faire. Personne ne s’est trompé. Un point fort : il montre des millions d’années en quelques secondes.',
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── 12 · TEENS ────────────────────────────────────────────────────────────
   // The hardest board. IGCSE chemistry and physics that need a calculation or
   // a reason, then three rounds anyone can win: word history, pop songs, and
   // big numbers. The trivia rounds do the same job as Board 4's: they stop the
@@ -3239,7 +3541,7 @@ export const BOARDS = [
     ],
   },
 
-  // ── 12 · TEENS 2 ──────────────────────────────────────────────────────────
+  // ── 13 · TEENS 2 ──────────────────────────────────────────────────────────
   // Trivia only, no syllabus: Myth or Fact, Celebrity Couples, Famous Covers,
   // Geography and Accidental Inventions. Every answer still wants a reason.
   //
