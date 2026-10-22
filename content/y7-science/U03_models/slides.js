@@ -185,19 +185,39 @@ export const slides = [
     widget: SolarSystem,
   },
 
-  // 9. Limitations, just before the class judges the model (write)
+  // 9. A model they know: what does a globe get wrong? (pairs)
   {
     layout: 'split',
     accent: PURPLE,
     icon: 'Globe',
-    eyebrow: 'Key word',
-    eyebrowFr: 'Mot clé',
+    eyebrow: 'Pairs · 2 minutes',
+    eyebrowFr: 'En binôme · 2 minutes',
     title: 'What Does a Globe Get Wrong?',
     titleFr: 'Qu’est-ce qu’un globe a de faux ?',
     ratio: 50,
     inlineSvg: DIAGRAMS.GLOBE,
     content: 'A globe is a **model** of the Earth. Find **three** things it gets wrong.',
     contentFr: 'Un globe est un **modèle** de la Terre. Trouve **trois** choses fausses.',
+    reveal: {
+      label: 'Some answers',
+      labelFr: 'Quelques réponses',
+      answer: 'It is about **40 million times** too small.\nIt does not **spin** by itself.\nNo clouds, no weather, no night.\nThe mountains are **flat**.',
+      answerFr: 'Il est environ **40 millions de fois** trop petit.\nIl ne **tourne** pas tout seul.\nPas de nuages, pas de météo, pas de nuit.\nLes montagnes sont **plates**.',
+    },
+  },
+
+  // 10. Limitation (write): the word for what they just found
+  {
+    layout: 'stack',
+    accent: PURPLE,
+    icon: 'Search',
+    columns: 2,
+    eyebrow: 'Key word',
+    eyebrowFr: 'Mot clé',
+    title: 'Limitation',
+    titleFr: 'La limite',
+    content: 'Scientists have a word for what a model gets wrong.',
+    contentFr: 'Les scientifiques ont un mot pour ce qu’un modèle a de faux.',
     notes: [
       {
         tone: 'write',
@@ -208,23 +228,16 @@ export const slides = [
         tone: 'theory',
         badge: 'Exam tip',
         badgeFr: 'Conseil pour l’examen',
-        text: 'Cambridge **loves** this question: *Give one limitation of this model.*',
-        textFr: 'Cambridge **adore** cette question : *Give one limitation of this model.* (Donne une limite de ce modèle.)',
+        text: 'Cambridge **loves** this question: “Give one limitation of this model.”',
+        textFr: 'Cambridge **adore** cette question : « Give one limitation of this model. » (Donne une limite de ce modèle.)',
       },
     ],
-    reveal: {
-      label: 'Some answers',
-      labelFr: 'Quelques réponses',
-      answer: 'It is about **40 million times** too small.\nIt does not **spin** by itself.\nNo clouds, no weather, no night.\nThe mountains are **flat**.',
-      answerFr: 'Il est environ **40 millions de fois** trop petit.\nIl ne **tourne** pas tout seul.\nPas de nuages, pas de météo, pas de nuit.\nLes montagnes sont **plates**.',
-    },
   },
 
-  // 10. What does our computer model get wrong?
+  // 11. What does our computer model get wrong?
   {
     layout: 'statement',
     accent: PURPLE,
-    icon: 'Search',
     eyebrow: 'Think like a scientist',
     eyebrowFr: 'Pense comme un scientifique',
     title: 'Is Our Model Right?',
@@ -234,12 +247,12 @@ export const slides = [
     reveal: {
       label: 'Some answers',
       labelFr: 'Quelques réponses',
-      answer: '**Right:** where the planets really are, their speeds, the real distances, the flat plane.\n**Limitations:** the planets are drawn too big ("Enlarged"). Time runs millions of times too fast. Most moons are missing.',
-      answerFr: '**Juste :** la vraie position des planètes, leurs vitesses, les vraies distances, le plan.\n**Limites :** les planètes sont dessinées trop grandes (« Agrandies »). Le temps passe des millions de fois trop vite. Il manque la plupart des lunes.',
+      answer: '**Right:** where the planets are, their speeds, the distances, the flat plane.\n**Limitations:** planets drawn too big ("Enlarged"), time millions of times too fast, most moons missing.',
+      answerFr: '**Juste :** la position des planètes, leurs vitesses, les distances, le plan.\n**Limites :** planètes trop grandes (« Agrandies »), temps des millions de fois trop rapide, presque pas de lunes.',
     },
   },
 
-  // 11. Before the Sun — a 3.2 review
+  // 12. Before the Sun — a 3.2 review
   {
     layout: 'statement',
     accent: BLUE,
@@ -256,7 +269,7 @@ export const slides = [
     subFr: 'Comment faire un Soleil et 8 planètes avec un nuage ?',
   },
 
-  // 12. The formation model (full slide)
+  // 13. The formation model (full slide)
   {
     layout: 'game',
     title: 'How the Solar System Formed',
@@ -264,7 +277,7 @@ export const slides = [
     widget: Formation,
   },
 
-  // 13. Why it spun faster and went flat
+  // 14. Why it spun faster and went flat
   {
     layout: 'showcase',
     accent: GREEN,
@@ -278,7 +291,7 @@ export const slides = [
     captionFr: 'Le nuage qui rétrécit a fait **les deux**. Voilà pourquoi les planètes sont dans un plan et tournent toutes dans le **même sens**.',
   },
 
-  // 14. The four steps (write + Draw This)
+  // 15. The four steps (write + Draw This)
   {
     layout: 'split',
     accent: ORANGE,
@@ -299,7 +312,7 @@ export const slides = [
     ],
   },
 
-  // 15. Rocky or giant: the frost line
+  // 16. Rocky or giant: the frost line
   {
     layout: 'compare',
     accent: TEAL,
@@ -330,7 +343,7 @@ export const slides = [
     ],
   },
 
-  // 16. Evidence: HL Tauri again, now as a check on the model
+  // 17. Evidence: HL Tauri again, now as a check on the model
   {
     layout: 'split',
     accent: TEAL,
@@ -345,11 +358,10 @@ export const slides = [
     contentFr: 'Un modèle doit correspondre à ce qu’on **voit**.\nHL Tauri est une jeune étoile entourée d’un disque de poussière, **aujourd’hui**. Les espaces sombres sont là où des planètes grandissent.',
   },
 
-  // 17. Limitations of the formation model
+  // 18. Limitations of the formation model
   {
     layout: 'statement',
     accent: PURPLE,
-    icon: 'Search',
     eyebrow: 'Think like a scientist',
     eyebrowFr: 'Pense comme un scientifique',
     title: 'What Does Our Model Get Wrong?',
@@ -359,12 +371,12 @@ export const slides = [
     reveal: {
       label: 'Some answers',
       labelFr: 'Quelques réponses',
-      answer: 'Distances are **squashed**.\n100 million years take **one minute**.\nIt has about 5 000 grains, not trillions of trillions.\nThe computer moves each grain to its place. It does not really calculate gravity.',
-      answerFr: 'Les distances sont **écrasées**.\n100 millions d’années durent **une minute**.\nIl y a environ 5 000 grains, pas des milliards de milliards.\nL’ordinateur place chaque grain. Il ne calcule pas vraiment la gravité.',
+      answer: 'Distances are **squashed**.\n100 million years take **one minute**.\nAbout 5 000 grains, and no real **gravity**.',
+      answerFr: 'Les distances sont **écrasées**.\n100 millions d’années durent **une minute**.\nEnviron 5 000 grains, et pas de vraie **gravité**.',
     },
   },
 
-  // 18. Checklist
+  // 19. Checklist
   {
     layout: 'stack',
     variant: 'checklist',
@@ -385,7 +397,7 @@ export const slides = [
     ],
   },
 
-  // 19. Exit
+  // 20. Exit
   {
     layout: 'hero',
     color: TEAL,
