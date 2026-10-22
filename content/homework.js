@@ -31,6 +31,7 @@ import q1rev from '../homework/q1rev/q1rev.pdf?url'
 import q1sci from '../homework/q1sci/q1sci.pdf?url'
 import alg13 from '../homework/alg13/alg13.pdf?url'
 import alg13p3 from '../homework/alg13p3/alg13p3.pdf?url'
+import lab31 from '../homework/lab31/lab31.pdf?url'
 
 export const HOMEWORK = [
   {
@@ -244,5 +245,15 @@ export const HOMEWORK = [
     title: 'Somebody Is 2.7 km Away',
     subtitle: 'Algebra Track Project 3 · print double-sided',
     pdf: alg13p3,
+  },
+  // The Science 3.1 lab, done in class in groups of three: the ruler catch, two
+  // objects dropped in the lab, then the same two from the balcony, and a letter
+  // to Aristotle. Four pages, one per student, print double-sided.
+  {
+    id: 'lab31',
+    label: 'LAB',
+    title: 'Drop It!',
+    subtitle: 'Science 3.1 lab · ruler, lab and balcony · print double-sided',
+    pdf: lab31,
   },
 ]
