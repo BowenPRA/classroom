@@ -195,8 +195,12 @@ function makeAtoms(seed) {
   }))
 }
 
-function MrBowen({ x, y, frozen, scale = 1 }) {
+// spiral eyes for a dizzy Mr Bowen, drawn inside each lens
+const spiral = (cx, cy) => `M ${cx} ${cy - 7} a 7 7 0 1 1 -7 7 a 5 5 0 1 1 5 5 a 3 3 0 1 1 -3 -3`
+
+export function MrBowen({ x, y, frozen, scale = 1, mood = 'happy' }) {
   // A friendly cartoon: glasses, a tie, a mug. Frozen: eyes shut, frosty.
+  // `mood` (story strip): 'sad' frowns; 'dizzy' has spiral eyes and a wobbly mouth.
   const skin = frozen ? '#cfe0ec' : '#f2c9a5'
   return (
     <g transform={`translate(${x} ${y}) scale(${scale})`}>
@@ -214,11 +218,18 @@ function MrBowen({ x, y, frozen, scale = 1 }) {
           <path d="M -21 31 q 6 4 12 0 M 9 31 q 6 4 12 0" stroke={INK} strokeWidth="2.5" fill="none" />
           <path d="M -9 54 q 9 -5 18 0" stroke={INK} strokeWidth="3" fill="none" />
         </>
+      ) : mood === 'dizzy' ? (
+        <>
+          <path d={`${spiral(-15, 31)} ${spiral(15, 31)}`} stroke={INK} strokeWidth="2" fill="none" />
+          <path d="M -14 55 q 4.5 -6 9 0 q 4.5 6 9 0 q 4.5 -6 9 0" stroke={INK} strokeWidth="3" fill="none" />
+        </>
       ) : (
         <>
           <circle cx="-15" cy="31" r="3.5" fill={INK} />
           <circle cx="15" cy="31" r="3.5" fill={INK} />
-          <path d="M -12 52 q 12 10 24 0" stroke={INK} strokeWidth="3" fill="none" />
+          {mood === 'sad'
+            ? <path d="M -12 59 q 12 -10 24 0" stroke={INK} strokeWidth="3" fill="none" />
+            : <path d="M -12 52 q 12 10 24 0" stroke={INK} strokeWidth="3" fill="none" />}
         </>
       )}
     </g>

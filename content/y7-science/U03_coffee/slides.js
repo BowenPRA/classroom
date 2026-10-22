@@ -11,17 +11,19 @@
 //   Coffee   when is Mr Bowen's 7 a.m. caffeine all gone? It halves every
 //            5 hours: half-life. Bedtime, read from the pattern. Is it ever
 //            all gone? (The model says never; molecules say two weeks.)
-//   Carbon   no coffee the next morning; Mr Bowen does not survive and ends
-//            in a glacier; far in the future, how long was he in the ice?
+//   Carbon   what happens next? No coffee the next morning; delirious, Mr
+//            Bowen stumbles into a block of ice; thousands of years later,
+//            scientists find him: how long was he in the ice?
 //            Carbon-14, a clock ten million times slower than caffeine; the
 //            carbon clock; carbon dating; Mr Bowen's own answer. Last Atom
 //            Standing, every game kept as a trial and graphed together.
 //            Does carbon-14 ever run out? The dinosaur: too old for carbon.
 //   Stars    the Sun is too old for carbon and nobody can take a piece: it is
-//            a hydrogen clock. The model Sun. Then the three clocks side by
-//            side, and the carbon in the coffee that was made in a star.
+//            a hydrogen clock. The model Sun. Then all three side by side:
+//            different speeds, the same maths. And the carbon in the coffee
+//            that was made in a star.
 //
-// The goals slide (2) and the checklist (25) say the same three things, so
+// The goals slide (2) and the checklist (23) say the same three things, so
 // the lesson ends where it said it would.
 //
 // WRITING RULE (the 2.5 density): one hook line, short sentences, and the body
@@ -30,6 +32,7 @@
 import { DIAGRAMS } from './diagrams.js'
 import { CoffeeClock, CarbonClock, LastAtom, AtomTrials } from './dating.jsx'
 import { SunModel } from './sun.jsx'
+import { StoryStrip } from './story.jsx'
 
 const TEAL = '#0087a8'
 const PURPLE = '#5c2483'
@@ -62,7 +65,7 @@ export const slides = [
     },
   },
 
-  // 2. Today's goals (the checklist on slide 25 ticks off the same three)
+  // 2. Today's goals (the checklist on slide 23 ticks off the same three)
   {
     layout: 'compare',
     accent: TEAL,
@@ -80,8 +83,8 @@ export const slides = [
         accent: ORANGE,
         icon: 'Coffee',
         inlineSvg: DIAGRAMS.PIC_COFFEE,
-        caption: 'Use a **half-life** to find what is left.',
-        captionFr: 'Utiliser une **demi-vie** pour trouver ce qui reste.',
+        caption: 'Find how long caffeine stays in you.',
+        captionFr: 'Trouver combien de temps la caféine reste.',
       },
       {
         heading: 'Carbon',
@@ -89,8 +92,8 @@ export const slides = [
         accent: TEAL,
         icon: 'Atom',
         inlineSvg: DIAGRAMS.PIC_CARBON,
-        caption: 'Explain how **carbon dating** finds when something died.',
-        captionFr: 'Expliquer comment la **datation au carbone 14** trouve quand quelque chose est mort.',
+        caption: 'Use carbon to find when things died.',
+        captionFr: 'Dater une mort grâce au carbone.',
       },
       {
         heading: 'Stars',
@@ -98,8 +101,8 @@ export const slides = [
         accent: PURPLE,
         icon: 'Sun',
         inlineSvg: DIAGRAMS.PIC_SUN,
-        caption: 'Use a **model Sun** to find the Sun’s age.',
-        captionFr: 'Utiliser un **Soleil modèle** pour trouver l’âge du Soleil.',
+        caption: 'Use a model Sun to find the Sun’s age.',
+        captionFr: 'Utiliser un Soleil modèle pour trouver l’âge du Soleil.',
       },
     ],
   },
@@ -134,8 +137,14 @@ export const slides = [
     notes: [
       {
         tone: 'write',
-        text: '**Half-life:** the time it takes for half of something to disappear. Caffeine’s half-life is about **5 hours**.',
-        textFr: '**Demi-vie (half-life) :** le temps qu’il faut pour que la moitié de quelque chose disparaisse. La demi-vie de la caféine est d’environ **5 heures**.',
+        text: '**Half-life:** the time it takes for half of something to disappear.',
+        textFr: '**Demi-vie (half-life) :** le temps qu’il faut pour que la moitié de quelque chose disparaisse.',
+      },
+      {
+        tone: 'info',
+        badge: false,
+        text: 'Caffeine’s half-life is about **5 hours**.',
+        textFr: 'La demi-vie de la caféine est d’environ **5 heures**.',
       },
     ],
   },
@@ -182,60 +191,21 @@ export const slides = [
   // CARBON — Mr Bowen, tragically without his coffee
   // ════════════════════════════════════════════════════════════════════════
 
-  // 7. Predict (deadpan)
+  // 7. What happens next? Mr Bowen's sad day, one panel per press (deadpan)
   {
-    layout: 'statement',
-    accent: ORANGE,
-    icon: 'Coffee',
-    eyebrow: 'The next morning',
-    eyebrowFr: 'Le lendemain matin',
-    title: 'No Coffee',
-    titleFr: 'Pas de café',
-    text: 'Mr Bowen does **not** get his morning coffee.',
-    textFr: 'M. Bowen n’a **pas** son café du matin.',
-    sub: '**Predict:** what will happen to him?',
-    subFr: '**Prédis :** que va-t-il lui arriver ?',
-  },
-
-  // 8. The answer, and the glacier behind a button
-  {
-    layout: 'statement',
+    layout: 'showcase',
     accent: BLUE,
-    eyebrow: 'What happened',
-    eyebrowFr: 'Ce qui s’est passé',
-    title: 'A Sad Day',
-    titleFr: 'Un triste jour',
-    text: 'Mr Bowen did **not** survive.',
-    textFr: 'M. Bowen n’a **pas** survécu.',
-    reveal: {
-      label: 'What happened next?',
-      labelFr: 'Et ensuite ?',
-      answer: 'Dying, delirious and coffee‑less, he wandered into a **glacier**, just as he died.',
-      answerFr: 'Mourant, délirant et sans café, il s’est égaré dans un **glacier**, juste au moment de mourir.',
-    },
+    icon: 'Snowflake',
+    eyebrow: 'What happens next?',
+    eyebrowFr: 'Que se passe-t-il ensuite ?',
+    title: 'Mr Bowen’s Sad Day',
+    titleFr: 'Le triste jour de M. Bowen',
+    widget: StoryStrip,
+    caption: 'Before each step, **predict**: what happens next?',
+    captionFr: 'Avant chaque étape, **prédis** : que se passe-t-il ensuite ?',
   },
 
-  // 9. Found in the ice — the question for the rest of the lesson
-  {
-    layout: 'statement',
-    accent: TEAL,
-    eyebrow: 'Far in the future',
-    eyebrowFr: 'Dans un futur lointain',
-    title: 'Found in the Ice',
-    titleFr: 'Retrouvé dans la glace',
-    text: 'Scientists find Mr Bowen’s **frozen** body.',
-    textFr: 'Des scientifiques retrouvent le corps **congelé** de M. Bowen.',
-    sub: 'How can they work out **how long** he has been in the ice?',
-    subFr: 'Comment peuvent-ils savoir **depuis combien de temps** il est dans la glace ?',
-    reveal: {
-      label: 'A clue',
-      labelFr: 'Un indice',
-      answer: 'His body is a **clock**. The clock is made of **carbon**.',
-      answerFr: 'Son corps est une **horloge**. L’horloge est faite de **carbone**.',
-    },
-  },
-
-  // 10. Carbon-14 (write)
+  // 8. Carbon-14 (write)
   {
     layout: 'split',
     accent: TEAL,
@@ -251,13 +221,19 @@ export const slides = [
     notes: [
       {
         tone: 'write',
-        text: '**Carbon-14:** a rare kind of carbon that slowly breaks down into nitrogen. Its half-life is **5 700 years**.',
-        textFr: '**Carbone 14 (carbon-14) :** un type rare de carbone qui se transforme lentement en azote. Sa demi-vie est de **5 700 ans**.',
+        text: '**Carbon-14:** a rare kind of carbon that slowly breaks down into nitrogen.',
+        textFr: '**Carbone 14 (carbon-14) :** un type rare de carbone qui se transforme lentement en azote.',
+      },
+      {
+        tone: 'info',
+        badge: false,
+        text: 'Carbon-14’s half-life is **5 700 years**.',
+        textFr: 'La demi-vie du carbone 14 est de **5 700 ans**.',
       },
     ],
   },
 
-  // 11. The link: caffeine and carbon-14 are the same maths at two speeds
+  // 9. The link: caffeine and carbon-14 are the same maths at two speeds
   {
     layout: 'compare',
     accent: ORANGE,
@@ -290,7 +266,7 @@ export const slides = [
     ],
   },
 
-  // 12. Where it comes from
+  // 10. Where it comes from
   {
     layout: 'showcase',
     accent: GREEN,
@@ -304,7 +280,7 @@ export const slides = [
     captionFr: 'Tant que tu es vivant, la nourriture et les boissons **rechargent** ton carbone 14. Même le café.',
   },
 
-  // 13. The carbon clock model
+  // 11. The carbon clock model
   {
     layout: 'showcase',
     accent: ORANGE,
@@ -318,7 +294,7 @@ export const slides = [
     captionFr: 'Avant chaque demi-vie, devine : combien d’atomes resteront ?',
   },
 
-  // 14. Carbon dating (write + Draw This)
+  // 12. Carbon dating (write + Draw This)
   {
     layout: 'split',
     accent: ORANGE,
@@ -341,7 +317,7 @@ export const slides = [
     ],
   },
 
-  // 15. Mr Bowen's answer (slide 9's question)
+  // 13. Mr Bowen's answer (slide 7's question)
   {
     layout: 'statement',
     accent: PURPLE,
@@ -361,7 +337,7 @@ export const slides = [
     },
   },
 
-  // 16. Last Atom Standing — each game is a trial
+  // 14. Last Atom Standing — each game is a trial
   {
     layout: 'showcase',
     accent: GREEN,
@@ -375,7 +351,7 @@ export const slides = [
     captionFr: 'Lance toutes tes pièces à chaque tour. **Pile :** cet atome s’est désintégré. Le dernier élève avec une **face** gagne un ticket !',
   },
 
-  // 17. Every trial, on one graph
+  // 15. Every trial, on one graph
   {
     layout: 'showcase',
     accent: GREEN,
@@ -389,7 +365,7 @@ export const slides = [
     captionFr: 'Chaque essai est-il **différent** ? Chaque essai est-il quand même **divisé par deux** ?',
   },
 
-  // 18. Random or predictable?
+  // 16. Random or predictable?
   {
     layout: 'statement',
     accent: PURPLE,
@@ -408,7 +384,7 @@ export const slides = [
     },
   },
 
-  // 19. Does carbon-14 ever run out? (slide 6's question again)
+  // 17. Does carbon-14 ever run out? (slide 6's question again)
   {
     layout: 'statement',
     accent: PURPLE,
@@ -426,7 +402,7 @@ export const slides = [
     },
   },
 
-  // 20. Vote: the dinosaur
+  // 18. Vote: the dinosaur
   {
     layout: 'compare',
     accent: PURPLE,
@@ -443,7 +419,7 @@ export const slides = [
     ],
   },
 
-  // 21. Too old for carbon: the clock's limitation (write)
+  // 19. Too old for carbon: the clock's limitation (write)
   {
     layout: 'split',
     accent: TEAL,
@@ -469,7 +445,7 @@ export const slides = [
   // STARS — the Sun is a hydrogen clock
   // ════════════════════════════════════════════════════════════════════════
 
-  // 22. The Sun: the question
+  // 20. The Sun: the question
   {
     layout: 'statement',
     accent: ORANGE,
@@ -489,7 +465,7 @@ export const slides = [
     },
   },
 
-  // 23. The model Sun
+  // 21. The model Sun
   {
     layout: 'showcase',
     accent: ORANGE,
@@ -503,7 +479,7 @@ export const slides = [
     captionFr: 'Le Soleil transforme l’**hydrogène** en **hélium**. Fais glisser jusqu’à ce que le modèle corresponde aux mesures.',
   },
 
-  // 24. Coffee, carbon and stars: three clocks, one idea (write)
+  // 22. Coffee, carbon and stars: different speeds, the same maths (write)
   {
     layout: 'split',
     accent: ORANGE,
@@ -514,13 +490,13 @@ export const slides = [
     titleFr: 'Café, carbone et étoiles',
     ratio: 50,
     inlineSvg: DIAGRAMS.THREE_CLOCKS,
-    content: 'Three clocks. One idea.',
-    contentFr: 'Trois horloges. Une seule idée.',
+    content: 'Different speeds. The same maths.',
+    contentFr: 'Des vitesses différentes. Les mêmes maths.',
     notes: [
       {
         tone: 'write',
-        text: '**Caffeine**, **carbon-14** and the **Sun’s hydrogen** are all clocks. Measure what is **left** to find **how long** it has been. The Sun is about **4.6 billion years** old.',
-        textFr: 'La **caféine**, le **carbone 14** et l’**hydrogène du Soleil** sont tous des horloges. Mesure ce qui **reste** pour trouver **depuis combien de temps**. Le Soleil a environ **4.6 milliards d’années**.',
+        text: '**Caffeine**, **carbon-14** and the **Sun’s hydrogen** all disappear at a rate we can **model with maths**. Measure what is **left** to find **how long** it has been. The Sun is about **4.6 billion years** old.',
+        textFr: 'La **caféine**, le **carbone 14** et l’**hydrogène du Soleil** disparaissent tous à un rythme que les **maths** peuvent modéliser. Mesure ce qui **reste** pour trouver **depuis combien de temps**. Le Soleil a environ **4.6 milliards d’années**.',
       },
     ],
     reveal: {
@@ -531,7 +507,7 @@ export const slides = [
     },
   },
 
-  // 25. Checklist: slide 2's goals, ticked off
+  // 23. Checklist: slide 2's goals, ticked off
   {
     layout: 'stack',
     variant: 'checklist',
@@ -545,14 +521,14 @@ export const slides = [
     content: '> Check your notebook: **5 written panels** and **1 drawing**.',
     contentFr: '> Vérifie ton cahier : **5 encadrés recopiés** et **1 dessin**.',
     items: [
-      { text: 'Use a **half-life** to find what is left.', textFr: 'Utiliser une **demi-vie** pour trouver ce qui reste.' },
-      { text: 'Explain how **carbon dating** finds when something died.', textFr: 'Expliquer comment la **datation au carbone 14** trouve quand quelque chose est mort.' },
+      { text: 'Use a **half-life** to work out how long caffeine stays.', textFr: 'Utiliser une **demi-vie** pour trouver combien de temps la caféine reste.' },
+      { text: 'Explain how **carbon dating** shows when something died.', textFr: 'Expliquer comment la **datation au carbone 14** date une mort.' },
       { text: 'Give a **limitation** of carbon dating.', textFr: 'Donner une **limite** de la datation au carbone 14.' },
       { text: 'Use a **model Sun** to find the Sun’s age.', textFr: 'Utiliser un **Soleil modèle** pour trouver l’âge du Soleil.' },
     ],
   },
 
-  // 26. Exit
+  // 24. Exit
   {
     layout: 'hero',
     color: PURPLE,

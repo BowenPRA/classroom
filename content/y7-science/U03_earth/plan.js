@@ -35,7 +35,7 @@ export const plan = {
   ],
   notes:
     'NOTEBOOK COUNT (slide 12): 2 written panels — the age of the Earth (9) and three methods, one answer (10). No drawings.\n\n' +
-    'WHERE IT SITS. The second half of the old Models: Space and Time Part 2, split off when Coffee, Carbon and Stars became a one-period deck. It picks up where that deck ended: carbon dating’s limit (slide 21 there) and the model Sun (slide 23 there). Slide 6 points back to the formation model in Models: Space.\n\n' +
+    'WHERE IT SITS. The second half of the old Models: Space and Time Part 2, split off when Coffee, Carbon and Stars became a one-period deck. It picks up where that deck ended: carbon dating’s limit (slide 19 there) and the model Sun (slide 21 there). Slide 6 points back to the formation model in Models: Space.\n\n' +
     'LANGUAGES: English and French; no Vietnamese. The Earth’s-year model follows the EN / FR switch. Diagrams are in English, as always.\n\n' +
     'NOT IN THE BOOK. Radioactive dating goes beyond Stage 7. Keep the maths to halving: no formulas, no logarithms.\n\n' +
     'PHOTOS. Everything is drawn, so the deck needs no internet. Openly licensed photos that would fit: a cut slice of the Allende meteorite for slide 6; a Jack Hills zircon for slide 5.',

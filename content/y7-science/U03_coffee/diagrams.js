@@ -4,8 +4,9 @@
 //   The goals and the links
 //     PIC_COFFEE / PIC_CARBON / PIC_SUN   one picture per part of the lesson,
 //                   no words: the goals slide and the two-clocks slide
-//     THREE_CLOCKS  caffeine, carbon-14 and the Sun's hydrogen: three clocks,
-//                   one idea (measure what is left, work out how long)
+//     THREE_CLOCKS  caffeine, carbon-14 and the Sun's hydrogen: each disappears
+//                   at a rate maths can model — different speeds, the same maths
+//                   (measure what is left, work out how long)
 //   Half-life and carbon dating
 //     HALVING       100 → 50 → 25 → 12.5: each step is one half-life
 //     CARBON_TWO    ordinary carbon, and carbon-14, which one day becomes nitrogen
@@ -239,7 +240,7 @@ export const DIAGRAMS = {
     </g>
     <text x="220" y="95" font-family="${FONT}" font-size="36" font-weight="bold" fill="${INK}">Caffeine</text>
     <text x="220" y="140" font-family="${FONT}" font-size="29" fill="${INK}">half gone every 5 hours</text>
-    <text x="220" y="182" font-family="${FONT}" font-size="27" font-weight="bold" fill="${KEY}">a clock for hours</text>
+    <text x="220" y="182" font-family="${FONT}" font-size="27" font-weight="bold" fill="${KEY}">measured in hours</text>
 
     <rect x="24" y="256" width="792" height="220" rx="18" fill="#e2f2f6"/>
     <circle cx="110" cy="366" r="60" fill="#fbe1c8" stroke="${C14}" stroke-width="5"/>
@@ -247,13 +248,13 @@ export const DIAGRAMS = {
     <text x="134" y="352" font-family="${FONT}" font-size="22" font-weight="bold" fill="${C14}">14</text>
     <text x="220" y="331" font-family="${FONT}" font-size="36" font-weight="bold" fill="${INK}">Carbon-14</text>
     <text x="220" y="376" font-family="${FONT}" font-size="29" fill="${INK}">half gone every 5 700 years</text>
-    <text x="220" y="418" font-family="${FONT}" font-size="27" font-weight="bold" fill="${KEY}">a clock for thousands of years</text>
+    <text x="220" y="418" font-family="${FONT}" font-size="27" font-weight="bold" fill="${KEY}">measured in thousands of years</text>
 
     <rect x="24" y="492" width="792" height="220" rx="18" fill="#f2ecf7"/>
     ${sun(110, 602, 46)}
     <text x="220" y="567" font-family="${FONT}" font-size="36" font-weight="bold" fill="${INK}">Hydrogen in the Sun's core</text>
     <text x="220" y="612" font-family="${FONT}" font-size="29" fill="${INK}">about half gone in 4.6 billion years</text>
-    <text x="220" y="654" font-family="${FONT}" font-size="27" font-weight="bold" fill="${KEY}">a clock for billions of years</text>
+    <text x="220" y="654" font-family="${FONT}" font-size="27" font-weight="bold" fill="${KEY}">measured in billions of years</text>
 
     <rect x="24" y="728" width="792" height="56" rx="14" fill="${TEAL}"/>
     <text x="420" y="767" font-family="${FONT}" font-size="30" font-weight="bold" fill="#ffffff" text-anchor="middle">Measure what is left. Work out how long.</text>

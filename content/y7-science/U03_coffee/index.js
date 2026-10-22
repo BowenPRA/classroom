@@ -17,11 +17,11 @@ export default {
     unit: 'Models',
     id: 'U03_COFFEE',
     title: 'Coffee, Carbon and Stars',
-    subtitle: 'Half-life, carbon dating and the Sun’s age: three clocks, read the same way',
+    subtitle: 'Half-life, carbon dating and the Sun’s age: different speeds, the same maths',
     objective:
       'Use a half-life to find how much is left and how long ago something started; explain carbon dating and why it ' +
-      'cannot date a dinosaur; explain how a model Sun gives the Sun’s age; and see caffeine, carbon-14 and the Sun’s ' +
-      'hydrogen as three clocks: measure what is left, work out how long.',
+      'cannot date a dinosaur; explain how a model Sun gives the Sun’s age; and see that caffeine, carbon-14 and the ' +
+      'Sun’s hydrogen each disappear at a rate maths can model: measure what is left, work out how long.',
     order: 16.6,
     french: true,
     vietnamese: false,
