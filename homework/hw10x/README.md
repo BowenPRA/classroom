@@ -1,12 +1,12 @@
-# Year 7 · Science Models · Challenge Homework — Why Is Mr Bowen Still Awake?
+# Year 7 · Extra Homework 10 (Science Models) — Why Is Mr Bowen Still Awake?
 
-`caffeine.tex`: an **eight-page** challenge packet (two A4 sheets, double-sided) for
+`hw10x.tex`: an **eight-page** extra packet (two A4 sheets, double-sided) for
 after **Coffee, Carbon and Stars** (`content/y7-science/U03_coffee`).
 
 | File | What it is |
 | --- | --- |
-| `caffeine.pdf` | Student copy. **8 pages.** |
-| `caffeine-teacher.pdf` | Student copy plus a 3-page key with diagnoses. |
+| `hw10x.pdf` | Student copy. **8 pages.** |
+| `hw10x-teacher.pdf` | Student copy plus a 3-page key with diagnoses. |
 
 **Keep it at eight.** The first draft was 13 pages and the teacher called it "way too
 many pages".
@@ -70,7 +70,7 @@ et al. (2013) for why 6 hours is not enough; the National Sleep Foundation's
 ## Building
 
 ```bash
-pwsh .claude/skills/new-homework/scripts/build-hw.ps1 caffeine
+pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw10x
 ```
 
 Built and verified with MiKTeX: student copy **8 pages**, teacher copy 11, no errors,

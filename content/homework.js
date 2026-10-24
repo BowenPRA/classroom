@@ -32,8 +32,8 @@ import q1sci from '../homework/q1sci/q1sci.pdf?url'
 import alg13 from '../homework/alg13/alg13.pdf?url'
 import alg13p3 from '../homework/alg13p3/alg13p3.pdf?url'
 import lab31 from '../homework/lab31/lab31.pdf?url'
-import caffeine from '../homework/caffeine/caffeine.pdf?url'
 import hw10 from '../homework/hw10/hw10.pdf?url'
+import hw10x from '../homework/hw10x/hw10x.pdf?url'
 import hw10fr from '../homework/hw10/hw10-fr.pdf?url'
 
 export const HOMEWORK = [
@@ -259,19 +259,7 @@ export const HOMEWORK = [
     subtitle: 'Science 3.1 lab · ruler, lab and balcony · print double-sided',
     pdf: lab31,
   },
-  // The challenge after Coffee, Carbon and Stars. Halving only, like the deck:
-  // Mr Bowen's coffee in 5-hour steps, an interview at home (one drink, looked
-  // up on the label or Google, halved to bedtime), carbon dating, the Sun,
-  // then caffeine and sleep: a short guide and a letter to Mr Bowen.
-  {
-    id: 'caffeine',
-    label: 'CH',
-    title: 'Why Is Mr Bowen Still Awake?',
-    subtitle: 'Challenge · Science Models · caffeine, an interview, carbon dating, the Sun, sleep',
-    pdf: caffeine,
-  },
   // Unit 4 again with new numbers, then Science 3.2, 3.3 and the football model.
-  // No Extra sheet this week: the caffeine challenge above is the extra.
   // Section F is the reason this packet exists: the Earth goes 30.3 km/s in
   // January and 29.3 in July, and the mean, 29.8, rounds to the book's 30.
   {
@@ -280,6 +268,18 @@ export const HOMEWORK = [
     title: 'Faster in January',
     subtitle: 'Maths Unit 4 review · Science 3.2–3.3 and the football model, in decimals',
     pdf: hw10,
+  },
+  // Goes out with HW 10, after Coffee, Carbon and Stars. Halving only, like the
+  // deck: Mr Bowen's coffee in 5-hour steps, an interview at home (one drink,
+  // looked up on the label or Google, halved to bedtime), carbon dating, the
+  // Sun, then caffeine and sleep: a short guide and a letter to Mr Bowen.
+  // It was the stand-alone challenge "CH" (homework/caffeine) until 24 Oct.
+  {
+    id: 'hw10x',
+    label: 'EX 10',
+    title: 'Why Is Mr Bowen Still Awake?',
+    subtitle: 'Extra · Science Models · caffeine, an interview, carbon dating, the Sun, sleep',
+    pdf: hw10x,
   },
   {
     id: 'hw10fr',
