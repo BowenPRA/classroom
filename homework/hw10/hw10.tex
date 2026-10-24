@@ -10,6 +10,9 @@
 %   Part 2  Sections D-F. Science 3.2 (formation of the Solar System), 3.3
 %           (movement in space) and Models Part 1 (the football Sun). D and E
 %           are the science in words; F does it in decimals.
+%   Part 3  Section G (added 24 Oct 2026, pages 9-10): reading graphs with
+%           tick marks and decimals, ending on a piece of writing. It starts on
+%           a new page, so pages 1-8 are exactly as they were.
 % Extra Homework 10 (homework/hw10x, Why Is Mr Bowen Still Awake?) goes out
 % with it.
 %
@@ -125,6 +128,31 @@
     \begin{workspace}[#1]\end{workspace}
   \end{minipage}}
 
+% -- G1: one scale to read, a quarter of the width ---------------------------
+% \gscale{letter}{left number}{right number}{gaps}{arrow, in gaps from the left}
+% Only the two end numbers are printed; the student works out the ticks.
+\newcommand{\gscale}[5]{%
+  \begin{minipage}[t]{0.235\textwidth}
+    \textbf{(#1)}\par\vspace{2pt}
+    \begin{tikzpicture}
+      \pgfmathsetmacro{\gw}{3.4/#4}
+      \draw[cbteal, line width=0.9pt] (-0.15,0) -- (3.55,0);
+      \foreach \i in {0,...,#4}
+        \draw[cbteal, line width=0.9pt] (\i*\gw,-0.11) -- (\i*\gw,0.11);
+      \draw[cbteal, line width=1.6pt] (0,-0.2) -- (0,0.2);
+      \draw[cbteal, line width=1.6pt] (3.4,-0.2) -- (3.4,0.2);
+      \node[below=2pt, font=\bfseries] at (0,-0.2) {#2};
+      \node[below=2pt, font=\bfseries] at (3.4,-0.2) {#3};
+      \draw[cborange, line width=1.3pt, -{Stealth[length=6pt]}]
+        (#5*\gw,0.8) -- (#5*\gw,0.18);
+    \end{tikzpicture}\par\vspace{2pt}
+    {\renewcommand{\arraystretch}{1.6}%
+    \begin{tabular}{@{}l@{\ }l@{}}
+      1 tick: & \blank[1.4cm] \\
+      Arrow: & \blank[1.4cm] \\
+    \end{tabular}}
+  \end{minipage}}
+
 % -- A table row tall enough to write in -------------------------------------
 \newcommand{\tall}{\rule[-0.6em]{0pt}{1.9em}}
 % The same row, NOT made taller in the French copy: E2's ticks and F1's short
@@ -183,10 +211,10 @@
   {\color{cbpurple}\Huge\bfseries Faster in January}\\[7pt]
   {\color{black!70}Part 1: Maths --- Unit 4 review}\\
   {\color{black!70}Part 2: Science --- 3.2, 3.3 and the football model, with
-  decimals}
-  \iffr\\[4pt]{\small\itshape\color{black!60}Plus rapide en janvier~: 1re partie,
-  r\'evision de l'unit\'e 4 de maths~; 2e partie, les sciences 3.2 et 3.3, avec des
-  nombres d\'ecimaux}\fi
+  decimals}\\
+  {\color{black!70}Part 3: Reading graphs with decimals}
+  \iffr\\[4pt]{\small\itshape\color{black!60}Plus rapide en janvier~: r\'evision
+  de l'unit\'e 4~; les sciences 3.2 et 3.3~; lire des graphiques}\fi
 \end{tcolorbox}
 
 \vspace{4pt}
@@ -200,10 +228,9 @@
 \vspace{2pt}
 \begin{activity}
   \begin{itemize}[itemsep=3pt, topsep=0pt]
-    \item \textbf{Sections A--C:} maths (Unit 4). \ \textbf{Sections D--F:}
-          science. Section F uses decimals.
-          \frin{Parties A \`a C~: maths (unit\'e 4). Parties D \`a F~: sciences~;
-          la partie F utilise des nombres d\'ecimaux.}
+    \item \textbf{Sections A--C:} maths (Unit 4). \ \textbf{D--F:} science, and
+          F uses decimals. \ \textbf{G:} reading graphs.
+          \frin{A \`a C~: maths~; D \`a F~: sciences~; G~: lire des graphiques.}
     \item \key{No calculator.} \key{Estimate first}. Then write the
           \key{calculation}, then the answer.
           \frin{Calculatrice interdite. Commence par une estimation~: elle te dit
@@ -976,6 +1003,281 @@ peu plus proche (\eng{closer}) du Soleil qu'en juillet.}
 \end{minipage}
 
 % ===========================================================================
+% SECTION G -- READING GRAPHS WITH DECIMALS (added 24 Oct 2026: two pages)
+% ===========================================================================
+% The teacher asked for two more pages on reading graphs with tick marks, a
+% few kinds, with decimals and a half-life decay among them, ending on a
+% critical-thinking piece of writing. One method (count the GAPS, not the
+% ticks: one tick = difference / gaps), then four graphs in rising order --
+% number-line scales, a bar chart, a distance-time graph with a flat part, a
+% half-life curve -- each beside its questions, and G5: the story of the G3
+% graph, where the steeper line after the cafe is the thinking.
+% THE TRAP all the way through: 4 ticks between 0 and 1 is 5 gaps, so 0.2.
+\clearpage
+\hwsection{Section G \textperiodcentered\ Reading Graphs with Decimals}
+
+\begin{remember}[Reading a scale]
+  \begin{minipage}[c]{0.60\linewidth}
+  \begin{enumerate}[label=\textbf{\arabic*.}, itemsep=1pt, topsep=0pt,
+                    leftmargin=1.5em]
+    \item Find two \key{numbers} next to each other on the scale.
+    \item Count the \key{gaps} between them --- not the ticks.
+    \item One tick $=$ the difference $\div$ the number of gaps.
+  \end{enumerate}
+  \fr{Prends deux nombres voisins sur l'\'echelle. Compte les intervalles
+  (\eng{gaps}) entre eux, pas les graduations. Une graduation = la diff\'erence
+  $\div$ le nombre d'intervalles.}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.38\linewidth}\centering
+    \begin{tikzpicture}[x=0.95cm, y=1cm]
+      \draw[cbteal, line width=0.9pt] (-0.2,0) -- (5.2,0);
+      \foreach \i in {1,...,4} \draw[cbteal, line width=0.9pt] (\i,-0.12) -- (\i,0.12);
+      \draw[cbteal, line width=1.6pt] (0,-0.2) -- (0,0.2);
+      \draw[cbteal, line width=1.6pt] (5,-0.2) -- (5,0.2);
+      \node[below=2pt, font=\small\bfseries] at (0,-0.2) {0};
+      \node[below=2pt, font=\small\bfseries] at (5,-0.2) {2};
+      \foreach \i in {1,...,5}
+        \node[above, font=\scriptsize\bfseries, text=cborange] at (\i-0.5,0.02) {\i};
+    \end{tikzpicture}\\[1pt]
+    {\small 5 gaps: \ $2 \div 5 = 0.4$. One tick is \key{0.4}.}
+  \end{minipage}
+\end{remember}
+
+\vspace{2pt}
+\noindent{\small\color{cbblue}\textbf{Word help:} the \textbf{axis} is the line
+along the bottom or side \sep the \textbf{scale} is its numbers \sep a
+\textbf{tick} is a small line on it \sep \textbf{flat} = not going up or down
+\sep \textbf{steep} = going up fast}
+\fr{\eng{axis} = l'axe~; \eng{scale} = l'\'echelle~; \eng{tick} = une graduation~;
+\eng{flat} = plat~; \eng{steep} = qui monte vite.}
+
+% -- G1 ---------------------------------------------------------------------
+% Four scales, four different ticks: 0.2, 0.1, 0.5, 0.25. (a), (c) and (d) are
+% where counting ticks instead of gaps gives the wrong answer.
+\qhead{G1}{What is one tick worth?}
+
+\noindent\begin{minipage}{\textwidth}
+Write what \textbf{one tick} is worth. Then write the number the arrow points to.
+\fr{\'Ecris la valeur d'\textbf{une graduation}, puis le nombre indiqu\'e par la
+fl\`eche.}
+
+\vspace{4pt}
+\noindent\gscale{a}{0}{1}{5}{3}\hfill\gscale{b}{3}{4}{10}{7}\hfill
+\gscale{c}{0}{2}{4}{3}\hfill\gscale{d}{5}{6}{4}{3}
+\end{minipage}
+
+% -- G2 ---------------------------------------------------------------------
+% A bar chart, ticks of 0.2 m. A and C end on a tick; B and D end halfway
+% between two ticks (5.1, 4.5). (d) draws one: 3.9, halfway again.
+\qhead{G2}{Mr Bowen's paper planes}
+
+\noindent\begin{minipage}{\textwidth}
+In a long meeting, Mr Bowen made four paper planes. The bar chart shows how far
+each one flew.
+\fr{Pendant une longue r\'eunion, Mr Bowen a fabriqu\'e quatre avions en papier.
+Le diagramme en barres montre la distance parcourue par chacun.}
+
+\vspace{4pt}
+\noindent\begin{minipage}[t]{0.50\textwidth}\vspace{0pt}
+\begin{tikzpicture}[x=1cm, y=1.12cm]
+  \foreach \j in {1,...,30} \draw[black!10, line width=0.3pt] (0,\j*0.2) -- (6.3,\j*0.2);
+  \foreach \j in {1,...,6} \draw[black!30, line width=0.5pt] (0,\j) -- (6.3,\j);
+  \foreach \j in {1,...,30} \draw[black!80, line width=0.6pt] (0,\j*0.2) -- (-0.08,\j*0.2);
+  \foreach \j in {0,...,6}{
+    \draw[black!80, line width=0.9pt] (0,\j) -- (-0.17,\j);
+    \node[left, font=\small] at (-0.17,\j) {\j};}
+  \draw[black!80, line width=1.1pt] (0,0) -- (0,6.25);
+  \draw[black!80, line width=1.1pt] (0,0) -- (6.3,0);
+  \foreach \x/\h/\l in {0.75/3.4/A, 1.95/5.1/B, 3.15/2.6/C, 4.35/4.5/D}{
+    \fill[cbteal!30] (\x-0.36,0) rectangle (\x+0.36,\h);
+    \draw[cbteal, line width=0.8pt] (\x-0.36,0) rectangle (\x+0.36,\h);
+    \node[below, font=\small\bfseries] at (\x,0) {\l};}
+  \node[below, font=\small\bfseries] at (5.55,0) {E};
+  \node[rotate=90, font=\small\bfseries] at (-0.95,3.1) {Distance (m)};
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\textwidth}\vspace{2pt}\raggedright
+\textbf{(a)} One small tick $=$ \blank[1.4cm] m
+\fr{(a) Une petite graduation vaut \ldots\ m.}
+
+\vspace{8pt}
+\textbf{(b)} How far did each plane fly?
+\fr{(b) Quelle distance chaque avion a-t-il parcourue~?}
+
+\vspace{2pt}
+{\renewcommand{\arraystretch}{1.7}%
+\begin{tabular}{@{}l@{\ }l@{\qquad}l@{\ }l@{}}
+  A & \blank[1.4cm] m & B & \blank[1.4cm] m \\
+  C & \blank[1.4cm] m & D & \blank[1.4cm] m \\
+\end{tabular}}
+
+\vspace{6pt}
+\textbf{(c)} How much further did the best plane fly than the worst one?
+\fr{(c) De combien le meilleur avion est-il all\'e plus loin que le moins bon~?}
+
+\vspace{4pt}
+\blank[3.6cm] $=$ \blank[1.6cm] m
+
+\vspace{8pt}
+\textbf{(d)} Plane E flew \textbf{3.9 m}. Draw its bar.
+\fr{(d) L'avion E a parcouru 3.9 m. Dessine sa barre.}
+\end{minipage}
+\end{minipage}
+
+% -- G3 ---------------------------------------------------------------------
+% A distance-time graph. Home to the cafe 1.2 km in 10 minutes; 5 minutes at
+% the cafe (the flat part); the cafe to school, 1.2 km more, in only 6
+% minutes -- steeper, faster, and G5 asks why (he has had his coffee).
+% Ticks: 0.1 km and 1 minute.
+\qhead{G3}{Mr Bowen walks to school}
+
+\noindent\begin{minipage}{\textwidth}
+Mr Bowen walks from home to school. On the way, he stops at a caf\'e. The graph
+shows how far he is from home.
+\fr{Mr Bowen va \`a pied de chez lui \`a l'\'ecole. En chemin, il s'arr\^ete dans
+un caf\'e. Le graphique montre \`a quelle distance de chez lui il se trouve.}
+
+\vspace{4pt}
+\noindent\begin{minipage}[t]{0.47\textwidth}\vspace{0pt}
+\begin{tikzpicture}[x=0.24cm, y=1.95cm]
+  \foreach \i in {1,...,25} \draw[black!10, line width=0.3pt] (\i,0) -- (\i,2.5);
+  \foreach \j in {1,...,25} \draw[black!10, line width=0.3pt] (0,\j*0.1) -- (25,\j*0.1);
+  \foreach \i in {5,10,...,25} \draw[black!30, line width=0.5pt] (\i,0) -- (\i,2.5);
+  \foreach \j in {1,...,5} \draw[black!30, line width=0.5pt] (0,\j*0.5) -- (25,\j*0.5);
+  \draw[black!80, line width=1.1pt] (0,0) -- (0,2.58);
+  \draw[black!80, line width=1.1pt] (0,0) -- (25.6,0);
+  \foreach \i in {1,...,25} \draw[black!80, line width=0.6pt] (\i,0) -- ++(0,-2pt);
+  \foreach \j in {1,...,25} \draw[black!80, line width=0.6pt] (0,\j*0.1) -- ++(-2pt,0);
+  \foreach \i in {0,5,...,25}{
+    \draw[black!80, line width=0.9pt] (\i,0) -- ++(0,-4pt);
+    \node[below=3pt, font=\small] at (\i,0) {\i};}
+  \foreach \v in {0,0.5,1,1.5,2,2.5}{
+    \draw[black!80, line width=0.9pt] (0,\v) -- ++(-4pt,0);
+    \node[left=3pt, font=\small] at (0,\v) {\v};}
+  \draw[cbblue, line width=1.8pt, line join=round] (0,0) -- (10,1.2) -- (15,1.2)
+    -- (21,2.4);
+  \fill[cbblue] (21,2.4) circle (2.2pt);
+  \node[font=\small\bfseries] at (12.5,-0.42) {Time (minutes)};
+  \node[rotate=90, font=\small\bfseries] at (-5.0,1.25)
+    {Distance from home (km)};
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.50\textwidth}\vspace{2pt}\raggedright
+\textbf{(a)} One small tick: \\ distance \blank[1.3cm] km, \ time \blank[1.0cm] min
+\fr{(a) Une petite graduation~: distance \ldots\ km, temps \ldots\ min.}
+
+\vspace{\frl{5pt}{8pt}}
+\textbf{(b)} How far is the caf\'e from home? \hfill\mbox{\blank[1.3cm] km}
+\fr{(b) \`A quelle distance de chez lui se trouve le caf\'e~?}
+
+\vspace{\frl{5pt}{8pt}}
+\textbf{(c)} How long is he at the caf\'e? \hfill\mbox{\blank[1.3cm] min}
+\fr{(c) Combien de temps reste-t-il au caf\'e~?}
+
+\vspace{\frl{5pt}{8pt}}
+\textbf{(d)} How far is school from home? \hfill\mbox{\blank[1.3cm] km}
+\fr{(d) \`A quelle distance de chez lui se trouve l'\'ecole~?}
+
+\vspace{\frl{5pt}{8pt}}
+\textbf{(e)} How far from home is he after \textbf{18 minutes}? \hfill\mbox{\blank[1.3cm] km}
+\fr{(e) \`A quelle distance de chez lui est-il au bout de 18 minutes~?}
+\end{minipage}
+\end{minipage}
+
+% -- G4 ---------------------------------------------------------------------
+% The half-life curve. 1.6 g halving every 3 days: 0.8, 0.4, 0.2, 0.1 at 3, 6,
+% 9 and 12 days, all on grid lines. (e) is read between: 1.6 x 0.5^(2/3) =
+% 1.008, so "about 1.0". (f) is the deck's "does it ever run out?".
+\qhead{G4}{A half-life graph}
+
+\noindent\begin{minipage}{\textwidth}
+A scientist weighs a sample of a metal that breaks down, like carbon-14 but much
+faster. The graph shows its mass.
+\fr{Une scientifique p\`ese un \'echantillon d'un m\'etal qui se d\'esint\`egre,
+comme le carbone 14 mais beaucoup plus vite. Le graphique montre sa masse.}
+
+\vspace{4pt}
+\noindent\begin{minipage}[t]{0.47\textwidth}\vspace{0pt}
+\begin{tikzpicture}[x=0.50cm, y=3.05cm]
+  \foreach \i in {1,...,12} \draw[black!10, line width=0.3pt] (\i,0) -- (\i,1.6);
+  \foreach \j in {1,...,16} \draw[black!10, line width=0.3pt] (0,\j*0.1) -- (12,\j*0.1);
+  \foreach \i in {3,6,9,12} \draw[black!30, line width=0.5pt] (\i,0) -- (\i,1.6);
+  \foreach \j in {1,...,4} \draw[black!30, line width=0.5pt] (0,\j*0.4) -- (12,\j*0.4);
+  \draw[black!80, line width=1.1pt] (0,0) -- (0,1.66);
+  \draw[black!80, line width=1.1pt] (0,0) -- (12.4,0);
+  \foreach \i in {1,...,12} \draw[black!80, line width=0.6pt] (\i,0) -- ++(0,-2pt);
+  \foreach \j in {1,...,16} \draw[black!80, line width=0.6pt] (0,\j*0.1) -- ++(-2pt,0);
+  \foreach \i in {0,3,6,9,12}{
+    \draw[black!80, line width=0.9pt] (\i,0) -- ++(0,-4pt);
+    \node[below=3pt, font=\small] at (\i,0) {\i};}
+  \foreach \v in {0,0.4,0.8,1.2,1.6}{
+    \draw[black!80, line width=0.9pt] (0,\v) -- ++(-4pt,0);
+    \node[left=3pt, font=\small] at (0,\v) {\v};}
+  \draw[cborange, line width=1.8pt] plot[domain=0:12, samples=80, smooth]
+    (\x, {1.6*0.5^(\x/3)});
+  \node[font=\small\bfseries] at (6,-0.27) {Time (days)};
+  \node[rotate=90, font=\small\bfseries] at (-2.4,0.8) {Mass (g)};
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.50\textwidth}\vspace{2pt}\raggedright
+\textbf{(a)} One small tick on the mass axis $=$ \blank[1.3cm] g
+\fr{(a) Une petite graduation sur l'axe de la masse vaut \ldots\ g.}
+
+\vspace{\frl{5pt}{8pt}}
+\textbf{(b)} The mass at the start: \ \blank[1.3cm] g
+\fr{(b) La masse au d\'ebut.}
+
+\vspace{\frl{5pt}{8pt}}
+\textbf{(c)} The mass is 0.8 g after \blank[1.0cm] days. So the
+\textbf{half-life} is \blank[1.0cm] days.
+\fr{(c) La masse vaut 0.8 g au bout de \ldots\ jours. Donc la demi-vie
+(\eng{half-life}) est de \ldots\ jours.}
+
+\vspace{\frl{5pt}{8pt}}
+\textbf{(d)} After 6 days: \mbox{\blank[1.2cm] g.} \ After 9: \mbox{\blank[1.2cm] g.}
+\fr{(d) Au bout de 6 jours~; au bout de 9 jours.}
+
+\vspace{\frl{5pt}{8pt}}
+\textbf{(e)} After 2 days: about \blank[1.2cm] g.
+\fr{(e) Au bout de 2 jours~: environ \ldots\ g.}
+
+\vspace{\frl{5pt}{8pt}}
+\textbf{(f)} Mr Bowen says: \emph{``After 12 days it is all gone.''} After 12
+days there is \mbox{\blank[1.1cm] g} left.\par\vspace{3pt}
+So he is \ \tickbox\,right \quad \tickbox\,wrong.
+\fr{(f) Mr Bowen dit~: \fq{Au bout de 12 jours, il n'en reste plus.} Au bout de
+12 jours, il reste \ldots\ g. A-t-il raison (\eng{right}) ou tort (\eng{wrong})~?}
+\end{minipage}
+\end{minipage}
+
+% -- G5 ---------------------------------------------------------------------
+% THE CRITICAL-THINKING PIECE, and last. Graph -> English, as C2 is
+% calculation -> English: it cannot be pattern-matched. The thinking is the
+% steeper line: 1.2 km in 10 minutes before the cafe, 1.2 km in 6 after, so
+% faster after -- and the reason is the deadpan one (coffee).
+\qhead{G5}{Tell the story of the graph}
+
+\noindent\begin{minipage}{\textwidth}
+Write the story of the \textbf{G3} graph in \textbf{4 or 5 full sentences}.
+Tick each one:
+\fr{Raconte, \textbf{en anglais}, l'histoire du graphique de G3~: le trajet de Mr
+Bowen jusqu'\`a l'\'ecole, en 4 ou 5 phrases compl\`etes. Coche chaque case.}
+
+\vspace{2pt}
+{\renewcommand{\arraystretch}{1.3}%
+\noindent\begin{tabularx}{\textwidth}{@{}p{0.75cm}L p{0.75cm}L@{}}
+  \tickbox & three numbers, with units (km, minutes) &
+    \tickbox & what he does at the caf\'e, and how long \\
+  \tickbox & \textbf{faster} before or after the caf\'e? How do you know? &
+    \tickbox & a reason he might be faster \\
+\end{tabularx}}
+\fr{Trois nombres lus sur le graphique, avec leurs unit\'es~; ce qu'il fait au
+caf\'e, et combien de temps~; va-t-il plus vite (\eng{faster}) avant ou apr\`es le
+caf\'e, et comment le graphique le montre-t-il~? une raison possible.}
+\wlines{\frl{4}{9}}
+\end{minipage}
+
+% ===========================================================================
 % ANSWER KEY -- TEACHER COPY ONLY
 % ===========================================================================
 \ifkey
@@ -1253,6 +1555,70 @@ closer'' alone is half of it --- ask \emph{why} closer means faster, and look fo
 Do not let this become a lesson on seasons. January is not the hottest month, and
 the reason (the tilt of the Earth) has not been taught. If someone asks, that is a
 good question to leave open.}
+
+\qhead[cbred]{G1}{What is one tick worth?}
+\noindent (a) tick $\mathbf{0.2}$, arrow $\mathbf{0.6}$ \sep (b) $\mathbf{0.1}$,
+$\mathbf{3.7}$ \sep (c) $\mathbf{0.5}$, $\mathbf{1.5}$ \sep (d) $\mathbf{0.25}$,
+$\mathbf{5.75}$
+
+\smallskip
+\noindent{\small \textbf{The error to catch: counting ticks, not gaps.} (a) has 4
+ticks between 0 and 1 but 5 gaps; a student who divides by 4 writes $0.25$ and
+then $0.75$ for the arrow. (c) gives $2 \div 3$, which will not come out, and (d)
+gives $0.333\ldots$ --- a tick that ``does not work'' is the clue. Send them back to
+the remember box's 0-to-2 strip, where the gaps are numbered. (b) is A1's 0.1
+again, the easy one.}
+
+\qhead[cbred]{G2}{Mr Bowen's paper planes}
+\noindent (a) $\mathbf{0.2}$ m \sep (b) A $3.4$, \ B $5.1$, \ C $2.6$, \ D $4.5$ m
+\sep (c) $5.1 - 2.6 = \mathbf{2.5}$ m \sep (d) a bar halfway between the 3.8 and
+4.0 lines
+
+\smallskip
+\noindent{\small A and C end on a tick; B and D end \emph{halfway} between two, so
+expect $5.0$ or $5.2$ for B and $4.4$ or $4.6$ for D --- ask what is halfway
+between them. A student with $0.5$ for (a) has counted the big squares as ticks
+and will read B as $5.5$. (c) is ``further'': the best minus the worst, not the
+total ($15.6$ m).}
+
+\qhead[cbred]{G3}{Mr Bowen walks to school}
+\noindent (a) $\mathbf{0.1}$ km, $\mathbf{1}$ minute \sep (b) $\mathbf{1.2}$ km
+\sep (c) $\mathbf{5}$ minutes \sep (d) $\mathbf{2.4}$ km \sep (e) $\mathbf{1.8}$ km
+
+\smallskip
+\noindent{\small (c) is the flat part, from 10 to 15 minutes: expect $15$ (the time
+he \emph{leaves}) or $10$ (the time he arrives); the question is how long, so
+subtract. (e) 18 minutes is halfway through the last part: $1.2$ km plus half of
+$1.2$. The 0.1 km tick is the same trap as G1(a): 5 gaps between 0 and 0.5.}
+
+\qhead[cbred]{G4}{A half-life graph}
+\noindent (a) $\mathbf{0.1}$ g \sep (b) $\mathbf{1.6}$ g \sep (c) $\mathbf{3}$ days;
+the half-life is $\mathbf{3}$ days \sep (d) $\mathbf{0.4}$ g; $\mathbf{0.2}$ g \sep
+(e) about $\mathbf{1.0}$ g (exactly $1.008$; accept $0.9$--$1.1$) \sep (f)
+$\mathbf{0.1}$ g; \textbf{wrong}
+
+\smallskip
+\noindent{\small (a) has 4 gaps between labels 0.4 apart: $0.4 \div 4 = 0.1$. A
+student who reads 0.4 per small square has used the big squares. (e) is between
+grid lines, like the deck's bedtime slide: anything near 1.0 shows they followed
+the curve, not a straight line from 1.6 to 0.8 (which gives $1.07$, also fine).
+(f) is the deck's ``Does it ever run out?'': the model halves for ever, so there
+is always some left.}
+
+\qhead[cbred]{G5}{Tell the story of the graph}
+\noindent{\small Mark the four ticks in order. A model answer:} \\
+\textit{Mr Bowen walks 1.2 km from his home to a caf\'e. It takes him 10 minutes.
+He stays at the caf\'e for 5 minutes, and the line is flat because he is not
+moving. Then he walks 1.2 km more to school in only 6 minutes. He is faster after
+the caf\'e, because the line is steeper. Maybe the coffee made him walk faster.}
+
+\smallskip
+\noindent{\small \textbf{The thinking is the steeper line.} Same distance (1.2 km)
+in less time (6 minutes, not 10), so faster. A student who says ``faster before,
+because the first part is longer'' has read the length of the line, not its
+slope: ask how many minutes each part took. Any sensible reason earns the last
+tick; the coffee is the one the packet is fishing for (Extra Homework 10). Three
+numbers \emph{with units} --- ``1.2'' alone does not count.}
 
 \fi
 \end{document}

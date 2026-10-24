@@ -266,7 +266,7 @@ export const HOMEWORK = [
     id: 'hw10',
     label: 'HW 10',
     title: 'Faster in January',
-    subtitle: 'Maths Unit 4 review · Science 3.2–3.3 and the football model, in decimals',
+    subtitle: 'Maths Unit 4 review · Science 3.2–3.3 and the football model, in decimals · reading graphs',
     pdf: hw10,
   },
   // Goes out with HW 10, after Coffee, Carbon and Stars. Halving only, like the

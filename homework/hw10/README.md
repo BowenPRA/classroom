@@ -10,6 +10,9 @@
 - **Part 2, Sections D–F.** Science 3.2 (formation of the Solar System), 3.3 (movement
   in space) and Models Part 1 (the football Sun). D and E are the science in words.
   F does it in decimals.
+- **Part 3, Section G** (added 24 October, two pages, at the teacher's request):
+  reading graphs with tick marks, with decimals, ending on a critical-thinking piece
+  of writing. See below.
 
 Due **Friday 30 October 2026**, printed on the cover in red.
 
@@ -41,9 +44,9 @@ only the wording and layout changed:
 
 | File | What it is |
 | --- | --- |
-| `hw10.pdf` | Student copy, English. **8 pages.** |
-| `hw10-fr.pdf` | Student copy with a grey French line under every instruction and question. **12 pages.** |
-| `hw10-teacher.pdf` | English copy plus the answer key with diagnoses. **12 pages.** Not linked from the site. |
+| `hw10.pdf` | Student copy, English. **10 pages.** |
+| `hw10-fr.pdf` | Student copy with a grey French line under every instruction and question. **16 pages.** |
+| `hw10-teacher.pdf` | English copy plus the answer key with diagnoses. **15 pages.** Not linked from the site. |
 
 The French scheme is HW 9's (see `../hw09/README.md`): `\fr` and `\frin` lines that
 are empty in the English copy, the English key word kept in blue inside the French,
@@ -101,6 +104,17 @@ and every 3.2 fact in D2 is on a 3.2 slide. Nothing is decimal × decimal.
 | F1 | How much faster, how many times as fast |
 | F2 | The football model: order 0.5 mm to 22 cm (2.3 cm is bigger than 7.8 mm); the pinhead 15.5 m past the classroom wall; one limitation |
 | F3 | **Faster in January** |
+| **G · reading graphs with decimals** | (pages 9–10; starts on a new page, so pages 1–8 are untouched) |
+| — | Remember box: count the **gaps**, not the ticks; one tick = difference ÷ gaps (example 0 to 2 in 5 gaps = 0.4) |
+| G1 | Four scales: ticks of 0.2, 0.1, 0.5, 0.25; one tick, then the arrow |
+| G2 | Bar chart, Mr Bowen's paper planes, 0.2 m ticks: A 3.4, B 5.1, C 2.6, D 4.5 (two end between ticks); best − worst 2.5 m; draw E at 3.9 m |
+| G3 | Distance–time: home to café 1.2 km in 10 min, 5 min at the café (flat), café to school 1.2 km in 6 min (steeper); ticks 0.1 km and 1 min |
+| G4 | Half-life curve: 1.6 g halving every 3 days, 0.1 g ticks; half-life, readings on and between grid lines (about 1.0 g at day 2), "is it all gone after 12 days?" |
+| G5 | **Critical thinking, graph → English**: the story of the G3 graph, with a tick list; the thinking is the steeper line after the café (faster), and why (the coffee) |
+
+The French copy gives Section G four pages (13–16): each graph and its questions
+are one block, so they land whole, and the spare space at the end goes to G5's
+writing lines.
 
 ## Cut for the eight-page target
 
@@ -117,6 +131,6 @@ bottle* and *12 students each bring 0.75 kg of rice*, a taxi shared five ways
 pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw10 -French
 ```
 
-Built and verified with MiKTeX: English **8 pages**, French **12**, teacher **12**, no
+Built and verified with MiKTeX: English **10 pages**, French **16**, teacher **15**, no
 errors, no overfull boxes. Every page of all three copies was rasterised and read,
 and every answer in the key was checked arithmetically.
