@@ -13,8 +13,29 @@
 
 Due **Friday 30 October 2026**, printed on the cover in red.
 
-**No Extra sheet this week.** The Science Models challenge (`../caffeine/`) is the
-extra.
+**Extra Homework 10** (`../hw10x/`, *Why Is Mr Bowen Still Awake?*) goes out with it.
+
+## Polished, 24 October 2026
+
+The teacher found many questions "messy and unclear". **Every number and every
+answer is unchanged**, so the key holds and any copies already printed still match;
+only the wording and layout changed:
+
+- Instructions came out of table headers (D2, E2, F1) and sit above the tables.
+- The two run-on remember boxes became tables: B ("Multiply" / "Divide"), and C3
+  (quick ways), which now pairs each quick way with a worked example (new numbers)
+  and the student's own question in the same row.
+- **C2 is now "Now you write the question"** (calculation → English), straight
+  after C1 (English → calculation); it was C5. Quick ways, change and Mr Bowen's
+  homework moved down to C3–C5. Its rules became a tick list.
+- C4 (change) got its four steps beside the working box; C5 (Mr Bowen's homework)
+  says what to write, in a *right or wrong / correct answer* table.
+- D1's words and meanings no longer share rows (a word sat next to letter A and
+  read as already matched). D3(d) is plainer English.
+- F1's word-help box became the column headers (*subtract*, *divide*). F2(b) got a
+  to-scale drawing of the classroom and the 24 m. F3(e) was split into (e) round
+  and (f) what do you notice.
+- A2 has a tip with a worked example that is not one of its own questions.
 
 ## Three PDFs from one source
 
@@ -28,9 +49,11 @@ The French scheme is HW 9's (see `../hw09/README.md`): `\fr` and `\frin` lines t
 are empty in the English copy, the English key word kept in blue inside the French,
 the English decimal point, *en anglais* wherever the student writes. The French copy
 gets more room through `\frl{english}{french}` (bigger boxes, more writing lines),
-and four `\iffr\clearpage` lines start Section C, D3, Section E and F2 on a new page,
-so that every block lands whole. Its spare space falls at the ends of A, D2, F1 and
-F2.
+and two `\iffr\clearpage` lines start Section C and F2 on a new page, so that every
+block lands whole (the ones before D3 and Section E came out in the polish: each
+left a page two-thirds empty). E2 and F1 rows use `\tallen`, the English row
+height, so F1 shares a page with E2. Its spare space falls at the ends of A, C5, D3
+and F2.
 
 ## Section F is why this packet exists
 
@@ -63,10 +86,10 @@ and every 3.2 fact in D2 is on a 3.2 slide. Nothing is decimal × decimal.
 | B2 | Six divisions; (b) and (c) need zeros in the answer, (d) runs out of digits, (e) and (f) are ÷ 15 and ÷ 24 with the table written first |
 | **C · the words, 4.5, money** | |
 | C1 | **English → calculation**, on one page with its word help: *what must you add to 4.65 to make 7*, ÷ 16, *twice as far … altogether*, *3.5 less than 10* |
-| C2 | Quick ways: × 9, × 11, partitioning, × 0.25, × 0.07, × 0.5 |
-| C3 | Change from 10 dollars: 3 bánh mì and 2 iced coffees |
-| C4 | Mr Bowen's homework: one trap each from 4.2, 4.4, 4.1, 4.5; only (b) is right |
-| C5 | **Calculation → English**: a word problem for 12 × 2.40 = 28.80 |
+| C2 | **Calculation → English**: a word problem for 12 × 2.40 = 28.80, with a six-item tick list |
+| C3 | Quick ways, one table: each row a quick way, an example, and the question (× 9, × 11, split, × 0.25, × 0.07, × 0.5) |
+| C4 | Change from 10 dollars: 3 bánh mì and 2 iced coffees, in four steps |
+| C5 | Mr Bowen's homework: one trap each from 4.2, 4.4, 4.1, 4.5; only (b) is right |
 | **D · Science 3.2** | |
 | D1 | Six key words to match |
 | D2 | Support or contradict? Six facts against *one spinning cloud*; (b) *most of the evidence* |

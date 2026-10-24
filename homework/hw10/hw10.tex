@@ -10,8 +10,17 @@
 %   Part 2  Sections D-F. Science 3.2 (formation of the Solar System), 3.3
 %           (movement in space) and Models Part 1 (the football Sun). D and E
 %           are the science in words; F does it in decimals.
-% No Extra sheet goes with this packet: the Science Models challenge
-% (homework/caffeine) is the extra this week.
+% Extra Homework 10 (homework/hw10x, Why Is Mr Bowen Still Awake?) goes out
+% with it.
+%
+% POLISHED 24 Oct 2026: the teacher found many questions "messy and unclear".
+% Every number and every answer is unchanged (copies may already be printed,
+% and the key still holds); the wording and the layout are not. Instructions
+% came out of table headers (D2, E2, F1); the two run-on remember boxes became
+% tables (B, and C2, which now pairs each quick way with an example and the
+% student's question); C3 got its four steps; C4 says what to write; C5's
+% rules became a tick list; D1's words and meanings no longer share rows; F2(b)
+% got a drawing; F3(e) was split into (e) and (f).
 %
 % Section F is why this packet exists. F3 is 3.3's exit question -- the Earth
 % is closer to the Sun in January than in July, so when does it move faster?
@@ -97,12 +106,17 @@
 
 % -- "Calculation: ____  Answer: ____" on a line of its own -------------------
 % The calculation comes FIRST on the line: it is the thing to write first.
-\newcommand{\calcans}[1][6.6cm]{\par\nobreak\vspace{5pt}\noindent\hspace*{1.6em}%
+\newcommand{\calcans}[1][6.6cm]{\par\nobreak\vspace{\frl{3pt}{5pt}}\noindent\hspace*{1.6em}%
   \textbf{Calculation:} \blank[#1] \hfill \textbf{Answer:} \blank[3.0cm]\par}
 
 % -- Columns -----------------------------------------------------------------
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+% \leavevmode, so a cell that starts with \key (a \color) is not dropped a line.
+\newcolumntype{P}[1]{>{\leavevmode\raggedright\arraybackslash}p{#1}}
+% The word-help term column. \leavevmode first: a \color at the very start of
+% a p-cell lands in vertical mode and drops the term a line below its meaning.
+\newcolumntype{W}[1]{>{\leavevmode\raggedright\bfseries\color{cbblue}}p{#1}}
 
 % -- One calculation with a box to work it in, three to a row ----------------
 \newcommand{\wsq}[3][3.1cm]{%
@@ -113,6 +127,9 @@
 
 % -- A table row tall enough to write in -------------------------------------
 \newcommand{\tall}{\rule[-0.6em]{0pt}{1.9em}}
+% The same row, NOT made taller in the French copy: E2's ticks and F1's short
+% sums do not need it, and F1 has to share a page with E2 there.
+\newcommand{\tallen}{\rule[-0.6em]{0pt}{1.9em}}
 
 % -- Colours for the orbit drawing --------------------------------------------
 \definecolor{sunfill}{HTML}{FDE58A}
@@ -122,6 +139,9 @@
 % \frl{english}{french}: a box height or a number of writing lines that is
 % bigger in the French copy. Used where a French page has room to spare.
 \newcommand{\frl}[2]{\iffr#2\else#1\fi}
+% The E1 orbit drawing's unit. Set here: a conditional cannot go inside TikZ's
+% options.
+\iffr\def\orbitunit{0.68cm}\else\def\orbitunit{0.74cm}\fi
 
 % -- More room in the French copy --------------------------------------------
 % The French copy carries a second line under every question, so it gets more
@@ -161,11 +181,11 @@
   {\color{cbpurple}\bfseries YEAR 7\sep UNIT 4 REVIEW\sep SCIENCE UNIT 3\sep
   HOMEWORK 10}\\[5pt]
   {\color{cbpurple}\Huge\bfseries Faster in January}\\[7pt]
-  {\color{black!70}Part 1 --- Mathematics Unit 4 again, with new numbers}\\
-  {\color{black!70}Part 2 --- Science 3.2, 3.3 and the football model, in words
-  and in decimals}
-  \iffr\\[4pt]{\small\itshape\color{black!60}Plus rapide en janvier~: l'unit\'e 4
-  de maths avec de nouveaux nombres, puis les sciences 3.2 et 3.3, en mots et en
+  {\color{black!70}Part 1: Maths --- Unit 4 review}\\
+  {\color{black!70}Part 2: Science --- 3.2, 3.3 and the football model, with
+  decimals}
+  \iffr\\[4pt]{\small\itshape\color{black!60}Plus rapide en janvier~: 1re partie,
+  r\'evision de l'unit\'e 4 de maths~; 2e partie, les sciences 3.2 et 3.3, avec des
   nombres d\'ecimaux}\fi
 \end{tcolorbox}
 
@@ -179,22 +199,21 @@
 
 \vspace{2pt}
 \begin{activity}
-  Six sections. A to C are \key{Unit 4 again}, with new numbers. D to F are this
-  week's science, and \key{F does it in decimals}.
-  \fr{Six parties. Les parties A \`a C reprennent l'unit\'e 4 avec de nouveaux
-  nombres. Les parties D \`a F reprennent les sciences de la semaine~; la partie F
-  les reprend avec des nombres d\'ecimaux.}
-  \begin{itemize}
-    \item \key{Write the calculation before you write the answer.} \key{Estimate
-          first}: the estimate tells you where the point goes.
-          \frin{\'Ecris le calcul avant le r\'esultat, et commence par une
-          estimation~: elle te dit o\`u placer la virgule. En anglais, la virgule
-          s'appelle \eng{the point} et s'\'ecrit avec un point~: 3.25.}
-    \item \eng{No calculator.} In D, E and F, answer in \key{full English
-          sentences} where it says so. \emph{``Gravity''} is not a sentence.
-          \emph{``Gravity pulls the planet towards the Sun''} is.
-          \frin{Calculatrice interdite. Dans les parties D, E et F, r\'eponds par
-          des phrases compl\`etes, \textbf{en anglais}, quand on te le demande.}
+  \begin{itemize}[itemsep=3pt, topsep=0pt]
+    \item \textbf{Sections A--C:} maths (Unit 4). \ \textbf{Sections D--F:}
+          science. Section F uses decimals.
+          \frin{Parties A \`a C~: maths (unit\'e 4). Parties D \`a F~: sciences~;
+          la partie F utilise des nombres d\'ecimaux.}
+    \item \key{No calculator.} \key{Estimate first}. Then write the
+          \key{calculation}, then the answer.
+          \frin{Calculatrice interdite. Commence par une estimation~: elle te dit
+          o\`u placer la virgule. \'Ecris ensuite le calcul, puis le r\'esultat. En
+          anglais, la virgule s'appelle \eng{the point} et s'\'ecrit avec un
+          point~: 3.25.}
+    \item Answer in \key{full sentences} when it says so. \emph{``Gravity''} is
+          not a sentence. \emph{``Gravity pulls the planet towards the Sun''} is.
+          \frin{R\'eponds par des phrases compl\`etes, \textbf{en anglais}, quand
+          on te le demande.}
   \end{itemize}
 \end{activity}
 
@@ -242,8 +261,7 @@
 
 \vspace{6pt}
 \noindent\begin{minipage}{\textwidth}
-\textbf{(b)} Write the four numbers in order, \textbf{starting with the largest}
-(the biggest).
+\textbf{(b)} Write the four numbers in order. Start with the \textbf{largest}.
 \fr{(b) Range les quatre nombres dans l'ordre d\'ecroissant, du plus grand au plus
 petit (\eng{starting with the largest}).}
 \ansline[9.0cm]
@@ -253,10 +271,15 @@ petit (\eng{starting with the largest}).}
 \qhead{A2}{Which is bigger?\frin{Lequel est le plus grand~?}}
 
 \noindent\begin{minipage}{\textwidth}
-Write $<$, $>$ or $=$ in each box. Look at the whole-number parts first. Then
-\key{fill with zeros}: \; $0.5 = 0.50$.
-\fr{\'Ecris $<$, $>$ ou $=$ dans chaque case. Compare d'abord les parties enti\`eres,
-puis ajoute des z\'eros (\eng{fill with zeros})~: $0.5 = 0.50$.}
+Write $<$, $>$ or $=$ in each box.
+\fr{\'Ecris $<$, $>$ ou $=$ dans chaque case.}
+
+\vspace{3pt}
+\noindent\textit{Tip:} compare the whole numbers first. Then \key{add zeros}:
+\; $0.7 = 0.70$, \,so\, $0.7 > 0.65$.
+\fr{Astuce~: compare d'abord les parties enti\`eres, puis ajoute des z\'eros
+(\eng{add zeros}) pour avoir autant de chiffres apr\`es la virgule~: $0.7 = 0.70$,
+donc $0.7 > 0.65$.}
 
 \vspace{4pt}
 \begin{multicols}{3}
@@ -296,12 +319,16 @@ puis ajoute des z\'eros (\eng{fill with zeros})~: $0.5 = 0.50$.}
 \hwsection{Section B \textperiodcentered\ Unit 4 Review --- Multiplying and Dividing}
 
 \begin{remember}[Where the point goes]
-  $\times$\,: take the point out and multiply, then \key{estimate} to put it back.
-  \; $3.8 \times 12$: \; $38 \times 12 = 456$, and $4 \times 12 = 48$, so
-  \key{45.6}. \\
-  $\div$\,: short division. The point goes \key{straight up}. If a digit is too
-  small to divide, write \key{0}. To divide by a 2-digit number, write its
-  \key{times table} first.
+  \renewcommand{\arraystretch}{1.12}%
+  \begin{tabularx}{\linewidth}{@{}P{2.0cm}L@{}}
+    \key{Multiply} & Take the point out and multiply. Then \key{estimate} to put
+      it back. \\
+    & \textit{Example:} \ $3.8 \times 12$ \ $\to$ \ $38 \times 12 = 456$ \ $\to$
+      \ estimate $4 \times 12 = 48$ \ $\to$ \ \key{45.6} \\
+    \key{Divide} & Short division. The point goes \key{straight up}. If a digit
+      is too small to divide, write \key{0}. Dividing by a 2-digit number? Write
+      its \key{times table} first. \\
+  \end{tabularx}
   \fr{Multiplie sans la virgule, puis remets-la gr\^ace \`a l'estimation
   (\eng{estimate}). En division, la virgule monte tout droit (\eng{straight up})~;
   par un nombre \`a 2 chiffres, \'ecris d'abord sa table (\eng{times table}).}
@@ -311,15 +338,15 @@ puis ajoute des z\'eros (\eng{fill with zeros})~: $0.5 = 0.50$.}
 \qhead{B1}{Point out, point back}
 
 \noindent\begin{minipage}{\textwidth}
-Fill in the table. The first one is done for you.
+Fill in the table. Row 1 is done for you.
 \fr{Compl\`ete le tableau. La premi\`ere ligne est faite pour toi.}
 
 \vspace{4pt}
 \noindent
-\begin{tabularx}{\textwidth}{|C{2.6cm}|L|C{3.5cm}|C{2.4cm}|}
+\begin{tabularx}{\textwidth}{|C{2.6cm}|C{3.4cm}|>{\centering\arraybackslash}X|C{2.4cm}|}
   \hline
-  \textbf{Calculation} & \textbf{Estimate} & \textbf{Without the point} &
-  \textbf{Answer} \\
+  \textbf{Calculation} & \textbf{Estimate} & \textbf{Multiply without the point}
+  & \textbf{Answer} \\
   \hline
   $2.4 \times 13$ \tall & $2 \times 13 = 26$ & $24 \times 13 = 312$ & $31.2$ \\ \hline
   $0.6 \times 9$ \tall & & & \\ \hline
@@ -337,9 +364,10 @@ Fill in the table. The first one is done for you.
 % The instruction is kept with the first row only, so the second row can go
 % over a page break on its own.
 \noindent\begin{minipage}{\textwidth}
-Use short division. For \textbf{(e)} and \textbf{(f)}, write the times table first.
-\fr{Pose les divisions. Pour (e) et (f), \'ecris d'abord la table de
-multiplication.}
+Use short division in each box. For \textbf{(e)} and \textbf{(f)}, write the
+15 and the 24 times tables first.
+\fr{Pose les divisions dans les cases. Pour (e) et (f), \'ecris d'abord les tables
+de 15 et de 24.}
 
 \vspace{4pt}
 \noindent
@@ -348,7 +376,7 @@ multiplication.}
 
 \vspace{4pt}
 \noindent
-\wsq[2.9cm]{d}{7.3 \div 2}\hfill\wsq[2.9cm]{e}{52.5 \div 15}\hfill\wsq[2.9cm]{f}{81.6 \div 24}
+\wsq[\frl{2.9cm}{2.6cm}]{d}{7.3 \div 2}\hfill\wsq[\frl{2.9cm}{2.6cm}]{e}{52.5 \div 15}\hfill\wsq[\frl{2.9cm}{2.6cm}]{f}{81.6 \div 24}
 
 % ===========================================================================
 % SECTION C -- UNIT 4 REVIEW: THE WORDS, 4.5 AND MONEY
@@ -367,22 +395,24 @@ multiplication.}
 \qhead{C1}{From English to a calculation}
 
 \begin{wordhelp}[Word help --- the words that choose the operation]
-  \begin{tabularx}{\linewidth}{@{}l@{\hspace{16pt}}X@{}}
-    \eng{each} & for one of them. \emph{3 pens at 2 dollars each}: $3 \times 2$
+  \renewcommand{\arraystretch}{1.25}%
+  \begin{tabularx}{\linewidth}{@{}W{4.3cm}X@{}}
+    each & for one of them. \emph{3 pens at 2 dollars each}: $3 \times 2$
       \frin{chacun} \\
-    \eng{altogether} & all of it, the total \frin{en tout} \\
-    \eng{twice as far} & 2 times as far \frin{deux fois plus loin} \\
-    \eng{what must you add to 4 to make 7?} & $7 - 4$. It says \emph{add}, but
-      you \textbf{subtract} \frin{que faut-il ajouter \`a 4 pour obtenir 7~?} \\
-    \eng{3 less than 10} & $10 - 3$. The \textbf{second} number comes
-      \textbf{first} \frin{3 de moins que 10} \\
+    altogether & all of it, the total \frin{en tout} \\
+    twice as far & 2 times as far \frin{deux fois plus loin} \\
+    What must you add to 4 to make 7? & $7 - 4$. It says \emph{add}, but you
+      \textbf{subtract} \frin{que faut-il ajouter \`a 4 pour obtenir 7~?} \\
+    3 less than 10 & $10 - 3$. The \textbf{second} number comes \textbf{first}
+      \frin{3 de moins que 10} \\
   \end{tabularx}
 \end{wordhelp}
 
 \vspace{2pt}
-\noindent Write the \textbf{calculation first}, then the answer. Give units.
-\fr{\'Ecris d'abord le calcul (\eng{calculation}), puis le r\'esultat avec son
-unit\'e.}
+\noindent Write the \textbf{calculation first}. Then write the answer, with its
+unit if it has one (m, km).
+\fr{\'Ecris d'abord le calcul (\eng{calculation}), puis le r\'esultat, avec son
+unit\'e s'il en a une (m, km).}
 
 \begin{enumerate}[label=(\alph*), itemsep=6pt]
   \item What must you add to 4.65 to make 7?
@@ -404,39 +434,76 @@ unit\'e.}
 \end{enumerate}
 
 % -- C2 ---------------------------------------------------------------------
-\qhead{C2}{Use a quick way}
+% Calculation -> English. A minipage: the rules and the expression were split
+% across a page on one build.
+\qhead{C2}{Now you write the question}
 
-\begin{remember}[Quick ways]
-  $\times\, 0.5$ = \key{half of} \quad $\times\, 0.25$ = \key{a quarter of} \quad
-  $\times\, 0.07$ = $\div\, 100$, then $\times\, 7$ \\
-  $\times\, 9$: $\times\, 10$, then \key{take away} one lot. \quad
-  $\times\, 11$: $\times\, 10$, then \key{add} one lot. \\
-  \key{Partitioning}: split the number. \; $4.3 \times 6 = 24 + 1.8$
-  \fr{\eng{half of} = la moiti\'e de~; \eng{a quarter of} = le quart de. $\times 9$~:
-  multiplie par 10, puis retire le nombre une fois~; $\times 11$~: multiplie par
-  10, puis ajoute-le une fois. \eng{Partitioning}~: d\'ecomposer le nombre.}
-\end{remember}
+\noindent\begin{minipage}{\textwidth}
+\noindent Write a word problem for \quad \expr{12 \times 2.40 = 28.80}
+\fr{Invente, en anglais, un probl\`eme (\eng{word problem}) qui correspond \`a ce
+calcul.}
 
-\vspace{2pt}
-\noindent Write the quick way, then the answer.
-\fr{\'Ecris le calcul rapide, puis le r\'esultat.}
-
-\vspace{4pt}
-\begin{multicols}{2}
-\begin{enumerate}[label=(\alph*), itemsep=12pt]
-  \item $4.7 \times 9 = \blank[2.6cm] = \blank[1.4cm]$
-  \item $6.2 \times 11 = \blank[2.6cm] = \blank[1.4cm]$
-  \item $5.3 \times 4 = \blank[2.6cm] = \blank[1.4cm]$
-  \item $64 \times 0.25 = \blank[2.4cm] = \blank[1.4cm]$
-  \item $300 \times 0.07 = \blank[2.2cm] = \blank[1.4cm]$
-  \item $9.6 \times 0.5 = \blank[2.6cm] = \blank[1.4cm]$
-\end{enumerate}
-\end{multicols}
+\begin{yourturn}[Your word problem must have: tick each one]
+  \renewcommand{\arraystretch}{1.35}%
+  \begin{tabularx}{\linewidth}{@{}p{0.75cm}L p{0.75cm}L p{0.75cm}L@{}}
+    \tickbox & a real situation & \tickbox & full sentences & \tickbox & a question
+      at the end \\
+    \tickbox & a word from C1 & \tickbox & units (dollars, kg) & \tickbox & the
+      answer 28.80 \\
+  \end{tabularx}
+  \fr{Une situation r\'eelle, des phrases compl\`etes, une question \`a la fin, un
+  mot de C1, des unit\'es, et la r\'eponse 28.80. \textbf{\'Ecris ton probl\`eme en
+  anglais.}}
+\end{yourturn}
+\wlines{4}
+\end{minipage}
 
 % -- C3 ---------------------------------------------------------------------
+% One table: each row is a quick way, an example of it (new numbers), and the
+% student's question, which uses the same way. The questions and their order
+% are the original (a)-(f).
+\qhead{C3}{Use a quick way}
+
+\noindent\begin{minipage}{\textwidth}
+Use the \textbf{same quick way} as the example. Write the quick way, then the
+answer.
+\fr{Utilise la \textbf{m\^eme m\'ethode rapide} que l'exemple. \'Ecris le calcul
+rapide, puis le r\'esultat.}
+
+\vspace{4pt}
+{\renewcommand{\arraystretch}{\frl{1.25}{1.45}}%
+\setlength{\tabcolsep}{5pt}%
+\noindent\begin{tabularx}{\textwidth}{|>{\leavevmode\small\raggedright\arraybackslash}p{4.1cm}|>{\small\raggedright\arraybackslash}X|P{6.3cm}|}
+  \hline
+  \textbf{\normalsize Quick way} & \textbf{\normalsize Example} & \textbf{Your turn}
+  \\ \hline
+  \key{$\times\,9$}: $\times\,10$, then take away one lot
+    \frin{retire-le une fois}
+    & $3.6 \times 9 = 36 - 3.6 = 32.4$
+    & (a) \ $4.7 \times 9 = \blank[1.7cm] = \blank[1.1cm]$ \\ \hline
+  \key{$\times\,11$}: $\times\,10$, then add one lot
+    \frin{ajoute-le une fois}
+    & $2.3 \times 11 = 23 + 2.3 = 25.3$
+    & (b) \ $6.2 \times 11 = \blank[1.7cm] = \blank[1.1cm]$ \\ \hline
+  \key{Split} the number \frin{d\'ecompose}
+    & $4.3 \times 6 = 24 + 1.8 = 25.8$
+    & (c) \ $5.3 \times 4 = \blank[1.7cm] = \blank[1.1cm]$ \\ \hline
+  \key{$\times\,0.25$} = a quarter of \frin{le quart de}
+    & $28 \times 0.25 = 28 \div 4 = 7$
+    & (d) \ $64 \times 0.25 = \blank[1.5cm] = \blank[1.1cm]$ \\ \hline
+  \key{$\times\,0.07$} = $\div\,100$, then $\times\,7$
+    & $200 \times 0.07 = 2 \times 7 = 14$
+    & (e) \ $300 \times 0.07 = \blank[1.3cm] = \blank[1.1cm]$ \\ \hline
+  \key{$\times\,0.5$} = half of \frin{la moiti\'e de}
+    & $7.4 \times 0.5 = 7.4 \div 2 = 3.7$
+    & (f) \ $9.6 \times 0.5 = \blank[1.7cm] = \blank[1.1cm]$ \\ \hline
+\end{tabularx}}
+\end{minipage}
+
+% -- C4 ---------------------------------------------------------------------
 % Four steps, and money to 2 d.p. A minipage, so the question cannot be left on
 % one page with its box on the next.
-\qhead{C3}{Change from 10 dollars}
+\qhead{C4}{Change from 10 dollars}
 
 \noindent\begin{minipage}{\textwidth}
 Money has \key{2 decimal places}: 7.8 dollars is written 7.80 dollars.
@@ -449,46 +516,45 @@ places})~: 7.8 dollars s'\'ecrit 7.80 dollars.}
 \fr{Mr Bowen ach\`ete 3 b\'anh m\`{\i} \`a 1.35 dollar chacun et 2 caf\'es glac\'es
 \`a 1.90 dollar chacun. Il paie avec un billet de 10 dollars. Combien de monnaie
 (\eng{change}) lui rend-on~?}
-\begin{workspace}[\frl{2.7cm}{3.2cm}]\end{workspace}
+
+\vspace{6pt}
+\noindent\begin{minipage}[c]{0.46\textwidth}
+  {\renewcommand{\arraystretch}{1.7}%
+  \begin{tabular}{@{}l@{\hspace{6pt}}l@{}}
+    \textbf{1.} 3 b\'anh m\`{\i}: & \blank[2.0cm] dollars \\
+    \textbf{2.} 2 iced coffees: & \blank[2.0cm] dollars \\
+    \textbf{3.} Total: & \blank[2.0cm] dollars \\
+    \textbf{4.} Change: & \blank[2.0cm] dollars \\
+  \end{tabular}}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.50\textwidth}
+  {\small\color{black!60}Working}
+  \begin{workspace}[\frl{3.3cm}{3.4cm}]\end{workspace}
 \end{minipage}
-
-% -- C4 ---------------------------------------------------------------------
-% One trap each from 4.2, 4.4, 4.1 and 4.5. See the key.
-\qhead{C4}{Mr Bowen's homework}
-
-\noindent\begin{minipage}{\textwidth}
-Only \textbf{one} of these is right. Find it, and correct the other three.
-\fr{Une seule r\'eponse est juste~: trouve-la, puis corrige les trois autres.}
-
-\vspace{4pt}
-\begin{multicols}{2}
-\begin{enumerate}[label=(\alph*), itemsep=12pt]
-  \item $4.5 + 2.7 = 6.12$ \; \blank[2.2cm]
-  \item $9.6 \div 3 = 3.2$ \; \blank[2.2cm]
-  \item $3.40 > 3.4$ \; \blank[2.2cm]
-  \item $60 \times 0.4 = 2.4$ \; \blank[2.2cm]
-\end{enumerate}
-\end{multicols}
 \end{minipage}
 
 % -- C5 ---------------------------------------------------------------------
-% Calculation -> English. A minipage: the rules and the expression were split
-% across a page on one build.
-\qhead{C5}{Now you write the question}
+% One trap each from 4.2, 4.4, 4.1 and 4.5. See the key.
+\qhead{C5}{Mr Bowen's homework}
 
 \noindent\begin{minipage}{\textwidth}
-\begin{yourturn}[The rules]
-  A \textbf{real} situation, in full sentences, ending in a \textbf{question}. Use
-  a \eng{word} from C1, give \textbf{units}, and come out at the answer given.
-  \fr{Une situation de la vie r\'eelle, des phrases compl\`etes, une question \`a la
-  fin, un mot de C1 et des unit\'es. \textbf{\'Ecris ton probl\`eme en anglais.}}
-\end{yourturn}
+Only \textbf{one} of Mr Bowen's answers is right. Write \textbf{right} or
+\textbf{wrong} for each one. If it is wrong, write the correct answer.
+\fr{Une seule r\'eponse de Mr Bowen est juste. \'Ecris \eng{right} (juste) ou
+\eng{wrong} (faux) pour chacune. Si elle est fausse, \'ecris la bonne r\'eponse.}
 
 \vspace{4pt}
-\noindent Write a word problem for \quad \expr{12 \times 2.40 = 28.80}
-\fr{Invente, en anglais, un probl\`eme (\eng{word problem}) qui correspond \`a ce
-calcul.}
-\wlines{\frl{3}{4}}
+{\renewcommand{\arraystretch}{\frl{1.35}{1.8}}%
+\noindent
+\begin{tabularx}{\textwidth}{|L|C{3.6cm}|C{4.6cm}|}
+  \hline
+  \textbf{Mr Bowen wrote} & \textbf{Right or wrong?} & \textbf{Correct answer} \\
+  \hline
+  (a) \ $4.5 + 2.7 = 6.12$ & & \\ \hline
+  (b) \ $9.6 \div 3 = 3.2$ & & \\ \hline
+  (c) \ $3.40 > 3.4$ & & \\ \hline
+  (d) \ $60 \times 0.4 = 2.4$ & & \\ \hline
+\end{tabularx}}
 \end{minipage}
 
 % ===========================================================================
@@ -500,28 +566,40 @@ calcul.}
 \qhead[cbgreen]{D1}{Key words}
 
 \noindent\begin{minipage}{\textwidth}
-Write the letter of the right meaning next to each word.
-\fr{\'Ecris \`a c\^ot\'e de chaque mot la lettre de sa d\'efinition.}
+Match each word to its meaning. Write the letter (A--F) in the box.
+\fr{Associe chaque mot \`a sa d\'efinition~: \'ecris la lettre (A \`a F) dans la
+case.}
 
 \vspace{6pt}
-\noindent
-\begin{tabularx}{\textwidth}{|>{\bfseries\color{cbblue}}l|C{1.3cm}|C{0.7cm}|L|}
-  \hline
-  nebula \tall & & \textbf{A} & an idea that can be tested
-    \frin{une id\'ee qu'on peut tester} \\ \hline
-  hypothesis \tall & & \textbf{B} & one flat surface \frin{une seule surface
-    plate} \\ \hline
-  evidence \tall & & \textbf{C} & a cloud of dust and gas in space \frin{un nuage
-    de poussi\`ere et de gaz} \\ \hline
-  model \tall & & \textbf{D} & facts from observations or experiments \frin{des
-    faits tir\'es d'observations ou d'exp\'eriences} \\ \hline
-  limitation \tall & & \textbf{E} & something a model cannot do, gets wrong or
-    leaves out \frin{ce qu'un mod\`ele ne peut pas faire, montre mal ou oublie} \\
-    \hline
-  plane \tall & & \textbf{F} & a way of showing something that is hard to observe
-    directly \frin{une fa\c{c}on de montrer ce qu'on ne peut pas bien observer} \\
-    \hline
-\end{tabularx}
+\noindent\begin{minipage}[t]{0.27\textwidth}\vspace{0pt}
+  {\renewcommand{\arraystretch}{\frl{1.15}{1.5}}%
+  \begin{tabular}{@{}>{\leavevmode\bfseries\color{cbblue}}p{2.4cm}c@{}}
+    nebula & \nbox \\
+    hypothesis & \nbox \\
+    evidence & \nbox \\
+    model & \nbox \\
+    limitation & \nbox \\
+    plane & \nbox \\
+  \end{tabular}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.70\textwidth}\vspace{0pt}
+  \begin{tcolorbox}[colback=black!3, colframe=black!25, boxrule=0.6pt, arc=4pt,
+                    left=8pt, right=8pt, top=4pt, bottom=4pt]
+  {\renewcommand{\arraystretch}{1.3}%
+  \begin{tabularx}{\linewidth}{@{}p{0.5cm}L@{}}
+    \textbf{A} & an idea that can be tested \frin{une id\'ee qu'on peut tester} \\
+    \textbf{B} & one flat surface \frin{une seule surface plate} \\
+    \textbf{C} & a cloud of dust and gas in space \frin{un nuage de poussi\`ere et
+      de gaz} \\
+    \textbf{D} & facts from observations or experiments \frin{des faits tir\'es
+      d'observations ou d'exp\'eriences} \\
+    \textbf{E} & something a model cannot do, gets wrong or leaves out \frin{ce
+      qu'un mod\`ele ne peut pas faire, montre mal ou oublie} \\
+    \textbf{F} & a way of showing something that is hard to observe directly
+      \frin{une fa\c{c}on de montrer ce qu'on ne peut pas bien observer} \\
+  \end{tabularx}}
+  \end{tcolorbox}
+\end{minipage}
 \end{minipage}
 
 % -- D2 ---------------------------------------------------------------------
@@ -536,14 +614,16 @@ spinning cloud of dust and gas.}
 poussi\`ere et de gaz qui tournait.}
 
 \vspace{6pt}
+\noindent Does each fact \textbf{support} it (agree) or \textbf{contradict} it (go
+against it)? Tick \textbf{one} box.
+\fr{Lis chaque fait. Confirme-t-il l'hypoth\`ese (\eng{supports}) ou la
+contredit-il (\eng{contradicts})~? Coche une case par ligne.}
+
+\vspace{4pt}
 \noindent
 \begin{tabularx}{\textwidth}{|L|C{2.5cm}|C{2.5cm}|}
   \hline
-  Does each fact \textbf{support} the hypothesis, or \textbf{contradict} it? Tick
-    one box.
-    \fr{Chaque fait confirme-t-il (\eng{supports}) l'hypoth\`ese, ou la
-    contredit-il (\eng{contradicts})~? Coche une case.}
-    & \textbf{supports} & \textbf{contradicts} \\ \hline
+  \textbf{Fact} & \textbf{supports} & \textbf{contradicts} \\ \hline
   All the planets orbit the Sun in the same direction. \frin{m\^eme sens} & & \\
     \hline
   All the orbits are in the same plane. \frin{m\^eme plan} & & \\ \hline
@@ -558,8 +638,8 @@ poussi\`ere et de gaz qui tournait.}
 
 \vspace{8pt}
 \noindent\begin{minipage}{\textwidth}
-\textbf{(b)} Two facts contradict the hypothesis. So is it wrong? Answer in a full
-sentence. Use the words \eng{most of the evidence}.
+\textbf{(b)} Two facts contradict the hypothesis. Is the hypothesis wrong? Answer
+in a full sentence. Use the words \eng{most of the evidence}.
 \fr{(b) Deux faits contredisent l'hypoth\`ese. Est-elle donc fausse~? R\'eponds par
 une phrase compl\`ete, en anglais, avec les mots \eng{most of the evidence}.}
 \wlines{\frl{2}{4}}
@@ -568,7 +648,6 @@ une phrase compl\`ete, en anglais, avec les mots \eng{most of the evidence}.}
 % -- D3 ---------------------------------------------------------------------
 % (a) is the Models deck's four-step write note, shuffled. (c) is its "Rocky or
 % giant?" slide. (d) is 3.2's 99.8%, as a decimal subtraction.
-\iffr\clearpage\fi
 \qhead[cbgreen]{D3}{From a cloud to the Sun and planets}
 
 \noindent\begin{minipage}{\textwidth}
@@ -577,8 +656,8 @@ and \textbf{4} in the boxes.
 \fr{(a) Remets les quatre \'etapes dans l'ordre~: \'ecris 1, 2, 3 et 4 dans les
 cases.}
 
-\vspace{4pt}
-\renewcommand{\arraystretch}{1.6}%
+\vspace{2pt}
+\renewcommand{\arraystretch}{\frl{1.42}{1.6}}%
 \noindent
 \begin{tabular}{@{}c@{\hspace{10pt}}l@{}}
   \nbox & The hot middle becomes the Sun. \frin{le centre chaud devient le Soleil} \\
@@ -591,35 +670,35 @@ cases.}
 \renewcommand{\arraystretch}{1.45}%
 \end{minipage}
 
-\vspace{8pt}
+\vspace{\frl{4pt}{8pt}}
 \noindent\begin{minipage}{\textwidth}
 \textbf{(b)} Why do all the planets orbit the Sun in the same direction? Answer in a
 full sentence. \; Start: \eng{``They all formed from \ldots''}
 \fr{(b) Pourquoi toutes les plan\`etes tournent-elles autour du Soleil dans le m\^eme
 sens~? R\'eponds par une phrase compl\`ete, en anglais.}
-\wlines{\frl{2}{4}}
+\wlines{\frl{3}{4}}
 \end{minipage}
 
-\vspace{6pt}
+\vspace{\frl{3pt}{6pt}}
 \noindent\begin{minipage}{\textwidth}
 \textbf{(c)} Mercury, Venus, the Earth and Mars are small and rocky. Why? \;
 Start: \eng{``Near the Sun, it was too hot for \ldots''}
 \fr{(c) Mercure, V\'enus, la Terre et Mars sont petites et rocheuses. Pourquoi~?
 R\'eponds en anglais.}
-\wlines{\frl{2}{4}}
+\wlines{\frl{3}{4}}
 \end{minipage}
 
-\vspace{6pt}
-\noindent\textbf{(d)} The Sun has \textbf{99.8\%} of all the mass in the Solar
-System. \% means \emph{out of 100}. How many \% are left for everything else?
-\hfill \blank[2.4cm]
-\fr{(d) Le Soleil a 99.8\,\% de toute la masse du syst\`eme solaire (\% = sur 100).
-Quel pourcentage reste-t-il pour tout le reste~?}
+\vspace{\frl{3pt}{6pt}}
+\noindent\begin{minipage}{\textwidth}
+\textbf{(d)} The Sun has \textbf{99.8\%} of the Solar System's mass. What \% is
+left for the rest? \hfill \blank[1.8cm]\,\%
+\fr{(d) Le Soleil a 99.8\,\% de la masse du syst\`eme solaire. Quel pourcentage
+reste-t-il pour tout le reste~? (Le tout fait 100\,\%.)}
+\end{minipage}
 
 % ===========================================================================
 % SECTION E -- SCIENCE 3.3: MOVEMENT IN SPACE
 % ===========================================================================
-\iffr\clearpage\fi
 \hwsection[cbgreen]{Section E \textperiodcentered\ Science 3.3 --- Movement in Space}
 
 % -- E1 ---------------------------------------------------------------------
@@ -638,7 +717,7 @@ Quel pourcentage reste-t-il pour tout le reste~?}
 
 \vspace{2pt}
 \begin{center}
-\begin{tikzpicture}[x=1cm, y=1cm]
+\begin{tikzpicture}[x=\orbitunit, y=\orbitunit]
   % orbit, with three arrowheads: the planet goes anticlockwise
   \draw[cbteal, line width=1.1pt] (0,0) circle (2.4);
   \foreach \a in {100, 190, 280}
@@ -666,10 +745,10 @@ Quel pourcentage reste-t-il pour tout le reste~?}
 
 \vspace{4pt}
 \begin{enumerate}[label=(\alph*), start=2, itemsep=6pt]
-  \item Draw an \textbf{arrow} on the planet to show the pull of the Sun's
-        \textbf{gravity}.
-        \fr{Dessine sur la plan\`ete une fl\`eche qui montre l'attraction de la
-        gravit\'e du Soleil.}
+  \item Draw an \textbf{arrow} on the planet. Show which way the Sun's
+        \textbf{gravity} pulls it.
+        \fr{Dessine une fl\`eche sur la plan\`ete~: elle montre dans quel sens la
+        gravit\'e du Soleil la tire.}
   \item The arrows show which way the planet moves. Now the Sun's gravity
         \textbf{switches off}. Draw a \textbf{dashed line} to show where the planet
         goes.
@@ -688,16 +767,20 @@ Quel pourcentage reste-t-il pour tout le reste~?}
 \qhead[cbgreen]{E2}{Which forces?\frin{Quelles forces~?}}
 
 \noindent\begin{minipage}{\textwidth}
+\noindent Which forces act on each one? Tick \textbf{every} box that is true.
+Some rows need \textbf{two} ticks.
+\fr{Quelles forces agissent sur chacun~? Coche toutes les cases justes~: certaines
+lignes ont deux coches.}
+
+\vspace{4pt}
 \noindent
 \begin{tabularx}{\textwidth}{|L|C{2.6cm}|C{2.6cm}|}
   \hline
-  Which forces act on each one? Tick \textbf{every} box that is true.
-    \fr{Quelles forces agissent sur chacun~? Coche toutes les cases justes.}
-    & \textbf{gravity} & \textbf{air resistance} \\ \hline
-  The Earth, orbiting the Sun \frin{la Terre} \tall & & \\ \hline
-  The Moon, orbiting the Earth \frin{la Lune} \tall & & \\ \hline
-  A ball falling from the balcony \frin{une balle qui tombe} \tall & & \\ \hline
-  A plane landing on a runway \frin{un avion qui atterrit} \tall & & \\ \hline
+  & \textbf{gravity} & \textbf{air resistance} \\ \hline
+  The Earth, orbiting the Sun \frin{la Terre} \tallen & & \\ \hline
+  The Moon, orbiting the Earth \frin{la Lune} \tallen & & \\ \hline
+  A ball falling from the balcony \frin{une balle qui tombe} \tallen & & \\ \hline
+  A plane landing on a runway \frin{un avion qui atterrit} \tallen & & \\ \hline
 \end{tabularx}
 \end{minipage}
 
@@ -734,7 +817,8 @@ phrase compl\`ete, en anglais.}
 % the end of the table to fill in: the speeds, the word help and the questions
 % must be on one page (the French copy split them).
 \noindent\begin{minipage}{\textwidth}
-\begin{center}
+\vspace{2pt}
+{\centering
 \setlength{\tabcolsep}{3pt}%
 \begin{tabular}{|l|*{8}{C{1.50cm}|}}
   \hline
@@ -744,31 +828,27 @@ phrase compl\`ete, en anglais.}
   \textbf{speed} (km/s) & \textbf{48} & \textbf{35} & \textbf{30} & \textbf{24} &
   \textbf{13} & \textbf{10} & \textbf{7} & \textbf{5} \\
   \hline
-\end{tabular}
-\end{center}
+\end{tabular}\par}
+
+\vspace{\frl{10pt}{6pt}}
+\noindent Fill in the table. Row 1 is done for you. In each row, the
+\textbf{first} planet is the faster one.
+\fr{Compl\`ete le tableau (la premi\`ere ligne est faite). Dans chaque ligne, la
+premi\`ere plan\`ete est la plus rapide. \eng{subtract} = soustraire~; \eng{divide}
+= diviser.}
 
 \vspace{4pt}
-\begin{wordhelp}[Word help --- two questions that look the same]
-  \begin{tabularx}{\linewidth}{@{}l@{\hspace{16pt}}X@{}}
-    \eng{how much faster?} & the difference. \textbf{Subtract} \frin{de combien
-      plus rapide~? = la diff\'erence} \\
-    \eng{how many times as fast?} & \textbf{divide} the bigger speed by the smaller
-      one \frin{combien de fois plus rapide~? = une division} \\
-  \end{tabularx}
-\end{wordhelp}
-
-\vspace{2pt}
 \noindent
-\begin{tabularx}{\textwidth}{|L|C{4.5cm}|C{4.5cm}|}
+\begin{tabularx}{\textwidth}{|L|C{4.9cm}|C{4.9cm}|}
   \hline
-  Fill in the table. The first row is done for you.
-    \fr{Compl\`ete le tableau. La premi\`ere ligne est faite pour toi.}
-    & \textbf{How much faster?} & \textbf{How many times as fast?} \\
-  \hline
-  Mercury and Neptune \tall & $48 - 5 = 43$ km/s & $48 \div 5 = 9.6$ \\ \hline
-  Mercury and the Earth \tall & & \\ \hline
-  Mars and Saturn \tall & & \\ \hline
-  The Earth and Mars \tall & & \\ \hline
+  \textbf{Planets} & \textbf{How much faster?} \newline
+    {\small\color{cbblue}\textbf{subtract}: the difference}
+  & \textbf{How many times as fast?} \newline
+    {\small\color{cbblue}\textbf{divide}: big $\div$ small} \\ \hline
+  Mercury and Neptune \tallen & $48 - 5 = 43$ km/s & $48 \div 5 = 9.6$ \\ \hline
+  Mercury and the Earth \tallen & & \\ \hline
+  Mars and Saturn \tallen & & \\ \hline
+  The Earth and Mars \tallen & & \\ \hline
 \end{tabularx}
 \end{minipage}
 
@@ -785,37 +865,60 @@ amount.
 \fr{En classe, le Soleil est devenu un ballon de foot, et tout le reste a \'et\'e
 r\'eduit de la m\^eme fa\c{c}on.}
 
-\vspace{6pt}
+\vspace{3pt}
 {\centering
 \setlength{\tabcolsep}{5pt}%
-\begin{tabular}{|l|*{5}{C{1.95cm}|}}
+\renewcommand{\arraystretch}{\frl{1.25}{1.45}}%
+\begin{tabular}{|l|*{5}{C{2.3cm}|}}
   \hline
   & \textbf{the Moon} & \textbf{the Earth} & \textbf{Neptune} & \textbf{Jupiter} &
   \textbf{the Sun} \\ \hline
   \textbf{Model width} & 0.5 mm & 2 mm & 7.8 mm & 2.3 cm & 22 cm \\ \hline
-  \textbf{Like} & \small a grain of sand & \small a pinhead & \small a pea &
-  \small a grape & \small a football \\ \hline
+  \textbf{Like} & \footnotesize a grain of sand & \small a pinhead & \small a pea
+  & \small a grape & \small a football \\ \hline
 \end{tabular}\par}
 
-\vspace{6pt}
-\noindent\textbf{(a)} Write the five model widths in order of size, starting with
-the \textbf{smallest}. Remember: \mbox{\key{1 cm = 10 mm}}.
+\vspace{5pt}
+\noindent\textbf{(a)} Write the five widths in order, \textbf{smallest} first.
+Remember: \mbox{\key{1 cm = 10 mm}}.
 \fr{(a) Range les cinq largeurs dans l'ordre croissant, de la plus petite \`a la
-plus grande (1 cm = 10 mm).}
+plus grande (\eng{smallest first}~; 1 cm = 10 mm).}
 \ansline[11.0cm]
 \end{minipage}
 
-\begin{enumerate}[label=(\alph*), start=2, itemsep=6pt]
-  \item In the model, the Earth is \textbf{24 m} from the football. Mr Bowen builds
-        the model in his classroom, which is \textbf{8.5 m} long. He puts the
-        football against one wall. How far past the other wall must the Earth go?
-        \fr{Dans le mod\`ele, la Terre est \`a 24 m du ballon. Mr Bowen construit le
-        mod\`ele dans sa classe, qui mesure 8.5 m de long. Il pose le ballon contre
-        un mur. \`A quelle distance derri\`ere l'autre mur doit-il mettre la Terre~?}
+\begin{enumerate}[label=(\alph*), start=2, itemsep=\frl{4pt}{6pt}]
+  \item Mr Bowen puts the football against one wall of his classroom, which is
+        \textbf{8.5 m} long. The Earth must be \textbf{24 m} from the football. How
+        far past the other wall is the Earth?
+        \fr{Mr Bowen pose le ballon contre un mur de sa classe, qui mesure 8.5 m de
+        long. La Terre doit \^etre \`a 24 m du ballon. \`A quelle distance derri\`ere
+        l'autre mur se trouve la Terre~?}
+        \par\nobreak\vspace{4pt}
+        % To scale: 0.6 cm per metre. The football against the left wall, the
+        % Earth 24 m away, out past the right wall; the ? is the gap between
+        % the right wall and the Earth, drawn on the same line.
+        {\centering
+        \begin{tikzpicture}[x=0.6cm, y=1cm]
+          \fill[cbteal!8] (0,0) rectangle (8.5,0.7);
+          \draw[black!80, line width=2.2pt] (0,-0.05) -- (0,0.75);
+          \draw[black!80, line width=2.2pt] (8.5,-0.05) -- (8.5,0.75);
+          \fill[sunfill] (0.45,0.35) circle (0.24cm);
+          \draw[sunrim, line width=0.8pt] (0.45,0.35) circle (0.24cm);
+          \node[font=\footnotesize, anchor=west] at (0.95,0.35) {football};
+          \node[font=\small\bfseries, text=cbteal] at (6.1,0.35) {8.5 m};
+          \fill[cbblue] (24,0.35) circle (0.08cm);
+          \node[font=\footnotesize, anchor=west] at (24.2,0.35) {Earth};
+          \draw[black!70, line width=1pt, {Stealth[length=5pt]}-{Stealth[length=5pt]}]
+            (8.6,0.35) -- node[fill=white, inner sep=2pt, font=\small\bfseries] {? m}
+            (23.8,0.35);
+          \draw[cborange, line width=1pt, {Stealth[length=5pt]}-{Stealth[length=5pt]}]
+            (0.45,1.0) -- node[fill=white, inner sep=2pt, font=\small\bfseries,
+            text=cborange] {24 m} (24,1.0);
+        \end{tikzpicture}\par}
         \iffr\par\nobreak\begin{workspace}[2.2cm]\end{workspace}\fi
         \calcans
-  \item Give \textbf{one limitation} of the football model. \; Start:
-        \eng{``One limitation of the football model is \ldots''}
+  \item Give \textbf{one limitation} of the model. \; Start: \eng{``One
+        limitation is \ldots''}
         \fr{Donne une limite (\eng{limitation}) du mod\`ele du ballon de foot, en
         anglais.}
         \qlines{\frl{2}{4}}
@@ -823,29 +926,31 @@ plus grande (1 cm = 10 mm).}
 
 % -- F3 ---------------------------------------------------------------------
 % THE KEYSTONE, and last. 3.3's exit question with NASA's numbers. (b) is
-% 3.3's reason, in a sentence: closer, so a stronger pull. (d)-(e): the mean is
-% 29.8, which rounds to the book's 30. (e) quotes the 30 so it does not send
+% 3.3's reason, in a sentence: closer, so a stronger pull. (d)-(f): the mean is
+% 29.8, which rounds to the book's 30. (f) quotes the 30 so it does not send
 % the student back a page to F1. The whole question is one block: every part
 % reads the table.
 \qhead[cbgreen]{F3}{Faster in January}
 
 \noindent\begin{minipage}{\textwidth}
+\noindent\begin{minipage}[c]{0.34\textwidth}\raggedright
 The Earth's orbit is \emph{almost} circular. In January the Earth is a little
 \textbf{closer} to the Sun than in July.
 \fr{L'orbite de la Terre est \emph{presque} circulaire. En janvier, la Terre est un
 peu plus proche (\eng{closer}) du Soleil qu'en juillet.}
-
-\vspace{6pt}
-{\centering
-\begin{tabular}{|l|C{4.4cm}|C{3.2cm}|}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.63\textwidth}\raggedleft
+\renewcommand{\arraystretch}{\frl{1.3}{1.45}}%
+\begin{tabular}{|l|C{4.6cm}|C{2.2cm}|}
   \hline
   & \textbf{Distance from the Sun} & \textbf{Speed} \\ \hline
   \textbf{January} & 147.1 million km & 30.3 km/s \\ \hline
   \textbf{July}    & 152.1 million km & 29.3 km/s \\ \hline
-\end{tabular}\par}
+\end{tabular}
+\end{minipage}
 
 \vspace{4pt}
-\begin{enumerate}[label=(\alph*), itemsep=6pt]
+\begin{enumerate}[label=(\alph*), itemsep=\frl{3pt}{6pt}]
   \item How much closer to the Sun is the Earth in January?
         \fr{De combien la Terre est-elle plus proche du Soleil en janvier~?}
         \calcans
@@ -855,7 +960,7 @@ peu plus proche (\eng{closer}) du Soleil qu'en juillet.}
         \fr{En quel mois la Terre va-t-elle le plus vite~? Pourquoi~? R\'eponds par
         une phrase compl\`ete, en anglais, avec les mots \eng{closer} et
         \eng{pull}.}
-        \qlines{3}
+        \qlines{\frl{2}{3}}
   \item How much faster is the Earth in January than in July?
         \fr{De combien la Terre va-t-elle plus vite en janvier qu'en juillet~?}
         \calcans
@@ -863,10 +968,9 @@ peu plus proche (\eng{closer}) du Soleil qu'en juillet.}
         \calcans
   \item Round your mean to the nearest whole number. \hfill \blank[2.6cm]
         \fr{Arrondis ta moyenne \`a l'unit\'e.}
-        \par\vspace{6pt}
-        In the lesson, the Earth's speed was \textbf{30 km/s}. What do you notice?
-        \fr{En classe, la vitesse de la Terre \'etait de 30 km/s. Que remarques-tu~?
-        R\'eponds en anglais.}
+  \item In the lesson, the Earth's speed was \textbf{30 km/s}. What do you notice?
+        \fr{En classe, la vitesse de la Terre \'etait de 30 km/s. Compare avec ta
+        r\'eponse \`a (e). Que remarques-tu~? R\'eponds en anglais.}
         \qlines{2}
 \end{enumerate}
 \end{minipage}
@@ -966,45 +1070,7 @@ Tuesday alone. \\
 $1.5$ from a student who did $24 \div 16$ and put the point back in the wrong place;
 the estimate (2.4 m in 16 pieces is much less than 1 m each) catches it.}
 
-\qhead[cbred]{C2}{Use a quick way}
-\noindent (a) $47 - 4.7 = 42.3$ \quad (b) $62 + 6.2 = 68.2$ \quad
-(c) $20 + 1.2 = 21.2$ \\
-(d) a quarter of $64 = 16$ \quad (e) $3 \times 7 = 21$ \quad
-(f) half of $9.6 = 4.8$
-
-\smallskip
-\noindent{\small (a) needs $47.0 - 4.7$. Expect $43.7$ from a student who took
-$47 - 4$ and copied the $.7$ across --- the A3(d) error again. \\
-(e) divides by \textbf{100}, not 10. Expect $210$ ($30 \times 7$). \\
-Accept a correct written method for any of them, but the column is ``the quick way'':
-ask for the quick way.}
-
-\qhead[cbred]{C3}{Change from 10 dollars}
-\noindent $3 \times 1.35 = 4.05$, \; $2 \times 1.90 = 3.80$, \; $4.05 + 3.80 =
-7.85$, \; $10.00 - 7.85 = \mathbf{2.15}$ dollars
-
-\smallskip
-\noindent{\small Four steps. The usual slip is to stop at $7.85$ and call it the
-change; ask what the question asked for. $3.8$ for the coffees is right but is money,
-so $3.80$. \\
-$10.00 - 7.85$ needs the zeros written. Expect $3.85$ from a student who took $10 -
-7 = 3$ and copied the $.85$ --- A3(d) and C2(a) again.}
-
-\qhead[cbred]{C4}{Mr Bowen's homework}
-\noindent (a) \textbf{wrong} --- $7.2$. He added $4 + 2$ and $5 + 7$ separately; the
-12 tenths carry. \\
-(b) \textbf{right.} \\
-(c) \textbf{wrong} --- $3.40 = 3.4$. The zero at the end does not change anything. \\
-(d) \textbf{wrong} --- $24$. $\times\, 0.4$ is $\div\, 10$, then $\times\, 4$: $6
-\times 4$.
-
-\smallskip
-\noindent{\small One trap each from 4.2, 4.4, 4.1 and 4.5. Whichever one a student
-gets wrong, send them back to A3, B2, A2 or C2 rather than explaining again. \\
-(b) is right on purpose and is the one with most room for doubt: a student who
-expects every division to need a 0 will ``correct'' it to $3.02$.}
-
-\qhead[cbred]{C5}{Now you write the question}
+\qhead[cbred]{C2}{Now you write the question}
 \noindent Check, in order: a real situation; full sentences; ends in a question
 mark; uses a word from C1; gives units; and it really comes out at $28.80$.
 
@@ -1015,6 +1081,46 @@ The common failure is a question whose answer is $0.20$: ``12 friends share 2.40
 dollars''. Read it back to them and ask what the calculation in the box does. \\
 Units need not be dollars --- ``12 bags of rice, 2.40 kg each'' is just as good ---
 but $28.80$ with two decimal places is a strong hint.}
+
+\qhead[cbred]{C3}{Use a quick way}
+\noindent (a) $47 - 4.7 = 42.3$ \quad (b) $62 + 6.2 = 68.2$ \quad
+(c) $20 + 1.2 = 21.2$ \\
+(d) a quarter of $64 = 16$ \quad (e) $3 \times 7 = 21$ \quad
+(f) half of $9.6 = 4.8$
+
+\smallskip
+\noindent{\small Each row's example uses the same quick way as its question, so a
+student who copies the example's shape gets there. (a) needs $47.0 - 4.7$. Expect
+$43.7$ from a student who took $47 - 4$ and copied the $.7$ across --- the A3(d)
+error again. \\
+(e) divides by \textbf{100}, not 10. Expect $210$ ($30 \times 7$). \\
+Accept a correct written method for any of them, but the column is ``the quick way'':
+ask for the quick way.}
+
+\qhead[cbred]{C4}{Change from 10 dollars}
+\noindent $3 \times 1.35 = 4.05$, \; $2 \times 1.90 = 3.80$, \; $4.05 + 3.80 =
+7.85$, \; $10.00 - 7.85 = \mathbf{2.15}$ dollars
+
+\smallskip
+\noindent{\small Four steps. The usual slip is to stop at $7.85$ and call it the
+change; ask what the question asked for. $3.8$ for the coffees is right but is money,
+so $3.80$. \\
+$10.00 - 7.85$ needs the zeros written. Expect $3.85$ from a student who took $10 -
+7 = 3$ and copied the $.85$ --- A3(d) and C3(a) again.}
+
+\qhead[cbred]{C5}{Mr Bowen's homework}
+\noindent (a) \textbf{wrong} --- $7.2$. He added $4 + 2$ and $5 + 7$ separately; the
+12 tenths carry. \\[1pt]
+(b) \textbf{right.} \\
+(c) \textbf{wrong} --- $3.40 = 3.4$. The zero at the end does not change anything. \\
+(d) \textbf{wrong} --- $24$. $\times\, 0.4$ is $\div\, 10$, then $\times\, 4$: $6
+\times 4$.
+
+\smallskip
+\noindent{\small One trap each from 4.2, 4.4, 4.1 and 4.5. Whichever one a student
+gets wrong, send them back to A3, B2, A2 or C3 rather than explaining again. \\
+(b) is right on purpose and is the one with most room for doubt: a student who
+expects every division to need a 0 will ``correct'' it to $3.02$.}
 
 \qhead[cbred]{D1}{Key words}
 \noindent nebula \textbf{C} \sep hypothesis \textbf{A} \sep evidence \textbf{D}
@@ -1127,16 +1233,17 @@ joke and also the point of the Models lesson: the Solar System is mostly empty. 
 Sun's pull is stronger.'' \\
 (c) $30.3 - 29.3 = \mathbf{1}$ km/s \quad
 (d) $30.3 + 29.3 = 59.6$, \; $59.6 \div 2 = \mathbf{29.8}$ km/s \\
-(e) $\mathbf{30}$. ``It is the same as the Earth's speed in the lesson.''
+(e) $\mathbf{30}$ \quad (f) ``It is the same as the Earth's speed in the
+lesson.''
 
 \smallskip
 \noindent{\small \textbf{This is the question the packet is built around.} It is
 3.3's exit question with real numbers (NASA: 147.1 and 152.1 million km; 30.29 and
 29.29 km/s). The rule from 3.3 is that closer planets move faster, and here it holds
 for one planet over one year. \\
-(e) is the reveal: the book's 30 km/s is the Earth's \emph{mean} speed, rounded.
+(f) is the reveal: the book's 30 km/s is the Earth's \emph{mean} speed, rounded.
 Worth putting on the board: the table in F1 is a table of means. Any sentence that
-says the two are the same earns (e); one that says \emph{why} (``the lesson used the
+says the two are the same earns (f); one that says \emph{why} (``the lesson used the
 mean'') is the best answer on the packet. \\
 (a) and (c) both come out as whole numbers written as decimals ($5.0$, $1.0$);
 accept either. (b) is 3.3's ``closer planets move faster'' turned on one planet:
