@@ -34,10 +34,11 @@
 %   Part E  Caffeine and sleep, on its own last page (added 24 Oct at the
 %           teacher's request, replacing a same/different question whose
 %           starter gave the answer, a joke tick question and a checklist):
-%           a five-point reading guide, a plan from the packet's numbers (50 mg
-%           at 11 p.m., last drink by 5 p.m., one cold brew leaves 25 mg), and
-%           a letter to Mr Bowen with six tick-off conditions so it is
-%           markable.
+%           a six-point reading guide (adenosine, named; 100 mg near bedtime
+%           for an adult, about 50 mg for a child; stop 8 hours before bed),
+%           a plan from the packet's numbers (50 mg at 11 p.m., one cup by
+%           3 p.m., one cold brew leaves 25 mg), and a letter to Mr Bowen with
+%           six tick-off conditions and NO sentence starter (teacher's call).
 %
 % English only. If a French copy is wanted, follow hw09x: \fr lines, the
 % -French build, an even page count.
@@ -752,20 +753,23 @@ billion years. So the Sun is about \blank[1.6cm] billion years old.
   \begin{minipage}[t]{0.75\linewidth}
   \begin{enumerate}[label=\textbf{\arabic*.}, itemsep=3pt, topsep=0pt,
                     leftmargin=1.6em]
-    \item All day your brain makes a \key{sleepy chemical}. You feel tired.
-    \item \key{Caffeine blocks it.} The sleepy chemical is still there, but
+    \item All day your brain makes \key{adenosine}
+      {\small\color{black!60}\mbox{(a-DEN-o-seen)}}, a chemical that makes
+      you feel sleepy.
+    \item \key{Caffeine blocks adenosine.} The adenosine is still there, but
       your brain cannot feel it.
     \item Caffeine makes it harder to \textbf{fall asleep} and \textbf{stay
       asleep}.
-    \item Adults who had \textbf{400 mg} of caffeine \textbf{6 hours} before
-      bed slept about \textbf{1 hour less}. So: \key{no caffeine for 6 hours
-      before bed}.
-    \item At your age you need \textbf{9 to 11 hours} of sleep. Sleep helps
-      you \textbf{remember} what you learned.
+    \item \key{How much is too much?} Even \textbf{100~mg} (one cup of
+      coffee) near bedtime can stop an adult sleeping. A child: about
+      \textbf{50~mg}.
+    \item \key{Stop caffeine 8 hours before bed}, or longer after a big
+      drink.
+    \item At your age you need \textbf{9 to 11 hours} of sleep.
   \end{enumerate}
   \end{minipage}\hfill
   \begin{minipage}[t]{0.23\linewidth}\vspace{2pt}\centering
-    % Caffeine sits in the gaps, so the sleepy chemical cannot get in.
+    % Caffeine sits in the gaps, so adenosine cannot get in.
     \begin{tikzpicture}[x=1cm, y=1cm]
       \fill[cbblue!14] (0,0) -- (0,0.75) -- (0.3,0.75) arc (180:360:0.28)
         -- (1.24,0.75) arc (180:360:0.28) -- (2.18,0.75) arc (180:360:0.28)
@@ -781,23 +785,23 @@ billion years. So the Sun is about \blank[1.6cm] billion years old.
       \draw[cbblue, line width=0.8pt, -{Stealth[length=4pt]}]
         (0.95,1.55) -- (0.8,1.12);
       \node[font=\scriptsize\bfseries, text=cbblue, align=center] at (1.5,2.55)
-        {sleepy chemical};
+        {adenosine};
       \draw[coffee, line width=0.8pt] (2.46,0.5) -- (2.8,-0.35);
       \node[font=\scriptsize\bfseries, text=coffee] at (2.6,-0.55) {caffeine};
     \end{tikzpicture}
 
     \vspace{2pt}
-    {\scriptsize\color{black!65}Caffeine sits in the gaps.\\The sleepy
-    chemical\\cannot get in.\par}
+    {\scriptsize\color{black!65}Caffeine sits in the gaps.\\Adenosine
+    cannot get in.\par}
   \end{minipage}
 \end{remember}
 
 \qhead{E1}{Plan your letter}
 \noindent (a) At 11~p.m. Mr Bowen still has \mg[1.4cm] of caffeine.
-Caffeine blocks the \blank[3.0cm]\,.
+Caffeine blocks \blank[3.0cm]\,.
 
 \vspace{10pt}
-\noindent (b) Bed is at 11~p.m. So his last caffeine must be before
+\noindent (b) Bed is at 11~p.m. One cup of coffee must be before
 \blank[2.4cm]\,.
 
 \vspace{10pt}
@@ -806,9 +810,8 @@ Caffeine blocks the \blank[3.0cm]\,.
 
 \qhead{E2}{A letter to Mr Bowen}
 \noindent\begin{minipage}{\linewidth}
-\noindent Mr Bowen cannot sleep. Write him a letter. Tell him \textbf{why} he
-is still awake, and \textbf{how} to sleep better. Tick each one when it is in
-your letter:
+\noindent Write to Mr Bowen: \textbf{why} is he still awake, and \textbf{how}
+can he sleep better? Tick each one:
 
 \vspace{4pt}
 \renewcommand{\arraystretch}{1.25}
@@ -820,9 +823,6 @@ your letter:
   \tickbox & Two numbers from E1 &
     \tickbox & At least \textbf{5 full sentences} \\
 \end{tabularx}
-
-\vspace{3pt}
-\noindent\starter{Dear Mr Bowen, I know why you are still awake. \ldots}
 \end{minipage}
 \wlines{8}
 
@@ -981,38 +981,51 @@ there because ``half of 71'' is a real step; 35 or 36 is fine.}
 \sep order: \textbf{caffeine, carbon-14, the Sun}
 
 \qhead[cbred]{E1}{Plan your letter}
-\noindent (a) \textbf{50} mg; the \textbf{sleepy chemical} \sep (b)
-\textbf{5~p.m.} \sep (c) \textbf{100, 50, 25} mg
+\noindent (a) \textbf{50} mg; \textbf{adenosine} \sep (b) \textbf{3~p.m.}
+\sep (c) \textbf{100, 50, 25} mg
 
 \smallskip
-\noindent{\small (b) is 11~p.m.\ minus 6 hours; expect 6~p.m.\ or 4~p.m.\
+\noindent{\small (b) is 11~p.m.\ minus 8 hours; expect 4~p.m.\ or 2~p.m.\
 from a student counting on their fingers. (c) is the advice with a number in
 it: one cold brew instead of two halves his bedtime caffeine, 50 mg to
 25 mg. A student who writes 100 at 11~p.m.\ halved once for the whole day.}
 
+\smallskip
+\noindent{\small \textbf{Expect: ``50 mg is less than 100 mg, so he should
+sleep.''} Good thinking, and worth a minute in class. The 100 mg is a cup
+drunk \emph{near} bedtime, and it is ``can'', not ``will'': some adults are
+kept awake by less. His real problem is the size of the drink: 400 mg is four
+cups, so 15 hours was not enough --- the guide's ``a bigger drink needs
+longer''.}
+
 \qhead[cbred]{E2}{A letter to Mr Bowen}
-\noindent{\small Mark the six ticks in order; the first one missing is the
-thing to send back. The advice must come with a \emph{why}. A model answer:}
+\noindent{\small No sentence starter on purpose: the students begin it
+themselves. Mark the six ticks in order; the first one missing is the thing
+to send back. The advice must come with a \emph{why}. A model answer:}
 
 \smallskip
-\noindent\textit{Dear Mr Bowen, I know why you are still awake. You drank
-400 mg of caffeine at 8 a.m. Caffeine has a half-life of 5 hours, so at
-11 p.m. you still have 50 mg in your body. Caffeine blocks the sleepy
-chemical, so your brain does not feel tired. Please drink only one cold
-brew, because then you will have 25 mg at bedtime, not 50 mg. Also, have no
-caffeine after 5 p.m. From, \ldots}
+\noindent\textit{Dear Mr Bowen, You drank 400 mg of caffeine at 8 a.m.
+That is four cups of coffee. Caffeine has a half-life of 5 hours, so at
+11 p.m. you still have 50 mg in your body. Caffeine blocks adenosine, so your
+brain does not feel sleepy. Please drink only one cold brew, because then you
+will have 25 mg at bedtime, not 50 mg. From, \ldots}
 
 \smallskip
 \noindent{\small \textbf{The guide's facts, and where they come from.}
 (1--2) Adenosine builds up while we are awake and makes us sleepy; caffeine
-blocks its receptors. The sheet says ``sleepy chemical'' and never names it;
-accept \emph{adenosine} from a student who looked it up. (3) Caffeine delays
-sleep and reduces deep sleep. (4) Drake et al., \textit{J.\ Clin.\ Sleep
-Med.} 2013: 400 mg six hours before bed cut sleep by more than an hour, and
-the authors advise at least 6 hours without caffeine before bed. 400 mg is
-Mr Bowen's two cold brews, on purpose. (5) US National Sleep Foundation:
-9--11 hours for ages 6--13 (the American Academy of Sleep Medicine says 9--12
-to age 12, 8--10 from 13).}
+blocks its receptors. (3) Caffeine delays sleep and adds waking in the
+night. (4) European Food Safety Authority, \textit{Scientific Opinion on the
+safety of caffeine} (2015): single doses of 100 mg (1.4 mg per kg for a 70 kg
+adult) may delay sleep and shorten it in some adults, especially close to
+bedtime. The 50 mg for a child is our arithmetic, not an EFSA figure: the
+same 1.4 mg per kg for a 35--40 kg Year 7. For the whole day, Health Canada's
+maximum for ages 10--12 is 85 mg. (5) Gardiner et al., \textit{Sleep Medicine
+Reviews} 2023, a meta-analysis: a cup of coffee (about 107 mg) at least
+8.8 hours before bed to avoid losing sleep, and a 217 mg dose at least
+13.2 hours. Drake et al.\ (2013) found 400 mg even 6 hours before bed cut
+sleep by more than an hour, which is why the sheet says 8, not the 6 often
+quoted. (6) US National Sleep Foundation: 9--11 hours for ages 6--13 (the
+American Academy of Sleep Medicine says 9--12 to age 12, 8--10 from 13).}
 
 \fi
 

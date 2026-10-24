@@ -57,11 +57,15 @@ Mr Bowen's day, chosen so the halving is exact: two cold brews from Jeremy's at
 | 5 | B2 reading a label (20 mg in 100 ml, 300 ml), the answer; B3 the halving table, with a tea example that crosses noon and midnight; B4 bedtime between two boxes; B5 compare with Mr Bowen |
 | 6 | B6 one limitation (tick, then a sentence); Part C: C1 the chain in years; C2 the museum |
 | 7 | C3 why not (alive / old); Part D: D1 how old is the Sun; D2 three clocks to match and order |
-| 8 | Part E: a five-point guide to caffeine and sleep (sleepy chemical, blocked; the 400 mg / 6 hours study; 9–11 hours), with a picture; E1 plan from the packet's numbers (50 mg, last drink by 5 p.m., one cold brew leaves 25 mg); E2 a letter to Mr Bowen, six tick-off conditions, eight lines |
+| 8 | Part E: a six-point guide to caffeine and sleep, with a picture (adenosine, blocked; **100 mg** near bedtime can stop an adult sleeping, about **50 mg** a child; stop **8 hours** before bed, longer after a big drink; 9–11 hours); E1 plan from the packet's numbers (50 mg, one cup by 3 p.m., one cold brew leaves 25 mg); E2 a letter to Mr Bowen, six tick-off conditions, eight blank lines |
 
-The guide's sources are in the key: adenosine (never named on the student page),
-Drake et al. 2013 for 400 mg six hours before bed, and the National Sleep
-Foundation's 9–11 hours for ages 6–13.
+Teacher's calls on Part E: say **adenosine**, not "sleepy chemical" (too juvenile);
+**no sentence starter** on the letter; give a **direct mg figure**, not the 400 mg
+study, which read as if 400 mg were the line. The sources are in the key: EFSA
+(2015) for 100 mg in adults (the child's 50 mg is the same 1.4 mg/kg scaled to a
+Year 7, our arithmetic); Gardiner et al. (2023) for about 9 hours per cup, Drake
+et al. (2013) for why 6 hours is not enough; the National Sleep Foundation's
+9–11 hours for ages 6–13.
 
 ## Building
 
