@@ -1,7 +1,7 @@
 # Year 7 · Science Models · Challenge Homework — Why Is Mr Bowen Still Awake?
 
 `caffeine.tex`: an **eight-page** challenge packet (two A4 sheets, double-sided) for
-after Part 2 of the Models deck (`content/y7-science/U03_models`, slides 18–46).
+after **Coffee, Carbon and Stars** (`content/y7-science/U03_coffee`).
 
 | File | What it is |
 | --- | --- |
@@ -9,47 +9,50 @@ after Part 2 of the Models deck (`content/y7-science/U03_models`, slides 18–46
 | `caffeine-teacher.pdf` | Student copy plus a 3-page key with diagnoses. |
 
 **Keep it at eight.** The first draft was 13 pages and the teacher called it "way too
-many pages". What came out to get there: Mr Bowen's full 16-row hour-by-hour table
-(now B2, 1 p.m. to 8 p.m. only), a separate cover word-help box, a "more or less
-than one cup" question (A5 asks it), reading a printed carbon-14 curve between the
-dots (70% and 35%, and "35 is half of 70"), and a "right clock" matching question
-that repeated deck slide 33.
+many pages".
+
+## Rewritten easier (24 Oct 2026)
+
+The teacher found the first version too hard for Year 7. The deck only ever
+**halves** (its plan: "keep the maths to halving"), so the packet now does too.
+
+- **Out:** the hour-by-hour rule (× 0.87 every hour) and everything built on it —
+  the 20-row table and the graph with a scale to choose; the latte added halfway
+  through Mr Bowen's day; the 400 mg daily limit; the label-maths drill; the
+  charcoal and cotton traps in the museum.
+- **Kept, by request:** the interview, and students still **look the caffeine up
+  themselves**, on the label or with Google. Now it is one drink, halved every
+  5 hours to bedtime.
+- **In, by request:** the Sun and "different speeds, the same maths" (deck slides
+  20–22).
+- **Not added, by choice:** Mr Bowen's sad day, Last Atom Standing at home, a
+  separate dinosaur question. (The T. rex tooth stays in the museum, the only place
+  the 50 000-year limit is tested.)
 
 ## The numbers
 
 The deck's own: caffeine half-life **5 hours**, a cup of coffee **about 100 mg**,
-carbon-14 half-life **5 700 years**, carbon dating to **about 50 000 years**.
+carbon-14 half-life **5 700 years**, carbon dating to **about 50 000 years**,
+dinosaurs **66 million years** ago, the Sun **about 4.6 billion years** old, its core
+hydrogen **71% → 34%** (about half gone; never call it a half-life).
 
-Mr Bowen's real day, chosen so the halving is exact:
-
-| | |
-| --- | --- |
-| 8 a.m. | two cold brews from Jeremy's, 200 mg each → **400** |
-| 1 p.m. | halved → 200, then a double-shot oat milk latte (2 × 60 mg) → **320** |
-| 6 p.m. | **160** |
-| 8 p.m. | off the grid: read from the graph, **about 120** (exactly 121) |
-| 11 p.m. | bedtime, **80** — almost a whole cup of coffee |
-
-Bedtime is 11 p.m., not 8 p.m., because 8 p.m. is not a whole number of half-lives
-after 1 p.m. It became the read-between-the-dots question instead, which is the skill
-Part C needs.
-
-The hour-by-hour rule is **× 0.87 every hour, + a drink when they drink**.
-0.87⁵ = 0.498, so it is the 5-hour half-life. Rounded at every step it gives 160 at
-6 p.m. and 121 at 8 p.m., which is what B2 checks against Parts A2 and A4.
+Mr Bowen's day, chosen so the halving is exact: two cold brews from Jeremy's at
+8 a.m., 200 mg each → **400**; 1 p.m. **200**; 6 p.m. **100**; bed at 11 p.m.
+**50**, half a cup of coffee. 8 p.m. is read from the graph between the dots:
+**about 76** (straight lines give 80).
 
 ## What's in it
 
 | Page | |
 | --- | --- |
-| 1 | Cover, how to do it, the three write-notes from the deck, Mr Bowen's day as a timeline |
-| 2 | Word help; A1 the drinks (and "does the oat milk add caffeine?"); A2 the half-life chain; A3 the graph, morning drawn |
-| 3 | A4 read the graph (8 p.m., 11 p.m., 520 mg against the 400 mg limit, which drink to skip); A5 the title question; Part B the rule; B1 why 0.87 |
-| 4 | B2 check it with Mr Bowen; **Part C**: what you will do (Sting named), C1 the interview questions and the drinks table |
-| 5 | C2 finding the caffeine (label, website, search; mg per 100 ml; the middle of a range); C3 the hour-by-hour table, 20 rows in two halves |
-| 6 | C4 their graph, with a scale chooser |
-| 7 | C5 results: bedtime, compared with Mr Bowen, one piece of advice, one limitation; a hand-in checklist |
-| 8 | Part D: D1 the halving chain; D2 the museum (three traps: charcoal and cotton were alive, a stone axe never was, a T. rex is too old); D3 same model, different clock |
+| 1 | Cover, how to do it, the deck's three write notes, Mr Bowen's day as a timeline |
+| 2 | Word help; A1 halving warm-up; A2 Mr Bowen's chain; A3 does it ever run out? (the limitation, as a fill-in) |
+| 3 | A4 the graph (the first part drawn); A5 read 8 p.m. between two dots; A6 the title question |
+| 4 | Part B: what you will do, word help; B1 the interview; B2 where to look |
+| 5 | B2 reading a label (20 mg in 100 ml, 300 ml), the answer; B3 the halving table, with a tea example that crosses noon and midnight; B4 bedtime between two boxes; B5 compare with Mr Bowen |
+| 6 | B6 one limitation (tick, then a sentence); Part C: C1 the chain in years; C2 the museum |
+| 7 | C3 why not (alive / old); Part D: D1 how old is the Sun; D2 three clocks to match |
+| 8 | D3 the same maths; D4 one more link (carbon made in a star); hand-in checklist |
 
 ## Building
 
@@ -58,7 +61,7 @@ pwsh .claude/skills/new-homework/scripts/build-hw.ps1 caffeine
 ```
 
 Built and verified with MiKTeX: student copy **8 pages**, teacher copy 11, no errors,
-no overfull boxes in the student copy. Every page was rasterised and read.
+no overfull boxes. Every page was rasterised and read.
 
 English only. A French copy would follow `../hw09x/`: `\fr` lines, the `-French`
 build, an even page count.

@@ -259,14 +259,14 @@ export const HOMEWORK = [
     subtitle: 'Science 3.1 lab · ruler, lab and balcony · print double-sided',
     pdf: lab31,
   },
-  // The challenge after Science Models Part 2. Mr Bowen's real coffee in
-  // half-life steps, the hour-by-hour rule, then the main task: interview an
-  // adult at home and estimate their caffeine at bedtime. Carbon dating last.
+  // The challenge after Coffee, Carbon and Stars. Halving only, like the deck:
+  // Mr Bowen's coffee in 5-hour steps, an interview at home (one drink, looked
+  // up on the label or Google, halved to bedtime), carbon dating, the Sun.
   {
     id: 'caffeine',
     label: 'CH',
     title: 'Why Is Mr Bowen Still Awake?',
-    subtitle: 'Challenge · Science Models · caffeine, an interview, carbon dating',
+    subtitle: 'Challenge · Science Models · caffeine, an interview, carbon dating, the Sun',
     pdf: caffeine,
   },
   // Unit 4 again with new numbers, then Science 3.2, 3.3 and the football model.

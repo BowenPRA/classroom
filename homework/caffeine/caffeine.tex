@@ -1,46 +1,40 @@
 % homework/caffeine/caffeine.tex
-% Year 7 - Science Models, Part 2: Challenge Homework. Why Is Mr Bowen Still
-% Awake?
+% Year 7 - Science Models: Challenge Homework. Why Is Mr Bowen Still Awake?
 %
-% EIGHT PAGES (two A4 sheets, double-sided). The first draft was 13 and the
-% teacher called it "way too many pages". Keep it at eight.
+% EIGHT PAGES (two A4 sheets, double-sided). Goes home after Coffee, Carbon
+% and Stars (content/y7-science/U03_coffee). Every number is the deck's:
+% caffeine's half-life about 5 hours, a cup of coffee about 100 mg, carbon-14's
+% half-life 5 700 years, carbon dating up to about 50 000 years, dinosaurs 66
+% million years ago, the Sun about 4.6 billion years old with about half its
+% core hydrogen gone (71% at birth, 34% now).
 %
-% Goes home after Part 2 of the Models deck (content/y7-science/U03_models,
-% slides 18-46). Every number the deck gave is kept: caffeine's half-life is
-% 5 hours, a cup of coffee is about 100 mg, carbon-14's half-life is 5 700
-% years, carbon dating works up to about 50 000 years.
+% REWRITTEN 24 Oct 2026, EASIER. The teacher found the first version too hard
+% for Year 7. The deck only ever HALVES (its plan: "keep the maths to
+% halving"), so this sheet now does too. Out: the hour-by-hour rule (x 0.87
+% every hour) and everything built on it -- the 20-row table, the graph with a
+% scale to choose -- the latte added halfway through Mr Bowen's day, the
+% 400 mg daily limit, the label-maths drill, and the charcoal and cotton traps
+% in the museum. Kept, by request: the interview, and students still look the
+% caffeine up themselves, on the label or with Google. In, by request: the Sun
+% and "different speeds, the same maths" (deck slides 20-22).
 %
-% ONE SPINE. The deck's coffee was a made-up 100 mg at 7 a.m. This sheet starts
-% from Mr Bowen's REAL day and ends with a real person the student knows:
-%   Part A  Mr Bowen's real day in half-life steps. Two cold brews from
-%           Jeremy's at 8 a.m. (200 mg each), a double-shot oat milk latte at
-%           1 p.m. (2 x 60 mg), bed at 11 p.m. The times are 5 hours apart on
-%           purpose, so the halving is exact: 400, 200 (+120) 320, 160, 80.
-%           8 p.m. is OFF the grid, so it is read from the graph (about 121).
-%   Part B  The hour-by-hour rule (x 0.87 every hour, + a drink when they
-%           drink), because nobody at home drinks exactly every 5 hours.
-%           0.87^5 = 0.498, so it IS the 5-hour half-life. B2 runs it from
-%           1 p.m. to 8 p.m.: 160 at 6 p.m. (A2 says 160) and 121 at 8 p.m.
-%           (the graph says about 120). Deck slide 43: when different methods
-%           agree, scientists trust the answer.
-%   Part C  THE MAIN TASK. Interview an adult at home, look up each drink,
-%           build the hour-by-hour table and the graph, and estimate their
-%           caffeine at bedtime. Ends with one limitation of the model.
-%   Part D  Carbon dating: the halving chain, a museum table with three traps
-%           (charcoal and cotton WERE alive; a stone axe never was; a T. rex is
-%           too old), and what caffeine and carbon-14 have in common: top-ups,
-%           then halving.
+%   Part A  Mr Bowen's coffee. Two cold brews at 8 a.m. (400 mg), bed at
+%           11 p.m.: 400, 200, 100, 50, every 5 hours. The graph is plotted
+%           from those four dots, and 8 p.m. is read between them (deck slide
+%           5). Does it ever run out? The limitation, as a fill-in (slide 6).
+%   Part B  Interview one adult about ONE drink (their first caffeine drink
+%           yesterday), look it up, halve it every 5 hours past bedtime, and
+%           estimate their bedtime caffeine between two boxes. A worked tea
+%           example (40 mg at 7 a.m.) shows the clock crossing noon and
+%           midnight.
+%   Part C  Carbon dating: the chain in years, a five-row museum (a stone axe
+%           was never alive; a T. rex tooth is too old), two fill-ins.
+%   Part D  The Sun: half of 71% against 34%, hydrogen into helium, three
+%           clocks to match, the same maths, and the carbon in the coffee that
+%           was made in a star (slide 22's "One more link").
 %
-% Mr Bowen's numbers, hour by hour, rounded at every step (the key uses them):
-%   8 400 | 9 348 | 10 303 | 11 264 | 12 230 | 1 200 +120 = 320 | 2 278 |
-%   3 242 | 4 211 | 5 184 | 6 160 | 7 139 | 8 121 | 9 105 | 10 91 | 11 79
-%
-% Nothing untaught: x 0.87 and 3.3 x 20 are Unit 4 decimals, the mean of two
-% numbers is HW 9, reading a scale is HW 8 Section F. Calculators are allowed.
-% The 400 mg a day for adults is given on the page, not assumed.
-%
-% English only for now. If a French copy is wanted, follow hw09x: \fr lines,
-% \FRENCH build, even page count.
+% English only. If a French copy is wanted, follow hw09x: \fr lines, the
+% -French build, an even page count.
 %
 % House style is shared: see homework/hw-style.tex. Method: the new-homework
 % skill. Source is pure ASCII on purpose.
@@ -83,27 +77,27 @@
 % The word-help term column. \leavevmode first: a \color at the very start of
 % a p-cell lands in vertical mode and drops the term a line below its meaning.
 \newcolumntype{W}[1]{>{\leavevmode\raggedright\bfseries\color{cbblue}}p{#1}}
-\newcommand{\tall}{\rule[-0.6em]{0pt}{1.9em}}
+\newcommand{\tall}{\rule[-0.9em]{0pt}{2.6em}}
 \newcommand{\hrow}{\rowcolor{cbteal!10}}
 
 % -- A sentence starter or a done-for-you entry: grey -------------------------
 % \leavevmode for the same reason as W: it is used at the start of table cells.
 \newcommand{\starter}[1]{{\leavevmode\color{black!60}#1}}
 
-% -- "Main task", as a small orange tag ---------------------------------------
-\newcommand{\maintag}{\tcbox[on line, colback=white, colframe=cborange,
-  boxrule=1pt, arc=3pt, left=4pt, right=4pt, top=1pt, bottom=1pt,
-  boxsep=1pt]{\small\bfseries\color{cborange}THE MAIN TASK}}
-
 % -- An answer blank with a unit after it --------------------------------------
 \newcommand{\mg}[1][1.8cm]{\blank[#1]\,mg}
+
+% -- A tick box with its answer, for a row of choices --------------------------
+\newcommand{\choice}[1]{\tickbox\,\,#1}
 
 % -- Colours for the drawings -------------------------------------------------
 \definecolor{ink}{HTML}{2B2B2B}
 \definecolor{coffee}{HTML}{6B3D1F}
-\definecolor{lattec}{HTML}{C9A57E}
 \definecolor{foam}{HTML}{F6F0E8}
 \definecolor{moon}{HTML}{F2C14E}
+\definecolor{cfour}{HTML}{E07A1F}
+\definecolor{sunfill}{HTML}{FFD45C}
+\definecolor{sunray}{HTML}{E8A317}
 
 % -- The drawings -------------------------------------------------------------
 \tikzset{
@@ -118,16 +112,27 @@
     \draw[ink, line width=0.9pt, fill=white] (-0.45,1.40) rectangle (0.45,1.53);
     \draw[cbred, line width=2.2pt, line cap=round] (0.10,1.53) -- (0.24,2.02);
   },
-  % A glass mug of latte with foam on top, its base at (0,0).
-  latte/.pic={
-    \fill[lattec] (-0.36,0) -- (0.36,0) -- (0.40,0.98) -- (-0.40,0.98) -- cycle;
-    \fill[foam] (-0.40,0.98) -- (0.40,0.98) -- (0.42,1.22) -- (-0.42,1.22) -- cycle;
-    \draw[ink, line width=0.9pt, line join=round]
-      (-0.36,0) -- (0.36,0) -- (0.43,1.30) -- (-0.43,1.30) -- cycle;
-    \draw[ink, line width=1.6pt] (0.40,1.02) .. controls (0.78,1.0) and (0.76,0.36) .. (0.37,0.34);
-    \foreach \x in {-0.18, 0.05, 0.26}
+  % A mug of hot coffee with steam, its base at (0,0).
+  mug/.pic={
+    \foreach \x in {-0.18, 0.0, 0.18}
       \draw[black!35, line width=0.9pt, line cap=round]
-        (\x,1.42) .. controls (\x-0.1,1.55) and (\x+0.1,1.65) .. (\x,1.78);
+        (\x,1.05) .. controls (\x-0.1,1.17) and (\x+0.1,1.27) .. (\x,1.39);
+    \draw[ink, line width=1.6pt] (0.37,0.74) .. controls (0.72,0.73) and (0.70,0.22) .. (0.33,0.22);
+    \draw[ink, line width=0.9pt, line join=round, fill=foam]
+      (-0.40,0.95) -- (-0.33,0) -- (0.33,0) -- (0.40,0.95) -- cycle;
+    \fill[coffee] (0,0.89) ellipse (0.36 and 0.05);
+  },
+  % A carbon-14 atom, centred on (0,0).
+  cfourteen/.pic={
+    \draw[cfour, line width=1.2pt, fill=cfour!18] (0,0) circle (0.5);
+    \node[font=\Large\bfseries, text=cfour] at (-0.06,-0.03) {C};
+    \node[font=\scriptsize\bfseries, text=cfour] at (0.25,0.20) {14};
+  },
+  % The Sun, centred on (0,0).
+  sun/.pic={
+    \foreach \a in {0,30,...,330}
+      \draw[sunray, line width=1.4pt, line cap=round] (\a:0.53) -- (\a:0.72);
+    \draw[ink, line width=1pt, fill=sunfill] (0,0) circle (0.44);
   },
   % A crescent moon and three z's.
   bedtime/.pic={
@@ -145,80 +150,38 @@
 
 % ---------------------------------------------------------------------------
 % MR BOWEN'S GRAPH. x = hours after 8 a.m. (0..16), y = mg (0..400).
-% \bowenaxes draws the paper, the axes and the labels; the student copy adds
-% the morning in grey, the key draws the whole answer on top. The label
+% Every number in A2 (400, 200, 100, 50) sits on a thick line. The label
 % offsets below the axis are in mg units, so they follow the y scale.
 % ---------------------------------------------------------------------------
 \newcommand{\bowenaxes}{%
-  \draw[black!14, line width=0.35pt] (0,0) grid[xstep=0.5, ystep=20] (16,400);
-  \draw[black!38, line width=0.6pt] (0,0) grid[xstep=1, ystep=40] (16,400);
+  \draw[black!14, line width=0.35pt] (0,0) grid[xstep=0.5, ystep=25] (16,400);
+  \draw[black!38, line width=0.6pt] (0,0) grid[xstep=1, ystep=50] (16,400);
   \draw[black!80, line width=1.2pt] (0,0) -- (0,410);
   \draw[black!80, line width=1.2pt] (0,0) -- (16.3,0);
-  \foreach \v in {0,40,...,400}{
+  \foreach \v in {0,50,...,400}{
     \draw[black!80, line width=1pt] (0,\v) -- (-0.15,\v);
     \node[left, font=\small] at (-0.15,\v) {\v};}
   \foreach \h/\lab in {0/8,1/9,2/10,3/11,4/12,5/1,6/2,7/3,8/4,9/5,10/6,
                        11/7,12/8,13/9,14/10,15/11,16/12}{
-    \draw[black!80, line width=1pt] (\h,0) -- (\h,-9);
-    \node[below, font=\small] at (\h,-9) {\lab};}
-  \node[font=\footnotesize\bfseries, text=black!65] at (1.5,-52) {a.m.};
-  \node[font=\footnotesize\bfseries, text=black!65] at (4,-52) {noon};
-  \node[font=\footnotesize\bfseries, text=black!65] at (10,-52) {p.m.};
-  \node[font=\footnotesize\bfseries, text=black!65] at (16,-52) {midnight};
-  \node[font=\small\bfseries] at (8,-88) {Time};
+    \draw[black!80, line width=1pt] (\h,0) -- (\h,-8);
+    \node[below, font=\small] at (\h,-8) {\lab};}
+  \node[font=\footnotesize\bfseries, text=black!65] at (1.5,-46) {a.m.};
+  \node[font=\footnotesize\bfseries, text=black!65] at (4,-46) {noon};
+  \node[font=\footnotesize\bfseries, text=black!65] at (10,-46) {p.m.};
+  \node[font=\footnotesize\bfseries, text=black!65] at (16,-46) {midnight};
+  \node[font=\small\bfseries] at (8,-78) {Time};
   \node[rotate=90, font=\small\bfseries] at (-1.55,200)
     {Caffeine in Mr Bowen (mg)};
 }
 
 % ---------------------------------------------------------------------------
-% THE STUDENT'S GRAPH. x = hours after 6 a.m. (0..18), y in big squares (0..10).
-% The y numbers are boxes: the student chooses the scale.
+% THE B3 TABLE: the drink, then four boxes 5 hours apart. #1 is the first
+% column's label for the time row, #2 the cells (grey example or blank).
 % ---------------------------------------------------------------------------
-\newcommand{\mygraph}{%
-  \begin{tikzpicture}[x=0.78cm, y=1.25cm]
-    \draw[black!14, line width=0.35pt] (0,0) grid[xstep=0.5, ystep=0.5] (18,10);
-    \draw[black!38, line width=0.6pt] (0,0) grid[xstep=1, ystep=1] (18,10);
-    \draw[black!80, line width=1.2pt] (0,0) -- (0,10.2);
-    \draw[black!80, line width=1.2pt] (0,0) -- (18.3,0);
-    \node[left, font=\small] at (-0.15,0) {0};
-    \foreach \v in {1,...,10}{
-      \draw[black!80, line width=1pt] (0,\v) -- (-0.15,\v);
-      \node[draw=black!55, line width=0.6pt, minimum width=1.0cm,
-            minimum height=0.5cm, anchor=east, fill=white] at (-0.2,\v) {};}
-    \foreach \h/\lab in {0/6,1/7,2/8,3/9,4/10,5/11,6/12,7/1,8/2,9/3,10/4,11/5,
-                         12/6,13/7,14/8,15/9,16/10,17/11,18/12}{
-      \draw[black!80, line width=1pt] (\h,0) -- (\h,-0.15);
-      \node[below, font=\small] at (\h,-0.15) {\lab};}
-    \node[font=\footnotesize\bfseries, text=black!65] at (2.5,-1.05) {a.m.};
-    \node[font=\footnotesize\bfseries, text=black!65] at (6,-1.05) {noon};
-    \node[font=\footnotesize\bfseries, text=black!65] at (12,-1.05) {p.m.};
-    \node[font=\footnotesize\bfseries, text=black!65] at (18,-1.05) {midnight};
-    \node[font=\small\bfseries] at (9,-1.75) {Time};
-    \node[rotate=90, font=\small\bfseries] at (-2.1,5) {Caffeine (mg)};
-  \end{tikzpicture}}
-
-% ---------------------------------------------------------------------------
-% HALF OF THE C3 TABLE. Two of these sit side by side, so twenty hours fit
-% in half a page. #1 is the label above it.
-% ---------------------------------------------------------------------------
-\newcommand{\hourhalf}[1]{%
-  {\small\bfseries\color{cbteal}#1}\par\vspace{3pt}
-  {\setlength{\tabcolsep}{3pt}%
-  \begin{tabular}{|C{1.55cm}|C{2.15cm}|C{1.55cm}|C{1.75cm}|}
-    \hline
-    \hrow \small\textbf{Time} & \small\textbf{Last hour}\newline$\times\,0.87$ &
-      \small\textbf{$+$ Drink} & \small\textbf{Now}\newline\textbf{(mg)} \\ \hline
-    \tall & & & \\ \hline
-    \tall & & & \\ \hline
-    \tall & & & \\ \hline
-    \tall & & & \\ \hline
-    \tall & & & \\ \hline
-    \tall & & & \\ \hline
-    \tall & & & \\ \hline
-    \tall & & & \\ \hline
-    \tall & & & \\ \hline
-    \tall & & & \\ \hline
-  \end{tabular}}}
+\newcommand{\halvehead}{%
+  \hline
+  \hrow & \textbf{The drink} & \textbf{5 hours later} & \textbf{5 hours later} &
+    \textbf{5 hours later} & \textbf{5 hours later} \\ \hline}
 
 \begin{document}
 
@@ -234,8 +197,8 @@
     {\color{cbpurple}\bfseries YEAR 7\sep SCIENCE\sep MODELS\sep CHALLENGE
     HOMEWORK}\\[5pt]
     {\color{cbpurple}\huge\bfseries Why Is Mr Bowen Still Awake?}\\[6pt]
-    {\color{black!70}Half-life with real coffee, a real interview, and carbon
-    dating}
+    {\color{black!70}Half-life with coffee, an interview at home, carbon dating
+    and the Sun}
   \end{minipage}\hfill
   \begin{minipage}[c]{0.15\linewidth}\centering
     \begin{tikzpicture}[scale=0.95]
@@ -254,35 +217,41 @@
 
 \begin{activity}[How to do this homework]
   \begin{itemize}[itemsep=2pt, topsep=0pt]
-    \item \textbf{Parts A and B:} Mr Bowen's coffee. They teach you the method.
-    \item \textbf{Part C is the main task.} You interview an adult in your
-      family. \textbf{Do the interview at the weekend.}
-    \item \textbf{Part D:} carbon dating.
+    \item \textbf{Part A:} Mr Bowen's coffee. It shows you the method.
+    \item \textbf{Part B:} interview an adult at home. \textbf{Do it at the
+      weekend.}
+    \item \textbf{Part C:} carbon dating. \ \textbf{Part D:} the Sun.
     \item You need a \textbf{calculator}, a \textbf{ruler}, and a
-      \textbf{computer or phone}. Answer in \textbf{full sentences}.
+      \textbf{phone or computer}.
+    \item Answer in \textbf{full sentences}. ``50 mg'' is not a sentence.
+      ``He still has 50 mg of caffeine'' is.
   \end{itemize}
 \end{activity}
 
 \begin{remember}
   \key{Half-life:} the time it takes for half of something to disappear.
-  Caffeine's half-life is about \key{5 hours}.
 
   \vspace{3pt}
   \key{Carbon-14:} a rare kind of carbon that slowly breaks down into nitrogen.
-  Its half-life is \key{5\,700 years}.
 
   \vspace{3pt}
   \key{Carbon dating:} finding the age of something that was once alive by
-  measuring how much carbon-14 is left. It only works for things that were
-  \key{alive}, up to about \key{50\,000 years} old.
+  measuring how much carbon-14 is left.
+
+  \vspace{5pt}
+  \begin{tabular}{@{}l@{\quad}l@{}}
+    Caffeine's half-life: about \textbf{5 hours} &
+    Carbon-14's half-life: \textbf{5\,700 years}
+  \end{tabular}
 \end{remember}
 
 % ===========================================================================
-% PART A -- MR BOWEN'S REAL DAY
+% PART A -- MR BOWEN'S COFFEE
 % ===========================================================================
-\hwsection{Part A\quad Mr Bowen's Real Day}
+\hwsection{Part A\quad Mr Bowen's Coffee}
 
-\noindent This is what Mr Bowen really drinks on a school day.
+\noindent On Monday, Mr Bowen drinks two cold brews at 8~a.m. He goes to bed
+at 11~p.m.
 
 \vspace{4pt}
 \begin{center}
@@ -295,18 +264,17 @@
   \node[below, align=center, font=\small] at (0,-0.15)
     {\textbf{8~a.m.}\\2 cold brews\\from Jeremy's\\
      {\color{cborange}\bfseries 200 mg each}};
-  % 1 p.m.
-  \pic at (5,0.35) {latte};
-  \node[below, align=center, font=\small] at (5,-0.15)
-    {\textbf{1~p.m.}\\a double-shot\\oat milk latte\\
-     {\color{cborange}\bfseries 60 mg a shot}};
+  % the half-life marks
+  \node[below, font=\small, text=black!60] at (5,-0.15) {1~p.m.};
+  \node[below, font=\small, text=black!60] at (10,-0.15) {6~p.m.};
   % 11 p.m.
   \pic at (14.6,0.35) {bedtime};
   \node[below, align=center, font=\small] at (15,-0.15)
     {\textbf{11~p.m.}\\bedtime};
-  % the gap
-  \draw[cbteal, line width=0.9pt, {Stealth[length=5pt]}-{Stealth[length=5pt]}]
-    (0.2,2.55) -- node[above, font=\footnotesize\bfseries, text=cbteal] {5 hours} (4.8,2.55);
+  % three half-lives
+  \foreach \a/\b in {0.2/4.8, 5.2/9.8, 10.2/14.6}
+    \draw[cbteal, line width=0.9pt, {Stealth[length=5pt]}-{Stealth[length=5pt]}]
+      (\a,2.55) -- node[above, font=\footnotesize\bfseries, text=cbteal] {5 hours} (\b,2.55);
 \end{tikzpicture}
 \end{center}
 
@@ -315,242 +283,206 @@
   \begin{tabularx}{\linewidth}{@{}W{2.9cm} L@{}}
     caffeine & a chemical in coffee, tea, cola and energy drinks. It keeps you
       awake. \\
-    mg & milligram. $1\,000$ mg $= 1$ g. One grain of rice is about 20 mg. \\
+    mg & milligram. A grain of rice is about 20 mg. \\
     cold brew & strong coffee made slowly with cold water \\
-    double shot & two shots. A \textbf{shot} is a small cup of very strong
-      coffee. \\
-    latte & coffee with a lot of milk. \textbf{Oat milk} is made from oats. \\
+    halve & cut in half: divide by 2 \\
+    curve & a line that bends smoothly \\
   \end{tabularx}
 \end{wordhelp}
 
-\qhead{A1}{The drinks}
-\noindent (a) The cold brews: \ $2 \times 200 =$ \mg \hfill
-(b) The latte: \ $2 \times 60 =$ \mg
-
-\vspace{8pt}
-\noindent (c) Does the \textbf{oat milk} add any caffeine?
-\quad \tickbox\,\,yes \quad\; \tickbox\,\,no
-
-\qhead{A2}{Half-life steps}
+\qhead{A1}{Halving}
 \noindent\begin{minipage}{\linewidth}
-\noindent Fill in the boxes. Every 5 hours, \textbf{halve} (cut in half). When
-he drinks, \textbf{add}.
+\noindent Halve each number.
 
-\vspace{8pt}
+\vspace{6pt}
 \begin{center}
 \begin{tikzpicture}[x=1cm, y=1cm]
-  \node[cbox, minimum width=2.2cm] (a) at (0,0)
-    {\textbf{\small 8~a.m.}\\[3pt]{\Large\bfseries 400} mg};
-  \node[cbox, minimum width=2.2cm] (b) at (3.5,0)
-    {\textbf{\small 1~p.m.}\\[3pt]\rule{1.25cm}{0.4pt} mg};
-  \node[cbox, minimum width=2.2cm, draw=cborange] (c) at (7.0,0)
-    {\textbf{\small 1~p.m.}\\[-1pt]{\scriptsize after the latte}\\[1pt]
-     \rule{1.25cm}{0.4pt} mg};
-  \node[cbox, minimum width=2.2cm] (d) at (10.5,0)
-    {\textbf{\small 6~p.m.}\\[3pt]\rule{1.25cm}{0.4pt} mg};
-  \node[cbox, minimum width=2.2cm] (e) at (14.0,0)
-    {\textbf{\small 11~p.m.}\\[-1pt]{\scriptsize bedtime}\\[1pt]
-     \rule{1.25cm}{0.4pt} mg};
-  \draw[chainarrow] (a.east) -- node[above, font=\scriptsize\bfseries, text=black!70] {5 hours}
-    node[below, font=\bfseries] {$\div\,2$} (b.west);
-  \draw[chainarrow] (b.east) -- node[above, font=\scriptsize\bfseries, text=black!70] {latte}
-    node[below, font=\bfseries] {$+$} (c.west);
-  \draw[chainarrow] (c.east) -- node[above, font=\scriptsize\bfseries, text=black!70] {5 hours}
-    node[below, font=\bfseries] {$\div\,2$} (d.west);
-  \draw[chainarrow] (d.east) -- node[above, font=\scriptsize\bfseries, text=black!70] {5 hours}
-    node[below, font=\bfseries] {$\div\,2$} (e.west);
+  \tikzset{hbox/.style={cbox, minimum width=2.0cm, minimum height=1.25cm}}
+  \node[hbox] (a0) at (0,0)   {\Large\bfseries 100};
+  \node[hbox] (a1) at (3.4,0) {\rule{1.2cm}{0.4pt}};
+  \node[hbox] (a2) at (6.8,0) {\rule{1.2cm}{0.4pt}};
+  \node[hbox] (a3) at (10.2,0) {\rule{1.2cm}{0.4pt}};
+  \node[hbox] (b0) at (0,-1.9)   {\Large\bfseries 80};
+  \node[hbox] (b1) at (3.4,-1.9) {\rule{1.2cm}{0.4pt}};
+  \node[hbox] (b2) at (6.8,-1.9) {\rule{1.2cm}{0.4pt}};
+  \node[hbox] (b3) at (10.2,-1.9) {\rule{1.2cm}{0.4pt}};
+  \foreach \r in {a,b}
+    \foreach \i/\j in {0/1,1/2,2/3}
+      \draw[chainarrow] (\r\i.east) -- node[above, font=\bfseries, text=ink]
+        {$\div\,2$} (\r\j.west);
 \end{tikzpicture}
 \end{center}
 \end{minipage}
 
-% ---------------------------------------------------------------------------
-\qhead{A3}{Draw the graph}
+\qhead{A2}{Mr Bowen's caffeine}
 \noindent\begin{minipage}{\linewidth}
-\noindent Put a dot for every box in A2. The morning is drawn for you. At
-1~p.m., draw a line \textbf{straight up}. Between the dots, draw a
-\textbf{smooth curve}.
+\noindent (a) Two cold brews: \ $2 \times 200 =$ \mg
+
+\vspace{10pt}
+\noindent (b) Fill in the boxes. Every 5 hours, \textbf{halve} the caffeine.
+
+\vspace{8pt}
+\begin{center}
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \tikzset{tbox/.style={cbox, minimum width=2.7cm, minimum height=1.75cm}}
+  \node[tbox] (c0) at (0,0)
+    {\textbf{\small 8~a.m.}\\[6pt]{\Large\bfseries 400} mg};
+  \node[tbox] (c1) at (4.3,0)
+    {\textbf{\small 1~p.m.}\\[10pt]\rule{1.4cm}{0.4pt} mg};
+  \node[tbox] (c2) at (8.6,0)
+    {\textbf{\small 6~p.m.}\\[10pt]\rule{1.4cm}{0.4pt} mg};
+  \node[tbox, draw=cborange] (c3) at (12.9,0)
+    {\textbf{\small 11~p.m.} {\scriptsize bedtime}\\[10pt]\rule{1.4cm}{0.4pt} mg};
+  \foreach \i/\j in {0/1,1/2,2/3}
+    \draw[chainarrow] (c\i.east) -- node[above, font=\scriptsize\bfseries, text=black!70]
+      {5 hours} node[below, font=\bfseries] {$\div\,2$} (c\j.west);
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+
+\qhead{A3}{Does it ever run out?}
+\noindent\begin{minipage}{\linewidth}
+\noindent (a) Keep halving after bedtime.
 
 \vspace{6pt}
 \begin{center}
-\begin{tikzpicture}[x=0.9cm, y=0.021cm]
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \tikzset{hbox/.style={cbox, minimum width=2.0cm, minimum height=1.25cm}}
+  \node[hbox] (d0) at (0,0)   {\Large\bfseries 50};
+  \node[hbox] (d1) at (3.4,0) {\rule{1.2cm}{0.4pt}};
+  \node[hbox] (d2) at (6.8,0) {\rule{1.2cm}{0.4pt}};
+  \node[hbox] (d3) at (10.2,0) {\rule{1.2cm}{0.4pt}};
+  \foreach \i/\j in {0/1,1/2,2/3}
+    \draw[chainarrow] (d\i.east) -- node[above, font=\bfseries, text=ink]
+      {$\div\,2$} (d\j.west);
+  \node[font=\Large\bfseries, text=black!55] at (12.1,0) {\ldots};
+\end{tikzpicture}
+\end{center}
+
+\vspace{4pt}
+\noindent (b) If you keep halving, does the number ever get to 0? \hfill
+\choice{yes} \quad\; \choice{no}
+\end{minipage}
+
+\vspace{12pt}
+\noindent\begin{minipage}{\linewidth}
+\noindent (c) Fill in the gap with one word from the box.
+
+\vspace{4pt}
+\begin{center}
+\fbox{\rule[-0.4em]{0pt}{1.5em}\ half-life \qquad limitation \qquad molecule\ }
+\end{center}
+
+\vspace{2pt}
+\noindent The maths model says the caffeine \textbf{never} runs out. But real
+caffeine is made of molecules, and the last one is gone after about
+\textbf{2 weeks}. So the model is wrong here.
+
+\vspace{8pt}
+\noindent This is a \blank[4.0cm] of the model.
+\end{minipage}
+
+% ---------------------------------------------------------------------------
+\qhead{A4}{Draw the graph}
+\noindent\begin{minipage}{\linewidth}
+\noindent Put a dot for every box in A2. The first part is drawn for you. Join
+the dots with a \textbf{smooth curve}, not straight lines.
+
+\vspace{6pt}
+\begin{center}
+\begin{tikzpicture}[x=0.9cm, y=0.024cm]
   \bowenaxes
   \draw[black!45, line width=1.6pt, dashed] plot[domain=0:5, samples=40, smooth]
     (\x, {400*0.5^(\x/5)});
   \fill[ink] (0,400) circle (0.11cm);
   \node[right, font=\footnotesize\bfseries, text=black!55, fill=white,
-        inner sep=1.5pt] at (0.25,390) {8~a.m.: 400 mg};
+        inner sep=1.5pt] at (0.25,388) {8~a.m.: 400 mg};
 \end{tikzpicture}
 \end{center}
 \end{minipage}
 
-\qhead{A4}{Read the graph}
-\noindent (a) At 8~p.m. Mr Bowen is marking your homework. Go \textbf{up} from
-8~p.m. to your curve, then \textbf{across}. How much caffeine is in him? \quad
-\mg
-
-\vspace{10pt}
-\noindent (b) How much caffeine is in him at bedtime, 11~p.m.? \quad \mg
-
-\vspace{10pt}
-\noindent (c) Health experts say an adult should have \textbf{no more than
-400 mg} of caffeine in a day. How much did Mr Bowen drink?
-
-\vspace{4pt}
-\noindent \blank[1.6cm] $+$ \blank[1.6cm] $=$ \mg \qquad Is that more than
-400 mg? \blank[2.2cm]
-
-\vspace{10pt}
-\noindent (d) Tomorrow he wants \textbf{exactly 400 mg}. Which \textbf{one}
-drink should he not buy?
-
-\vspace{4pt}
-\noindent He should not buy \blank[6.0cm]\,.
-
-\qhead{A5}{The title question}
-\noindent Why is Mr Bowen still awake at 11~p.m.? Use a number, and compare it
-with a cup of coffee (about 100 mg).
-
-\vspace{4pt}
-\noindent\starter{At 11~p.m. Mr Bowen still has \ldots}
-\qlines{3}
-
-% ===========================================================================
-% PART B -- HOUR BY HOUR
-% ===========================================================================
-\hwsection{Part B\quad Hour by Hour}
-
-\begin{remember}[The hour-by-hour rule: it works for any time]
-  \key{Every hour: $\times\,0.87$.} Round to a whole number.
-  \qquad \key{When they drink: $+$ the drink.}
-
-  \vspace{4pt}
-  \noindent Example: Mr Bowen at 1~p.m. \quad $230 \times 0.87 = 200$, then
-  $+\,120$ for the latte $= \mathbf{320}$ mg.
-\end{remember}
-
-\qhead{B1}{Why 0.87?}
-\noindent\begin{minipage}{\linewidth}
-\noindent Start with 100 mg. Multiply by 0.87 every hour. Round each answer.
+\qhead{A5}{Read the graph}
+\noindent Mr Bowen marks your homework at \textbf{8~p.m.}
 
 \vspace{8pt}
-\begin{center}
-\begin{tikzpicture}[x=1cm, y=1cm]
-  \tikzset{nbox/.style={cbox, minimum width=1.4cm, minimum height=1.15cm}}
-  \node[nbox] (n0) at (0,0)    {\Large\bfseries 100};
-  \node[nbox] (n1) at (3.0,0)  {\Large\bfseries 87};
-  \node[nbox] (n2) at (6.0,0)  {\rule{0.95cm}{0.4pt}};
-  \node[nbox] (n3) at (9.0,0)  {\rule{0.95cm}{0.4pt}};
-  \node[nbox] (n4) at (12.0,0) {\rule{0.95cm}{0.4pt}};
-  \node[nbox] (n5) at (15.0,0) {\rule{0.95cm}{0.4pt}};
-  \foreach \i/\lab in {0/start, 1/1 hour, 2/2 hours, 3/3 hours, 4/4 hours,
-                       5/5 hours}
-    \node[below, font=\small, text=black!65] at (\i*3.0,-0.68) {\lab};
-  \foreach \i [evaluate=\i as \j using int(\i+1)] in {0,...,4}
-    \draw[chainarrow] (n\i.east) -- node[above, font=\small\bfseries, text=ink]
-      {$\times\,0.87$} (n\j.west);
-\end{tikzpicture}
-\end{center}
+\noindent (a) 8~p.m. is between 6~p.m. and 11~p.m. So his caffeine is between
+\mg[1.4cm] and \mg[1.4cm].
 
-\vspace{2pt}
-\noindent After 5 hours, about how much is left? \blank[3.0cm] \quad That is
-one \blank[3.0cm]\,.
-\end{minipage}
+\vspace{10pt}
+\noindent (b) Go \textbf{up} from 8~p.m. to your curve, then \textbf{across}.
+How much caffeine is in him at 8~p.m.? \quad about \mg
 
-\qhead{B2}{Check it with Mr Bowen}
-\noindent\begin{minipage}{\linewidth}
-\noindent Use the rule from 1~p.m. to 8~p.m. (He drinks nothing in this time.)
-
-\vspace{6pt}
-\noindent\begin{tabular}{|C{1.47cm}|C{1.47cm}|C{1.47cm}|C{1.47cm}|C{1.47cm}|C{1.47cm}|C{1.47cm}|C{1.47cm}|}
-  \hline
-  \hrow 1~p.m. & 2~p.m. & 3~p.m. & 4~p.m. & 5~p.m. & 6~p.m. & 7~p.m. & 8~p.m. \\ \hline
-  \starter{320}\tall & & & & & & & \\ \hline
-\end{tabular}
-
-\vspace{8pt}
-\noindent Is your 6~p.m. number about the same as in A2? \hfill
-\tickbox\,\,yes \quad\; \tickbox\,\,no
+\qhead{A6}{The title question}
+\noindent Why is Mr Bowen still awake at 11~p.m.? Use your number from A2.
+A cup of coffee has about 100 mg. How much coffee is that?
 
 \vspace{4pt}
-\noindent Is your 8~p.m. number about the same as in A4(a)? \hfill
-\tickbox\,\,yes \quad\; \tickbox\,\,no
-
-\vspace{8pt}
-\noindent When different methods agree, scientists \blank[3.0cm] the answer.
-\end{minipage}
+\noindent\starter{Mr Bowen is still awake because at 11~p.m. he still has
+\ldots}
+\qlines{4}
 
 % ===========================================================================
-% PART C -- THE MAIN TASK
+% PART B -- THE INTERVIEW
 % ===========================================================================
-\hwsection{Part C\quad Interview a Caffeine Drinker \hfill \maintag}
+\hwsection{Part B\quad Interview a Caffeine Drinker}
 
 \begin{activity}[What you will do]
-  \noindent \textbf{Interview} an adult in your family who drinks caffeine:
-  a parent, a grandparent, an aunt, an uncle. Ask about coffee, tea, soda
-  (like Coca-Cola) or \textbf{energy drinks like Sting}. Then
-  \textbf{estimate} how much caffeine is in their body at bedtime.
+  \noindent \textbf{Interview} an adult in your family who drinks coffee, tea,
+  cola or energy drinks like Sting. Then work out how much caffeine is in
+  their body at \textbf{bedtime}.
 
   \vspace{4pt}
-  \noindent Nobody at home drinks caffeine? Ask another adult you know. You can
-  do the interview in \textbf{any language}. Write in \textbf{English}.
+  \noindent You can do the interview in \textbf{any language}. Write in
+  \textbf{English}.
 \end{activity}
 
-\qhead{C1}{The interview}
-\noindent Ask about \textbf{yesterday}, or another normal day.
+\begin{wordhelp}
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabularx}{\linewidth}{@{}W{2.9cm} L@{}}
+    interview & ask someone questions, and write down the answers \\
+    label & the words printed on a can or bottle. They say what is inside. \\
+    search & type words into Google to find something \\
+    estimate & a careful guess, using numbers \\
+  \end{tabularx}
+\end{wordhelp}
 
-\begin{multicols}{2}
-\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=2pt, topsep=2pt]
+\qhead{B1}{The interview}
+\noindent Ask about \textbf{yesterday}.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=2pt, topsep=4pt]
   \item ``Can I interview you for my homework?''
-  \item ``What did you drink that has caffeine?''
+  \item ``What was your \textbf{first} drink with caffeine yesterday? How big
+    was it?''\newline {\small\color{black!60}For example: 1 can of Sting,
+    330 ml.}
   \item ``What time did you drink it?''
-  \item ``How big was it? A cup, a can, a bottle?''
-  \item ``What brand was it?''
   \item ``What time did you go to bed?''
 \end{enumerate}
-\end{multicols}
 
 \vspace{2pt}
-\noindent\textbf{I interviewed my} \blank[4.0cm]\,. \qquad
-\textbf{They went to bed at} \blank[3.0cm]\,.
-
-\vspace{8pt}
 \noindent\begin{minipage}{\linewidth}
-\noindent Write their drinks here. Round each time to the \textbf{nearest hour}:
-7:40 $\rightarrow$ 8:00, \ 10:20 $\rightarrow$ 10:00. Fill in the last two
-columns in C2.
-
-\vspace{6pt}
-\renewcommand{\arraystretch}{1.2}
-\noindent\begin{tabularx}{\linewidth}{|L|C{1.75cm}|C{1.75cm}|C{1.75cm}|C{3.3cm}|}
-  \hline
-  \hrow \textbf{Drink}\newline{\small what, and how big} & \textbf{Time} &
-    \textbf{Rounded time} & \textbf{Caffeine}\newline\textbf{(mg)} &
-    \textbf{Where I found it} \\ \hline
-  \starter{\small \textit{Example:} 1 can of cola, 330 ml} &
-    \starter{\small 3:40 p.m.} & \starter{\small 4~p.m.} & \starter{\small 32} &
-    \starter{\small the company's website} \\ \hline
-  \tall & & & & \\ \hline
-  \tall & & & & \\ \hline
-  \tall & & & & \\ \hline
-  \tall & & & & \\ \hline
+\renewcommand{\arraystretch}{2.0}
+\noindent\begin{tabularx}{\linewidth}{@{}l X@{}}
+  \textbf{I interviewed my} & \blank[5.0cm]\,. \\
+  \textbf{Their first drink was} & \blank[10.5cm] \\
+  \textbf{They drank it at} & \blank[4.0cm]\,. \\
+  \textbf{They went to bed at} & \blank[4.0cm]\,. \\
 \end{tabularx}
 \end{minipage}
 
 % ---------------------------------------------------------------------------
-\qhead{C2}{Find the caffeine}
+\qhead{B2}{Find the caffeine}
 
 \begin{activity}[Where to look]
   \begin{minipage}[t]{0.68\linewidth}
     \begin{enumerate}[label=\textbf{\arabic*.}, itemsep=3pt, topsep=0pt]
       \item \textbf{The label} on the can or bottle. Look for the word
-        \textbf{caffeine}. It often says how many mg are in \textbf{100 ml}.
-      \item \textbf{The company's website.}
-      \item \textbf{Search:} \textit{caffeine in [the drink] mg}, for example
-        \textit{caffeine in Sting 330 ml}.
+        \textbf{caffeine}.
+      \item \textbf{Google.} Search for the drink, like this: \\
+        \textit{caffeine in 1 can of Sting mg}
     \end{enumerate}
 
     \vspace{5pt}
-    \noindent Milk, sugar, ice and condensed milk: \key{0 mg}.
+    \noindent Milk, sugar and ice: \key{0 mg}.
 
     \vspace{3pt}
     \noindent Two numbers, like 50 to 80 mg? Use the \textbf{middle}: 65 mg.
@@ -566,7 +498,7 @@ columns in C2.
       \draw[ink, line width=0.9pt, fill=ink] (-0.3,3.6) rectangle (0.3,3.85);
       \draw[ink, line width=0.6pt, fill=white] (-0.9,0.2) rectangle (0.9,2.45);
       \node[font=\scriptsize\bfseries, align=center] at (0,2.15) {ENERGY\\[-2pt]DRINK};
-      \node[font=\scriptsize] at (0,1.72) {330 ml};
+      \node[font=\scriptsize] at (0,1.72) {300 ml};
       \node[font=\scriptsize, align=center] at (0,0.88)
         {\textbf{Caffeine:}\\[-1pt]20 mg\\[-1pt]in 100 ml};
       \draw[cborange, line width=1.4pt] (0,0.88) ellipse (0.84cm and 0.6cm);
@@ -575,125 +507,101 @@ columns in C2.
 \end{activity}
 
 \noindent\begin{minipage}{\linewidth}
-\noindent\textbf{Reading a label.} This bottle has 20 mg in every 100 ml. It
-holds 330 ml.
+\noindent\textbf{Some labels give the caffeine in 100 ml.} This bottle has
+20 mg in every 100 ml. It holds 300~ml.
 
 \vspace{3pt}
-\noindent $330 \div 100 = 3.3$ \qquad $3.3 \times 20 = $ \key{66 mg} in the
+\noindent 300 ml is 3 lots of 100 ml. \qquad $3 \times 20 =$ \key{60 mg} in the
 whole bottle.
 
-\vspace{10pt}
-\noindent (a) \textbf{10 mg in 100 ml}, a \textbf{330 ml} can: \quad
-\blank[1.5cm] $\times\ 10 =$ \mg
-
-\vspace{10pt}
-\noindent (b) \textbf{30 mg in 100 ml}, a \textbf{250 ml} can: \quad
-\blank[1.5cm] $\times\ 30 =$ \mg
-
-\vspace{10pt}
-\noindent Now look up every drink in C1. Fill in the \textbf{Caffeine} and
-\textbf{Where I found it} columns.
-\end{minipage}
-
-% ---------------------------------------------------------------------------
-\qhead{C3}{Hour by hour}
-\noindent\begin{minipage}{\linewidth}
-\noindent Use the rule from Part B and the \textbf{rounded} times. Row 1 is
-their \textbf{first} drink. Each row is \textbf{one hour later}. Stop at
-\textbf{bedtime}.
-
-\vspace{8pt}
-\noindent\begin{minipage}[t]{0.49\linewidth}\centering
-  \hourhalf{Start here}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.49\linewidth}\centering
-  \hourhalf{Then carry on here}
-\end{minipage}
-\end{minipage}
-
-% ---------------------------------------------------------------------------
-\qhead{C4}{Draw their graph}
-\noindent\begin{minipage}{\linewidth}
-\noindent\textbf{Step 1.} Find the biggest number in your table. Choose one
-big square from this table, and write the numbers in the boxes on the graph.
-
-\vspace{6pt}
-\begin{center}
-\renewcommand{\arraystretch}{1.25}
-\begin{tabular}{|l|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|}
-  \hline
-  \hrow \textbf{Biggest number} & under 100 & under 200 & under 300 &
-    under 400 & under 600 \\ \hline
-  \textbf{One big square} $=$ & 10 mg & 20 mg & 30 mg & 40 mg & 60 mg \\ \hline
-\end{tabular}
-\end{center}
-
-\vspace{4pt}
-\noindent\textbf{Step 2.} Put a dot for every row of your table. At a drink, go
-\textbf{straight up}. Between the dots, draw a \textbf{smooth curve}.
-
-\vspace{6pt}
-\begin{center}
-\mygraph
-\end{center}
-\end{minipage}
-
-% ---------------------------------------------------------------------------
-% Page 7 is the results and the check; page 8 is Part D on its own. Forced
-% breaks, because each of the last three pages is one job.
-\clearpage
-\qhead{C5}{Your results}
-\noindent (a) At bedtime (\blank[1.6cm]), my \blank[2.6cm] had about
-\blank[1.6cm] mg of caffeine in their body.
+\vspace{3pt}
+\noindent{\small\color{black!65} A 330 ml can? \ $330 \div 100 = 3.3$, then
+$3.3 \times 20 = 66$ mg. Or search on Google for the whole can.}
 
 \vspace{12pt}
-\noindent (b) Compare with Mr Bowen (80 mg at bedtime).
-
-\vspace{2pt}
-\noindent\starter{My \blank[2.4cm] had more / less caffeine at bedtime than
-Mr Bowen, because \ldots}
-\qlines{3}
-
-\vspace{6pt}
-\noindent\begin{minipage}{\linewidth}
-\noindent (c) \textbf{Challenge.} They want less caffeine at bedtime. Give them
-\textbf{one} piece of advice. Use a number from your table.
-
-\vspace{2pt}
-\noindent\starter{I think they should \ldots\ because \ldots}
-\wlines{3}
-\end{minipage}
+\noindent Their drink has about \mg[2.2cm] of caffeine.
 
 \vspace{10pt}
+\noindent I found it on: \quad \choice{the label} \quad\;
+\choice{Google} \quad\; \choice{another website}
+\end{minipage}
+
+% ---------------------------------------------------------------------------
+\qhead{B3}{Halve it, every 5 hours}
 \noindent\begin{minipage}{\linewidth}
-\noindent (d) Your model is an estimate. Give \textbf{one} reason your bedtime
-number might be wrong. \textit{Clue:} caffeine's half-life is not 5 hours for
-everybody. It can be from about 1.5 to 9.5 hours.
+\noindent Start with their drink. In each box, \textbf{add 5 hours} to the
+time and \textbf{halve} the caffeine. Keep going until you are
+\textbf{past their bedtime}.
+
+\vspace{8pt}
+\noindent{\small\bfseries\color{black!60}Example: a cup of tea, about 40 mg,
+at 7~a.m.}
+
+\vspace{3pt}
+{\renewcommand{\arraystretch}{1.25}%
+\noindent\begin{tabular}{|p{2.45cm}|C{2.3cm}|C{2.3cm}|C{2.3cm}|C{2.3cm}|C{2.3cm}|}
+  \halvehead
+  \textbf{Time} & \starter{7~a.m.} & \starter{12 noon} & \starter{5~p.m.} &
+    \starter{10~p.m.} & \starter{3~a.m.} \\ \hline
+  \textbf{Caffeine (mg)} & \starter{40} & \starter{20} & \starter{10} &
+    \starter{5} & \starter{2.5} \\ \hline
+\end{tabular}}
+
+\vspace{12pt}
+\noindent{\small\bfseries\color{cbteal}Now yours:}
+
+\vspace{3pt}
+\noindent\begin{tabular}{|p{2.45cm}|C{2.3cm}|C{2.3cm}|C{2.3cm}|C{2.3cm}|C{2.3cm}|}
+  \halvehead
+  \textbf{Time}\tall & & & & & \\ \hline
+  \textbf{Caffeine (mg)}\tall & & & & & \\ \hline
+\end{tabular}
+\end{minipage}
+
+\qhead{B4}{Bedtime}
+\noindent (a) Their bedtime is between the times in two of your boxes:
+\blank[2.6cm] and \blank[2.6cm].
+
+\vspace{10pt}
+\noindent (b) So at bedtime, they have between \mg[1.6cm] and \mg[1.6cm].
+
+\vspace{10pt}
+\noindent (c) Choose a number in between. At bedtime, they have about
+\mg[1.8cm] of caffeine.
+
+\qhead{B5}{Compare with Mr Bowen}
+\noindent Mr Bowen had 50 mg at bedtime. Did your adult have
+\textbf{more} or \textbf{less}? Why? Think about how \textbf{big} the drink
+was, and \textbf{what time} they drank it.
+
+\vspace{4pt}
+\noindent\starter{At bedtime my \blank[2.4cm] had about \blank[1.4cm] mg of
+caffeine. That is more / less than Mr Bowen, because \ldots}
+\qlines{4}
+
+\qhead{B6}{Is your number right?}
+\noindent\begin{minipage}{\linewidth}
+\noindent Your bedtime number is an \textbf{estimate}. Tick \textbf{one}
+reason it might be wrong. Then write it as a sentence.
+
+\vspace{6pt}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}L@{}}
+  \tickbox & They had other drinks with caffeine too. \\
+  \tickbox & Caffeine's half-life is not 5 hours for everybody. \\
+  \tickbox & The number from the label or Google may not be exact. \\
+\end{tabularx}
 
 \vspace{2pt}
 \noindent\starter{My bedtime number might be wrong because \ldots}
 \wlines{3}
 \end{minipage}
 
-\begin{yourturn}[Before you hand it in: tick each one]
-  \renewcommand{\arraystretch}{1.75}
-  \begin{tabularx}{\linewidth}{@{}p{0.8cm}L@{}}
-    \tickbox & Every drink in C1 has a time, the caffeine in mg, and where I
-      found it. \\
-    \tickbox & My C3 table goes up \textbf{one hour} a row and stops at
-      bedtime. \\
-    \tickbox & Each drink is added \textbf{once}, in its own hour. \\
-    \tickbox & My graph goes \textbf{straight up} at every drink. \\
-    \tickbox & My bedtime number is the \textbf{same} in C3, C4 and C5(a). \\
-  \end{tabularx}
-\end{yourturn}
-
 % ===========================================================================
-% PART D -- CARBON DATING
+% PART C -- CARBON DATING
 % ===========================================================================
-\clearpage
-\hwsection{Part D\quad Carbon Dating}
-\qhead{D1}{The halving chain}
+\hwsection{Part C\quad Carbon Dating}
+\qhead{C1}{The halving chain}
 \noindent\begin{minipage}{\linewidth}
 \noindent Caffeine halves every 5 hours. Carbon-14 halves every
 \textbf{5\,700 years}. Fill in the boxes.
@@ -701,54 +609,162 @@ everybody. It can be from about 1.5 to 9.5 hours.
 \vspace{8pt}
 \begin{center}
 \begin{tikzpicture}[x=1cm, y=1cm]
-  \tikzset{kbox/.style={cbox, minimum width=2.3cm, minimum height=1.5cm}}
-  \node[kbox] (k0) at (0,0)    {{\Large\bfseries 100\%}\\[4pt]{\small 0 years}};
-  \node[kbox] (k1) at (3.4,0)  {{\Large\bfseries 50\%}\\[4pt]{\small 5\,700 years}};
-  \node[kbox] (k2) at (6.8,0)  {\rule{1.1cm}{0.4pt}\,\%\\[8pt]{\small\rule{1.1cm}{0.4pt} years}};
-  \node[kbox] (k3) at (10.2,0) {\rule{1.1cm}{0.4pt}\,\%\\[8pt]{\small\rule{1.1cm}{0.4pt} years}};
-  \node[kbox] (k4) at (13.6,0) {\rule{1.1cm}{0.4pt}\,\%\\[8pt]{\small\rule{1.1cm}{0.4pt} years}};
-  \foreach \i [evaluate=\i as \j using int(\i+1)] in {0,...,3}
+  \tikzset{kbox/.style={cbox, minimum width=2.4cm, minimum height=1.7cm}}
+  \node[kbox] (k0) at (0,0)    {{\Large\bfseries 100\%}\\[6pt]{\small 0 years}};
+  \node[kbox] (k1) at (3.6,0)  {{\Large\bfseries 50\%}\\[6pt]{\small 5\,700 years}};
+  \node[kbox] (k2) at (7.2,0)  {\rule{1.1cm}{0.4pt}\,\%\\[12pt]{\small\rule{1.2cm}{0.4pt} years}};
+  \node[kbox] (k3) at (10.8,0) {\rule{1.1cm}{0.4pt}\,\%\\[12pt]{\small\rule{1.2cm}{0.4pt} years}};
+  \node[kbox] (k4) at (14.4,0) {\rule{1.1cm}{0.4pt}\,\%\\[12pt]{\small\rule{1.2cm}{0.4pt} years}};
+  \foreach \i/\j in {0/1,1/2,2/3,3/4}
     \draw[chainarrow] (k\i.east) -- node[above, font=\bfseries, text=ink]
       {$\div\,2$} (k\j.west);
 \end{tikzpicture}
 \end{center}
+
+\vspace{2pt}
+\noindent{\small\color{black!65}Each box is 5\,700 years more than the one
+before it.}
 \end{minipage}
 
 % ---------------------------------------------------------------------------
-\qhead{D2}{The museum}
+\qhead{C2}{The museum}
 \noindent\begin{minipage}{\linewidth}
-\noindent Scientists measured the carbon-14 left in six objects. Use D1.
-\textbf{Careful:} carbon dating does not work for everything.
+\noindent Scientists measured the carbon-14 left in five objects. Use C1.
+
+\vspace{4pt}
+\noindent\textbf{Careful:} carbon dating only works for things that were
+\key{alive}, up to about \key{50\,000 years} old. If it does not work, write
+\textbf{does not work}.
 
 \vspace{6pt}
 \renewcommand{\arraystretch}{1.2}
-\noindent\begin{tabularx}{\linewidth}{|L|C{2.2cm}|C{2.2cm}|C{2.2cm}|C{2.8cm}|}
+\noindent\begin{tabularx}{\linewidth}{|L|C{2.2cm}|C{2.2cm}|C{2.3cm}|C{3.3cm}|}
   \hline
   \hrow \textbf{Object} & \textbf{Was it ever alive?} & \textbf{Carbon-14
     left} & \textbf{How many half-lives?} & \textbf{Age (years)} \\ \hline
-  \starter{A wooden boat from a river}\tall & \starter{yes} & \starter{50\%} &
+  \starter{A wooden boat}\tall & \starter{yes} & \starter{50\%} &
     \starter{1} & \starter{5\,700} \\ \hline
-  A bear bone from a cave\tall & & 12.5\% & & \\ \hline
-  Charcoal {\small(burnt wood)}\tall & & 6.25\% & & \\ \hline
-  A cotton T-shirt, made this year\tall & & 100\% & & \\ \hline
+  A bear bone from a cave\tall & & 25\% & & \\ \hline
+  A wooden spear\tall & & 12.5\% & & \\ \hline
   A stone axe\tall & & --- & & \\ \hline
-  A \textit{Tyrannosaurus rex} tooth\tall & & 0\% & & \\ \hline
+  A \textit{T.\ rex} tooth\tall & & 0\% & & \\ \hline
 \end{tabularx}
 
 \vspace{3pt}
-\noindent{\small\color{cbblue}\textbf{Word help:} \textbf{cotton} comes from a
-plant \sep an \textbf{axe} is a tool for cutting wood}
+\noindent{\small\color{cbblue}\textbf{Word help:} a \textbf{spear} is a long
+stick with a sharp point \sep an \textbf{axe} is a tool for cutting wood \sep
+a \textbf{\textit{T.\ rex}} is a dinosaur}
 \end{minipage}
 
-% ---------------------------------------------------------------------------
-\qhead{D3}{Same model, different clock}
-\noindent While Mr Bowen is alive, \textbf{coffee} tops up his caffeine and
-\textbf{food} tops up his carbon-14. What is the \textbf{same} about caffeine
-and carbon-14? What is \textbf{different}? Use the word \textbf{half-life}.
+\qhead{C3}{Why does it not work?}
+\noindent (a) Carbon dating does not work for the stone axe, because stone
+was never \blank[3.2cm]\,.
+
+\vspace{12pt}
+\noindent (b) Carbon dating does not work for the \textit{T.\ rex} tooth,
+because it is too \blank[3.2cm]\,.
+
+\vspace{2pt}
+\noindent{\small\color{black!65}\textit{Clue:} dinosaurs died out about
+66 million years ago.}
+
+% ===========================================================================
+% PART D -- THE SUN
+% ===========================================================================
+\hwsection{Part D\quad The Sun: Different Speeds, the Same Maths}
+
+\begin{remember}
+  \key{Caffeine}, \key{carbon-14} and the \key{Sun's hydrogen} all disappear
+  at a rate we can model with maths. Measure what is \key{left} to find
+  \key{how long} it has been.
+\end{remember}
+
+\vspace{2pt}
+\noindent{\small\color{cbblue}\textbf{Word help:} the \textbf{core} is the
+middle of the Sun \sep \textbf{hydrogen} and \textbf{helium} are gases \sep
+a \textbf{billion} is a thousand million}
+
+\qhead{D1}{How old is the Sun?}
+\noindent Nobody can take a piece of the Sun. So scientists build a
+\textbf{model Sun} with maths, and let it get older until it matches the real
+Sun.
+
+\vspace{10pt}
+\noindent (a) The Sun turns \blank[3.0cm] into \blank[3.0cm]\,.
+
+\vspace{10pt}
+\noindent (b) When the Sun was born, its core was \textbf{71\%} hydrogen.
+Half of 71\% is \blank[2.0cm]\,\%.
+
+\vspace{10pt}
+\noindent (c) Today the core is \textbf{34\%} hydrogen. Is about
+\textbf{half} of the hydrogen gone? \hfill \choice{yes} \quad\; \choice{no}
+
+\vspace{10pt}
+\noindent (d) The model Sun matches the real Sun at about \blank[1.6cm]
+billion years. So the Sun is about \blank[1.6cm] billion years old.
+
+\qhead{D2}{Three clocks}
+\noindent\begin{minipage}{\linewidth}
+\noindent Draw a line from each clock to how fast it goes.
+
+\vspace{8pt}
+\begin{center}
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \pic at (0.45,-0.62) {mug};
+  \node[right, font=\bfseries] at (1.5,0) {Caffeine};
+  \pic at (0.45,-1.9) {cfourteen};
+  \node[right, font=\bfseries] at (1.5,-1.9) {Carbon-14};
+  \pic at (0.45,-3.8) {sun};
+  \node[right, font=\bfseries, align=left] at (1.5,-3.8)
+    {Hydrogen in\\the Sun's core};
+  \foreach \y in {0,-1.9,-3.8} \fill[ink] (6.0,\y) circle (0.1);
+  \foreach \y in {0,-1.9,-3.8} \fill[ink] (9.0,\y) circle (0.1);
+  \node[right, align=left] at (9.3,0) {half gone every\\5\,700 years};
+  \node[right, align=left] at (9.3,-1.9) {about half gone in\\4.6 billion years};
+  \node[right, align=left] at (9.3,-3.8) {half gone every\\5 hours};
+\end{tikzpicture}
+\end{center}
+
+\vspace{6pt}
+\noindent Put them in order, \textbf{fastest} first.
+
+\vspace{8pt}
+\noindent 1.\ \blank[4.2cm] \quad 2.\ \blank[4.2cm] \quad 3.\ \blank[4.2cm]
+\end{minipage}
+
+\qhead{D3}{The same maths}
+\noindent What is the \textbf{same} about caffeine, carbon-14 and the Sun's
+hydrogen? What is \textbf{different}?
 
 \vspace{4pt}
-\noindent\starter{They are the same because \ldots\ The difference is \ldots}
+\noindent\starter{They are the same because we measure what is left to find
+\ldots\ \ They are different because \ldots}
 \qlines{5}
+
+\qhead{D4}{One more link}
+\noindent\begin{minipage}{\linewidth}
+\noindent Caffeine is made of carbon atoms. Where was the carbon in Mr
+Bowen's coffee made? Tick \textbf{one}.
+
+\vspace{6pt}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}L@{}}
+  \tickbox & In a coffee shop. \\
+  \tickbox & Inside a star, long before the Sun was born. \\
+  \tickbox & In Mr Bowen's kitchen. \\
+\end{tabularx}
+\end{minipage}
+
+\begin{yourturn}[Before you hand it in: tick each one]
+  \renewcommand{\arraystretch}{1.6}
+  \begin{tabularx}{\linewidth}{@{}p{0.8cm}L@{}}
+    \tickbox & Every box in A2, B3 and C1 has a number in it. \\
+    \tickbox & My graph in A4 is a \textbf{smooth curve}. \\
+    \tickbox & B2 says \textbf{where} I found the caffeine. \\
+    \tickbox & A6, B5, B6 and D3 are \textbf{full sentences}. \\
+  \end{tabularx}
+\end{yourturn}
 
 % ===========================================================================
 % ANSWER KEY -- TEACHER COPY ONLY
@@ -762,161 +778,164 @@ and carbon-14? What is \textbf{different}? Use the word \textbf{half-life}.
 \setlist[enumerate]{itemsep=2pt, topsep=3pt, leftmargin=*}
 \setlist[itemize]{itemsep=2pt, topsep=3pt, leftmargin=*}
 
-\noindent{\small Mr Bowen's numbers are chosen so Part A is exact: the drinks
-are 5 hours apart and bed is 10 hours after the latte. The rule in Part B rounds
-at every step and lands within 1 mg of Part A. Accept $\pm 3$ mg anywhere from a
-student who rounded at a different step.}
+\noindent{\small The only maths on this sheet is halving and $\times 5\,700$:
+the deck's own. Calculators are allowed. Mr Bowen's times are exactly 5 hours
+apart, so Part A has no rounding.}
 
-\qhead[cbred]{A1}{The drinks}
-\noindent (a) \textbf{400} mg \sep (b) \textbf{120} mg \sep (c) \textbf{no}
-
-\smallskip
-\noindent{\small Expect 60 for (b) from a student who read \emph{double-shot}
-as one shot. (c) is there for Part C: the condensed milk in a Vietnamese iced
-coffee adds nothing either, and a student who counts the whole drink will not
-know which number to look up.}
-
-\qhead[cbred]{A2}{Half-life steps}
-\noindent 1~p.m.: \textbf{200} \sep after the latte: \textbf{320} \sep 6~p.m.:
-\textbf{160} \sep 11~p.m.: \textbf{80}
+\qhead[cbred]{A1}{Halving}
+\noindent 100: \textbf{50, 25, 12.5} \sep 80: \textbf{40, 20, 10}
 
 \smallskip
-\noindent{\small \textbf{The latte box is the question.} Expect 100 and 50 from
-a student who halved straight through it, and 260 / 130 / 65 from one who
-added 60. If the second box is 520, they added the latte to the 8~a.m. number
-before halving --- ask what happened between 8~a.m. and 1~p.m.}
+\noindent{\small Expect 12 or 13 for 12.5 from a student avoiding the
+decimal. Push for 12.5: it is the deck's 10~p.m. number.}
 
-\qhead[cbred]{A3}{The graph}
+\qhead[cbred]{A2}{Mr Bowen's caffeine}
+\noindent (a) \textbf{400} mg \sep (b) 1~p.m. \textbf{200} \sep 6~p.m.
+\textbf{100} \sep 11~p.m. \textbf{50}
+
+\smallskip
+\noindent{\small \textbf{The error to catch: 200, 0, 0.} That student took
+away 200 every time --- half of the \emph{first} number --- instead of halving
+what is \emph{left}. Ask: half of what? The caffeine is then all gone by
+6~p.m., and A3 says the halving model never runs out.}
+
+\qhead[cbred]{A3}{Does it ever run out?}
+\noindent (a) \textbf{25, 12.5, 6.25} \sep (b) \textbf{no} \sep (c)
+\textbf{limitation}
+
+\smallskip
+\noindent{\small Deck slide 6. A student who ticks ``yes'' has thought about
+real caffeine, not the model: ask what the \emph{maths} says, then read (c)
+together.}
+
+\qhead[cbred]{A4}{The graph}
 \begin{center}
 \begin{tikzpicture}[x=0.9cm, y=0.021cm]
   \bowenaxes
-  \draw[cbred, line width=1.8pt] plot[domain=0:5, samples=40, smooth]
+  \draw[cbred, line width=1.8pt] plot[domain=0:16, samples=80, smooth]
     (\x, {400*0.5^(\x/5)});
-  \draw[cbred, line width=1.8pt] (5,200) -- (5,320);
-  \draw[cbred, line width=1.8pt] plot[domain=5:16, samples=60, smooth]
-    (\x, {320*0.5^((\x-5)/5)});
-  \foreach \h/\v in {0/400, 5/200, 5/320, 10/160, 15/80}
+  \foreach \h/\v in {0/400, 5/200, 10/100, 15/50}
     \fill[cbred] (\h,\v) circle (0.11cm);
-  \draw[cbblue, line width=1pt, dashed] (12,0) -- (12,121) -- (0,121);
+  \draw[cbblue, line width=1pt, dashed] (12,0) -- (12,75.8) -- (0,75.8);
   \node[right, font=\small\bfseries, text=cbblue, fill=white, inner sep=1.5pt]
-    at (12.15,145) {8~p.m.: about 120};
+    at (12.15,110) {8~p.m.: about 76};
 \end{tikzpicture}
 \end{center}
 
-\noindent{\small Look for the \textbf{vertical} jump at 1~p.m. A slope from
-noon to 1~p.m. means the student is joining dots, not modelling a drink. Two
-straight lines instead of curves is the other common one; it makes A4(a) come
-out at 128 instead of 121.}
+\noindent{\small Look for a \textbf{curve}. Straight lines between the dots
+are the common one; they make A5(b) come out at 80 instead of 76.}
 
-\qhead[cbred]{A4}{Read the graph}
-\noindent (a) about \textbf{120} mg (exactly 121; accept 115--130) \sep (b)
-\textbf{80} mg \\
-(c) $400 + 120 = \mathbf{520}$ mg; \textbf{yes} \sep (d) \textbf{the latte}
-($520 - 120 = 400$)
+\qhead[cbred]{A5}{Read the graph}
+\noindent (a) between \textbf{100} and \textbf{50} mg \sep (b) about
+\textbf{76} mg (accept 70--85)
 
 \smallskip
-\noindent{\small (d): ``one cold brew'' gives 320, which is under 400 but not
-\emph{exactly} 400 --- worth a minute in class, because both are healthier and
-only one answers the question asked.}
+\noindent{\small (a) is deck slide 5's method, said in words: name the two
+points either side before reading between them. 80 is fine from a student
+who drew straight lines; ask them why the curve sits a little lower.}
 
-\qhead[cbred]{A5}{The title question}
-\noindent\textit{At 11~p.m. Mr Bowen still has 80 mg of caffeine in his body.
-That is almost a whole cup of coffee.}
+\qhead[cbred]{A6}{The title question}
+\noindent\textit{Mr Bowen is still awake because at 11~p.m. he still has
+50 mg of caffeine in his body. That is half a cup of coffee.}
 
 \smallskip
 \noindent{\small Check for the number \emph{and} the comparison. ``Because he
 drank coffee'' is true and is not the answer.}
 
-\qhead[cbred]{B1}{Why 0.87?}
-\noindent 100, 87, \textbf{76, 66, 57, 50} \sep about \textbf{50 mg}, which is
-\textbf{half}: one \textbf{half-life} \quad ($0.87^5 = 0.498$)
-
-\qhead[cbred]{B2}{Check it with Mr Bowen}
-\noindent 320, \textbf{278, 242, 211, 184, 160, 139, 121} \sep yes, yes \sep
-scientists \textbf{trust} the answer
-
-\smallskip
-\noindent{\small The last line is deck slide 43, word for word. Expect 160, 80,
-40, 20 \ldots\ from a student who halved every hour instead of
-$\times\,0.87$ (both of B2's checks then come out ``no''): that is the error to catch
-before Part C, where it would put every family member at almost zero by
-bedtime.}
-
-\qhead[cbred]{C1--C4}{The interview, the table, the graph}
+\qhead[cbred]{B1--B4}{The interview and the halving table}
 \noindent{\small No single answer. Mark in this order, and stop at the first
 thing that is missing --- it is the thing to send back:}
 \begin{enumerate}
-  \item A real person, named by relationship (``my father''), with a bedtime.
-  \item Every drink has a time, a rounded time, an amount in mg, and
-    \textbf{where the number came from}. ``Google'' is acceptable; a blank is
-    not.
-  \item C2: (a) $3.3 \times 10 = \mathbf{33}$ mg \sep (b) $2.5 \times 30 =
-    \mathbf{75}$ mg.
-  \item C3 starts at the first drink, goes up one hour a row (left table, then
-    right), and stops at bedtime. Each row is the row above $\times\,0.87$; a
-    drink appears \emph{once}, in its own row.
-  \item C4: the scale goes up in equal steps from the table, the dots match C3,
-    drinks are vertical jumps, and the bedtime value on the graph is the last
-    row of C3.
+  \item A real person, named by relationship (``my mother''), one drink with
+    its size and time, and a bedtime.
+  \item B2: an amount in mg and a ticked source. A blank is not acceptable;
+    any honest number is.
+  \item B3 starts at the drink's time, adds 5 hours a box, and halves each
+    time. \textbf{Check the clock}: 9~a.m.\ $+$ 5 hours is 2~p.m., not
+    ``14'' or ``14~p.m.''; 8~p.m.\ $+$ 5 hours is 1~a.m. The tea example
+    crosses noon and midnight on purpose.
+  \item B4: the two boxes either side of bedtime, their two numbers, and a
+    number between them. If bedtime falls exactly on a box, that box is the
+    answer.
 \end{enumerate}
 
-\noindent{\small \textbf{Numbers to sanity-check against} (all approximate; the
-point is that the student found one and said where): Sting, 330 ml bottle,
-about 50--85 mg (the Vietnamese label gives a range per litre, which is a good
-C2 conversation) \sep cola, 330 ml can, about 30--35 mg \sep Red Bull, 250 ml
-can, about 50--80 mg depending on the version \sep one espresso shot, about
-60--75 mg \sep Vietnamese iced coffee, about 100--200 mg (robusta, and very
-variable) \sep a cup of black or green tea, about 30--50 mg.}
+\noindent{\small \textbf{Numbers to sanity-check against} (all approximate;
+the point is that the student found one and said where): Sting, 330 ml, about
+50--85 mg (the Vietnamese label gives a range per litre, worth a minute in
+class) \sep cola, 330 ml can, about 30--35 mg \sep Red Bull, 250 ml can, about
+50--80 mg depending on the version \sep one espresso shot, about 60--75 mg
+\sep Vietnamese iced coffee, about 100--200 mg (robusta, and very variable)
+\sep a cup of black or green tea, about 30--50 mg.}
 
-\smallskip
-\noindent{\small \textbf{Expect at least one sheet where bedtime is above Mr
-Bowen's 80 mg.} An afternoon iced coffee and an evening Sting will do it. That
-sheet is worth showing the class (without the name).}
+\qhead[cbred]{B5}{Compare with Mr Bowen}
+\noindent{\small Needs a number, more or less, and \emph{because} with a
+reason from their own table: a bigger drink, a smaller drink, or a drink
+earlier or later in the day. Most adults who drink one morning coffee will be
+well under 50 mg; an afternoon Sting will not. That sheet is worth showing
+the class (without the name).}
 
-\qhead[cbred]{C5}{Results}
-\noindent{\small (a) must match the last row of C3. (b) needs \emph{because}
-and a reason from the table: more drinks, a bigger drink, or a later drink.
-(c) the strongest advice moves or cuts the \textbf{last} drink of the day ---
-an afternoon drink matters far more at bedtime than a morning one. Credit a
-student who reworks the table to show it. (d) accept: the half-life is
-different for different people (the clue); the caffeine numbers are estimates
-and brands differ; times were rounded; the person may not remember exactly;
-the model adds a drink all at once, but caffeine takes time to get into the
-blood; yesterday may not have been a normal day. ``I might have made a
-mistake'' is not a limitation of the model --- ask which part of the model.}
+\qhead[cbred]{B6}{Is your number right?}
+\noindent{\small Any of the three, written as a sentence. ``I might have made
+a mistake'' is not a limitation of the model --- ask which part of the model.
+A student who adds a reason of their own (the caffeine takes time to get into
+the blood; yesterday was not a normal day) deserves the credit.}
 
-\qhead[cbred]{D1}{The halving chain}
+\qhead[cbred]{C1}{The halving chain}
 \noindent 100\%, 50\%, \textbf{25\%, 12.5\%, 6.25\%} \sep 0, 5\,700,
 \textbf{11\,400, 17\,100, 22\,800} years
 
-\qhead[cbred]{D2}{The museum}
+\qhead[cbred]{C2}{The museum}
 \renewcommand{\arraystretch}{1.2}
-\noindent\begin{tabularx}{\linewidth}{@{}p{2.8cm}>{\raggedright\arraybackslash}p{4.4cm}p{1.3cm}p{0.5cm}L@{}}
-  bear bone & yes & 12.5\% & 3 & \textbf{17\,100} \\
-  charcoal & \textbf{yes} (it was wood) & 6.25\% & 4 & \textbf{22\,800} \\
-  cotton T-shirt & \textbf{yes} (cotton is a plant) & 100\% & 0 &
-    \textbf{about 0} (it is new) \\
-  stone axe & \textbf{no} & --- & --- & carbon dating does not work \\
-  \textit{T.\ rex} tooth & yes & 0\% & --- & too old: over 50\,000 years \\
+\noindent\begin{tabularx}{\linewidth}{@{}p{3.4cm}p{2.2cm}p{1.4cm}p{0.6cm}L@{}}
+  bear bone & yes & 25\% & 2 & \textbf{11\,400} \\
+  wooden spear & yes & 12.5\% & 3 & \textbf{17\,100} \\
+  stone axe & \textbf{no} & --- & --- & \textbf{does not work} \\
+  \textit{T.\ rex} tooth & \textbf{yes} & 0\% & --- & \textbf{does not work}
+    (too old) \\
 \end{tabularx}
 
 \smallskip
-\noindent{\small \textbf{The three traps are the question.} Expect ``no'' for
-charcoal and the T-shirt from students who read \emph{alive} as \emph{an
-animal}. Expect ``no'' for the \textit{T.\ rex} because it is dead --- it was
-alive; it is too old (deck slide 31: 66 million years, over 11\,000
-half-lives). A student who writes ``date the volcanic ash'' has remembered
-slide 34; give credit.}
+\noindent{\small \textbf{The \textit{T.\ rex} is the question.} Expect ``no''
+under \emph{Was it ever alive?} because it is dead now. It \emph{was} alive;
+it is too old (deck slide 19: 66 million years, over 11\,000 half-lives). A
+student who says ``it was alive, so it works'' has missed the 50\,000-year
+limit.}
 
-\qhead[cbred]{D3}{Same model, different clock}
-\noindent\textit{They are the same because both get topped up while he is
-alive, and when the top-ups stop, both halve every half-life. The difference
-is the half-life: 5 hours for caffeine and 5\,700 years for carbon-14.}
+\qhead[cbred]{C3}{Why does it not work?}
+\noindent (a) \textbf{alive} \sep (b) \textbf{old}
+
+\qhead[cbred]{D1}{How old is the Sun?}
+\noindent (a) \textbf{hydrogen} into \textbf{helium} \sep (b) \textbf{35.5}\%
+\sep (c) \textbf{yes} \sep (d) about \textbf{4.6}; about \textbf{4.6}
 
 \smallskip
-\noindent{\small Deck slide 25: ``food and drink keep topping up your
-carbon-14. Even coffee.'' A student who says only ``they both halve'' has the
-first half; push for the difference in the clock.}
+\noindent{\small (c): 34 is close to 35.5, so about half is gone --- deck
+slide 21's hydrogen bar. Do not let ``half-life of 4.6 billion years'' creep
+in: the Sun burns its hydrogen as fuel; it does not decay. The deck says
+``about half gone in 4.6 billion years'', and so does this sheet. (b) is
+there because ``half of 71'' is a real step; 35 or 36 is fine.}
+
+\qhead[cbred]{D2}{Three clocks}
+\noindent Caffeine $\to$ \textbf{every 5 hours} \sep Carbon-14 $\to$
+\textbf{every 5\,700 years} \sep the Sun $\to$ \textbf{4.6 billion years}
+\sep order: \textbf{caffeine, carbon-14, the Sun}
+
+\qhead[cbred]{D3}{The same maths}
+\noindent\textit{They are the same because we measure what is left to find
+how long it has been. They are different because they go at different
+speeds: caffeine in hours, carbon-14 in thousands of years, and the Sun in
+billions of years.}
+
+\smallskip
+\noindent{\small Deck slide 22. A student who writes only ``they all
+halve'' has the first half; push for the speeds.}
+
+\qhead[cbred]{D4}{One more link}
+\noindent \textbf{Inside a star, long before the Sun was born.}
+
+\smallskip
+\noindent{\small Slide 22's ``One more link''. The other two are the joke; a
+student who ticks one of them was not there for the reveal.}
 
 \fi
 
