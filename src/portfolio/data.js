@@ -120,7 +120,7 @@ export const MODULES = [
     n: 2,
     title: 'The Culture of Schooling',
     when: '13 September – 3 October 2026',
-    status: 'progress',
+    status: 'complete',
     artifacts: [
       { id: 'm2-law', activity: 'U1 · A2', kind: 'video', title: 'English as Vietnam’s second language', blurb: 'Decision 2371, Vietnam’s plan to make English the second language in its schools: where it came from, how people see it now, its strengths and weaknesses, and what it already changes in my integers lessons.', url: m2Laws, poster: m2LawsPoster },
       { id: 'm2-modelling', activity: 'U1 · A1', kind: 'image', title: 'Modeling vs models in math', blurb: 'A one-page visual on the difference between the math modeling process and models in math.', page: 'maths', url: m2Modeling, alt: 'Poster: on the left, a model in math, shown as a box model for "twice as many" and as layers of centimeter cubes in a tank; on the right, the six stages of the modeling process worked through for "How far away is the storm?" with d = t ÷ 3; below, a table comparing the two.' },
