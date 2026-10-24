@@ -261,12 +261,13 @@ export const HOMEWORK = [
   },
   // The challenge after Coffee, Carbon and Stars. Halving only, like the deck:
   // Mr Bowen's coffee in 5-hour steps, an interview at home (one drink, looked
-  // up on the label or Google, halved to bedtime), carbon dating, the Sun.
+  // up on the label or Google, halved to bedtime), carbon dating, the Sun,
+  // then caffeine and sleep: a short guide and a letter to Mr Bowen.
   {
     id: 'caffeine',
     label: 'CH',
     title: 'Why Is Mr Bowen Still Awake?',
-    subtitle: 'Challenge · Science Models · caffeine, an interview, carbon dating, the Sun',
+    subtitle: 'Challenge · Science Models · caffeine, an interview, carbon dating, the Sun, sleep',
     pdf: caffeine,
   },
   // Unit 4 again with new numbers, then Science 3.2, 3.3 and the football model.

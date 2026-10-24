@@ -25,6 +25,11 @@ The teacher found the first version too hard for Year 7. The deck only ever
   5 hours to bedtime.
 - **In, by request:** the Sun and "different speeds, the same maths" (deck slides
   20–22).
+- **Part E, by request (same day):** a page on how caffeine affects sleep, with a
+  writing piece. It replaced the old last page, which the teacher said had no
+  meaningful questions: a same/different question whose sentence starter gave the
+  answer, a joke tick question about where carbon is made, and a hand-in
+  checklist.
 - **Not added, by choice:** Mr Bowen's sad day, Last Atom Standing at home, a
   separate dinosaur question. (The T. rex tooth stays in the museum, the only place
   the 50 000-year limit is tested.)
@@ -51,8 +56,12 @@ Mr Bowen's day, chosen so the halving is exact: two cold brews from Jeremy's at
 | 4 | Part B: what you will do, word help; B1 the interview; B2 where to look |
 | 5 | B2 reading a label (20 mg in 100 ml, 300 ml), the answer; B3 the halving table, with a tea example that crosses noon and midnight; B4 bedtime between two boxes; B5 compare with Mr Bowen |
 | 6 | B6 one limitation (tick, then a sentence); Part C: C1 the chain in years; C2 the museum |
-| 7 | C3 why not (alive / old); Part D: D1 how old is the Sun; D2 three clocks to match |
-| 8 | D3 the same maths; D4 one more link (carbon made in a star); hand-in checklist |
+| 7 | C3 why not (alive / old); Part D: D1 how old is the Sun; D2 three clocks to match and order |
+| 8 | Part E: a five-point guide to caffeine and sleep (sleepy chemical, blocked; the 400 mg / 6 hours study; 9–11 hours), with a picture; E1 plan from the packet's numbers (50 mg, last drink by 5 p.m., one cold brew leaves 25 mg); E2 a letter to Mr Bowen, six tick-off conditions, eight lines |
+
+The guide's sources are in the key: adenosine (never named on the student page),
+Drake et al. 2013 for 400 mg six hours before bed, and the National Sleep
+Foundation's 9–11 hours for ages 6–13.
 
 ## Building
 
