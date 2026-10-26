@@ -6,7 +6,8 @@ after **Coffee, Carbon and Stars** (`content/y7-science/U03_coffee`).
 | File | What it is |
 | --- | --- |
 | `hw10x.pdf` | Student copy. **8 pages.** |
-| `hw10x-teacher.pdf` | Student copy plus a 3-page key with diagnoses. |
+| `hw10x-fr.pdf` | Student copy with a grey French line under every instruction and question. **14 pages.** |
+| `hw10x-teacher.pdf` | Student copy plus a 3-page key with diagnoses. English only. |
 
 **Keep it at eight.** The first draft was 13 pages and the teacher called it "way too
 many pages".
@@ -67,14 +68,41 @@ Year 7, our arithmetic); Gardiner et al. (2023) for about 9 hours per cup, Drake
 et al. (2013) for why 6 hours is not enough; the National Sleep Foundation's
 9–11 hours for ages 6–13.
 
+## French copy (26 Oct 2026)
+
+`hw10x-fr.pdf` is the same source built with `\FRENCH` defined, on HW 9's scheme
+(see `../hw09/README.md`): `\fr` and `\frin` lines that are empty in the English
+copy, the English key word kept in blue inside the French, the English decimal
+point, *en anglais* wherever the student writes. The English copy is untouched:
+all eight pages rasterise pixel-identical to the build before the French went in.
+
+Choices worth knowing:
+
+- **Times** are said the way French says the sheet's 12-hour clock: *8 h du matin
+  (**8 a.m.**)*, *11 h du soir (**11 p.m.**)*, so a.m. and p.m. are taught in passing.
+- **Billion.** Part D's word help warns that an English *billion* is a French
+  *milliard*; a French *billion* is a million million.
+- **The interview** in B1 is given in French too, in the *tu* a child uses at home,
+  since the student may interview in any language. The answers stay English.
+- **Labels in drawings** stay English. D2's three speeds and the Sun's core get a
+  French line under the label (`\frnode`), with the rows set further apart in the
+  French copy (`\dtwoB`, `\dtwoC`) so the lines do not collide.
+- C2's object names get a French line inside the cell (`\frcell`), and those rows
+  drop the `\tall` strut (`\ctall`), which opened a gap under a two-line cell.
+
+**Fourteen pages**, whole double-sided sheets. The French copy has more room: leading
+1.10, writing lines 1.9em apart, a taller A4 graph, more lines for A6 and B5 (6),
+B6 (5) and the letter (14). A6, B1 and B5 are single blocks in the French copy so
+a question never leaves its lines or its translation behind, and `\fr` carries a
+`\nobreak`. Part D starts a new page there: D1 and D2 do not fit on one, and the
+break keeps the count at 14 whatever moves earlier. The spare space falls after B5
+(page 8) and D2 (page 12).
+
 ## Building
 
 ```bash
-pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw10x
+pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw10x -French
 ```
 
-Built and verified with MiKTeX: student copy **8 pages**, teacher copy 11, no errors,
-no overfull boxes. Every page was rasterised and read.
-
-English only. A French copy would follow `../hw09x/`: `\fr` lines, the `-French`
-build, an even page count.
+Built and verified with MiKTeX: student copy **8 pages**, French **14**, teacher
+copy 11, no errors, no overfull boxes. Every page was rasterised and read.

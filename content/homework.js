@@ -35,6 +35,7 @@ import lab31 from '../homework/lab31/lab31.pdf?url'
 import hw10 from '../homework/hw10/hw10.pdf?url'
 import hw10x from '../homework/hw10x/hw10x.pdf?url'
 import hw10fr from '../homework/hw10/hw10-fr.pdf?url'
+import hw10xfr from '../homework/hw10x/hw10x-fr.pdf?url'
 
 export const HOMEWORK = [
   {
@@ -287,5 +288,13 @@ export const HOMEWORK = [
     title: 'Faster in January — English / Français',
     subtitle: 'HW 10 with a French line under every question',
     pdf: hw10fr,
+  },
+  // EX 10 built with \FRENCH defined, as FR X9 is: same questions, 14 pages.
+  {
+    id: 'hw10xfr',
+    label: 'FR X10',
+    title: 'Why Is Mr Bowen Still Awake? — English / Français',
+    subtitle: 'EX 10 with a French line under every question',
+    pdf: hw10xfr,
   },
 ]

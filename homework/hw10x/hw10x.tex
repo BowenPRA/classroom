@@ -43,13 +43,20 @@
 %           3 p.m., one cold brew leaves 25 mg), and a letter to Mr Bowen with
 %           six tick-off conditions and NO sentence starter (teacher's call).
 %
-% English only. If a French copy is wanted, follow hw09x: \fr lines, the
-% -French build, an even page count.
+% FRENCH COPY (26 Oct 2026). hw10x-fr.pdf is this file built with \FRENCH
+% defined: HW 9's scheme (see hw09/README.md). \fr{...} prints a grey French
+% line under the English, \frin{...} a short French gloss in brackets, and
+% \frnode{...} a French line under a drawing's label. All three are EMPTY in
+% the English copy, so the English layout is the one checked to eight pages.
+% The English key word stays inside the French line, in blue; numbers keep the
+% English decimal point; times are said the French way that matches the
+% sheet's 12-hour clock (11 p.m. = 11 h du soir). An English "billion" is a
+% French "milliard", and Part D's word help says so. The key stays English.
 %
 % House style is shared: see homework/hw-style.tex. Method: the new-homework
-% skill. Source is pure ASCII on purpose.
+% skill. Source is pure ASCII on purpose: French accents are written \'e etc.
 %
-% Build:  pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw10x
+% Build:  pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw10x -French
 
 \documentclass[12pt,a4paper]{article}
 
@@ -59,9 +66,35 @@
   \keyfalse        % \keyfalse = student copy   |   \keytrue = teacher copy
 \fi
 
+% -- Language switch ---------------------------------------------------------
+% The French copy (hw10x-fr.pdf) is this file built with \FRENCH defined. See
+% hw09/README.md for the scheme.
+\newif\iffr
+\ifdefined\FRENCH\frtrue\fi
+
 % -- House style -------------------------------------------------------------
 \input{../hw-style.tex}
 \usepackage{colortbl}   % \rowcolor for the table headers
+
+% -- French support lines ----------------------------------------------------
+% \fr{...}  a French line of its own, grey and italic, under the English.
+% \frin{...} a French gloss in brackets, inline -- for table cells and labels.
+% \fq{...}  French quotation marks.
+% Both start with \unskip: the line break before \fr is a space, and in the
+% English copy it would otherwise sit at the end of the line and move a break.
+% \fr has a \nobreak, so a French line never starts the page after its English
+% (B1's third question did).
+\newcommand{\fr}[1]{\unskip\iffr\par\nobreak\vspace{1pt}\noindent{\small\itshape\color{black!60}#1}\par\fi}
+\newcommand{\frin}[1]{\unskip\iffr\ {\small\itshape\color{black!60}(#1)}\fi}
+\newcommand{\fq}[1]{\guillemotleft\,#1\,\guillemotright}
+% \frcell{...} a French line of its own inside a table cell (C2's objects).
+\newcommand{\frcell}[1]{\unskip\iffr\par{\small\itshape\color{black!60}#1}\fi}
+% \frnode{...} one more line under a TikZ label, French copy only. The node
+% must have align= set. One line per call, so no \\ sits inside a group.
+\newcommand{\frnode}[1]{\iffr\\[1pt]{\footnotesize\itshape\color{black!60}#1}\fi}
+% \frl{english}{french}: a number of writing lines that is bigger in the
+% French copy.
+\newcommand{\frl}[2]{\iffr#2\else#1\fi}
 
 % "8 a.m. Two cold brews" must not get a sentence space after "a.m."
 \frenchspacing
@@ -75,8 +108,13 @@
 \makeatletter\@beginparpenalty=\@M\makeatother
 
 % -- Per-packet running head -------------------------------------------------
-\fancyhead[L]{\small\color{black!55}Year 7\sep Science Models\sep Extra
-  Homework 10}
+\iffr
+  \fancyhead[L]{\small\color{black!55}Year 7\sep Science Models\sep Extra
+    Homework 10\sep English / Fran\c{c}ais}
+\else
+  \fancyhead[L]{\small\color{black!55}Year 7\sep Science Models\sep Extra
+    Homework 10}
+\fi
 
 % -- Writing lines that will not be split ------------------------------------
 \newcommand{\qlines}[1]{\par\needspace{\numexpr#1+1\relax\baselineskip}\wlines{#1}}
@@ -89,6 +127,34 @@
 \newcolumntype{W}[1]{>{\leavevmode\raggedright\bfseries\color{cbblue}}p{#1}}
 \newcommand{\tall}{\rule[-0.9em]{0pt}{2.6em}}
 \newcommand{\hrow}{\rowcolor{cbteal!10}}
+
+% C2's row strut. None in the French copy: the French line under each object
+% already makes the row tall enough, and a strut on that line opened a gap.
+\newcommand{\ctall}{\iffr\else\tall\fi}
+
+% D2's three rows, further apart in the French copy so a French line fits
+% under each label. Set here: a conditional cannot go inside TikZ coordinates.
+\iffr\def\dtwoB{-2.6}\def\dtwoC{-5.2}\else\def\dtwoB{-1.9}\def\dtwoC{-3.8}\fi
+% A4's graph is taller in the French copy: easier to plot and to read 8 p.m.
+\iffr\def\agraphy{0.032cm}\else\def\agraphy{0.024cm}\fi
+
+% -- More room in the French copy --------------------------------------------
+% The French copy carries a second line under every question, so it gets more
+% room to write as well, as HW 10's does: looser leading, wider writing lines,
+% and the \frl line counts. The English copy is untouched by all of this.
+\iffr
+  \linespread{1.10}\selectfont
+  \makeatletter
+  \renewcommand{\wlines}[1]{%
+    \par\vspace{0.75em}%
+    \@tempcnta=0\relax
+    \@whilenum\@tempcnta<#1\do{%
+      \hbox to \linewidth{\color{rulegray}\leaders\hrule height 0.5pt\hfill}%
+      \vspace{1.9em}%
+      \advance\@tempcnta by 1\relax}%
+    \par\vspace{-0.8em}}
+  \makeatother
+\fi
 
 % -- A sentence starter or a done-for-you entry: grey -------------------------
 % \leavevmode for the same reason as W: it is used at the start of table cells.
@@ -209,6 +275,9 @@
     {\color{cbpurple}\huge\bfseries Why Is Mr Bowen Still Awake?}\\[6pt]
     {\color{black!70}Half-life with coffee, an interview at home, carbon dating
     and the Sun}
+    \iffr\\[4pt]{\small\itshape\color{black!60}Pourquoi Mr Bowen ne dort-il
+    toujours pas~? La demi-vie avec le caf\'e, une interview \`a la maison, la
+    datation au carbone 14 et le Soleil}\fi
   \end{minipage}\hfill
   \begin{minipage}[c]{0.15\linewidth}\centering
     \begin{tikzpicture}[scale=0.95]
@@ -225,44 +294,64 @@
   \textbf{Date given:} \blank[4.6cm] & \textbf{Date due:} \blank[4.8cm] \\
 \end{tabularx}
 
-\begin{activity}[How to do this homework]
+\begin{activity}[How to do this homework\frin{Comment faire ce devoir}]
   \begin{itemize}[itemsep=2pt, topsep=0pt]
     \item \textbf{Part A:} Mr Bowen's coffee. It shows you the method.
+      \fr{Partie A~: le caf\'e de Mr Bowen. Elle te montre la m\'ethode.}
     \item \textbf{Part B:} interview an adult at home. \textbf{Do it at the
       weekend.}
+      \fr{Partie B~: interviewe un adulte \`a la maison. Fais-le pendant le
+      week-end.}
     \item \textbf{Part C:} carbon dating. \ \textbf{Part D:} the Sun.
       \ \textbf{Part E:} caffeine and sleep, and a letter.
+      \fr{Partie C~: la datation au carbone 14. Partie D~: le Soleil. Partie
+      E~: la caf\'eine et le sommeil, puis une lettre.}
     \item You need a \textbf{calculator}, a \textbf{ruler}, and a
       \textbf{phone or computer}.
+      \fr{Il te faut une calculatrice, une r\`egle et un t\'el\'ephone ou un
+      ordinateur.}
     \item Answer in \textbf{full sentences}. ``50 mg'' is not a sentence.
       ``He still has 50 mg of caffeine'' is.
+      \fr{R\'eponds par des phrases compl\`etes, \textbf{en anglais}.
+      \fq{50 mg} n'est pas une phrase~; \fq{He still has 50 mg of caffeine}
+      en est une.}
   \end{itemize}
 \end{activity}
 
 \begin{remember}
   \key{Half-life:} the time it takes for half of something to disappear.
+  \fr{\eng{Half-life}, la demi-vie~: le temps qu'il faut pour que la moiti\'e
+  de quelque chose disparaisse.}
 
   \vspace{3pt}
   \key{Carbon-14:} a rare kind of carbon that slowly breaks down into nitrogen.
+  \fr{\eng{Carbon-14}, le carbone 14~: une forme rare de carbone qui se
+  transforme lentement en azote.}
 
   \vspace{3pt}
   \key{Carbon dating:} finding the age of something that was once alive by
   measuring how much carbon-14 is left.
+  \fr{\eng{Carbon dating}, la datation au carbone 14~: on trouve l'\^age d'une
+  chose qui a \'et\'e vivante en mesurant le carbone 14 qui lui reste.}
 
   \vspace{5pt}
   \begin{tabular}{@{}l@{\quad}l@{}}
     Caffeine's half-life: about \textbf{5 hours} &
     Carbon-14's half-life: \textbf{5\,700 years}
   \end{tabular}
+  \fr{Demi-vie de la caf\'eine~: environ 5 heures. \quad Demi-vie du carbone
+  14~: 5\,700 ans.}
 \end{remember}
 
 % ===========================================================================
 % PART A -- MR BOWEN'S COFFEE
 % ===========================================================================
-\hwsection{Part A\quad Mr Bowen's Coffee}
+\hwsection{Part A\quad Mr Bowen's Coffee\frin{Le caf\'e de Mr Bowen}}
 
 \noindent On Monday, Mr Bowen drinks two cold brews at 8~a.m. He goes to bed
 at 11~p.m.
+\fr{Lundi, Mr Bowen boit deux \eng{cold brews} \`a 8~h du matin
+(\eng{8 a.m.}). Il se couche \`a 11~h du soir (\eng{11 p.m.}).}
 
 \vspace{4pt}
 \begin{center}
@@ -293,17 +382,22 @@ at 11~p.m.
   \renewcommand{\arraystretch}{1.15}
   \begin{tabularx}{\linewidth}{@{}W{2.9cm} L@{}}
     caffeine & a chemical in coffee, tea, cola and energy drinks. It keeps you
-      awake. \\
-    mg & milligram. A grain of rice is about 20 mg. \\
-    cold brew & strong coffee made slowly with cold water \\
-    halve & cut in half: divide by 2 \\
-    curve & a line that bends smoothly \\
+      awake.\frin{la caf\'eine~: une substance chimique du caf\'e, du th\'e, du
+      cola et des boissons \'energisantes. Elle te tient \'eveill\'e.} \\
+    mg & milligram. A grain of rice is about 20 mg.\frin{le milligramme. Un
+      grain de riz p\`ese environ 20~mg.} \\
+    cold brew & strong coffee made slowly with cold water\frin{un caf\'e fort,
+      infus\'e lentement dans de l'eau froide} \\
+    halve & cut in half: divide by 2\frin{couper en deux~: diviser par 2} \\
+    curve & a line that bends smoothly\frin{une courbe~: une ligne arrondie,
+      sans angle} \\
   \end{tabularx}
 \end{wordhelp}
 
-\qhead{A1}{Halving}
+\qhead{A1}{Halving\frin{Diviser par 2}}
 \noindent\begin{minipage}{\linewidth}
 \noindent Halve each number.
+\fr{Divise chaque nombre par 2 (\eng{halve}), case apr\`es case.}
 
 \vspace{6pt}
 \begin{center}
@@ -325,12 +419,16 @@ at 11~p.m.
 \end{center}
 \end{minipage}
 
-\qhead{A2}{Mr Bowen's caffeine}
+\qhead{A2}{Mr Bowen's caffeine\frin{La caf\'eine de Mr Bowen}}
 \noindent\begin{minipage}{\linewidth}
 \noindent (a) Two cold brews: \ $2 \times 200 =$ \mg
+\fr{(a) Deux \eng{cold brews} de 200~mg chacun~: combien de caf\'eine en
+tout~?}
 
 \vspace{10pt}
 \noindent (b) Fill in the boxes. Every 5 hours, \textbf{halve} the caffeine.
+\fr{(b) Compl\`ete les cases. Toutes les 5 heures, divise la caf\'eine par 2
+(\eng{halve}).}
 
 \vspace{8pt}
 \begin{center}
@@ -351,9 +449,10 @@ at 11~p.m.
 \end{center}
 \end{minipage}
 
-\qhead{A3}{Does it ever run out?}
+\qhead{A3}{Does it ever run out?\frin{La caf\'eine finit-elle par dispara\^itre~?}}
 \noindent\begin{minipage}{\linewidth}
 \noindent (a) Keep halving after bedtime.
+\fr{(a) Continue \`a diviser par 2 apr\`es l'heure du coucher (\eng{bedtime}).}
 
 \vspace{6pt}
 \begin{center}
@@ -373,35 +472,49 @@ at 11~p.m.
 \vspace{4pt}
 \noindent (b) If you keep halving, does the number ever get to 0? \hfill
 \choice{yes} \quad\; \choice{no}
+\fr{(b) Si tu continues \`a diviser par 2, est-ce que le nombre finit par
+arriver \`a 0~?}
 \end{minipage}
 
 \vspace{12pt}
 \noindent\begin{minipage}{\linewidth}
 \noindent (c) Fill in the gap with one word from the box.
+\fr{(c) Compl\`ete la phrase avec un mot de l'encadr\'e.}
 
 \vspace{4pt}
 \begin{center}
 \fbox{\rule[-0.4em]{0pt}{1.5em}\ half-life \qquad limitation \qquad molecule\ }
+% Inside the centre, not after it: \fr's \unskip would eat the space below.
+\fr{\eng{half-life} = la demi-vie \sep \eng{limitation} = une limite \sep
+\eng{molecule} = une mol\'ecule}
 \end{center}
 
 \vspace{2pt}
 \noindent The maths model says the caffeine \textbf{never} runs out. But real
 caffeine is made of molecules, and the last one is gone after about
 \textbf{2 weeks}. So the model is wrong here.
+\fr{Le mod\`ele math\'ematique dit que la caf\'eine ne dispara\^it
+\textbf{jamais}. Mais la vraie caf\'eine est faite de mol\'ecules, et la
+derni\`ere a disparu au bout d'environ \textbf{2 semaines}. Ici, le mod\`ele se
+trompe donc.}
 
 \vspace{8pt}
 \noindent This is a \blank[4.0cm] of the model.
+\fr{C'est une \ldots\ du mod\`ele. \'Ecris le mot en anglais.}
 \end{minipage}
 
 % ---------------------------------------------------------------------------
-\qhead{A4}{Draw the graph}
+\qhead{A4}{Draw the graph\frin{Trace le graphique}}
 \noindent\begin{minipage}{\linewidth}
 \noindent Put a dot for every box in A2. The first part is drawn for you. Join
 the dots with a \textbf{smooth curve}, not straight lines.
+\fr{Place un point pour chaque case de A2. Le d\'ebut est d\'ej\`a trac\'e.
+Relie les points par une \textbf{courbe} bien arrondie (\eng{smooth curve}),
+pas par des traits droits.}
 
 \vspace{6pt}
 \begin{center}
-\begin{tikzpicture}[x=0.9cm, y=0.024cm]
+\begin{tikzpicture}[x=0.9cm, y=\agraphy]
   \bowenaxes
   \draw[black!45, line width=1.6pt, dashed] plot[domain=0:5, samples=40, smooth]
     (\x, {400*0.5^(\x/5)});
@@ -412,62 +525,96 @@ the dots with a \textbf{smooth curve}, not straight lines.
 \end{center}
 \end{minipage}
 
-\qhead{A5}{Read the graph}
+\qhead{A5}{Read the graph\frin{Lis le graphique}}
 \noindent Mr Bowen marks your homework at \textbf{8~p.m.}
+\fr{Mr Bowen corrige tes devoirs \`a 8~h du soir (\eng{8 p.m.}).}
 
 \vspace{8pt}
 \noindent (a) 8~p.m. is between 6~p.m. and 11~p.m. So his caffeine is between
 \mg[1.4cm] and \mg[1.4cm].
+\fr{(a) 8~h du soir, c'est entre 6~h et 11~h du soir. Il a donc entre \ldots\
+mg et \ldots\ mg de caf\'eine.}
 
 \vspace{10pt}
 \noindent (b) Go \textbf{up} from 8~p.m. to your curve, then \textbf{across}.
 How much caffeine is in him at 8~p.m.? \quad about \mg
+\fr{(b) Pars de 8~h du soir et monte (\eng{up}) jusqu'\`a ta courbe, puis va
+\`a l'horizontale (\eng{across}) jusqu'\`a l'axe. Combien de caf\'eine a-t-il
+dans le corps \`a 8~h du soir~?}
 
-\qhead{A6}{The title question}
+\qhead{A6}{The title question\frin{La question du titre}}
+% One block in the French copy: the question, its starter and its lines go
+% over a page together (the lines were left behind once).
+\iffr\noindent\begin{minipage}{\linewidth}\fi
 \noindent Why is Mr Bowen still awake at 11~p.m.? Use your number from A2.
 A cup of coffee has about 100 mg. How much coffee is that?
+\fr{Pourquoi Mr Bowen ne dort-il toujours pas \`a 11~h du soir~? Utilise ton
+r\'esultat de A2. Une tasse de caf\'e contient environ 100~mg~: \c{c}a fait
+combien de caf\'e~? R\'eponds en anglais.}
 
 \vspace{4pt}
 \noindent\starter{Mr Bowen is still awake because at 11~p.m. he still has
 \ldots}
-\qlines{4}
+\qlines{\frl{4}{6}}
+\iffr\end{minipage}\fi
 
 % ===========================================================================
 % PART B -- THE INTERVIEW
 % ===========================================================================
-\hwsection{Part B\quad Interview a Caffeine Drinker}
+\hwsection{Part B\quad Interview a Caffeine Drinker\frin{Interviewe quelqu'un
+qui boit de la caf\'eine}}
 
-\begin{activity}[What you will do]
+\begin{activity}[What you will do\frin{Ce que tu vas faire}]
   \noindent \textbf{Interview} an adult in your family who drinks coffee, tea,
   cola or energy drinks like Sting. Then work out how much caffeine is in
   their body at \textbf{bedtime}.
+  \fr{Interviewe un adulte de ta famille qui boit du caf\'e, du th\'e, du cola
+  ou des boissons \'energisantes comme le Sting. Ensuite, calcule combien de
+  caf\'eine il reste dans son corps au moment du coucher (\eng{bedtime}).}
 
   \vspace{4pt}
   \noindent You can do the interview in \textbf{any language}. Write in
   \textbf{English}.
+  \fr{Tu peux faire l'interview dans la langue que tu veux. \'Ecris tes
+  r\'eponses \textbf{en anglais}.}
 \end{activity}
 
 \begin{wordhelp}
   \renewcommand{\arraystretch}{1.15}
   \begin{tabularx}{\linewidth}{@{}W{2.9cm} L@{}}
-    interview & ask someone questions, and write down the answers \\
-    label & the words printed on a can or bottle. They say what is inside. \\
-    search & type words into Google to find something \\
-    estimate & a careful guess, using numbers \\
+    interview & ask someone questions, and write down the answers\frin{interviewer~:
+      poser des questions \`a quelqu'un et noter ses r\'eponses} \\
+    label & the words printed on a can or bottle. They say what is
+      inside.\frin{l'\'etiquette~: ce qui est \'ecrit sur la canette ou la
+      bouteille. Elle dit ce qu'il y a dedans.} \\
+    search & type words into Google to find something\frin{chercher~: taper
+      des mots dans Google pour trouver quelque chose} \\
+    estimate & a careful guess, using numbers\frin{une estimation~: une
+      supposition r\'efl\'echie, faite avec des nombres} \\
   \end{tabularx}
 \end{wordhelp}
 
-\qhead{B1}{The interview}
+\qhead{B1}{The interview\frin{L'interview}}
+% One block in the French copy: it split the list mid-question.
+\iffr\noindent\begin{minipage}{\linewidth}\fi
 \noindent Ask about \textbf{yesterday}.
+\fr{Pose tes questions sur la journ\'ee d'\textbf{hier} (\eng{yesterday}).}
 
 \begin{enumerate}[label=\textbf{\arabic*.}, itemsep=2pt, topsep=4pt]
   \item ``Can I interview you for my homework?''
+    \fr{\fq{Est-ce que je peux t'interviewer pour mes devoirs~?}}
   \item ``What was your \textbf{first} drink with caffeine yesterday? How big
     was it?''\newline {\small\color{black!60}For example: 1 can of Sting,
     330 ml.}
+    \fr{\fq{Quelle a \'et\'e ta \textbf{premi\`ere} boisson avec de la
+    caf\'eine hier~? Elle faisait quelle taille~?} Par exemple~: une canette de
+    Sting, 330~ml.}
   \item ``What time did you drink it?''
+    \fr{\fq{Tu l'as bue \`a quelle heure~?}}
   \item ``What time did you go to bed?''
+    \fr{\fq{Tu t'es couch\'e(e) \`a quelle heure~?}}
 \end{enumerate}
+\iffr\end{minipage}\fi
 
 \vspace{2pt}
 \noindent\begin{minipage}{\linewidth}
@@ -478,25 +625,34 @@ A cup of coffee has about 100 mg. How much coffee is that?
   \textbf{They drank it at} & \blank[4.0cm]\,. \\
   \textbf{They went to bed at} & \blank[4.0cm]\,. \\
 \end{tabularx}
+\fr{Compl\`ete en anglais~: qui tu as interview\'e (\eng{my mother},
+\eng{my uncle}\ldots), sa boisson, l'heure o\`u il ou elle l'a bue et l'heure
+du coucher.}
 \end{minipage}
 
 % ---------------------------------------------------------------------------
-\qhead{B2}{Find the caffeine}
+\qhead{B2}{Find the caffeine\frin{Trouve la quantit\'e de caf\'eine}}
 
-\begin{activity}[Where to look]
+\begin{activity}[Where to look\frin{O\`u chercher}]
   \begin{minipage}[t]{0.68\linewidth}
     \begin{enumerate}[label=\textbf{\arabic*.}, itemsep=3pt, topsep=0pt]
       \item \textbf{The label} on the can or bottle. Look for the word
         \textbf{caffeine}.
+        \fr{L'\'etiquette (\eng{label}) de la canette ou de la bouteille.
+        Cherche le mot \eng{caffeine}.}
       \item \textbf{Google.} Search for the drink, like this: \\
         \textit{caffeine in 1 can of Sting mg}
+        \fr{Google. Tape le nom de la boisson, comme dans cet exemple.}
     \end{enumerate}
 
     \vspace{5pt}
     \noindent Milk, sugar and ice: \key{0 mg}.
+    \fr{Le lait, le sucre et les gla\c{c}ons~: 0~mg.}
 
     \vspace{3pt}
     \noindent Two numbers, like 50 to 80 mg? Use the \textbf{middle}: 65 mg.
+    \fr{Deux nombres, comme \fq{50 to 80 mg}~? Prends celui du milieu
+    (\mbox{\eng{middle}})~: 65~mg.}
   \end{minipage}\hfill
   \begin{minipage}[t]{0.28\linewidth}\vspace{-6pt}\centering
     % A bottle with its label. No real brand: the numbers are made up.
@@ -520,33 +676,48 @@ A cup of coffee has about 100 mg. How much coffee is that?
 \noindent\begin{minipage}{\linewidth}
 \noindent\textbf{Some labels give the caffeine in 100 ml.} This bottle has
 20 mg in every 100 ml. It holds 300~ml.
+\fr{Certaines \'etiquettes donnent la caf\'eine pour 100~ml. Cette bouteille
+contient 20~mg pour 100~ml, et elle fait 300~ml en tout.}
 
 \vspace{3pt}
 \noindent 300 ml is 3 lots of 100 ml. \qquad $3 \times 20 =$ \key{60 mg} in the
 whole bottle.
+\fr{300~ml, c'est 3 fois 100~ml (\eng{3 lots of 100 ml})~: il y a donc 60~mg
+dans toute la bouteille.}
 
 \vspace{3pt}
 \noindent{\small\color{black!65} A 330 ml can? \ $330 \div 100 = 3.3$, then
 $3.3 \times 20 = 66$ mg. Or search on Google for the whole can.}
+\fr{Une canette de 330~ml~? Fais $330 \div 100 = 3.3$, puis
+$3.3 \times 20 = 66$~mg. Ou cherche sur Google la caf\'eine de toute la
+canette.}
 
 \vspace{12pt}
 \noindent Their drink has about \mg[2.2cm] of caffeine.
+\fr{Sa boisson contient environ \ldots\ mg de caf\'eine.}
 
 \vspace{10pt}
 \noindent I found it on: \quad \choice{the label} \quad\;
 \choice{Google} \quad\; \choice{another website}
+\fr{Je l'ai trouv\'e sur~: l'\'etiquette, Google ou un autre site web.}
 \end{minipage}
 
 % ---------------------------------------------------------------------------
-\qhead{B3}{Halve it, every 5 hours}
+\qhead{B3}{Halve it, every 5 hours\frin{Divise par 2 toutes les 5 heures}}
 \noindent\begin{minipage}{\linewidth}
 \noindent Start with their drink. In each box, \textbf{add 5 hours} to the
 time and \textbf{halve} the caffeine. Keep going until you are
 \textbf{past their bedtime}.
+\fr{Commence par sa boisson. \`A chaque case, ajoute 5 heures (\eng{add 5
+hours}) et divise la caf\'eine par 2 (\eng{halve}). Continue jusqu'\`a
+d\'epasser l'heure de son coucher (\eng{past their bedtime}).}
 
 \vspace{8pt}
 \noindent{\small\bfseries\color{black!60}Example: a cup of tea, about 40 mg,
 at 7~a.m.}
+\fr{Exemple~: une tasse de th\'e, environ 40~mg, \`a 7~h du matin. \eng{The
+drink} = la boisson \sep \eng{5 hours later} = 5 heures plus tard \sep
+\eng{Time} = l'heure}
 
 \vspace{3pt}
 {\renewcommand{\arraystretch}{1.25}%
@@ -559,7 +730,7 @@ at 7~a.m.}
 \end{tabular}}
 
 \vspace{12pt}
-\noindent{\small\bfseries\color{cbteal}Now yours:}
+\noindent{\small\bfseries\color{cbteal}Now yours:\frin{\`A toi~:}}
 
 \vspace{3pt}
 \noindent\begin{tabular}{|p{2.45cm}|C{2.3cm}|C{2.3cm}|C{2.3cm}|C{2.3cm}|C{2.3cm}|}
@@ -569,53 +740,73 @@ at 7~a.m.}
 \end{tabular}
 \end{minipage}
 
-\qhead{B4}{Bedtime}
+\qhead{B4}{Bedtime\frin{L'heure du coucher}}
 \noindent (a) Their bedtime is between the times in two of your boxes:
 \blank[2.6cm] and \blank[2.6cm].
+\fr{(a) L'heure du coucher se situe entre les heures de deux de tes cases~:
+lesquelles~?}
 
 \vspace{10pt}
 \noindent (b) So at bedtime, they have between \mg[1.6cm] and \mg[1.6cm].
+\fr{(b) Donc, au moment du coucher, la personne a entre \ldots\ mg et \ldots\
+mg de caf\'eine.}
 
 \vspace{10pt}
 \noindent (c) Choose a number in between. At bedtime, they have about
 \mg[1.8cm] of caffeine.
+\fr{(c) Choisis un nombre entre les deux. Au coucher, la personne a environ
+\ldots\ mg de caf\'eine.}
 
-\qhead{B5}{Compare with Mr Bowen}
+\qhead{B5}{Compare with Mr Bowen\frin{Compare avec Mr Bowen}}
+% One block in the French copy, like A6.
+\iffr\noindent\begin{minipage}{\linewidth}\fi
 \noindent Mr Bowen had 50 mg at bedtime. Did your adult have
 \textbf{more} or \textbf{less}? Why? Think about how \textbf{big} the drink
 was, and \textbf{what time} they drank it.
+\fr{Mr Bowen avait 50~mg au coucher. Et la personne que tu as interview\'ee~:
+plus (\eng{more}) ou moins (\eng{less})~? Pourquoi~? Pense \`a la taille de la
+boisson et \`a l'heure o\`u elle a \'et\'e bue. R\'eponds en anglais.}
 
 \vspace{4pt}
 \noindent\starter{At bedtime my \blank[2.4cm] had about \blank[1.4cm] mg of
 caffeine. That is more / less than Mr Bowen, because \ldots}
-\qlines{4}
+\qlines{\frl{4}{6}}
+\iffr\end{minipage}\fi
 
-\qhead{B6}{Is your number right?}
+\qhead{B6}{Is your number right?\frin{Ton nombre est-il juste~?}}
 \noindent\begin{minipage}{\linewidth}
 \noindent Your bedtime number is an \textbf{estimate}. Tick \textbf{one}
 reason it might be wrong. Then write it as a sentence.
+\fr{Ton nombre au coucher est une estimation (\eng{estimate}). Coche
+\textbf{une} raison pour laquelle il pourrait \^etre faux, puis \'ecris-la en
+une phrase, en anglais.}
 
 \vspace{6pt}
 \renewcommand{\arraystretch}{1.6}
 \begin{tabularx}{\linewidth}{@{}p{0.8cm}L@{}}
-  \tickbox & They had other drinks with caffeine too. \\
-  \tickbox & Caffeine's half-life is not 5 hours for everybody. \\
-  \tickbox & The number from the label or Google may not be exact. \\
+  \tickbox & They had other drinks with caffeine too.\frin{La personne a bu
+    d'autres boissons avec de la caf\'eine.} \\
+  \tickbox & Caffeine's half-life is not 5 hours for everybody.\frin{La
+    demi-vie de la caf\'eine n'est pas de 5 heures pour tout le monde.} \\
+  \tickbox & The number from the label or Google may not be exact.\frin{Le
+    nombre de l'\'etiquette ou de Google n'est peut-\^etre pas exact.} \\
 \end{tabularx}
 
 \vspace{2pt}
 \noindent\starter{My bedtime number might be wrong because \ldots}
-\wlines{3}
+\wlines{\frl{3}{5}}
 \end{minipage}
 
 % ===========================================================================
 % PART C -- CARBON DATING
 % ===========================================================================
-\hwsection{Part C\quad Carbon Dating}
-\qhead{C1}{The halving chain}
+\hwsection{Part C\quad Carbon Dating\frin{La datation au carbone 14}}
+\qhead{C1}{The halving chain\frin{La cha\^ine des moiti\'es}}
 \noindent\begin{minipage}{\linewidth}
 \noindent Caffeine halves every 5 hours. Carbon-14 halves every
 \textbf{5\,700 years}. Fill in the boxes.
+\fr{La caf\'eine diminue de moiti\'e toutes les 5 heures. Le carbone 14
+diminue de moiti\'e tous les \textbf{5\,700 ans}. Compl\`ete les cases.}
 
 \vspace{8pt}
 \begin{center}
@@ -635,110 +826,158 @@ reason it might be wrong. Then write it as a sentence.
 \vspace{2pt}
 \noindent{\small\color{black!65}Each box is 5\,700 years more than the one
 before it.}
+\fr{Chaque case a 5\,700 ans de plus que la pr\'ec\'edente.}
 \end{minipage}
 
 % ---------------------------------------------------------------------------
-\qhead{C2}{The museum}
+\qhead{C2}{The museum\frin{Le mus\'ee}}
 \noindent\begin{minipage}{\linewidth}
 \noindent Scientists measured the carbon-14 left in five objects. Use C1.
+\fr{Des scientifiques ont mesur\'e le carbone 14 qui reste dans cinq objets.
+Utilise C1.}
 
 \vspace{4pt}
 \noindent\textbf{Careful:} carbon dating only works for things that were
 \key{alive}, up to about \key{50\,000 years} old. If it does not work, write
 \textbf{does not work}.
+\fr{Attention~: la datation au carbone 14 ne marche que pour ce qui a \'et\'e
+vivant (\eng{alive}), jusqu'\`a environ 50\,000 ans. Si elle ne marche pas,
+\'ecris \eng{does not work}.}
 
 \vspace{6pt}
 \renewcommand{\arraystretch}{1.2}
 \noindent\begin{tabularx}{\linewidth}{|L|C{2.2cm}|C{2.2cm}|C{2.3cm}|C{3.3cm}|}
   \hline
-  \hrow \textbf{Object} & \textbf{Was it ever alive?} & \textbf{Carbon-14
-    left} & \textbf{How many half-lives?} & \textbf{Age (years)} \\ \hline
-  \starter{A wooden boat}\tall & \starter{yes} & \starter{50\%} &
-    \starter{1} & \starter{5\,700} \\ \hline
-  A bear bone from a cave\tall & & 25\% & & \\ \hline
-  A wooden spear\tall & & 12.5\% & & \\ \hline
-  A stone axe\tall & & --- & & \\ \hline
-  A \textit{T.\ rex} tooth\tall & & 0\% & & \\ \hline
+  \hrow \textbf{Object}\frin{l'objet} & \textbf{Was it ever alive?}\frin{A-t-il
+    \'et\'e vivant~?} & \textbf{Carbon-14 left}\frin{carbone 14 restant} &
+    \textbf{How many half-lives?}\frin{combien de demi-vies~?} &
+    \textbf{Age (years)}\frin{\^age en ann\'ees} \\ \hline
+  \starter{A wooden boat}\frcell{un bateau en bois}\ctall & \starter{yes} &
+    \starter{50\%} & \starter{1} & \starter{5\,700} \\ \hline
+  A bear bone from a cave\frcell{un os d'ours trouv\'e dans une grotte}\ctall &
+    & 25\% & & \\ \hline
+  A wooden spear\frcell{une lance en bois}\ctall & & 12.5\% & & \\ \hline
+  A stone axe\frcell{une hache en pierre}\ctall & & --- & & \\ \hline
+  A \textit{T.\ rex} tooth\frcell{une dent de \textit{T.\ rex}}\ctall & & 0\% &
+    & \\ \hline
 \end{tabularx}
 
 \vspace{3pt}
 \noindent{\small\color{cbblue}\textbf{Word help:} a \textbf{spear} is a long
 stick with a sharp point \sep an \textbf{axe} is a tool for cutting wood \sep
 a \textbf{\textit{T.\ rex}} is a dinosaur}
+\fr{Une lance (\eng{spear}) est un long b\^aton pointu \sep une hache
+(\eng{axe}) sert \`a couper le bois \sep le \textit{T.\ rex} est un dinosaure}
 \end{minipage}
 
-\qhead{C3}{Why does it not work?}
+\qhead{C3}{Why does it not work?\frin{Pourquoi \c{c}a ne marche pas~?}}
 \noindent (a) Carbon dating does not work for the stone axe, because stone
 was never \blank[3.2cm]\,.
+\fr{(a) La datation au carbone 14 ne marche pas pour la hache en pierre, parce
+que la pierre n'a jamais \'et\'e \ldots\ (\'ecris le mot en anglais).}
 
 \vspace{12pt}
 \noindent (b) Carbon dating does not work for the \textit{T.\ rex} tooth,
 because it is too \blank[3.2cm]\,.
+\fr{(b) Elle ne marche pas non plus pour la dent de \textit{T.\ rex}, parce
+qu'elle est trop \ldots}
 
 \vspace{2pt}
 \noindent{\small\color{black!65}\textit{Clue:} dinosaurs died out about
 66 million years ago.}
+\fr{Indice~: les dinosaures ont disparu il y a environ 66 millions
+d'ann\'ees.}
 
 % ===========================================================================
 % PART D -- THE SUN
 % ===========================================================================
-\hwsection{Part D\quad The Sun: Different Speeds, the Same Maths}
+% A new page in the French copy, so it lands on 14 pages for certain: D1 and
+% D2 do not fit on one page there, and D2 takes the next one to itself.
+\iffr\clearpage\fi
+\hwsection{Part D\quad The Sun: Different Speeds, the Same Maths\frin{Le
+Soleil~: des vitesses diff\'erentes, les m\^emes maths}}
 
 \begin{remember}
   \key{Caffeine}, \key{carbon-14} and the \key{Sun's hydrogen} all disappear
   at a rate we can model with maths. Measure what is \key{left} to find
   \key{how long} it has been.
+  \fr{La caf\'eine, le carbone 14 et l'hydrog\`ene du Soleil disparaissent
+  tous \`a un rythme qu'on peut d\'ecrire avec des maths. Mesure ce qui reste
+  (\eng{left}) pour savoir combien de temps s'est \'ecoul\'e (\eng{how long}).}
 \end{remember}
 
 \vspace{2pt}
 \noindent{\small\color{cbblue}\textbf{Word help:} the \textbf{core} is the
 middle of the Sun \sep \textbf{hydrogen} and \textbf{helium} are gases \sep
 a \textbf{billion} is a thousand million}
+\fr{Le c\oe{}ur (\eng{core}) est le centre du Soleil \sep l'hydrog\`ene
+(\eng{hydrogen}) et l'h\'elium (\eng{helium}) sont des gaz \sep attention~: un
+\eng{billion} en anglais, c'est un \textbf{milliard} en fran\c{c}ais (mille
+millions)}
 
-\qhead{D1}{How old is the Sun?}
+\qhead{D1}{How old is the Sun?\frin{Quel \^age a le Soleil~?}}
 \noindent Nobody can take a piece of the Sun. So scientists build a
 \textbf{model Sun} with maths, and let it get older until it matches the real
 Sun.
+\fr{Personne ne peut aller chercher un morceau du Soleil. Alors les
+scientifiques construisent un Soleil mod\`ele (\eng{model Sun}) avec des
+maths, et le font vieillir jusqu'\`a ce qu'il ressemble au vrai Soleil.}
 
 \vspace{10pt}
 \noindent (a) The Sun turns \blank[3.0cm] into \blank[3.0cm]\,.
+\fr{(a) Le Soleil transforme \ldots\ en \ldots\ (\'ecris les mots en
+anglais).}
 
 \vspace{10pt}
 \noindent (b) When the Sun was born, its core was \textbf{71\%} hydrogen.
 Half of 71\% is \blank[2.0cm]\,\%.
+\fr{(b) \`A la naissance du Soleil, son c\oe{}ur contenait 71\,\%
+d'hydrog\`ene. Combien fait la moiti\'e de 71\,\%~?}
 
 \vspace{10pt}
 \noindent (c) Today the core is \textbf{34\%} hydrogen. Is about
 \textbf{half} of the hydrogen gone? \hfill \choice{yes} \quad\; \choice{no}
+\fr{(c) Aujourd'hui, le c\oe{}ur contient 34\,\% d'hydrog\`ene. Est-ce
+qu'environ la moiti\'e de l'hydrog\`ene a disparu~?}
 
 \vspace{10pt}
 \noindent (d) The model Sun matches the real Sun at about \blank[1.6cm]
 billion years. So the Sun is about \blank[1.6cm] billion years old.
+\fr{(d) Le Soleil mod\`ele ressemble au vrai Soleil vers \ldots\ milliards
+d'ann\'ees (\eng{billion years}). Le Soleil a donc environ \ldots\ milliards
+d'ann\'ees.}
 
-\qhead{D2}{Three clocks}
+\qhead{D2}{Three clocks\frin{Trois horloges}}
 \noindent\begin{minipage}{\linewidth}
 \noindent Draw a line from each clock to how fast it goes.
+\fr{Relie chaque horloge \`a sa vitesse.}
 
 \vspace{8pt}
 \begin{center}
 \begin{tikzpicture}[x=1cm, y=1cm]
   \pic at (0.45,-0.62) {mug};
   \node[right, font=\bfseries] at (1.5,0) {Caffeine};
-  \pic at (0.45,-1.9) {cfourteen};
-  \node[right, font=\bfseries] at (1.5,-1.9) {Carbon-14};
-  \pic at (0.45,-3.8) {sun};
-  \node[right, font=\bfseries, align=left] at (1.5,-3.8)
-    {Hydrogen in\\the Sun's core};
-  \foreach \y in {0,-1.9,-3.8} \fill[ink] (6.0,\y) circle (0.1);
-  \foreach \y in {0,-1.9,-3.8} \fill[ink] (9.0,\y) circle (0.1);
-  \node[right, align=left] at (9.3,0) {half gone every\\5\,700 years};
-  \node[right, align=left] at (9.3,-1.9) {about half gone in\\4.6 billion years};
-  \node[right, align=left] at (9.3,-3.8) {half gone every\\5 hours};
+  \pic at (0.45,\dtwoB) {cfourteen};
+  \node[right, font=\bfseries] at (1.5,\dtwoB) {Carbon-14};
+  \pic at (0.45,\dtwoC) {sun};
+  \node[right, font=\bfseries, align=left] at (1.5,\dtwoC)
+    {Hydrogen in\\the Sun's core\frnode{l'hydrog\`ene}\frnode{au c\oe{}ur du
+    Soleil}};
+  \foreach \y in {0,\dtwoB,\dtwoC} \fill[ink] (6.0,\y) circle (0.1);
+  \foreach \y in {0,\dtwoB,\dtwoC} \fill[ink] (9.0,\y) circle (0.1);
+  \node[right, align=left] at (9.3,0) {half gone every\\5\,700 years%
+    \frnode{la moiti\'e dispara\^it}\frnode{tous les 5\,700 ans}};
+  \node[right, align=left] at (9.3,\dtwoB) {about half gone in\\4.6 billion years%
+    \frnode{environ la moiti\'e a disparu}\frnode{en 4.6 milliards
+    d'ann\'ees}};
+  \node[right, align=left] at (9.3,\dtwoC) {half gone every\\5 hours%
+    \frnode{la moiti\'e dispara\^it}\frnode{toutes les 5 heures}};
 \end{tikzpicture}
 \end{center}
 
 \vspace{6pt}
 \noindent Put them in order, \textbf{fastest} first.
+\fr{Range-les dans l'ordre, du plus rapide (\eng{fastest}) au plus lent.}
 
 \vspace{8pt}
 \noindent 1.\ \blank[4.2cm] \quad 2.\ \blank[4.2cm] \quad 3.\ \blank[4.2cm]
@@ -750,25 +989,38 @@ billion years. So the Sun is about \blank[1.6cm] billion years old.
 % Its own page: the reading, a plan built from the packet's numbers, then the
 % letter. Every fact in the guide is in the key with its source.
 \clearpage
-\hwsection{Part E\quad Caffeine and Sleep}
+\hwsection{Part E\quad Caffeine and Sleep\frin{La caf\'eine et le sommeil}}
 
-\begin{remember}[Read this: how caffeine affects sleep]
+\begin{remember}[Read this: how caffeine affects sleep\frin{\`A lire~: l'effet de
+  la caf\'eine sur le sommeil}]
   \begin{minipage}[t]{0.75\linewidth}
   \begin{enumerate}[label=\textbf{\arabic*.}, itemsep=3pt, topsep=0pt,
                     leftmargin=1.6em]
     \item All day your brain makes \key{adenosine}
       {\small\color{black!60}\mbox{(a-DEN-o-seen)}}, a chemical that makes
       you feel sleepy.
+      \fr{Toute la journ\'ee, ton cerveau fabrique de l'ad\'enosine
+      (\eng{adenosine}), une substance chimique qui te donne envie de dormir.}
     \item \key{Caffeine blocks adenosine.} The adenosine is still there, but
       your brain cannot feel it.
+      \fr{La caf\'eine bloque (\eng{blocks}) l'ad\'enosine. L'ad\'enosine est
+      toujours l\`a, mais ton cerveau ne la sent plus.}
     \item Caffeine makes it harder to \textbf{fall asleep} and \textbf{stay
       asleep}.
+      \fr{Avec la caf\'eine, on a plus de mal \`a s'endormir (\eng{fall
+      asleep}) et \`a rester endormi (\eng{stay asleep}).}
     \item \key{How much is too much?} Even \textbf{100~mg} (one cup of
       coffee) near bedtime can stop an adult sleeping. A child: about
       \textbf{50~mg}.
+      \fr{\`A partir de combien, c'est trop~? M\^eme 100~mg (une tasse de
+      caf\'e) peu avant le coucher peuvent emp\^echer un adulte de dormir.
+      Pour un enfant~: environ 50~mg.}
     \item \key{Stop caffeine 8 hours before bed}, or longer after a big
       drink.
+      \fr{Arr\^ete la caf\'eine 8 heures avant d'aller te coucher, et encore
+      plus t\^ot apr\`es une grosse boisson.}
     \item At your age you need \textbf{9 to 11 hours} of sleep.
+      \fr{\`A ton \^age, tu as besoin de 9 \`a 11 heures de sommeil.}
   \end{enumerate}
   \end{minipage}\hfill
   \begin{minipage}[t]{0.23\linewidth}\vspace{2pt}\centering
@@ -796,38 +1048,51 @@ billion years. So the Sun is about \blank[1.6cm] billion years old.
     \vspace{2pt}
     {\scriptsize\color{black!65}Caffeine sits in the gaps.\\Adenosine
     cannot get in.\par}
+    \iffr\vspace{2pt}{\scriptsize\itshape\color{black!60}La caf\'eine bouche
+    les creux de ton cerveau (\eng{your brain})~: l'ad\'enosine ne peut plus y
+    entrer.\par}\fi
   \end{minipage}
 \end{remember}
 
-\qhead{E1}{Plan your letter}
+\qhead{E1}{Plan your letter\frin{Pr\'epare ta lettre}}
 \noindent (a) At 11~p.m. Mr Bowen still has \mg[1.4cm] of caffeine.
 Caffeine blocks \blank[3.0cm]\,.
+\fr{(a) \`A 11~h du soir, Mr Bowen a encore \ldots\ mg de caf\'eine. La
+caf\'eine bloque \ldots}
 
 \vspace{10pt}
 \noindent (b) Bed is at 11~p.m. One cup of coffee must be before
 \blank[2.4cm]\,.
+\fr{(b) Il se couche \`a 11~h du soir. Avant quelle heure doit-il boire sa
+tasse de caf\'e~?}
 
 \vspace{10pt}
 \noindent (c) \textbf{One} cold brew (200 mg) at 8~a.m.: \ 200 $\to$
 \blank[1.2cm] $\to$ \blank[1.2cm] $\to$ \blank[1.2cm] mg at 11~p.m.
+\fr{(c) \textbf{Un seul} \eng{cold brew} (200~mg) \`a 8~h du matin~: combien
+de caf\'eine en reste-t-il \`a 11~h du soir~?}
 
-\qhead{E2}{A letter to Mr Bowen}
+\qhead{E2}{A letter to Mr Bowen\frin{Une lettre \`a Mr Bowen}}
 \noindent\begin{minipage}{\linewidth}
 \noindent Write to Mr Bowen: \textbf{why} is he still awake, and \textbf{how}
 can he sleep better? Tick each one:
+\fr{\'Ecris \`a Mr Bowen, \textbf{en anglais}~: \textbf{pourquoi} ne dort-il
+toujours pas, et \textbf{comment} peut-il mieux dormir~? Coche chaque point~:}
 
 \vspace{4pt}
 \renewcommand{\arraystretch}{1.25}
 \noindent\begin{tabularx}{\linewidth}{@{}p{0.75cm}L p{0.75cm}L@{}}
-  \tickbox & Start with \textit{Dear Mr Bowen,} &
-    \tickbox & One fact from the guide \\
-  \tickbox & The word \textbf{half-life} &
-    \tickbox & One piece of advice, and \textbf{why} \\
-  \tickbox & Two numbers from E1 &
-    \tickbox & At least \textbf{5 full sentences} \\
+  \tickbox & Start with \textit{Dear Mr Bowen,}\frin{commence ainsi} &
+    \tickbox & One fact from the guide\frin{un fait du texte \`a lire} \\
+  \tickbox & The word \textbf{half-life}\frin{le mot demi-vie, en anglais} &
+    \tickbox & One piece of advice, and \textbf{why}\frin{un conseil, et
+    pourquoi} \\
+  \tickbox & Two numbers from E1\frin{deux nombres de E1} &
+    \tickbox & At least \textbf{5 full sentences}\frin{au moins 5 phrases
+    compl\`etes} \\
 \end{tabularx}
 \end{minipage}
-\wlines{8}
+\wlines{\frl{8}{14}}
 
 % ===========================================================================
 % ANSWER KEY -- TEACHER COPY ONLY
