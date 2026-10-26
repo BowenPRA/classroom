@@ -6,21 +6,21 @@
 // Stars: a starter, a "Today You Will…" slide that the checklist mirrors,
 // write panels that hold only the fact, and an exit question.
 //
-// WHAT EXERCISE 5.1 NEEDS, AND WHERE IT IS TAUGHT:
-//   angles on a straight line = 180°    slides 4–6   (Focus 1, Practice 4)
-//   angles round a point = 360°         slides 7–8   (Focus 2, Challenge 8–9)
-//   sum, quadrilateral (the key words)  slides 9–10
-//   angles in a quadrilateral = 360°    slides 11–14 (Focus 3, Practice 5–6)
-//   the question words                  slide 16     (every question)
-//   one angle known, the rest equal     slide 17     (Practice 5)
-//   parallelogram                       slide 18     (Practice 7)
-//   squares and equilateral triangles   slide 19     (Challenge 9)
+// THE SCAFFOLD, IN ORDER:
+//   what they know      the four numbers (2), then how to READ an angle
+//                       diagram: a number, a letter, a small square, ° (4)
+//   180° on a line      the fact (5), a vote (6–7)
+//   360° round a point  the pizza asks it (8), the fact (9)
+//   the method          TWO STEPS: add what you know, subtract from 180° or
+//                       360° (10). Every answer after this is shown that way.
+//   key words           sum (11), quadrilateral (12)
+//   360° in a shape     a vote (13), the class tears corners (14), the result
+//                       (15), the fact (16), the two steps on it (17)
+//   the Workbook        its question words (18), then practice in its words
+//                       (19–22), then two deadpan word problems (23–24)
 //
-// THE ENGLISH: "sum" sounds like "some" (slide 9); "quad" is four (slide 10);
-// the Workbook's instruction words (slide 16).
-//
-// COPY-DOWN: 6 written panels — straight line · round a point · sum ·
-// quadrilateral · quadrilateral 360° · parallelogram.
+// COPY-DOWN: 7 written panels — straight line · round a point · two steps ·
+// sum · quadrilateral · quadrilateral 360° · parallelogram.
 import { DIAGRAMS } from './diagrams.js'
 
 const TEAL = '#0087a8'
@@ -52,7 +52,21 @@ export const slides = [
     },
   },
 
-  // 2. Today's goals (the checklist on slide 22 ticks off the same three)
+  // 2. Starter answers
+  {
+    layout: 'showcase',
+    accent: PURPLE,
+    icon: 'CheckCircle2',
+    eyebrow: 'Starter check',
+    eyebrowFr: 'Correction',
+    title: 'Four Numbers',
+    titleFr: 'Quatre nombres',
+    inlineSvg: DIAGRAMS.FACTS,
+    caption: 'Today we use **180°** and **360°** again and again.',
+    captionFr: 'Aujourd’hui, on utilise **180°** et **360°** encore et encore.',
+  },
+
+  // 3. Today's goals (the checklist on slide 25 ticks off the same three)
   {
     layout: 'compare',
     accent: TEAL,
@@ -69,7 +83,7 @@ export const slides = [
         headingFr: 'Sur une ligne',
         accent: TEAL,
         icon: 'Minus',
-        inlineSvg: DIAGRAMS.LINE,
+        inlineSvg: DIAGRAMS.PIC_LINE,
         caption: 'Find a missing angle on a line.',
         captionFr: 'Trouver un angle sur une ligne.',
       },
@@ -78,7 +92,7 @@ export const slides = [
         headingFr: 'Autour d’un point',
         accent: PURPLE,
         icon: 'Circle',
-        inlineSvg: DIAGRAMS.POINT,
+        inlineSvg: DIAGRAMS.PIC_POINT,
         caption: 'Find a missing angle round a point.',
         captionFr: 'Trouver un angle autour d’un point.',
       },
@@ -87,29 +101,29 @@ export const slides = [
         headingFr: 'Dans une figure à 4 côtés',
         accent: ORANGE,
         icon: 'Square',
-        inlineSvg: DIAGRAMS.WORKED,
+        inlineSvg: DIAGRAMS.PIC_QUAD,
         caption: 'Find the last angle of a 4-sided shape.',
         captionFr: 'Trouver le dernier angle à 4 côtés.',
       },
     ],
   },
 
-  // 3. Starter answers
+  // 4. How to read an angle diagram: number, letter, small square, degrees
   {
     layout: 'showcase',
     accent: PURPLE,
-    icon: 'CheckCircle2',
-    eyebrow: 'Starter check',
-    eyebrowFr: 'Correction',
-    title: 'Four Numbers',
-    titleFr: 'Quatre nombres',
-    inlineSvg: DIAGRAMS.FACTS,
-    caption: 'Today we use **180°** and **360°** again and again.',
-    captionFr: 'Aujourd’hui, on utilise **180°** et **360°** encore et encore.',
+    icon: 'ScanEye',
+    eyebrow: 'Read the picture',
+    eyebrowFr: 'Lis le dessin',
+    title: 'How to Read an Angle',
+    titleFr: 'Comment lire un angle',
+    inlineSvg: DIAGRAMS.READ,
+    caption: 'A **letter** is a missing angle. Your job is to find it.',
+    captionFr: 'Une **lettre** est un angle qui manque. Ton travail : le trouver.',
   },
 
   // ── A STRAIGHT LINE ───────────────────────────────────────────────────────
-  // 4. Angles on a straight line (write)
+  // 5. Angles on a straight line (write)
   {
     layout: 'split',
     accent: TEAL,
@@ -120,8 +134,8 @@ export const slides = [
     titleFr: 'Sur une ligne droite',
     ratio: 45,
     inlineSvg: DIAGRAMS.LINE,
-    content: 'Find **a**.',
-    contentFr: 'Trouve **a**.',
+    content: 'Together, the two angles make the **straight line**.',
+    contentFr: 'Ensemble, les deux angles font la **ligne droite**.',
     notes: [
       {
         tone: 'write',
@@ -130,6 +144,8 @@ export const slides = [
       },
     ],
     reveal: {
+      prompt: 'Find **a**.',
+      promptFr: 'Trouve **a**.',
       label: 'Check your answer',
       labelFr: 'Vérifie ta réponse',
       answer: '**a = 180° − 130° = 50°**',
@@ -137,7 +153,7 @@ export const slides = [
     },
   },
 
-  // 5. Vote: is it really straight?
+  // 6. Vote: is it really straight?
   {
     layout: 'compare',
     accent: PURPLE,
@@ -146,15 +162,15 @@ export const slides = [
     eyebrowFr: 'Vote avec une main',
     title: 'Is It Straight?',
     titleFr: 'Est-ce droit ?',
-    text: 'Two angles on the line XY are **57°** and **121°**. Is XY a **straight** line?',
-    textFr: 'Deux angles sur la ligne XY font **57°** et **121°**. XY est-elle une ligne **droite** ?',
+    text: 'Two angles are **57°** and **121°**. Together, do they make a **straight line**?',
+    textFr: 'Deux angles font **57°** et **121°**. Ensemble, font-ils une **ligne droite** ?',
     columns: [
       { heading: 'A · left hand up', headingFr: 'A · main gauche levée', accent: BLUE, icon: 'Hand', inlineSvg: DIAGRAMS.ANS_YES },
       { heading: 'B · right hand up', headingFr: 'B · main droite levée', accent: ORANGE, icon: 'Hand', inlineSvg: DIAGRAMS.ANS_NO },
     ],
   },
 
-  // 6. The vote settled
+  // 7. The vote settled
   {
     layout: 'statement',
     accent: RED,
@@ -162,28 +178,35 @@ export const slides = [
     eyebrowFr: 'Réponse : B',
     title: 'Not Quite Straight',
     titleFr: 'Pas tout à fait droite',
-    text: '**57° + 121° = 178°**. Not 180°, so XY is **not** straight.',
-    textFr: '**57° + 121° = 178°**. Pas 180°, donc XY n’est **pas** droite.',
-    sub: 'It can **look** straight. Always add.',
-    subFr: 'Elle peut **sembler** droite. Additionne toujours.',
+    text: '**57° + 121° = 178°**. A straight line is **180°**.',
+    textFr: '**57° + 121° = 178°**. Une ligne droite fait **180°**.',
+    sub: 'So it is **not** straight. It can look straight. Always add.',
+    subFr: 'Donc elle n’est **pas** droite. Elle peut sembler droite. Additionne toujours.',
   },
 
   // ── ROUND A POINT ─────────────────────────────────────────────────────────
-  // 7. Mr Bowen's pizza, photographed and drawn
+  // 8. The pizza asks the question
   {
-    layout: 'showcase',
+    layout: 'split',
     accent: ORANGE,
     icon: 'Circle',
-    eyebrow: 'A full turn',
-    eyebrowFr: 'Un tour complet',
+    eyebrow: 'Think · a full turn',
+    eyebrowFr: 'Réfléchis · un tour complet',
     title: 'Mr Bowen’s Pizza',
     titleFr: 'La pizza de M. Bowen',
-    inlineSvg: DIAGRAMS.PIZZA,
-    caption: 'Eight equal slices meet in the middle. Why **45°**?',
-    captionFr: 'Huit parts égales se rejoignent au milieu. Pourquoi **45°** ?',
+    ratio: 40,
+    inlineSvg: DIAGRAMS.PIZZA_Q,
+    content: 'Mr Bowen cuts his pizza into **8 equal slices**.\n\nWhat angle is **one** slice?',
+    contentFr: 'M. Bowen coupe sa pizza en **8 parts égales**.\n\nQuel est l’angle d’**une** part ?',
+    reveal: {
+      label: 'Check your answer',
+      labelFr: 'Vérifie ta réponse',
+      answer: 'A full turn is **360°**. **360° ÷ 8 = 45°**',
+      answerFr: 'Un tour complet fait **360°**. **360° ÷ 8 = 45°**',
+    },
   },
 
-  // 8. Angles round a point (write)
+  // 9. Angles round a point (write)
   {
     layout: 'split',
     accent: TEAL,
@@ -194,8 +217,8 @@ export const slides = [
     titleFr: 'Autour d’un point',
     ratio: 45,
     inlineSvg: DIAGRAMS.POINT,
-    content: 'Find **b**.',
-    contentFr: 'Trouve **b**.',
+    content: 'Together, the angles make a **full turn**.',
+    contentFr: 'Ensemble, les angles font un **tour complet**.',
     notes: [
       {
         tone: 'write',
@@ -204,15 +227,43 @@ export const slides = [
       },
     ],
     reveal: {
+      prompt: 'Find **b**.',
+      promptFr: 'Trouve **b**.',
       label: 'Check your answer',
       labelFr: 'Vérifie ta réponse',
-      answer: '**100° + 120° = 220°**, so **b = 360° − 220° = 140°**',
-      answerFr: '**100° + 120° = 220°**, donc **b = 360° − 220° = 140°**',
+      answer: '**100° + 120° = 220°**\n**b = 360° − 220° = 140°**',
+      answerFr: '**100° + 120° = 220°**\n**b = 360° − 220° = 140°**',
+    },
+  },
+
+  // 10. The method: two steps (write)
+  {
+    layout: 'callout',
+    accent: ORANGE,
+    icon: 'ListOrdered',
+    eyebrow: 'The method',
+    eyebrowFr: 'La méthode',
+    title: 'Two Steps',
+    titleFr: 'Deux étapes',
+    notes: [
+      {
+        tone: 'write',
+        text: '**To find a missing angle:**\n**1.** Add the angles you know.\n**2.** Subtract the total from **180°** or **360°**.',
+        textFr: '**Pour trouver un angle qui manque :**\n**1.** Additionne les angles que tu connais.\n**2.** Soustrais le total de **180°** ou de **360°**.',
+      },
+    ],
+    reveal: {
+      prompt: 'Three angles round a point are **90°**, **150°** and **c**. Find **c**.',
+      promptFr: 'Trois angles autour d’un point font **90°**, **150°** et **c**. Trouve **c**.',
+      label: 'Check your answer',
+      labelFr: 'Vérifie ta réponse',
+      answer: '**1.** **90° + 150° = 240°**, **2.** **c = 360° − 240° = 120°**',
+      answerFr: '**1.** **90° + 150° = 240°**, **2.** **c = 360° − 240° = 120°**',
     },
   },
 
   // ── KEY WORDS ─────────────────────────────────────────────────────────────
-  // 9. Sum (write) — it sounds like "some"
+  // 11. Sum (write) — it sounds like "some"
   {
     layout: 'split',
     accent: ORANGE,
@@ -238,7 +289,7 @@ export const slides = [
     ],
   },
 
-  // 10. Quadrilateral (write)
+  // 12. Quadrilateral (write)
   {
     layout: 'split',
     accent: ORANGE,
@@ -261,7 +312,7 @@ export const slides = [
   },
 
   // ── ANGLES IN A QUADRILATERAL ─────────────────────────────────────────────
-  // 11. Vote: every quadrilateral, or only some?
+  // 13. Vote: every quadrilateral, or only some?
   {
     layout: 'compare',
     accent: PURPLE,
@@ -278,33 +329,47 @@ export const slides = [
     ],
   },
 
-  // 12. Hands-on: tear off the corners
+  // 14. Hands-on: the three steps, with the result hidden
   {
     layout: 'showcase',
     accent: GREEN,
     icon: 'PenLine',
-    eyebrow: 'Try it · paper',
-    eyebrowFr: 'Essaie · papier',
+    eyebrow: 'Try it · scrap paper',
+    eyebrowFr: 'Essaie · papier brouillon',
     title: 'Tear Off the Corners',
     titleFr: 'Déchire les coins',
-    inlineSvg: DIAGRAMS.CORNERS,
-    caption: 'Draw **any** quadrilateral. Tear off the 4 corners. Put the points together.',
-    captionFr: 'Dessine **n’importe quel** quadrilatère. Déchire les 4 coins. Mets les pointes ensemble.',
+    inlineSvg: DIAGRAMS.TEAR,
+    caption: 'Make your shape **strange**. What do the four corners make?',
+    captionFr: 'Fais une figure **bizarre**. Que font les quatre coins ?',
   },
 
-  // 13. Angles in a quadrilateral (write)
+  // 15. What the corners made
+  {
+    layout: 'showcase',
+    accent: GREEN,
+    icon: 'Circle',
+    eyebrow: 'Answer: B',
+    eyebrowFr: 'Réponse : B',
+    title: 'Always a Full Turn',
+    titleFr: 'Toujours un tour complet',
+    inlineSvg: DIAGRAMS.CORNERS,
+    caption: 'Every shape, every time: the corners make a **full turn**.',
+    captionFr: 'Chaque figure, chaque fois : les coins font un **tour complet**.',
+  },
+
+  // 16. Angles in a quadrilateral (write)
   {
     layout: 'split',
     accent: TEAL,
     icon: 'Square',
-    eyebrow: 'Answer: B · angle fact',
-    eyebrowFr: 'Réponse : B · propriété',
+    eyebrow: 'Angle fact',
+    eyebrowFr: 'Propriété',
     title: 'A Sum of 360°',
     titleFr: 'Une somme de 360°',
     ratio: 45,
     inlineSvg: DIAGRAMS.QUAD_TRI,
-    content: 'The corners made a **full turn**. And one line makes **two triangles**.',
-    contentFr: 'Les coins ont fait un **tour complet**. Et une ligne fait **deux triangles**.',
+    content: 'Another way to see it: one line makes **two triangles**.',
+    contentFr: 'Une autre façon de le voir : une ligne fait **deux triangles**.',
     notes: [
       {
         tone: 'write',
@@ -314,49 +379,31 @@ export const slides = [
     ],
   },
 
-  // 14. Worked example, said before it is shown
+  // 17. Worked example: the two steps again
   {
     layout: 'split',
     accent: ORANGE,
-    icon: 'Target',
-    eyebrow: 'Say each step first',
-    eyebrowFr: 'Dis chaque étape avant',
+    icon: 'ListOrdered',
+    eyebrow: 'Two steps · say them first',
+    eyebrowFr: 'Deux étapes · dis-les avant',
     title: 'Find the Fourth Angle',
     titleFr: 'Trouve le quatrième angle',
     ratio: 45,
     inlineSvg: DIAGRAMS.WORKED,
-    content: 'Three angles of a quadrilateral are **70°**, **95°** and **120°**. Find **d**.',
-    contentFr: 'Trois angles d’un quadrilatère font **70°**, **95°** et **120°**. Trouve **d**.',
+    content: 'Three angles of a quadrilateral are **70°**, **95°** and **120°**.',
+    contentFr: 'Trois angles d’un quadrilatère font **70°**, **95°** et **120°**.',
     reveal: {
+      prompt: 'Find **d**.',
+      promptFr: 'Trouve **d**.',
       label: 'Check your answer',
       labelFr: 'Vérifie ta réponse',
-      answer: 'The sum is **360°**.\n**70° + 95° + 120° = 285°**\n**d = 360° − 285° = 75°**',
-      answerFr: 'La somme fait **360°**.\n**70° + 95° + 120° = 285°**\n**d = 360° − 285° = 75°**',
+      answer: '**1.** **70° + 95° + 120° = 285°**\n**2.** **d = 360° − 285° = 75°**',
+      answerFr: '**1.** **70° + 95° + 120° = 285°**\n**2.** **d = 360° − 285° = 75°**',
     },
   },
 
-  // 15. Whiteboards: one of each
-  {
-    layout: 'split',
-    accent: GREEN,
-    icon: 'CheckCircle2',
-    eyebrow: 'Whiteboards',
-    eyebrowFr: 'Ardoises',
-    title: 'One of Each',
-    titleFr: 'Un de chaque',
-    ratio: 40,
-    inlineSvg: DIAGRAMS.PRACTICE,
-    content: 'Find **x**, **y** and **z**.\n\nWhich fact did you use? **180°** or **360°**?',
-    contentFr: 'Trouve **x**, **y** et **z**.\n\nQuelle propriété ? **180°** ou **360°** ?',
-    reveal: {
-      label: 'Check your answers',
-      labelFr: 'Vérifie tes réponses',
-      answer: '**1** **x = 35°** (180°), **2** **y = 125°** (360°), **3** **z = 75°** (360°)',
-      answerFr: '**1** **x = 35°** (180°), **2** **y = 125°** (360°), **3** **z = 75°** (360°)',
-    },
-  },
-
-  // 16. The Workbook's question words
+  // ── THE WORKBOOK ──────────────────────────────────────────────────────────
+  // 18. The Workbook's question words
   {
     layout: 'showcase',
     accent: PURPLE,
@@ -370,7 +417,28 @@ export const slides = [
     captionFr: '**Calculate** et **work out** veulent dire **trouve** (calcule).',
   },
 
-  // 17. One angle known, the other three equal
+  // 19. Whiteboards: one of each, in the Workbook's words
+  {
+    layout: 'split',
+    accent: GREEN,
+    icon: 'CheckCircle2',
+    eyebrow: 'Whiteboards',
+    eyebrowFr: 'Ardoises',
+    title: 'One of Each',
+    titleFr: 'Un de chaque',
+    ratio: 40,
+    inlineSvg: DIAGRAMS.PRACTICE,
+    content: 'Work out the size of the angles that have a letter.\n\nFirst decide: **180°** or **360°**?',
+    contentFr: 'Work out the size of the angles that have a letter : calcule les angles qui ont une lettre.\n\nDécide d’abord : **180°** ou **360°** ?',
+    reveal: {
+      label: 'Check your answers',
+      labelFr: 'Vérifie tes réponses',
+      answer: '**1** **x = 35°** (180°), **2** **y = 125°** (360°), **3** **z = 75°** (360°)',
+      answerFr: '**1** **x = 35°** (180°), **2** **y = 125°** (360°), **3** **z = 75°** (360°)',
+    },
+  },
+
+  // 20. One angle known, the other three equal
   {
     layout: 'statement',
     accent: GREEN,
@@ -380,8 +448,8 @@ export const slides = [
     titleFr: 'Trois pareils',
     text: 'One angle of a quadrilateral is **150°**. The other three angles are **the same size**.',
     textFr: 'Un angle d’un quadrilatère fait **150°**. Les trois autres angles sont **égaux**.',
-    sub: 'Work out the size of the other angles.',
-    subFr: 'Calcule la taille des autres angles.',
+    sub: 'Work out the size of the other angles. Start with **360° − 150°**.',
+    subFr: 'Calcule la taille des autres angles. Commence par **360° − 150°**.',
     reveal: {
       label: 'Check your answer',
       labelFr: 'Vérifie ta réponse',
@@ -390,7 +458,7 @@ export const slides = [
     },
   },
 
-  // 18. Parallelogram (write)
+  // 21. Parallelogram (write)
   {
     layout: 'split',
     accent: TEAL,
@@ -401,8 +469,8 @@ export const slides = [
     titleFr: 'Le parallélogramme',
     ratio: 45,
     inlineSvg: DIAGRAMS.PARA,
-    content: 'One angle is **65°**. Find **p**, **q** and **r**.',
-    contentFr: 'Un angle fait **65°**. Trouve **p**, **q** et **r**.',
+    content: 'One angle is **65°**. Find **q** first. Then **p** and **r**.',
+    contentFr: 'Un angle fait **65°**. Trouve d’abord **q**. Puis **p** et **r**.',
     notes: [
       {
         tone: 'write',
@@ -418,7 +486,7 @@ export const slides = [
     },
   },
 
-  // 19. Challenge: squares and an equilateral triangle round a point
+  // 22. Challenge: squares and an equilateral triangle round a point
   {
     layout: 'split',
     accent: PURPLE,
@@ -442,13 +510,13 @@ export const slides = [
     reveal: {
       label: 'Check your answer',
       labelFr: 'Vérifie ta réponse',
-      answer: '**y = 360° − 90° − 90° − 60° = 120°**',
-      answerFr: '**y = 360° − 90° − 90° − 60° = 120°**',
+      answer: '**1.** **90° + 90° + 60° = 240°**\n**2.** **y = 360° − 240° = 120°**',
+      answerFr: '**1.** **90° + 90° + 60° = 240°**\n**2.** **y = 360° − 240° = 120°**',
     },
   },
 
   // ── WORD PROBLEMS (deadpan) ───────────────────────────────────────────────
-  // 20. Mr Bowen's chair
+  // 23. Mr Bowen's chair
   {
     layout: 'callout',
     accent: GREEN,
@@ -471,7 +539,7 @@ export const slides = [
     },
   },
 
-  // 21. Mr Bowen's garden
+  // 24. Mr Bowen's garden
   {
     layout: 'callout',
     accent: GREEN,
@@ -495,7 +563,7 @@ export const slides = [
   },
 
   // ── CLOSE ─────────────────────────────────────────────────────────────────
-  // 22. Checklist: slide 2's goals, with the key words
+  // 25. Checklist: slide 3's goals, with the key words
   {
     layout: 'stack',
     variant: 'checklist',
@@ -506,17 +574,17 @@ export const slides = [
     eyebrowFr: 'Avant de partir',
     title: 'Can You Do These?',
     titleFr: 'Sais-tu faire ceci ?',
-    content: '> Check your notebook: **6 written panels**.',
-    contentFr: '> Vérifie ton cahier : **6 encadrés recopiés**.',
+    content: '> Check your notebook: **7 written panels**.',
+    contentFr: '> Vérifie ton cahier : **7 encadrés recopiés**.',
     items: [
       { text: 'Find a missing angle on a **straight line** (180°).', textFr: 'Trouver un angle sur une **ligne droite** (180°).' },
       { text: 'Find a missing angle **around a point** (360°).', textFr: 'Trouver un angle **autour d’un point** (360°).' },
       { text: 'Find the fourth angle of a **quadrilateral** (360°).', textFr: 'Trouver le quatrième angle d’un **quadrilatère** (360°).' },
-      { text: 'Say what **sum** means, and read **calculate** and **work out**.', textFr: 'Dire ce que veut dire **sum**, et lire **calculate** et **work out**.' },
+      { text: 'Use the **two steps**: add, then subtract.', textFr: 'Utiliser les **deux étapes** : additionner, puis soustraire.' },
     ],
   },
 
-  // 23. Exit
+  // 26. Exit
   {
     layout: 'hero',
     color: PURPLE,
@@ -532,8 +600,8 @@ export const slides = [
     reveal: {
       label: 'Answer',
       labelFr: 'Réponse',
-      answer: '**85° + 100° + 110° = 295°**\n**360° − 295° = 65°**',
-      answerFr: '**85° + 100° + 110° = 295°**\n**360° − 295° = 65°**',
+      answer: '**1.** **85° + 100° + 110° = 295°**\n**2.** **360° − 295° = 65°**',
+      answerFr: '**1.** **85° + 100° + 110° = 295°**\n**2.** **360° − 295° = 65°**',
     },
   },
 ]

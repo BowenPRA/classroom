@@ -58,8 +58,8 @@ const wedge = (cx, cy, r, a1, a2, fill, stroke = INK) => {
   return `<path d="M ${cx} ${cy} L ${f(x1)} ${f(y1)} A ${r} ${r} 0 ${large} 0 ${f(x2)} ${f(y2)} Z" fill="${fill}" stroke="${stroke}" stroke-width="2"/>`
 }
 
-// The interior wedge at corner P of a convex polygon, between its neighbours A and B.
-const corner = (P, A, B, r, fill) => {
+// Where the interior angle at corner P (neighbours A and B) starts, and how wide it is.
+const span = (P, A, B) => {
   const ang = (Q) => (Math.atan2(-(Q[1] - P[1]), Q[0] - P[0]) * 180) / Math.PI
   let a1 = ang(A)
   let d = (ang(B) - a1 + 360) % 360
@@ -67,8 +67,35 @@ const corner = (P, A, B, r, fill) => {
     a1 = ang(B)
     d = 360 - d
   }
+  return { a1, d }
+}
+
+// The interior wedge at corner P of a convex polygon, between its neighbours A and B.
+const corner = (P, A, B, r, fill) => {
+  const { a1, d } = span(P, A, B)
   return wedge(P[0], P[1], r, a1, a1 + d, fill)
 }
+
+// Each corner pulled 30 units out of the shape, with a dashed tear line left behind.
+const tornCorners = (Q, r, fills) =>
+  Q.map((P, i) => {
+    const { a1, d } = span(P, Q[(i + 3) % 4], Q[(i + 1) % 4])
+    const [ox, oy] = at(0, 0, -30, a1 + d / 2)
+    const [x1, y1] = at(P[0], P[1], r, a1)
+    const [x2, y2] = at(P[0], P[1], r, a1 + d)
+    return `<path d="M ${f(x1)} ${f(y1)} A ${r} ${r} 0 0 0 ${f(x2)} ${f(y2)}" fill="none" stroke="${INK}" stroke-width="2.5" stroke-dasharray="7 6"/>
+      <g transform="translate(${f(ox)} ${f(oy)})">${wedge(P[0], P[1], r, a1, a1 + d, fills[i])}</g>`
+  }).join('\n      ')
+
+// The four torn corners (78.8°, 98°, 90°, 93.2°) lying near a point, not yet joined.
+const scattered = (cx, cy, fills) =>
+  [78.8, 98, 90, 93.2]
+    .map((d, i) => {
+      const dir = 45 + 90 * i
+      const [vx, vy] = at(cx, cy, 34, dir)
+      return wedge(Math.round(vx), Math.round(vy), 58, dir - d / 2, dir + d / 2, fills[i])
+    })
+    .join('\n    ')
 
 const poly = (pts, fill = SLATE_T) =>
   `<polygon points="${pts.map((p) => p.join(',')).join(' ')}" fill="${fill}" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/>`
@@ -294,6 +321,66 @@ export const DIAGRAMS = {
     <text x="640" y="470" font-family="${FONT}" font-size="26" fill="${PURPLE}" text-anchor="middle">equilateral triangle</text>
   </svg>`,
 
+  READ: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
+    ${plate(1120, 440)}
+    ${wedge(60, 270, 70, 0, 60, TEAL_T)}
+    ${ray(60, 270, 250, 270)}
+    ${ray(60, 270, 155, 105.5)}
+    <text x="150" y="238" font-family="${FONT}" font-size="36" font-weight="bold" fill="${TEAL}" text-anchor="middle">60°</text>
+    <text x="150" y="350" font-family="${FONT}" font-size="26" font-weight="bold" fill="${TEAL}" text-anchor="middle">a number</text>
+    <text x="150" y="390" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">We know this angle.</text>
+    ${wedge(340, 270, 70, 0, 60, ORANGE_T)}
+    ${ray(340, 270, 530, 270)}
+    ${ray(340, 270, 435, 105.5)}
+    <text x="425" y="240" font-family="${FONT}" font-size="44" font-weight="bold" fill="${KEY}" text-anchor="middle">a</text>
+    <text x="430" y="350" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">a letter</text>
+    <text x="430" y="390" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">Find this angle.</text>
+    ${ray(640, 270, 820, 270)}
+    ${ray(640, 270, 640, 100)}
+    ${box([640, 270], [1, 0], [0, -1], 34)}
+    <text x="715" y="350" font-family="${FONT}" font-size="26" font-weight="bold" fill="${PURPLE}" text-anchor="middle">a small square</text>
+    <text x="715" y="390" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">This angle is 90°.</text>
+    <text x="975" y="250" font-family="${FONT}" font-size="110" font-weight="bold" fill="${GREEN}" text-anchor="middle">°</text>
+    <text x="975" y="350" font-family="${FONT}" font-size="26" font-weight="bold" fill="${GREEN}" text-anchor="middle">degrees</text>
+    <text x="975" y="390" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">60° = 60 degrees</text>
+  </svg>`,
+
+  PIZZA_Q: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
+    ${plate(840, 560)}
+    <image href="${pizza}" x="25" y="90" width="400" height="380" preserveAspectRatio="xMidYMid meet"/>
+    ${[0, 45, 90, 135, 180, 225, 270, 315].map((a, i) => wedge(630, 260, 170, a, a + 45, i === 0 ? ORANGE_T : '#ffffff')).join('\n    ')}
+    <text x="732" y="232" font-family="${FONT}" font-size="48" font-weight="bold" fill="${KEY}" text-anchor="middle">?</text>
+    <text x="630" y="490" font-family="${FONT}" font-size="30" fill="${INK}" text-anchor="middle">8 equal slices</text>
+  </svg>`,
+
+  TEAR: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
+    ${plate(1120, 440)}
+    <g transform="translate(-4 24) scale(0.75)">
+      ${poly(CQ)}
+      ${wedges(CQ, 48, [TEAL_T, PURPLE_T, ORANGE_T, GREEN_T])}
+    </g>
+    <text x="109" y="264" font-family="${FONT}" font-size="28" font-weight="bold" fill="${TEAL}" text-anchor="middle">a</text>
+    <text x="152" y="145" font-family="${FONT}" font-size="28" font-weight="bold" fill="${PURPLE}" text-anchor="middle">b</text>
+    <text x="268" y="161" font-family="${FONT}" font-size="28" font-weight="bold" fill="${KEY}" text-anchor="middle">c</text>
+    <text x="248" y="274" font-family="${FONT}" font-size="28" font-weight="bold" fill="${GREEN}" text-anchor="middle">d</text>
+    <g transform="translate(369 24) scale(0.75)">
+      ${poly(CQ, '#ffffff')}
+      ${tornCorners(CQ, 48, [TEAL_T, PURPLE_T, ORANGE_T, GREEN_T])}
+    </g>
+    ${scattered(933, 200, [TEAL_T, PURPLE_T, ORANGE_T, GREEN_T])}
+    <circle cx="933" cy="200" r="6" fill="${INK}"/>
+    <text x="933" y="325" font-family="${FONT}" font-size="44" font-weight="bold" fill="${KEY}" text-anchor="middle">?</text>
+    <circle cx="40" cy="44" r="22" fill="${INK}"/>
+    <text x="40" y="53" font-family="${FONT}" font-size="26" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+    <circle cx="413" cy="44" r="22" fill="${INK}"/>
+    <text x="413" y="53" font-family="${FONT}" font-size="26" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+    <circle cx="786" cy="44" r="22" fill="${INK}"/>
+    <text x="786" y="53" font-family="${FONT}" font-size="26" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+    <text x="187" y="395" font-family="${FONT}" font-size="26" fill="${INK}" text-anchor="middle">Draw. Mark the corners.</text>
+    <text x="560" y="395" font-family="${FONT}" font-size="26" fill="${INK}" text-anchor="middle">Tear off the corners.</text>
+    <text x="933" y="395" font-family="${FONT}" font-size="26" fill="${INK}" text-anchor="middle">Put the points together.</text>
+  </svg>`,
+
   ANS_YES: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
     ${plate(720, 320)}
     ${leftHand}
@@ -320,3 +407,9 @@ export const DIAGRAMS = {
     <text x="260" y="230" font-family="${FONT}" font-size="64" font-weight="bold" fill="${KEY}" text-anchor="middle">one</text>
   </svg>`,
 }
+
+// The goals slide's pictures: the same three diagrams, with a ? where the
+// letter was (slide 4 teaches what a letter means).
+DIAGRAMS.PIC_LINE = DIAGRAMS.LINE.replace('>a</text>', '>?</text>')
+DIAGRAMS.PIC_POINT = DIAGRAMS.POINT.replace('>b</text>', '>?</text>')
+DIAGRAMS.PIC_QUAD = DIAGRAMS.WORKED.replace('>d</text>', '>?</text>')
