@@ -303,6 +303,15 @@ export function SpinEarth({ lang = 'en', isDisplayMode = false }) {
           {/* the Earth, its two bulges of water, the Moon */}
           <path d={oceanPath(SE.cx, SE.cy, SE.sea, [{ deg: 0, amp: SE.amp }])} fill={SEA} stroke={SEA_EDGE} strokeWidth="3" />
           <Globe cx={SE.cx} cy={SE.cy} r={SE.earth} spin={deg} />
+          {/* the bulges are high tide, the narrow parts low tide */}
+          <line x1="82" y1="322" x2="120" y2="282" stroke={KEY} strokeWidth="2" />
+          <circle cx="120" cy="282" r="4.5" fill={KEY} />
+          <text x="24" y="344" fontFamily={FONT} fontSize="20" fontWeight="800" fill={KEY}>{t(lang, 'high tide', 'marée haute')}</text>
+          <line x1="530" y1="208" x2="480" y2="252" stroke={KEY} strokeWidth="2" />
+          <circle cx="480" cy="252" r="4.5" fill={KEY} />
+          <text x="543" y="200" fontFamily={FONT} fontSize="20" fontWeight="800" fill={KEY} textAnchor="middle">{t(lang, 'high tide', 'marée haute')}</text>
+          <text x={SE.cx} y="108" fontFamily={FONT} fontSize="20" fontWeight="800" fill={KEY} textAnchor="middle">{t(lang, 'low tide', 'marée basse')}</text>
+          <text x={SE.cx} y="434" fontFamily={FONT} fontSize="20" fontWeight="800" fill={KEY} textAnchor="middle">{t(lang, 'low tide', 'marée basse')}</text>
           <Harbour x={hX} y={hY} big={atTurn} />
           <MoonBall x={MOON_AT[0]} y={MOON_AT[1]} r={40} />
           <text x={MOON_AT[0]} y={MOON_AT[1] + 74} fontFamily={FONT} fontSize="22" fontWeight="800" fill={INK} textAnchor="middle">{t(lang, 'Moon', 'Lune')}</text>

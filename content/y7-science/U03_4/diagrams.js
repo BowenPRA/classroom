@@ -12,14 +12,17 @@
 //     MOON_PULL     the Moon's gravity pulls the Earth, and the water most easily
 //                   (no bulges yet: the vote that follows asks how many)
 //     ANS_ONE / ANS_TWO   vote: one high tide at a time, or two?
-//     STRETCH       three students: the Moon pulls the near side most, so the
-//                   Earth is stretched into two bulges
+//     STRETCH       three students, before and after the Moon pulls (1, 2, 3
+//                   steps): further apart, so the water bulges on both sides
 //     TWO_TIDES     Draw This (page 99): the Earth from above the North Pole,
 //                   two high tides, two low tides, the Moon's pull
+//     MOON_MOVES    the Moon today and tomorrow: after one turn (24 hours) the
+//                   harbour must turn a little more to face it again
 //   The Sun
 //     ANS_SUN / ANS_MOON   vote: which makes bigger tides?
-//     SUN_FAR       the pull on the near side, middle and far side: very different
-//                   for the Moon, almost the same for the Sun
+//     SUN_FAR       pull and stretch: the Sun pulls the Earth 180 times harder,
+//                   but the Moon stretches it twice as much — and tides come
+//                   from the stretch
 //     EFFECTS       harbours, coastal floods, food, electricity (photographs)
 //     EARTH_TIDE    the ground rises and falls about 30 cm
 //     SUMMARY       the sea, the Moon, the Sun: put it together
@@ -220,30 +223,39 @@ export const DIAGRAMS = {
 
   STRETCH: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
-    <text x="30" y="50" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}">1. The Moon pulls each part</text>
-    <circle cx="120" cy="140" r="22" fill="${SEA}" stroke="${SEA_EDGE}" stroke-width="3"/>
-    <circle cx="280" cy="140" r="22" fill="${LAND}" stroke="${INK}" stroke-width="3"/>
-    <circle cx="440" cy="140" r="22" fill="${SEA}" stroke="${SEA_EDGE}" stroke-width="3"/>
-    ${arrow(146, 140, 206, 140, '#d83a2e', 5, 16)}
-    ${arrow(306, 140, 406, 140, '#d83a2e', 5, 16)}
-    ${arrow(466, 140, 606, 140, '#d83a2e', 5, 16)}
-    ${moon(745, 140, 44)}
-    <text x="120" y="194" font-family="${FONT}" font-size="21" fill="${MUTED}" text-anchor="middle">far side</text>
-    <text x="280" y="194" font-family="${FONT}" font-size="21" fill="${MUTED}" text-anchor="middle">middle</text>
-    <text x="440" y="194" font-family="${FONT}" font-size="21" fill="${MUTED}" text-anchor="middle">near side</text>
-    <text x="176" y="226" font-family="${FONT}" font-size="23" font-weight="bold" fill="#d83a2e" text-anchor="middle">1 step</text>
-    <text x="356" y="226" font-family="${FONT}" font-size="23" font-weight="bold" fill="#d83a2e" text-anchor="middle">2 steps</text>
-    <text x="536" y="226" font-family="${FONT}" font-size="23" font-weight="bold" fill="#d83a2e" text-anchor="middle">3 steps</text>
-    <line x1="30" y1="262" x2="810" y2="262" stroke="#e2e8f0" stroke-width="2"/>
-    <text x="30" y="306" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}">2. So the Earth is stretched</text>
-    ${ocean(330, 420, 170, 96)}
-    ${earth(330, 420, 84)}
-    ${arrow(166, 420, 116, 420, BLUE, 5, 16)}
-    ${arrow(494, 420, 544, 420, BLUE, 5, 16)}
-    ${moon(745, 420, 30)}
-    ${leader(640, 330, 470, 368)}
-    <text x="648" y="322" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">2 bulges</text>
-    <text x="648" y="352" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">of water</text>
+    <text x="30" y="46" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}">1. Before</text>
+    <circle cx="120" cy="96" r="20" fill="${SEA}" stroke="${SEA_EDGE}" stroke-width="3"/>
+    <circle cx="270" cy="96" r="20" fill="${LAND}" stroke="${INK}" stroke-width="3"/>
+    <circle cx="420" cy="96" r="20" fill="${SEA}" stroke="${SEA_EDGE}" stroke-width="3"/>
+    <text x="120" y="142" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">far side</text>
+    <text x="270" y="142" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">middle</text>
+    <text x="420" y="142" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">near side</text>
+    ${moon(745, 160, 44)}
+    <line x1="30" y1="168" x2="660" y2="168" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="30" y="206" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}">2. The Moon pulls</text>
+    <g fill="none" stroke="#b8c4cf" stroke-width="2.5" stroke-dasharray="5 5">
+      <circle cx="120" cy="264" r="20"/><circle cx="270" cy="264" r="20"/><circle cx="420" cy="264" r="20"/>
+    </g>
+    <circle cx="170" cy="264" r="20" fill="${SEA}" stroke="${SEA_EDGE}" stroke-width="3"/>
+    <circle cx="370" cy="264" r="20" fill="${LAND}" stroke="${INK}" stroke-width="3"/>
+    <circle cx="570" cy="264" r="20" fill="${SEA}" stroke="${SEA_EDGE}" stroke-width="3"/>
+    ${arrow(120, 230, 172, 230, '#d83a2e', 4, 14)}
+    ${arrow(270, 230, 372, 230, '#d83a2e', 4, 14)}
+    ${arrow(420, 230, 572, 230, '#d83a2e', 4, 14)}
+    <text x="145" y="310" font-family="${FONT}" font-size="21" font-weight="bold" fill="#d83a2e" text-anchor="middle">1 step</text>
+    <text x="320" y="310" font-family="${FONT}" font-size="21" font-weight="bold" fill="#d83a2e" text-anchor="middle">2 steps</text>
+    <text x="495" y="310" font-family="${FONT}" font-size="21" font-weight="bold" fill="#d83a2e" text-anchor="middle">3 steps</text>
+    <text x="630" y="256" font-family="${FONT}" font-size="23" font-weight="bold" fill="${KEY}">further apart:</text>
+    <text x="630" y="284" font-family="${FONT}" font-size="23" font-weight="bold" fill="${KEY}">stretched!</text>
+    <line x1="30" y1="332" x2="810" y2="332" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="30" y="368" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}">3. So the water makes 2 bulges</text>
+    ${ocean(350, 462, 165, 78)}
+    ${earth(350, 462, 66)}
+    ${arrow(187, 462, 142, 462, BLUE, 5, 16)}
+    ${arrow(513, 462, 558, 462, BLUE, 5, 16)}
+    ${moon(750, 476, 30)}
+    <text x="138" y="444" font-family="${FONT}" font-size="22" font-weight="bold" fill="${KEY}" text-anchor="end">high tide</text>
+    <text x="564" y="444" font-family="${FONT}" font-size="22" font-weight="bold" fill="${KEY}">high tide</text>
   </svg>`,
 
   TWO_TIDES: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
@@ -286,28 +298,50 @@ export const DIAGRAMS = {
 
   SUN_FAR: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
-    <text x="30" y="50" font-family="${FONT}" font-size="25" font-weight="bold" fill="${TEAL}">The Moon: close</text>
-    <text x="30" y="80" font-family="${FONT}" font-size="20" fill="${MUTED}">its pull on each part of the Earth</text>
-    <text x="150" y="129" font-family="${FONT}" font-size="21" fill="${MUTED}" text-anchor="end">near side</text>
-    <text x="150" y="169" font-family="${FONT}" font-size="21" fill="${MUTED}" text-anchor="end">middle</text>
-    <text x="150" y="209" font-family="${FONT}" font-size="21" fill="${MUTED}" text-anchor="end">far side</text>
-    ${pullBar(166, 122, 270, TEAL)}
-    ${pullBar(166, 162, 180, TEAL)}
-    ${pullBar(166, 202, 90, TEAL)}
-    <text x="560" y="160" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">very different:</text>
-    <text x="560" y="192" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">a big stretch</text>
-    <line x1="30" y1="252" x2="810" y2="252" stroke="#e2e8f0" stroke-width="2"/>
-    <text x="30" y="300" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">The Sun: 390 times further away</text>
-    <text x="30" y="330" font-family="${FONT}" font-size="20" fill="${MUTED}">its pull on each part of the Earth</text>
-    <text x="150" y="379" font-family="${FONT}" font-size="21" fill="${MUTED}" text-anchor="end">near side</text>
-    <text x="150" y="419" font-family="${FONT}" font-size="21" fill="${MUTED}" text-anchor="end">middle</text>
-    <text x="150" y="459" font-family="${FONT}" font-size="21" fill="${MUTED}" text-anchor="end">far side</text>
-    ${pullBar(166, 372, 372, '#e8a317')}
-    ${pullBar(166, 412, 330, '#e8a317')}
-    ${pullBar(166, 452, 288, '#e8a317')}
-    <text x="560" y="410" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">almost the same:</text>
-    <text x="560" y="442" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">a small stretch</text>
-    <text x="420" y="524" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">A bigger difference stretches the Earth more.</text>
+    <text x="30" y="52" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}">1. The PULL on the whole Earth</text>
+    <text x="150" y="111" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="end">the Moon</text>
+    ${pullBar(166, 104, 6, TEAL)}
+    <text x="150" y="161" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="end">the Sun</text>
+    ${pullBar(166, 154, 520, '#e8a317')}
+    <text x="700" y="162" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}">× 180</text>
+    <text x="166" y="214" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}">The Sun pulls much harder.</text>
+    <line x1="30" y1="246" x2="810" y2="246" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="30" y="294" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}">2. The STRETCH (tidal force)</text>
+    <text x="150" y="351" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="end">the Moon</text>
+    ${pullBar(166, 344, 400, TEAL)}
+    <text x="150" y="401" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="end">the Sun</text>
+    ${pullBar(166, 394, 184, '#e8a317')}
+    <text x="366" y="402" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}">about half</text>
+    <text x="166" y="454" font-family="${FONT}" font-size="24" font-weight="bold" fill="${KEY}">The Moon stretches more.</text>
+    <rect x="166" y="484" width="508" height="54" rx="12" fill="${TEAL}"/>
+    <text x="420" y="520" font-family="${FONT}" font-size="25" font-weight="bold" fill="#ffffff" text-anchor="middle">Tides come from the stretch.</text>
+  </svg>`,
+
+  MOON_MOVES: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
+    ${plate(840, 560)}
+    <line x1="300" y1="290" x2="636" y2="290" stroke="${MUTED}" stroke-width="2.5" stroke-dasharray="8 8"/>
+    <line x1="300" y1="290" x2="616" y2="175" stroke="${KEY}" stroke-width="2.5" stroke-dasharray="8 8"/>
+    ${earth(300, 290, 90)}
+    <path d="M 420.7 257.6 A 125 125 0 1 0 420.7 322.4" fill="none" stroke="${BLUE}" stroke-width="4" stroke-linecap="round"/>
+    ${arrow(418, 332, 423, 315, BLUE, 4, 16)}
+    <path d="M 449.9 284.8 A 150 150 0 0 0 441 238.7" fill="none" stroke="${KEY}" stroke-width="4" stroke-linecap="round"/>
+    ${arrow(444.5, 248.1, 439, 233.1, KEY, 4, 14)}
+    <circle cx="390" cy="290" r="10" fill="#d83a2e" stroke="#ffffff" stroke-width="3"/>
+    ${moon(670, 290, 34)}
+    ${moon(648, 164, 34)}
+    <path d="M 667.2 244.9 A 370 370 0 0 0 660.5 206.8" fill="none" stroke="${KEY}" stroke-width="4" stroke-linecap="round"/>
+    ${arrow(662.4, 214.6, 659, 201, KEY, 4, 14)}
+    <text x="670" y="352" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">today</text>
+    <text x="648" y="118" font-family="${FONT}" font-size="22" font-weight="bold" fill="${KEY}" text-anchor="middle">tomorrow</text>
+    <text x="702" y="224" font-family="${FONT}" font-size="21" font-weight="bold" fill="${KEY}">the Moon</text>
+    <text x="702" y="250" font-family="${FONT}" font-size="21" font-weight="bold" fill="${KEY}">moves on</text>
+    ${leader(150, 128, 212, 202)}
+    <text x="30" y="116" font-family="${FONT}" font-size="23" font-weight="bold" fill="${BLUE}">1 turn: 24 hours</text>
+    <text x="466" y="272" font-family="${FONT}" font-size="22" font-weight="bold" fill="${KEY}">a little more</text>
+    ${leader(445, 410, 394, 302)}
+    <text x="450" y="432" font-family="${FONT}" font-size="22" font-weight="bold" fill="${KEY}">the harbour</text>
+    <text x="30" y="528" font-family="${FONT}" font-size="21" fill="${MUTED}">The Moon goes round the Earth once in 29 days.</text>
+    <text x="810" y="528" font-family="${FONT}" font-size="19" fill="${MUTED}" text-anchor="end">not to scale</text>
   </svg>`,
 
   EFFECTS: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">

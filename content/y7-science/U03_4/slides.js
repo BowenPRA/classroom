@@ -20,8 +20,9 @@
 //              Draw it (page 99). High tide or low tide? Arms up, arms down,
 //              the whole class standing. And 50 minutes later every day.
 //   The Sun    the Sun has the strongest gravity: so its tides are bigger?
-//              (vote) No: too far away to stretch the Earth much. Line up the
-//              Sun and the Moon: the biggest tides at full moon and new moon.
+//              (vote) No: it pulls harder, but it stretches the Earth less, and
+//              tides come from the stretch. Line up the Sun and the Moon: the
+//              biggest tides at full moon and new moon.
 //              What tides do (harbours, floods, food, electricity), and the
 //              land's own tide. The Moon pulls, the Earth spins, the Sun helps.
 //
@@ -302,15 +303,15 @@ export const slides = [
     titleFr: 'La Terre est étirée',
     ratio: 45,
     inlineSvg: DIAGRAMS.STRETCH,
-    content: 'The Moon pulls the **near** side most and the **far** side least. So water piles up on **both** sides.',
-    contentFr: 'La Lune tire le côté **proche** le plus et le côté **éloigné** le moins. Donc l’eau s’accumule des **deux** côtés.',
+    content: 'The **near** side moves most. The **far** side is left behind. So the water makes a bulge on **both** sides.',
+    contentFr: 'Le côté **proche** bouge le plus. Le côté **éloigné** reste en arrière. Donc l’eau fait une bosse des **deux** côtés.',
     notes: [
       {
         tone: 'task',
         badge: 'Try it',
         badgeFr: 'Essaie',
-        text: 'Three students in a line. The Moon calls: **3 steps**, **2 steps**, **1 step**.',
-        textFr: 'Trois élèves en ligne. La Lune appelle : **3 pas**, **2 pas**, **1 pas**.',
+        text: 'Three students in a line, facing the Moon. Near side: **3 steps**. Middle: **2 steps**. Far side: **1 step**.',
+        textFr: 'Trois élèves en ligne, face à la Lune. Côté proche : **3 pas**. Milieu : **2 pas**. Côté éloigné : **1 pas**.',
       },
     ],
   },
@@ -341,8 +342,8 @@ export const slides = [
     ratio: 45,
     inlineSvg: DIAGRAMS.TWO_TIDES,
     drawThis: true,
-    content: 'The Earth seen from above the **North Pole**.',
-    contentFr: 'La Terre vue du dessus du **pôle Nord**.',
+    content: 'Copy the drawing and its labels: the Earth, seen from above the **North Pole**.',
+    contentFr: 'Recopie le dessin et ses légendes : la Terre, vue du dessus du **pôle Nord**.',
     notes: [
       {
         tone: 'info',
@@ -367,23 +368,25 @@ export const slides = [
     captionFr: '**Bras en haut :** marée haute. **Bras en bas :** marée basse. Les derniers debout gagnent un ticket !',
   },
 
-  // 16. The same time tomorrow? (Activity Question 5)
+  // 16. The same time tomorrow? (Activity Question 5) The picture is the clue:
+  // after one turn the harbour must turn a little more to face the Moon again.
   {
-    layout: 'statement',
+    layout: 'split',
     accent: PURPLE,
+    icon: 'Timer',
     eyebrow: 'Think · whiteboards',
     eyebrowFr: 'Réfléchis · ardoises',
     title: 'The Same Time Tomorrow?',
     titleFr: 'À la même heure demain ?',
-    text: 'High tide is at **6 a.m.** today. Is it at 6 a.m. **tomorrow**?',
-    textFr: 'La marée haute est à **6 h** aujourd’hui. Et **demain** ?',
-    sub: 'A clue: the Moon goes round the Earth in about **29 days**.',
-    subFr: 'Un indice : la Lune fait le tour de la Terre en environ **29 jours**.',
+    ratio: 45,
+    inlineSvg: DIAGRAMS.MOON_MOVES,
+    content: 'High tide is at **6 a.m.** today. But the Moon moves on a little every day. Is high tide at 6 a.m. **tomorrow**?',
+    contentFr: 'La marée haute est à **6 h** aujourd’hui. Mais la Lune avance un peu chaque jour. La marée haute sera-t-elle à 6 h **demain** ?',
     reveal: {
       label: 'Answer',
       labelFr: 'Réponse',
-      answer: '**No:** about **50 minutes later** every day, because the Moon has moved on: 24 hours ÷ 29 ≈ 50 minutes.',
-      answerFr: '**Non :** environ **50 minutes plus tard** chaque jour, car la Lune a avancé : 24 heures ÷ 29 ≈ 50 minutes.',
+      answer: '**No: about 50 minutes later.** After one turn, the Earth must turn a little more to face the Moon again: 24 hours ÷ 29 ≈ 50 minutes.',
+      answerFr: '**Non : environ 50 minutes plus tard.** Après un tour, la Terre doit tourner encore un peu pour être face à la Lune : 24 heures ÷ 29 ≈ 50 minutes.',
     },
   },
 
@@ -415,12 +418,12 @@ export const slides = [
     icon: 'Sun',
     eyebrow: 'Answer: B · the Moon',
     eyebrowFr: 'Réponse : B · la Lune',
-    title: 'Too Far Away to Stretch',
-    titleFr: 'Trop loin pour étirer',
+    title: 'Pull and Stretch',
+    titleFr: 'Tirer et étirer',
     ratio: 45,
     inlineSvg: DIAGRAMS.SUN_FAR,
-    content: 'The Sun is **390 times** further away. It pulls every part of the Earth almost the **same**, so it hardly stretches it.',
-    contentFr: 'Le Soleil est **390 fois** plus loin. Il tire chaque partie de la Terre presque **pareil**, donc il l’étire à peine.',
+    content: 'The Sun **pulls** the Earth harder. But it is **390 times** further away, so it **stretches** the Earth less.',
+    contentFr: 'Le Soleil **tire** plus fort sur la Terre. Mais il est **390 fois** plus loin, donc il l’**étire** moins.',
     notes: [
       {
         tone: 'info',
@@ -500,13 +503,11 @@ export const slides = [
     titleFr: 'La Lune tire, la Terre tourne',
     ratio: 50,
     inlineSvg: DIAGRAMS.SUMMARY,
-    content: 'And the Sun helps.',
-    contentFr: 'Et le Soleil aide.',
     notes: [
       {
         tone: 'write',
-        text: 'The **Moon’s tidal force** pulls the oceans into **2 bulges**. The Earth **spins**, so most coasts get **2 high tides** a day. Tides are **biggest** at **full moon** and **new moon**, when the Sun, the Moon and the Earth are in a **line**.',
-        textFr: 'La **force de marée de la Lune** tire les océans en **2 bosses**. La Terre **tourne**, donc la plupart des côtes ont **2 marées hautes** par jour. Les marées sont les **plus grandes** à la **pleine lune** et à la **nouvelle lune**, quand le Soleil, la Lune et la Terre sont **alignés**.',
+        text: 'The **Moon’s tidal force** pulls the oceans into **2 bulges**. The Earth **spins** through them: **2 high tides** a day. Tides are **biggest** when the Sun, the Moon and the Earth are in a **line**: at **full moon** and **new moon**.',
+        textFr: 'La **force de marée de la Lune** tire les océans en **2 bosses**. La Terre **tourne** à travers elles : **2 marées hautes** par jour. Les marées sont les **plus grandes** quand le Soleil, la Lune et la Terre sont **alignés** : à la **pleine lune** et à la **nouvelle lune**.',
       },
     ],
     reveal: {

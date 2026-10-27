@@ -114,6 +114,9 @@ export function LineThemUp({ lang = 'en', isDisplayMode = false }) {
             ))}
             <circle cx="790" cy={E.cy} r="140" fill="#ffd45c" stroke={INK} strokeWidth="3" />
             <circle cx={E.cx} cy={E.cy} r={E.orbit} fill="none" stroke="#b8c4cf" strokeWidth="2.5" strokeDasharray="8 8" />
+            {/* the lines from the Earth to the Moon and to the Sun: one line, or a right angle */}
+            <line x1={E.cx} y1={E.cy} x2={mx} y2={my} stroke="#5b6770" strokeWidth="3" strokeDasharray="7 6" />
+            <line x1={E.cx} y1={E.cy} x2="720" y2={E.cy} stroke="#e8a317" strokeWidth="3" strokeDasharray="7 6" />
             <path d={oceanPath(E.cx, E.cy, E.sea, [{ deg: e, amp: E.moonAmp }, { deg: 0, amp: E.sunAmp }])} fill={SEA} stroke={SEA_EDGE} strokeWidth="3" />
             <Globe cx={E.cx} cy={E.cy} r={E.earth} />
             <MoonBall x={mx} y={my} r={24} sunDeg={0} />
