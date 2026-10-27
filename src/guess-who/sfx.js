@@ -63,6 +63,10 @@ function whoosh(a, { start = 0, length = 0.16, gain = 0.18 } = {}) {
 
 const SOUNDS = {
   flip: (a) => whoosh(a),
+  ask: (a) => {
+    tone(a, { freq: 660, length: 0.1, type: 'sine', gain: 0.18 })
+    tone(a, { freq: 990, start: 0.09, length: 0.18, type: 'sine', gain: 0.15 })
+  },
   deal: (a) => { for (let i = 0; i < 6; i++) whoosh(a, { start: i * 0.07, length: 0.1, gain: 0.12 }) },
   yes: (a) => {
     tone(a, { freq: 523, length: 0.16 })

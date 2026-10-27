@@ -25,6 +25,25 @@ export function Pumpkin({ lit, className = '' }) {
   )
 }
 
+/** One question on the Riverbucks countdown: lit while it is still free to ask, blown out once used. */
+export function Candle({ lit, className = '' }) {
+  return (
+    <svg viewBox="0 0 20 46" className={`gw-candle ${lit ? 'is-lit' : 'is-out'} ${className}`} aria-hidden="true">
+      {lit ? (
+        <g className="gw-flame">
+          <path d="M10 1 C15 8 16 13 10 17 C4 13 5 8 10 1 Z" fill="#ff9f1c" />
+          <path d="M10 7 C12.5 10.5 12.5 13 10 15 C7.5 13 7.5 10.5 10 7 Z" fill="#fff3b0" />
+        </g>
+      ) : (
+        <path className="gw-candle-smoke" d="M10 15 C6 11 14 8 10 2" stroke="#b9acd0" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+      )}
+      <line x1="10" y1="15" x2="10" y2="20" stroke="#2a1a3d" strokeWidth="1.6" />
+      <rect x="4" y="19" width="12" height="26" rx="2.5" fill={lit ? '#fff1d6' : '#4a3d5c'} />
+      <path d="M4 22 Q4 19 7 19 L13 19 Q16 19 16 22 L16 24 Q14 27 12.5 24 L12.5 28 Q11 31 9.5 28 L9.5 24 Q7 27 4 24 Z" fill={lit ? '#ffd79a' : '#5b4c70'} />
+    </svg>
+  )
+}
+
 /** The friendly ghost on the back of a flipped-down card. */
 export function Ghost({ className = '' }) {
   return (

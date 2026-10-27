@@ -22,6 +22,19 @@ export function prizeFor(questions, steps) {
   return 0
 }
 
+/**
+ * Where the player stands on the Riverbucks steps after `asked` questions:
+ * `prize` if they guess right now, and `left`, how many more they may ask and
+ * still win it.
+ */
+export function prizeStatus(asked, steps) {
+  const prize = prizeFor(asked, steps)
+  return { prize, left: prize ? steps[3 - prize] - asked : 0 }
+}
+
+/** A typed question, tidied: one line, at most 140 characters, or '' if empty. */
+export const cleanQuestion = (text) => String(text || '').replace(/\s+/g, ' ').trim().slice(0, 140)
+
 /** Three whole numbers, each above the last, or null. */
 export function cleanSteps(steps) {
   if (!Array.isArray(steps) || steps.length !== 3) return null
@@ -39,7 +52,8 @@ export const blankGame = (source = 'class') => ({
   cards: [], // ids, in board order
   secret: null,
   down: [], // ids the player has flipped down
-  log: [], // 'yes' / 'no', one per question answered
+  pending: null, // the question the player typed, waiting for Mr Bowen's answer
+  log: [], // { q, a }: each answered question (q is null if it was asked out loud) and 'yes' / 'no'
   guess: null, // the id guessed, or null if Mr Bowen ended the game
   steps: DEFAULT_STEPS,
   game: 0, // bumped on every deal, so animations restart
@@ -90,7 +104,10 @@ export function loadGame() {
   try {
     const g = JSON.parse(localStorage.getItem(GAME_KEY))
     if (g && Array.isArray(g.cards) && Array.isArray(g.down) && Array.isArray(g.log)) {
-      return { ...blankGame(g.source), ...g, steps: cleanSteps(g.steps) || DEFAULT_STEPS }
+      // Games saved before questions were typed kept bare 'yes' / 'no' answers.
+      const log = g.log.map((e) => (typeof e === 'string' ? { q: null, a: e } : e)).filter((e) => e && (e.a === 'yes' || e.a === 'no'))
+      const pending = typeof g.pending === 'string' ? g.pending : null
+      return { ...blankGame(g.source), ...g, log, pending, steps: cleanSteps(g.steps) || DEFAULT_STEPS }
     }
   } catch { /* nothing saved, or storage blocked */ }
   return blankGame()

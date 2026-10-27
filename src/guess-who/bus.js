@@ -8,9 +8,9 @@
 //  - A Supabase realtime broadcast channel joins a phone, over the internet.
 //
 // Every message carries an id, so a copy that arrives by both routes is handled
-// once. Only ids, answers and counts travel, never a name or a photo: the room
-// code is the only lock on the realtime channel, so nothing on it may identify
-// a child.
+// once. Ids, answers, counts and the player's typed questions travel, never a
+// name or a photo from The Current: the room code is the only lock on the
+// realtime channel, and nothing on it is stored.
 import { supabase } from './school.js'
 
 const SEEN_MAX = 300

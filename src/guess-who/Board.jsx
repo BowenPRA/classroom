@@ -7,8 +7,8 @@
 // remote (#/guess-who/remote/<room>), on his phone or in a second window.
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Maximize, Minimize, Volume2, VolumeX, Home, Smartphone, LogOut, ExternalLink, Ghost as GhostIcon, Users, School, Undo2, ListChecks } from 'lucide-react'
-import { Sky, Pumpkin, Ghost, Face, QrCode } from './art.jsx'
+import { Maximize, Minimize, Volume2, VolumeX, Home, Smartphone, LogOut, ExternalLink, Ghost as GhostIcon, Users, School, Undo2, ListChecks, SendHorizontal, Pencil } from 'lucide-react'
+import { Sky, Pumpkin, Ghost, Face, QrCode, Candle } from './art.jsx'
 import SignIn from './SignIn.jsx'
 import { useSchool } from './useSchool.js'
 import { openBus } from './bus.js'
@@ -18,7 +18,8 @@ import { play, unlockAudio, isMuted, setMuted } from './sfx.js'
 import { useStudentPicker } from '../lib/useStudentPicker.js'
 import { RandomStudentModal } from '../components/RandomStudent.jsx'
 import {
-  MIN_BOARD, MONSTERS, STARTERS, blankGame, boardRoom, cleanSteps, dealIds, loadGame, prizeFor, saveGame,
+  BOARD_SIZE, MIN_BOARD, MONSTERS, STARTERS, blankGame, boardRoom, cleanQuestion, cleanSteps, dealIds, loadGame, prizeFor,
+  prizeStatus, saveGame,
 } from './game.js'
 
 function reducer(g, a) {
@@ -26,14 +27,21 @@ function reducer(g, a) {
     case 'source':
       return g.phase === 'lobby' ? { ...blankGame(a.source), steps: g.steps, game: g.game } : g
     case 'deal':
-      return { ...g, phase: 'pick', cards: a.cards, secret: null, down: [], log: [], guess: null, game: g.game + 1 }
+      return { ...g, phase: 'pick', cards: a.cards, secret: null, down: [], pending: null, log: [], guess: null, game: g.game + 1 }
+    case 'setCards':
+      return g.phase === 'pick' ? { ...g, cards: a.cards } : g
     case 'pick':
       return g.phase === 'pick' && g.cards.includes(a.id) ? { ...g, phase: 'play', secret: a.id } : g
     case 'toggle':
       if (g.phase !== 'play') return g
       return { ...g, down: g.down.includes(a.id) ? g.down.filter((x) => x !== a.id) : [...g.down, a.id] }
+    case 'ask':
+      return g.phase === 'play' && !g.pending && a.text ? { ...g, pending: a.text } : g
+    case 'unask':
+      return { ...g, pending: null }
     case 'answer':
-      return g.phase === 'play' ? { ...g, log: [...g.log, a.answer] } : g
+      // The answer goes with the typed question; with none, it was asked out loud.
+      return g.phase === 'play' ? { ...g, log: [...g.log, { q: g.pending, a: a.answer }], pending: null } : g
     case 'undo':
       return g.phase === 'play' && g.log.length ? { ...g, log: g.log.slice(0, -1) } : g
     case 'reveal':
@@ -43,7 +51,7 @@ function reducer(g, a) {
       return steps ? { ...g, steps } : g
     }
     case 'lobby':
-      return { ...g, phase: 'lobby', cards: [], secret: null, down: [], log: [], guess: null }
+      return { ...g, phase: 'lobby', cards: [], secret: null, down: [], pending: null, log: [], guess: null }
     default:
       return g
   }
@@ -86,6 +94,8 @@ export default function Board() {
   const [confirmId, setConfirmId] = useState(null)
   const [muted, setMutedState] = useState(isMuted)
   const [fullscreen, setFullscreen] = useState(false)
+  // The question being typed on the laptop, before it is sent.
+  const [draft, setDraft] = useState('')
 
   // The bus callback is made once; it reads the latest game through refs.
   const busRef = useRef(null)
@@ -96,7 +106,8 @@ export default function Board() {
 
   const sendState = useCallback(() => {
     const { game: g, ready: r, people: p } = live.current
-    busRef.current?.send('state', { game: g, ready: r, count: p?.length || 0 })
+    // `pool`: everyone this board could deal, so the remote can swap faces in.
+    busRef.current?.send('state', { game: g, ready: r, count: p?.length || 0, pool: (p || []).map((x) => x.id) })
   }, [])
 
   const act = useCallback((intent) => {
@@ -108,7 +119,17 @@ export default function Board() {
         dispatch({ type: 'deal', cards: dealIds(pool) })
         setGuessing(false)
         setConfirmId(null)
+        setDraft('')
         play('deal')
+        return
+      }
+      case 'setCards': {
+        // Mr Bowen changing the faces before he picks: only people this board
+        // could deal, no repeats, and a playable number.
+        const pool = new Set((live.current.people || []).map((p) => p.id))
+        const cards = Array.isArray(intent.cards) ? intent.cards : []
+        if (cards.length < MIN_BOARD || cards.length > BOARD_SIZE || new Set(cards).size !== cards.length || !cards.every((id) => pool.has(id))) return
+        dispatch({ type: 'setCards', cards })
         return
       }
       case 'pick':
@@ -120,8 +141,11 @@ export default function Board() {
         splashCount.current += 1
         if (answer === 'yes' || answer === 'no') {
           dispatch({ type: 'answer', answer })
-          setSplash({ kind: answer, n: g.log.length + 1, key: splashCount.current })
+          setSplash({ kind: answer, n: g.log.length + 1, q: g.pending, key: splashCount.current })
         } else {
+          // Not a yes / no question: it goes back in the box to be reworded.
+          dispatch({ type: 'unask' })
+          if (g.pending) setDraft(g.pending)
           setSplash({ kind: 'again', key: splashCount.current })
         }
         play(answer === 'yes' || answer === 'no' ? answer : 'again')
@@ -276,7 +300,16 @@ export default function Board() {
   const facesLeft = game.cards.length - game.down.filter((id) => game.cards.includes(id)).length
   const secretPerson = byId.get(game.secret)
   const guessPerson = byId.get(game.guess)
-  const grid = gridFor(game.cards.length || 24)
+  // The grid shares the width with the sidebar, so it is a little over square.
+  const grid = gridFor(game.cards.length || 24, 1.33)
+  const sendQuestion = () => {
+    const text = cleanQuestion(draft)
+    if (!text || game.phase !== 'play' || game.pending) return
+    unlockAudio()
+    dispatch({ type: 'ask', text })
+    setDraft('')
+    play('ask')
+  }
 
   return (
     <div className="gw-root">
@@ -284,59 +317,72 @@ export default function Board() {
       <div className="gw-board">
         <header className="gw-hud">
           <h1 className="gw-title gw-title-small">Guess Who?</h1>
-          <div className="gw-qcount">
-            <span className="gw-qcount-label">Questions</span>
-            <span key={game.log.length} className="gw-qcount-n">{game.log.length}</span>
-          </div>
-          <Ladder steps={game.steps} log={game.log} />
+          {tools}
         </header>
 
-        <main
-          className={`gw-grid ${inGuess ? 'is-guessing' : ''}`}
-          style={{ '--cols': grid.cols, '--rows': grid.rows, '--prows': Math.ceil(game.cards.length / 4) }}
-        >
-          {game.cards.map((id, i) => (
-            <Card
-              key={`${game.game}-${id}`}
-              person={byId.get(id)}
-              index={i}
-              down={game.down.includes(id)}
-              guessable={inGuess && !game.down.includes(id)}
-              disabled={game.phase !== 'play' || (inGuess && game.down.includes(id))}
-              onClick={() => onCard(id)}
-            />
-          ))}
-        </main>
+        <div className="gw-main">
+          <main
+            className={`gw-grid ${inGuess ? 'is-guessing' : ''}`}
+            style={{ '--cols': grid.cols, '--rows': grid.rows, '--prows': Math.ceil(game.cards.length / 4) }}
+          >
+            {game.cards.map((id, i) => (
+              <Card
+                key={`${game.game}-${id}`}
+                person={byId.get(id)}
+                index={i}
+                down={game.down.includes(id)}
+                guessable={inGuess && !game.down.includes(id)}
+                disabled={game.phase !== 'play' || (inGuess && game.down.includes(id))}
+                onClick={() => onCard(id)}
+              />
+            ))}
+          </main>
 
-        <footer className="gw-footer">
-          {tools}
-          {inGuess ? (
-            <div className="gw-guess-hint">
-              <span>Tap the face you think it is.</span>
-              <button className="gw-btn gw-btn-ghost" onClick={() => setGuessing(false)}>
-                <Undo2 className="w-[2.4vmin] h-[2.4vmin]" strokeWidth={2.5} />
-                Not yet
+          <aside className="gw-side">
+            <Meter steps={game.steps} asked={game.log.length} />
+            {game.phase === 'pick' ? (
+              <div className="gw-ask gw-ask-wait">
+                <span className="gw-ask-emoji">🤫</span>
+                <span>Mr Bowen is choosing a secret person…</span>
+              </div>
+            ) : inGuess ? (
+              <div className="gw-ask gw-ask-guess">
+                <span>Tap the face you think it is.</span>
+                <button className="gw-btn gw-btn-ghost" onClick={() => setGuessing(false)}>
+                  <Undo2 className="gw-icon" strokeWidth={2.5} />
+                  Not yet
+                </button>
+              </div>
+            ) : (
+              <AskBox
+                key={game.game}
+                game={game}
+                draft={draft}
+                onDraft={setDraft}
+                onSend={sendQuestion}
+                onChange={() => { setDraft(game.pending || ''); dispatch({ type: 'unask' }) }}
+              />
+            )}
+            <QuestionLog log={game.log} />
+            <div className="gw-side-foot">
+              <div className="gw-faces-left">
+                <span className="gw-faces-left-n">{facesLeft}</span>
+                <span>faces<br />left</span>
+              </div>
+              <button
+                className={`gw-btn gw-btn-gold gw-guess-btn ${facesLeft === 1 && !inGuess ? 'is-calling' : ''}`}
+                disabled={game.phase !== 'play' || inGuess}
+                onClick={() => { unlockAudio(); setGuessing(true) }}
+              >
+                Final guess!
               </button>
             </div>
-          ) : (
-            <Starters key={game.source} list={STARTERS[game.source] || STARTERS.school} />
-          )}
-          <div className="gw-faces-left">
-            <span className="gw-faces-left-n">{facesLeft}</span>
-            <span>faces<br />left</span>
-          </div>
-          <button
-            className={`gw-btn gw-btn-gold gw-guess-btn ${facesLeft === 1 && !inGuess ? 'is-calling' : ''}`}
-            disabled={game.phase !== 'play' || inGuess}
-            onClick={() => { unlockAudio(); setGuessing(true) }}
-          >
-            Final guess!
-          </button>
-        </footer>
+          </aside>
+        </div>
       </div>
 
-      {game.phase === 'pick' && (
-        <PickBanner remoteLive={remoteLive} remoteUrl={remoteUrl} room={room} onOpenRemote={openRemoteWindow} />
+      {game.phase === 'pick' && !remoteLive && (
+        <PickBanner remoteUrl={remoteUrl} room={room} onOpenRemote={openRemoteWindow} />
       )}
       {game.phase === 'play' && !remoteLive && <JoinChip remoteUrl={remoteUrl} room={room} />}
       {splash && <Splash splash={splash} />}
@@ -393,40 +439,142 @@ function Toolbar({ room, remoteLive, net, muted, fullscreen, onMute, onFullscree
   )
 }
 
-/** Three jack-o'-lanterns, one per Riverbuck, each over its questions. A dot is a question: green YES, red NO. */
-function Ladder({ steps, log }) {
+/**
+ * The Riverbucks countdown. Each candle is one question: lit while it can still
+ * be asked, blown out once it has been. A jack-o'-lantern stands over each
+ * group, and goes out when its group is used up, taking a Riverbuck with it.
+ */
+function Meter({ steps, asked }) {
   const groups = [
     { value: 3, from: 0, to: steps[0] },
     { value: 2, from: steps[0], to: steps[1] },
     { value: 1, from: steps[1], to: steps[2] },
   ]
-  const prize = prizeFor(log.length, steps)
-  const extra = Math.max(0, log.length - steps[2])
+  const { prize, left } = prizeStatus(asked, steps)
+  const extra = Math.max(0, asked - steps[2])
+  const bucks = (n) => `${n} Riverbuck${n === 1 ? '' : 's'}`
   return (
-    <div className="gw-ladder">
-      <div className="gw-ladder-row">
+    <div className="gw-meter">
+      <div className="gw-meter-head">
+        <span>Riverbucks</span>
+        <span>Questions: <b>{asked}</b></span>
+      </div>
+      <div className="gw-tiers">
         {groups.map((g) => {
-          const lit = log.length <= g.to
+          const lit = asked <= g.to
           return (
-            <div key={g.value} className={`gw-rung ${lit ? 'is-lit' : 'is-out'} ${lit && prize === g.value ? 'is-current' : ''}`}>
-              <div className="gw-rung-pumpkin">
-                <Pumpkin lit={lit} className="w-full h-full" />
-                <span className="gw-rung-value">{g.value}</span>
+            <div key={g.value} className={`gw-tier ${lit ? 'is-lit' : 'is-out'} ${lit && prize === g.value ? 'is-current' : ''}`} style={{ flexGrow: g.to - g.from }}>
+              <div className="gw-tier-top">
+                <Pumpkin lit={lit} className="gw-tier-pumpkin" />
+                <span className="gw-tier-value">{g.value}</span>
               </div>
-              <div className="gw-dots">
-                {Array.from({ length: g.to - g.from }, (_, k) => {
-                  const answer = log[g.from + k]
-                  return <span key={k} className={`gw-dot ${answer ? `is-${answer}` : ''}`} />
-                })}
+              <div className="gw-candles">
+                {Array.from({ length: g.to - g.from }, (_, k) => <Candle key={k} lit={g.from + k >= asked} />)}
               </div>
             </div>
           )
         })}
         {extra > 0 && <span className="gw-extra">+{extra}</span>}
       </div>
-      <div className="gw-ladder-label">
-        {prize > 0 ? <>Guess now: <b>{prize} Riverbuck{prize === 1 ? '' : 's'}</b></> : <>No Riverbucks left. Can you still win?</>}
+      <div key={asked} className={`gw-meter-say ${prize && !left ? 'is-last' : ''}`}>
+        {!prize ? (
+          <>No Riverbucks left. You can still win!</>
+        ) : left ? (
+          <><b className="gw-meter-n">{left}</b> more question{left === 1 ? '' : 's'} for <b>{bucks(prize)}</b></>
+        ) : (
+          <>Guess now for <b>{bucks(prize)}</b>!</>
+        )}
       </div>
+    </div>
+  )
+}
+
+/**
+ * Where the player types a question for Mr Bowen. Model questions sit under it,
+ * and a tap puts one in the box to send or change. A sent question waits here,
+ * big enough for the queue to read, until he answers on his phone.
+ */
+function AskBox({ game, draft, onDraft, onSend, onChange }) {
+  const input = useRef(null)
+  const list = STARTERS[game.source] || STARTERS.school
+  // Two model questions, a different two each game: the list below soon shows more.
+  const models = [0, 1].map((k) => list[(game.game * 2 + k) % list.length])
+  const playing = game.phase === 'play'
+
+  // Ready for the next question as soon as the last one is answered.
+  useEffect(() => {
+    if (playing && !game.pending) input.current?.focus()
+  }, [playing, game.pending])
+
+  if (game.pending) {
+    return (
+      <div className="gw-ask gw-ask-sent">
+        <div className="gw-ask-label">Your question</div>
+        <div className="gw-ask-q">“{game.pending}”</div>
+        <div className="gw-ask-thinking">
+          Mr Bowen is thinking<span className="gw-dots3"><i>.</i><i>.</i><i>.</i></span>
+        </div>
+        <button className="gw-link" onClick={onChange}>
+          <Pencil className="w-4 h-4" strokeWidth={2.5} />
+          Change it
+        </button>
+      </div>
+    )
+  }
+  return (
+    <form className="gw-ask" onSubmit={(e) => { e.preventDefault(); onSend() }}>
+      <label className="gw-ask-label" htmlFor="gw-question">Type your question</label>
+      <div className="gw-ask-row">
+        <input
+          id="gw-question"
+          ref={input}
+          className="gw-ask-input"
+          value={draft}
+          onChange={(e) => onDraft(e.target.value)}
+          placeholder="Is your person…?"
+          maxLength={140}
+          autoComplete="off"
+          spellCheck
+          disabled={!playing}
+        />
+        <button type="submit" className="gw-btn gw-btn-orange gw-ask-send" disabled={!playing || !draft.trim()} title="Ask (Enter)">
+          <SendHorizontal className="gw-icon" strokeWidth={2.5} />
+          Ask
+        </button>
+      </div>
+      <div className="gw-models">
+        {models.map((q) => (
+          <button key={q} type="button" className="gw-model" disabled={!playing} onClick={() => { onDraft(q); input.current?.focus() }}>
+            {q}
+          </button>
+        ))}
+      </div>
+    </form>
+  )
+}
+
+/** Every question asked this game, with Mr Bowen's answer. The newest stays in view. */
+function QuestionLog({ log }) {
+  const list = useRef(null)
+  useEffect(() => {
+    if (list.current) list.current.scrollTop = list.current.scrollHeight
+  }, [log.length])
+  return (
+    <div className="gw-log">
+      <div className="gw-log-head">Questions and answers</div>
+      {log.length ? (
+        <ol ref={list} className="gw-log-list">
+          {log.map((e, i) => (
+            <li key={i} className={`gw-log-item is-${e.a}`}>
+              <span className="gw-log-n">{i + 1}</span>
+              <span className={`gw-log-q ${e.q ? '' : 'is-spoken'}`}>{e.q || 'Asked out loud'}</span>
+              <span className="gw-log-a">{e.a === 'yes' ? 'YES' : 'NO'}</span>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <p className="gw-log-empty">No questions yet.</p>
+      )}
     </div>
   )
 }
@@ -452,24 +600,6 @@ function Card({ person, index, down, guessable, disabled, onClick }) {
         </span>
       </span>
     </button>
-  )
-}
-
-/** Model questions, three at a time, moving on every few seconds. */
-function Starters({ list }) {
-  const [start, setStart] = useState(0)
-  useEffect(() => {
-    const t = setInterval(() => setStart((s) => (s + 1) % list.length), 5000)
-    return () => clearInterval(t)
-  }, [list.length])
-  const shown = [0, 1, 2].map((k) => list[(start + k) % list.length])
-  return (
-    <div className="gw-starters">
-      <span className="gw-starters-label">Ask like this:</span>
-      {shown.map((q, k) => (
-        <span key={`${start}-${k}`} className="gw-starter" style={{ '--k': k }}>{q}</span>
-      ))}
-    </div>
   )
 }
 
@@ -517,7 +647,7 @@ function Lobby({ game, school, ready, count, classList, classMatch, remoteUrl, r
         <h1 className="gw-title">Guess Who?</h1>
         <p className="gw-subtitle">The Halloween Edition</p>
         <ol className="gw-howto">
-          <li><span className="gw-howto-n">1</span><span>Ask Mr Bowen a question.<br /><small>He can only say YES or NO.</small></span></li>
+          <li><span className="gw-howto-n">1</span><span>Type a question.<br /><small>Mr Bowen can only say YES or NO.</small></span></li>
           <li><span className="gw-howto-n">2</span><span>Tap faces to flip them down.</span></li>
           <li><span className="gw-howto-n">3</span><span>Guess who it is!<br /><small>You have ONE guess.</small></span></li>
         </ol>
@@ -591,25 +721,24 @@ function Lobby({ game, school, ready, count, classList, classMatch, remoteUrl, r
   )
 }
 
-function PickBanner({ remoteLive, remoteUrl, room, onOpenRemote }) {
+/** No remote yet, so nobody can choose the secret: show how to join. With one, the board stays in view while faces change. */
+function PickBanner({ remoteUrl, room, onOpenRemote }) {
   return (
     <div className="gw-pick">
       <div className="gw-pick-card">
         <div className="gw-pick-emoji">🤫</div>
-        <div className="gw-pick-text">Mr Bowen is choosing a secret person…</div>
-        {!remoteLive && (
-          <div className="gw-pick-join">
-            <QrCode text={remoteUrl} className="gw-pick-qr" />
-            <div>
-              <div className="gw-kicker">Scan to choose</div>
-              <div className="gw-join-code">{room}</div>
-              <button className="gw-link mt-1" onClick={onOpenRemote}>
-                <ExternalLink className="w-4 h-4" strokeWidth={2.5} />
-                Open the remote in a window
-              </button>
-            </div>
+        <div className="gw-pick-text">Mr Bowen chooses a secret person on his phone.</div>
+        <div className="gw-pick-join">
+          <QrCode text={remoteUrl} className="gw-pick-qr" />
+          <div>
+            <div className="gw-kicker">Scan to choose</div>
+            <div className="gw-join-code">{room}</div>
+            <button className="gw-link mt-1" onClick={onOpenRemote}>
+              <ExternalLink className="w-4 h-4" strokeWidth={2.5} />
+              Open the remote in a window
+            </button>
           </div>
-        )}
+        </div>
       </div>
     </div>
   )
@@ -633,6 +762,7 @@ function Splash({ splash }) {
   return (
     <div key={splash.key} className={`gw-splash is-${splash.kind}`} aria-live="assertive">
       <div className="gw-splash-word">{text}</div>
+      {splash.q && <div className="gw-splash-q">“{splash.q}”</div>}
       <div className="gw-splash-sub">
         {splash.kind === 'again' ? 'Ask a YES or NO question.' : `Question ${splash.n}`}
       </div>
