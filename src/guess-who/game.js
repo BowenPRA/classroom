@@ -31,9 +31,11 @@ export function cleanSteps(steps) {
   return s
 }
 
-export const blankGame = (source = 'school') => ({
+export const blankGame = (source = 'class') => ({
   phase: 'lobby', // lobby → pick → play → reveal
-  source, // 'school' (from The Current) or 'monsters' (built in)
+  // 'class': the names on this laptop's Class list, with faces from The Current;
+  // 'school': every enrolled student in The Current; 'monsters': built in.
+  source,
   cards: [], // ids, in board order
   secret: null,
   down: [], // ids the player has flipped down
@@ -52,7 +54,10 @@ function shuffle(list) {
   return a
 }
 
-/** A fresh board: up to BOARD_SIZE ids drawn at random. */
+// Fewer faces than this is not a game.
+export const MIN_BOARD = 4
+
+/** A fresh board: up to BOARD_SIZE ids drawn at random (a small class all fits). */
 export const dealIds = (people) => shuffle(people.map((p) => p.id)).slice(0, BOARD_SIZE)
 
 export const randomOf = (list) => list[Math.floor(Math.random() * list.length)]

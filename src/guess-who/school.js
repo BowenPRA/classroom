@@ -68,7 +68,8 @@ function ageOn(dob, now) {
 
 /**
  * Every enrolled student, shaped for a card: `{ id, name, level, gender, age,
- * photo }`, with `photo` a signed link (or null — the card shows initials).
+ * photo }`, with `photo` a signed link (or null — the card shows initials),
+ * plus `nickname` and `fullName` for matching the Class list (match.js).
  * Row-level security hands a signed-out or non-staff user an empty list rather
  * than an error, so an empty result is reported as one.
  */
@@ -94,6 +95,8 @@ export async function loadStudents() {
   return rows.map((r) => ({
     id: r.id,
     name: (r.nickname || '').trim() || (r.full_name || '').trim() || '?',
+    nickname: r.nickname || '',
+    fullName: r.full_name || '',
     level: r.level || '',
     gender: r.gender === 'male' ? 'Boy' : r.gender === 'female' ? 'Girl' : '',
     age: ageOn(r.dob, now),

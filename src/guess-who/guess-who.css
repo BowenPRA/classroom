@@ -232,8 +232,10 @@ img.gw-face-fill { object-fit: cover; object-position: 50% 22%; }
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-  grid-template-rows: repeat(3, minmax(0, 1fr));
+  /* Board.jsx sets --cols / --rows from the number of cards (match.js gridFor),
+     so a class of 12 fills the screen as well as a board of 24. */
+  grid-template-columns: repeat(var(--cols, 8), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--rows, 3), minmax(0, 1fr));
   gap: 1.3vmin;
   perspective: 150vmin;
 }
@@ -408,7 +410,7 @@ img.gw-face-fill { object-fit: cover; object-position: 50% 22%; }
 
 .gw-lobby-right { width: 100%; max-width: 62vmin; justify-self: center; display: flex; flex-direction: column; gap: 2vmin; font-size: max(15px, 1.9vmin); }
 .gw-lobby-right .gw-kicker { font-size: max(11px, 1.4vmin); }
-.gw-source { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8vmin; padding: 0.8vmin; border-radius: 1.8vmin; background: #0d041899; border: 2px solid #ffffff14; }
+.gw-source { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8vmin; padding: 0.8vmin; border-radius: 1.8vmin; background: #0d041899; border: 2px solid #ffffff14; }
 .gw-source-btn {
   display: flex;
   align-items: center;
@@ -571,7 +573,7 @@ img.gw-face-fill { object-fit: cover; object-position: 50% 22%; }
 
 /* Portrait screens (a phone opening the board): four across. */
 @media (orientation: portrait) {
-  .gw-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(0, 1fr)); }
+  .gw-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(var(--prows, 6), minmax(0, 1fr)); }
   .gw-hud { grid-template-columns: auto 1fr; }
   .gw-hud .gw-title { display: none; }
   .gw-starters { display: none; }

@@ -75,16 +75,17 @@ export function PickButton({ picker, lang = 'en', onManage, tone = 'light', larg
  * The body mounts fresh on each open so it can decide from the roster whether
  * to open in the editor.
  */
-export function RandomStudentModal({ open, onClose, lang = 'en', picker }) {
+export function RandomStudentModal({ open, onClose, lang = 'en', picker, listOnly = false }) {
   if (!open) return null
-  return <PickerBody onClose={onClose} lang={lang} picker={picker} />
+  return <PickerBody onClose={onClose} lang={lang} picker={picker} listOnly={listOnly} />
 }
 
-function PickerBody({ onClose, lang, picker }) {
+function PickerBody({ onClose, lang, picker, listOnly }) {
   const { names, current, pickedThisRound, noRepeat, justReset, pickCount, remaining, draw, newRound, replaceRoster, toggleNoRepeat } = picker
   // Empty roster opens straight into the editor — there is nothing to pick from yet.
-  const [editing, setEditing] = useState(names.length === 0)
-  const [draft, setDraft] = useState('')
+  // So does `listOnly`, for a caller that only wants the list (Guess Who).
+  const [editing, setEditing] = useState(listOnly || names.length === 0)
+  const [draft, setDraft] = useState(listOnly ? names.join('\n') : '')
   const textareaRef = useRef(null)
 
   useEffect(() => {

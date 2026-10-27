@@ -7,15 +7,18 @@
 // remote (#/guess-who/remote/<room>), on his phone or in a second window.
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Maximize, Minimize, Volume2, VolumeX, Home, Smartphone, LogOut, ExternalLink, Ghost as GhostIcon, Users, Undo2 } from 'lucide-react'
+import { Maximize, Minimize, Volume2, VolumeX, Home, Smartphone, LogOut, ExternalLink, Ghost as GhostIcon, Users, School, Undo2, ListChecks } from 'lucide-react'
 import { Sky, Pumpkin, Ghost, Face, QrCode } from './art.jsx'
 import SignIn from './SignIn.jsx'
 import { useSchool } from './useSchool.js'
 import { openBus } from './bus.js'
 import { signOut } from './school.js'
+import { matchClass, gridFor } from './match.js'
 import { play, unlockAudio, isMuted, setMuted } from './sfx.js'
+import { useStudentPicker } from '../lib/useStudentPicker.js'
+import { RandomStudentModal } from '../components/RandomStudent.jsx'
 import {
-  MONSTERS, STARTERS, blankGame, boardRoom, cleanSteps, dealIds, loadGame, prizeFor, saveGame,
+  MIN_BOARD, MONSTERS, STARTERS, blankGame, boardRoom, cleanSteps, dealIds, loadGame, prizeFor, saveGame,
 } from './game.js'
 
 function reducer(g, a) {
@@ -60,10 +63,21 @@ const CONFETTI = Array.from({ length: 46 }, (_, i) => ({
 export default function Board() {
   const [room] = useState(boardRoom)
   const [game, dispatch] = useReducer(reducer, null, loadGame)
-  const school = useSchool(game.source === 'school')
-  const people = game.source === 'monsters' ? MONSTERS : school.students
-  const ready = Boolean(people?.length)
-  const byId = useMemo(() => new Map((people || []).map((p) => [p.id, p])), [people])
+  const monsters = game.source === 'monsters'
+  const school = useSchool(!monsters)
+  // The Class list is the random-student roster Mr Bowen's lessons keep on this
+  // laptop; the same hook and editor, so an edit here is an edit there.
+  const picker = useStudentPicker()
+  const [editingClass, setEditingClass] = useState(false)
+  const classMatch = useMemo(
+    () => (school.students ? matchClass(picker.names, school.students) : null),
+    [picker.names, school.students],
+  )
+  // `faces` turns a card's id into a person; `people` is who gets dealt.
+  const faces = monsters ? MONSTERS : school.students
+  const people = monsters ? MONSTERS : game.source === 'class' ? classMatch?.found : school.students
+  const ready = (people?.length || 0) >= MIN_BOARD
+  const byId = useMemo(() => new Map((faces || []).map((p) => [p.id, p])), [faces])
 
   const [net, setNet] = useState('connecting')
   const [remoteLive, setRemoteLive] = useState(false)
@@ -90,7 +104,7 @@ export default function Board() {
     switch (intent.type) {
       case 'deal': {
         const pool = live.current.people
-        if (!pool?.length) return
+        if ((pool?.length || 0) < MIN_BOARD) return
         dispatch({ type: 'deal', cards: dealIds(pool) })
         setGuessing(false)
         setConfirmId(null)
@@ -242,6 +256,8 @@ export default function Board() {
           school={school}
           ready={ready}
           count={people?.length || 0}
+          classList={picker.names}
+          classMatch={classMatch}
           remoteUrl={remoteUrl}
           room={room}
           remoteLive={remoteLive}
@@ -249,8 +265,10 @@ export default function Board() {
           onSource={(source) => { unlockAudio(); dispatch({ type: 'source', source }) }}
           onDeal={() => { unlockAudio(); act({ type: 'deal' }) }}
           onOpenRemote={openRemoteWindow}
+          onEditClass={() => setEditingClass(true)}
         />
         <div className="gw-lobby-tools">{tools}</div>
+        <RandomStudentModal open={editingClass} onClose={() => setEditingClass(false)} picker={picker} listOnly />
       </div>
     )
   }
@@ -258,6 +276,7 @@ export default function Board() {
   const facesLeft = game.cards.length - game.down.filter((id) => game.cards.includes(id)).length
   const secretPerson = byId.get(game.secret)
   const guessPerson = byId.get(game.guess)
+  const grid = gridFor(game.cards.length || 24)
 
   return (
     <div className="gw-root">
@@ -272,7 +291,10 @@ export default function Board() {
           <Ladder steps={game.steps} log={game.log} />
         </header>
 
-        <main className={`gw-grid ${inGuess ? 'is-guessing' : ''}`}>
+        <main
+          className={`gw-grid ${inGuess ? 'is-guessing' : ''}`}
+          style={{ '--cols': grid.cols, '--rows': grid.rows, '--prows': Math.ceil(game.cards.length / 4) }}
+        >
           {game.cards.map((id, i) => (
             <Card
               key={`${game.game}-${id}`}
@@ -451,7 +473,41 @@ function Starters({ list }) {
   )
 }
 
-function Lobby({ game, school, ready, count, remoteUrl, room, remoteLive, net, onSource, onDeal, onOpenRemote }) {
+const SOURCES = [
+  { id: 'class', label: 'My class', Icon: Users },
+  { id: 'school', label: 'Whole school', Icon: School },
+  { id: 'monsters', label: 'Monsters', Icon: GhostIcon },
+]
+
+/** What the chosen board will hold, and anything Mr Bowen needs to fix first. */
+function SourceInfo({ game, school, count, classList, classMatch }) {
+  if (game.source === 'monsters') return <div className="font-bold text-white/90">24 monsters. No sign-in needed.</div>
+  if (school.error) return <div className="font-bold text-rose-300">{school.error}</div>
+  if (!school.students) return <div className="font-bold text-white/90">Loading the students…</div>
+  if (game.source === 'school') return <div className="font-bold text-white/90">{count} students. Each game deals 24 at random.</div>
+
+  if (!classList.length) {
+    return (
+      <>
+        <div className="font-bold text-white/90">The Class list on this laptop is empty.</div>
+        <div className="text-white/60 text-[0.9em]">It is the list behind Class list in your lessons. Add one name per line.</div>
+      </>
+    )
+  }
+  const { missing, unsure } = classMatch
+  return (
+    <>
+      <div className="font-bold text-white/90">
+        {count} of {classList.length} on your Class list, with faces from The Current.
+        {count > 24 ? ' Each game deals 24 at random.' : count >= MIN_BOARD ? ' All of them go on the board.' : ` A board needs at least ${MIN_BOARD}.`}
+      </div>
+      {missing.length > 0 && <div className="text-amber-300 text-[0.9em] font-bold">Not in The Current: {missing.join(', ')}</div>}
+      {unsure.length > 0 && <div className="text-amber-300 text-[0.9em] font-bold">Fits two students: {unsure.join(', ')}. Type their full name.</div>}
+    </>
+  )
+}
+
+function Lobby({ game, school, ready, count, classList, classMatch, remoteUrl, room, remoteLive, net, onSource, onDeal, onOpenRemote, onEditClass }) {
   const [a, b, c] = game.steps
   const monsters = game.source === 'monsters'
   const needsSignIn = !monsters && school.session === null
@@ -481,35 +537,33 @@ function Lobby({ game, school, ready, count, remoteUrl, room, remoteLive, net, o
 
       <div className="gw-lobby-right">
         <div className="gw-source">
-          <button className={`gw-source-btn ${!monsters ? 'is-on' : ''}`} onClick={() => onSource('school')}>
-            <Users className="w-5 h-5" strokeWidth={2.5} />
-            Students
-          </button>
-          <button className={`gw-source-btn ${monsters ? 'is-on' : ''}`} onClick={() => onSource('monsters')}>
-            <GhostIcon className="w-5 h-5" strokeWidth={2.5} />
-            Monsters
-          </button>
+          {SOURCES.map(({ id, label, Icon }) => (
+            <button key={id} className={`gw-source-btn ${game.source === id ? 'is-on' : ''}`} onClick={() => onSource(id)}>
+              <Icon className="w-5 h-5 shrink-0" strokeWidth={2.5} />
+              {label}
+            </button>
+          ))}
         </div>
 
         {needsSignIn ? (
           <SignIn />
         ) : (
-          <div className="gw-panel p-5">
+          <div className="gw-panel p-5 space-y-1">
             <div className="gw-kicker">{monsters ? 'Practice board' : 'From The Current'}</div>
-            <div className="font-bold text-white/90">
-              {monsters
-                ? '24 monsters. No sign-in needed.'
-                : school.error
-                  ? school.error
-                  : school.students
-                    ? `${count} students. Each game deals 24 at random.`
-                    : 'Loading the students…'}
-            </div>
+            <SourceInfo game={game} school={school} count={count} classList={classList} classMatch={classMatch} />
             {!monsters && school.session && (
-              <button className="gw-link mt-2" onClick={() => signOut()}>
-                <LogOut className="w-4 h-4" strokeWidth={2.5} />
-                Sign out
-              </button>
+              <div className="flex flex-wrap gap-x-5 gap-y-1 pt-1">
+                {game.source === 'class' && school.students && (
+                  <button className="gw-link" onClick={onEditClass}>
+                    <ListChecks className="w-4 h-4" strokeWidth={2.5} />
+                    Edit the Class list
+                  </button>
+                )}
+                <button className="gw-link" onClick={() => signOut()}>
+                  <LogOut className="w-4 h-4" strokeWidth={2.5} />
+                  Sign out
+                </button>
+              </div>
             )}
           </div>
         )}

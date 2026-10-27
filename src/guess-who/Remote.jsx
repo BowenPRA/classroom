@@ -85,7 +85,7 @@ function RemoteRoom({ room }) {
   }
 
   const game = host?.game
-  const school = useSchool(game?.source === 'school')
+  const school = useSchool(Boolean(game) && game.source !== 'monsters')
   const people = game?.source === 'monsters' ? MONSTERS : school.students
   const byId = useMemo(() => new Map((people || []).map((p) => [p.id, p])), [people])
 
@@ -98,7 +98,7 @@ function RemoteRoom({ room }) {
         <div className="text-sm text-white/60">Open Guess Who on the laptop. The code is on its start screen.</div>
       </div>
     )
-  } else if (game.source === 'school' && school.session === null) {
+  } else if (game.source !== 'monsters' && school.session === null) {
     body = <SignIn compact purpose="Sign in to see the secret student" />
   } else if (game.phase === 'lobby') {
     body = <LobbyControls host={host} send={send} />
@@ -121,7 +121,7 @@ function RemoteRoom({ room }) {
           {boardLive ? 'Board connected' : net === 'offline' ? 'No internet' : 'Connecting…'}
         </span>
       </header>
-      {school.error && game?.source === 'school' && <p className="gw-panel p-3 text-sm font-bold text-rose-300">{school.error}</p>}
+      {school.error && game && game.source !== 'monsters' && <p className="gw-panel p-3 text-sm font-bold text-rose-300">{school.error}</p>}
       {body}
       {game && game.phase !== 'play' && <StepsEditor key={game.steps.join('-')} steps={game.steps} send={send} />}
       {school.session && (
@@ -139,7 +139,7 @@ function LobbyControls({ host, send }) {
     <div className="gw-panel p-5 space-y-3">
       <div className="font-bold text-white/90">
         {host.ready
-          ? `The board is ready: ${host.game.source === 'monsters' ? 'the monsters' : `${host.count} students`}.`
+          ? `The board is ready: ${host.game.source === 'monsters' ? 'the monsters' : host.game.source === 'class' ? `your class, ${host.count} students` : `${host.count} students`}.`
           : 'The board is still loading its faces.'}
       </div>
       <button className="gw-btn gw-btn-orange w-full justify-center gw-remote-big" disabled={!host.ready} onClick={() => send('deal')}>
