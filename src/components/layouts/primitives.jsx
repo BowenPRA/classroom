@@ -33,6 +33,8 @@ import {
   Table, ListChecks, PenTool, Coffee, Languages, Search, Superscript,
   ListOrdered, Hash, ArrowLeft, ArrowDownUp, Gamepad2, Soup, CircleSlash,
   ArrowUpRight, SlidersHorizontal, TrendingUp, MoveUp, FlipVertical, MoveRight,
+  // Added for tides (Y7 Science 3.4).
+  Moon, Anchor,
 } from 'lucide-react'
 import WidgetRenderer, { WidgetErrorBoundary } from '../WidgetRenderer.jsx'
 import { parseInlineText, renderContent, NOTE_TONES } from './helpers.jsx'
@@ -55,6 +57,7 @@ const ICONS = {
   Table, ListChecks, PenTool, Coffee, Languages, Search, Superscript,
   ListOrdered, Hash, ArrowLeft, ArrowDownUp, Gamepad2, Soup, CircleSlash,
   ArrowUpRight, SlidersHorizontal, TrendingUp, MoveUp, FlipVertical, MoveRight,
+  Moon, Anchor,
 }
 
 /** Render a lucide icon by name (falls back to Info). */
