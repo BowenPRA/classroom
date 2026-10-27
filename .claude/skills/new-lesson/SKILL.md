@@ -223,9 +223,12 @@ REVEALS=1 WSIZE=1366,768 node .claude/skills/new-lesson/scripts/project-check.mj
 ```
 
 (Add `vn` runs for a deck that still offers Vietnamese.) `REVEALS=1` opens every
-"Check your answer(s)" box before measuring; every other check walks with them
-shut, and an open answer is the commonest overflow. A `reveal.prompt` does not
-keep line breaks — separate items with commas.
+reveal box before measuring, whatever its label; every other check walks with
+them shut, and an open answer is the commonest overflow. A `reveal.prompt` does
+not keep line breaks — separate items with commas. Headless Chrome 157 refuses
+real fullscreen, so both scripts accept the deck's display mode instead (the
+log then says "windowed: this Chrome refused fullscreen"); it lays out the same
+at the emulated size.
 
 Fullscreen swaps every layout to `clamp()` type ~40% larger, so a deck that is
 spotless windowed can scroll on a third of its slides on the projector. Expect

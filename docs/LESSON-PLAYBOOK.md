@@ -298,7 +298,7 @@ clean at 1920×1080 while still overflowing seven slides at 1366×768), and in
 fail different slides. `check:deck` and the skill's `project-check.mjs` take
 `vn` or `fr` to walk the deck in that language.
 
-Two things make that harder than it looks:
+Three things make that harder than it looks:
 
 - Project mode calls `requestFullscreen()`, which needs a **trusted user
   gesture**. `element.click()` from injected JS is not one — drive it with CDP
@@ -307,6 +307,10 @@ Two things make that harder than it looks:
   every slide looks broken. Set the viewport with
   `Emulation.setDeviceMetricsOverride`, and set it **again after** entering
   fullscreen, which resets the override.
+- Headless Chrome 157 **refuses fullscreen** even after that trusted click. The
+  deck switches to display mode before it asks, so the skill's scripts accept
+  `data-display-mode="on"` on the deck's root instead and say so in their log;
+  at the emulated size the layout is the same.
 
 Get a baseline from a deck that already teaches well before assuming a number is
 bad — 1.1 overflows one slide by 96px at 1366×768 and is fine in the room.

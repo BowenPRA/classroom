@@ -102,6 +102,9 @@ export default function Deck({ lesson, course }) {
   return (
     <div
       ref={containerRef}
+      // The check scripts read this: display mode is on even where the browser
+      // refuses real fullscreen (headless Chrome 157 does).
+      data-display-mode={isDisplayMode ? 'on' : 'off'}
       className={`app-screen flex flex-col bg-slate-50 dark:bg-slate-950 font-sans overflow-hidden relative transition-colors duration-300 ${isDisplayMode && isIdle ? 'cursor-none' : ''}`}
     >
       {!isDisplayMode && (

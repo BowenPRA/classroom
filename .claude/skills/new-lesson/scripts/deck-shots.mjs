@@ -12,9 +12,14 @@
  *
  * Output: <out-dir>/NN.jpg (one per slide) and <out-dir>/sheet-K.jpg (slides
  * 4K−3 … 4K at half size). Read the sheets for the overview and the single
- * slides when the detail matters. REVEALS=1 opens every "Check your answer"
- * box before the shot. PORT is the Chrome debugging port: give each run that
- * happens at the same time its own.
+ * slides when the detail matters. REVEALS=1 opens every reveal box before the
+ * shot, whatever its label (each one carries a chevron-down icon). PORT is the
+ * Chrome debugging port: give each run that happens at the same time its own.
+ *
+ * Headless Chrome 157 refuses requestFullscreen() even after a trusted click.
+ * The deck is in display mode by then all the same (data-display-mode="on" on
+ * its root), which lays out the same at the emulated viewport, so that is
+ * accepted and the log says "windowed".
  */
 import { spawn, spawnSync } from 'child_process'
 import fs from 'fs'
@@ -130,10 +135,14 @@ if (!WINDOWED) {
   await sleep(1200)
   await metrics() // fullscreen resets the override
   await sleep(600)
-  if (!(await evalJs('!!document.fullscreenElement', false))) { console.error('Could not enter project mode'); cleanup(); process.exit(2) }
+}
+const real = !WINDOWED && (await evalJs('!!document.fullscreenElement', false))
+if (!WINDOWED && !real && !(await evalJs(`!!document.querySelector('[data-display-mode="on"]')`, false))) {
+  console.error('Could not enter project mode'); cleanup(); process.exit(2)
 }
 const size = await evalJs('window.innerWidth + "x" + window.innerHeight', false)
-console.log(`${WINDOWED ? 'windowed' : 'project mode'}: ${size}, ${LANG.toUpperCase()}${DARK ? ', dark' : ''}${REVEALS ? ', reveals open' : ''}`)
+const mode = WINDOWED ? 'windowed' : real ? 'project mode' : 'project mode (windowed: this Chrome refused fullscreen)'
+console.log(`${mode}: ${size}, ${LANG.toUpperCase()}${DARK ? ', dark' : ''}${REVEALS ? ', reveals open' : ''}`)
 
 // Park the mouse off the deck so hover styles and idle-hiding controls settle.
 await send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: 2, y: VH - 2 })
@@ -152,7 +161,7 @@ for (let i = 1; i <= 150; i++) {
   last = state.title
   if (REVEALS) {
     await evalJs(`[...document.querySelectorAll('button')]
-      .filter((b) => /check your answer|vérifie t(a|es) réponse|kiểm tra đáp án/i.test(b.textContent))
+      .filter((b) => b.querySelector('svg.lucide-chevron-down'))
       .forEach((b) => b.click())`, false)
     await sleep(500)
   }

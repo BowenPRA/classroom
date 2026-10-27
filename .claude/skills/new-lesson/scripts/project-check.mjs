@@ -18,6 +18,11 @@
  *      everything looks broken). Set the viewport with
  *      Emulation.setDeviceMetricsOverride — and set it AGAIN after entering
  *      fullscreen, which resets the override.
+ *   3. Headless Chrome 157 refuses requestFullscreen() even then. The deck has
+ *      already switched to display mode (useDisplayMode turns it on before
+ *      asking), which lays out the same at the emulated viewport, so the
+ *      check accepts either and says which one it measured. The deck marks
+ *      the mode on its root: data-display-mode="on".
  *
  * Baseline before panicking: a deck that teaches fine can still overflow a
  * slide at 1366x768. Run this against a known-good unit to calibrate.
@@ -34,8 +39,10 @@ if (!URL_ARG) {
 }
 const LANG = flags.find((f) => f === 'vn' || f === 'fr') || 'en'
 const [VW, VH] = (process.env.WSIZE || '1920,1080').split(',').map(Number)
-// REVEALS=1 opens every "Check your answer(s)" box before measuring. Every
-// other check walks with reveals shut, which hid four overflows in Maths 1.5.
+// REVEALS=1 opens every reveal box before measuring, whatever its label
+// ("Answer", "Why?", "Check your answer"…): each one carries a chevron-down
+// icon. Every other check walks with reveals shut, which hid four overflows in
+// Maths 1.5 and eleven (EN and FR) in Coffee, Carbon and Stars.
 const REVEALS = process.env.REVEALS === '1'
 const PORT = Number(process.env.PORT || 9455)
 
@@ -132,10 +139,11 @@ await sleep(1200)
 await metrics() // fullscreen resets the override
 await sleep(600)
 
-const on = await evalJs('!!document.fullscreenElement', false)
+const real = await evalJs('!!document.fullscreenElement', false)
+const on = real || (await evalJs(`!!document.querySelector('[data-display-mode="on"]')`, false))
 const size = await evalJs('window.innerWidth + "x" + window.innerHeight', false)
 if (!on) { console.error('Could not enter project mode'); cleanup(); process.exit(2) }
-console.log(`project mode: ${size}, ${LANG.toUpperCase()}`)
+console.log(`project mode${real ? '' : ' (windowed: this Chrome refused fullscreen)'}: ${size}, ${LANG.toUpperCase()}`)
 
 const rows = await evalJs(`(async () => {
   const wait = (ms) => new Promise(r => setTimeout(r, ms));
@@ -149,7 +157,7 @@ const rows = await evalJs(`(async () => {
     last = title;
     if (${REVEALS}) {
       [...document.querySelectorAll('button')]
-        .filter((b) => /check your answer|vérifie t(a|es) réponse|kiểm tra đáp án/i.test(b.textContent))
+        .filter((b) => b.querySelector('svg.lucide-chevron-down'))
         .forEach((b) => b.click());
       await wait(400);
     }
