@@ -6,7 +6,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Dices, Undo2, RotateCcw, Eye, Check, X, MessageCircleQuestion, Loader2, Settings2, LogOut, Users, Plus, Minus } from 'lucide-react'
-import { Face, Pumpkin } from './art.jsx'
+import { Bucks, Face } from './art.jsx'
 import SignIn from './SignIn.jsx'
 import { useSchool } from './useSchool.js'
 import { openBus } from './bus.js'
@@ -311,14 +311,8 @@ function PlayControls({ game, byId, send }) {
       <div className="gw-remote-count">
         <div><span className="gw-remote-count-n">{asked}</span> question{asked === 1 ? '' : 's'}</div>
         <div className="gw-remote-prize">
-          {prize > 0 ? (
-            <>
-              {Array.from({ length: prize }, (_, k) => <Pumpkin key={k} lit className="w-6 h-6" />)}
-              <span>if they guess now</span>
-            </>
-          ) : (
-            <span>No Riverbucks left</span>
-          )}
+          <span>Win now</span>
+          <Bucks n={prize} className="text-sm" />
         </div>
       </div>
 
@@ -406,7 +400,7 @@ function RevealControls({ game, byId, send }) {
           <>
             <div className="text-2xl font-black">They got it!</div>
             <div className="flex justify-center gap-1">
-              {Array.from({ length: prize }, (_, k) => <Pumpkin key={k} lit className="w-10 h-10" />)}
+              <Bucks n={prize} className="text-3xl" />
             </div>
             <div className="text-xl font-black">
               {prize ? `Pay ${prize} Riverbuck${prize === 1 ? '' : 's'}` : 'Too many questions: no Riverbucks'}

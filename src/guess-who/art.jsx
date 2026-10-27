@@ -1,47 +1,14 @@
 // src/guess-who/art.jsx
-// The game's pictures: the night sky behind the board, the jack-o'-lanterns
-// that stand for Riverbucks, the ghost on a flipped card, a face for any
-// person or monster, and the QR code that brings the phone in. All drawn here
-// in SVG, so there is nothing to source or credit.
+// The game's pictures: the night sky behind the board, the Riverbucks token,
+// the ghost on a flipped card, a face for any person or monster, and the QR
+// code that brings the phone in. All drawn here in SVG or CSS, so there is
+// nothing to source or credit.
 import { useMemo } from 'react'
 import { encode } from 'uqr'
 
-/** A jack-o'-lantern: lit (glowing face, flickering) or blown out (grey, smoking). */
-export function Pumpkin({ lit, className = '' }) {
-  return (
-    <svg viewBox="0 0 100 100" className={`${lit ? 'gw-pumpkin-lit' : 'gw-pumpkin-out'} ${className}`} aria-hidden="true">
-      <path d="M50 26 C50 16 54 10 62 7" stroke={lit ? '#4d7c0f' : '#3f3650'} strokeWidth="7" fill="none" strokeLinecap="round" />
-      <ellipse cx="31" cy="60" rx="23" ry="31" fill={lit ? '#ea580c' : '#3b3049'} />
-      <ellipse cx="69" cy="60" rx="23" ry="31" fill={lit ? '#ea580c' : '#3b3049'} />
-      <ellipse cx="50" cy="60" rx="24" ry="33" fill={lit ? '#f97316' : '#4a3d5c'} />
-      <g fill={lit ? '#fde047' : '#221a2e'} className="gw-pumpkin-face">
-        <path d="M26 52 L42 52 L34 39 Z" />
-        <path d="M58 52 L74 52 L66 39 Z" />
-        <path d="M45 62 L55 62 L50 55 Z" />
-        <path d="M24 68 Q50 92 76 68 Q70 73 66 71 L62 78 L57 73 L43 73 L38 78 L34 71 Q30 73 24 68 Z" />
-      </g>
-      {!lit && <path className="gw-smoke" d="M62 6 C56 -2 68 -8 62 -16" stroke="#9d90b3" strokeWidth="3" fill="none" strokeLinecap="round" />}
-    </svg>
-  )
-}
-
-/** One question on the Riverbucks countdown: lit while it is still free to ask, blown out once used. */
-export function Candle({ lit, className = '' }) {
-  return (
-    <svg viewBox="0 0 20 46" className={`gw-candle ${lit ? 'is-lit' : 'is-out'} ${className}`} aria-hidden="true">
-      {lit ? (
-        <g className="gw-flame">
-          <path d="M10 1 C15 8 16 13 10 17 C4 13 5 8 10 1 Z" fill="#ff9f1c" />
-          <path d="M10 7 C12.5 10.5 12.5 13 10 15 C7.5 13 7.5 10.5 10 7 Z" fill="#fff3b0" />
-        </g>
-      ) : (
-        <path className="gw-candle-smoke" d="M10 15 C6 11 14 8 10 2" stroke="#b9acd0" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-      )}
-      <line x1="10" y1="15" x2="10" y2="20" stroke="#2a1a3d" strokeWidth="1.6" />
-      <rect x="4" y="19" width="12" height="26" rx="2.5" fill={lit ? '#fff1d6' : '#4a3d5c'} />
-      <path d="M4 22 Q4 19 7 19 L13 19 Q16 19 16 22 L16 24 Q14 27 12.5 24 L12.5 28 Q11 31 9.5 28 L9.5 24 Q7 27 4 24 Z" fill={lit ? '#ffd79a' : '#5b4c70'} />
-    </svg>
-  )
+/** A Riverbucks amount as a flat gold token: the one way the game shows a prize. */
+export function Bucks({ n, className = '' }) {
+  return <span className={`gw-bucks ${n ? '' : 'is-zero'} ${className}`}>{n}</span>
 }
 
 /** The friendly ghost on the back of a flipped-down card. */
