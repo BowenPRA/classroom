@@ -18,9 +18,10 @@
 // `band` splits the level menu: 'early' is Kindergarten–Year 1 (pictures and
 // three-letter words, ending with four walls about food and cooking), 'y1' is
 // a second all-picture set for Year 1 — materials, animal groups, rooms and
-// places, opening with a Cambridge Primary Science Stage 1 wall and closing
-// with three that sort by what a thing looks like, has, or does to your
-// senses — 'words' is the Year 1–4 word puzzles, and 'y7' is the Year 7
+// places, opening with a Cambridge Primary Science Stage 1 wall, then three
+// that sort by what a thing looks like, has, or does to your senses, and
+// closing with three Halloween walls (colours, legs, and four rules after
+// dark) — 'words' is the Year 1–4 word puzzles, and 'y7' is the Year 7
 // set — curriculum vocabulary and NYT-Connections-style wordplay, where at
 // least one tile in every wall is deliberately baited into the wrong group.
 
@@ -424,10 +425,11 @@ export const LEVELS = [
   },
 
   // ── Year 1 · science and the world ───────────────────────────────────────
-  // Seven more all-picture walls, no reading anywhere on the board. The first
+  // Ten more all-picture walls, no reading anywhere on the board. The first
   // is Cambridge Primary Science Stage 1 Chemistry — sorting objects by the
   // material they are made from — the next three widen the same skill to
-  // animals, rooms and places, and the last three sort by a property.
+  // animals, rooms and places, the next three sort by a property, and the
+  // last three are the Halloween set.
   {
     id: 'what-is-it-made-of',
     band: 'y1',
@@ -816,6 +818,188 @@ export const LEVELS = [
           { img: 'greenmango', word: 'GREEN MANGO', vn: 'xoài xanh' },
           { img: 'starfruit', word: 'STAR FRUIT', vn: 'quả khế' },
           { img: 'tamarind', word: 'TAMARIND', vn: 'quả me' },
+        ],
+      },
+    ],
+  },
+
+  // Three walls for the end of October, easiest first. Halloween is the
+  // backdrop, never the rule: each one still sorts on something a Year 1
+  // child can check for themselves — a colour, a number of legs, a property —
+  // and half the tiles are everyday things. The BLACK CAT and the CROW are on
+  // the first two walls on purpose: the same picture, sorted by colour on one
+  // and by legs on the other. Count the Legs baits the SPIDER into the
+  // six-legged insects, where Animal Groups put it last time.
+  {
+    id: 'halloween-colours',
+    band: 'y1',
+    icon: 'Ghost',
+    title: 'Halloween Colours',
+    titleVn: 'Màu Sắc Halloween',
+    hint: 'All pictures. Not what it is — what COLOUR is it?',
+    hintVn: 'Toàn tranh. Không phải nó là gì — mà nó MÀU gì?',
+    groups: [
+      {
+        name: 'Orange', nameVn: 'Màu Cam',
+        note: 'The colour of Halloween. And an orange is orange!',
+        noteVn: 'Màu của Halloween. Và quả cam thì có màu cam!',
+        items: [
+          { img: 'pumpkin', word: 'PUMPKIN', vn: 'quả bí ngô' },
+          { img: 'carrot', word: 'CARROT', vn: 'củ cà rốt' },
+          { img: 'orange', word: 'ORANGE', vn: 'quả cam' },
+          { img: 'goldfish', word: 'GOLDFISH', vn: 'cá vàng' },
+        ],
+      },
+      {
+        name: 'Black', nameVn: 'Màu Đen',
+        note: 'Black, like the sky at night. Turn off the light!',
+        noteVn: 'Đen như bầu trời ban đêm. Tắt đèn đi nào!',
+        items: [
+          { img: 'blackcat', word: 'BLACK CAT', vn: 'mèo đen' },
+          { img: 'crow', word: 'CROW', vn: 'con quạ' },
+          { img: 'blackbat', word: 'BAT', vn: 'con dơi' },
+          { img: 'umbrella', word: 'UMBRELLA', vn: 'cái ô' },
+        ],
+      },
+      {
+        name: 'White', nameVn: 'Màu Trắng',
+        note: 'White as a ghost. Boo!',
+        noteVn: 'Trắng như con ma. Hù!',
+        items: [
+          { img: 'ghost', word: 'GHOST', vn: 'con ma' },
+          { img: 'milk', word: 'MILK', vn: 'sữa' },
+          { img: 'egg', word: 'EGG', vn: 'quả trứng' },
+          { img: 'rice', word: 'RICE', vn: 'cơm' },
+        ],
+      },
+      {
+        name: 'Purple', nameVn: 'Màu Tím',
+        note: 'Mix red and blue, and you get purple.',
+        noteVn: 'Trộn màu đỏ với màu xanh dương sẽ ra màu tím.',
+        items: [
+          { img: 'aubergine', word: 'AUBERGINE', vn: 'quả cà tím' },
+          { img: 'purplegrapes', word: 'GRAPES', vn: 'chùm nho' },
+          { img: 'mangosteen', word: 'MANGOSTEEN', vn: 'quả măng cụt' },
+          { img: 'cabbage', word: 'CABBAGE', vn: 'bắp cải tím' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'count-the-legs',
+    band: 'y1',
+    icon: 'Bug',
+    title: 'Count the Legs',
+    titleVn: 'Đếm Chân',
+    hint: 'All pictures. Count the legs: 2, 4, 6 or 8?',
+    hintVn: 'Toàn tranh. Đếm số chân: 2, 4, 6 hay 8?',
+    groups: [
+      {
+        name: 'Two Legs', nameVn: 'Hai Chân',
+        note: 'Birds stand on two legs, just like you. The owl is lifting one!',
+        noteVn: 'Chim đứng bằng hai chân, giống như em. Con cú đang nhấc một chân lên!',
+        items: [
+          { img: 'hen', word: 'HEN', vn: 'con gà mái' },
+          { img: 'penguin', word: 'PENGUIN', vn: 'chim cánh cụt' },
+          { img: 'burrowingowl', word: 'OWL', vn: 'con cú' },
+          { img: 'crow', word: 'CROW', vn: 'con quạ' },
+        ],
+      },
+      {
+        name: 'Four Legs', nameVn: 'Bốn Chân',
+        note: 'One, two, three, four. The frog folds its big back legs up small.',
+        noteVn: 'Một, hai, ba, bốn. Con ếch gập đôi chân sau thật gọn.',
+        items: [
+          { img: 'blackcat', word: 'BLACK CAT', vn: 'mèo đen' },
+          { img: 'frog', word: 'FROG', vn: 'con ếch' },
+          { img: 'tiger', word: 'TIGER', vn: 'con hổ' },
+          { img: 'elephant', word: 'ELEPHANT', vn: 'con voi' },
+        ],
+      },
+      {
+        name: 'Six Legs', nameVn: 'Sáu Chân',
+        note: 'Every insect has six legs. From the side, you only see three!',
+        noteVn: 'Côn trùng nào cũng có sáu chân. Nhìn từ bên cạnh, em chỉ thấy ba chân!',
+        items: [
+          { img: 'ant', word: 'ANT', vn: 'con kiến' },
+          { img: 'bee', word: 'BEE', vn: 'con ong' },
+          { img: 'beetle', word: 'BEETLE', vn: 'con bọ cánh cứng' },
+          { img: 'grasshopper', word: 'GRASSHOPPER', vn: 'con châu chấu' },
+        ],
+      },
+      {
+        name: 'Eight Legs', nameVn: 'Tám Chân',
+        note: 'A spider is not an insect — count again! The scorpion’s claws are not legs.',
+        noteVn: 'Nhện không phải côn trùng — đếm lại xem! Hai càng của bọ cạp không phải là chân.',
+        items: [
+          { img: 'spider', word: 'SPIDER', vn: 'con nhện' },
+          { img: 'tarantula', word: 'TARANTULA', vn: 'nhện lông' },
+          { img: 'scorpion', word: 'SCORPION', vn: 'con bọ cạp' },
+          { img: 'octopus', word: 'OCTOPUS', vn: 'bạch tuộc' },
+        ],
+      },
+    ],
+  },
+
+  // The hardest of the three, and the only Year 1 wall whose four groups
+  // follow four different kinds of rule. Two tiles fit two groups: the
+  // FIREFLY makes light AND is awake at night, and the lit JACK-O'-LANTERN
+  // makes light AND has a face. Only one sort works — the face group has to
+  // be the four things that are not alive, which leaves the firefly for the
+  // lights and the other four animals for the night. "Not alive" is in the
+  // hint for that reason: without it the owl has a face too, and the wall has
+  // two answers.
+  {
+    id: 'after-dark',
+    band: 'y1',
+    icon: 'MoonStar',
+    title: 'After Dark',
+    titleVn: 'Khi Trời Tối',
+    hint: 'All pictures. Makes light? Awake at night? A face, not alive? Sticky?',
+    hintVn: 'Toàn tranh. Phát sáng? Thức ban đêm? Có mặt, không sống? Dính?',
+    groups: [
+      {
+        name: 'It Makes Light', nameVn: 'Phát Ra Ánh Sáng',
+        note: 'Turn off every light and you can still see these. The firefly’s tail glows!',
+        noteVn: 'Tắt hết đèn, em vẫn nhìn thấy chúng. Đuôi con đom đóm phát sáng!',
+        items: [
+          { img: 'candle', word: 'CANDLE', vn: 'cây nến' },
+          { img: 'lamp', word: 'LAMP', vn: 'đèn ngủ' },
+          { img: 'lantern', word: 'LANTERN', vn: 'đèn lồng' },
+          { img: 'firefly', word: 'FIREFLY', vn: 'con đom đóm' },
+        ],
+      },
+      {
+        name: 'Awake at Night', nameVn: 'Thức Ban Đêm',
+        note: 'They sleep in the day and wake up when it gets dark.',
+        noteVn: 'Chúng ngủ ban ngày và thức dậy khi trời tối.',
+        items: [
+          { img: 'owl', word: 'OWL', vn: 'con cú' },
+          { img: 'bat', word: 'BAT', vn: 'con dơi' },
+          { img: 'gecko', word: 'GECKO', vn: 'con thạch sùng' },
+          { img: 'moth', word: 'MOTH', vn: 'con bướm đêm' },
+        ],
+      },
+      {
+        name: 'A Face, But Not Alive', nameVn: 'Có Mặt, Nhưng Không Sống',
+        note: 'It has a face, but it is not alive. The jack-o’-lantern glows too!',
+        noteVn: 'Nó có khuôn mặt nhưng không phải vật sống. Đèn bí ngô còn phát sáng nữa!',
+        items: [
+          { img: 'clock', word: 'CLOCK', vn: 'đồng hồ' },
+          { img: 'teddy', word: 'TEDDY', vn: 'gấu bông' },
+          { img: 'mask', word: 'MASK', vn: 'mặt nạ' },
+          { img: 'jackolantern', word: 'JACK-O’-LANTERN', vn: 'đèn bí ngô' },
+        ],
+      },
+      {
+        name: 'Sticky', nameVn: 'Dính',
+        note: 'Touch it and it sticks to your fingers. Sticky rice says so in its name!',
+        noteVn: 'Chạm vào là dính tay ngay. Xôi dẻo và dính lắm!',
+        items: [
+          { img: 'glue', word: 'GLUE', vn: 'keo dán' },
+          { img: 'honey', word: 'HONEY', vn: 'mật ong' },
+          { img: 'spiderweb', word: 'SPIDER WEB', vn: 'mạng nhện' },
+          { img: 'stickyrice', word: 'STICKY RICE', vn: 'xôi' },
         ],
       },
     ],

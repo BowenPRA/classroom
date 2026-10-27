@@ -26,7 +26,7 @@ import {
   ArrowLeft, Lightbulb, Eye, EyeOff, Infinity as InfinityIcon, PartyPopper,
   RotateCcw, CircleCheck, CircleX, Star,
   CookingPot, Carrot, Sprout, Sigma, Dna, Puzzle, Languages,
-  Blocks, Bird, House, Sun, Flame, Droplets, Search,
+  Blocks, Bird, House, Sun, Flame, Droplets, Search, Ghost, Bug, MoonStar,
 } from 'lucide-react'
 
 import { LEVELS, BANDS } from './levels.js'
@@ -36,7 +36,7 @@ const ICONS = {
   Images, BookOpenText, Ear, Apple, Hand, Smile, Shapes, Music, School,
   Wand2, Trees, Cat, Link: LinkIcon,
   CookingPot, Carrot, Sprout, Sigma, Dna, Puzzle, Languages,
-  Blocks, Bird, House, Sun, Flame, Droplets, Eye, Search,
+  Blocks, Bird, House, Sun, Flame, Droplets, Eye, Search, Ghost, Bug, MoonStar,
 }
 
 const pick = (lang, en, vn) => (lang === 'vn' ? (vn ?? en) : en)
@@ -164,11 +164,12 @@ function Menu({ lang, onPick }) {
           <p className="font-bold text-slate-400 dark:text-slate-500 text-sm hidden sm:block">{t(lang, 'choose')}</p>
         </div>
 
-        {/* Five column-widths, not four: the Year 1–4 shelf holds eleven walls
-            and in a single column it alone is taller than the slide, so it gets
-            a double-width section and splits into two — and the Year 1 picture
-            shelf now takes a column of its own beside it. */}
-        <div className="grid gap-x-4 gap-y-3 sm:grid-cols-2 lg:grid-cols-5">
+        {/* Six column-widths, not four: the Year 1–4 shelf holds eleven walls
+            and the Year 1 picture shelf ten, and in a single column either one
+            is taller than the slide — so each gets a double-width section and
+            splits into two. With five widths the second double section pushes
+            Year 7 under Kindergarten, off the bottom of the slide. */}
+        <div className="grid gap-x-4 gap-y-3 sm:grid-cols-2 lg:grid-cols-6">
           {Object.entries(BANDS).map(([band, meta]) => {
             const levels = LEVELS.map((level, i) => ({ level, i })).filter(({ level }) => level.band === band)
             const wide = levels.length > 8

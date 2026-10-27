@@ -6,7 +6,8 @@ export const plan = {
   objective:
     'Students sort sixteen items into four hidden groups and say WHY the four belong together — building category vocabulary '
     + '(farm animals, clothes, weather, the kitchen, where food comes from), initial sounds and rhyme lower down, materials and '
-    + 'animal groups, shapes, patterns, parts and the senses on the Year 1 science shelf, and Cambridge subject vocabulary plus deliberate wordplay traps at Year 7. '
+    + 'animal groups, shapes, patterns, parts and the senses on the Year 1 science shelf, colours, counting legs and light and dark on its three Halloween walls, '
+    + 'and Cambridge subject vocabulary plus deliberate wordplay traps at Year 7. '
     + 'Throughout: the habit of justifying a guess in English.',
   materials: [
     'Projector / TV — press Project for the big version',
@@ -20,7 +21,7 @@ export const plan = {
     { term: 'I think… because…', def: 'the answer stem. Never accept a pointed finger; make them finish the sentence.' },
   ],
   timeline: [
-    { time: '0–1 min', phase: 'Choose', detail: 'Open the puzzle list and pick by band — amber is Kindergarten–Year 1 (seven puzzles, five of them all pictures), emerald is Year 1 · Science and the World (seven more walls, every one all pictures — the last three sort by what a thing looks like, has, or does to your senses), sky is Year 1–4 (eleven word walls, roughly easiest first), violet is Year 7 (five walls, each with a baited tile).' },
+    { time: '0–1 min', phase: 'Choose', detail: 'Open the puzzle list and pick by band — amber is Kindergarten–Year 1 (seven puzzles, five of them all pictures), emerald is Year 1 · Science and the World (ten more walls, every one all pictures — three sort by what a thing looks like, has, or does to your senses, and the last three are the Halloween set, easiest first), sky is Year 1–4 (eleven word walls, roughly easiest first), violet is Year 7 (five walls, each with a baited tile).' },
     { time: '1–2 min', phase: 'Read the hint', detail: 'The amber line under the title says how this board sorts. Read it aloud twice. First Sounds is unfair without it — the pictures also group by meaning, and that is the trap.' },
     { time: '2–4 min', phase: 'Name everything', detail: 'Before any guessing, point at all sixteen tiles and have the class chorus each one. On a picture board this is the vocabulary lesson; the sorting is the check.' },
     { time: '4–10 min', phase: 'Play', detail: 'Take a guess from one child, then ask the class to vote before you press Check. Four hearts means four wrong guesses, so make them argue for it: "Why those four?" A wrong guess is the best moment in the game — the tiles shake, nobody is told off, and "so close, three of those go together" is a real clue.' },
@@ -43,6 +44,9 @@ export const plan = {
     { q: 'Y1 · What Does It Look Like?', a: 'Round: moon, orange, coin, clock · Stripy: tiger, zebra, bee, WATERMELON · Spotty: ladybird, leopard, dalmatian, dice · Spiky: hedgehog, cactus, durian, pineapple. The watermelon is round AND stripy; it only goes in once Round is full.' },
     { q: 'Y1 · What Has It Got?', a: 'Teeth: crocodile, comb, zip, saw · Wings: plane, butterfly, OWL, BAT · Legs, but it can’t walk: chair, table, bunk bed, trousers · Wheels: bus, motorbike, skateboard, trolley. The owl, the bat and the crocodile have legs too — but they walk, and the group is things that never do.' },
     { q: 'Y1 · Use Your Senses', a: 'Loud (ears): drum, trumpet, fire engine, fireworks · Smelly (nose): durian, rubbish bin, skunk, garlic · Soft (hands): pillow, teddy, feather, cat · Sour (tongue): lemon, green mango, star fruit, tamarind' },
+    { q: 'Y1 · Halloween Colours', a: 'Orange: pumpkin, carrot, orange, goldfish · Black: black cat, crow, bat, umbrella · White: ghost, milk, egg, rice · Purple: aubergine, grapes, mangosteen, cabbage. The warm-up: no tile fits two groups. The grapes on Picture Sort were green; these are purple, and somebody should say so.' },
+    { q: 'Y1 · Count the Legs', a: 'Two: hen, penguin, owl, crow · Four: black cat, frog, tiger, elephant · Six: ant, bee, beetle, grasshopper · Eight: spider, tarantula, SCORPION, OCTOPUS. The bait is the SPIDER, which Animal Groups put with the minibeasts: it looks like an insect and has eight legs, not six. The scorpion’s two big claws are not legs, and an octopus strictly has eight ARMS — praise any child who says so.' },
+    { q: 'Y1 · After Dark', a: 'Makes light: candle, lamp, lantern, FIREFLY · Awake at night: owl, bat, gecko, moth · A face, but not alive: clock, teddy, mask, JACK-O’-LANTERN · Sticky: glue, honey, spider web, sticky rice. Two tiles fit twice: the firefly (light AND night) and the lit jack-o’-lantern (light AND a face). Only four things on the board have a face and are not alive, so the jack-o’-lantern has to go there — and that leaves the firefly for the lights.' },
     { q: 'Y7 · Talking About Number', a: 'Add: sum, total, plus, more · Subtract: minus, less, take, difference · Kinds of number: prime, SQUARE, CUBE, triangular · Solid shapes: prism, sphere, cone, pyramid. The bait is SQUARE and CUBE, which everyone puts with the shapes.' },
     { q: 'Y7 · Cells and Life', a: 'Every cell: nucleus, membrane, cytoplasm, mitochondria · Plant only: cell wall, chloroplast, vacuole, chlorophyll · Specialised cells: neurone, palisade, ciliated, root hair · Life processes: growth, movement, excretion, nutrition' },
     { q: 'Y7 · Stick a Word on the End', a: '+BALL: foot, base, eye, snow · +WORK: home, net, team, paper · +LIGHT: day, moon, high, FIRE · River: source, bed, bank, mouth. FIRE makes a real word with all three (fireball, firework, firelight) and is only pinned down once BALL and WORK are full — the classic Connections move.' },
@@ -58,7 +62,7 @@ export const plan = {
     + 'finishes the board; nobody should leave a puzzle unsolved.\n\n'
     + 'Kindergarten and Year 1 sit on the floor and point. Do not let a child touch the board before the class has voted — '
     + 'the talking is the whole point, and a fast clicker ends the thinking.\n\n'
-    + 'All fourteen puzzles on the amber and emerald shelves carry a Vietnamese gloss on every word: switch the deck to VN after '
+    + 'All seventeen puzzles on the amber and emerald shelves carry a Vietnamese gloss on every word: switch the deck to VN after '
     + 'solving, and the same solved rows print "COW (con bò)". Sort in English, confirm in Vietnamese, never the other way '
     + 'round.\n\n'
     + '"HOW DO WE COOK IT?" IS THE HARDEST WALL ON THE AMBER SHELF, and it is the last one for a reason: the other three food '
@@ -75,5 +79,12 @@ export const plan = {
     + 'and three groups have animals in them. "What Has It Got?" needs one example first — hold up a comb and ask what it '
     + 'has — or nobody will look for teeth on a zip. Play "Use Your Senses" last: point to your ears, nose, hands and tongue '
     + 'as you read the hint, and pull the sour face. Seeing is the first wall, so between them the class meets all five senses. '
-    + 'The durian is on both the first and the last; ask why it can be in two groups.',
+    + 'The durian is on both the first and the last; ask why it can be in two groups.\n\n'
+    + 'THE HALLOWEEN THREE CLOSE THE EMERALD SHELF, EASIEST FIRST, and Halloween is only the backdrop: every wall still '
+    + 'sorts on something a child can check. "Halloween Colours" is the warm-up — chorus the four colour words first, and '
+    + 'insist on "It is black", not "It is a cat". "Count the Legs" is a maths wall in disguise: count every leg out loud, all '
+    + 'together, and the four groups count in twos. The black cat and the crow were on the colour wall too; ask why the same '
+    + 'picture is in a different group now. Before "After Dark", turn off the classroom lights. Read the four rules in the hint '
+    + 'slowly, one finger each, and wait for somebody to say "but the owl has a face too!" — that is why the rule says not '
+    + 'alive. The lanterns are in Hội An and the sticky rice is xôi gấc; let the class tell you that.',
 }
