@@ -11,6 +11,9 @@ import { getCourse, getLesson } from '../content/registry.js'
 // classroom site links to #/portfolio, and it loads as its own chunk, so a
 // student opening a lesson never downloads it.
 const Portfolio = lazy(() => import('./portfolio/Portfolio.jsx'))
+// The Halloween carnival's Guess Who. Its own chunk too: it brings the Supabase
+// client, which no lesson needs.
+const GuessWho = lazy(() => import('./guess-who/GuessWho.jsx'))
 
 function LessonView() {
   const { courseId, slug } = useParams()
@@ -41,6 +44,7 @@ export default function App() {
       <Route path="/lesson/:courseId/:slug" element={<LessonView />} />
       <Route path="/plan/:courseId/:slug" element={<PlanView />} />
       <Route path="/portfolio/*" element={<Suspense fallback={null}><Portfolio /></Suspense>} />
+      <Route path="/guess-who/*" element={<Suspense fallback={null}><GuessWho /></Suspense>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

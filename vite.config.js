@@ -10,6 +10,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
+          // Guess Who's libraries ride with the game. Left in `vendor`, every
+          // lesson would download the Supabase client on its first load.
+          if (/node_modules[\\/](@supabase|uqr|tslib)[\\/]/.test(id)) return 'guess-who-vendor'
           if (id.includes('node_modules')) return 'vendor'
         },
       },
