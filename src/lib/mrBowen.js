@@ -1,7 +1,7 @@
 // src/lib/mrBowen.js
 // Mr Bowen, the cartoon in the story strips, widgets and diagrams. Drawn from
 // his staff photo and the class photos on pra.edu.vn (About page, Oct 2026):
-// dark hair short at the sides and pushed up on top, a short dark beard, thin
+// dark hair short at the sides and slicked back on top, a short dark beard, thin
 // dark glasses, a big grin, the rust-and-cream striped short-sleeved shirt,
 // dark trousers, a belt, a watch on his left wrist. No tie, no áo dài.
 //
@@ -9,7 +9,7 @@
 // template-string diagram draw the same man.
 //
 // His frame never changes: x = 0 is his middle, y = 0 is about the top of his
-// forehead (the hair reaches y = -35) and his soles are at y = 268, so stand
+// forehead (the hair reaches y = -31) and his soles are at y = 268, so stand
 // him on a floor with y = FLOOR - 268 * scale. He is tall, with broad
 // shoulders and a slim waist: about 115 wide with his arms down.
 //
@@ -118,10 +118,16 @@ function face(mood, frozen, c) {
       <path d="M -5 27 Q 0 24 5 27 M -27 26 L -32 24 M 27 26 L 32 24"/>
     </g>
     <path d="${brows}" stroke="${c.brow}" stroke-width="4" fill="none" stroke-linecap="round"/>
-    <path d="M -33 36 L -34 14 Q -36 -4 -27 -12 Q -28 -24 -16 -27 Q -11 -37 -1 -33 Q 7 -41 14 -32 Q 23 -33 25 -22 Q 35 -14 34 4 L 34 16 L 33 36 L 29 34 L 28 14 Q 27 0 16 -1 Q 0 -3 -16 -1 Q -27 0 -28 14 L -29 34 Z"
-      fill="${c.hair}" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
-    <path d="M -20 -16 Q -13 -25 -3 -24 M -2 -18 Q 7 -29 17 -24 M 15 -12 Q 22 -16 27 -9" stroke="${c.sheen}" stroke-width="2.5" fill="none" stroke-linecap="round"/>`
+    <path d="${HAIR[0]}" fill="${c.hair}" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="${HAIR[1]}" stroke="${c.sheen}" stroke-width="2.5" fill="none" stroke-linecap="round"/>`
 }
+
+// Slicked back: short at the sides, smooth on top, the hairline above the
+// eyebrows. [outline, comb lines]
+const HAIR = [
+  'M -33 36 L -34 12 Q -37 -12 -20 -22 Q -2 -31 16 -27 Q 34 -22 35 -2 L 34 16 L 33 36 L 29 34 L 28 12 Q 27 -2 16 -4 Q 0 -6 -16 -4 Q -27 -2 -28 12 L -29 34 Z',
+  'M -22 -9 Q -8 -21 10 -21 M -12 -4 Q 4 -15 22 -14 M 4 -6 Q 17 -11 29 -5',
+]
 
 export function mrBowenSvg({ x = 0, y = 0, scale = 1, mood = 'happy', frozen = false, handLeft, handRight, elbowLeft, elbowRight } = {}) {
   const c = frozen ? ICE : WARM
