@@ -56,6 +56,13 @@ const BALL_X = 360
 const R = 24
 const yOf = (h) => FLOOR - R - h * M
 const BAR = { x: 820, w: 600, y0: 152, gap: 86, h: 40 }
+// Drawn to this scale, 2 m is out of Mr Bowen's reach: he stands on a lab
+// stool, his raised hand just under the ball.
+const BOWEN = 1.05
+const HAND = [66, 18] // in his own frame
+const STAND_X = BALL_X - 16 - HAND[0] * BOWEN
+const STAND_Y = yOf(2) + R + 6 - HAND[1] * BOWEN
+const SEAT = STAND_Y + 268 * BOWEN
 
 export function BouncingBall({ lang = 'en', isDisplayMode = false }) {
   const [k, setK] = useState(0)
@@ -71,10 +78,15 @@ export function BouncingBall({ lang = 'en', isDisplayMode = false }) {
         <svg viewBox="0 0 1500 520" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
           <rect x="0" y="0" width="1500" height="520" rx="16" fill="#ffffff" />
 
-          {/* the scene: Mr Bowen, the ball, a height scale */}
+          {/* the scene: Mr Bowen on his stool, the ball, a height scale */}
           <line x1="40" y1={FLOOR} x2="548" y2={FLOOR} stroke={INK} strokeWidth="4" />
-          <MrBowen x={190} y={FLOOR - 268 * 1.1} scale={1.1} />
-          <path d={`M 226 ${FLOOR - 196} L 300 ${yOf(2) + 30} L 334 ${yOf(2) + 6}`} fill="none" stroke={BLUE} strokeWidth="17" strokeLinecap="round" strokeLinejoin="round" />
+          <g stroke={INK} strokeWidth="2.5" strokeLinejoin="round">
+            <rect x={STAND_X - 5} y={SEAT + 10} width="10" height={FLOOR - SEAT - 20} fill="#9aa7b4" />
+            <line x1={STAND_X - 20} y1={SEAT + 34} x2={STAND_X + 20} y2={SEAT + 34} stroke="#6b7580" strokeWidth="5" strokeLinecap="round" />
+            <path d={`M ${STAND_X - 34} ${FLOOR} L ${STAND_X - 7} ${FLOOR - 12} L ${STAND_X + 7} ${FLOOR - 12} L ${STAND_X + 34} ${FLOOR} Z`} fill="#6b7580" />
+            <rect x={STAND_X - 42} y={SEAT} width="84" height="12" rx="5" fill="#4a5560" />
+          </g>
+          <MrBowen x={STAND_X} y={STAND_Y} scale={BOWEN} handRight={HAND} />
           {[0, 0.5, 1, 1.5, 2].map((m) => (
             <g key={m}>
               <line x1="560" y1={FLOOR - m * M} x2="584" y2={FLOOR - m * M} stroke={INK} strokeWidth="3" />

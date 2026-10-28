@@ -87,16 +87,16 @@ function Books({ x0, y, from = 0, n = 5, lean = 0 }) {
 function Bowen({ x, mood = 'happy', hammer = false }) {
   const bx = x + 326
   const by = FLOOR - 268 * BOWEN
+  // the hammer first, so his hand closes over the handle
   return (
     <g>
-      <MrBowen x={bx} y={by} scale={BOWEN} mood={mood} />
       {hammer && (
         <g>
-          <path d={`M ${bx - 18} ${by + 48} L ${bx - 46} ${by + 30}`} stroke={BLUE} strokeWidth="10" strokeLinecap="round" />
           <line x1={bx - 46} y1={by + 34} x2={bx - 52} y2={by - 8} stroke="#8a6a3c" strokeWidth="7" strokeLinecap="round" />
           <rect x={bx - 68} y={by - 20} width="32" height="15" rx="3" fill="#59636e" stroke={INK} strokeWidth="2" />
         </g>
       )}
+      <MrBowen x={bx} y={by} scale={BOWEN} mood={mood} handLeft={hammer ? [-92, 64] : undefined} />
     </g>
   )
 }

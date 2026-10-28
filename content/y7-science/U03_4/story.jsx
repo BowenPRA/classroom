@@ -22,7 +22,7 @@ import { SEA, SEA_EDGE } from './orbit.js'
 const t = (lang, en, fr) => tr(lang, en, null, fr)
 const FONT = "Inter, 'Segoe UI', system-ui, sans-serif"
 const INK = '#2b2b2b', MUTED = '#5b6770', RULE = '#d5dbe1', TEAL = '#0087a8', BLUE = '#1a5fa8'
-const MUD = '#a88d66', SKIN = '#f2c9a5'
+const MUD = '#a88d66'
 
 const PANEL_W = 380
 const PANEL_H = 400
@@ -148,10 +148,7 @@ function Fish({ x, y }) {
 function Sleeper({ cx, cy, s }) {
   return (
     <g transform={`translate(${cx} ${cy}) rotate(-90) scale(${s}) translate(0 -122)`}>
-      <MrBowen x={0} y={0} />
-      <circle cx="-15" cy="31" r="5.5" fill={SKIN} />
-      <circle cx="15" cy="31" r="5.5" fill={SKIN} />
-      <path d="M -21 31 q 6 4 12 0 M 9 31 q 6 4 12 0" stroke={INK} strokeWidth="2.5" fill="none" />
+      <MrBowen x={0} y={0} mood="asleep" />
     </g>
   )
 }
@@ -173,8 +170,8 @@ function Hanging({ x }) {
     <g>
       <Harbour x={x} water={LOW} />
       <HangingBoat x={x} />
-      <MrBowen x={x + 48} y={QUAY - 268 * 0.55} scale={0.55} mood="sad" />
-      <Mug x={x + 68} y={QUAY - 96} />
+      <MrBowen x={x + 48} y={QUAY - 268 * 0.55} scale={0.55} mood="sad" handRight={[48, 118]} elbowRight={[56, 142]} />
+      <Mug x={x + 50} y={QUAY - 96} />
       <text x={x + 116} y={TOP + 96} fontFamily={FONT} fontSize="34" fontWeight="900" fill={MUTED}>???</text>
       <Clock x={x + 326} y={TOP + 62} hour={12} />
     </g>

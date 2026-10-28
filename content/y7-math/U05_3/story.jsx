@@ -77,19 +77,19 @@ function Photo({ x, y, w, h, rotate = 0 }) {
   )
 }
 
-function Bowen({ x, mood = 'happy', hammer = false, dx = 0 }) {
+function Bowen({ x, mood = 'happy', hammer = false, dx = 0, hand }) {
   const bx = x + 326 + dx
   const by = FLOOR - 268 * BOWEN
+  // the hammer first, so his hand closes over the handle
   return (
     <g>
-      <MrBowen x={bx} y={by} scale={BOWEN} mood={mood} />
       {hammer && (
         <g>
-          <path d={`M ${bx - 18} ${by + 48} L ${bx - 46} ${by + 30}`} stroke={BLUE} strokeWidth="10" strokeLinecap="round" />
           <line x1={bx - 46} y1={by + 34} x2={bx - 52} y2={by - 8} stroke="#8a6a3c" strokeWidth="7" strokeLinecap="round" />
           <rect x={bx - 68} y={by - 20} width="32" height="15" rx="3" fill="#59636e" stroke={INK} strokeWidth="2" />
         </g>
       )}
+      <MrBowen x={bx} y={by} scale={BOWEN} mood={mood} handLeft={hammer ? [-92, 64] : hand} />
     </g>
   )
 }
@@ -140,8 +140,8 @@ function Squashed({ x }) {
     <g>
       <Photo x={x + 70} y={FLOOR - 34} w={110} h={30} rotate={-4} />
       <Frame c={[p0, p1, p2, p3]} nails />
-      <Bowen x={x} mood="sad" dx={14} />
-      <path d={`M ${x + 322} ${FLOOR - 268 * BOWEN + 50} L ${p2[0] + 6} ${p2[1] + 4}`} stroke={BLUE} strokeWidth="10" strokeLinecap="round" />
+      {/* beside the frame, holding its right side */}
+      <Bowen x={x} mood="sad" dx={-72} hand={[-100, 80]} />
     </g>
   )
 }

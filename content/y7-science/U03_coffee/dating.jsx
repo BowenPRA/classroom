@@ -36,6 +36,7 @@
 import { useState, useRef, useEffect, useMemo, useSyncExternalStore } from 'react'
 import { Undo2, RotateCcw, Play, Pause, Coffee, Snowflake, Search, Eye, ChevronRight, Shuffle, Coins, Trash2 } from 'lucide-react'
 import { tr } from '../../../src/lib/lang.js'
+import { mrBowenSvg } from '../../../src/lib/mrBowen.js'
 import { mulberry32, fmt } from '../U03_models/data.js'
 import { Btn } from '../U03_models/ui.jsx'
 
@@ -195,45 +196,10 @@ function makeAtoms(seed) {
   }))
 }
 
-// spiral eyes for a dizzy Mr Bowen, drawn inside each lens
-const spiral = (cx, cy) => `M ${cx} ${cy - 7} a 7 7 0 1 1 -7 7 a 5 5 0 1 1 5 5 a 3 3 0 1 1 -3 -3`
-
-export function MrBowen({ x, y, frozen, scale = 1, mood = 'happy' }) {
-  // A friendly cartoon: glasses, a tie, a mug. Frozen: eyes shut, frosty.
-  // `mood` (story strip): 'sad' frowns; 'dizzy' has spiral eyes and a wobbly mouth.
-  const skin = frozen ? '#cfe0ec' : '#f2c9a5'
-  return (
-    <g transform={`translate(${x} ${y}) scale(${scale})`}>
-      <rect x="-46" y="70" width="92" height="120" rx="26" fill={frozen ? '#9db8cf' : '#1a5fa8'} />
-      <path d="M 0 74 l -9 14 9 58 9 -58 z" fill={frozen ? '#c8d8e6' : '#c25e12'} />
-      <rect x="-46" y="180" width="38" height="88" rx="14" fill={frozen ? '#7b93a8' : '#2b3a4a'} />
-      <rect x="8" y="180" width="38" height="88" rx="14" fill={frozen ? '#7b93a8' : '#2b3a4a'} />
-      <circle cx="0" cy="30" r="42" fill={skin} stroke={INK} strokeWidth="3" />
-      <path d="M -42 22 q 4 -46 44 -46 q 40 0 42 44 q -18 -22 -44 -20 q -26 -2 -42 22 z" fill={frozen ? '#a9bfd1' : '#4a3426'} />
-      <circle cx="-15" cy="30" r="11" fill="none" stroke={INK} strokeWidth="3" />
-      <circle cx="15" cy="30" r="11" fill="none" stroke={INK} strokeWidth="3" />
-      <line x1="-4" y1="30" x2="4" y2="30" stroke={INK} strokeWidth="3" />
-      {frozen ? (
-        <>
-          <path d="M -21 31 q 6 4 12 0 M 9 31 q 6 4 12 0" stroke={INK} strokeWidth="2.5" fill="none" />
-          <path d="M -9 54 q 9 -5 18 0" stroke={INK} strokeWidth="3" fill="none" />
-        </>
-      ) : mood === 'dizzy' ? (
-        <>
-          <path d={`${spiral(-15, 31)} ${spiral(15, 31)}`} stroke={INK} strokeWidth="2" fill="none" />
-          <path d="M -14 55 q 4.5 -6 9 0 q 4.5 6 9 0 q 4.5 -6 9 0" stroke={INK} strokeWidth="3" fill="none" />
-        </>
-      ) : (
-        <>
-          <circle cx="-15" cy="31" r="3.5" fill={INK} />
-          <circle cx="15" cy="31" r="3.5" fill={INK} />
-          {mood === 'sad'
-            ? <path d="M -12 59 q 12 -10 24 0" stroke={INK} strokeWidth="3" fill="none" />
-            : <path d="M -12 52 q 12 10 24 0" stroke={INK} strokeWidth="3" fill="none" />}
-        </>
-      )}
-    </g>
-  )
+// Mr Bowen himself: the drawing lives in src/lib/mrBowen.js, shared with the
+// diagrams. Props: x, y, scale, mood, frozen, handLeft/handRight (see there).
+export function MrBowen(props) {
+  return <g dangerouslySetInnerHTML={{ __html: mrBowenSvg(props) }} />
 }
 
 function SampleIcon({ kind, x, y }) {

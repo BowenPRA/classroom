@@ -40,6 +40,7 @@ import pisa from './images/pisa.jpg'
 import galileo from './images/galileo.jpg'
 import earthPhoto from './images/earth.jpg'
 import carsand from './images/carsand.jpg'
+import { mrBowenSvg } from '../../../src/lib/mrBowen.js'
 
 const INK = '#2b2b2b'
 const KEY = '#c25e12'
@@ -371,10 +372,7 @@ export const DIAGRAMS = {
     <text x="560" y="360" font-family="${FONT}" font-size="34" font-weight="bold" fill="${KEY}" text-anchor="middle">10 N</text>
 
     <rect x="676" y="20" width="200" height="400" rx="14" fill="#ffffff" stroke="${RULE}" stroke-width="2"/>
-    <g fill="none" stroke="${INK}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="776" cy="84" r="20" fill="#ffffff"/>
-      <path d="M 776 104 L 776 180 M 742 130 L 810 130 M 776 180 L 750 238 M 776 180 L 802 238"/>
-    </g>
+    ${mrBowenSvg({ x: 776, y: 83, scale: 0.57 })}
     <text x="776" y="300" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}" text-anchor="middle">Mr Bowen</text>
     <text x="776" y="360" font-family="${FONT}" font-size="34" font-weight="bold" fill="${KEY}" text-anchor="middle">800 N</text>
 

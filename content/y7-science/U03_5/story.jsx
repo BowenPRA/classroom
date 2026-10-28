@@ -68,8 +68,7 @@ function Hand({ x, y, h = 120, q = true }) {
 function MakeCoffee({ x }) {
   return (
     <g>
-      <MrBowen x={x + 120} y={FLOOR - 268 * 0.82} scale={0.82} />
-      <path d={`M ${x + 152} ${FLOOR - 150} L ${x + 196} ${FLOOR - 176}`} stroke={BLUE} strokeWidth="15" strokeLinecap="round" />
+      <MrBowen x={x + 120} y={FLOOR - 268 * 0.82} scale={0.82} handRight={[95, 48]} />
       <Pic svg={mug(x + 222, FLOOR - 196, 0.42)} />
       <Pic svg={kettle(x + 300, FLOOR - 40, 0.42)} />
       <Pic svg={thermometer(x + 300, TOP + 160, 0.85, 0.7)} />
@@ -108,8 +107,7 @@ function ManyQuestions({ x }) {
 function Cold({ x }) {
   return (
     <g>
-      <MrBowen x={x + 120} y={FLOOR - 268 * 0.82} scale={0.82} mood="sad" />
-      <path d={`M ${x + 152} ${FLOOR - 150} L ${x + 168} ${FLOOR - 196}`} stroke={BLUE} strokeWidth="15" strokeLinecap="round" />
+      <MrBowen x={x + 120} y={FLOOR - 268 * 0.82} scale={0.82} mood="sad" handRight={[58, 34]} />
       <Pic svg={mug(x + 168, FLOOR - 220, 0.36, false)} />
       <Pic svg={thermometer(x + 300, TOP + 160, 0.15, 0.7)} />
       <text x={x + 322} y={TOP + 142} fontFamily={FONT} fontSize="20" fontWeight="900" fill={BLUE}>25 °C</text>

@@ -121,11 +121,10 @@ function NoCoffee({ x }) {
       ))}
       <line x1={x + 300} y1="88" x2={x + 300} y2="62" stroke={INK} strokeWidth="4" strokeLinecap="round" />
       <line x1={x + 300} y1="88" x2={x + 291} y2="104" stroke={INK} strokeWidth="5" strokeLinecap="round" />
-      <MrBowen x={x + 140} y={FLOOR - 236} scale={0.88} mood="sad" />
+      {/* holding the empty mug out, upside down */}
+      <MrBowen x={x + 140} y={FLOOR - 236} scale={0.88} mood="sad" handRight={[104, 75]} />
       {/* a drop of worry */}
       <path d={`M ${x + 92} ${FLOOR - 250} q -9 13 0 18 q 9 -5 0 -18 z`} fill="#9fd3f0" stroke={BLUE} strokeWidth="2" />
-      {/* an arm, holding the empty mug upside down */}
-      <path d={`M ${x + 178} ${FLOOR - 150} L ${x + 232} ${FLOOR - 170}`} stroke={BLUE} strokeWidth="16" strokeLinecap="round" />
       <Mug x={x + 262} y={FLOOR - 175} scale={0.36} rotate={168} />
       <text x={x + 262} y={FLOOR - 105} fontFamily={FONT} fontSize="30" fontWeight="900" fill={KEY} textAnchor="middle">0 mg</text>
     </g>
