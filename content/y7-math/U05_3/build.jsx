@@ -144,10 +144,11 @@ export function BuildSquare({ lang = 'en', isDisplayMode = false }) {
           {k >= 5 && <Corner p={D} d={270} />}
           <Pt p={A} label="A" dx={-26} dy={34} />
           <Pt p={B} label="B" dx={26} dy={34} />
-          {k >= 3 && <Pt p={D} label="D" dx={-28} dy={-8} />}
+          {k >= 3 && <Pt p={D} label="D" dx={k === 3 ? 28 : -28} dy={-8} />}
           {k >= 4 && <Pt p={C} label="C" dx={28} dy={-8} />}
           {k !== 0 && <text x={(A[0] + B[0]) / 2} y={A[1] + 40} fontFamily={FONT} fontSize="26" fontWeight="800" fill={BLUE} textAnchor="middle">5 cm</text>}
-          {k >= 3 && <text x={A[0] - 20} y={(A[1] + D[1]) / 2 + 9} fontFamily={FONT} fontSize="26" fontWeight="800" fill={BLUE} textAnchor="end">5 cm</text>}
+          {/* not while the ruler stands on AD (step 4): it would sit on the ruler */}
+          {k >= 4 && <text x={A[0] - 20} y={(A[1] + D[1]) / 2 + 9} fontFamily={FONT} fontSize="26" fontWeight="800" fill={BLUE} textAnchor="end">5 cm</text>}
           {k >= 4 && <text x={B[0] + 20} y={(B[1] + C[1]) / 2 + 9} fontFamily={FONT} fontSize="26" fontWeight="800" fill={BLUE}>5 cm</text>}
           {k >= 5 && <text x={(D[0] + C[0]) / 2} y={D[1] - 18} fontFamily={FONT} fontSize="26" fontWeight="800" fill={BLUE} textAnchor="middle">5 cm</text>}
           {k >= 6 && (
@@ -212,6 +213,8 @@ export function BuildQuad({ lang = 'en', isDisplayMode = false }) {
   const markB = at(QB, 168, 70)
   const [cLx, cLy] = at(QC, 64, 218)
   const [dLx, dLy] = at(QD, 64, 313)
+  // "4 cm" high up AD, clear of the protractor at A in step 3
+  const four = [QA[0] + (QD[0] - QA[0]) * 0.78 - 14, QA[1] + (QD[1] - QA[1]) * 0.78 + 8]
   return (
     <div className="w-full h-full flex flex-col gap-3 select-none">
       <div className="flex-1 min-h-0 w-full">
@@ -247,7 +250,7 @@ export function BuildQuad({ lang = 'en', isDisplayMode = false }) {
           {k >= 2 && <Pt p={QD} label="D" dx={-28} dy={-10} />}
           {k >= 3 && <Pt p={QC} label="C" dx={30} dy={-8} />}
           {k >= 1 && k !== 1 && <text x={(QA[0] + QB[0]) / 2} y={QA[1] + 40} fontFamily={FONT} fontSize="26" fontWeight="800" fill={BLUE} textAnchor="middle">6 cm</text>}
-          {k >= 2 && <text x={QA[0] - 4} y={(QA[1] + QD[1]) / 2} fontFamily={FONT} fontSize="26" fontWeight="800" fill={BLUE} textAnchor="end">4 cm</text>}
+          {k >= 2 && <text x={f1(four[0])} y={f1(four[1])} fontFamily={FONT} fontSize="26" fontWeight="800" fill={BLUE} textAnchor="end">4 cm</text>}
           {k >= 3 && <text x={QB[0] + 96} y={QB[1] - 175} fontFamily={FONT} fontSize="26" fontWeight="800" fill={BLUE}>5 cm</text>}
           {k >= 6 && (
             <g>

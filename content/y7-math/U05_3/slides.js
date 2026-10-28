@@ -123,11 +123,11 @@ export const slides = [
     icon: 'Ruler',
     eyebrow: 'Your tools',
     eyebrowFr: 'Tes outils',
-    title: 'Ruler, Protractor, Set Square',
-    titleFr: 'Règle, rapporteur, équerre',
+    title: 'Protractor and Set Square',
+    titleFr: 'Rapporteur et équerre',
     inlineSvg: DIAGRAMS.TOOLS,
-    caption: 'A **sharp** pencil. Lengths to the nearest **mm**, angles to the nearest **degree**.',
-    captionFr: 'Un crayon bien **taillé**. Les longueurs au **mm** près, les angles au **degré** près.',
+    caption: 'Also: a ruler and a **sharp** pencil. Lengths to the nearest **mm**, angles to the nearest **degree**.',
+    captionFr: 'Et aussi : une règle, un crayon bien **taillé**. Les longueurs au **mm** près, les angles au **degré** près.',
   },
 
   // 4. Vote: the protractor shows two numbers
@@ -225,8 +225,8 @@ export const slides = [
         tone: 'task',
         badge: 'Try it',
         badgeFr: 'Essaie',
-        text: 'In pairs: four rulers in a square on the desk. Push one corner.',
-        textFr: 'À deux : quatre règles en carré sur la table. Pousse un coin.',
+        text: 'In pairs: make a square with four rulers on the desk. Keep the corners touching. Push one corner sideways.',
+        textFr: 'À deux : fais un carré avec quatre règles sur la table. Garde les coins collés. Pousse un coin sur le côté.',
       },
     ],
     reveal: {
@@ -447,8 +447,8 @@ export const slides = [
       {
         tone: 'info',
         badge: false,
-        text: '360° − (80° + 110° + 64°) = **106°**. Is that your angle D?',
-        textFr: '360° − (80° + 110° + 64°) = **106°**. Est-ce ton angle D ?',
+        text: 'Add **your** four angles. Close to **360°**? Then your drawing is accurate.',
+        textFr: 'Additionne **tes** quatre angles. Près de **360°** ? Alors ton tracé est précis.',
       },
     ],
   },
@@ -463,8 +463,8 @@ export const slides = [
     title: 'Read the Question',
     titleFr: 'Lis la question',
     inlineSvg: DIAGRAMS.PHRASES,
-    caption: '**through** B: the line passes B. **from** C **to** AB: start at C, stop on AB.',
-    captionFr: '**through** B : la droite passe par B. **from** C **to** AB : pars de C, arrête-toi sur AB.',
+    caption: 'Read each question out loud. Then say what it means.',
+    captionFr: 'Lis chaque question à voix haute. Puis dis ce qu’elle veut dire.',
   },
 
   // 20. Practice in the Workbook's words (a drawing)

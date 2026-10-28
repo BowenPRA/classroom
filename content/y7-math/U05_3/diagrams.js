@@ -16,11 +16,13 @@
 //   Perpendicular ANS_PERP_A / ANS_PERP_B   vote: the perpendicular from C
 //                PERP_POINT   the perpendicular is the shortest way to the line
 //                DRAW_PERP    the task: AB 7 cm, 60°, BC 4 cm
-//   Parallel     PARALLEL_HOW copy the angle: the same angle, a parallel line
+//   Parallel     PARALLEL_HOW the four steps, numbered on the drawing: a line
+//                             through P, measure its angle, copy it at P, draw
 //   Checking     CHECK_360    80° + 110° + 64° + 106° = 360°
 //                PHRASES      the Workbook's drawing words
 //                PRACTICE_WB  PQ, R, the perpendicular at R, S, and PS
-//                TABLE        Mr Bowen measures the outside of a corner
+//                TABLE        Mr Bowen measures the outside of a corner (the
+//                             picture does not print either answer)
 //
 // Like the book's, the diagrams are not drawn to scale unless they say so, and
 // they stay in English.
@@ -73,6 +75,8 @@ const chevron = (x, y, d, color = INK, s = 16) => {
 }
 const leader = (x1, y1, x2, y2, color = KEY) =>
   `<line x1="${f(x1)}" y1="${f(y1)}" x2="${f(x2)}" y2="${f(y2)}" stroke="${color}" stroke-width="2.5"/><circle cx="${f(x2)}" cy="${f(y2)}" r="5" fill="${color}"/>`
+// A numbered step on a drawing: the disc only (its number is literal text).
+const badge = (x, y, color) => `<circle cx="${f(x)}" cy="${f(y)}" r="16" fill="${color}"/>`
 const photo = (id, href, x, y, w, h, fit = 'slice') => `<clipPath id="${id}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12"/></clipPath>
     <image href="${href}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid ${fit}" clip-path="url(#${id})"/>
     <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" fill="none" stroke="#cbd5e1" stroke-width="2"/>`
@@ -144,8 +148,8 @@ export const DIAGRAMS = {
     <text x="230" y="390" font-family="${FONT}" font-size="23" fill="${INK}" text-anchor="middle">measures angles</text>
     <text x="560" y="352" font-family="${FONT}" font-size="30" font-weight="bold" fill="${BLUE}" text-anchor="middle">set square</text>
     <text x="560" y="390" font-family="${FONT}" font-size="23" fill="${INK}" text-anchor="middle">right angles</text>
-    <text x="890" y="352" font-family="${FONT}" font-size="30" font-weight="bold" fill="${BLUE}" text-anchor="middle">a carpenter's square</text>
-    <text x="890" y="390" font-family="${FONT}" font-size="23" fill="${INK}" text-anchor="middle">the same right angle, in wood</text>
+    <text x="890" y="352" font-family="${FONT}" font-size="30" font-weight="bold" fill="${BLUE}" text-anchor="middle">a builder's square</text>
+    <text x="890" y="390" font-family="${FONT}" font-size="23" fill="${INK}" text-anchor="middle">a big right angle, for wood</text>
   </svg>`,
 
   ANS_40: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
@@ -199,6 +203,7 @@ export const DIAGRAMS = {
     ${leader(690, 505, 690, 458, INK)}
     <text x="800" y="530" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}" text-anchor="end">0 on the line</text>
     <text x="604" y="64" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}">mark, then join</text>
+    ${leader(612, 76, 560, 152, BLUE)}
   </svg>`,
 
   // ── Squares ───────────────────────────────────────────────────────────────
@@ -218,7 +223,7 @@ export const DIAGRAMS = {
     <text x="640" y="380" font-family="${FONT}" font-size="26" font-weight="bold" fill="${PURPLE}" text-anchor="middle">120°</text>
     <text x="175" y="462" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">a square</text>
     <text x="175" y="500" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="middle">four right angles</text>
-    <text x="622" y="462" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">a rhombus</text>
+    <text x="622" y="462" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">not a square</text>
     <text x="622" y="500" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="middle">no right angles</text>
   </svg>`,
 
@@ -263,7 +268,6 @@ export const DIAGRAMS = {
     <text x="446" y="318" font-family="${FONT}" font-size="30" font-weight="bold" fill="${BLUE}">3.0 cm</text>
     <text x="300" y="300" font-family="${FONT}" font-size="26" fill="${MUTED}" text-anchor="end">3.8 cm</text>
     <text x="560" y="276" font-family="${FONT}" font-size="26" fill="${MUTED}">4.1 cm</text>
-    <text x="430" y="530" font-family="${FONT}" font-size="28" font-weight="bold" fill="${BLUE}" text-anchor="middle">at 90°: the shortest way</text>
     <text x="800" y="60" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="end">drawn to scale</text>
   </svg>`,
 
@@ -301,10 +305,18 @@ export const DIAGRAMS = {
     <text x="352" y="214" font-family="${FONT}" font-size="32" font-weight="bold" fill="${BLUE}">P</text>
     <text x="70" y="480" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}">A</text>
     <text x="780" y="480" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="end">B</text>
-    <text x="560" y="300" font-family="${FONT}" font-size="26" font-weight="bold" fill="${MUTED}">1. a line across</text>
-    <text x="560" y="336" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}">2. copy the angle</text>
-    <text x="560" y="372" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}">3. draw the line</text>
-    <text x="420" y="530" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">The same angle: the lines are parallel.</text>
+    ${badge(380.1, 257, '#7d8a97')}
+    <text x="380.1" y="265" font-family="${FONT}" font-size="21" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+    ${badge(372, 398, KEY)}
+    <text x="372" y="406" font-family="${FONT}" font-size="21" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+    ${badge(222, 140, KEY)}
+    <text x="222" y="148" font-family="${FONT}" font-size="21" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+    ${badge(620, 170, BLUE)}
+    <text x="620" y="178" font-family="${FONT}" font-size="21" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+    <text x="540" y="268" font-family="${FONT}" font-size="25" font-weight="bold" fill="${MUTED}">1. a line through P</text>
+    <text x="540" y="304" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">2. measure its angle</text>
+    <text x="540" y="340" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">3. copy it at P</text>
+    <text x="540" y="376" font-family="${FONT}" font-size="25" font-weight="bold" fill="${BLUE}">4. draw the line</text>
   </svg>`,
 
   // ── Checking ──────────────────────────────────────────────────────────────
@@ -334,7 +346,7 @@ export const DIAGRAMS = {
     <text x="700" y="52" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}">It means…</text>
     <line x1="30" y1="72" x2="1090" y2="72" stroke="#cfd8dc" stroke-width="2"/>
     <text x="40" y="118" font-family="${FONT}" font-size="25" fill="${INK}">Draw the line through B perpendicular to AB.</text>
-    <text x="700" y="118" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">Through B, at 90° to AB.</text>
+    <text x="700" y="118" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">It passes B, at 90° to AB.</text>
     <text x="40" y="186" font-family="${FONT}" font-size="25" fill="${INK}">Draw a perpendicular line from C to AB.</text>
     <text x="700" y="186" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">Start at C. Meet AB at 90°.</text>
     <text x="40" y="254" font-family="${FONT}" font-size="25" fill="${INK}">Mark the point D.</text>
@@ -369,10 +381,8 @@ export const DIAGRAMS = {
     <rect x="160" y="170" width="330" height="330" rx="6" fill="#d9b98f" stroke="${INK}" stroke-width="5"/>
     ${wedge(490, 170, 70, 270, 540, ORANGE_T, KEY, 3)}
     <rect x="160" y="170" width="330" height="330" rx="6" fill="none" stroke="${INK}" stroke-width="5"/>
-    ${box(490, 170, 180, 30)}
     <text x="640" y="110" font-family="${FONT}" font-size="40" font-weight="bold" fill="${KEY}">270°</text>
-    <text x="640" y="150" font-family="${FONT}" font-size="24" fill="${KEY}">the outside</text>
-    <text x="420" y="236" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">90°</text>
+    ${leader(630, 98, 556, 146)}
     <text x="325" y="380" font-family="${FONT}" font-size="26" fill="${INK}" text-anchor="middle">Mr Bowen’s table,</text>
     <text x="325" y="414" font-family="${FONT}" font-size="26" fill="${INK}" text-anchor="middle">seen from above</text>
   </svg>`,

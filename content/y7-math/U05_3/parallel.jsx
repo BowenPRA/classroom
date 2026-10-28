@@ -3,8 +3,8 @@
 // A ruler lies still; a set square rests on it. Draw along the set square's
 // long edge, slide it along the ruler, draw again: every line meets the ruler
 // at the same angle (60°), so every line is parallel — 5.2's corresponding
-// angles, used to draw. Turn the set square off the ruler and the next line
-// meets it at a different angle: not parallel any more.
+// angles, used to draw. Turn the set square off the ruler (one corner lifts)
+// and the next line meets it at a different angle, 70°: not parallel any more.
 //
 // One SVG stage, buttons in HTML (the house Btn). EN/FR via tr.
 import { useState } from 'react'
@@ -38,14 +38,15 @@ export function SetSquareSlide({ lang = 'en', isDisplayMode = false }) {
   const big = isDisplayMode
   const k = lines.length
   const x0 = START + STEP * k // where the set square stands now
-  const angle = turned ? 50 : 60
+  const angle = turned ? 70 : 60
   const parallel = lines.every(([, a]) => a === lines[0]?.[1])
   const foot = x0 + LEG_RUN // where the long edge meets the ruler
 
   // the set square: right angle at (x0, RULER_Y), long edge from the foot to
-  // the top; turned 10° about the foot, it lifts off the ruler
+  // the top; turned 10° clockwise about the foot, its other corner lifts off
+  // the ruler (it never sinks into it) and the long edge stands at 70°
   const corner = [foot, RULER_Y]
-  const spin = (q) => (turned ? turn(q, corner, 10) : q)
+  const spin = (q) => (turned ? turn(q, corner, -10) : q)
   const base = spin([x0, RULER_Y])
   const top = spin([x0, RULER_Y - LEG_UP])
 

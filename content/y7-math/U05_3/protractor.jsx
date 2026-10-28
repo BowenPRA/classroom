@@ -76,6 +76,9 @@ export function ProtractorReader({ lang = 'en', isDisplayMode = false }) {
   const [mx, my] = at(C, ARM, dir)
   const [fx, fy] = at(C, ARM, side === 'right' ? 0 : 180)
   const [rx, ry] = at(C, R + 34, dir)
+  // the reading sits beside the arm, on the side away from the angle, so the
+  // arm never runs through it
+  const [lx, ly] = at([rx, ry], 50, side === 'right' ? dir + 90 : dir - 90)
   const last = ANGLES.length - 1
   const next = () => { setN((v) => Math.min(last, v + 1)); setShown(false) }
 
@@ -110,7 +113,7 @@ export function ProtractorReader({ lang = 'en', isDisplayMode = false }) {
           <line x1={C[0]} y1={C[1]} x2={f1(mx)} y2={f1(my)} stroke={INK} strokeWidth="6" strokeLinecap="round" />
           <circle cx={C[0]} cy={C[1]} r="7" fill={INK} />
           {shown && <circle cx={f1(rx)} cy={f1(ry)} r="12" fill={KEY} stroke="#ffffff" strokeWidth="3" />}
-          {shown && <text x={f1(rx + (dir < 90 ? 24 : dir > 90 ? -24 : 0))} y={f1(ry - 20)} fontFamily={FONT} fontSize="34" fontWeight="900" fill={KEY} textAnchor={dir < 90 ? 'start' : dir > 90 ? 'end' : 'middle'}>{deg}°</text>}
+          {shown && <text x={f1(lx)} y={f1(ly + 12)} fontFamily={FONT} fontSize="34" fontWeight="900" fill={KEY} textAnchor="middle">{deg}°</text>}
           <text x={side === 'right' ? 1440 : 580} y="500" fontFamily={FONT} fontSize="22" fontWeight="700" fill={BLUE} textAnchor={side === 'right' ? 'end' : 'start'}>{t(lang, 'the line', 'la droite')}</text>
         </svg>
       </div>

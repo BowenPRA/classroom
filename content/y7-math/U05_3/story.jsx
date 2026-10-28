@@ -131,17 +131,18 @@ function WithPhoto({ x }) {
 }
 
 function Squashed({ x }) {
-  // the same four 40 cm sides; the corners have turned (60° and 120°)
-  const p0 = [x + 40, FLOOR - 70]
+  // the same four 40 cm sides; the corners have turned (60° and 120°). It
+  // leans away from him, so no stick passes behind his head.
+  const p0 = [x + 100, FLOOR - 70]
   const p1 = [p0[0] + SIDE, p0[1]]
-  const p3 = [p0[0] + SIDE * 0.5, p0[1] - SIDE * 0.866]
+  const p3 = [p0[0] - SIDE * 0.5, p0[1] - SIDE * 0.866]
   const p2 = [p3[0] + SIDE, p3[1]]
   return (
     <g>
       <Photo x={x + 70} y={FLOOR - 34} w={110} h={30} rotate={-4} />
       <Frame c={[p0, p1, p2, p3]} nails />
-      {/* beside the frame, holding its right side */}
-      <Bowen x={x} mood="sad" dx={-72} hand={[-100, 80]} />
+      {/* beside the frame, his hand on its right side near the bottom */}
+      <Bowen x={x} mood="sad" dx={-26} hand={[-122, 90]} />
     </g>
   )
 }

@@ -34,7 +34,7 @@ export const plan = {
     { time: '17–23 min', phase: 'Draw the square', detail: 'Slide 9: before each press the class says the next step; everyone draws it. At step 7 everyone measures AC and writes it down.' },
     { time: '23–26 min', phase: 'Our squares; back to the starter', detail: 'Slide 10: students call out their diagonals and you tap each value. Show the exact length (7.07 cm). Ask anyone far from 7.1 to check their right angles. Slide 11: copy DIAGONAL; back to the board guesses; reveal.' },
     { time: '26–31 min', phase: 'The perpendicular from a point', detail: 'Slide 12: vote. Slide 13: copy the panel; everyone points to the wall the shortest way. Slide 14: draw it and measure AD (5.0 cm).' },
-    { time: '31–36 min', phase: 'Parallel lines', detail: 'Slide 15: before each press, parallel or not? Draw three lines, then Turn the set square once. Slide 16: copy the panel and draw the parallel through P; check the gap at both ends.' },
+    { time: '31–36 min', phase: 'Parallel lines', detail: 'Slide 15: before each press, parallel or not? Draw three lines, then Turn the set square once. Slide 16: copy the panel, then draw the parallel through P following the four numbered steps on the drawing; check the gap at both ends.' },
     { time: '36–43 min', phase: 'A quadrilateral from a sketch', detail: 'Slide 17: the class says each step; everyone draws it. Step 4 needs the scale with 0 on BA. Slide 18: copy CHECK; everyone adds their four angles — within 2° of 360° is a good drawing.' },
     { time: '43–46 min', phase: 'The Workbook’s words', detail: 'Slide 19: read each phrase; the class reads the meaning. Slide 20 if there is time: PS should be 5.0 cm.' },
     { time: '46–48 min', phase: 'Word problems', detail: 'Slides 21–23, deadpan, never flagged as jokes.' },
@@ -46,7 +46,7 @@ export const plan = {
     { q: 'Slide 6 — draw an angle', a: '65°: acute. 115° means the wrong scale.' },
     { q: 'Slides 7–8 — the frame', a: 'With one nail at each corner the corners can turn, so the frame squashes into a rhombus: four 40 cm sides, angles about 60° and 120°. A square needs four right angles as well as four equal sides. (A diagonal brace would stop it.)' },
     { q: 'Slides 12–14 — the perpendicular from a point', a: 'Vote: A, the line that meets AB at 90° (B goes to the middle of AB, which is not 90°). Slide 14: BD = 4 × cos 60° = 2 cm, so AD = 7 − 2 = 5.0 cm; CD = 4 × sin 60° = 3.5 cm.' },
-    { q: 'Slide 15 — the model', a: 'Every line meets the ruler at 60°, so they are parallel. Turned 10°, the set square draws at 50°: not parallel.' },
+    { q: 'Slide 15 — the model', a: 'Every line meets the ruler at 60°, so they are parallel. Turned 10° (one corner lifts off the ruler), the set square draws at 70°: not parallel.' },
     { q: 'Slides 17–18 — the quadrilateral', a: 'C ≈ 64° and D ≈ 106°; CD ≈ 7.1 cm. 80° + 110° + 64° + 106° = 360°. Student answers within a degree or two are accurate.' },
     { q: 'Slide 20 — draw, then measure', a: 'PS = 5.0 cm (PR 4 cm, RS 3 cm, a right angle at R).' },
     { q: 'Slides 21–23 — word problems', a: 'Playground: about 7.1 m (the same shape as the 5 cm square, 100 times bigger; the tape measure is irrelevant). Table: he measured the outside; 360° − 270° = 90°. Parallel lines: no — parallel lines never meet; his angle at P was not the same as at AB.' },
@@ -62,6 +62,6 @@ export const plan = {
     'LANGUAGES: English and French; no Vietnamese. The French uses rapporteur, équerre, diagonale, losange, perpendiculaire menée d’un point; the Workbook phrases on slide 19 stay in English, as the class will meet them.\n\n' +
     'THE STORY (slide 7). Deadpan, never flagged as a joke. Mr Bowen is the cartoon from Coffee, Carbon and Stars. “One nail each” is the set-up: a single nail lets each corner turn, so the frame keeps its sides and loses its right angles.\n\n' +
     'OUR SQUARES (slide 10). Tap the number line once for each diagonal called out (tap 7.1 for “seven point one”). Undo removes the last dot; Clear all empties it. The dots are kept in this browser for 12 hours, so leaving the slide is safe — press Clear all if you rehearse on the classroom computer the same day.\n\n' +
-    'MODEL MOVES. Slide 5: Show the answer rings the 0 to count from and gives the reading; the red line names the trap. Slides 9 and 17: one press per step; the class says the step first, then draws it. Slide 15: Draw, then slide adds a line; Turn the set square lifts it 10° off the ruler, and the next line is not parallel.\n\n' +
+    'MODEL MOVES. Slide 5: Show the answer rings the 0 to count from and gives the reading; the red line names the trap. Slides 9 and 17: one press per step; the class says the step first, then draws it. Slide 15: Draw, then slide adds a line; Turn the set square lifts one corner 10° off the ruler, and the next line is 70°: not parallel.\n\n' +
     'NOT ON THE SLIDES. Compasses and ruler-and-compass constructions (the Workbook does not ask for them here); bisectors; the word reflex beyond slide 22’s table. Pythagoras is behind 7.07 cm — say “5 times 1.414” only if a student asks.',
 }
