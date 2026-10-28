@@ -29,8 +29,10 @@ import {
   Blocks, Bird, House, Sun, Flame, Droplets, Search, Ghost, Bug, MoonStar,
 } from 'lucide-react'
 
+import { useGameRemote } from '../../../src/lib/deckControls.js'
 import { LEVELS, BANDS } from './levels.js'
 import { PICS } from './images.js'
+import { MAX_MISTAKES, asItem, tileId, hasPictures as levelHasPictures } from './rules.js'
 
 const ICONS = {
   Images, BookOpenText, Ear, Apple, Hand, Smile, Shapes, Music, School,
@@ -93,8 +95,6 @@ const TONES = [
   },
 ]
 
-const MAX_MISTAKES = 4
-
 const shuffled = (arr) => {
   const a = [...arr]
   for (let i = a.length - 1; i > 0; i -= 1) {
@@ -107,10 +107,7 @@ const shuffled = (arr) => {
 // Flatten a level into 16 tiles, each remembering which group it came from.
 const buildTiles = (level) =>
   shuffled(level.groups.flatMap((g, gi) =>
-    g.items.map((raw, ii) => {
-      const item = typeof raw === 'string' ? { word: raw } : raw
-      return { ...item, group: gi, id: `${gi}-${ii}` }
-    })))
+    g.items.map((raw, ii) => ({ ...asItem(raw), group: gi, id: tileId(gi, ii) }))))
 
 // ── Menu ────────────────────────────────────────────────────────────────────
 
@@ -125,7 +122,7 @@ const BAND_ACCENT = {
 }
 
 function LevelCard({ level, lang, onPick }) {
-  const picture = level.groups.some((g) => g.items.some((i) => typeof i !== 'string' && i.img))
+  const picture = levelHasPictures(level)
   const accent = BAND_ACCENT[level.band] || BAND_ACCENT.early
   return (
     <button
@@ -371,7 +368,7 @@ export function WordWallGame({ lang = 'en', isDisplayMode = false }) {
   const throwConfetti = useConfetti(canvasRef)
 
   const level = levelIndex === null ? null : LEVELS[levelIndex]
-  const hasPictures = !!level?.groups.some((g) => g.items.some((i) => typeof i !== 'string' && i.img))
+  const hasPictures = levelHasPictures(level)
   const big = isDisplayMode
 
   useEffect(() => () => clearTimeout(toastTimer.current), [])
@@ -404,7 +401,9 @@ export function WordWallGame({ lang = 'en', isDisplayMode = false }) {
   }
 
   const check = () => {
-    if (selected.length !== 4) return
+    // Not again while the last wrong four are still shaking: a double tap,
+    // here or on the phone, must not cost two hearts for one guess.
+    if (selected.length !== 4 || wrongIds.length) return
     const chosen = tiles.filter((x) => selected.includes(x.id))
     const first = chosen[0].group
     if (chosen.every((x) => x.group === first)) {
@@ -446,6 +445,63 @@ export function WordWallGame({ lang = 'en', isDisplayMode = false }) {
     setMistakes(0)
     flash(t(lang, 'infinite'), 'good')
   }
+
+  // ── The phone remote ──────────────────────────────────────────────────────
+  // Mr Bowen's phone (remote.jsx) draws its own copy of the wall from this.
+  // The words and pictures come from the phone's copy of levels.js, so only
+  // tile ids travel, in the order they sit on the projector. Requests are
+  // checked against the wall as it stands: one can be a moment out of date.
+  useGameRemote({
+    k: 'wordwall',
+    l: levelIndex,
+    ti: tiles.map((x) => x.id),
+    sel: selected,
+    sv: solved,
+    m: mistakes,
+    inf: infinite ? 1 : 0,
+    w: showWords ? 1 : 0,
+    o: outcome,
+    // What the last check said on the projector: 'warn' (one away), 'bad', or 'good'.
+    ts: toast?.kind ?? null,
+  }, (a) => {
+    const playing = level !== null && !outcome
+    switch (a.do) {
+      case 'start':
+        if (LEVELS[a.i]) start(a.i)
+        return
+      case 'menu':
+        setLevelIndex(null)
+        return
+      case 'tile':
+        if (playing && tiles.some((x) => x.id === a.id)) toggle(a.id)
+        return
+      case 'check':
+        if (playing) check()
+        return
+      case 'clear':
+        if (playing) setSelected([])
+        return
+      case 'shuffle':
+        if (playing && tiles.length) setTiles(shuffled(tiles))
+        return
+      case 'words':
+        if (level !== null && hasPictures) setShowWords((v) => !v)
+        return
+      case 'look':
+        if (outcome === 'won') setOutcome(null)
+        return
+      case 'on':
+        if (outcome === 'lost') playOn()
+        return
+      case 'again':
+        if (level !== null) start(levelIndex)
+        return
+      case 'answers':
+        if (outcome === 'lost') revealRest()
+        return
+      default:
+    }
+  })
 
   if (level === null) return <Menu lang={lang} onPick={start} />
 

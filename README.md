@@ -215,6 +215,18 @@ starts "Slide 9 —".
   (`content/y7-science/U03_models/ui.jsx`), which register with the slide
   (`src/lib/deckControls.js`). A widget with its own `<button>`s stays
   laptop-only; switching it to `Btn` is all it takes.
+- **Games** (Jeopardy, Word Wall) get a screen of their own on the phone. The
+  game calls `useGameRemote(state, onAction)` (`src/lib/deckControls.js`) with a
+  small picture of where it stands — indexes, ids, names and scores, never clue
+  text, because the phone has its own copy of the boards — and the slide's
+  `remote` (a lazy `remote.jsx` beside the game, its own chunk) draws it with
+  the pieces in `src/remote/GamePanel.jsx`. Jeopardy's phone holds the board,
+  each clue *with its answer before the reveal*, the award buttons and a score
+  fix; Word Wall's holds the puzzle list, the tiles in the projector's order,
+  Check / Clear / Mix / Words, and the four groups behind **Answers**. Finish
+  and leaving a wall take two taps. Team names are still typed on the laptop.
+  A clock in a game's state goes as `t` (its end) and arrives as `tl`, like the
+  deck's timer, so a countdown costs one message, not thirty.
 - **The connection** is Supabase realtime on The Current's project (free plan,
   shared with the school's admin app), plus BroadcastChannel between windows of
   one browser. A deck opens nothing until the button is pressed, and loads the
@@ -240,7 +252,8 @@ The `games` course works the same way, except a "unit" is one game rather than a
 sequence of slides: a single `layout: 'game'` slide handing the whole slide to a
 widget. On a game slide the deck's Enter/arrow navigation is switched off, so
 the keyboard belongs to the game — leave via **Back** or **Finish**. See
-[`content/games/G01_word-wall/`](content/games/G01_word-wall/).
+[`content/games/G01_word-wall/`](content/games/G01_word-wall/). Jeopardy and Word
+Wall can be run from the phone remote (see "Phone remote" above).
 
 **Pictures on a Jeopardy clue.** A clue in
 [`content/games/G02_jeopardy/boards.js`](content/games/G02_jeopardy/boards.js)

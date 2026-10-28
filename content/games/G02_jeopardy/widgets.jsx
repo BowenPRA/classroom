@@ -48,7 +48,9 @@ import {
 } from 'lucide-react'
 
 import { tr, field } from '../../../src/lib/lang.js'
+import { useGameRemote } from '../../../src/lib/deckControls.js'
 import { BOARDS } from './boards.js'
+import { TEAM_COLOURS, VALUES, TIMER_SECONDS, MIN_TEAMS, MAX_TEAMS, SCORE_STEPS, cellKey } from './rules.js'
 
 // Clue pictures. A clue may carry `qImage` (shown as soon as the clue opens,
 // because seeing the thing is part of understanding the question) and/or
@@ -155,8 +157,7 @@ import phonk from './audio/phonk.opus'
 
 const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot, Apple, Atom, Rocket, Globe, Variable, Droplets, Orbit, Sun }
 
-// The clue countdown, and the music that runs with it.
-const TIMER_SECONDS = 30
+// The clue countdown (TIMER_SECONDS, in rules.js), and the music that runs with it.
 // Loud enough to be heard over a room of Year 7s arguing, quiet enough that
 // the teacher does not have to raise their voice to read the clue again.
 const MUSIC_VOLUME = 0.35
@@ -242,14 +243,8 @@ const glue = (text) => text
   .replace(/ ([:?!;»])/g, ' $1')
   .replace(/« /g, '« ')
 
-// Six team colours, legible as a bar or a dot on light and on dark. Handed out
-// in team order, so a team keeps its colour from the scoreboard to the award
-// buttons to the final table.
-const TEAM_COLOURS = ['#1cb0f6', '#58cc02', '#ff9600', '#ec4899', '#8b5cf6', '#14b8a6']
-
-const VALUES = [100, 200, 300, 400, 500]
-
-const cellKey = (c, r) => `${c}-${r}`
+// The team colours, the clue values and the rest of the numbers the phone
+// remote shares are in rules.js.
 
 // ── Confetti ────────────────────────────────────────────────────────────────
 // Squares of paper thrown once, on a canvas sized to the widget so nothing
@@ -437,7 +432,7 @@ function Setup({
                     onChange={(e) => rename(i, e.target.value)}
                     className="flex-1 min-w-0 px-3 py-2 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-black text-sm focus:outline-none focus:border-[#1cb0f6]"
                   />
-                  {names.length > 2 && (
+                  {names.length > MIN_TEAMS && (
                     <button
                       type="button"
                       onClick={() => remove(i)}
@@ -448,7 +443,7 @@ function Setup({
                   )}
                 </div>
               ))}
-              {names.length < 6 && (
+              {names.length < MAX_TEAMS && (
                 <button
                   type="button"
                   onClick={add}
@@ -578,7 +573,11 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
   const [revealed, setRevealed] = useState(false)
   const [picked, setPicked] = useState([]) // team indexes awarded this clue
   const [flash, setFlash] = useState(null)
-  const [seconds, setSeconds] = useState(null) // null = timer not running
+  // The countdown, as the moment it ends (null = not running) and the clock it
+  // was last read at. An end rather than a number ticking down, so the phone
+  // remote is told once when it starts and counts down by itself.
+  const [clockEnd, setClockEnd] = useState(null)
+  const [clockNow, setClockNow] = useState(0)
   const [autoTimer, setAutoTimer] = useState(true) // the countdown starts itself
   const [trackIndex, setTrackIndex] = useState(0)
   const [muted, setMuted] = useState(false)
@@ -605,11 +604,26 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
   // teacher's pace to set: tapping the countdown stops it, and the Setup
   // checkbox turns the automatic start off for a lesson where the thinking
   // time matters more than the pressure.
+  // null = not running; 0 = time is up.
+  const seconds = clockEnd === null ? null : Math.max(0, Math.ceil((clockEnd - clockNow) / 1000))
+  const startClock = useCallback(() => {
+    const now = Date.now()
+    setClockNow(now)
+    setClockEnd(now + TIMER_SECONDS * 1000)
+  }, [])
+  const stopClock = useCallback(() => setClockEnd(null), [])
+  // Read the clock just after each whole second, until it runs out.
   useEffect(() => {
-    if (seconds === null || seconds <= 0) return undefined
-    const id = setTimeout(() => setSeconds((s) => s - 1), 1000)
+    if (clockEnd === null) return undefined
+    let id
+    const tick = () => {
+      const now = Date.now()
+      setClockNow(now)
+      if (now < clockEnd) id = setTimeout(tick, (clockEnd - now) % 1000 || 1000)
+    }
+    id = setTimeout(tick, (clockEnd - Date.now()) % 1000 || 1000)
     return () => clearTimeout(id)
-  }, [seconds])
+  }, [clockEnd])
 
   // The music follows the countdown exactly: it starts when the clock starts
   // and fades when the clock stops, so the sound in the room always means
@@ -645,7 +659,7 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
     setOpen(null)
     setRevealed(false)
     setPicked([])
-    setSeconds(null)
+    setClockEnd(null)
   }, [])
 
   useEffect(() => {
@@ -667,7 +681,8 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
     setOpen({ c, r, category: board.categories[c], clue: board.categories[c].clues[r] })
     setRevealed(false)
     setPicked([])
-    setSeconds(autoTimer ? TIMER_SECONDS : null)
+    if (autoTimer) startClock()
+    else setClockEnd(null)
   }
 
   // Correcting the scoreboard by hand. Points awarded to the wrong team, a
@@ -714,6 +729,69 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
     closeClue()
     setScreen('board')
   }
+
+  // ── The phone remote ──────────────────────────────────────────────────────
+  // Mr Bowen's phone (remote.jsx) draws its own copy of the game from this:
+  // the board and its clues come from the phone's copy of boards.js, so only
+  // indexes, names and scores travel. Its requests are checked against the
+  // game as it stands, because one can arrive a moment out of date.
+  const resize = (n) => setNames((cur) => (n > cur.length ? [...cur, ...Array(n - cur.length).fill('')] : cur.slice(0, n)))
+  useGameRemote({
+    k: 'jeopardy',
+    s: screen,
+    b: boardIndex,
+    // In Setup, the names as typed so far; in the game, each team's score too.
+    tm: screen === 'setup' ? names.map((name) => [name.trim(), 0]) : teams.map((team) => [team.name, team.score]),
+    u: used,
+    o: open ? [open.c, open.r] : null,
+    rv: revealed ? 1 : 0,
+    pk: picked,
+    t: clockEnd,
+  }, (a) => {
+    const clueOpen = screen === 'board' && open
+    switch (a.do) {
+      case 'board':
+        if (screen === 'setup' && BOARDS[a.i]) setBoardIndex(a.i)
+        return
+      case 'teams':
+        if (screen === 'setup' && Number.isInteger(a.n) && a.n >= MIN_TEAMS && a.n <= MAX_TEAMS) resize(a.n)
+        return
+      case 'start':
+        if (screen === 'setup') startGame()
+        return
+      case 'open':
+        if (screen === 'board' && !open && board.categories[a.c] && VALUES[a.r] !== undefined) openClue(a.c, a.r)
+        return
+      case 'clock':
+        if (clueOpen) { if (a.on) startClock(); else stopClock() }
+        return
+      case 'reveal':
+        if (clueOpen) setRevealed(true)
+        return
+      case 'pick':
+        if (clueOpen && revealed && teams[a.i]) togglePick(a.i)
+        return
+      case 'award':
+        if (clueOpen && revealed) confirm()
+        return
+      case 'close':
+        if (clueOpen) closeClue()
+        return
+      case 'score':
+        if (screen !== 'setup' && teams[a.i] && SCORE_STEPS.includes(a.d)) adjustScore(a.i, a.d)
+        return
+      case 'finish':
+        if (screen === 'board') finishNow()
+        return
+      case 'replay':
+        if (screen === 'final') replay()
+        return
+      case 'setup':
+        if (screen === 'final') setScreen('setup')
+        return
+      default:
+    }
+  })
 
   // ── Setup screen ──────────────────────────────────────────────────────────
   if (screen === 'setup') {
@@ -946,7 +1024,7 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
               {seconds === null || seconds <= 0 ? (
                 <button
                   type="button"
-                  onClick={() => setSeconds(TIMER_SECONDS)}
+                  onClick={startClock}
                   title={t(lang, 'startTimer')}
                   className={`shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border-2 font-black uppercase tracking-widest text-[10px] transition-colors ${
                     seconds === null
@@ -962,7 +1040,7 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
               ) : (
                 <button
                   type="button"
-                  onClick={() => setSeconds(null)}
+                  onClick={stopClock}
                   title={t(lang, 'stopTimer')}
                   aria-label={t(lang, 'stopTimer')}
                   className={`shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border-2 font-black tabular-nums transition-colors ${
@@ -1124,7 +1202,7 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
                   <span className="min-w-0 flex-1 truncate font-black tracking-tight text-slate-800 dark:text-slate-100 text-sm sm:text-base">
                     {team.label}
                   </span>
-                  {[-500, -100].map((delta) => (
+                  {SCORE_STEPS.filter((delta) => delta < 0).map((delta) => (
                     <button
                       key={delta}
                       type="button"
@@ -1142,7 +1220,7 @@ export function JeopardyGame({ lang = 'en', isDisplayMode = false }) {
                     className="shrink-0 w-24 px-2 py-1.5 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-center font-black tabular-nums text-sm sm:text-base focus:outline-none focus:border-[#1cb0f6]"
                     style={{ color: team.colour }}
                   />
-                  {[100, 500].map((delta) => (
+                  {SCORE_STEPS.filter((delta) => delta > 0).map((delta) => (
                     <button
                       key={delta}
                       type="button"

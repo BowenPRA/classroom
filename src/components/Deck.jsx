@@ -7,7 +7,7 @@ import { useStudentPicker } from '../lib/useStudentPicker.js'
 import { useDarkMode } from '../lib/useDarkMode.js'
 import { useDisplayMode } from '../lib/useDisplayMode.js'
 import { useDeckRemote } from '../lib/useDeckRemote.js'
-import { RevealContext, SlideButtonsContext, createButtonRegistry } from '../lib/deckControls.js'
+import { RevealContext, SlideButtonsContext, GameRemoteContext, createButtonRegistry, createGameChannel } from '../lib/deckControls.js'
 import { RandomStudentModal } from './RandomStudent.jsx'
 import { getLayout, resolveSlide } from './layouts/index.js'
 import { TopBar, BottomBar, ProjectorDock, ZoomModal, UnknownLayout, BlankScreen, TimerBadge } from './DeckChrome.jsx'
@@ -41,10 +41,12 @@ export default function Deck({ lesson, course }) {
 
   // What the phone remote can reach besides the slide index: the slide's
   // answer box (closed again on every slide change), the slide's widget
-  // buttons, a blank screen and a countdown.
+  // buttons, a game on the slide, a blank screen and a countdown.
   const [revealOpen, setRevealOpen] = useState(false)
   const [buttons, setButtons] = useState([])
   const [registry] = useState(() => createButtonRegistry(setButtons))
+  const [game, setGame] = useState(null)
+  const [gameChannel] = useState(() => createGameChannel(setGame))
   const [blank, setBlank] = useState(false)
   const [timerEnd, setTimerEnd] = useState(null)
   const [remoteOpen, setRemoteOpen] = useState(false)
@@ -111,6 +113,9 @@ export default function Deck({ lesson, course }) {
       case 'btn':
         registry.press(msg.k)
         return
+      case 'game':
+        gameChannel.act(msg.a)
+        return
       case 'timer':
         setTimerEnd(msg.s > 0 ? Date.now() + Math.min(msg.s, TIMER_MAX) * 1000 : null)
         return
@@ -132,6 +137,8 @@ export default function Deck({ lesson, course }) {
     pick: picker.current ? { name: picker.current, c: picker.pickCount, left: picker.remaining, reset: picker.justReset } : null,
     names: picker.names.length,
     btns: buttons,
+    // The game on this slide, as it describes itself (useGameRemote), or null.
+    g: game,
     t: timerEnd,
   }, onRemoteRequest)
   const openRemote = () => {
@@ -222,14 +229,16 @@ export default function Deck({ lesson, course }) {
       <div className={`flex-1 flex justify-center items-center z-10 overflow-hidden relative min-h-0 ${isDisplayMode ? 'p-0' : 'p-2 sm:p-4 lg:p-8'}`}>
         <RevealContext.Provider value={revealControl}>
           <SlideButtonsContext.Provider value={registry}>
-            <div
-              key={currentIndex}
-              className={`w-full h-full flex flex-col bg-white dark:bg-slate-900 overflow-hidden animate-in fade-in zoom-in-[0.98] duration-500 ${isDisplayMode ? 'max-w-none' : 'max-w-7xl rounded-2xl sm:rounded-3xl lg:rounded-[2rem] shadow-sm border-2 border-slate-200 dark:border-slate-800'}`}
-            >
-              {LayoutComp
-                ? createElement(LayoutComp, { slide: s, ctx })
-                : <UnknownLayout slide={s} index={currentIndex} />}
-            </div>
+            <GameRemoteContext.Provider value={gameChannel}>
+              <div
+                key={currentIndex}
+                className={`w-full h-full flex flex-col bg-white dark:bg-slate-900 overflow-hidden animate-in fade-in zoom-in-[0.98] duration-500 ${isDisplayMode ? 'max-w-none' : 'max-w-7xl rounded-2xl sm:rounded-3xl lg:rounded-[2rem] shadow-sm border-2 border-slate-200 dark:border-slate-800'}`}
+              >
+                {LayoutComp
+                  ? createElement(LayoutComp, { slide: s, ctx })
+                  : <UnknownLayout slide={s} index={currentIndex} />}
+              </div>
+            </GameRemoteContext.Provider>
           </SlideButtonsContext.Provider>
         </RevealContext.Provider>
         {timerEnd && <TimerBadge key={timerEnd} end={timerEnd} isDisplayMode={isDisplayMode} onDone={endTimer} />}

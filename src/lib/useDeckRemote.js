@@ -34,10 +34,14 @@ const writeOn = (on) => {
 /** The phone's link for a room: this site, #/remote/<room>. */
 export const remoteUrl = (room) => `${window.location.origin}${window.location.pathname}#/remote/${room}`
 
+// A clock's end on this laptop, as the milliseconds left when it is sent.
+const msLeft = (end) => (end ? Math.max(0, end - Date.now()) : null)
+
 /**
  * @param {object} snapshot  what the phone shows: plain values only. A `t`
  *   field is the timer's end on this laptop's clock; it travels as `tl`, the
- *   milliseconds left, so the two clocks never need to agree.
+ *   milliseconds left, so the two clocks never need to agree. The game's own
+ *   state (`g`) may carry a `t` of its own (a clue's countdown), sent the same way.
  * @param {(msg: object) => void} onRequest  a request from the phone
  * @returns {{ on, room, status, phones, start, stop, renew }}
  *   status: 'off' | 'connecting' | 'live' | 'offline'; phones: how many phones
@@ -61,8 +65,13 @@ export function useDeckRemote(snapshot, onRequest) {
   useEffect(() => { requestRef.current = onRequest })
 
   const sendState = useCallback(() => {
-    const { t, ...rest } = snapRef.current
-    busRef.current?.send('state', { ...rest, tl: t ? Math.max(0, t - Date.now()) : null })
+    const { t, g, ...rest } = snapRef.current
+    let game = g ?? null
+    if (game && 't' in game) {
+      const { t: end, ...play } = game
+      game = { ...play, tl: msLeft(end) }
+    }
+    busRef.current?.send('state', { ...rest, g: game, tl: msLeft(t) })
   }, [])
 
   const countPhones = useCallback(() => {

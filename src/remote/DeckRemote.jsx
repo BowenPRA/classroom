@@ -17,8 +17,14 @@
 // and in use: it goes quiet when the screen locks, and pauses itself after 20
 // minutes without a tap.
 //
+// A game on the slide (Jeopardy, Word Wall) brings its own screen instead: the
+// slide's `remote`, handed the game's state (`g`, from useGameRemote on the
+// laptop) and drawn in the same three bands (src/remote/GamePanel.jsx), with
+// the deck's tools kept above its main button. Back and Next shrink to a row
+// there, and go altogether on a deck that is only the game.
+//
 // For the teacher only, so English only.
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { Navigate, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import {
   ChevronLeft, ChevronRight, Shuffle, EyeOff, Eye, Timer, ListOrdered, Loader2,
@@ -232,6 +238,8 @@ function RemoteRoom({ room }) {
   const slideButtons = ready && Array.isArray(host.btns) ? host.btns : []
   const revealText = plain(slide?.reveal?.answer)
   const pickShown = Boolean(host?.pick) && now - pickAt < PICK_SHOWN_MS
+  // A game with a phone screen of its own, and its state from the laptop.
+  const GameScreen = ready && slide?.layout === 'game' && slide.remote && host.g ? slide.remote : null
 
   // The middle of the screen is for reading: the plan's lines for this slide,
   // its answers, and what the answer box will show. Where we are is pinned
@@ -269,6 +277,45 @@ function RemoteRoom({ room }) {
   const statusTone = { ok: 'text-[#7ee03b]', warn: 'text-amber-300', wait: 'text-slate-400' }[status.tone]
   const StatusIcon = status.icon || (status.spin ? Loader2 : null)
 
+  // What has to be said whatever is on the slide.
+  const banners = (
+    <>
+      {!laptopLive && (
+        <Banner tone="warn" icon={WifiOff}>The laptop stopped answering. Is the deck still open, with Phone remote on?</Banner>
+      )}
+      {laptopLive && host.blank && (
+        <Banner tone="warn" icon={EyeOff} action={{ label: 'Show slide', onClick: () => send('blank', { on: false }) }}>
+          The screen is blank.
+        </Banner>
+      )}
+      {laptopLive && !host.proj && (
+        <Banner tone="info" icon={MonitorUp} action={{ label: 'Full screen', onClick: () => send('proj', { on: true }) }}>
+          The projector shows the toolbars.
+        </Banner>
+      )}
+      {pickShown && <PickFlash pick={host.pick} onClose={() => setPickAt(0)} />}
+    </>
+  )
+  // The deck's tools. A deck that is only a game has no slides to jump between.
+  const slidesTool = !GameScreen || n > 1
+  const tools = (
+    <div className={`grid gap-2 ${slidesTool ? 'grid-cols-4' : 'grid-cols-3'}`}>
+      <Tool icon={Shuffle} label={host?.names === 0 ? 'No list' : 'Pick'} disabled={!ready || host.names === 0} onClick={() => send('pick')} />
+      <Tool
+        icon={host?.blank ? Eye : EyeOff}
+        label={host?.blank ? 'Show' : 'Blank'}
+        on={Boolean(host?.blank)}
+        disabled={!ready}
+        onClick={() => send('blank', { on: !host.blank })}
+      />
+      <Tool icon={Timer} label={timerLeft !== null ? clock(timerLeft) : 'Timer'} on={timerLeft !== null} disabled={!ready} onClick={() => setSheet('timer')} />
+      {slidesTool && <Tool icon={ListOrdered} label="Slides" disabled={!ready} onClick={() => setSheet('slides')} />}
+    </div>
+  )
+  const wakeNote = wake === 'unsupported' && (
+    <p className="text-center text-[11px] font-bold text-slate-500">This browser cannot keep the screen on: tap now and then.</p>
+  )
+
   return (
     <Shell>
       {/* data-wake: whether the screen is held on ('on' / 'off' / 'unsupported'), for checks. */}
@@ -295,121 +342,130 @@ function RemoteRoom({ room }) {
           )}
         </header>
 
-        {/* A sideways swipe anywhere from here to the controls turns the slide.
-            pan-y: the browser scrolls the notes up and down, and leaves
-            sideways swipes to us (never its swipe-to-go-back). */}
-        <div
-          className="flex-1 min-h-0 flex flex-col"
-          style={{ touchAction: 'pan-y', overscrollBehaviorX: 'none' }}
-          onPointerDown={onSwipeDown}
-          onPointerMove={onSwipeMove}
-          onPointerUp={onSwipeUp}
-          onPointerCancel={() => { touch.current = null }}
-        >
-          {host && lesson && (
-            <section className="shrink-0 px-4 pb-3 space-y-2.5 border-b border-white/10">
-              <div key={i} className="flex items-start gap-3 animate-in fade-in duration-300">
-                <div className="shrink-0 w-[4.25rem] rounded-2xl bg-white/[0.07] border border-white/10 py-2 text-center">
-                  <div data-slide-number className="text-[2rem] font-black tabular-nums leading-none">{i + 1}</div>
-                  <div className="mt-1 text-[11px] font-black text-slate-400 tabular-nums">of {n}</div>
-                </div>
-                <div className="min-w-0 flex-1 pt-0.5">
-                  {slide?.eyebrow && slide?.title && <div className="text-sm font-bold text-sky-300 truncate">{plain(slide.eyebrow)}</div>}
-                  <h1 className="text-[1.45rem] font-black leading-tight tracking-tight line-clamp-2">{slideTitle(slide, i)}</h1>
-                  <div className="mt-0.5 text-sm font-bold text-slate-400 truncate">
-                    {i < n - 1 ? <>Next: <span className="text-slate-200">{slideTitle(slides[i + 1], i + 1)}</span></> : 'Last slide'}
+        {GameScreen ? (
+          // The game's own screen. No swipe here: a sideways drag across a
+          // board is a finger on its way to a tile, not a slide turn.
+          <>
+            {(host.blank || !host.proj || pickShown) && (
+              <section className="shrink-0 px-4 pb-3 space-y-2.5">{banners}</section>
+            )}
+            <Suspense fallback={<div className="flex-1 flex items-center justify-center"><Loader2 className="w-8 h-8 animate-spin text-slate-500" strokeWidth={2.5} /></div>}>
+              <GameScreen
+                state={host.g}
+                act={(a) => send('game', { a })}
+                at={host.at}
+                now={now}
+                tools={(
+                  <>
+                    {tools}
+                    {n > 1 && (
+                      <div className="grid grid-cols-2 gap-2">
+                        <button onClick={prev} disabled={i === 0} className="h-12 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center gap-1 text-sm font-black uppercase tracking-widest text-slate-200 active:bg-white/15 disabled:opacity-30">
+                          <ChevronLeft className="w-5 h-5" strokeWidth={3} />Back
+                        </button>
+                        <button onClick={next} disabled={i >= n - 1} className="h-12 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center gap-1 text-sm font-black uppercase tracking-widest text-slate-200 active:bg-white/15 disabled:opacity-30">
+                          Next<ChevronRight className="w-5 h-5" strokeWidth={3} />
+                        </button>
+                      </div>
+                    )}
+                    {wakeNote}
+                  </>
+                )}
+              />
+            </Suspense>
+          </>
+        ) : (
+          <>
+          {/* A sideways swipe anywhere from here to the controls turns the slide.
+              pan-y: the browser scrolls the notes up and down, and leaves
+              sideways swipes to us (never its swipe-to-go-back). */}
+          <div
+            className="flex-1 min-h-0 flex flex-col"
+            style={{ touchAction: 'pan-y', overscrollBehaviorX: 'none' }}
+            onPointerDown={onSwipeDown}
+            onPointerMove={onSwipeMove}
+            onPointerUp={onSwipeUp}
+            onPointerCancel={() => { touch.current = null }}
+          >
+            {host && lesson && (
+              <section className="shrink-0 px-4 pb-3 space-y-2.5 border-b border-white/10">
+                <div key={i} className="flex items-start gap-3 animate-in fade-in duration-300">
+                  <div className="shrink-0 w-[4.25rem] rounded-2xl bg-white/[0.07] border border-white/10 py-2 text-center">
+                    <div data-slide-number className="text-[2rem] font-black tabular-nums leading-none">{i + 1}</div>
+                    <div className="mt-1 text-[11px] font-black text-slate-400 tabular-nums">of {n}</div>
+                  </div>
+                  <div className="min-w-0 flex-1 pt-0.5">
+                    {slide?.eyebrow && slide?.title && <div className="text-sm font-bold text-sky-300 truncate">{plain(slide.eyebrow)}</div>}
+                    <h1 className="text-[1.45rem] font-black leading-tight tracking-tight line-clamp-2">{slideTitle(slide, i)}</h1>
+                    <div className="mt-0.5 text-sm font-bold text-slate-400 truncate">
+                      {i < n - 1 ? <>Next: <span className="text-slate-200">{slideTitle(slides[i + 1], i + 1)}</span></> : 'Last slide'}
+                    </div>
                   </div>
                 </div>
+                {banners}
+              </section>
+            )}
+
+            <main className="flex-1 min-h-0 overflow-y-auto px-4" style={{ touchAction: 'pan-y', overscrollBehaviorX: 'none' }}>
+              {body}
+            </main>
+          </div>
+
+          <footer className="shrink-0 px-4 pt-3 pb-[max(env(safe-area-inset-bottom),0.9rem)] border-t border-white/10 bg-[#0b1120] space-y-3">
+            {ready && (slideButtons.length > 0 || hasReveal) && (
+              <div className="space-y-2">
+                {slideButtons.length > 0 && (
+                  <div>
+                    <div className="mb-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">On the slide</div>
+                    <div className={`grid gap-2 ${slideButtons.length === 1 ? 'grid-cols-1' : slideButtons.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
+                      {slideButtons.map(([k, label, off]) => (
+                        <button
+                          key={k}
+                          data-slide-button
+                          disabled={Boolean(off)}
+                          onClick={() => send('btn', { k })}
+                          className="min-h-[3rem] rounded-xl bg-[#0087a8] border-b-4 border-[#00697f] px-2 py-1.5 font-black text-[0.8rem] uppercase tracking-wide leading-tight active:border-b-0 active:translate-y-1 transition-all disabled:opacity-30"
+                        >
+                          {label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {hasReveal && (
+                  <button
+                    data-answer-box
+                    onClick={() => send('reveal', { open: !host.rv })}
+                    className={`w-full h-12 rounded-xl font-black uppercase tracking-widest text-sm transition-all active:scale-[0.98] ${host.rv ? 'bg-white/5 border border-white/20 text-slate-200' : 'bg-[#8b5cf6] border-b-4 border-[#6d3fd8] text-white'}`}
+                  >
+                    {host.rv ? 'Close the answer box' : 'Open the answer box'}
+                  </button>
+                )}
               </div>
-
-              {!laptopLive && (
-                <Banner tone="warn" icon={WifiOff}>The laptop stopped answering. Is the deck still open, with Phone remote on?</Banner>
-              )}
-              {laptopLive && host.blank && (
-                <Banner tone="warn" icon={EyeOff} action={{ label: 'Show slide', onClick: () => send('blank', { on: false }) }}>
-                  The screen is blank.
-                </Banner>
-              )}
-              {laptopLive && !host.proj && (
-                <Banner tone="info" icon={MonitorUp} action={{ label: 'Full screen', onClick: () => send('proj', { on: true }) }}>
-                  The projector shows the toolbars.
-                </Banner>
-              )}
-              {pickShown && <PickFlash pick={host.pick} onClose={() => setPickAt(0)} />}
-            </section>
-          )}
-
-          <main className="flex-1 min-h-0 overflow-y-auto px-4" style={{ touchAction: 'pan-y', overscrollBehaviorX: 'none' }}>
-            {body}
-          </main>
-        </div>
-
-        <footer className="shrink-0 px-4 pt-3 pb-[max(env(safe-area-inset-bottom),0.9rem)] border-t border-white/10 bg-[#0b1120] space-y-3">
-          {ready && (slideButtons.length > 0 || hasReveal) && (
-            <div className="space-y-2">
-              {slideButtons.length > 0 && (
-                <div>
-                  <div className="mb-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">On the slide</div>
-                  <div className={`grid gap-2 ${slideButtons.length === 1 ? 'grid-cols-1' : slideButtons.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
-                    {slideButtons.map(([k, label, off]) => (
-                      <button
-                        key={k}
-                        data-slide-button
-                        disabled={Boolean(off)}
-                        onClick={() => send('btn', { k })}
-                        className="min-h-[3rem] rounded-xl bg-[#0087a8] border-b-4 border-[#00697f] px-2 py-1.5 font-black text-[0.8rem] uppercase tracking-wide leading-tight active:border-b-0 active:translate-y-1 transition-all disabled:opacity-30"
-                      >
-                        {label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-              {hasReveal && (
-                <button
-                  data-answer-box
-                  onClick={() => send('reveal', { open: !host.rv })}
-                  className={`w-full h-12 rounded-xl font-black uppercase tracking-widest text-sm transition-all active:scale-[0.98] ${host.rv ? 'bg-white/5 border border-white/20 text-slate-200' : 'bg-[#8b5cf6] border-b-4 border-[#6d3fd8] text-white'}`}
-                >
-                  {host.rv ? 'Close the answer box' : 'Open the answer box'}
-                </button>
-              )}
+            )}
+            {tools}
+            <div className="grid grid-cols-3 gap-3">
+              <button
+                onClick={prev}
+                disabled={!ready || i === 0}
+                className="h-20 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center gap-1 font-black uppercase tracking-widest text-slate-200 active:bg-white/15 active:scale-[0.98] transition-all disabled:opacity-30"
+              >
+                <ChevronLeft className="w-7 h-7" strokeWidth={3} />
+                Back
+              </button>
+              <button
+                onClick={next}
+                disabled={!ready || i >= n - 1}
+                className="col-span-2 h-20 rounded-2xl bg-[#1cb0f6] border-b-[6px] border-[#1899d6] flex items-center justify-center gap-1 text-xl font-black uppercase tracking-widest text-white active:border-b-0 active:translate-y-1 transition-all disabled:opacity-30 disabled:border-b-0"
+              >
+                Next
+                <ChevronRight className="w-8 h-8" strokeWidth={3} />
+              </button>
             </div>
-          )}
-          <div className="grid grid-cols-4 gap-2">
-            <Tool icon={Shuffle} label={host?.names === 0 ? 'No list' : 'Pick'} disabled={!ready || host.names === 0} onClick={() => send('pick')} />
-            <Tool
-              icon={host?.blank ? Eye : EyeOff}
-              label={host?.blank ? 'Show' : 'Blank'}
-              on={Boolean(host?.blank)}
-              disabled={!ready}
-              onClick={() => send('blank', { on: !host.blank })}
-            />
-            <Tool icon={Timer} label={timerLeft !== null ? clock(timerLeft) : 'Timer'} on={timerLeft !== null} disabled={!ready} onClick={() => setSheet('timer')} />
-            <Tool icon={ListOrdered} label="Slides" disabled={!ready} onClick={() => setSheet('slides')} />
-          </div>
-          <div className="grid grid-cols-3 gap-3">
-            <button
-              onClick={prev}
-              disabled={!ready || i === 0}
-              className="h-20 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center gap-1 font-black uppercase tracking-widest text-slate-200 active:bg-white/15 active:scale-[0.98] transition-all disabled:opacity-30"
-            >
-              <ChevronLeft className="w-7 h-7" strokeWidth={3} />
-              Back
-            </button>
-            <button
-              onClick={next}
-              disabled={!ready || i >= n - 1}
-              className="col-span-2 h-20 rounded-2xl bg-[#1cb0f6] border-b-[6px] border-[#1899d6] flex items-center justify-center gap-1 text-xl font-black uppercase tracking-widest text-white active:border-b-0 active:translate-y-1 transition-all disabled:opacity-30 disabled:border-b-0"
-            >
-              Next
-              <ChevronRight className="w-8 h-8" strokeWidth={3} />
-            </button>
-          </div>
-          {wake === 'unsupported' && (
-            <p className="text-center text-[11px] font-bold text-slate-500">This browser cannot keep the screen on: tap now and then.</p>
-          )}
-        </footer>
+            {wakeNote}
+          </footer>
+          </>
+        )}
       </div>
 
       {sheet === 'slides' && ready && (
