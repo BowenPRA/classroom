@@ -1,14 +1,68 @@
 // src/guess-who/art.jsx
-// The game's pictures: the night sky behind the board, the Riverbucks token,
+// The game's pictures: the night sky behind the board, the jack-o'-lantern prize,
 // the ghost on a flipped card, a face for any person or monster, and the QR
 // code that brings the phone in. All drawn here in SVG or CSS, so there is
 // nothing to source or credit.
-import { useMemo } from 'react'
+import { useId, useMemo } from 'react'
 import { encode } from 'uqr'
 
-/** A Riverbucks amount as a flat gold token: the one way the game shows a prize. */
-export function Bucks({ n, className = '' }) {
-  return <span className={`gw-bucks ${n ? '' : 'is-zero'} ${className}`}>{n}</span>
+/**
+ * A jack-o'-lantern: a ribbed, shaded pumpkin with a carved face. Lit, the face
+ * glows from inside; out, it is a dark carving on a faded pumpkin.
+ */
+export function Lantern({ lit = true, className = '' }) {
+  // Gradient ids must be unique per drawing; useId's punctuation is not safe in url().
+  const id = `gwl${useId().replace(/[^a-zA-Z0-9]/g, '')}`
+  return (
+    <svg viewBox="0 0 120 112" className={`gw-lantern ${lit ? 'is-lit' : 'is-out'} ${className}`} aria-hidden="true">
+      <defs>
+        <radialGradient id={`${id}b`} cx="45%" cy="38%" r="70%">
+          <stop offset="0" stopColor="#ffb551" />
+          <stop offset="0.55" stopColor="#ff8a1f" />
+          <stop offset="1" stopColor="#d4500e" />
+        </radialGradient>
+        <radialGradient id={`${id}s`} cx="50%" cy="40%" r="75%">
+          <stop offset="0" stopColor="#f7781a" />
+          <stop offset="1" stopColor="#b9400b" />
+        </radialGradient>
+        <radialGradient id={`${id}f`} cx="50%" cy="55%" r="65%">
+          <stop offset="0" stopColor="#fff6c2" />
+          <stop offset="0.35" stopColor="#ffd23f" />
+          <stop offset="1" stopColor="#f08400" />
+        </radialGradient>
+        <linearGradient id={`${id}t`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#7ea33a" />
+          <stop offset="1" stopColor="#3e5c17" />
+        </linearGradient>
+      </defs>
+      <path d="M56 28 C55 19 58 10 66 6 C69 4.5 71.5 7.5 69.5 9.5 C64.5 13 63.5 19 64.5 28 Z" fill={`url(#${id}t)`} />
+      <path d="M66 14 C76 7 86 11 82 18 C79 23 72 20 76 16" stroke="#557d1c" strokeWidth="2.6" fill="none" strokeLinecap="round" />
+      <ellipse cx="34" cy="68" rx="28" ry="35" fill={`url(#${id}s)`} />
+      <ellipse cx="86" cy="68" rx="28" ry="35" fill={`url(#${id}s)`} />
+      <ellipse cx="47" cy="68" rx="26" ry="38" fill={`url(#${id}b)`} />
+      <ellipse cx="73" cy="68" rx="26" ry="38" fill={`url(#${id}b)`} />
+      <ellipse cx="60" cy="68" rx="21" ry="40" fill={`url(#${id}b)`} />
+      <path d="M45 32 C38 52 38 86 45 105 M75 32 C82 52 82 86 75 105" stroke="#a83a08" strokeWidth="1.6" fill="none" opacity="0.4" />
+      <ellipse cx="45" cy="47" rx="7" ry="13" fill="#fff" opacity="0.2" transform="rotate(-18 45 47)" />
+      {/* The dark rim is the cut edge of the carving: it keeps the face readable when small. */}
+      <g className="gw-lantern-face" fill={lit ? `url(#${id}f)` : '#2b1708'} stroke={lit ? '#7a2c04' : 'none'} strokeWidth="2.6" strokeLinejoin="round">
+        <path d="M35 61 Q35 58 38 58 L51 58 Q53 58 52 56 L46 45 Q45 43 44 45 L35 59 Z" />
+        <path d="M85 61 Q85 58 82 58 L69 58 Q67 58 68 56 L74 45 Q75 43 76 45 L85 59 Z" />
+        <path d="M56 70 L64 70 L60 63 Z" />
+        <path d="M29 77 Q60 104 91 77 Q84 80 79 80 L79 86 L71 86 L71 82 Q60 84 49 82 L49 86 L41 86 L41 80 Q36 80 29 77 Z" />
+      </g>
+    </svg>
+  )
+}
+
+/** A Riverbucks amount: a jack-o'-lantern and the number. The one way the game shows a prize. */
+export function Prize({ n, className = '' }) {
+  return (
+    <span className={`gw-prize ${n ? '' : 'is-zero'} ${className}`}>
+      <Lantern lit={Boolean(n)} className="gw-prize-lantern" />
+      <span className="gw-prize-n">{n}</span>
+    </span>
+  )
 }
 
 /** The friendly ghost on the back of a flipped-down card. */

@@ -6,7 +6,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Dices, Undo2, RotateCcw, Eye, Check, X, MessageCircleQuestion, Loader2, Settings2, LogOut, Users, Plus, Minus } from 'lucide-react'
-import { Bucks, Face } from './art.jsx'
+import { Face, Prize } from './art.jsx'
 import SignIn from './SignIn.jsx'
 import { useSchool } from './useSchool.js'
 import { openBus } from './bus.js'
@@ -312,7 +312,7 @@ function PlayControls({ game, byId, send }) {
         <div><span className="gw-remote-count-n">{asked}</span> question{asked === 1 ? '' : 's'}</div>
         <div className="gw-remote-prize">
           <span>Win now</span>
-          <Bucks n={prize} className="text-sm" />
+          <Prize n={prize} className="text-base" />
         </div>
       </div>
 
@@ -400,7 +400,7 @@ function RevealControls({ game, byId, send }) {
           <>
             <div className="text-2xl font-black">They got it!</div>
             <div className="flex justify-center gap-1">
-              <Bucks n={prize} className="text-3xl" />
+              <Prize n={prize} className="text-4xl" />
             </div>
             <div className="text-xl font-black">
               {prize ? `Pay ${prize} Riverbuck${prize === 1 ? '' : 's'}` : 'Too many questions: no Riverbucks'}

@@ -10,9 +10,11 @@
 export const BOARD_SIZE = 24
 
 // The most questions that still win 3, 2 and 1 Riverbucks. 24 faces take about
-// five perfect halvings, so 5 is a sharp game, 9 a generous one. Mr Bowen can
-// change them from the remote.
-export const DEFAULT_STEPS = [5, 7, 9]
+// five perfect halvings, so the top prize asks for luck as well as good
+// questions. Mr Bowen moved it from 5 to 4 on 28 Oct 2026; he can change any of
+// them from the remote.
+export const DEFAULT_STEPS = [4, 7, 9]
+const OLD_DEFAULT = '5,7,9'
 
 /** Riverbucks for a correct guess after `questions` answers. */
 export function prizeFor(questions, steps) {
@@ -107,7 +109,10 @@ export function loadGame() {
       // Games saved before questions were typed kept bare 'yes' / 'no' answers.
       const log = g.log.map((e) => (typeof e === 'string' ? { q: null, a: e } : e)).filter((e) => e && (e.a === 'yes' || e.a === 'no'))
       const pending = typeof g.pending === 'string' ? g.pending : null
-      return { ...blankGame(g.source), ...g, log, pending, steps: cleanSteps(g.steps) || DEFAULT_STEPS }
+      // A board saved with the old default takes the new one; steps set by hand stay.
+      const saved = cleanSteps(g.steps)
+      const steps = !saved || saved.join() === OLD_DEFAULT ? DEFAULT_STEPS : saved
+      return { ...blankGame(g.source), ...g, log, pending, steps }
     }
   } catch { /* nothing saved, or storage blocked */ }
   return blankGame()

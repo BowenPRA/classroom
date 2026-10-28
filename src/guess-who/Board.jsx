@@ -8,7 +8,7 @@
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Maximize, Minimize, Volume2, VolumeX, Home, Smartphone, LogOut, ExternalLink, Ghost as GhostIcon, Users, School, Undo2, ListChecks, SendHorizontal, Pencil } from 'lucide-react'
-import { Sky, Bucks, Ghost, Face, QrCode } from './art.jsx'
+import { Sky, Lantern, Prize, Ghost, Face, QrCode } from './art.jsx'
 import SignIn from './SignIn.jsx'
 import { useSchool } from './useSchool.js'
 import { openBus } from './bus.js'
@@ -440,29 +440,31 @@ function Toolbar({ room, remoteLive, net, muted, fullscreen, onMute, onFullscree
 }
 
 /**
- * The Riverbucks meter: what a right guess wins now, in one token; how many more
- * questions keep it, in words; and a bar with a segment per question that
- * empties as they are asked, grouped under the 3, 2 and 1 each stretch is worth.
+ * The Riverbucks meter: three prize cards, 3, 2 and 1, each with a
+ * jack-o'-lantern and a bar of the questions it covers. The live card is lifted
+ * and its lantern glows; a card whose questions are used up has its lantern
+ * blown out. One sentence underneath says how many questions keep the prize.
  */
 function Meter({ steps, asked }) {
-  const groups = [
+  const tiers = [
     { value: 3, from: 0, to: steps[0] },
     { value: 2, from: steps[0], to: steps[1] },
     { value: 1, from: steps[1], to: steps[2] },
   ]
   const { prize, left } = prizeStatus(asked, steps)
   const after = prize ? prize - 1 : 0
+  const bucks = (n) => `${n} Riverbuck${n === 1 ? '' : 's'}`
   let line
   let sub
   if (!prize) {
     line = 'No Riverbucks left'
     sub = 'You can still win the game!'
   } else if (left) {
-    line = <><b>{left}</b> more question{left === 1 ? '' : 's'}</>
-    sub = after ? `then it drops to ${after}` : 'then there are none'
+    line = <><b>{left}</b> more question{left === 1 ? '' : 's'} for <b>{bucks(prize)}</b></>
+    sub = after ? `Then it drops to ${after}.` : 'Then there are none.'
   } else {
-    line = 'Guess now!'
-    sub = after ? `One more question drops it to ${after}` : 'One more question and there are none'
+    line = <>Guess now for <b>{bucks(prize)}</b>!</>
+    sub = after ? `One more question drops it to ${after}.` : 'One more question and there are none.'
   }
   return (
     <div className="gw-meter">
@@ -470,31 +472,30 @@ function Meter({ steps, asked }) {
         <span>Riverbucks</span>
         <span>Questions <b>{asked}</b></span>
       </div>
-      <div className="gw-meter-hero">
-        <div className="gw-meter-win">
-          <span>Win now</span>
-          <Bucks key={prize} n={prize} className="gw-meter-bucks" />
-        </div>
-        <div key={asked} className={`gw-meter-text ${prize && !left ? 'is-last' : ''}`}>
-          <div className="gw-meter-line">{line}</div>
-          <div className="gw-meter-sub">{sub}</div>
-        </div>
-      </div>
-      <div className="gw-bar">
-        {groups.map((g) => {
-          const passed = asked > g.to
+      <div className="gw-tiers">
+        {tiers.map((t) => {
+          const state = asked > t.to ? 'is-passed' : prize === t.value ? 'is-current' : 'is-ahead'
+          const range = t.to - t.from === 1 ? `${t.to}` : `${t.from + 1}–${t.to}`
           return (
-            <div key={g.value} className={`gw-bar-group ${passed ? 'is-passed' : ''} ${!passed && prize === g.value ? 'is-current' : ''}`} style={{ flexGrow: g.to - g.from }}>
-              <div className="gw-bar-segs">
-                {Array.from({ length: g.to - g.from }, (_, k) => {
-                  const q = g.from + k
+            <div key={t.value} className={`gw-tier ${state}`}>
+              <div className="gw-tier-top">
+                <Lantern lit={state !== 'is-passed'} className="gw-tier-lantern" />
+                <span className="gw-tier-n">{t.value}</span>
+              </div>
+              <div className="gw-tier-segs">
+                {Array.from({ length: t.to - t.from }, (_, k) => {
+                  const q = t.from + k
                   return <span key={k} className={`gw-seg ${q < asked ? 'is-used' : ''} ${q === asked ? 'is-next' : ''}`} />
                 })}
               </div>
-              <Bucks n={g.value} className={`gw-bar-bucks ${passed ? 'is-spent' : ''}`} />
+              <div className="gw-tier-range">Questions {range}</div>
             </div>
           )
         })}
+      </div>
+      <div key={asked} className={`gw-meter-text ${prize && !left ? 'is-last' : ''}`}>
+        <div className="gw-meter-line">{line}</div>
+        <div className="gw-meter-sub">{sub}</div>
       </div>
     </div>
   )
@@ -666,8 +667,8 @@ function Lobby({ game, school, ready, count, classList, classMatch, remoteUrl, r
           <div className="gw-prizes-title">Fewer questions = more Riverbucks</div>
           {[[3, a], [2, b], [1, c]].map(([value, max]) => (
             <div key={value} className="gw-prize-row">
-              <Bucks n={value} className="gw-prize-bucks" />
-              <b>{value} Riverbuck{value === 1 ? '' : 's'}</b>
+              <Prize n={value} className="gw-prize-row-badge" />
+              <b>Riverbuck{value === 1 ? '' : 's'}</b>
               <span>{max} questions or fewer</span>
             </div>
           ))}
@@ -812,8 +813,8 @@ function Reveal({ guess, secret, gaveUp, won, questions, prize, onNext }) {
             <div className="gw-reveal-card is-win"><Face person={secret} /><span>{secret?.name}</span></div>
             {prize > 0 ? (
               <div className="gw-payout">
-                <Bucks n={prize} className="gw-payout-bucks" />
-                <span><b>{prize} Riverbuck{prize === 1 ? '' : 's'}!</b> In {asked}.</span>
+                <Prize n={prize} className="gw-payout-prize" />
+                <span><b>Riverbuck{prize === 1 ? '' : 's'}!</b> In {asked}.</span>
               </div>
             ) : (
               <div className="gw-payout"><span>Correct, in {asked}. No Riverbucks this time.</span></div>

@@ -1,5 +1,5 @@
 import { Link, useParams, Navigate } from 'react-router-dom'
-import { ArrowLeft, ChevronRight, FileText, Presentation, Rocket } from 'lucide-react'
+import { ArrowLeft, ChevronRight, FileText, Play, Presentation, Rocket } from 'lucide-react'
 import SiteHeader from '../components/SiteHeader.jsx'
 import { getCourse } from '../../content/registry.js'
 import { CourseIcon } from '../lib/courseIcons.js'
@@ -52,7 +52,7 @@ export default function CoursePage() {
               return (
                 <li key={lesson.slug} className="rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
                   <div className="flex flex-col sm:flex-row sm:items-stretch">
-                    <Link to={`/lesson/${course.id}/${lesson.slug}`} className="group flex-1 flex items-center gap-3 sm:gap-4 p-4 sm:p-5 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors min-w-0">
+                    <Link to={lesson.href || `/lesson/${course.id}/${lesson.slug}`} className="group flex-1 flex items-center gap-3 sm:gap-4 p-4 sm:p-5 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors min-w-0">
                       <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 font-black text-sm shrink-0" style={{ color: course.color }}>
                         {lesson.unit}
                       </span>
@@ -61,7 +61,7 @@ export default function CoursePage() {
                         {lesson.objective && <p className="text-slate-500 dark:text-slate-400 text-sm font-medium line-clamp-2 sm:line-clamp-1 mt-0.5">{lesson.objective}</p>}
                       </div>
                       <span className="hidden md:flex items-center gap-1 text-xs font-black uppercase tracking-widest text-slate-400 group-hover:text-[#1cb0f6] transition-colors shrink-0">
-                        <Presentation className="w-4 h-4" strokeWidth={2.5} /> Open
+                        {lesson.href ? <><Play className="w-4 h-4" strokeWidth={2.5} /> Play</> : <><Presentation className="w-4 h-4" strokeWidth={2.5} /> Open</>}
                       </span>
                       <ChevronRight className="w-5 h-5 text-slate-300 dark:text-slate-600 group-hover:text-slate-500 transition-colors shrink-0" strokeWidth={2.5} />
                     </Link>
