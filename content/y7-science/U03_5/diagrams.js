@@ -6,15 +6,18 @@
 //                   the lesson, no words (the column headings say what they are)
 //   How much? — energy and the joule
 //     RUNNERS       the book's runners (page 106), as a real photograph
-//     JOULES        the book's three numbers (page 106) as pictures: a floor of
-//                   stairs, a metre of running, a litre of water boiled
+//     JOULES        how big a joule is: 1 J to lift an apple 1 m, then two of
+//                   the book's numbers (page 106), a floor of stairs and a
+//                   litre of water boiled (slide 3 already has all three)
 //   What kind? — stores and transfers
 //     ANS_NO / ANS_YES   vote: a book on a high shelf — does it have energy?
-//     SHELF         lifted up, the energy is stored; knock it off and it comes
-//                   out
+//     SHELF         before and after: lifted from the floor onto the shelf,
+//                   the energy is stored; knock it off and it falls and crashes
 //     STORES        the book's table (page 107), part 1: the five stores
-//     CIRCUIT       Question 1: the battery stores, the wires transfer (drawn:
-//                   Commons has no clean photo of a battery lighting a bulb)
+//     CIRCUIT       Question 1: the battery stores, the wires transfer; two
+//                   arrows on the wire show the energy moving to the bulb
+//                   (drawn: Commons has no clean photo of a battery lighting a
+//                   bulb)
 //     TRANSFERS     the book's table, part 2: the three transfers (+ thermal)
 //     ACTIONS       one action for each of the eight, to remember them by
 //   How long? — storing energy
@@ -41,6 +44,13 @@ const rightHand = (color) => `<g transform="translate(528 76) scale(7)" fill="no
 
 // A flight of stairs climbing to the right, and a runner on it.
 const stairs = (x, y) => `<path d="M ${x} ${y + 120} H ${x + 40} V ${y + 90} H ${x + 80} V ${y + 60} H ${x + 120} V ${y + 30} H ${x + 160} V ${y} H ${x + 190} V ${y + 120} Z" fill="#e9edf1" stroke="${INK}" stroke-width="3.5" stroke-linejoin="round"/>`
+
+// A small red apple (about 100 g), centred on (x, y).
+const apple = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})">
+    <circle cx="0" cy="0" r="19" fill="${RED}" stroke="${INK}" stroke-width="3"/>
+    <path d="M 0 -18 q 2 -9 8 -12" fill="none" stroke="#6b4a2a" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 4 -24 q 10 -8 16 -2 q -8 6 -16 2 z" fill="${GREEN}"/>
+  </g>`
 
 // A card on the table: tinted, with a coloured edge.
 const card = (x, y, w, h, color, tint, dashed = false) =>
@@ -71,19 +81,25 @@ export const DIAGRAMS = {
   </svg>`,
 
   // ── How much? ─────────────────────────────────────────────────────────────
+  // how big one joule is (an apple lifted 1 m), then the book's floor of
+  // stairs and its kettle: 1, 2 000, 400 000
   JOULES: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
     <text x="30" y="52" font-family="${FONT}" font-size="24" font-weight="bold" fill="${MUTED}">You need about:</text>
     <rect x="20" y="72" width="800" height="146" rx="16" fill="#f7fafc"/>
-    ${stairs(40, 88)}
-    ${pose('kinetic', 150, 116, 0.42)}
-    <text x="268" y="142" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}">1 floor of stairs</text>
-    <text x="800" y="160" font-family="${FONT}" font-size="46" font-weight="bold" fill="${KEY}" text-anchor="end">2 000 J</text>
+    <circle cx="96" cy="190" r="19" fill="none" stroke="#9aa7b4" stroke-width="3" stroke-dasharray="6 5"/>
+    ${apple(96, 102, 1)}
+    ${arrow(96, 166, 96, 130, TEAL, 5, 14)}
+    <path d="M 150 102 H 166 M 158 102 V 190 M 150 190 H 166" fill="none" stroke="${MUTED}" stroke-width="3"/>
+    <text x="176" y="154" font-family="${FONT}" font-size="26" font-weight="bold" fill="${MUTED}">1 m</text>
+    <text x="268" y="134" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}">lift an apple</text>
+    <text x="268" y="172" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}">1 metre</text>
+    <text x="800" y="160" font-family="${FONT}" font-size="46" font-weight="bold" fill="${KEY}" text-anchor="end">1 J</text>
     <rect x="20" y="230" width="800" height="146" rx="16" fill="#f7fafc"/>
-    ${pose('kinetic', 132, 330, 0.5)}
-    <text x="268" y="300" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}">every metre</text>
-    <text x="268" y="338" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}">you run</text>
-    <text x="800" y="318" font-family="${FONT}" font-size="46" font-weight="bold" fill="${KEY}" text-anchor="end">200 J</text>
+    ${stairs(40, 246)}
+    ${pose('kinetic', 150, 274, 0.42)}
+    <text x="268" y="312" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}">1 floor of stairs</text>
+    <text x="800" y="318" font-family="${FONT}" font-size="46" font-weight="bold" fill="${KEY}" text-anchor="end">2 000 J</text>
     <rect x="20" y="388" width="800" height="146" rx="16" fill="#f7fafc"/>
     ${kettle(132, 470, 0.62)}
     <text x="268" y="456" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}">1 litre of cold</text>
@@ -118,12 +134,14 @@ export const DIAGRAMS = {
     <line x1="30" y1="500" x2="810" y2="500" stroke="${INK}" stroke-width="4"/>
     <line x1="430" y1="40" x2="430" y2="500" stroke="#e2e8f0" stroke-width="3"/>
     <text x="40" y="58" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}">1. Up on the shelf</text>
-    ${shelf(110, 210, 200)}
-    ${book(210, 160, 1)}
-    ${arrow(70, 490, 70, 230, TEAL, 6, 20)}
-    <text x="96" y="380" font-family="${FONT}" font-size="24" font-weight="bold" fill="${TEAL}">lifted up</text>
-    ${leader(300, 112, 250, 140, TEAL)}
-    <text x="250" y="100" font-family="${FONT}" font-size="25" font-weight="bold" fill="${TEAL}">energy stored</text>
+    <rect x="64" y="400" width="72" height="100" rx="5" fill="none" stroke="#9aa7b4" stroke-width="3" stroke-dasharray="8 6"/>
+    <path d="M 100 390 V 192 Q 100 150 142 150 H 270" fill="none" stroke="${TEAL}" stroke-width="6" stroke-linecap="round"/>
+    <path d="M 290 150 L 268 138 L 268 162 Z" fill="${TEAL}"/>
+    <text x="118" y="300" font-family="${FONT}" font-size="24" font-weight="bold" fill="${TEAL}">lifted up</text>
+    ${shelf(254, 210, 160)}
+    ${book(334, 160, 1)}
+    ${leader(330, 96, 352, 128, TEAL)}
+    <text x="236" y="86" font-family="${FONT}" font-size="25" font-weight="bold" fill="${TEAL}">energy stored</text>
     <text x="458" y="58" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}">2. Knocked off</text>
     ${shelf(470, 210, 200)}
     <g transform="rotate(28 600 330)">${book(600, 330, 1)}</g>
@@ -132,7 +150,6 @@ export const DIAGRAMS = {
     <text x="740" y="340" font-family="${FONT}" font-size="24" font-weight="bold" fill="${BLUE}">falls</text>
     <path d="M 520 470 l -26 -18 M 520 452 l -12 -30 M 690 470 l 26 -18 M 690 452 l 12 -30" stroke="${KEY}" stroke-width="5" stroke-linecap="round"/>
     <text x="605" y="476" font-family="${FONT}" font-size="34" font-weight="bold" fill="${KEY}" text-anchor="middle">CRASH!</text>
-    <text x="430" y="540" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="middle">The energy was there all the time, stored.</text>
   </svg>`,
 
   STORES: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
@@ -179,6 +196,7 @@ export const DIAGRAMS = {
     ${bulb(640, 330, 0.9)}
     <rect x="592" y="392" width="96" height="40" rx="8" fill="${RED}" stroke="${INK}" stroke-width="3"/>
     <rect x="566" y="428" width="148" height="16" rx="5" fill="#a52a20" stroke="${INK}" stroke-width="3"/>
+    <path d="M 392 135 L 368 123 L 368 147 Z M 562 307 L 567 281 L 544 287 Z" fill="${TRANSFER}" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
     ${leader(250, 96, 300, 150, TRANSFER)}
     <text x="40" y="60" font-family="${FONT}" font-size="26" font-weight="bold" fill="${TRANSFER}">wires: electrical</text>
     <text x="40" y="88" font-family="${FONT}" font-size="22" fill="${TRANSFER}">a transfer</text>
@@ -264,19 +282,19 @@ export const DIAGRAMS = {
     ${plate(840, 560)}
     <text x="30" y="54" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}">Now</text>
     ${mug(64, 120, 0.42)}
-    <rect x="120" y="96" width="80" height="48" rx="8" fill="${RED}"/>
-    <text x="214" y="132" font-family="${FONT}" font-size="25" font-weight="bold" fill="${RED}">about 60 000 J</text>
+    <rect x="120" y="96" width="66" height="48" rx="8" fill="${RED}"/>
+    <text x="200" y="132" font-family="${FONT}" font-size="25" font-weight="bold" fill="${RED}">about 60 000 J</text>
     ${banana(64, 206, 0.38)}
-    <rect x="120" y="182" width="540" height="48" rx="8" fill="#e8b923"/>
-    <text x="674" y="218" font-family="${FONT}" font-size="25" font-weight="bold" fill="#9a7a10">400 000 J</text>
+    <rect x="120" y="182" width="440" height="48" rx="8" fill="#e8b923"/>
+    <text x="574" y="218" font-family="${FONT}" font-size="25" font-weight="bold" fill="#9a7a10">about 400 000 J</text>
     <line x1="30" y1="272" x2="810" y2="272" stroke="#e2e8f0" stroke-width="3"/>
     <text x="30" y="318" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}">1 hour later</text>
     ${mug(64, 388, 0.42, false)}
     <rect x="120" y="364" width="6" height="48" rx="3" fill="${BLUE}"/>
     <text x="142" y="400" font-family="${FONT}" font-size="25" font-weight="bold" fill="${BLUE}">cold: its heat has gone</text>
     ${banana(64, 476, 0.38)}
-    <rect x="120" y="452" width="540" height="48" rx="8" fill="#e8b923"/>
-    <text x="674" y="488" font-family="${FONT}" font-size="25" font-weight="bold" fill="#9a7a10">400 000 J</text>
+    <rect x="120" y="452" width="440" height="48" rx="8" fill="#e8b923"/>
+    <text x="574" y="488" font-family="${FONT}" font-size="25" font-weight="bold" fill="#9a7a10">about 400 000 J</text>
     <text x="810" y="540" font-family="${FONT}" font-size="19" fill="${MUTED}" text-anchor="end">a mug of coffee at 80 °C, in a room at 25 °C</text>
   </svg>`,
 
@@ -298,7 +316,7 @@ export const DIAGRAMS = {
     <text x="120" y="396" font-family="${FONT}" font-size="21" fill="${INK}" text-anchor="middle">a rolling ball</text>
     <text x="314" y="396" font-family="${FONT}" font-size="21" fill="${INK}" text-anchor="middle">a hot drink</text>
     <text x="526" y="396" font-family="${FONT}" font-size="21" fill="${INK}" text-anchor="middle">water in a dam</text>
-    <text x="720" y="396" font-family="${FONT}" font-size="21" fill="${INK}" text-anchor="middle">coal, oil, rice</text>
+    <text x="720" y="396" font-family="${FONT}" font-size="21" fill="${INK}" text-anchor="middle">coal and oil</text>
     ${arrow(40, 478, 806, 478, MUTED, 4, 16)}
     <text x="120" y="530" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">seconds</text>
     <text x="314" y="530" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">an hour</text>

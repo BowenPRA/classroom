@@ -12,9 +12,11 @@
 //   3  He forgot his mug. He runs 100 m back.        100 × 200 = 20 000 J
 //   4  He boils 1 litre of water for his coffee.               400 000 J
 //
-// The last press makes the chart zoom out: the kettle needs more than all his
-// climbing and running put together. The starter's question (how many floors
-// is one kettle?) is the next slide, so 200 floors is never shown here.
+// The last press makes the chart zoom out: the kettle needs 11 times as much
+// as all his climbing and running put together (400 000 J against 36 000 J). A
+// shaded strip marks the old chart, 0 to 20 000 J, so the class can see where
+// bars 1 to 3 went. The starter's question (how many floors is one kettle?) is
+// the next slide, so 200 floors is never shown here.
 import { useState } from 'react'
 import { Undo2, RotateCcw, ChevronRight } from 'lucide-react'
 import { tr } from '../../../src/lib/lang.js'
@@ -70,7 +72,6 @@ export function MorningJoules({ lang = 'en', isDisplayMode = false }) {
           ))}
 
           {/* the morning, one row at a time; the next one asks */}
-          <text x="30" y="128" fontFamily={FONT} fontSize="25" fontWeight="800" fill={MUTED}>{t(lang, 'Mr Bowen’s morning', 'La matinée de M. Bowen')}</text>
           {STEPS.map((s, i) => {
             if (i > k) return null
             const asked = i === k
@@ -103,6 +104,14 @@ export function MorningJoules({ lang = 'en', isDisplayMode = false }) {
           ))}
           <line x1={C.x0} y1={C.y0} x2={C.x0} y2={C.y1 - 6} stroke={INK} strokeWidth="2.5" />
           <text x={C.x0 - 60} y="128" fontFamily={FONT} fontSize="21" fontWeight="700" fill={MUTED}>{t(lang, 'joules (J)', 'joules (J)')}</text>
+          {/* drawn behind the bars */}
+          {done && (
+            <g>
+              {/* the old chart, 0 to 20 000 J, is now this thin strip at the bottom */}
+              <rect x={C.x0} y={C.y0 - (SMALL.max / BIG.max) * H} width={barX(3) - C.x0 - 14} height={(SMALL.max / BIG.max) * H} fill="#fdf1e3" />
+              <line x1={C.x0} y1={C.y0 - (SMALL.max / BIG.max) * H} x2={barX(3) - 14} y2={C.y0 - (SMALL.max / BIG.max) * H} stroke={KEY} strokeWidth="2.5" strokeDasharray="8 6" />
+            </g>
+          )}
           {STEPS.map((s, i) => {
             const shown = i < k
             const h = shown ? Math.min(1, s.j / scale.max) : 0
@@ -117,10 +126,11 @@ export function MorningJoules({ lang = 'en', isDisplayMode = false }) {
           })}
           {done && (
             <g>
+              <text x={C.x0 + 16} y={C.y0 - (SMALL.max / BIG.max) * H - 14} fontFamily={FONT} fontSize="21" fontWeight="800" fill={KEY}>{t(lang, 'the old chart: 0 to 20 000 J', 'l’ancien graphique : 0 à 20 000 J')}</text>
               <g dangerouslySetInnerHTML={{ __html: kettle(barX(3) + BAR_W / 2, C.y1 + 70, 0.42) }} />
-              <rect x={C.x0 + 20} y={C.y1 + 4} width="400" height="86" rx="12" fill="#fdecee" stroke="#d83a2e" strokeWidth="2.5" />
-              <text x={C.x0 + 220} y={C.y1 + 40} fontFamily={FONT} fontSize="24" fontWeight="900" fill="#d83a2e" textAnchor="middle">{t(lang, 'Zoom out! The kettle needs', 'On dézoome ! La bouilloire')}</text>
-              <text x={C.x0 + 220} y={C.y1 + 72} fontFamily={FONT} fontSize="24" fontWeight="900" fill="#d83a2e" textAnchor="middle">{t(lang, 'more than all the rest.', 'demande plus que tout le reste.')}</text>
+              <rect x={C.x0 + 20} y={C.y1 + 4} width="470" height="86" rx="12" fill="#fdecee" stroke="#d83a2e" strokeWidth="2.5" />
+              <text x={C.x0 + 255} y={C.y1 + 40} fontFamily={FONT} fontSize="24" fontWeight="900" fill="#d83a2e" textAnchor="middle">{t(lang, 'Zoom out! The kettle needs', 'On dézoome ! La bouilloire demande')}</text>
+              <text x={C.x0 + 255} y={C.y1 + 72} fontFamily={FONT} fontSize="24" fontWeight="900" fill="#d83a2e" textAnchor="middle">{t(lang, '11 times as much as all the rest.', '11 fois plus que tout le reste.')}</text>
             </g>
           )}
         </svg>

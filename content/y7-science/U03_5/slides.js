@@ -9,15 +9,18 @@
 // timings). Three questions, one for each part:
 //   How much?   one kettle of water: how many floors of stairs? Mr Bowen's
 //               morning in joules, said before each press: 6 000, 10 000,
-//               20 000, then the kettle's 400 000 J zooms the chart out. Back
-//               to the starter: 200 floors. Energy (runners). The joule.
-//   What kind?  a book on a high shelf: does it have energy? (vote) Yes: it is
-//               stored. Energy store; the five stores (the book's table). How
-//               does energy get from a battery to a bulb? Energy transfer;
-//               the three transfers. An action for each of the eight (the
+//               20 000, then the kettle's 400 000 J (11 times all the rest)
+//               zooms the chart out. Back to the starter: 200 floors. Energy
+//               (runners). The joule: 1 J lifts an apple 1 metre.
+//   What kind?  a book on a high shelf: does it have energy? (vote) Yes: lifted
+//               from the floor, its energy is stored. Energy store; the five
+//               stores (the book's table). How does energy get from a battery
+//               to a bulb? Energy transfer (arrows on the wire); the three
+//               transfers. An action for each of the eight (the
 //               book's "how will you remember them?"), then Name That Energy,
-//               everyone standing. The bus going uphill: name each energy,
-//               then draw it. A rocket launch: how many can you find?
+//               everyone standing. The bus going uphill: name each energy
+//               (a leader points at the clue, a "?" waits for the word), then
+//               copy it. A rocket launch: how many can you find?
 //   How long?   what happens next? Mr Bowen's coffee goes cold while 30
 //               students ask questions. Hot coffee or banana: which has more
 //               energy? (vote) The banana, and it keeps it. Will it last a
@@ -239,8 +242,8 @@ export const slides = [
     titleFr: 'La réserve d’énergie',
     ratio: 45,
     inlineSvg: DIAGRAMS.SHELF,
-    content: 'It was **lifted** up. Its energy is **stored**, waiting.',
-    contentFr: 'Il a été **soulevé**. Son énergie est **stockée** : elle attend.',
+    content: '**Yes.** Mr Bowen used energy to lift it. The book **keeps** that energy until it falls.',
+    contentFr: '**Oui.** M. Bowen a utilisé de l’énergie pour le soulever. Le livre **garde** cette énergie jusqu’à ce qu’il tombe.',
     notes: [
       {
         tone: 'write',
@@ -288,12 +291,6 @@ export const slides = [
         tone: 'write',
         text: '**Energy transfer:** a way that energy moves from one place to another.',
         textFr: '**Transfert d’énergie (energy transfer) :** une façon dont l’énergie passe d’un endroit à un autre.',
-      },
-      {
-        tone: 'info',
-        badge: false,
-        text: 'The battery **stores** the energy. The wires **transfer** it to the bulb.',
-        textFr: 'La pile **stocke** l’énergie. Les fils la **transfèrent** à l’ampoule.',
       },
     ],
   },
@@ -351,8 +348,8 @@ export const slides = [
     titleFr: 'Le bus qui monte',
     widget: BusEnergies,
     drawThis: true,
-    caption: 'Name the energy at each **?** before it is shown. Then draw the bus with all **8** labels.',
-    captionFr: 'Nomme l’énergie à chaque **?** avant qu’elle s’affiche. Puis dessine le bus avec les **8** légendes.',
+    caption: 'Name the energy at each **?** before it is shown. Then copy the bus and its **8** labels.',
+    captionFr: 'Nomme l’énergie à chaque **?** avant qu’elle s’affiche. Puis recopie le bus et ses **8** légendes.',
   },
 
   // 15. A rocket launch: how many can you find?
@@ -481,7 +478,7 @@ export const slides = [
     items: [
       { text: 'Say what **energy** is, and measure it in **joules**.', textFr: 'Dire ce qu’est l’**énergie**, et la mesurer en **joules**.' },
       { text: 'Name the 5 energy **stores** and the 3 **transfers**.', textFr: 'Nommer les 5 **réserves** d’énergie et les 3 **transferts**.' },
-      { text: 'Give an **example** of each one: the bus!', textFr: 'Donner un **exemple** de chacun : le bus !' },
+      { text: 'Give an **example** of each store and transfer.', textFr: 'Donner un **exemple** de chaque réserve et de chaque transfert.' },
       { text: 'Say which **stores** last a long time, and which do not.', textFr: 'Dire quelles **réserves** durent longtemps, et lesquelles non.' },
     ],
   },
@@ -502,8 +499,8 @@ export const slides = [
     reveal: {
       label: 'Answer',
       labelFr: 'Réponse',
-      answer: '**Kinetic:** it is moving. **Gravitational potential:** it is still high up. (When it lands: **sound**.)',
-      answerFr: '**Cinétique :** il bouge. **Potentielle de pesanteur :** il est encore en hauteur. (Quand il touche le sol : du **son**.)',
+      answer: '**Kinetic:** it is moving. **Gravitational potential:** it is still high up.',
+      answerFr: '**Cinétique :** il bouge. **Potentielle de pesanteur :** il est encore en hauteur.',
     },
   },
 ]

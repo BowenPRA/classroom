@@ -29,16 +29,16 @@ const GREEN_DARK = '#3d731c', RED = '#c8102e'
  * 1 · LASTS A YEAR? — thumbs up, thumbs down
  * ============================================================= */
 const TILES = [
-  { src: ricePhoto, name: ['Rice', 'Du riz'], lasts: true, store: ['chemical', 'chimique'], time: ['for years', 'des années'] },
-  { src: coalPhoto, name: ['Coal', 'Du charbon'], lasts: true, store: ['chemical', 'chimique'], time: ['for millions of years', 'des millions d’années'] },
-  { src: batteryPhoto, name: ['Batteries', 'Des piles'], lasts: true, store: ['chemical', 'chimique'], time: ['for years', 'des années'] },
-  { src: damPhoto, name: ['Water behind a dam', 'L’eau d’un barrage'], lasts: true, store: ['gravitational potential', 'potentielle de pesanteur'], time: ['while it stays up', 'tant qu’elle reste en haut'] },
-  { src: coffeePhoto, name: ['A hot coffee', 'Un café chaud'], lasts: false, store: ['thermal', 'thermique'], time: ['about an hour', 'environ une heure'] },
-  { src: ballPhoto, name: ['A bouncing ball', 'Une balle qui rebondit'], lasts: false, store: ['kinetic', 'cinétique'], time: ['a few seconds', 'quelques secondes'] },
+  { src: ricePhoto, name: ['Rice', 'Du riz'], lasts: true, store: ['chemical', 'chimique'], verdict: ['Lasts for years', 'Dure des années'] },
+  { src: coalPhoto, name: ['Coal', 'Du charbon'], lasts: true, store: ['chemical', 'chimique'], verdict: ['Lasts millions of years', 'Dure des millions d’années'] },
+  { src: batteryPhoto, name: ['Batteries', 'Des piles'], lasts: true, store: ['chemical', 'chimique'], verdict: ['Lasts for years', 'Dure des années'] },
+  { src: damPhoto, name: ['Water behind a dam', 'L’eau d’un barrage'], lasts: true, store: ['gravitational potential', 'potentielle de pesanteur'], verdict: ['Lasts while it stays up', 'Dure si l’eau reste en haut'] },
+  { src: coffeePhoto, name: ['A hot coffee', 'Un café chaud'], lasts: false, store: ['thermal', 'thermique'], verdict: ['Gone in about an hour', 'Partie en une heure environ'] },
+  { src: ballPhoto, name: ['A bouncing ball', 'Une balle qui rebondit'], lasts: false, store: ['kinetic', 'cinétique'], verdict: ['Gone in a few seconds', 'Partie en quelques secondes'] },
 ]
-const TW = 470, TH = 200
+const TW = 470, TH = 212
 const tileX = (i) => 18 + (i % 3) * 494
-const tileY = (i) => 14 + Math.floor(i / 3) * 278
+const tileY = (i) => 12 + Math.floor(i / 3) * 272
 
 export function LastsAYear({ lang = 'en', isDisplayMode = false }) {
   const [open, setOpen] = useState(() => TILES.map(() => false))
@@ -67,18 +67,16 @@ export function LastsAYear({ lang = 'en', isDisplayMode = false }) {
                 <rect x={x} y={y} width={TW} height={TH} rx="14" fill="none" stroke={on ? color : '#cbd5e1'} strokeWidth={on ? 6 : 2} />
                 {on && (
                   <g>
-                    <rect x={x + 3} y={y + TH - 74} width={TW - 6} height="71" rx="10" fill="#ffffff" opacity="0.94" />
-                    <circle cx={x + 40} cy={y + TH - 38} r="22" fill={color} />
+                    <rect x={x + 3} y={y + TH - 80} width={TW - 6} height="77" rx="10" fill="#ffffff" opacity="0.94" />
+                    <circle cx={x + 40} cy={y + TH - 41} r="23" fill={color} />
                     {tile.lasts
-                      ? <path d={`M ${x + 29} ${y + TH - 38} l 8 8 l 14 -16`} stroke="#ffffff" strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                      : <path d={`M ${x + 32} ${y + TH - 46} l 16 16 M ${x + 48} ${y + TH - 46} l -16 16`} stroke="#ffffff" strokeWidth="5" strokeLinecap="round" />}
-                    <text x={x + 74} y={y + TH - 44} fontFamily={FONT} fontSize="23" fontWeight="900" fill={color}>
-                      {tile.lasts ? t(lang, `Lasts: ${tile.time[0]}`, `Dure\u00a0: ${tile.time[1]}`) : t(lang, `Does not last: ${tile.time[0]}`, `Ne dure pas\u00a0: ${tile.time[1]}`)}
-                    </text>
-                    <text x={x + 74} y={y + TH - 16} fontFamily={FONT} fontSize="21" fontWeight="800" fill={STORE}>{t(lang, `a ${tile.store[0]} store`, `une réserve ${tile.store[1]}`)}</text>
+                      ? <path d={`M ${x + 29} ${y + TH - 41} l 8 8 l 14 -16`} stroke="#ffffff" strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                      : <path d={`M ${x + 32} ${y + TH - 49} l 16 16 M ${x + 48} ${y + TH - 49} l -16 16`} stroke="#ffffff" strokeWidth="5" strokeLinecap="round" />}
+                    <text x={x + 76} y={y + TH - 47} fontFamily={FONT} fontSize="25" fontWeight="900" fill={color}>{L(tile.verdict)}</text>
+                    <text x={x + 76} y={y + TH - 17} fontFamily={FONT} fontSize={L(tile.store).length > 20 ? 19 : 22} fontWeight="800" fill={STORE}>{t(lang, `a ${tile.store[0]} store`, `une réserve ${tile.store[1]}`)}</text>
                   </g>
                 )}
-                <text x={x + TW / 2} y={y + TH + 40} fontFamily={FONT} fontSize="27" fontWeight="900" fill={INK} textAnchor="middle">{L(tile.name)}</text>
+                <text x={x + TW / 2} y={y + TH + 36} fontFamily={FONT} fontSize="27" fontWeight="900" fill={INK} textAnchor="middle">{L(tile.name)}</text>
               </g>
             )
           })}

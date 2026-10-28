@@ -3,7 +3,8 @@
 // press, so the class predicts each step before it is shown. Deadpan, never
 // flagged as a joke. It opens the last part of the lesson (storing energy):
 //
-//   1  7 a.m. He makes a coffee. Very hot.        (steam; the thermometer high)
+//   1  7 a.m. He makes a coffee. Very hot.        (the mug in his hand, the
+//                                                  kettle on the desk; 80 °C)
 //   2  A student has a question. He puts it down. (one hand up)
 //   3  29 more students have questions.           (hands everywhere; dizzy)
 //   4  12 noon. His coffee is cold. (He drinks it anyway.)
@@ -68,9 +69,10 @@ function Hand({ x, y, h = 120, q = true }) {
 function MakeCoffee({ x }) {
   return (
     <g>
+      <Desk x={x} />
+      <Pic svg={kettle(x + 316, DESK - 27, 0.34)} />
       <MrBowen x={x + 120} y={FLOOR - 268 * 0.82} scale={0.82} handRight={[95, 48]} />
       <Pic svg={mug(x + 222, FLOOR - 196, 0.42)} />
-      <Pic svg={kettle(x + 300, FLOOR - 40, 0.42)} />
       <Pic svg={thermometer(x + 300, TOP + 160, 0.85, 0.7)} />
       <text x={x + 322} y={TOP + 142} fontFamily={FONT} fontSize="20" fontWeight="900" fill={RED}>80 °C</text>
       <Pic svg={clock(x + 326, TOP + 56, 7)} />
@@ -96,7 +98,8 @@ function ManyQuestions({ x }) {
       <Desk x={x} />
       <Pic svg={mug(x + 300, DESK - 28, 0.4, false)} />
       <MrBowen x={x + 120} y={FLOOR - 268 * 0.82} scale={0.82} mood="dizzy" />
-      {[[28, 92], [76, 60], [196, 84], [244, 52], [292, 96], [340, 64]].map(([dx, h], i) => (
+      {/* the students' arms come up beside him, never across him */}
+      {[[26, 92], [182, 60], [222, 88], [262, 52], [302, 60], [344, 92]].map(([dx, h], i) => (
         <Hand key={i} x={x + dx} y={FLOOR - h} h={h + 30} />
       ))}
       <Pic svg={clock(x + 326, TOP + 56, 10)} />
