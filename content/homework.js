@@ -36,6 +36,10 @@ import hw10 from '../homework/hw10/hw10.pdf?url'
 import hw10x from '../homework/hw10x/hw10x.pdf?url'
 import hw10fr from '../homework/hw10/hw10-fr.pdf?url'
 import hw10xfr from '../homework/hw10x/hw10x-fr.pdf?url'
+import hw11 from '../homework/hw11/hw11.pdf?url'
+import hw11x from '../homework/hw11x/hw11x.pdf?url'
+import hw11fr from '../homework/hw11/hw11-fr.pdf?url'
+import hw11xfr from '../homework/hw11x/hw11x-fr.pdf?url'
 
 export const HOMEWORK = [
   {
@@ -296,5 +300,37 @@ export const HOMEWORK = [
     title: 'Why Is Mr Bowen Still Awake? — English / Français',
     subtitle: 'EX 10 with a French line under every question',
     pdf: hw10xfr,
+  },
+  // Maths 5.1–5.2 and Science 3.4–3.6, then a section where they meet: the two
+  // tidal bulges 180° apart, a pizza whose degrees are joules, a turbine and a fan.
+  {
+    id: 'hw11',
+    label: 'HW 11',
+    title: '180° Apart',
+    subtitle: 'Maths 5.1–5.2 · Science 3.4–3.6 · maths and science together',
+    pdf: hw11,
+  },
+  // Goes out with HW 11: the same science in Unit 4 decimals, printed as frames,
+  // plus a light touch of 5.1's angles.
+  {
+    id: 'hw11x',
+    label: 'EX 11',
+    title: 'How High Does It Bounce?',
+    subtitle: 'Extra · tides, bouncing balls, joules and angles, in decimals',
+    pdf: hw11x,
+  },
+  {
+    id: 'hw11fr',
+    label: 'FR 11',
+    title: '180° Apart — English / Français',
+    subtitle: 'HW 11 with a French line under every question',
+    pdf: hw11fr,
+  },
+  {
+    id: 'hw11xfr',
+    label: 'FR X11',
+    title: 'How High Does It Bounce? — English / Français',
+    subtitle: 'EX 11 with a French line under every question',
+    pdf: hw11xfr,
   },
 ]
