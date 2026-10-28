@@ -2,9 +2,10 @@
 // A line across two parallel lines: the model and the game of 5.2.
 //
 //   CrossTracks  The model the class predicts before each press. Two parallel
-//                lines and a line across them; the eight angles are written
-//                on. Turn the line and say the bottom four first: they copy
-//                the top four, every time. Slide it down: the top crossing
+//                lines and a line across them; the top four angles are
+//                written on, the bottom four are ? until the copy lands. Turn
+//                the line and say the bottom four first: they copy the top
+//                four, every time. Slide it down: the top crossing
 //                moves down the line and fits the bottom one exactly, which is
 //                WHY corresponding angles are equal. Make them not parallel:
 //                the arrows go, the bottom angles change, and the slide no
@@ -107,13 +108,14 @@ export function CrossTracks({ lang = 'en', isDisplayMode = false }) {
 
   const reset = (fn) => { live.current.moving = false; live.current.slide = 0; setMoving(false); setSlide(0); fn() }
 
-  const angles = (P, list, tone) => list.map(([a1, a2, size], i) => {
-    const [fill, stroke] = tone || classColours(size)
+  // `hide`: a grey ? until the copy lands, so the class says the number first
+  const angles = (P, list, tone, hide = false) => list.map(([a1, a2, size], i) => {
+    const [fill, stroke] = hide ? ['#f1f4f7', MUTED] : tone || classColours(size)
     const [lx, ly] = at(P, labelR(size, 32, 84, 118), (a1 + a2) / 2)
     return (
       <g key={i}>
         <path d={sector(P, 52, a1, a2)} fill={fill} stroke={stroke} strokeWidth="3" />
-        <text x={f1(lx)} y={f1(ly + 11)} fontFamily={FONT} fontSize="31" fontWeight="900" fill={stroke} textAnchor="middle">{size}°</text>
+        <text x={f1(lx)} y={f1(ly + 11)} fontFamily={FONT} fontSize="31" fontWeight="900" fill={stroke} textAnchor="middle">{hide ? '?' : `${size}°`}</text>
       </g>
     )
   })
@@ -150,7 +152,7 @@ export function CrossTracks({ lang = 'en', isDisplayMode = false }) {
           {!bent && <path d={chevron(1392, TOP[1], 0)} fill="none" stroke={INK} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />}
           {!bent && <path d={chevron(1392, BOT[1], 0)} fill="none" stroke={INK} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />}
           {angles(P1, top)}
-          {angles(P2, bottom, bent ? [PURPLE_T, PURPLE] : null)}
+          {angles(P2, bottom, bent ? [PURPLE_T, PURPLE] : null, !done)}
           <line {...through(C, crossLen, th)} stroke={INK} strokeWidth="5" strokeLinecap="round" />
           <circle cx={f1(P1[0])} cy={f1(P1[1])} r="6" fill={INK} />
           <circle cx={f1(P2[0])} cy={f1(P2[1])} r="6" fill={INK} />
@@ -189,15 +191,17 @@ export function CrossTracks({ lang = 'en', isDisplayMode = false }) {
 // first line, 1 the second; angles 0–3 run anticlockwise from the line's own
 // direction, so 2 and 3 lie between the lines at crossing 0, and 0 and 1 lie
 // between them at crossing 1.
+// The fixed rounds draw their shape the way slides 12, 15 and 17 do: an
+// upright F (angles under each arm) and a Z that is not mirrored.
 const ROUNDS = [
   { kind: 'x', a: 20, th: 65, g: [0, 0], q: [0, 2] }, // opposite: equal
-  { kind: 'pair', a: 0, th: 70, g: [0, 0], q: [1, 0] }, // corresponding: equal
-  { kind: 'pair', a: 0, th: 70, bend: -12, g: [0, 0], q: [1, 0] }, // the trap: no arrows
+  { kind: 'pair', a: 0, th: 110, g: [0, 3], q: [1, 3] }, // corresponding: equal (70°)
+  { kind: 'pair', a: 0, th: 110, bend: 12, g: [0, 3], q: [1, 3] }, // the trap: no arrows (82°)
   { kind: 'pair', a: 0, th: 55, g: [0, 2], q: [1, 0] }, // alternate: equal
   { kind: 'x', a: 0, th: 65, g: [0, 0], q: [0, 1] }, // next to it on a line: 180°
   { kind: 'pair', a: 0, th: 70, g: [0, 2], q: [1, 1] }, // between the lines, same side: 180°
   { kind: 'pair', a: 0, th: 60, bend: 12, g: [0, 2], q: [1, 0] }, // a Z with no arrows
-  { kind: 'pair', a: 30, th: 75, g: [0, 0], q: [1, 0] }, // corresponding, turned round
+  { kind: 'pair', a: 30, th: 75, g: [0, 3], q: [1, 3] }, // corresponding, turned round (105°)
 ]
 
 function randomRound(n) {

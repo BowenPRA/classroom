@@ -26,6 +26,7 @@ const STEPS = [15, 30, 45, 60, 75, 90]
 const PX = 1020, PY = 262 // the pivot
 const BLADE = 300 // pivot to the tip of a blade
 const RING = 250 // pivot to the middle of a finger ring
+const ARC = 130 // the radius of all four angle marks
 
 const rad = (d) => (d * Math.PI) / 180
 const at = (r, d) => [PX + r * Math.cos(rad(d)), PY - r * Math.sin(rad(d))]
@@ -35,6 +36,14 @@ function wedge(r, a1, a2) {
   const [x1, y1] = at(r, a1)
   const [x2, y2] = at(r, a2)
   return `M ${PX} ${PY} L ${f(x1)} ${f(y1)} A ${r} ${r} 0 ${a2 - a1 > 180 ? 1 : 0} 0 ${f(x2)} ${f(y2)} Z`
+}
+
+// The curved edge alone, drawn again over the scissors so a narrow angle
+// still shows where the blades cover its wedge.
+function arc(r, a1, a2) {
+  const [x1, y1] = at(r, a1)
+  const [x2, y2] = at(r, a2)
+  return `M ${f(x1)} ${f(y1)} A ${r} ${r} 0 ${a2 - a1 > 180 ? 1 : 0} 0 ${f(x2)} ${f(y2)}`
 }
 
 // One half of the scissors: a blade along `d` and its handle along d + 180.
@@ -99,15 +108,20 @@ export function ScissorsStepper({ lang = 'en', isDisplayMode = false }) {
             </g>
           )}
 
-          {/* the four angles, under the scissors */}
-          <path d={wedge(175, -h, h)} fill={TEAL_T} stroke={TEAL} strokeWidth="3" />
-          <path d={wedge(175, 180 - h, 180 + h)} fill={TEAL_T} stroke={TEAL} strokeWidth="3" />
-          <path d={wedge(62, h, 180 - h)} fill={PURPLE_T} stroke={PURPLE} strokeWidth="3" />
-          <path d={wedge(62, 180 + h, 360 - h)} fill={PURPLE_T} stroke={PURPLE} strokeWidth="3" />
+          {/* the four angles, under the scissors, all drawn the same size so
+              that at 90° the four look equal as well as being equal */}
+          <path d={wedge(ARC, -h, h)} fill={TEAL_T} stroke={TEAL} strokeWidth="3" />
+          <path d={wedge(ARC, 180 - h, 180 + h)} fill={TEAL_T} stroke={TEAL} strokeWidth="3" />
+          <path d={wedge(ARC, h, 180 - h)} fill={PURPLE_T} stroke={PURPLE} strokeWidth="3" />
+          <path d={wedge(ARC, 180 + h, 360 - h)} fill={PURPLE_T} stroke={PURPLE} strokeWidth="3" />
 
           {/* the scissors: two straight lines that cross at the screw */}
           <Half d={-h} />
           <Half d={h} />
+          <path d={arc(ARC, -h, h)} fill="none" stroke={TEAL} strokeWidth="5" />
+          <path d={arc(ARC, 180 - h, 180 + h)} fill="none" stroke={TEAL} strokeWidth="5" />
+          <path d={arc(ARC, h, 180 - h)} fill="none" stroke={PURPLE} strokeWidth="5" />
+          <path d={arc(ARC, 180 + h, 360 - h)} fill="none" stroke={PURPLE} strokeWidth="5" />
           <circle cx={PX} cy={PY} r="11" fill="#b8c2cc" stroke={INK} strokeWidth="3" />
           {right && [-45, 45, 135, 225].map((d) => (
             <path key={d} d={corner(d)} fill="none" stroke={INK} strokeWidth="3" />

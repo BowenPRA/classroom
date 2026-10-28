@@ -21,11 +21,14 @@
 //                CROSS_Q         115° and a, b, c where two lines cross
 //   Parallel     ANS_F_A / ANS_F_B   vote: which angle is also 70°?
 //                SLIDE_DOWN      corresponding angles: slide the top crossing
-//                                down the line and it fits (the F)
+//                                down the line and it fits (an upright F)
 //                ANS_Z_A / ANS_Z_B   vote: between the lines, which is 70°?
-//                Z_PROOF         alternate angles: the same place (F), then
-//                                opposite (X), so the Z angles are equal
-//                XFZ             put it together: X, F and Z (Draw This)
+//                Z_PROOF         alternate angles: the same place
+//                                (corresponding), then opposite that
+//                                (vertically opposite), so the Z angles are equal
+//                XFZ             put it together: X, F and Z (Draw This). The F
+//                                stands upright and the Z is not mirrored, so
+//                                each one looks like its letter
 //   The book     PHRASES         the Workbook's question words
 //                PRACTICE        48°, 75° and x, y, z between parallel lines
 //                SHELVES         Mr Bowen's shelves: 90°, 82°, 90°
@@ -276,62 +279,21 @@ export const DIAGRAMS = {
   </svg>`,
 
   // ── A line across two parallel lines ──────────────────────────────────────
+  // The F stands upright: the line across leans back (110°), the top arm sits
+  // at the top of the stem, the middle arm lower down, and the equal angles
+  // sit under each arm.
   ANS_F_A: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
     ${plate(720, 320)}
     ${leftHand}
-    ${wedge(500, 100, 42, 0, 70, ORANGE_T, KEY, 3)}
-    ${wedge(452.7, 230, 42, 0, 70, BLUE_T, BLUE, 3)}
-    ${parallelPair(250, 700, 100, 230, 660)}
-    ${seg(425.3, 305.2, 527.4, 24.8)}
-    <text x="554" y="72" font-family="${FONT}" font-size="28" font-weight="bold" fill="${KEY}" text-anchor="middle">70°</text>
-    <text x="502" y="208" font-family="${FONT}" font-size="38" font-weight="bold" fill="${BLUE}" text-anchor="middle">?</text>
-  </svg>`,
-
-  ANS_F_B: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
-    ${plate(720, 320)}
-    ${rightHand}
-    ${wedge(270, 100, 42, 0, 70, ORANGE_T, KEY, 3)}
-    ${wedge(222.7, 230, 42, 70, 180, BLUE_T, BLUE, 3)}
-    ${parallelPair(20, 470, 100, 230, 430)}
-    ${seg(195.3, 305.2, 297.4, 24.8)}
-    <text x="324" y="72" font-family="${FONT}" font-size="28" font-weight="bold" fill="${KEY}" text-anchor="middle">70°</text>
-    <text x="188" y="194" font-family="${FONT}" font-size="38" font-weight="bold" fill="${BLUE}" text-anchor="middle">?</text>
-  </svg>`,
-
-  SLIDE_DOWN: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
-    ${plate(840, 560)}
-    ${glow([[592.6, 390], [382.6, 390], [470, 150], [507.6, 46.6]])}
-    ${glow([[470, 150], [680, 150]])}
-    ${wedge(470, 150, 56, 0, 70, ORANGE_T, KEY, 3)}
-    ${wedge(382.6, 390, 56, 0, 70, ORANGE_T, KEY, 3)}
-    ${parallelPair(60, 800, 150, 390, 750)}
-    ${seg(360.4, 451.1, 507.6, 46.6)}
-    ${dot(470, 150)}
-    ${dot(382.6, 390)}
-    <text x="534" y="116" font-family="${FONT}" font-size="32" font-weight="bold" fill="${KEY}" text-anchor="middle">70°</text>
-    <text x="447" y="356" font-family="${FONT}" font-size="32" font-weight="bold" fill="${KEY}" text-anchor="middle">70°</text>
-    <path d="M 386 168 L 316 360" fill="none" stroke="${BLUE}" stroke-width="5" stroke-dasharray="12 9" stroke-linecap="round"/>
-    <path d="M 306 352 L 312 378 L 330 358 Z" fill="${BLUE}"/>
-    <text x="300" y="250" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}" text-anchor="end">slide it</text>
-    <text x="300" y="282" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}" text-anchor="end">down</text>
-    <text x="640" y="250" font-family="${FONT}" font-size="28" font-weight="bold" fill="${KEY}" text-anchor="middle">the same place</text>
-    <text x="640" y="286" font-family="${FONT}" font-size="28" font-weight="bold" fill="${KEY}" text-anchor="middle">on each line</text>
-    <text x="420" y="500" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">It fits: the angles are the same.</text>
-    <text x="420" y="540" font-family="${FONT}" font-size="24" fill="${MUTED}" text-anchor="middle">an F shape</text>
-  </svg>`,
-
-  ANS_Z_A: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
-    ${plate(720, 320)}
-    ${leftHand}
     ${wedge(430, 100, 42, 290, 360, ORANGE_T, KEY, 3)}
-    ${wedge(477.3, 230, 42, 110, 180, BLUE_T, BLUE, 3)}
+    ${wedge(477.3, 230, 42, 290, 360, BLUE_T, BLUE, 3)}
     ${parallelPair(250, 700, 100, 230, 660)}
     ${seg(504.7, 305.2, 402.6, 24.8)}
     <text x="482" y="147" font-family="${FONT}" font-size="28" font-weight="bold" fill="${KEY}" text-anchor="middle">70°</text>
-    <text x="428" y="208" font-family="${FONT}" font-size="38" font-weight="bold" fill="${BLUE}" text-anchor="middle">?</text>
+    <text x="526" y="277" font-family="${FONT}" font-size="38" font-weight="bold" fill="${BLUE}" text-anchor="middle">?</text>
   </svg>`,
 
-  ANS_Z_B: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
+  ANS_F_B: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
     ${plate(720, 320)}
     ${rightHand}
     ${wedge(200, 100, 42, 290, 360, ORANGE_T, KEY, 3)}
@@ -342,30 +304,76 @@ export const DIAGRAMS = {
     <text x="282" y="194" font-family="${FONT}" font-size="38" font-weight="bold" fill="${BLUE}" text-anchor="middle">?</text>
   </svg>`,
 
+  SLIDE_DOWN: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
+    ${plate(840, 560)}
+    ${glow([[570, 130], [360, 130], [469.2, 430]])}
+    ${glow([[432.8, 330], [642.8, 330]])}
+    ${wedge(360, 130, 56, 290, 360, ORANGE_T, KEY, 3)}
+    ${wedge(432.8, 330, 56, 290, 360, ORANGE_T, KEY, 3)}
+    ${parallelPair(60, 800, 130, 330, 750)}
+    ${seg(338.2, 70, 472.8, 440)}
+    ${dot(360, 130)}
+    ${dot(432.8, 330)}
+    <text x="427" y="188" font-family="${FONT}" font-size="32" font-weight="bold" fill="${KEY}" text-anchor="middle">70°</text>
+    <text x="500" y="388" font-family="${FONT}" font-size="32" font-weight="bold" fill="${KEY}" text-anchor="middle">70°</text>
+    <path d="M 320.5 167.8 L 374.2 315.2" fill="none" stroke="${BLUE}" stroke-width="5" stroke-dasharray="12 9" stroke-linecap="round"/>
+    <path d="M 380.4 332.1 L 365.7 318.3 L 382.7 312.1 Z" fill="${BLUE}"/>
+    <text x="318" y="236" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}" text-anchor="end">slide it</text>
+    <text x="318" y="268" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}" text-anchor="end">down</text>
+    <text x="640" y="226" font-family="${FONT}" font-size="28" font-weight="bold" fill="${KEY}" text-anchor="middle">the same place</text>
+    <text x="640" y="262" font-family="${FONT}" font-size="28" font-weight="bold" fill="${KEY}" text-anchor="middle">on each line</text>
+    <text x="420" y="500" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">It fits: the angles are the same.</text>
+    <text x="420" y="540" font-family="${FONT}" font-size="24" fill="${MUTED}" text-anchor="middle">an F shape</text>
+  </svg>`,
+
+  // A true Z: the line across leans forward (70°), the top arm goes left, the
+  // bottom arm goes right, and the equal angles sit inside the two corners.
+  ANS_Z_A: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
+    ${plate(720, 320)}
+    ${leftHand}
+    ${wedge(500, 100, 42, 180, 250, ORANGE_T, KEY, 3)}
+    ${wedge(452.7, 230, 42, 0, 70, BLUE_T, BLUE, 3)}
+    ${parallelPair(250, 700, 100, 230, 660)}
+    ${seg(425.3, 305.2, 527.4, 24.8)}
+    <text x="448" y="147" font-family="${FONT}" font-size="28" font-weight="bold" fill="${KEY}" text-anchor="middle">70°</text>
+    <text x="502" y="208" font-family="${FONT}" font-size="38" font-weight="bold" fill="${BLUE}" text-anchor="middle">?</text>
+  </svg>`,
+
+  ANS_Z_B: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
+    ${plate(720, 320)}
+    ${rightHand}
+    ${wedge(270, 100, 42, 180, 250, ORANGE_T, KEY, 3)}
+    ${wedge(222.7, 230, 42, 70, 180, BLUE_T, BLUE, 3)}
+    ${parallelPair(20, 470, 100, 230, 430)}
+    ${seg(195.3, 305.2, 297.4, 24.8)}
+    <text x="218" y="147" font-family="${FONT}" font-size="28" font-weight="bold" fill="${KEY}" text-anchor="middle">70°</text>
+    <text x="188" y="200" font-family="${FONT}" font-size="38" font-weight="bold" fill="${BLUE}" text-anchor="middle">?</text>
+  </svg>`,
+
   Z_PROOF: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
-    ${glow([[530, 96], [330, 96], [402.8, 296], [202.8, 296]])}
-    ${wedge(330, 96, 56, 290, 360, ORANGE_T, KEY, 3)}
-    ${wedge(402.8, 296, 56, 290, 360, '#ffffff', MUTED, 2.5)}
-    ${wedge(402.8, 296, 56, 110, 180, ORANGE_T, KEY, 3)}
+    ${glow([[202.8, 96], [402.8, 96], [330, 296], [530, 296]])}
+    ${wedge(402.8, 96, 56, 180, 250, ORANGE_T, KEY, 3)}
+    ${wedge(330, 296, 56, 180, 250, '#ffffff', MUTED, 2.5)}
+    ${wedge(330, 296, 56, 0, 70, ORANGE_T, KEY, 3)}
     ${parallelPair(40, 800, 96, 296, 750)}
-    ${seg(437, 390, 299.2, 11.4)}
-    ${dot(330, 96)}
-    ${dot(402.8, 296)}
-    <text x="396" y="153" font-family="${FONT}" font-size="32" font-weight="bold" fill="${KEY}" text-anchor="middle">70°</text>
-    <text x="468" y="353" font-family="${FONT}" font-size="30" font-weight="bold" fill="${MUTED}" text-anchor="middle">70°</text>
-    <text x="337" y="261" font-family="${FONT}" font-size="32" font-weight="bold" fill="${KEY}" text-anchor="middle">70°</text>
-    <circle cx="520" cy="346" r="17" fill="${MUTED}"/>
-    <text x="520" y="354" font-family="${FONT}" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
-    <circle cx="282" cy="250" r="17" fill="${KEY}"/>
-    <text x="282" y="258" font-family="${FONT}" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
-    <text x="40" y="444" font-family="${FONT}" font-size="26" font-weight="bold" fill="${MUTED}">1. The same place: 70° (an F)</text>
-    <text x="40" y="484" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}">2. Opposite that: 70° (an X)</text>
+    ${seg(295.8, 390, 433.6, 11.4)}
+    ${dot(402.8, 96)}
+    ${dot(330, 296)}
+    <text x="336" y="154" font-family="${FONT}" font-size="32" font-weight="bold" fill="${KEY}" text-anchor="middle">70°</text>
+    <text x="263" y="353" font-family="${FONT}" font-size="30" font-weight="bold" fill="${MUTED}" text-anchor="middle">70°</text>
+    <text x="397" y="260" font-family="${FONT}" font-size="32" font-weight="bold" fill="${KEY}" text-anchor="middle">70°</text>
+    <circle cx="208" cy="344" r="17" fill="${MUTED}"/>
+    <text x="208" y="352" font-family="${FONT}" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+    <circle cx="452" cy="250" r="17" fill="${KEY}"/>
+    <text x="452" y="258" font-family="${FONT}" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+    <text x="40" y="444" font-family="${FONT}" font-size="26" font-weight="bold" fill="${MUTED}">1. The same place: 70° (corresponding)</text>
+    <text x="40" y="484" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}">2. Opposite that: 70° (vertically opposite)</text>
     <text x="40" y="530" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}">So the two angles in the Z are equal.</text>
   </svg>`,
 
-  XFZ: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 816" class="w-full h-full">
-    ${plate(840, 816)}
+  XFZ: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 748" class="w-full h-full">
+    ${plate(840, 748)}
     <rect x="20" y="16" width="800" height="228" rx="18" fill="${TEAL_T}"/>
     ${wedge(175, 132, 46, -30, 30, ORANGE_T, KEY, 3)}
     ${wedge(175, 132, 46, 150, 210, ORANGE_T, KEY, 3)}
@@ -377,34 +385,31 @@ export const DIAGRAMS = {
     <text x="420" y="152" font-family="${FONT}" font-size="30" fill="${INK}">angles are equal</text>
 
     <rect x="20" y="260" width="800" height="228" rx="18" fill="${PURPLE_T}"/>
-    ${glow([[300, 440], [155.8, 440], [204.2, 320], [226.7, 264.4]], KEY, 16)}
-    ${glow([[204.2, 320], [300, 320]], KEY, 16)}
-    ${wedge(204.2, 320, 40, 0, 68, ORANGE_T, KEY, 3)}
-    ${wedge(155.8, 440, 40, 0, 68, ORANGE_T, KEY, 3)}
-    ${seg(40, 320, 310, 320)}
-    ${seg(40, 440, 310, 440)}
-    ${chevron(80, 320, 0)}
-    ${chevron(80, 440, 0)}
-    ${seg(137, 486.4, 226.7, 264.4)}
+    ${glow([[290, 300], [150, 300], [211.9, 470]], KEY, 16)}
+    ${glow([[186.4, 400], [290, 400]], KEY, 16)}
+    ${wedge(150, 300, 38, 290, 360, ORANGE_T, KEY, 3)}
+    ${wedge(186.4, 400, 38, 290, 360, ORANGE_T, KEY, 3)}
+    ${seg(40, 300, 310, 300)}
+    ${seg(40, 400, 310, 400)}
+    ${chevron(80, 300, 0)}
+    ${chevron(80, 400, 0)}
+    ${seg(139.8, 272, 215.5, 480)}
     <text x="340" y="350" font-family="${FONT}" font-size="64" font-weight="bold" fill="${KEY}">F</text>
     <text x="420" y="350" font-family="${FONT}" font-size="34" font-weight="bold" fill="${INK}">corresponding</text>
     <text x="420" y="398" font-family="${FONT}" font-size="30" fill="${INK}">angles are equal</text>
 
     <rect x="20" y="504" width="800" height="228" rx="18" fill="${GREEN_T}"/>
-    ${glow([[300, 566], [150.8, 566], [199.2, 686], [50, 686]], KEY, 16)}
-    ${wedge(150.8, 566, 40, 292, 360, ORANGE_T, KEY, 3)}
-    ${wedge(199.2, 686, 40, 112, 180, ORANGE_T, KEY, 3)}
-    ${seg(40, 566, 310, 566)}
-    ${seg(40, 686, 310, 686)}
-    ${chevron(270, 566, 0)}
-    ${chevron(270, 686, 0)}
-    ${seg(218, 732.4, 132, 519.6)}
+    ${glow([[60, 548], [205, 548], [157.7, 678], [300, 678]], KEY, 16)}
+    ${wedge(205, 548, 38, 180, 250, ORANGE_T, KEY, 3)}
+    ${wedge(157.7, 678, 38, 0, 70, ORANGE_T, KEY, 3)}
+    ${seg(40, 548, 310, 548)}
+    ${seg(40, 678, 310, 678)}
+    ${chevron(270, 548, 0)}
+    ${chevron(270, 678, 0)}
+    ${seg(144.6, 714, 216.6, 516)}
     <text x="340" y="596" font-family="${FONT}" font-size="64" font-weight="bold" fill="${KEY}">Z</text>
     <text x="420" y="596" font-family="${FONT}" font-size="34" font-weight="bold" fill="${INK}">alternate</text>
     <text x="420" y="644" font-family="${FONT}" font-size="30" fill="${INK}">angles are equal</text>
-
-    <rect x="20" y="748" width="800" height="54" rx="14" fill="${TEAL}"/>
-    <text x="420" y="785" font-family="${FONT}" font-size="27" font-weight="bold" fill="#ffffff" text-anchor="middle">X: opposite. F: corresponding. Z: alternate.</text>
   </svg>`,
 
   // ── The Workbook ──────────────────────────────────────────────────────────
@@ -414,7 +419,7 @@ export const DIAGRAMS = {
     <text x="680" y="52" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}">It means…</text>
     <line x1="30" y1="72" x2="1090" y2="72" stroke="#cfd8dc" stroke-width="2"/>
     <text x="40" y="118" font-family="${FONT}" font-size="25" fill="${INK}">Calculate the value of x.</text>
-    <text x="680" y="118" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">Find the number x.</text>
+    <text x="680" y="118" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">Find x.</text>
     <text x="40" y="186" font-family="${FONT}" font-size="25" fill="${INK}">Give a reason.</text>
     <text x="680" y="186" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">Say the fact, after because.</text>
     <text x="40" y="254" font-family="${FONT}" font-size="25" fill="${INK}">Explain why…</text>
@@ -422,7 +427,7 @@ export const DIAGRAMS = {
     <text x="40" y="322" font-family="${FONT}" font-size="25" fill="${INK}">Which statement, A, B or C, is correct?</text>
     <text x="680" y="322" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">Choose one, then say why.</text>
     <text x="40" y="390" font-family="${FONT}" font-size="25" fill="${INK}">You need more information.</text>
-    <text x="680" y="390" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">You cannot know yet.</text>
+    <text x="680" y="390" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">The picture does not tell you.</text>
   </svg>`,
 
   PRACTICE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">

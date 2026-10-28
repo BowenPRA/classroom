@@ -93,8 +93,8 @@ export const slides = [
         accent: TEAL,
         icon: 'X',
         inlineSvg: DIAGRAMS.PIC_X,
-        caption: 'Find the angles where two lines cross.',
-        captionFr: 'Trouver les angles d’un croisement.',
+        caption: 'Find all four angles from one.',
+        captionFr: 'Avec un angle, trouver les trois autres.',
       },
       {
         heading: 'Railway tracks',
@@ -187,8 +187,8 @@ export const slides = [
     title: 'Say Why',
     titleFr: 'Dis pourquoi',
     inlineSvg: DIAGRAMS.SAY_WHY,
-    caption: 'The answer, then **because**, then the reason. Say both out loud.',
-    captionFr: 'La réponse, puis **because** (parce que), puis la raison. Dis les deux à voix haute.',
+    caption: 'Read both sentences out loud.',
+    captionFr: 'Lis les deux phrases à voix haute. **Because** = parce que.',
   },
 
   // 7. Parallel and perpendicular (write), from above a level crossing
@@ -228,8 +228,8 @@ export const slides = [
     title: 'How to Read the Diagram',
     titleFr: 'Comment lire le dessin',
     inlineSvg: DIAGRAMS.READ,
-    caption: 'Arrows mean **parallel**. No arrows? Do **not** guess.',
-    captionFr: 'Des flèches veulent dire **parallèles**. Pas de flèches ? Ne **devine** pas.',
+    caption: '**No arrows?** Then do **not** guess that the lines are parallel.',
+    captionFr: '**Pas de flèches ?** Alors ne **devine** pas que les droites sont parallèles.',
   },
 
   // 9. Whiteboards: two lines cross
@@ -243,8 +243,8 @@ export const slides = [
     titleFr: 'Trouve a, b et c',
     ratio: 40,
     inlineSvg: DIAGRAMS.CROSS_Q,
-    content: 'Find **a**, **b** and **c**.\n\nGive a **reason** for each.',
-    contentFr: 'Trouve **a**, **b** et **c**.\n\nDonne une **raison** pour chacun.',
+    content: 'Give a **reason** for each.',
+    contentFr: 'Donne une **raison** pour chacun.',
     reveal: {
       label: 'Check your answers',
       labelFr: 'Vérifie tes réponses',
@@ -309,8 +309,8 @@ export const slides = [
         tone: 'task',
         badge: 'Try it',
         badgeFr: 'Essaie',
-        text: 'Two students hold rulers **parallel**. A third lays a ruler **across** them and turns it. Then tilt one ruler.',
-        textFr: 'Deux élèves tiennent des règles **parallèles**. Un troisième pose une règle **en travers** et la tourne. Puis penche une règle.',
+        text: 'Two students hold rulers **parallel**. A third holds a ruler **across** both. Turn it: are the two angles still the same? Now tilt one ruler.',
+        textFr: 'Deux élèves tiennent des règles **parallèles**. Un troisième tient une règle **en travers** des deux. Tourne-la : les deux angles sont-ils toujours pareils ? Maintenant, penche une règle.',
       },
     ],
   },
@@ -325,8 +325,8 @@ export const slides = [
     title: 'Cross the Tracks',
     titleFr: 'Traverse les rails',
     widget: CrossTracks,
-    caption: 'Before each press, say the **bottom** angles. Then slide it down.',
-    captionFr: 'Avant chaque clic, dis les angles du **bas**. Puis fais-la glisser.',
+    caption: 'Say the **bottom** angles first. Then slide it down to check.',
+    captionFr: 'Dis d’abord les angles du **bas**. Puis fais-la glisser pour vérifier.',
   },
 
   // 14. Vote: between the lines
@@ -398,8 +398,8 @@ export const slides = [
     ratio: 50,
     inlineSvg: DIAGRAMS.XFZ,
     drawThis: true,
-    content: 'Draw the **X**, the **F** and the **Z**. Mark the equal angles.',
-    contentFr: 'Dessine le **X**, le **F** et le **Z**. Marque les angles égaux.',
+    content: 'Copy the **X**, the **F** and the **Z**, with their names. Mark the equal angles.',
+    contentFr: 'Recopie le **X**, le **F** et le **Z**, avec leurs noms. Marque les angles égaux.',
     notes: [
       {
         tone: 'write',
@@ -429,8 +429,8 @@ export const slides = [
     title: 'Read the Question',
     titleFr: 'Lis la question',
     inlineSvg: DIAGRAMS.PHRASES,
-    caption: '**Explain why** wants the steps **and** the reasons.',
-    captionFr: '**Explain why** (explique pourquoi) veut les étapes **et** les raisons.',
+    caption: 'Read each question out loud. Then say what it means.',
+    captionFr: 'Lis chaque question à voix haute. Puis dis ce qu’elle veut dire.',
   },
 
   // 19. Whiteboards, in the Workbook's words: two steps, then two Zs
@@ -449,8 +449,8 @@ export const slides = [
     reveal: {
       label: 'Check your answers',
       labelFr: 'Vérifie tes réponses',
-      answer: '**x:** 48° + 75° = 123°, then 180° − 123° = **57°** (a straight line).\n**y = 48°** because they are alternate angles.\n**z = 57°** because z and x are alternate angles.',
-      answerFr: '**x :** 48° + 75° = 123°, puis 180° − 123° = **57°** (ligne droite).\n**y = 48°** car ce sont des angles alternes-internes.\n**z = 57°** car z et x sont alternes-internes.',
+      answer: '**x:** 48° + 75° = 123°, then 180° − 123° = **57°** because angles on a straight line add up to 180°.\n**y = 48°** because they are alternate angles.\n**z = 57°** because z and x are alternate angles.',
+      answerFr: '**x :** 48° + 75° = 123°, puis 180° − 123° = **57°** car les angles sur une ligne droite font 180°.\n**y = 48°** car ce sont des angles alternes-internes.\n**z = 57°** car z et x sont alternes-internes.',
     },
   },
 
@@ -465,7 +465,7 @@ export const slides = [
     titleFr: 'Quelle étagère ?',
     ratio: 45,
     inlineSvg: DIAGRAMS.SHELVES,
-    content: 'Mr Bowen measures where each shelf meets the side.\n\nWhich shelf is **not** parallel to the others? **Explain why.**',
+    content: 'Mr Bowen measures the angle where each shelf meets the side.\n\nWhich shelf is **not** parallel to the others? **Explain why.**',
     contentFr: 'M. Bowen mesure l’angle entre chaque étagère et le montant.\n\nQuelle étagère n’est **pas** parallèle aux autres ? **Explain why** (explique pourquoi).',
     reveal: {
       label: 'Answer',
