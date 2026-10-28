@@ -1,5 +1,6 @@
 // content/y7-science/U03_6/fromto.jsx
-// FROM… TO… — the game, everyone standing. A picture each round. On "From!"
+// FROM… TO… — the game, everyone standing. A picture each round, named under
+// it (an ESL class may not know "kettle" or "bow"). On "From!"
 // the whole class does the action for the energy it starts as; on "To!" the
 // action for the energy it changes into (the eight actions are 3.5's). Show
 // the answer fills in the two boxes, as an energy-change diagram, and lights
@@ -101,8 +102,8 @@ export function FromTo({ lang = 'en', isDisplayMode = false }) {
           <rect x="24" y="22" width="570" height="430" rx="20" fill="#fbfdff" stroke="#c9d3dc" strokeWidth="3" />
           <text x="50" y="66" fontFamily={FONT} fontSize="26" fontWeight="800" fill={MUTED}>{t(lang, `Round ${n + 1}`, `Manche ${n + 1}`)}</text>
           <Pic svg={art[pic](309, 262, s)} />
-          <text x="36" y="506" fontFamily={FONT} fontSize={shown ? 24 : 26} fontWeight="900" fill={shown ? GREEN_DARK : INK}>
-            {shown ? answerLine : t(lang, '“From!” one action. “To!” the next.', '« De ! » un geste. « À ! » le suivant.')}
+          <text x="36" y="506" fontFamily={FONT} fontSize={shown ? 24 : 30} fontWeight="900" fill={shown ? GREEN_DARK : INK}>
+            {shown ? answerLine : (fr ? whatFr : whatEn)}
           </text>
 
           {/* the energy-change diagram: two boxes and an arrow */}

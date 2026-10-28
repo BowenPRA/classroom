@@ -5,24 +5,27 @@
 //     PIC_CHANGE_IT / PIC_DRAW_IT / PIC_FOLLOW_IT   one picture per part of the
 //                   lesson, no words (the column headings say what they are)
 //   Change it
-//     EVENT_PROCESS  a book falls (an event) and wood burns (a process), each
-//                   with its energy change
+//     EVENT_PROCESS  a book falls (an event: over in a second) and wood burns
+//                   (a process: for hours), each with its energy change
 //   Draw it
 //     BOOK_DIAGRAMS  the book's three diagrams (page 113): a fire, a television
-//                   (one box, two arrows), a falling book
+//                   (two arrows from one box), a falling book
 //     ANS_CHARGE_IN / ANS_CHARGE_OUT   vote: charging a phone — which way?
-//     CHARGING      charging fills the battery's chemical store; using the
-//                   phone empties it again
+//     CHARGING      charging: electrical to chemical, the battery fills up;
+//                   using it: chemical out again, the battery runs down
 //     POWER_STATION Draw This (page 113): a gas power station, four boxes in a
-//                   chain, beside a photograph of a real one
+//                   chain under a picture each (the burner, heat, a spinning
+//                   generator — not a wind turbine — and electricity), beside a
+//                   photograph of a real one
 //   Follow it
 //     USEFUL_DANGER the same moving air, useful (a wind farm) and dangerous (a
 //                   typhoon), as photographs
-//     CANDLE        the book's candle experiment (page 115): where the heat goes,
-//                   and a line graph of the oil warming up
+//     CANDLE        the book's candle experiment (page 115): the equipment
+//                   labelled, heat arrows (unlabelled: where it goes is the
+//                   question), and a line graph of the oil warming up
 //     ANS_COLD_IN / ANS_HEAT_OUT   vote: water freezing — what moves?
-//     FREEZER       heat comes OUT of the water into the cold air, and the
-//                   freezer pumps it out into the kitchen
+//     FREEZER       heat comes OUT of the hotter water (25 °C) into the colder
+//                   freezer air (−18 °C)
 //
 // Split diagrams are drawn at 840×560, showcase ones at 1120×440, vote cards
 // at 720×320 — the shapes those layouts give a picture (as in 3.4 and 3.5).
@@ -30,8 +33,8 @@
 // The pictures come from art.js and carry no text. Diagrams stay in English.
 
 import {
-  INK, KEY, MUTED, TEAL, BLUE, GREEN, RED, FONT, SEA, SEA_EDGE,
-  plate, arrow, leader, book, charging, tv, fire, candle, turbine, tennisBall, burner,
+  INK, KEY, MUTED, BLUE, GREEN, RED, FONT, SEA, SEA_EDGE,
+  plate, arrow, leader, book, charging, tv, fire, candle, generator, tennisBall, burner,
 } from './art.js'
 import gasPlantPhoto from './images/gasplant.jpg'
 import windFarmPhoto from './images/windfarm.jpg'
@@ -56,6 +59,11 @@ const shelf = (x, y, w) => `<rect x="${x}" y="${y}" width="${w}" height="14" rx=
 
 // Heat leaving something: a short red arrow.
 const heat = (x1, y1, x2, y2, w = 5) => arrow(x1, y1, x2, y2, RED, w, w * 3.4)
+
+// A phone's battery icon, `bars` of 3 full: charging fills it, using empties it.
+const gauge = (x, y, bars, color) => `<rect x="${x}" y="${y}" width="80" height="36" rx="6" fill="#ffffff" stroke="${INK}" stroke-width="3"/>
+    <rect x="${x + 80}" y="${y + 11}" width="8" height="14" rx="2" fill="${INK}"/>
+    ${[0, 1, 2].slice(0, bars).map((i) => `<rect x="${x + 7 + i * 23}" y="${y + 7}" width="19" height="22" rx="3" fill="${color}"/>`).join('')}`
 
 export const DIAGRAMS = {
   // ── The goals ─────────────────────────────────────────────────────────────
@@ -92,7 +100,7 @@ export const DIAGRAMS = {
     <rect x="20" y="20" width="390" height="520" rx="16" fill="#e9f1fa"/>
     <rect x="430" y="20" width="390" height="520" rx="16" fill="#fdf1e3"/>
     <text x="215" y="70" font-family="${FONT}" font-size="34" font-weight="bold" fill="${BLUE}" text-anchor="middle">an event</text>
-    <text x="215" y="108" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">it happens once</text>
+    <text x="215" y="108" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">over in a second</text>
     ${shelf(70, 170, 180)}
     <g transform="rotate(26 230 290)">${book(230, 290, 0.9)}</g>
     <path d="M 200 156 Q 236 190 226 236" fill="none" stroke="#9aa7b4" stroke-width="4" stroke-dasharray="8 8"/>
@@ -101,7 +109,7 @@ export const DIAGRAMS = {
     <text x="215" y="462" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}" text-anchor="middle">gravitational potential</text>
     <text x="215" y="496" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}" text-anchor="middle">→ kinetic</text>
     <text x="625" y="70" font-family="${FONT}" font-size="34" font-weight="bold" fill="${KEY}" text-anchor="middle">a process</text>
-    <text x="625" y="108" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">it keeps going</text>
+    <text x="625" y="108" font-family="${FONT}" font-size="24" fill="${INK}" text-anchor="middle">burns for hours</text>
     ${fire(625, 300, 1.05)}
     <path d="M 742 168 a 30 30 0 1 1 -20 -26" fill="none" stroke="${MUTED}" stroke-width="5" stroke-linecap="round"/>
     ${arrow(724, 148, 714, 136, MUTED, 4, 14)}
@@ -117,7 +125,7 @@ export const DIAGRAMS = {
     ${arrow(404, 102, 550, 102, INK, 4, 16)}
     <text x="301" y="111" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}" text-anchor="middle">chemical</text>
     <text x="655" y="111" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}" text-anchor="middle">thermal</text>
-    <text x="94" y="182" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">a fire</text>
+    <text x="94" y="184" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="middle">a fire</text>
     <line x1="30" y1="204" x2="810" y2="204" stroke="#e2e8f0" stroke-width="2"/>
     ${tv(94, 276, 0.42)}
     ${box(206, 248, 190)}${box(560, 222, 190)}${box(560, 300, 190)}
@@ -126,7 +134,7 @@ export const DIAGRAMS = {
     <text x="301" y="287" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}" text-anchor="middle">electrical</text>
     <text x="655" y="261" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}" text-anchor="middle">sound</text>
     <text x="655" y="339" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}" text-anchor="middle">light</text>
-    <text x="94" y="346" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">a television</text>
+    <text x="94" y="348" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="middle">a television</text>
     <line x1="30" y1="380" x2="810" y2="380" stroke="#e2e8f0" stroke-width="2"/>
     ${shelf(40, 418, 108)}
     <g transform="rotate(24 104 470)">${book(104, 470, 0.42)}</g>
@@ -134,7 +142,7 @@ export const DIAGRAMS = {
     ${arrow(518, 468, 610, 468, INK, 4, 16)}
     <text x="350" y="477" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}" text-anchor="middle">gravitational potential</text>
     <text x="700" y="477" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}" text-anchor="middle">kinetic</text>
-    <text x="94" y="540" font-family="${FONT}" font-size="20" fill="${MUTED}" text-anchor="middle">a falling book</text>
+    <text x="94" y="542" font-family="${FONT}" font-size="22" fill="${MUTED}" text-anchor="middle">a falling book</text>
   </svg>`,
 
   ANS_CHARGE_IN: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
@@ -163,7 +171,8 @@ export const DIAGRAMS = {
     ${arrow(578, 158, 622, 158, INK, 4, 16)}
     <text x="475" y="167" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}" text-anchor="middle">electrical</text>
     <text x="720" y="167" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}" text-anchor="middle">chemical</text>
-    <text x="720" y="220" font-family="${FONT}" font-size="21" fill="${KEY}" text-anchor="middle">stored in the battery</text>
+    ${gauge(632, 204, 3, GREEN)}
+    <text x="728" y="230" font-family="${FONT}" font-size="22" font-weight="bold" fill="${GREEN}">fills up</text>
     <line x1="30" y1="270" x2="810" y2="270" stroke="#e2e8f0" stroke-width="3"/>
     <text x="30" y="316" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}">Using it</text>
     <rect x="76" y="340" width="96" height="170" rx="16" fill="#3d4650" stroke="${INK}" stroke-width="3.5"/>
@@ -177,31 +186,30 @@ export const DIAGRAMS = {
     <text x="530" y="433" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}" text-anchor="middle">electrical</text>
     <text x="735" y="383" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}" text-anchor="middle">light</text>
     <text x="735" y="483" font-family="${FONT}" font-size="25" font-weight="bold" fill="${INK}" text-anchor="middle">sound</text>
+    ${gauge(252, 470, 1, RED)}
+    <text x="348" y="496" font-family="${FONT}" font-size="22" font-weight="bold" fill="${RED}">runs down</text>
   </svg>`,
 
   POWER_STATION: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" class="w-full h-full">
     ${plate(1120, 440)}
-    ${photo('ps-photo', gasPlantPhoto, 20, 20, 300, 340)}
-    <text x="170" y="398" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">a gas power station</text>
-    <text x="170" y="426" font-family="${FONT}" font-size="19" fill="${MUTED}" text-anchor="middle">page 113</text>
-    ${burner(437, 120, 0.9)}
-    <path d="M 596 160 q -9 -14 0 -28 q 9 -14 0 -28 q -9 -14 0 -28 M 626 160 q -9 -14 0 -28 q 9 -14 0 -28 q -9 -14 0 -28 M 656 160 q -9 -14 0 -28 q 9 -14 0 -28 q -9 -14 0 -28" fill="none" stroke="${RED}" stroke-width="6" stroke-linecap="round"/>
-    ${turbine(820, 132, 0.46)}
-    <path d="M 1013 64 L 987 116 L 1007 116 L 991 164 L 1037 100 L 1015 100 L 1031 64 Z" fill="#ffd45c" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/>
-    ${box(352, 214, 160, 66)}${box(546, 214, 160, 66)}${box(740, 214, 160, 66)}${box(934, 214, 166, 66)}
-    ${arrow(514, 247, 542, 247, INK, 4, 14)}
-    ${arrow(708, 247, 736, 247, INK, 4, 14)}
-    ${arrow(902, 247, 930, 247, INK, 4, 14)}
-    <text x="432" y="257" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}" text-anchor="middle">chemical</text>
-    <text x="626" y="257" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}" text-anchor="middle">thermal</text>
-    <text x="820" y="257" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}" text-anchor="middle">kinetic</text>
-    <text x="1017" y="257" font-family="${FONT}" font-size="27" font-weight="bold" fill="${INK}" text-anchor="middle">electrical</text>
-    <text x="432" y="318" font-family="${FONT}" font-size="21" fill="${KEY}" text-anchor="middle">gas burns</text>
-    <text x="626" y="318" font-family="${FONT}" font-size="21" fill="${KEY}" text-anchor="middle">very hot</text>
-    <text x="820" y="318" font-family="${FONT}" font-size="21" fill="${KEY}" text-anchor="middle">generators spin</text>
-    <text x="1017" y="318" font-family="${FONT}" font-size="21" fill="${KEY}" text-anchor="middle">wires to homes</text>
-    <rect x="352" y="356" width="754" height="62" rx="12" fill="#e2f2f6"/>
-    <text x="729" y="396" font-family="${FONT}" font-size="23" font-weight="bold" fill="${TEAL}" text-anchor="middle">Four boxes, three arrows: each arrow is a change.</text>
+    ${photo('ps-photo', gasPlantPhoto, 20, 20, 300, 372)}
+    <text x="170" y="426" font-family="${FONT}" font-size="22" font-weight="bold" fill="${INK}" text-anchor="middle">a gas power station</text>
+    ${burner(432, 126, 0.95)}
+    <path d="M 598 172 q -9 -14 0 -28 q 9 -14 0 -28 q -9 -14 0 -28 M 628 172 q -9 -14 0 -28 q 9 -14 0 -28 q -9 -14 0 -28 M 658 172 q -9 -14 0 -28 q 9 -14 0 -28 q -9 -14 0 -28" fill="none" stroke="${RED}" stroke-width="6" stroke-linecap="round"/>
+    ${generator(824, 128, 0.82)}
+    <path d="M 1021 80 L 995 132 L 1015 132 L 999 180 L 1045 116 L 1023 116 L 1039 80 Z" fill="#ffd45c" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/>
+    ${box(352, 226, 160, 76)}${box(548, 226, 160, 76)}${box(744, 226, 160, 76)}${box(940, 226, 160, 76)}
+    ${arrow(515, 264, 545, 264, INK, 4, 14)}
+    ${arrow(711, 264, 741, 264, INK, 4, 14)}
+    ${arrow(907, 264, 937, 264, INK, 4, 14)}
+    <text x="432" y="275" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">chemical</text>
+    <text x="628" y="275" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">thermal</text>
+    <text x="824" y="275" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">kinetic</text>
+    <text x="1020" y="275" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">electrical</text>
+    <text x="432" y="342" font-family="${FONT}" font-size="22" fill="${KEY}" text-anchor="middle">in the gas</text>
+    <text x="628" y="342" font-family="${FONT}" font-size="22" fill="${KEY}" text-anchor="middle">the gas burns</text>
+    <text x="824" y="342" font-family="${FONT}" font-size="22" fill="${KEY}" text-anchor="middle">generators spin</text>
+    <text x="1020" y="342" font-family="${FONT}" font-size="22" fill="${KEY}" text-anchor="middle">wires to homes</text>
   </svg>`,
 
   // ── Follow it ─────────────────────────────────────────────────────────────
@@ -212,9 +220,9 @@ export const DIAGRAMS = {
     <rect x="34" y="34" width="372" height="86" rx="12" fill="#ffffff" opacity="0.93"/>
     <text x="52" y="70" font-family="${FONT}" font-size="28" font-weight="bold" fill="${GREEN}">useful</text>
     <text x="52" y="104" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}">kinetic → electrical</text>
-    <rect x="34" y="306" width="440" height="86" rx="12" fill="#ffffff" opacity="0.93"/>
+    <rect x="34" y="306" width="372" height="86" rx="12" fill="#ffffff" opacity="0.93"/>
     <text x="52" y="342" font-family="${FONT}" font-size="28" font-weight="bold" fill="${RED}">dangerous</text>
-    <text x="52" y="376" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}">kinetic: trees knocked down</text>
+    <text x="52" y="376" font-family="${FONT}" font-size="24" font-weight="bold" fill="${INK}">kinetic → falling trees</text>
     <rect x="510" y="226" width="296" height="30" rx="8" fill="#ffffff" opacity="0.9"/>
     <text x="796" y="248" font-family="${FONT}" font-size="18" fill="${INK}" text-anchor="end">a wind farm, Bạc Liêu</text>
     <rect x="480" y="498" width="326" height="30" rx="8" fill="#ffffff" opacity="0.9"/>
@@ -235,18 +243,14 @@ export const DIAGRAMS = {
     ${heat(220, 330, 220, 290, 7)}
     ${heat(180, 352, 104, 330, 4)}
     ${heat(260, 352, 336, 330, 4)}
-    ${heat(250, 296, 300, 250, 4)}
     ${leader(330, 160, 268, 200)}
     <text x="340" y="150" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">cooking oil</text>
     ${leader(96, 160, 162, 140)}
     <text x="30" y="150" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">glass</text>
     ${leader(330, 96, 246, 96)}
     <text x="340" y="104" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">thermometer</text>
-    <text x="30" y="324" font-family="${FONT}" font-size="25" font-weight="bold" fill="${RED}">air</text>
-    <text x="350" y="324" font-family="${FONT}" font-size="25" font-weight="bold" fill="${RED}">air</text>
     ${leader(390, 420, 316, 420)}
     <text x="398" y="428" font-family="${FONT}" font-size="25" font-weight="bold" fill="${KEY}">tripod</text>
-    <text x="220" y="532" font-family="${FONT}" font-size="26" font-weight="bold" fill="${INK}" text-anchor="middle">candle: chemical → thermal</text>
     <rect x="520" y="70" width="300" height="300" fill="#ffffff"/>
     <line x1="560" y1="350" x2="800" y2="350" stroke="${INK}" stroke-width="2.5"/>
     <line x1="560" y1="350" x2="560" y2="96" stroke="${INK}" stroke-width="2.5"/>
@@ -266,8 +270,7 @@ export const DIAGRAMS = {
     <circle cx="560" cy="338" r="7" fill="${KEY}"/><circle cx="620" cy="278" r="7" fill="${KEY}"/><circle cx="680" cy="216" r="7" fill="${KEY}"/><circle cx="740" cy="158" r="7" fill="${KEY}"/><circle cx="800" cy="98" r="7" fill="${KEY}"/>
     <text x="500" y="62" font-family="${FONT}" font-size="23" font-weight="bold" fill="${INK}">oil temperature (°C)</text>
     <text x="800" y="414" font-family="${FONT}" font-size="23" font-weight="bold" fill="${INK}" text-anchor="end">time (minutes)</text>
-    <text x="672" y="472" font-family="${FONT}" font-size="23" fill="${INK}" text-anchor="middle">Up 10 °C in 4 minutes.</text>
-    <text x="672" y="506" font-family="${FONT}" font-size="23" fill="${INK}" text-anchor="middle">A line graph shows the rise.</text>
+    <text x="652" y="478" font-family="${FONT}" font-size="23" font-weight="bold" fill="${KEY}" text-anchor="middle">10 °C warmer in 4 minutes</text>
   </svg>`,
 
   ANS_COLD_IN: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
@@ -294,27 +297,27 @@ export const DIAGRAMS = {
 
   FREEZER: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
-    <rect x="40" y="70" width="380" height="440" rx="18" fill="#f1f5f9" stroke="${INK}" stroke-width="4"/>
-    <rect x="62" y="92" width="336" height="396" rx="10" fill="#dbeefb"/>
-    <path d="M 70 300 H 390" stroke="#9fb8cc" stroke-width="5"/>
-    <rect x="130" y="200" width="200" height="66" rx="8" fill="${SEA}" stroke="${INK}" stroke-width="3.5"/>
-    <path d="M 150 222 h 34 v 28 h -34 z M 196 222 h 34 v 28 h -34 z M 242 222 h 34 v 28 h -34 z M 288 222 h 26 v 28 h -26 z" fill="#ffffff" opacity="0.8"/>
-    ${heat(180, 196, 150, 140, 5)}
-    ${heat(230, 194, 230, 132, 5)}
-    ${heat(280, 196, 310, 140, 5)}
-    <path d="M 420 140 h 30 v 30 h -30 M 450 170 v 30 h -30 M 420 200 h 30 v 30 h -30 M 450 230 v 30 h -30 M 420 260 h 30 v 30 h -30 M 450 290 v 30 h -30" fill="none" stroke="${MUTED}" stroke-width="6" stroke-linejoin="round"/>
-    ${heat(470, 190, 560, 150, 6)}
-    ${heat(470, 250, 570, 250, 6)}
-    ${heat(470, 310, 560, 350, 6)}
-    <text x="230" y="120" font-family="${FONT}" font-size="22" font-weight="bold" fill="${RED}" text-anchor="middle">heat comes out</text>
-    <text x="230" y="332" font-family="${FONT}" font-size="21" fill="${INK}" text-anchor="middle">water → ice</text>
-    <text x="230" y="380" font-family="${FONT}" font-size="22" font-weight="bold" fill="${BLUE}" text-anchor="middle">into the cold air</text>
-    <text x="566" y="120" font-family="${FONT}" font-size="22" font-weight="bold" fill="${RED}">then out of the back,</text>
-    <text x="566" y="148" font-family="${FONT}" font-size="22" font-weight="bold" fill="${RED}">into the kitchen</text>
-    <text x="590" y="400" font-family="${FONT}" font-size="22" fill="${INK}">The back of a</text>
-    <text x="590" y="430" font-family="${FONT}" font-size="22" fill="${INK}">freezer is warm.</text>
-    <text x="230" y="542" font-family="${FONT}" font-size="21" fill="${MUTED}" text-anchor="middle">electrical energy runs the pump</text>
-    <circle cx="230" cy="448" r="18" fill="${MUTED}"/>
+    <line x1="20" y1="494" x2="500" y2="494" stroke="${INK}" stroke-width="4"/>
+    <rect x="66" y="478" width="34" height="14" fill="${MUTED}"/><rect x="420" y="478" width="34" height="14" fill="${MUTED}"/>
+    <rect x="40" y="60" width="440" height="420" rx="18" fill="#f1f5f9" stroke="${INK}" stroke-width="4"/>
+    <rect x="62" y="82" width="396" height="226" rx="10" fill="#dbeefb"/>
+    <rect x="62" y="322" width="396" height="138" rx="10" fill="#e9edf1" stroke="#9fb8cc" stroke-width="3"/>
+    <rect x="200" y="338" width="120" height="14" rx="7" fill="${MUTED}"/>
+    <rect x="170" y="240" width="180" height="66" rx="8" fill="${SEA}" stroke="${INK}" stroke-width="3.5"/>
+    <path d="M 172 260 H 348" stroke="${SEA_EDGE}" stroke-width="3"/>
+    ${heat(260, 228, 260, 110, 6)}
+    ${heat(205, 232, 128, 140, 6)}
+    ${heat(315, 232, 392, 140, 6)}
+    ${heat(160, 274, 84, 274, 6)}
+    ${heat(360, 274, 436, 274, 6)}
+    ${leader(504, 114, 436, 100, BLUE)}
+    <text x="512" y="112" font-family="${FONT}" font-size="26" font-weight="bold" fill="${BLUE}">freezer air</text>
+    <text x="512" y="144" font-family="${FONT}" font-size="24" fill="${BLUE}">colder: −18 °C</text>
+    ${leader(504, 214, 342, 200, RED)}
+    <text x="512" y="223" font-family="${FONT}" font-size="26" font-weight="bold" fill="${RED}">heat</text>
+    ${leader(504, 298, 300, 296)}
+    <text x="512" y="306" font-family="${FONT}" font-size="26" font-weight="bold" fill="${KEY}">water</text>
+    <text x="512" y="338" font-family="${FONT}" font-size="24" fill="${KEY}">hotter: 25 °C</text>
   </svg>`,
 }
 

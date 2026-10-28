@@ -133,6 +133,35 @@ export const toaster = (x, y, s = 1) => at(x, y, s, `
   <rect x="98" y="-10" width="22" height="40" rx="5" fill="${INK}"/>
   <path d="M -40 -110 q -7 -9 0 -18 q 7 -9 0 -18 M 40 -110 q -7 -9 0 -18 q 7 -9 0 -18" fill="none" stroke="${RED}" stroke-width="4" stroke-linecap="round"/>`)
 
+/** A power station's generator: a wheel of blades in its case, spinning. */
+export const generator = (x, y, s = 1) => {
+  const blades = Array.from({ length: 8 }, (_, k) => `<path d="M 0 -12 Q 18 -30 8 -52 L -6 -50 Q 4 -30 -8 -14 Z" transform="rotate(${k * 45})" fill="#c3c9d1" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>`).join('')
+  const spin = (a1, a2) => {
+    const p = (d) => [f1(78 * Math.cos((d * Math.PI) / 180)), f1(78 * Math.sin((d * Math.PI) / 180))]
+    const [x1, y1] = p(a1), [x2, y2] = p(a2)
+    const a = (a2 * Math.PI) / 180
+    const tx = -Math.sin(a), ty = Math.cos(a) // the way round, at the end
+    const hx = x2 + 14 * tx, hy = y2 + 14 * ty
+    return `<path d="M ${x1} ${y1} A 78 78 0 0 1 ${x2} ${y2}" fill="none" stroke="${BLUE}" stroke-width="5" stroke-linecap="round"/>
+      <path d="M ${f1(hx)} ${f1(hy)} L ${f1(x2 + 9 * Math.cos(a))} ${f1(y2 + 9 * Math.sin(a))} L ${f1(x2 - 9 * Math.cos(a))} ${f1(y2 - 9 * Math.sin(a))} Z" fill="${BLUE}"/>`
+  }
+  return at(x, y, s, `
+  <circle cx="0" cy="0" r="62" fill="#e9edf1" stroke="${INK}" stroke-width="4"/>
+  ${blades}
+  <circle cx="0" cy="0" r="13" fill="${MUTED}" stroke="${INK}" stroke-width="3"/>
+  ${spin(-150, -60)}${spin(30, 120)}`)
+}
+
+/** A kettle that does not work: no steam, a crack down its side. */
+export const brokenKettle = (x, y, s = 1) => at(x, y, s, `
+  <path d="M -64 -30 Q -122 -22 -112 26 Q -106 48 -68 44" fill="none" stroke="${INK}" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 58 -6 L 108 -50 L 118 -38 L 66 24 Z" fill="#dfe6ee" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M -72 62 L -62 -40 Q -60 -62 -40 -62 L 40 -62 Q 60 -62 62 -40 L 72 62 Z" fill="#dfe6ee" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M -38 -62 Q 0 -84 38 -62" fill="#c3c9d1" stroke="${INK}" stroke-width="4"/>
+  <circle cx="0" cy="-80" r="9" fill="${INK}"/>
+  <rect x="-80" y="60" width="160" height="18" rx="7" fill="#3d4650"/>
+  <path d="M -8 -58 L 10 -30 L -6 -8 L 14 18 L 0 40" fill="none" stroke="${INK}" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>`)
+
 /** A tennis ball (for the goals picture and the bouncing ball). */
 export const tennisBall = (cx, cy, r) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#d7e84a" stroke="${INK}" stroke-width="${r > 30 ? 3.5 : 2.5}"/>
   <path d="M ${f1(cx - r * 0.95)} ${f1(cy - r * 0.3)} Q ${cx} ${f1(cy + r * 0.25)} ${f1(cx + r * 0.2)} ${f1(cy + r * 0.98)} M ${f1(cx - r * 0.2)} ${f1(cy - r * 0.98)} Q ${cx} ${f1(cy - r * 0.25)} ${f1(cx + r * 0.95)} ${f1(cy + r * 0.3)}" fill="none" stroke="#ffffff" stroke-width="${r > 30 ? 4 : 3}"/>`

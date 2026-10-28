@@ -3,7 +3,7 @@
 // per press, so the class predicts each step before it is shown. Deadpan,
 // never flagged as a joke. It opens the book's candle experiment (page 115):
 //
-//   1  7 a.m. His kettle is broken.                       (a crack, a sad face)
+//   1  7 a.m. His kettle is broken.    (cracked, no steam; he holds an empty mug)
 //   2  He heats his coffee with a candle. Very patient.   (a mug on a stand)
 //   3  8 a.m. The coffee is a bit warm. So is everything else.  (heat everywhere)
 //   4  12 noon. Six candles later. (He buys a new kettle.)
@@ -17,7 +17,7 @@ import { ChevronRight, Undo2, RotateCcw } from 'lucide-react'
 import { tr } from '../../../src/lib/lang.js'
 import { Btn } from '../U03_models/ui.jsx'
 import { MrBowen } from '../U03_coffee/dating.jsx'
-import { mug, clock, kettle, candle, arrow } from './art.js'
+import { mug, clock, kettle, brokenKettle, candle, arrow } from './art.js'
 
 const t = (lang, en, fr) => tr(lang, en, null, fr)
 const FONT = "Inter, 'Segoe UI', system-ui, sans-serif"
@@ -75,13 +75,16 @@ function CandleStand({ x, hot = false, stubs = 0 }) {
 }
 
 /* ── the four panels ── */
+// He holds his empty mug; the kettle on the desk is cracked, and no steam.
+const MUG_HAND = [60, 130] // in his own frame
 function Broken({ x }) {
+  const bx = x + 80, by = FLOOR - 268 * 0.82
   return (
     <g>
-      <MrBowen x={x + 110} y={FLOOR - 268 * 0.82} scale={0.82} mood="sad" />
-      <Pic svg={kettle(x + 284, FLOOR - 52, 0.56)} />
-      <path d={`M ${x + 262} ${FLOOR - 96} l 16 14 l -12 12 l 18 16 l -10 12`} fill="none" stroke={INK} strokeWidth="4" strokeLinejoin="round" />
-      <text x={x + 300} y={FLOOR - 150} fontFamily={FONT} fontSize="34" fontWeight="900" fill="#5b6770">???</text>
+      <Desk x={x} />
+      <Pic svg={brokenKettle(x + 290, DESK - 39, 0.5)} />
+      <MrBowen x={bx} y={by} scale={0.82} mood="sad" handRight={MUG_HAND} />
+      <Pic svg={mug(bx + MUG_HAND[0] * 0.82 + 10, by + MUG_HAND[1] * 0.82 - 12, 0.3, false)} />
       <Pic svg={clock(x + 326, TOP + 56, 7)} />
     </g>
   )

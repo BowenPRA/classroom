@@ -156,11 +156,11 @@ export const slides = [
     eyebrow: 'Key word · Question 1',
     eyebrowFr: 'Mot clé · Question 1',
     title: 'Energy Changes',
-    titleFr: 'L’énergie change',
+    titleFr: 'L’énergie se transforme',
     ratio: 45,
     widget: BallFilm,
-    content: 'Slowed down: the bottom of the ball goes **flat**, then springs back.',
-    contentFr: 'Au ralenti : le bas de la balle s’**aplatit**, puis reprend sa forme.',
+    content: 'A big gym ball, slowed down: the bottom goes **flat**, then round again.',
+    contentFr: 'Un gros ballon de gym, au ralenti : le bas s’**aplatit**, puis redevient rond.',
     notes: [
       {
         tone: 'write',
@@ -187,8 +187,8 @@ export const slides = [
     titleFr: 'Événement ou processus',
     ratio: 45,
     inlineSvg: DIAGRAMS.EVENT_PROCESS,
-    content: 'Something must **happen** for energy to change.',
-    contentFr: 'Il faut que quelque chose se **passe** pour que l’énergie change.',
+    content: 'A ball **bounces**. A candle **burns**. Event or process?',
+    contentFr: 'Une balle **rebondit**. Une bougie **brûle**. Événement ou processus ?',
     notes: [
       {
         tone: 'write',
@@ -213,8 +213,8 @@ export const slides = [
     titleFr: 'Les schémas de transformation',
     ratio: 45,
     inlineSvg: DIAGRAMS.BOOK_DIAGRAMS,
-    content: 'A television: **one** box, **two** arrows.',
-    contentFr: 'Une télévision : **une** case, **deux** flèches.',
+    content: 'A television: **two** arrows from **one** box.',
+    contentFr: 'Une télévision : **deux** flèches depuis **une** case.',
     notes: [
       {
         tone: 'write',
@@ -276,8 +276,8 @@ export const slides = [
     titleFr: 'Dans la batterie',
     ratio: 45,
     inlineSvg: DIAGRAMS.CHARGING,
-    content: 'Charging **stores** energy in the battery. Using the phone takes it **out** again.',
-    contentFr: 'La charge **stocke** l’énergie dans la batterie. Utiliser le téléphone la **reprend**.',
+    content: 'A phone battery is a **chemical** store, not an electrical one.',
+    contentFr: 'Une batterie de téléphone est une réserve **chimique**, pas électrique.',
   },
 
   // 11. From… To…: the whole class, standing
@@ -323,8 +323,8 @@ export const slides = [
     titleFr: 'Une centrale à gaz',
     inlineSvg: DIAGRAMS.POWER_STATION,
     drawThis: true,
-    caption: 'Copy the diagram. Then: where do the wires take the energy **next**?',
-    captionFr: 'Recopie le schéma. Puis : où les fils emmènent-ils l’énergie **ensuite** ?',
+    caption: 'Copy the **four boxes** and **three arrows**. Then: where do the wires take the energy **next**?',
+    captionFr: 'Recopie les **quatre cases** et les **trois flèches**. Puis : où les fils emmènent-ils l’énergie **ensuite** ?',
   },
 
   // ════════════════════════════════════════════════════════════════════════
@@ -384,15 +384,15 @@ export const slides = [
     titleFr: 'L’expérience de la bougie',
     ratio: 45,
     inlineSvg: DIAGRAMS.CANDLE,
-    content: 'A candle heats some cooking oil. The oil warms up by **10 °C**.',
-    contentFr: 'Une bougie chauffe de l’huile. L’huile gagne **10 °C**.',
+    content: 'A candle heats some cooking oil. This time we want **heat**: **chemical → thermal**.',
+    contentFr: 'Une bougie chauffe de l’huile. Cette fois, on veut de la **chaleur** : **chemical → thermal**.',
     reveal: {
       prompt: 'Where did the candle’s energy go?',
       promptFr: 'Où est partie l’énergie de la bougie ?',
       label: 'Answer',
       labelFr: 'Réponse',
-      answer: '**Chemical → thermal.** Some heated the **oil**. The rest heated the **glass**, the **tripod** and the **air**.',
-      answerFr: '**Chimique → thermique.** Une partie a chauffé l’**huile**. Le reste a chauffé le **verre**, le **trépied** et l’**air**.',
+      answer: 'Some heated the **oil**. The rest heated the **glass**, the **tripod** and the **air**.',
+      answerFr: 'Une partie a chauffé l’**huile**. Le reste a chauffé le **verre**, le **trépied** et l’**air**.',
     },
   },
 
@@ -424,8 +424,8 @@ export const slides = [
     titleFr: 'La chaleur sort',
     ratio: 45,
     inlineSvg: DIAGRAMS.FREEZER,
-    content: 'The water **cools**: its thermal energy goes into the colder air.',
-    contentFr: 'L’eau **refroidit** : son énergie thermique passe dans l’air plus froid.',
+    content: 'Cold does not move. **Heat** moves.',
+    contentFr: 'Le froid ne bouge pas. La **chaleur** bouge.',
     notes: [
       {
         tone: 'write',
@@ -435,8 +435,8 @@ export const slides = [
       {
         tone: 'info',
         badge: false,
-        text: 'Feel behind a fridge: it is warm. That is heat from the food inside.',
-        textFr: 'Touche l’arrière d’un frigo : c’est chaud. C’est la chaleur des aliments.',
+        text: 'Feel the back of a freezer: it is warm. The freezer **pumps** the heat out there.',
+        textFr: 'Touche l’arrière d’un congélateur : c’est chaud. Il y **pompe** la chaleur.',
       },
     ],
   },
@@ -478,8 +478,8 @@ export const slides = [
     reveal: {
       label: 'Answer',
       labelFr: 'Réponse',
-      answer: '**Chemical** → **light**, **sound**, **thermal** and **kinetic**. One box, four arrows.',
-      answerFr: '**Chemical** → **light**, **sound**, **thermal** et **kinetic**. Une case, quatre flèches.',
+      answer: '**Chemical** → **light**, **sound**, **thermal** and **kinetic**. Four arrows from one box.',
+      answerFr: '**Chemical** → **light**, **sound**, **thermal** et **kinetic**. Quatre flèches depuis une case.',
     },
   },
 ]

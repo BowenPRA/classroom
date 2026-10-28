@@ -4,19 +4,20 @@
 // Mr Bowen holds a tennis ball 2 m up and lets go. The next moment is always
 // written on the screen ("Next: it hits the floor and squashes"); the class
 // says which store will be biggest, then the press moves the ball and the
-// bars show it:
+// bars show it. Each press is ONE change:
 //
-//   0  in his hand, 2 m up            gravitational potential 100
-//   1  halfway down                   gravitational 50, kinetic 50
-//   2  just before the floor          kinetic 100
-//   3  squashed on the floor: bang!   elastic potential 80, sound and heat 20
-//   4  on the way back up             kinetic 27, gravitational 28, lost 45
-//   5  the top of the bounce: 1.1 m   gravitational 55, sound and heat 45
+//   0  in his hand, 2 m up             gravitational potential 100
+//   1  halfway down                    gravitational 50, kinetic 50
+//   2  just before the floor           kinetic 100
+//   3  squashed on the floor: bang!    elastic potential 55; 45 out as sound and heat
+//   4  springing back off the floor    kinetic 55
+//   5  the top of the bounce: 1.1 m    gravitational 55
 //
 // A real tennis ball bounces to just over half the height it fell from (the
-// rules of tennis want 53–58%), so the energy that went to sound and heat is
-// shown as about 45%. The starter's answer — and why not 2 m — is the next
-// slide.
+// rules of tennis want 53–58%), so about 45% leaves the ball at the bounce, as
+// sound and heat. That bar sits apart from the ball's three stores, and only
+// the ball's stores light up as "biggest" (both, when they are equal). Why
+// the ball cannot get back to 2 m is the next slide's question.
 import { useState } from 'react'
 import { Undo2, RotateCcw, ChevronRight } from 'lucide-react'
 import { tr } from '../../../src/lib/lang.js'
@@ -25,44 +26,61 @@ import { MrBowen } from '../U03_coffee/dating.jsx'
 import { INK, MUTED, FONT, tennisBall } from './art.js'
 
 const t = (lang, en, fr) => tr(lang, en, null, fr)
-const RULE = '#d5dbe1', BLUE = '#1a5fa8'
+const RULE = '#d5dbe1', BLUE = '#1a5fa8', RED = '#d83a2e'
 
+// The ball's three stores, then what leaves it at the bounce.
 const STORES = [
   { key: 'g', en: 'gravitational potential', fr: 'potentielle de pesanteur', color: '#0087a8' },
   { key: 'k', en: 'kinetic', fr: 'cinétique', color: '#1a5fa8' },
   { key: 'e', en: 'elastic potential', fr: 'potentielle élastique', color: '#5c2483' },
-  { key: 's', en: 'sound and heat', fr: 'son et chaleur', color: '#d83a2e' },
 ]
-// h = the ball's height in metres; squash = on the floor
+const OUT = { key: 's', en: 'sound and heat', fr: 'son et chaleur', color: RED }
+// h = the ball's height in metres; squash = on the floor; dir = which way it moves
 const STAGES = [
   { h: 2, g: 100, k: 0, e: 0, s: 0, en: 'Mr Bowen holds the ball 2 m up.', fr: 'M. Bowen tient la balle à 2 m.' },
-  { h: 1, g: 50, k: 50, e: 0, s: 0, en: 'It falls. Halfway down.', fr: 'Elle tombe. À mi-hauteur.' },
-  { h: 0.02, g: 0, k: 100, e: 0, s: 0, en: 'Just before it hits the floor.', fr: 'Juste avant le sol.' },
-  { h: 0, squash: true, g: 0, k: 0, e: 80, s: 20, en: 'It squashes on the floor. Bang!', fr: 'Elle s’écrase sur le sol. Bang !' },
-  { h: 0.56, g: 28, k: 27, e: 0, s: 45, en: 'It goes back up.', fr: 'Elle remonte.' },
+  { h: 1, dir: 'down', g: 50, k: 50, e: 0, s: 0, en: 'It falls. Halfway down.', fr: 'Elle tombe. À mi-hauteur.' },
+  { h: 0.02, dir: 'down', g: 0, k: 100, e: 0, s: 0, en: 'Just before it hits the floor.', fr: 'Juste avant le sol.' },
+  { h: 0, squash: true, g: 0, k: 0, e: 55, s: 45, en: 'It squashes on the floor. Bang!', fr: 'Elle s’écrase sur le sol. Bang !' },
+  { h: 0.02, dir: 'up', g: 0, k: 55, e: 0, s: 45, en: 'It springs back up.', fr: 'Elle rebondit vers le haut.' },
   { h: 1.1, g: 55, k: 0, e: 0, s: 45, en: 'The top of the bounce: 1.1 m.', fr: 'Le haut du rebond : 1.1 m.' },
 ]
 const NEXT = [
   ['He lets go. Halfway down…', 'Il lâche. À mi-hauteur…'],
   ['Just before it hits the floor…', 'Juste avant le sol…'],
   ['It hits the floor and squashes…', 'Elle touche le sol et s’écrase…'],
-  ['It goes back up…', 'Elle remonte…'],
+  ['It springs back up…', 'Elle rebondit vers le haut…'],
   ['The top of the bounce…', 'Le haut du rebond…'],
 ]
 
 const FLOOR = 470
-const M = 180 // pixels per metre
+const M = 168 // pixels per metre
 const BALL_X = 360
 const R = 24
 const yOf = (h) => FLOOR - R - h * M
-const BAR = { x: 820, w: 600, y0: 152, gap: 86, h: 40 }
+const BAR = { x: 820, w: 600, y0: 166, gap: 80, h: 40 }
+const OUT_Y = 432 // the sound-and-heat bar, below a rule
 // Drawn to this scale, 2 m is out of Mr Bowen's reach: he stands on a lab
-// stool, his raised hand just under the ball.
+// stool, his arm held out so the ball falls clear of him.
 const BOWEN = 1.05
-const HAND = [66, 18] // in his own frame
-const STAND_X = BALL_X - 16 - HAND[0] * BOWEN
+const HAND = [100, 36] // in his own frame: a straight arm, up and out
+const STAND_X = BALL_X - 14 - HAND[0] * BOWEN
 const STAND_Y = yOf(2) + R + 6 - HAND[1] * BOWEN
 const SEAT = STAND_Y + 268 * BOWEN
+
+function Bar({ s, y, value, on, lang, note }) {
+  const fr = lang === 'fr'
+  return (
+    <g>
+      <text x={BAR.x} y={y - 12} fontFamily={FONT} fontSize="24" fontWeight={on ? 900 : 700} fill={on ? s.color : MUTED}>
+        {s.en}{fr && <tspan dx="14" fontSize="19" fontWeight="700" fill={MUTED}>{s.fr}</tspan>}
+        {note && <tspan dx="14" fontSize="19" fontWeight="700" fill={MUTED}>{note}</tspan>}
+      </text>
+      <rect x={BAR.x} y={y} width={BAR.w} height={BAR.h} rx="8" fill="#f1f5f9" stroke={on ? s.color : RULE} strokeWidth={on ? 3 : 1.5} />
+      <rect x={BAR.x} y={y} width={BAR.w} height={BAR.h} rx="8" fill={s.color}
+        style={{ transform: `scaleX(${value / 100})`, transformOrigin: `${BAR.x}px 0px`, transition: 'transform 0.8s cubic-bezier(.4,0,.2,1)' }} />
+    </g>
+  )
+}
 
 export function BouncingBall({ lang = 'en', isDisplayMode = false }) {
   const [k, setK] = useState(0)
@@ -70,7 +88,8 @@ export function BouncingBall({ lang = 'en', isDisplayMode = false }) {
   const fr = lang === 'fr'
   const st = STAGES[k]
   const last = STAGES.length - 1
-  const biggest = STORES.reduce((a, b) => (st[b.key] > st[a.key] ? b : a), STORES[0]).key
+  const most = Math.max(...STORES.map((s) => st[s.key]))
+  const ballY = yOf(st.h)
 
   return (
     <div className="w-full h-full flex flex-col gap-3 select-none">
@@ -95,20 +114,27 @@ export function BouncingBall({ lang = 'en', isDisplayMode = false }) {
           ))}
           <line x1="572" y1={FLOOR} x2="572" y2={FLOOR - 2 * M} stroke={INK} strokeWidth="3" />
           <line x1={BALL_X - 40} y1={FLOOR - 2 * M} x2="560" y2={FLOOR - 2 * M} stroke="#9aa7b4" strokeWidth="3" strokeDasharray="8 8" />
-          {k === last && <line x1={BALL_X - 40} y1={FLOOR - 1.1 * M} x2="560" y2={FLOOR - 1.1 * M} stroke="#d83a2e" strokeWidth="3" strokeDasharray="8 8" />}
+          {k === last && <line x1={BALL_X - 40} y1={FLOOR - 1.1 * M} x2="560" y2={FLOOR - 1.1 * M} stroke={RED} strokeWidth="3" strokeDasharray="8 8" />}
           {st.squash ? (
             <g>
               <ellipse cx={BALL_X} cy={FLOOR - 13} rx="34" ry="13" fill="#d7e84a" stroke={INK} strokeWidth="3" />
               <path d={`M ${BALL_X - 70} ${FLOOR - 40} l 18 12 M ${BALL_X - 60} ${FLOOR - 64} l 18 22 M ${BALL_X + 70} ${FLOOR - 40} l -18 12 M ${BALL_X + 60} ${FLOOR - 64} l -18 22`} stroke="#c25e12" strokeWidth="5" strokeLinecap="round" />
             </g>
           ) : (
-            <g dangerouslySetInnerHTML={{ __html: tennisBall(BALL_X, yOf(st.h), R) }} />
+            <g dangerouslySetInnerHTML={{ __html: tennisBall(BALL_X, ballY, R) }} />
           )}
-          {(k === 1 || k === 2) && <path d={`M ${BALL_X} ${yOf(st.h) - 40} v -60`} stroke="#9aa7b4" strokeWidth="5" strokeLinecap="round" strokeDasharray="10 8" />}
-          {k === 4 && <path d={`M ${BALL_X} ${yOf(st.h) + 40} v 60`} stroke="#9aa7b4" strokeWidth="5" strokeLinecap="round" strokeDasharray="10 8" />}
+          {/* which way it is moving */}
+          {st.dir && (
+            <g stroke="#9aa7b4" fill="#9aa7b4">
+              <line x1={BALL_X + 52} y1={ballY + (st.dir === 'down' ? -30 : 26)} x2={BALL_X + 52} y2={ballY + (st.dir === 'down' ? 10 : -14)} strokeWidth="5" strokeLinecap="round" />
+              <path d={st.dir === 'down'
+                ? `M ${BALL_X + 40} ${ballY + 10} L ${BALL_X + 64} ${ballY + 10} L ${BALL_X + 52} ${ballY + 28} Z`
+                : `M ${BALL_X + 40} ${ballY - 14} L ${BALL_X + 64} ${ballY - 14} L ${BALL_X + 52} ${ballY - 32} Z`} stroke="none" />
+            </g>
+          )}
 
           {/* now, and next */}
-          <text x="40" y="50" fontFamily={FONT} fontSize="27" fontWeight="900" fill={INK}>{fr ? st.fr : st.en}</text>
+          <text x="40" y="46" fontFamily={FONT} fontSize="27" fontWeight="900" fill={INK}>{fr ? st.fr : st.en}</text>
           {k < last ? (
             <g>
               <rect x="652" y="16" width="824" height="56" rx="12" fill="#e9f1fa" stroke={BLUE} strokeWidth="2.5" />
@@ -118,27 +144,18 @@ export function BouncingBall({ lang = 'en', isDisplayMode = false }) {
             </g>
           ) : (
             <g>
-              <rect x="652" y="16" width="824" height="56" rx="12" fill="#fdecee" stroke="#d83a2e" strokeWidth="2.5" />
-              <text x="672" y="53" fontFamily={FONT} fontSize="24" fontWeight="800" fill="#d83a2e">{t(lang, 'Not 2 m! Where did the rest of the energy go?', 'Pas 2 m ! Où est passé le reste de l’énergie ?')}</text>
+              <rect x="652" y="16" width="824" height="56" rx="12" fill="#fdecee" stroke={RED} strokeWidth="2.5" />
+              <text x="672" y="53" fontFamily={FONT} fontSize="24" fontWeight="800" fill={RED}>{t(lang, 'Only 1.1 m, not 2 m!', 'Seulement 1.1 m, pas 2 m !')}</text>
             </g>
           )}
 
-          {/* the four stores */}
-          {STORES.map((s, i) => {
-            const y = BAR.y0 + i * BAR.gap
-            const on = s.key === biggest
-            return (
-              <g key={s.key}>
-                <text x={BAR.x} y={y - 12} fontFamily={FONT} fontSize="24" fontWeight={on ? 900 : 700} fill={on ? s.color : MUTED}>
-                  {s.en}{fr && <tspan dx="14" fontSize="19" fontWeight="700" fill={MUTED}>{s.fr}</tspan>}
-                </text>
-                <rect x={BAR.x} y={y} width={BAR.w} height={BAR.h} rx="8" fill="#f1f5f9" stroke={on ? s.color : RULE} strokeWidth={on ? 3 : 1.5} />
-                <rect x={BAR.x} y={y} width={BAR.w} height={BAR.h} rx="8" fill={s.color}
-                  style={{ transform: `scaleX(${st[s.key] / 100})`, transformOrigin: `${BAR.x}px 0px`, transition: 'transform 0.8s cubic-bezier(.4,0,.2,1)' }} />
-              </g>
-            )
-          })}
-          <text x={BAR.x} y="498" fontFamily={FONT} fontSize="20" fontWeight="700" fill={MUTED}>{t(lang, 'The ball’s energy, in its stores', 'L’énergie de la balle, dans ses réserves')}</text>
+          {/* the ball's three stores, then what left it */}
+          <text x={BAR.x} y="108" fontFamily={FONT} fontSize="20" fontWeight="800" fill={INK}>{t(lang, 'The ball’s energy stores', 'Les réserves d’énergie de la balle')}</text>
+          {STORES.map((s, i) => (
+            <Bar key={s.key} s={s} y={BAR.y0 + i * BAR.gap} value={st[s.key]} on={most > 0 && st[s.key] === most} lang={lang} />
+          ))}
+          <line x1={BAR.x} y1="380" x2={BAR.x + BAR.w} y2="380" stroke={RULE} strokeWidth="3" strokeDasharray="10 8" />
+          <Bar s={OUT} y={OUT_Y} value={st.s} on={st.s > 0} lang={lang} note={t(lang, 'out of the ball', 'sortis de la balle')} />
         </svg>
       </div>
       <div className="shrink-0 flex items-center justify-center gap-3 flex-wrap">
