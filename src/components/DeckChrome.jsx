@@ -13,7 +13,7 @@ import { PickButton } from './RandomStudent.jsx'
 import { tr } from '../lib/lang.js'
 
 // Secondary toolbar buttons: an icon always, a label only where there is room.
-const SECONDARY = 'flex items-center gap-2 px-3 lg:px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 transition-all border-2 border-slate-200 dark:border-slate-700 active:scale-95'
+const SECONDARY = 'shrink-0 flex items-center gap-2 px-3 lg:px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 transition-all border-2 border-slate-200 dark:border-slate-700 active:scale-95'
 const LABEL = 'text-xs font-black uppercase tracking-widest whitespace-nowrap'
 
 /**
@@ -72,8 +72,6 @@ function RemoteButton({ remote, lang, tone = 'light' }) {
     // has no use for it.
     <button onClick={onOpen} className={`${SECONDARY} relative hidden md:flex hover:text-[#1cb0f6]`} title={title}>
       <Smartphone className="w-5 h-5" strokeWidth={2.5} />
-      {/* Icon only below 2xl, so the bar wraps no sooner than it did before. */}
-      <span className={`hidden 2xl:inline ${LABEL}`}>{tr(lang, 'Phone remote', 'Điều khiển', 'Télécommande')}</span>
       {badge}
     </button>
   )
@@ -115,32 +113,33 @@ export function TopBar({ title, index, total, bilingual, langs, lang, setLang, i
 }
 
 /**
- * Bottom bar while previewing: back, the teaching controls, forward. The
- * middle cluster wraps rather than overflowing on a narrow tablet. Plan and
- * Self-study are teacher shortcuts that also live on the course page, so they
- * are dropped first as the screen narrows; Full screen stays at every width.
+ * Bottom bar while previewing: back, the teaching controls, forward. It must
+ * stay one row on a laptop (1024 px and up), with three languages and a long
+ * picked name: only the language switch, Pick and Full screen carry words, the
+ * teacher shortcuts (Phone remote, Plan, Self-study) are icons with a tooltip
+ * and drop out below `md`, and a long name ends in "…" rather than wrapping
+ * the row. On a narrow tablet the middle cluster wraps instead.
  */
 export function BottomBar({ index, total, bilingual, langs, lang, setLang, picker, onManage, onPrev, onNext, onFullscreen, onPlan, selfStudyUrl, remote }) {
   const last = index === total - 1
   return (
     <div className="bg-white dark:bg-slate-900 border-t-2 border-slate-200 dark:border-slate-800 px-3 sm:px-5 pt-3 sm:pt-5 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-[max(1.25rem,env(safe-area-inset-bottom))] z-20 shrink-0">
-      <div className="max-w-5xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+      <div className="max-w-6xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
         <button onClick={onPrev} disabled={index === 0} className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 flex items-center justify-center rounded-xl border-2 border-b-4 border-slate-200 dark:border-slate-700 text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 active:border-b-2 active:translate-y-0.5 transition-all disabled:opacity-30 bg-white dark:bg-slate-900" title="Back (←)">
           <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7" strokeWidth={3} />
         </button>
 
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 min-w-0">
-          {bilingual && <div className="hidden sm:block"><LangToggle langs={langs} lang={lang} setLang={setLang} /></div>}
-          <PickButton picker={picker} lang={lang} onManage={onManage} />
+        <div className="flex flex-wrap lg:flex-nowrap items-center justify-center gap-2 sm:gap-3 min-w-0">
+          {bilingual && <div className="hidden sm:block shrink-0"><LangToggle langs={langs} lang={lang} setLang={setLang} /></div>}
+          <PickButton picker={picker} lang={lang} onManage={onManage} shrink />
           <button onClick={onFullscreen} className={`${SECONDARY} hover:text-[#1cb0f6]`} title="Full screen (F)">
             <Maximize className="w-5 h-5" strokeWidth={2.5} />
-            <span className={`hidden lg:inline ${LABEL}`}>Full screen</span>
+            <span className={`hidden xl:inline ${LABEL}`}>Full screen</span>
           </button>
           <RemoteButton remote={remote} lang={lang} />
           {onPlan && (
             <button onClick={onPlan} className={`${SECONDARY} hidden md:flex hover:text-[#8b5cf6]`} title="Teacher lesson plan">
               <FileText className="w-5 h-5" strokeWidth={2.5} />
-              <span className={`hidden xl:inline ${LABEL}`}>Plan</span>
             </button>
           )}
           {/* The self-study twin on the Dashboard: a teacher-side shortcut, and
@@ -148,7 +147,6 @@ export function BottomBar({ index, total, bilingual, langs, lang, setLang, picke
           {selfStudyUrl && (
             <a href={selfStudyUrl} target="_blank" rel="noopener noreferrer" className={`${SECONDARY} hidden md:flex hover:text-[#58cc02]`} title="Self-study version on the Dashboard">
               <Rocket className="w-5 h-5" strokeWidth={2.5} />
-              <span className={`hidden xl:inline ${LABEL}`}>Self-study</span>
             </a>
           )}
         </div>

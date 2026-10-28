@@ -18,7 +18,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import {
   ChevronLeft, ChevronRight, Shuffle, EyeOff, Eye, Timer, ListOrdered, Loader2,
-  X, WifiOff, MonitorUp, RotateCw, Pause, Smartphone,
+  X, WifiOff, MonitorUp, RotateCw, Pause, Smartphone, Maximize2, Minimize2,
 } from 'lucide-react'
 import { getLesson } from '../../content/registry.js'
 import { openBus } from '../lib/remote/bus.js'
@@ -283,8 +283,13 @@ function RemoteRoom({ room }) {
           </Banner>
         )}
         {laptopLive && !host.proj && (
+          <Banner tone="info" icon={MonitorUp} action={{ label: 'Full screen', onClick: () => send('proj', { on: true }) }}>
+            The projector shows the toolbars.
+          </Banner>
+        )}
+        {laptopLive && host.proj && host.fill === false && (
           <Banner tone="info" icon={MonitorUp}>
-            The laptop is not in Full screen. Press <b>Full screen</b> (F) on the laptop: a phone cannot start it.
+            The browser’s bars still show. Press <b>F11</b> on the laptop once.
           </Banner>
         )}
 
@@ -363,17 +368,17 @@ function RemoteRoom({ room }) {
               : <span className="w-2.5 h-2.5 rounded-full bg-[#58cc02] shadow-[0_0_0_4px_rgba(88,204,2,0.2)]" />}
             {status.text}
           </span>
-          {ready && host.langs?.length > 1 && (
-            <div className="flex rounded-xl bg-white/5 border border-white/10 p-0.5">
-              {host.langs.map((l) => (
-                <button
-                  key={l}
-                  onClick={() => send('lang', { l })}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-black uppercase tracking-widest ${host.lang === l ? 'bg-[#1cb0f6] text-white' : 'text-slate-400'}`}
-                >
-                  {l}
-                </button>
-              ))}
+          {ready && (
+            <div className="flex items-center gap-2">
+              {/* Full screen on the projector: on (blue) or off. */}
+              <button
+                onClick={() => send('proj', { on: !host.proj })}
+                aria-label={host.proj ? 'Leave full screen' : 'Full screen'}
+                className={`p-2 rounded-xl border ${host.proj ? 'bg-[#1cb0f6] border-[#1cb0f6] text-white' : 'bg-white/5 border-white/10 text-slate-300'}`}
+              >
+                {host.proj ? <Minimize2 className="w-4 h-4" strokeWidth={3} /> : <Maximize2 className="w-4 h-4" strokeWidth={3} />}
+              </button>
+              {host.langs?.length > 1 && <LangSwitch langs={host.langs} lang={host.lang} onPick={(l) => send('lang', { l })} />}
             </div>
           )}
         </header>
@@ -447,6 +452,22 @@ function RemoteRoom({ room }) {
   )
 }
 
+function LangSwitch({ langs, lang, onPick }) {
+  return (
+    <div className="flex rounded-xl bg-white/5 border border-white/10 p-0.5">
+      {langs.map((l) => (
+        <button
+          key={l}
+          onClick={() => onPick(l)}
+          className={`px-3 py-1.5 rounded-lg text-xs font-black uppercase tracking-widest ${lang === l ? 'bg-[#1cb0f6] text-white' : 'text-slate-400'}`}
+        >
+          {l}
+        </button>
+      ))}
+    </div>
+  )
+}
+
 function Card({ children }) {
   return <div className="rounded-2xl bg-white/[0.06] border border-white/10 p-4">{children}</div>
 }
@@ -471,7 +492,7 @@ function Banner({ tone, icon: Icon, action, children }) {
       <Icon className="w-5 h-5 shrink-0" strokeWidth={2.5} />
       <div className="flex-1 text-sm font-bold leading-snug">{children}</div>
       {action && (
-        <button onClick={action.onClick} className="shrink-0 rounded-xl bg-amber-300 text-slate-950 px-3 py-2 text-xs font-black uppercase tracking-widest active:scale-95">
+        <button onClick={action.onClick} className={`shrink-0 rounded-xl px-3 py-2 text-xs font-black uppercase tracking-widest active:scale-95 ${tone === 'warn' ? 'bg-amber-300 text-slate-950' : 'bg-[#1cb0f6] text-white'}`}>
           {action.label}
         </button>
       )}

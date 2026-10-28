@@ -23,7 +23,7 @@ import { tr as pick } from '../lib/lang.js'
  * draws a student and shows the name beside it; the small right half opens the
  * roster manager. `tone` picks the light (bar) or dark (dock) styling.
  */
-export function PickButton({ picker, lang = 'en', onManage, tone = 'light', large = false }) {
+export function PickButton({ picker, lang = 'en', onManage, tone = 'light', large = false, shrink = false }) {
   const { names, current, justReset, pickCount, draw } = picker
   const onPick = () => {
     // Nothing to draw from yet: go straight to the editor rather than doing
@@ -36,18 +36,21 @@ export function PickButton({ picker, lang = 'en', onManage, tone = 'light', larg
     : 'bg-white/10 border border-white/15 text-white'
   const divider = light ? 'border-slate-200 dark:border-slate-700' : 'border-white/15'
   const hover = light ? 'hover:text-[#1cb0f6]' : 'hover:bg-white/20'
+  // `shrink`: in a row that must not wrap (the bottom bar), a long name gives
+  // way and ends in "…" rather than pushing the other buttons onto a new line.
+  const fit = shrink ? 'min-w-0' : ''
   return (
-    <div className={`flex items-stretch rounded-xl overflow-hidden ${shell}`}>
+    <div className={`flex items-stretch rounded-xl overflow-hidden ${shell} ${fit}`}>
       <button
         onClick={onPick}
-        className={`flex items-center gap-2 px-3 sm:px-4 py-2 transition-colors active:scale-95 ${hover}`}
+        className={`flex items-center gap-2 px-3 sm:px-4 py-2 transition-colors active:scale-95 ${hover} ${fit}`}
         title={pick(lang, 'Pick a random student (R)', 'Chọn ngẫu nhiên một học sinh (R)', 'Choisir un élève au hasard (R)')}
       >
         <Shuffle className="w-5 h-5 shrink-0" strokeWidth={2.5} />
         {current ? (
           <span
             key={pickCount}
-            className={`font-black tracking-tight whitespace-nowrap max-w-[10rem] sm:max-w-[12rem] xl:max-w-[16rem] truncate animate-in zoom-in-95 fade-in duration-300 ${light ? 'text-slate-900 dark:text-white' : 'text-white'} ${large ? 'text-lg' : 'text-sm sm:text-base'}`}
+            className={`font-black tracking-tight whitespace-nowrap max-w-[10rem] sm:max-w-[12rem] xl:max-w-[16rem] truncate animate-in zoom-in-95 fade-in duration-300 ${light ? 'text-slate-900 dark:text-white' : 'text-white'} ${large ? 'text-lg' : 'text-sm sm:text-base'} ${fit}`}
           >
             {current}
             {justReset && <span className="ml-1.5 text-[10px] uppercase tracking-widest text-[#ffc800] align-middle">{pick(lang, 'new round', 'vòng mới', 'nouveau tour')}</span>}

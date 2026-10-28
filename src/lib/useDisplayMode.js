@@ -66,10 +66,15 @@ export function useDisplayMode(containerRef, { idleMs = 3000 } = {}) {
   // policy) or that never settles (some embedded browsers) must not leave the
   // button doing nothing. The request is still made synchronously, inside the
   // click or keypress that counts as the user gesture.
-  const enter = useCallback(() => {
+  //
+  // `askBrowser: false` is the phone remote's route: a request from the phone
+  // is not a user gesture, so the browser would refuse it anyway. Display mode
+  // then fills the browser window, which is the whole screen once the laptop's
+  // browser is in its own full screen (F11).
+  const enter = useCallback((askBrowser = true) => {
     setIsDisplayMode(true)
     const el = containerRef.current
-    if (!el || fullscreenElement()) return
+    if (!askBrowser || !el || fullscreenElement()) return
     const warn = (err) => console.warn('Fullscreen unavailable, showing display mode windowed:', err)
     try {
       requestFullscreen(el)?.catch?.(warn)
@@ -88,4 +93,26 @@ export function useDisplayMode(containerRef, { idleMs = 3000 } = {}) {
   const toggle = useCallback(() => (isDisplayMode ? exit() : enter()), [isDisplayMode, enter, exit])
 
   return { isDisplayMode, isIdle, enter, exit, toggle, poke }
+}
+
+// The window covers the whole screen: real fullscreen, or the browser's own
+// (F11), which the Fullscreen API cannot see. Measured at 100% zoom, which is
+// how a deck is projected; a zoomed page reads as not filling.
+const fillsScreen = () =>
+  Boolean(fullscreenElement()) ||
+  (window.innerWidth >= window.screen.width - 2 && window.innerHeight >= window.screen.height - 2)
+
+/** Whether the deck's window fills the screen, kept current on resize. */
+export function useFillsScreen() {
+  const [fills, setFills] = useState(fillsScreen)
+  useEffect(() => {
+    const update = () => setFills(fillsScreen())
+    window.addEventListener('resize', update)
+    document.addEventListener('fullscreenchange', update)
+    return () => {
+      window.removeEventListener('resize', update)
+      document.removeEventListener('fullscreenchange', update)
+    }
+  }, [])
+  return fills
 }

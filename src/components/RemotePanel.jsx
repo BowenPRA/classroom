@@ -54,7 +54,9 @@ export default function RemotePanel({ lang = 'en', remote, isDisplayMode = false
 
   const steps = [
     t('Scan the code with your phone’s camera.', 'Quét mã bằng camera điện thoại.', 'Scanne le code avec l’appareil photo du téléphone.'),
-    t('Press Full screen (F) on this laptop.', 'Bấm Full screen (F) trên máy tính này.', 'Appuie sur Full screen (F) sur cet ordinateur.'),
+    // The phone can switch display mode but not the browser's fullscreen (that
+    // needs a click or key here), so F11 once makes its Full screen fill the screen.
+    t('Press F11 on this laptop once. Your phone then turns Full screen on and off.', 'Bấm F11 trên máy tính này một lần. Sau đó điện thoại bật và tắt Full screen.', 'Appuie une fois sur F11 sur cet ordinateur. Ton téléphone active et désactive ensuite Full screen.'),
     t('Teach from your phone.', 'Dạy bằng điện thoại.', 'Fais cours depuis ton téléphone.'),
   ]
 

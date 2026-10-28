@@ -191,11 +191,15 @@ cursor hidden after three idle seconds. Where a browser has no fullscreen API
 
 ### Phone remote
 
-**Phone remote** in the bottom bar (or the phone icon in the projector dock)
-shows a QR code and a four-letter room code. Scan it, press **Full screen** on
-the laptop (a phone cannot start it), and the phone (`#/remote/<room>`) turns
-the slides; swiping works too. It also jumps to any slide, opens and closes the
-answer box, switches the language, picks a student (the name shows on the phone),
+**Phone remote** (the phone icon in the bottom bar or the projector dock) shows
+a QR code and a four-letter room code. Scan it, and the phone
+(`#/remote/<room>`) turns the slides; swiping works too. It also switches Full
+screen on and off. That is display mode only: a browser grants real fullscreen
+to a click or key on the laptop and nothing else, so press **F11** on the
+laptop once (its browser's own full screen) and display mode then fills the
+screen. The phone says so when the browser's bars still show. It also jumps to
+any slide, opens and closes the answer box, switches the language, picks a
+student (the name shows on the phone),
 blanks the screen, starts a countdown in the corner of the projector, and
 presses the slide's widget buttons. It shows the slide's lines from `plan.js`
 as well: any timeline sentence that starts "Slide 9:" and any answer whose `q`
