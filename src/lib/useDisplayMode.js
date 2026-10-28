@@ -94,25 +94,3 @@ export function useDisplayMode(containerRef, { idleMs = 3000 } = {}) {
 
   return { isDisplayMode, isIdle, enter, exit, toggle, poke }
 }
-
-// The window covers the whole screen: real fullscreen, or the browser's own
-// (F11), which the Fullscreen API cannot see. Measured at 100% zoom, which is
-// how a deck is projected; a zoomed page reads as not filling.
-const fillsScreen = () =>
-  Boolean(fullscreenElement()) ||
-  (window.innerWidth >= window.screen.width - 2 && window.innerHeight >= window.screen.height - 2)
-
-/** Whether the deck's window fills the screen, kept current on resize. */
-export function useFillsScreen() {
-  const [fills, setFills] = useState(fillsScreen)
-  useEffect(() => {
-    const update = () => setFills(fillsScreen())
-    window.addEventListener('resize', update)
-    document.addEventListener('fullscreenchange', update)
-    return () => {
-      window.removeEventListener('resize', update)
-      document.removeEventListener('fullscreenchange', update)
-    }
-  }, [])
-  return fills
-}

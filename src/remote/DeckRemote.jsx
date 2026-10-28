@@ -414,11 +414,6 @@ function RemoteRoom({ room }) {
                   The projector shows the toolbars.
                 </Banner>
               )}
-              {laptopLive && host.proj && host.fill === false && (
-                <Banner tone="info" icon={MonitorUp}>
-                  The browser’s bars still show. Press <b>F11</b> on the laptop once.
-                </Banner>
-              )}
               {pickShown && <PickFlash pick={host.pick} onClose={() => setPickAt(0)} />}
             </section>
           )}

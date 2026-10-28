@@ -5,7 +5,7 @@ import { dashboardUnitUrl } from '../lib/dashboardLink.js'
 import { deckLangs, tr } from '../lib/lang.js'
 import { useStudentPicker } from '../lib/useStudentPicker.js'
 import { useDarkMode } from '../lib/useDarkMode.js'
-import { useDisplayMode, useFillsScreen } from '../lib/useDisplayMode.js'
+import { useDisplayMode } from '../lib/useDisplayMode.js'
 import { useDeckRemote } from '../lib/useDeckRemote.js'
 import { RevealContext, SlideButtonsContext, createButtonRegistry } from '../lib/deckControls.js'
 import { RandomStudentModal } from './RandomStudent.jsx'
@@ -38,7 +38,6 @@ export default function Deck({ lesson, course }) {
   const picker = useStudentPicker()
   const containerRef = useRef(null)
   const { isDisplayMode, isIdle, toggle: toggleDisplay, enter: enterDisplay, exit: exitDisplay, poke } = useDisplayMode(containerRef)
-  const fillsScreen = useFillsScreen()
 
   // What the phone remote can reach besides the slide index: the slide's
   // answer box (closed again on every slide change), the slide's widget
@@ -128,9 +127,6 @@ export default function Deck({ lesson, course }) {
     rv: slides[currentIndex]?.reveal ? revealOpen : null,
     blank,
     proj: isDisplayMode,
-    // The window covers the screen (F11 or real fullscreen): without it,
-    // display mode still shows the browser's own bars.
-    fill: fillsScreen,
     // The drawn name goes to the phone: Mr Bowen agreed to it (28 Oct 2026),
     // and it is already on the projector for the room.
     pick: picker.current ? { name: picker.current, c: picker.pickCount, left: picker.remaining, reset: picker.justReset } : null,
