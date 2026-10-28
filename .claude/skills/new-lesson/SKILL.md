@@ -39,6 +39,9 @@ Get these pinned down first — guessing any of them wastes the whole run.
   slide can carry. Decks older than these are over-written; do not copy their
   wording. Then read the most recent unit in the course you are building, for
   continuity with what the class had last lesson.
+- **The current standard.** Read `STANDARD.md` beside this file: the
+  flow, the clarity pass and the parallel-session rules that the decks from
+  Coffee, Carbon and Stars onward are judged by.
 
 ## 1 · Read the book pages
 
