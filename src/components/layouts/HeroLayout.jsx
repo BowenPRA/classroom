@@ -32,7 +32,9 @@ export default function HeroLayout({ slide: s, ctx }) {
   return (
     <div className="flex-1 flex flex-col items-center justify-center text-center text-white overflow-y-auto custom-scrollbar min-h-0 p-8 sm:p-12" style={bgStyle}>
       {(brand || s.date) && (
-        <div className={`flex items-center justify-center gap-2 flex-wrap ${isDisplayMode ? 'mb-5' : 'mb-4'}`}>
+        // hero-top: hidden while the phone remote's countdown runs, which sits
+        // at the top centre over it (index.css).
+        <div className={`hero-top flex items-center justify-center gap-2 flex-wrap ${isDisplayMode ? 'mb-5' : 'mb-4'}`}>
           {brand && (
             <span className={`inline-block bg-white/20 text-white font-black uppercase tracking-[0.2em] rounded-full border border-white/30 shadow-inner ${isDisplayMode ? 'text-[clamp(0.75rem,1.1vw,1.1rem)] px-5 py-2' : 'text-[10px] sm:text-xs px-4 py-1.5'}`}>{brand}</span>
           )}

@@ -201,9 +201,9 @@ export function BlankScreen({ lang, onLift }) {
 const clock = (secs) => `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`
 
 /**
- * The countdown the phone remote starts, in the slide's top-left corner (Mr
- * Bowen's choice, 28 Oct 2026); a slide's header bar moves right to clear it
- * while it runs (`data-timer` on the deck, rule in index.css). Bright
+ * The countdown the phone remote starts, at the top centre of the slide (Mr
+ * Bowen's choice, 28 Oct 2026), clear of the header's icon and title on the
+ * left and the projector dock on the right. Bright
  * blue with a white ring so it reads on any header colour; the last ten
  * seconds turn yellow; at zero it turns orange, pulses, and goes ten seconds
  * later (a click dismisses it sooner). Numbers only, so it needs no
@@ -230,9 +230,9 @@ export function TimerBadge({ end, isDisplayMode, onDone }) {
   return (
     <button
       onClick={onDone}
-      // min-w-[5em]: a fixed footprint, which the slide header's room for it
-      // in index.css follows.
-      className={`absolute z-30 min-w-[5em] flex items-center justify-center gap-[0.35em] rounded-2xl border-b-4 ring-4 ring-white shadow-[0_10px_30px_rgba(15,23,42,0.35)] font-black tabular-nums tracking-tight leading-none transition-colors ${tone} ${isDisplayMode ? 'top-4 left-4 px-[0.55em] py-[0.35em] text-[clamp(1.9rem,3.2vw,3.2rem)]' : 'top-4 left-4 sm:top-6 sm:left-6 lg:top-10 lg:left-10 px-4 py-2.5 text-3xl'}`}
+      // Short enough to stay above a question slide's top label, which sits as
+      // little as 5vw from the top (StatementLayout's padding) when the slide is full.
+      className={`absolute z-30 left-1/2 -translate-x-1/2 flex items-center gap-[0.35em] rounded-2xl border-b-4 ring-4 ring-white shadow-[0_6px_18px_rgba(15,23,42,0.3)] font-black tabular-nums tracking-tight leading-none transition-colors ${tone} ${isDisplayMode ? 'top-2 px-[0.55em] py-[0.22em] text-[clamp(1.6rem,2.6vw,2.8rem)]' : 'top-1 px-3 py-1.5 text-xl'}`}
       title="Timer"
     >
       <Timer className="w-[0.85em] h-[0.85em]" strokeWidth={2.75} />

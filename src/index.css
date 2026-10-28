@@ -61,14 +61,9 @@ body {
   }
 }
 
-/* The phone remote's countdown sits over the top-left of the slide
-   (TimerBadge, DeckChrome.jsx), so while it runs a slide's header bar moves
-   its icon and title right to clear it. The sums follow the badge: its left
-   offset from the slide's edge, a minimum width of 5em at its font size, and a
-   1rem gap. Change one, change both. */
-[data-timer='on'][data-display-mode='on'] .slide-header {
-  padding-left: calc(1rem + 5 * clamp(1.9rem, 3.2vw, 3.2rem) + 1rem);
-}
-[data-timer='on'][data-display-mode='off'] .slide-header {
-  padding-left: calc(0.5rem + 5 * 1.875rem + 1rem);
+/* The phone remote's countdown (TimerBadge, DeckChrome.jsx) sits at the top
+   centre of the slide. On a title slide that is where the "Year 7 …" pill and
+   the date sit, so they step aside (keeping their space) while it runs. */
+[data-timer='on'] .hero-top {
+  visibility: hidden;
 }
