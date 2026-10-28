@@ -1,6 +1,8 @@
 // The list of courses shown on the home page, in display order.
 // A course appears here even before it has any lessons (shows "coming soon").
 // `id` must match the folder name under content/<id>/ and each lesson's meta.course.
+// `units` names the textbook units: the course page lists lessons newest first
+// under a heading per unit, and a unit missing here is headed by its number.
 export const COURSES = [
   {
     id: 'y7-math',
@@ -9,6 +11,13 @@ export const COURSES = [
     color: '#1cb0f6',
     icon: 'Calculator',
     bilingual: true, // lessons offer an EN/VN toggle
+    units: {
+      1: 'Integers',
+      2: 'Expressions, formulae and equations',
+      3: 'Place value and rounding',
+      4: 'Decimals',
+      5: 'Angles and constructions',
+    },
   },
   {
     id: 'y7-science',
@@ -17,6 +26,11 @@ export const COURSES = [
     color: '#14b8a6',
     icon: 'FlaskConical',
     bilingual: true,
+    units: {
+      1: 'Cells',
+      2: 'Materials and their structure',
+      3: 'Forces and energy',
+    },
   },
   {
     id: 'games',

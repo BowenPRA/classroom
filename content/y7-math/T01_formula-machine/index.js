@@ -19,7 +19,7 @@ export default {
       'Every problem is worked in three lines — write the formula, put the numbers in, work it out — because the middle line is where the marks and the mistakes both live. ' +
       'Part 2 turns the question round: water is poured from one tank into another with a different base, and the depth it reaches is the letter that was NOT given. ' +
       'The way in is counting centimetre cubes — how many altogether, how many in one layer, divide — not rearranging a formula.',
-    order: 90,
+    order: 8.1, // taught after 2.2, so it sits there in the newest-first list
   },
   slides,
   plan,

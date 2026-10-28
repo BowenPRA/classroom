@@ -18,7 +18,7 @@ export default {
       'The route in is a box, drawn first and then named n — so "twice as many" is 2n and "3 more than" is n + 3. Every share is written as an expression, all of them are added up and set equal to the total, that equation is tidied and solved down to n, and n goes back in to give each girl her number. ' +
       'Ten rounds, from two girls and one rule up to all eight in an arithmetic staircase, each worth more rolls than the last. ' +
       'The three phrases the whole task turns on are "twice as many as", "more than" and "fewer than" — this is a reading task with algebra attached, which is exactly the difficulty this class actually has.',
-    order: 91,
+    order: 8.2, // the same week as T1
   },
   slides,
   plan,

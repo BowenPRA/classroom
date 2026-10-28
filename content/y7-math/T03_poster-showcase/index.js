@@ -19,7 +19,7 @@ export default {
       'The deck asks what a parent would need before it answers with a seven-part checklist — title, key words, a picture, how it works, two examples, a common mistake, and a Try it! question under a flap — ' +
       'shown on a finished example poster on square roots, a topic nobody is given. The ten topics are dealt out on a board that uses the Pick button\'s class list and remembers the result on the classroom computer. ' +
       'It ends with the one-minute explanation, modelled by Mr Bowen and then copied as a five-sentence frame.',
-    order: 92,
+    order: 13.5, // the end of Quarter 1, after 3.1–3.2
   },
   slides,
   plan,

@@ -1,56 +1,65 @@
-import { Link } from 'react-router-dom'
-import { ArrowLeft, ChevronRight, Printer } from 'lucide-react'
-import SiteHeader from '../components/SiteHeader.jsx'
+import { ExternalLink, Printer } from 'lucide-react'
+import PageShell, { PageTitle } from '../components/PageShell.jsx'
 import { HOMEWORK } from '../../content/homework.js'
+import { homeworkSets, plural } from '../lib/listing.js'
 
 // The accent for everything homework — matches the orange the printed packets
 // use for anything a student must copy down.
 const HW_COLOR = '#c25e12'
 
-export default function HomeworkPage() {
+// One packet. The sheets that go out with a packet (its EX and FR versions)
+// follow it in the same card, with a grey label instead of an orange one.
+function PacketRow({ packet, companion }) {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors">
-      <SiteHeader />
-      <main className="max-w-4xl mx-auto px-4 sm:px-8 py-6 sm:py-12">
-        <Link to="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-[#c25e12] font-black uppercase tracking-widest text-xs mb-6 transition-colors">
-          <ArrowLeft className="w-4 h-4" strokeWidth={3} /> All courses
-        </Link>
-
-        <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-10">
-          <span className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl text-white shadow-sm shrink-0" style={{ backgroundColor: HW_COLOR }}>
-            <Printer className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.5} />
-          </span>
-          <div>
-            <h1 className="text-2xl sm:text-4xl font-black tracking-tight">Homework</h1>
-            <p className="text-slate-500 dark:text-slate-400 font-bold">Printable packets · open the PDF to print</p>
-          </div>
+    <li>
+      <a
+        href={packet.pdf}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={`Open ${packet.label} (PDF, new tab)`}
+        className="group flex items-center gap-3.5 sm:gap-4 px-4 sm:px-5 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#1cb0f6]"
+      >
+        <span
+          className={`flex items-center justify-center w-16 min-h-[2.75rem] px-1 py-1 rounded-xl text-[13px] font-bold leading-tight text-center tabular-nums shrink-0 ${
+            companion ? 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400' : 'accent-tint accent-text'
+          }`}
+        >
+          {packet.label}
+        </span>
+        <div className="min-w-0 flex-1">
+          <h3 className={`text-[15px] sm:text-base leading-snug text-slate-900 dark:text-white ${companion ? 'font-medium' : 'font-semibold'}`}>{packet.title}</h3>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 line-clamp-2 sm:line-clamp-1">{packet.subtitle}</p>
         </div>
+        <span className="hidden sm:inline text-xs font-semibold text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors shrink-0">PDF</span>
+        <ExternalLink className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors shrink-0" strokeWidth={2.5} />
+      </a>
+    </li>
+  )
+}
 
-        <ul className="space-y-3">
-          {HOMEWORK.map((packet) => (
-            <li key={packet.id} className="rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
-              <a
-                href={packet.pdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-4 sm:p-5 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors min-w-0"
-              >
-                <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 font-black text-sm shrink-0" style={{ color: HW_COLOR }}>
-                  {packet.label}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <h3 className="font-black tracking-tight leading-tight">{packet.title}</h3>
-                  <p className="text-slate-500 dark:text-slate-400 text-sm font-medium line-clamp-2 sm:line-clamp-1 mt-0.5">{packet.subtitle}</p>
-                </div>
-                <span className="hidden md:flex items-center gap-1 text-xs font-black uppercase tracking-widest text-slate-400 group-hover:text-[#c25e12] transition-colors shrink-0">
-                  <Printer className="w-4 h-4" strokeWidth={2.5} /> Open PDF
-                </span>
-                <ChevronRight className="w-5 h-5 text-slate-300 dark:text-slate-600 shrink-0" strokeWidth={2.5} />
-              </a>
-            </li>
-          ))}
-        </ul>
-      </main>
-    </div>
+export default function HomeworkPage() {
+  const sets = homeworkSets(HOMEWORK)
+  return (
+    <PageShell title="Homework" accent={HW_COLOR}>
+      <PageTitle
+        back={{ to: '/', label: 'All courses' }}
+        icon={<Printer className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.25} />}
+        kicker="Printable packets"
+        title="Homework"
+        meta={`${plural(HOMEWORK.length, 'packet')} · newest first · each opens as a PDF to print`}
+      />
+      <div className="space-y-4">
+        {sets.map((set) => (
+          <ul
+            key={set[0].id}
+            className="rounded-2xl bg-white dark:bg-slate-900 ring-1 ring-slate-200/90 dark:ring-slate-800 shadow-sm divide-y divide-slate-100 dark:divide-slate-800/80 overflow-hidden"
+          >
+            {set.map((packet, i) => (
+              <PacketRow key={packet.id} packet={packet} companion={i > 0} />
+            ))}
+          </ul>
+        ))}
+      </div>
+    </PageShell>
   )
 }

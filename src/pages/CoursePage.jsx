@@ -1,95 +1,126 @@
 import { Link, useParams, Navigate } from 'react-router-dom'
-import { ArrowLeft, ChevronRight, FileText, Play, Presentation, Rocket } from 'lucide-react'
-import SiteHeader from '../components/SiteHeader.jsx'
+import { ChevronRight, FileText, Play, Rocket } from 'lucide-react'
+import PageShell, { PageTitle } from '../components/PageShell.jsx'
 import { getCourse } from '../../content/registry.js'
 import { CourseIcon } from '../lib/courseIcons.js'
 import { dashboardUnitUrl } from '../lib/dashboardLink.js'
+import { lessonHref, plural, unitGroups } from '../lib/listing.js'
 
-// The secondary actions on a lesson row (teacher plan, self-study twin). On a
-// phone they sit in their own row under the title with a label each, so the
-// title keeps the full width; from `sm` up they are icon-only cells at the
-// right edge of the row.
-const actionClass =
-  'flex flex-1 sm:flex-none items-center justify-center gap-2 px-4 py-3 sm:py-0 border-l-2 first:border-l-0 sm:first:border-l-2 border-slate-100 dark:border-slate-800 text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors text-xs font-black uppercase tracking-widest'
+// The secondary actions on a lesson row (teacher plan, self-study twin). They
+// sit under the title on a phone and at the right edge of the row from `sm` up.
+const chipClass =
+  'inline-flex items-center gap-1.5 h-8 px-2.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-700 hover:ring-slate-300 dark:hover:ring-slate-600 hover:text-slate-900 dark:hover:text-white shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1cb0f6]'
+
+// One lesson. The title's link is stretched over the whole row (its ::before
+// fills the <li>), so the row opens the deck from anywhere, while the action
+// chips sit above it and still take their own clicks.
+function LessonRow({ course, lesson, latest }) {
+  const selfStudy = dashboardUnitUrl(lesson.dashboard)
+  const blurb = lesson.subtitle || lesson.objective
+  return (
+    <li className="group relative flex items-center gap-3.5 sm:gap-4 px-4 sm:px-5 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/40 focus-within:bg-slate-50 dark:focus-within:bg-slate-800/40 transition-colors">
+      <span className="accent-tint accent-text flex items-center justify-center self-start sm:self-center w-16 min-h-[2.75rem] px-1 py-1 rounded-xl text-[13px] font-bold leading-tight text-center tabular-nums shrink-0">
+        {lesson.unit}
+      </span>
+      <div className="min-w-0 flex-1 sm:flex sm:items-center sm:gap-5">
+        <div className="min-w-0 flex-1">
+          <h3 className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[15px] sm:text-base font-semibold leading-snug text-slate-900 dark:text-white">
+            <Link
+              to={lessonHref(course.id, lesson)}
+              className="before:absolute before:inset-0 before:content-[''] focus-visible:outline-none focus-visible:before:ring-2 focus-visible:before:ring-inset focus-visible:before:ring-[#1cb0f6]"
+            >
+              {lesson.title}
+            </Link>
+            {latest && <span className="accent-solid px-1.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider">Latest</span>}
+          </h3>
+          {blurb && <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 line-clamp-2 sm:line-clamp-1">{blurb}</p>}
+        </div>
+        {(lesson.plan || selfStudy) && (
+          // Plan comes last so it lines up down the list whether or not a
+          // row has a self-study link beside it.
+          <div className="relative z-10 mt-3 sm:mt-0 flex items-center gap-2 shrink-0">
+            {/* The self-study twin: the same section on the Dashboard, for a
+                student catching up or practising at home. */}
+            {selfStudy && (
+              <a href={selfStudy} target="_blank" rel="noopener noreferrer" title="Self-study version on the Dashboard (new tab)" className={chipClass}>
+                <Rocket className="w-3.5 h-3.5 text-[#58a700]" strokeWidth={2.5} />
+                Self-study
+              </a>
+            )}
+            {lesson.plan && (
+              <Link to={`/plan/${course.id}/${lesson.slug}`} title="Teacher lesson plan" className={chipClass}>
+                <FileText className="w-3.5 h-3.5 text-[#8b5cf6]" strokeWidth={2.5} />
+                Plan
+              </Link>
+            )}
+          </div>
+        )}
+      </div>
+      {lesson.href ? (
+        <Play className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors shrink-0" strokeWidth={2.5} />
+      ) : (
+        <ChevronRight className="w-5 h-5 text-slate-300 dark:text-slate-600 group-hover:text-slate-500 dark:group-hover:text-slate-400 group-hover:translate-x-0.5 transition shrink-0" strokeWidth={2.5} />
+      )}
+    </li>
+  )
+}
+
+// "Unit 5" over the unit's name from content/courses.js, or the number alone.
+function UnitHeading({ group }) {
+  return (
+    <div className="flex items-end justify-between gap-4 mb-3 sm:mb-4 px-1">
+      {group.name ? (
+        <div className="min-w-0">
+          <p className="accent-text text-[11px] sm:text-xs font-bold uppercase tracking-[0.14em]">Unit {group.unit}</p>
+          <h2 className="mt-0.5 text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white">{group.name}</h2>
+        </div>
+      ) : (
+        <h2 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white">Unit {group.unit}</h2>
+      )}
+      <p className="shrink-0 pb-0.5 text-xs sm:text-sm font-medium text-slate-400 dark:text-slate-500">{plural(group.lessons.length, 'lesson')}</p>
+    </div>
+  )
+}
 
 export default function CoursePage() {
   const { courseId } = useParams()
   const course = getCourse(courseId)
   if (!course) return <Navigate to="/" replace />
   const count = course.lessons.length
+  const groups = unitGroups(course)
+  // Headings only help when there is more than one unit to tell apart.
+  const headed = groups.length > 1 && groups.every((g) => g.unit != null)
+  const newest = groups[0]?.lessons[0]
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors">
-      <SiteHeader />
-      <main className="max-w-4xl mx-auto px-4 sm:px-8 py-6 sm:py-12">
-        <Link to="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-[#1cb0f6] font-black uppercase tracking-widest text-xs mb-5 sm:mb-6 transition-colors">
-          <ArrowLeft className="w-4 h-4" strokeWidth={3} /> All courses
-        </Link>
+    <PageShell title={course.title} accent={course.color}>
+      <PageTitle
+        back={{ to: '/', label: 'All courses' }}
+        icon={<CourseIcon name={course.icon} className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.25} />}
+        kicker={course.subtitle}
+        title={course.title}
+        meta={count > 0 && `${plural(count, 'lesson')}${headed ? ` in ${plural(groups.length, 'unit')}` : ''} · newest first`}
+      />
 
-        <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-10">
-          <span className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl text-white shadow-sm shrink-0" style={{ backgroundColor: course.color }}>
-            <CourseIcon name={course.icon} className="w-6 h-6 sm:w-8 sm:h-8" strokeWidth={2.5} />
-          </span>
-          <div className="min-w-0">
-            <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">{course.title}</h1>
-            <p className="text-slate-500 dark:text-slate-400 font-bold text-sm sm:text-base">
-              {course.subtitle}
-              {count > 0 && <span className="text-slate-400 dark:text-slate-500"> · {count} lesson{count === 1 ? '' : 's'}</span>}
-            </p>
-          </div>
+      {count === 0 ? (
+        <div className="rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 px-6 py-14 text-center">
+          <p className="font-bold text-lg text-slate-600 dark:text-slate-300">Lessons coming soon</p>
+          <p className="mt-1 text-sm text-slate-400">This course is set up and ready for its first lesson.</p>
         </div>
-
-        {count === 0 ? (
-          <div className="rounded-3xl border-2 border-dashed border-slate-300 dark:border-slate-700 p-10 text-center">
-            <p className="font-black text-slate-500 dark:text-slate-400 text-lg">Lessons coming soon</p>
-            <p className="text-slate-400 text-sm font-medium mt-1">This course is set up and ready for its first lesson.</p>
-          </div>
-        ) : (
-          <ul className="space-y-3">
-            {course.lessons.map((lesson) => {
-              const selfStudy = dashboardUnitUrl(lesson.dashboard)
-              const hasActions = lesson.plan || selfStudy
-              return (
-                <li key={lesson.slug} className="rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
-                  <div className="flex flex-col sm:flex-row sm:items-stretch">
-                    <Link to={lesson.href || `/lesson/${course.id}/${lesson.slug}`} className="group flex-1 flex items-center gap-3 sm:gap-4 p-4 sm:p-5 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors min-w-0">
-                      <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 font-black text-sm shrink-0" style={{ color: course.color }}>
-                        {lesson.unit}
-                      </span>
-                      <div className="min-w-0 flex-1">
-                        <h3 className="font-black tracking-tight leading-tight">{lesson.title}</h3>
-                        {lesson.objective && <p className="text-slate-500 dark:text-slate-400 text-sm font-medium line-clamp-2 sm:line-clamp-1 mt-0.5">{lesson.objective}</p>}
-                      </div>
-                      <span className="hidden md:flex items-center gap-1 text-xs font-black uppercase tracking-widest text-slate-400 group-hover:text-[#1cb0f6] transition-colors shrink-0">
-                        {lesson.href ? <><Play className="w-4 h-4" strokeWidth={2.5} /> Play</> : <><Presentation className="w-4 h-4" strokeWidth={2.5} /> Open</>}
-                      </span>
-                      <ChevronRight className="w-5 h-5 text-slate-300 dark:text-slate-600 group-hover:text-slate-500 transition-colors shrink-0" strokeWidth={2.5} />
-                    </Link>
-                    {hasActions && (
-                      <div className="flex border-t-2 sm:border-t-0 border-slate-100 dark:border-slate-800">
-                        {lesson.plan && (
-                          <Link to={`/plan/${course.id}/${lesson.slug}`} title="Teacher lesson plan" className={`${actionClass} hover:text-[#8b5cf6]`}>
-                            <FileText className="w-5 h-5" strokeWidth={2.5} />
-                            <span className="sm:hidden">Plan</span>
-                          </Link>
-                        )}
-                        {/* The self-study twin: the same section on the Dashboard,
-                            for a student catching up or practising at home. */}
-                        {selfStudy && (
-                          <a href={selfStudy} target="_blank" rel="noopener noreferrer" title="Self-study version on the Dashboard" className={`${actionClass} hover:text-[#58cc02]`}>
-                            <Rocket className="w-5 h-5" strokeWidth={2.5} />
-                            <span className="sm:hidden">Self-study</span>
-                          </a>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </li>
-              )
-            })}
-          </ul>
-        )}
-      </main>
-    </div>
+      ) : (
+        <div className="space-y-10 sm:space-y-12">
+          {groups.map((group) => (
+            <section key={group.unit ?? 'all'}>
+              {headed && <UnitHeading group={group} />}
+              <ul className="rounded-2xl bg-white dark:bg-slate-900 ring-1 ring-slate-200/90 dark:ring-slate-800 shadow-sm divide-y divide-slate-100 dark:divide-slate-800/80 overflow-hidden">
+                {group.lessons.map((lesson) => (
+                  <LessonRow key={lesson.slug} course={course} lesson={lesson} latest={lesson === newest} />
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      )}
+    </PageShell>
   )
 }
