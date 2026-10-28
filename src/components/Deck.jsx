@@ -210,6 +210,8 @@ export default function Deck({ lesson, course }) {
       // …and this, the slide on screen (1-based), which the windowed counter
       // shows but full screen does not.
       data-slide={currentIndex + 1}
+      // A countdown is showing: slide headers make room for it (index.css).
+      data-timer={timerEnd ? 'on' : 'off'}
       className={`app-screen flex flex-col bg-slate-50 dark:bg-slate-950 font-sans overflow-hidden relative transition-colors duration-300 ${isDisplayMode && isIdle ? 'cursor-none' : ''}`}
     >
       {!isDisplayMode && (

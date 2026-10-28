@@ -201,10 +201,13 @@ export function BlankScreen({ lang, onLift }) {
 const clock = (secs) => `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`
 
 /**
- * The countdown the phone remote starts, in the slide's bottom-right corner.
- * The last ten seconds turn amber; at zero it turns orange and stays ten
- * seconds before it goes (a click dismisses it sooner). Numbers only, so it
- * needs no translation.
+ * The countdown the phone remote starts, in the slide's top-left corner (Mr
+ * Bowen's choice, 28 Oct 2026); a slide's header bar moves right to clear it
+ * while it runs (`data-timer` on the deck, rule in index.css). Bright
+ * blue with a white ring so it reads on any header colour; the last ten
+ * seconds turn yellow; at zero it turns orange, pulses, and goes ten seconds
+ * later (a click dismisses it sooner). Numbers only, so it needs no
+ * translation.
  */
 export function TimerBadge({ end, isDisplayMode, onDone }) {
   const [now, setNow] = useState(() => Date.now())
@@ -219,14 +222,20 @@ export function TimerBadge({ end, isDisplayMode, onDone }) {
     const t = setTimeout(onDone, 10000)
     return () => clearTimeout(t)
   }, [over, onDone])
-  const tone = over ? 'bg-[#c25e12] text-white border-[#a04a0e]' : left <= 10 ? 'bg-slate-900/90 text-amber-300 border-white/15' : 'bg-slate-900/85 text-white border-white/15'
+  const tone = over
+    ? 'bg-[#c25e12] border-[#8f430c] text-white animate-pulse'
+    : left <= 10
+      ? 'bg-[#ffc800] border-[#cca000] text-slate-900'
+      : 'bg-[#1cb0f6] border-[#1899d6] text-white'
   return (
     <button
       onClick={onDone}
-      className={`absolute z-30 flex items-center gap-2 rounded-2xl border shadow-xl font-black tabular-nums tracking-tight transition-colors ${tone} ${isDisplayMode ? 'bottom-5 right-5 px-5 py-2.5 text-[clamp(1.5rem,2.6vw,2.6rem)]' : 'bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-10 lg:right-10 px-4 py-2 text-2xl'}`}
+      // min-w-[5em]: a fixed footprint, which the slide header's room for it
+      // in index.css follows.
+      className={`absolute z-30 min-w-[5em] flex items-center justify-center gap-[0.35em] rounded-2xl border-b-4 ring-4 ring-white shadow-[0_10px_30px_rgba(15,23,42,0.35)] font-black tabular-nums tracking-tight leading-none transition-colors ${tone} ${isDisplayMode ? 'top-4 left-4 px-[0.55em] py-[0.35em] text-[clamp(1.9rem,3.2vw,3.2rem)]' : 'top-4 left-4 sm:top-6 sm:left-6 lg:top-10 lg:left-10 px-4 py-2.5 text-3xl'}`}
       title="Timer"
     >
-      <Timer className={isDisplayMode ? 'w-[0.8em] h-[0.8em]' : 'w-5 h-5'} strokeWidth={2.75} />
+      <Timer className="w-[0.85em] h-[0.85em]" strokeWidth={2.75} />
       {clock(left)}
     </button>
   )

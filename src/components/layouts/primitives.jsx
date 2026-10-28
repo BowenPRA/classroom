@@ -212,7 +212,9 @@ export function Media({ slide, source, ctx, drawThis = (source || slide).drawThi
 // ── Header bar (accent strip + icon + title) ─────────────────────────────────
 export function HeaderBar({ title, icon = 'BookOpen', accent = '#1cb0f6', eyebrow, isDisplayMode = false }) {
   return (
-    <div className={`text-white flex items-center relative overflow-hidden flex-shrink-0 border-b-4 border-black/10 ${isDisplayMode ? 'p-2 sm:p-3 lg:p-4' : 'p-4 lg:p-6'}`}
+    // slide-header: moves its contents right while the phone remote's timer
+    // sits over the slide's top-left corner (see index.css).
+    <div className={`slide-header transition-[padding] duration-300 text-white flex items-center relative overflow-hidden flex-shrink-0 border-b-4 border-black/10 ${isDisplayMode ? 'p-2 sm:p-3 lg:p-4' : 'p-4 lg:p-6'}`}
       style={{ backgroundColor: accent }}>
       <div className={`bg-white/20 rounded-xl mr-3 sm:mr-4 shadow-inner border border-white/30 z-10 ${isDisplayMode ? 'p-2' : 'p-2.5 lg:p-3'}`}>
         <Ic name={icon} className={`drop-shadow-sm ${isDisplayMode ? 'w-6 h-6' : 'w-5 h-5 lg:w-8 lg:h-8'}`} strokeWidth={2.5} />
