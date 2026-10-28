@@ -1,9 +1,13 @@
 // src/remote/DeckRemote.jsx
 // Mr Bowen's phone remote for the slide decks, at #/remote/<room>: scan the QR
 // on a deck's "Phone remote" panel and the phone drives whatever deck that
-// laptop has open. Built for one hand while walking round the room: the main
-// controls sit at the bottom where a thumb reaches, swiping left or right
-// anywhere above them turns the slide, and every press buzzes.
+// laptop has open. Built for one hand while walking round the room, in three
+// bands: where we are (slide number, title, what's next) pinned at the top;
+// what to read (the plan's notes and answers) scrolling in the middle; and
+// everything to press (the slide's own buttons, the answer box, the tools,
+// Back and Next) pinned at the bottom where a thumb reaches. Swiping left or
+// right above the controls turns the slide, and every press buzzes. Added to
+// the home screen it is an app of its own, with no address bar.
 //
 // The laptop owns the deck; this end only asks (src/lib/useDeckRemote.js
 // answers). The phone has its own copy of the site, so slide titles, answer
@@ -15,7 +19,7 @@
 //
 // For the teacher only, so English only.
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import {
   ChevronLeft, ChevronRight, Shuffle, EyeOff, Eye, Timer, ListOrdered, Loader2,
   X, WifiOff, MonitorUp, RotateCw, Pause, Smartphone, Maximize2, Minimize2,
@@ -29,6 +33,10 @@ const HELLO_MS = 10 * 1000
 const LAPTOP_GONE_MS = 25 * 1000
 const PAUSE_AFTER_MS = 20 * 60 * 1000
 const TIMER_MINUTES = [1, 2, 3, 5]
+// How long a picked name stays up top on the phone.
+const PICK_SHOWN_MS = 20 * 1000
+// The last room joined, so the home-screen app opens straight into it.
+const LAST_ROOM_KEY = 'classroom:remote:last-room'
 // One id per page load: the laptop counts phones by it.
 const ME = `phone-${Math.random().toString(36).slice(2, 8)}`
 
@@ -49,7 +57,32 @@ const clock = (secs) => `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2
 
 const buzz = () => { try { navigator.vibrate?.(12) } catch { /* not on this phone */ } }
 
+// The remote installs as its own app (Chrome: Add to Home screen): a full-
+// screen window with no address bar, opening on the last room. The manifest
+// is added on this page only, so a student who saves a lesson to their home
+// screen still gets the lesson site.
+function useRemoteAppTags() {
+  useEffect(() => {
+    const base = import.meta.env.BASE_URL
+    const tags = [
+      ['link', { rel: 'manifest', href: `${base}remote/manifest.webmanifest` }],
+      ['link', { rel: 'apple-touch-icon', href: `${base}remote/apple-180.png` }],
+      ['meta', { name: 'theme-color', content: '#0b1120' }],
+      ['meta', { name: 'mobile-web-app-capable', content: 'yes' }],
+      ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+      ['meta', { name: 'apple-mobile-web-app-title', content: 'Remote' }],
+    ].map(([tag, attrs]) => {
+      const el = document.createElement(tag)
+      for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v)
+      document.head.appendChild(el)
+      return el
+    })
+    return () => tags.forEach((el) => el.remove())
+  }, [])
+}
+
 export default function DeckRemote() {
+  useRemoteAppTags()
   const { room: param } = useParams()
   const room = cleanRoomCode(param)
   useEffect(() => {
@@ -79,12 +112,19 @@ function Shell({ children, className = '' }) {
 
 function RoomEntry() {
   const navigate = useNavigate()
+  const [params] = useSearchParams()
   const [code, setCode] = useState('')
+  const [saved] = useState(() => {
+    try { return cleanRoomCode(localStorage.getItem(LAST_ROOM_KEY)) } catch { return '' }
+  })
   const go = (e) => {
     e.preventDefault()
     const c = cleanRoomCode(code)
     if (c.length === 4) navigate(`/remote/${c}`)
   }
+  // The home-screen app starts here: straight back into the last room, unless
+  // Mr Bowen asked for another code (?code=new).
+  if (saved.length === 4 && params.get('code') !== 'new') return <Navigate to={`/remote/${saved}`} replace />
   return (
     <Shell className="items-center justify-center px-5">
       <form onSubmit={go} className="w-full max-w-sm rounded-3xl bg-white/5 border border-white/10 p-6 space-y-4">
@@ -142,8 +182,15 @@ function RemoteRoom({ room }) {
   const [now, setNow] = useState(() => Date.now())
   const [lastTap, setLastTap] = useState(() => Date.now())
   const [sheet, setSheet] = useState(null) // 'slides' | 'timer' | null
+  const [pickAt, setPickAt] = useState(0) // when a new name was last picked
   const busRef = useRef(null)
   const touch = useRef(null)
+  const lastPick = useRef(undefined)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    try { localStorage.setItem(LAST_ROOM_KEY, room) } catch { /* storage blocked */ }
+  }, [room])
 
   // Twenty minutes without a tap pauses the remote: a phone left on the desk
   // with its screen held on would otherwise say hello all afternoon.
@@ -178,6 +225,11 @@ function RemoteRoom({ room }) {
     let bus
     bus = openBus(`deck-${room}`, ME, (msg) => {
       if (msg.from !== 'deck' || msg.type !== 'state' || typeof msg.deck !== 'string') return
+      // A new pick (not the one already showing when the phone connected)
+      // flashes up top for a while.
+      const c = msg.pick?.c ?? null
+      if (lastPick.current !== undefined && c !== null && c !== lastPick.current) setPickAt(Date.now())
+      lastPick.current = c
       setHost({ ...msg, at: Date.now() })
     }, (status) => {
       setNet(status)
@@ -214,17 +266,29 @@ function RemoteRoom({ room }) {
   const next = () => { if (ready && i < n - 1) send('next') }
   const prev = () => { if (ready && i > 0) send('prev') }
 
-  const onTouchStart = (e) => {
-    const t = e.touches[0]
-    touch.current = { x: t.clientX, y: t.clientY }
+  // Swipes. The laptop's answer to one swipe can redraw the slide under the
+  // finger during the next, and a finger whose element is redrawn away loses
+  // the end of its gesture. So once a gesture is plainly sideways, the swipe
+  // area captures the pointer itself (a tap is never captured, so buttons
+  // inside still work).
+  const onSwipeDown = (e) => {
+    touch.current = { id: e.pointerId, x: e.clientX, y: e.clientY, held: false }
   }
-  const onTouchEnd = (e) => {
-    const start = touch.current
+  const onSwipeMove = (e) => {
+    const s = touch.current
+    if (!s || s.id !== e.pointerId || s.held) return
+    const dx = e.clientX - s.x
+    if (Math.abs(dx) > 12 && Math.abs(dx) > Math.abs(e.clientY - s.y)) {
+      try { e.currentTarget.setPointerCapture(e.pointerId) } catch { /* pointer already gone */ }
+      s.held = true
+    }
+  }
+  const onSwipeUp = (e) => {
+    const s = touch.current
     touch.current = null
-    if (!start) return
-    const t = e.changedTouches[0]
-    const dx = t.clientX - start.x
-    const dy = t.clientY - start.y
+    if (!s || s.id !== e.pointerId) return
+    const dx = e.clientX - s.x
+    const dy = e.clientY - s.y
     if (Math.abs(dx) > 60 && Math.abs(dx) > 1.5 * Math.abs(dy)) {
       if (dx < 0) next()
       else prev()
@@ -243,11 +307,22 @@ function RemoteRoom({ room }) {
   const slide = slides[i]
   const timerLeft = host?.tl != null ? Math.max(0, Math.ceil((host.at + host.tl - now) / 1000)) : null
 
+  const hasReveal = host?.rv !== null && host?.rv !== undefined
+  const slideButtons = ready && Array.isArray(host.btns) ? host.btns : []
+  const revealText = plain(slide?.reveal?.answer)
+  const pickShown = Boolean(host?.pick) && now - pickAt < PICK_SHOWN_MS
+
+  // The middle of the screen is for reading: the plan's lines for this slide,
+  // its answers, and what the answer box will show. Where we are is pinned
+  // above it; everything to press is pinned below it, in thumb reach.
   let body
   if (!host) {
     body = (
       <Notice icon={Loader2} spin title={`Looking for the laptop (room ${room})`}>
         On the laptop, open a deck and press <b>Phone remote</b>. The panel shows this room code.
+        <button onClick={() => navigate('/remote?code=new')} className="block mx-auto mt-4 text-sm font-black text-[#5cc8fa] underline underline-offset-4">
+          Use a different code
+        </button>
       </Notice>
     )
   } else if (!lesson) {
@@ -259,97 +334,13 @@ function RemoteRoom({ room }) {
     )
   } else {
     const here = notes.get(i + 1)
+    const empty = !here?.plan.length && !here?.answers.length && !revealText
     body = (
-      <div className="space-y-4 pb-4">
-        <div className="text-xs font-bold text-slate-500 truncate">{lesson.unit} · {plain(lesson.title)}</div>
-
-        <section key={i} className="animate-in fade-in slide-in-from-bottom-1 duration-300">
-          <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest">
-            <span className="rounded-lg bg-white/10 px-2 py-1 tabular-nums text-slate-200">{i + 1} / {n}</span>
-            {slide?.eyebrow && slide?.title && <span className="text-sky-300 truncate normal-case tracking-normal font-bold text-sm">{plain(slide.eyebrow)}</span>}
-          </div>
-          <h1 className="mt-2 text-[1.7rem] font-black leading-tight tracking-tight">{slideTitle(slide, i)}</h1>
-          <div className="mt-1 text-sm font-bold text-slate-400">
-            {i < n - 1 ? <>Up next: <span className="text-slate-200">{slideTitle(slides[i + 1], i + 1)}</span></> : 'Last slide'}
-          </div>
-        </section>
-
-        {!laptopLive && (
-          <Banner tone="warn" icon={WifiOff}>The laptop stopped answering. Is the deck still open, with Phone remote on?</Banner>
-        )}
-        {laptopLive && host.blank && (
-          <Banner tone="warn" icon={EyeOff} action={{ label: 'Show slide', onClick: () => send('blank', { on: false }) }}>
-            The screen is blank.
-          </Banner>
-        )}
-        {laptopLive && !host.proj && (
-          <Banner tone="info" icon={MonitorUp} action={{ label: 'Full screen', onClick: () => send('proj', { on: true }) }}>
-            The projector shows the toolbars.
-          </Banner>
-        )}
-        {laptopLive && host.proj && host.fill === false && (
-          <Banner tone="info" icon={MonitorUp}>
-            The browser’s bars still show. Press <b>F11</b> on the laptop once.
-          </Banner>
-        )}
-
-        {host.pick && <PickCard pick={host.pick} />}
-
-        {host.rv !== null && host.rv !== undefined && (
-          <Card>
-            <div className="flex items-center justify-between gap-3">
-              <div className="min-w-0">
-                <div className="text-[11px] font-black uppercase tracking-widest text-slate-400">Answer box</div>
-                <div className="font-bold truncate">{plain(slide?.reveal?.label) || 'Reveal the answer'}</div>
-              </div>
-              <button
-                disabled={!ready}
-                onClick={() => send('reveal', { open: !host.rv })}
-                className={`shrink-0 rounded-xl px-5 py-3 font-black uppercase tracking-widest text-sm transition-all active:scale-95 disabled:opacity-40 ${host.rv ? 'bg-white/10 border border-white/20 text-slate-100' : 'bg-[#8b5cf6] border-b-4 border-[#6d3fd8] text-white'}`}
-              >
-                {host.rv ? 'Close' : 'Open'}
-              </button>
-            </div>
-            {slide?.reveal?.answer && (
-              <div className="mt-3 pt-3 border-t border-white/10 text-sm text-slate-300 whitespace-pre-line leading-relaxed">{plain(slide.reveal.answer)}</div>
-            )}
-          </Card>
-        )}
-
-        {Array.isArray(host.btns) && host.btns.length > 0 && (
-          <Card>
-            <div className="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2.5">On this slide</div>
-            <div className="grid grid-cols-2 gap-2">
-              {host.btns.map(([k, label, off]) => (
-                <button
-                  key={k}
-                  disabled={!ready || Boolean(off)}
-                  onClick={() => send('btn', { k })}
-                  className="min-h-[3.25rem] rounded-xl bg-[#0087a8] border-b-4 border-[#00697f] px-3 py-2 font-black text-sm uppercase tracking-wide leading-tight active:border-b-0 active:translate-y-1 transition-all disabled:opacity-30"
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-          </Card>
-        )}
-
-        {here && (here.plan.length > 0 || here.answers.length > 0) && (
-          <Card>
-            {here.plan.map((p, k) => (
-              <div key={`p${k}`} className={k ? 'mt-3' : ''}>
-                <div className="text-[11px] font-black uppercase tracking-widest text-slate-400">Plan · {p.when}</div>
-                <p className="mt-1 text-[0.95rem] leading-relaxed text-slate-200">{p.text}</p>
-              </div>
-            ))}
-            {here.answers.map((a, k) => (
-              <div key={`a${k}`} className={here.plan.length || k ? 'mt-3 pt-3 border-t border-white/10' : ''}>
-                <div className="text-[11px] font-black uppercase tracking-widest text-amber-300/90">Answer{a.label ? ` · ${a.label}` : ''}</div>
-                <p className="mt-1 text-[0.95rem] leading-relaxed text-slate-200">{a.text}</p>
-              </div>
-            ))}
-          </Card>
-        )}
+      <div key={i} className="space-y-3 py-3 animate-in fade-in duration-300">
+        {here?.plan.map((p, k) => <Note key={`p${k}`} label={`Plan · ${p.when}`} text={p.text} />)}
+        {here?.answers.map((a, k) => <Note key={`a${k}`} tone="answer" label={a.label ? `Answer · ${a.label}` : 'Answer'} text={a.text} />)}
+        {revealText && <Note tone="reveal" label="In the answer box" text={revealText} />}
+        {empty && <p className="pt-8 text-center text-sm font-bold text-slate-500">No notes for this slide in the plan.</p>}
       </div>
     )
   }
@@ -383,17 +374,92 @@ function RemoteRoom({ room }) {
           )}
         </header>
 
-        {/* pan-y: the browser scrolls this area up and down, and leaves sideways swipes to us. */}
-        <main
-          className="flex-1 min-h-0 overflow-y-auto px-4 pt-2"
+        {/* A sideways swipe anywhere from here to the controls turns the slide.
+            pan-y: the browser scrolls the notes up and down, and leaves
+            sideways swipes to us (never its swipe-to-go-back). */}
+        <div
+          className="flex-1 min-h-0 flex flex-col"
           style={{ touchAction: 'pan-y', overscrollBehaviorX: 'none' }}
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
+          onPointerDown={onSwipeDown}
+          onPointerMove={onSwipeMove}
+          onPointerUp={onSwipeUp}
+          onPointerCancel={() => { touch.current = null }}
         >
-          {body}
-        </main>
+          {host && lesson && (
+            <section className="shrink-0 px-4 pb-3 space-y-2.5 border-b border-white/10">
+              <div key={i} className="flex items-start gap-3 animate-in fade-in duration-300">
+                <div className="shrink-0 w-[4.25rem] rounded-2xl bg-white/[0.07] border border-white/10 py-2 text-center">
+                  <div data-slide-number className="text-[2rem] font-black tabular-nums leading-none">{i + 1}</div>
+                  <div className="mt-1 text-[11px] font-black text-slate-400 tabular-nums">of {n}</div>
+                </div>
+                <div className="min-w-0 flex-1 pt-0.5">
+                  {slide?.eyebrow && slide?.title && <div className="text-sm font-bold text-sky-300 truncate">{plain(slide.eyebrow)}</div>}
+                  <h1 className="text-[1.45rem] font-black leading-tight tracking-tight line-clamp-2">{slideTitle(slide, i)}</h1>
+                  <div className="mt-0.5 text-sm font-bold text-slate-400 truncate">
+                    {i < n - 1 ? <>Next: <span className="text-slate-200">{slideTitle(slides[i + 1], i + 1)}</span></> : 'Last slide'}
+                  </div>
+                </div>
+              </div>
+
+              {!laptopLive && (
+                <Banner tone="warn" icon={WifiOff}>The laptop stopped answering. Is the deck still open, with Phone remote on?</Banner>
+              )}
+              {laptopLive && host.blank && (
+                <Banner tone="warn" icon={EyeOff} action={{ label: 'Show slide', onClick: () => send('blank', { on: false }) }}>
+                  The screen is blank.
+                </Banner>
+              )}
+              {laptopLive && !host.proj && (
+                <Banner tone="info" icon={MonitorUp} action={{ label: 'Full screen', onClick: () => send('proj', { on: true }) }}>
+                  The projector shows the toolbars.
+                </Banner>
+              )}
+              {laptopLive && host.proj && host.fill === false && (
+                <Banner tone="info" icon={MonitorUp}>
+                  The browser’s bars still show. Press <b>F11</b> on the laptop once.
+                </Banner>
+              )}
+              {pickShown && <PickFlash pick={host.pick} onClose={() => setPickAt(0)} />}
+            </section>
+          )}
+
+          <main className="flex-1 min-h-0 overflow-y-auto px-4" style={{ touchAction: 'pan-y', overscrollBehaviorX: 'none' }}>
+            {body}
+          </main>
+        </div>
 
         <footer className="shrink-0 px-4 pt-3 pb-[max(env(safe-area-inset-bottom),0.9rem)] border-t border-white/10 bg-[#0b1120] space-y-3">
+          {ready && (slideButtons.length > 0 || hasReveal) && (
+            <div className="space-y-2">
+              {slideButtons.length > 0 && (
+                <div>
+                  <div className="mb-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">On the slide</div>
+                  <div className={`grid gap-2 ${slideButtons.length === 1 ? 'grid-cols-1' : slideButtons.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
+                    {slideButtons.map(([k, label, off]) => (
+                      <button
+                        key={k}
+                        data-slide-button
+                        disabled={Boolean(off)}
+                        onClick={() => send('btn', { k })}
+                        className="min-h-[3rem] rounded-xl bg-[#0087a8] border-b-4 border-[#00697f] px-2 py-1.5 font-black text-[0.8rem] uppercase tracking-wide leading-tight active:border-b-0 active:translate-y-1 transition-all disabled:opacity-30"
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {hasReveal && (
+                <button
+                  data-answer-box
+                  onClick={() => send('reveal', { open: !host.rv })}
+                  className={`w-full h-12 rounded-xl font-black uppercase tracking-widest text-sm transition-all active:scale-[0.98] ${host.rv ? 'bg-white/5 border border-white/20 text-slate-200' : 'bg-[#8b5cf6] border-b-4 border-[#6d3fd8] text-white'}`}
+                >
+                  {host.rv ? 'Close the answer box' : 'Open the answer box'}
+                </button>
+              )}
+            </div>
+          )}
           <div className="grid grid-cols-4 gap-2">
             <Tool icon={Shuffle} label={host?.names === 0 ? 'No list' : 'Pick'} disabled={!ready || host.names === 0} onClick={() => send('pick')} />
             <Tool
@@ -410,7 +476,7 @@ function RemoteRoom({ room }) {
             <button
               onClick={prev}
               disabled={!ready || i === 0}
-              className="h-24 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center gap-1 font-black uppercase tracking-widest text-slate-200 active:bg-white/15 active:scale-[0.98] transition-all disabled:opacity-30"
+              className="h-20 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center gap-1 font-black uppercase tracking-widest text-slate-200 active:bg-white/15 active:scale-[0.98] transition-all disabled:opacity-30"
             >
               <ChevronLeft className="w-7 h-7" strokeWidth={3} />
               Back
@@ -418,7 +484,7 @@ function RemoteRoom({ room }) {
             <button
               onClick={next}
               disabled={!ready || i >= n - 1}
-              className="col-span-2 h-24 rounded-2xl bg-[#1cb0f6] border-b-[6px] border-[#1899d6] flex items-center justify-center gap-1 text-xl font-black uppercase tracking-widest text-white active:border-b-0 active:translate-y-1 transition-all disabled:opacity-30 disabled:border-b-0"
+              className="col-span-2 h-20 rounded-2xl bg-[#1cb0f6] border-b-[6px] border-[#1899d6] flex items-center justify-center gap-1 text-xl font-black uppercase tracking-widest text-white active:border-b-0 active:translate-y-1 transition-all disabled:opacity-30 disabled:border-b-0"
             >
               Next
               <ChevronRight className="w-8 h-8" strokeWidth={3} />
@@ -431,7 +497,7 @@ function RemoteRoom({ room }) {
       </div>
 
       {sheet === 'slides' && ready && (
-        <SlidesSheet slides={slides} current={i} onClose={() => setSheet(null)} onGo={(k) => { send('go', { i: k }); setSheet(null) }} />
+        <SlidesSheet title={`${lesson.unit} · ${plain(lesson.title)}`} slides={slides} current={i} onClose={() => setSheet(null)} onGo={(k) => { send('go', { i: k }); setSheet(null) }} />
       )}
       {sheet === 'timer' && ready && (
         <TimerSheet
@@ -500,16 +566,25 @@ function Banner({ tone, icon: Icon, action, children }) {
   )
 }
 
-function PickCard({ pick }) {
+/** A picked name, big, for a while after the pick. A tap puts it away. */
+function PickFlash({ pick, onClose }) {
+  return (
+    <button onClick={onClose} className="w-full flex items-center gap-3 rounded-2xl bg-amber-300/10 border border-amber-300/30 px-4 py-2 text-left">
+      <Shuffle className="w-5 h-5 shrink-0 text-amber-300" strokeWidth={2.75} />
+      <span key={pick.c} className="min-w-0 flex-1 text-2xl font-black tracking-tight truncate animate-in zoom-in-95 fade-in duration-300">{pick.name}</span>
+      <span className="shrink-0 text-xs font-black text-amber-200/80 tabular-nums">{pick.reset ? 'New round' : `${pick.left} left`}</span>
+    </button>
+  )
+}
+
+const NOTE_TONES = { plan: 'text-slate-400', answer: 'text-amber-300/90', reveal: 'text-violet-300' }
+
+/** One thing to read: a line of the plan, an answer, or the answer box's text. */
+function Note({ label, text, tone = 'plan' }) {
   return (
     <Card>
-      <div className="flex items-baseline justify-between gap-3">
-        <div className="text-[11px] font-black uppercase tracking-widest text-slate-400">Picked</div>
-        <div className="text-xs font-black text-slate-400 tabular-nums">
-          {pick.reset ? 'New round' : `${pick.left} left this round`}
-        </div>
-      </div>
-      <div key={pick.c} className="mt-1 text-3xl font-black tracking-tight break-words animate-in zoom-in-95 fade-in duration-300">{pick.name}</div>
+      <div className={`text-[11px] font-black uppercase tracking-widest ${NOTE_TONES[tone]}`}>{label}</div>
+      <p className="mt-1 text-[1.02rem] leading-relaxed text-slate-100 whitespace-pre-line">{text}</p>
     </Card>
   )
 }
@@ -534,8 +609,8 @@ function Sheet({ title, onClose, children }) {
         className="max-h-[85dvh] flex flex-col rounded-t-3xl bg-slate-900 border-t border-white/10 animate-in slide-in-from-bottom-4 duration-300"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="shrink-0 flex items-center justify-between px-5 pt-4 pb-3">
-          <div className="text-lg font-black">{title}</div>
+        <div className="shrink-0 flex items-center justify-between gap-3 px-5 pt-4 pb-3">
+          <div className="min-w-0 text-lg font-black truncate">{title}</div>
           <button onClick={onClose} className="p-2 rounded-xl bg-white/10 active:bg-white/20" aria-label="Close">
             <X className="w-5 h-5" strokeWidth={3} />
           </button>
@@ -546,11 +621,11 @@ function Sheet({ title, onClose, children }) {
   )
 }
 
-function SlidesSheet({ slides, current, onGo, onClose }) {
+function SlidesSheet({ title, slides, current, onGo, onClose }) {
   const currentRef = useRef(null)
   useEffect(() => { currentRef.current?.scrollIntoView({ block: 'center' }) }, [])
   return (
-    <Sheet title="Go to slide" onClose={onClose}>
+    <Sheet title={title} onClose={onClose}>
       <ol className="space-y-1">
         {slides.map((s, k) => (
           <li key={k}>

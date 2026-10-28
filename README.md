@@ -205,6 +205,12 @@ presses the slide's widget buttons. It shows the slide's lines from `plan.js`
 as well: any timeline sentence that starts "Slide 9:" and any answer whose `q`
 starts "Slide 9 —".
 
+- **On the phone's home screen** (Chrome menu → *Add to Home screen*, or
+  *Install app*) the remote is an app of its own: no address bar, and it opens
+  straight into the last room (`#/remote` remembers it; `#/remote?code=new`
+  asks for another). The manifest and icons are in `public/remote/` and are
+  linked from the remote's page only, so saving a lesson to a home screen
+  still saves the lesson.
 - **Widget buttons** reach the phone through the shared `Btn` and `GlassButton`
   (`content/y7-science/U03_models/ui.jsx`), which register with the slide
   (`src/lib/deckControls.js`). A widget with its own `<button>`s stays
