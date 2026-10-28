@@ -1,10 +1,9 @@
 // src/guess-who/art.jsx
 // The game's pictures: the night sky behind the board, the jack-o'-lantern prize,
-// the ghost on a flipped card, a face for any person or monster, and the QR
-// code that brings the phone in. All drawn here in SVG or CSS, so there is
-// nothing to source or credit.
-import { useId, useMemo } from 'react'
-import { encode } from 'uqr'
+// the ghost on a flipped card, and a face for any person or monster. All drawn
+// here in SVG or CSS, so there is nothing to source or credit. (The QR code that
+// brings the phone in is shared with the decks: src/lib/remote/QrCode.jsx.)
+import { useId } from 'react'
 
 /**
  * A jack-o'-lantern: a ribbed, shaded pumpkin with a carved face. Lit, the face
@@ -139,21 +138,5 @@ export function Face({ person, className = '' }) {
     <div className={`gw-face-fill gw-face-initials ${className}`} style={{ '--tile': tileColour(person.name) }}>
       <span>{initials(person.name)}</span>
     </div>
-  )
-}
-
-/** A QR code drawn as one SVG path, dark on a white tile so any phone reads it. */
-export function QrCode({ text, className = '' }) {
-  const d = useMemo(() => {
-    const { data, size } = encode(text, { ecc: 'M', border: 0 })
-    let path = ''
-    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) if (data[y][x]) path += `M${x} ${y}h1v1h-1z`
-    return { path, size }
-  }, [text])
-  return (
-    <svg viewBox={`-3 -3 ${d.size + 6} ${d.size + 6}`} className={className} shapeRendering="crispEdges" role="img" aria-label="QR code for the remote">
-      <rect x="-3" y="-3" width={d.size + 6} height={d.size + 6} fill="#fff" rx="2" />
-      <path d={d.path} fill="#140a24" />
-    </svg>
   )
 }

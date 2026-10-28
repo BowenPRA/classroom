@@ -14,6 +14,9 @@ const Portfolio = lazy(() => import('./portfolio/Portfolio.jsx'))
 // The Halloween carnival's Guess Who. Its own chunk too: it brings the Supabase
 // client, which no lesson needs.
 const GuessWho = lazy(() => import('./guess-who/GuessWho.jsx'))
+// Mr Bowen's phone remote for the decks (#/remote/<room>, from the QR on a
+// deck's "Phone remote" panel). Its own chunk for the same reason.
+const DeckRemote = lazy(() => import('./remote/DeckRemote.jsx'))
 
 function LessonView() {
   const { courseId, slug } = useParams()
@@ -47,6 +50,8 @@ export default function App() {
       <Route path="/plan/:courseId/:slug" element={<PlanView />} />
       <Route path="/portfolio/*" element={<Suspense fallback={null}><Portfolio /></Suspense>} />
       <Route path="/guess-who/*" element={<Suspense fallback={null}><GuessWho /></Suspense>} />
+      <Route path="/remote" element={<Suspense fallback={null}><DeckRemote /></Suspense>} />
+      <Route path="/remote/:room" element={<Suspense fallback={null}><DeckRemote /></Suspense>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

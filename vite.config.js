@@ -10,9 +10,11 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // Guess Who's libraries ride with the game. Left in `vendor`, every
-          // lesson would download the Supabase client on its first load.
-          if (/node_modules[\\/](@supabase|uqr|tslib)[\\/]/.test(id)) return 'guess-who-vendor'
+          // The phone remotes' libraries (Guess Who's and the decks') ride in
+          // their own chunk, fetched only by the Guess Who route or a deck's
+          // "Phone remote" button. Left in `vendor`, every lesson would
+          // download the Supabase client on its first load.
+          if (/node_modules[\\/](@supabase|uqr|tslib)[\\/]/.test(id)) return 'remote-vendor'
           if (id.includes('node_modules')) return 'vendor'
         },
       },

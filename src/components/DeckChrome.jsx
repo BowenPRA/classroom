@@ -1,13 +1,16 @@
 // The furniture around a slide: the top bar and bottom bar shown while
-// previewing, the floating dock shown while presenting, the zoom overlay, and
-// the notice for a slide with no layout. Deck.jsx owns the state; this file
-// only draws it, so the deck's logic and its buttons can be read separately.
+// previewing, the floating dock shown while presenting, the zoom overlay, the
+// blank screen and countdown the phone remote can call up, and the notice for
+// a slide with no layout. Deck.jsx owns the state; this file only draws it, so
+// the deck's logic and its buttons can be read separately.
+import { useState, useEffect } from 'react'
 import {
   ChevronLeft, ChevronRight, ArrowLeft, Sun, Moon, Maximize, Minimize,
-  FileText, Rocket, X, AlertTriangle,
+  FileText, Rocket, X, AlertTriangle, Smartphone, Timer,
 } from 'lucide-react'
 import WidgetRenderer, { WidgetErrorBoundary } from './WidgetRenderer.jsx'
 import { PickButton } from './RandomStudent.jsx'
+import { tr } from '../lib/lang.js'
 
 // Secondary toolbar buttons: an icon always, a label only where there is room.
 const SECONDARY = 'flex items-center gap-2 px-3 lg:px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 transition-all border-2 border-slate-200 dark:border-slate-700 active:scale-95'
@@ -41,6 +44,38 @@ export function LangToggle({ langs = ['en', 'vn'], lang, setLang, tone = 'light'
         </button>
       ))}
     </div>
+  )
+}
+
+/**
+ * Opens the phone remote's pairing panel. The dot says how it stands: green,
+ * a phone is connected; amber, listening but no phone yet; none, off.
+ * `tone` picks the light (toolbar) or dark (dock) styling.
+ */
+function RemoteButton({ remote, lang, tone = 'light' }) {
+  if (!remote) return null
+  const { on, phones, onOpen } = remote
+  const title = tr(lang, 'Phone remote', 'Điều khiển bằng điện thoại', 'Télécommande sur téléphone')
+  const dot = phones > 0 ? 'bg-[#58cc02]' : on ? 'bg-amber-400' : ''
+  const ring = tone === 'light' ? 'ring-white dark:ring-slate-900' : 'ring-slate-900'
+  const badge = dot && <span className={`absolute -top-1 -right-1 w-3 h-3 rounded-full ring-2 ${ring} ${dot}`} />
+  if (tone === 'dark') {
+    return (
+      <button onClick={onOpen} className="relative p-2 rounded-xl bg-white/10 text-white hover:bg-white/20" title={title}>
+        <Smartphone className="w-5 h-5" strokeWidth={2.5} />
+        {badge}
+      </button>
+    )
+  }
+  return (
+    // Hidden on a phone-sized screen: a student reading the deck on a phone
+    // has no use for it.
+    <button onClick={onOpen} className={`${SECONDARY} relative hidden md:flex hover:text-[#1cb0f6]`} title={title}>
+      <Smartphone className="w-5 h-5" strokeWidth={2.5} />
+      {/* Icon only below 2xl, so the bar wraps no sooner than it did before. */}
+      <span className={`hidden 2xl:inline ${LABEL}`}>{tr(lang, 'Phone remote', 'Điều khiển', 'Télécommande')}</span>
+      {badge}
+    </button>
   )
 }
 
@@ -85,7 +120,7 @@ export function TopBar({ title, index, total, bilingual, langs, lang, setLang, i
  * Self-study are teacher shortcuts that also live on the course page, so they
  * are dropped first as the screen narrows; Full screen stays at every width.
  */
-export function BottomBar({ index, total, bilingual, langs, lang, setLang, picker, onManage, onPrev, onNext, onFullscreen, onPlan, selfStudyUrl }) {
+export function BottomBar({ index, total, bilingual, langs, lang, setLang, picker, onManage, onPrev, onNext, onFullscreen, onPlan, selfStudyUrl, remote }) {
   const last = index === total - 1
   return (
     <div className="bg-white dark:bg-slate-900 border-t-2 border-slate-200 dark:border-slate-800 px-3 sm:px-5 pt-3 sm:pt-5 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-[max(1.25rem,env(safe-area-inset-bottom))] z-20 shrink-0">
@@ -101,6 +136,7 @@ export function BottomBar({ index, total, bilingual, langs, lang, setLang, picke
             <Maximize className="w-5 h-5" strokeWidth={2.5} />
             <span className={`hidden lg:inline ${LABEL}`}>Full screen</span>
           </button>
+          <RemoteButton remote={remote} lang={lang} />
           {onPlan && (
             <button onClick={onPlan} className={`${SECONDARY} hidden md:flex hover:text-[#8b5cf6]`} title="Teacher lesson plan">
               <FileText className="w-5 h-5" strokeWidth={2.5} />
@@ -131,13 +167,14 @@ export function BottomBar({ index, total, bilingual, langs, lang, setLang, picke
  * The floating dock in full screen, plus the thin progress line along the
  * bottom edge. Both fade out with the cursor once the presenter goes idle.
  */
-export function ProjectorDock({ index, total, bilingual, langs, lang, setLang, picker, onManage, onPrev, onNext, onExit, idle }) {
+export function ProjectorDock({ index, total, bilingual, langs, lang, setLang, picker, onManage, onPrev, onNext, onExit, idle, remote }) {
   return (
     <>
       <div className={`absolute top-2.5 sm:top-3 right-3 sm:right-4 flex items-center gap-1.5 bg-slate-900/80 backdrop-blur-md p-1.5 rounded-2xl shadow-2xl border border-white/15 z-50 transition-all duration-500 ${idle ? 'opacity-0 -translate-y-4 pointer-events-none' : 'opacity-100'}`}>
         <button onClick={onPrev} disabled={index === 0} className="p-2 rounded-xl bg-white/10 text-white hover:bg-white/20 disabled:opacity-30" title="Back (←)"><ChevronLeft className="w-5 h-5" strokeWidth={3} /></button>
         {bilingual && <LangToggle langs={langs} lang={lang} setLang={setLang} tone="dark" />}
         <PickButton picker={picker} lang={lang} onManage={onManage} tone="dark" large />
+        <RemoteButton remote={remote} lang={lang} tone="dark" />
         <button onClick={onExit} className="p-2 rounded-xl bg-white/10 text-slate-300 hover:bg-rose-500 hover:text-white" title="Exit full screen (Esc)"><Minimize className="w-5 h-5" strokeWidth={2.5} /></button>
         <button onClick={onNext} className="p-2 rounded-xl bg-[#58cc02] text-white hover:bg-[#46a802] ml-0.5" title="Continue (→)"><ChevronRight className="w-5 h-5" strokeWidth={3} /></button>
       </div>
@@ -145,6 +182,55 @@ export function ProjectorDock({ index, total, bilingual, langs, lang, setLang, p
         <div className="h-full bg-[#58cc02] transition-all duration-500 shadow-[0_-1px_10px_rgba(88,204,2,0.4)]" style={{ width: `${((index + 1) / total) * 100}%` }} />
       </div>
     </>
+  )
+}
+
+/**
+ * The blank screen (B on the laptop, or Blank on the phone): a calm dark
+ * screen over everything, for when Mr Bowen needs the room's attention. A
+ * click or any key brings the slide back.
+ */
+export function BlankScreen({ lang, onLift }) {
+  return (
+    <div onClick={onLift} className="absolute inset-0 z-[60] bg-[#0b1120] flex items-center justify-center p-8 text-center animate-in fade-in duration-500">
+      <p className="text-slate-400 font-black tracking-tight text-[clamp(1.75rem,4vw,4rem)]">
+        {tr(lang, 'Eyes on Mr Bowen', 'Hãy nhìn thầy Bowen', 'Les yeux sur Mr Bowen')}
+      </p>
+    </div>
+  )
+}
+
+const clock = (secs) => `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`
+
+/**
+ * The countdown the phone remote starts, in the slide's bottom-right corner.
+ * The last ten seconds turn amber; at zero it turns orange and stays ten
+ * seconds before it goes (a click dismisses it sooner). Numbers only, so it
+ * needs no translation.
+ */
+export function TimerBadge({ end, isDisplayMode, onDone }) {
+  const [now, setNow] = useState(() => Date.now())
+  useEffect(() => {
+    const t = setInterval(() => setNow(Date.now()), 250)
+    return () => clearInterval(t)
+  }, [])
+  const left = Math.max(0, Math.ceil((end - now) / 1000))
+  const over = left === 0
+  useEffect(() => {
+    if (!over) return undefined
+    const t = setTimeout(onDone, 10000)
+    return () => clearTimeout(t)
+  }, [over, onDone])
+  const tone = over ? 'bg-[#c25e12] text-white border-[#a04a0e]' : left <= 10 ? 'bg-slate-900/90 text-amber-300 border-white/15' : 'bg-slate-900/85 text-white border-white/15'
+  return (
+    <button
+      onClick={onDone}
+      className={`absolute z-30 flex items-center gap-2 rounded-2xl border shadow-xl font-black tabular-nums tracking-tight transition-colors ${tone} ${isDisplayMode ? 'bottom-5 right-5 px-5 py-2.5 text-[clamp(1.5rem,2.6vw,2.6rem)]' : 'bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-10 lg:right-10 px-4 py-2 text-2xl'}`}
+      title="Timer"
+    >
+      <Timer className={isDisplayMode ? 'w-[0.8em] h-[0.8em]' : 'w-5 h-5'} strokeWidth={2.75} />
+      {clock(left)}
+    </button>
   )
 }
 

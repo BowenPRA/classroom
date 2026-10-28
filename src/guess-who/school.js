@@ -8,25 +8,12 @@
 // design — the same pair ships in The Current's own bundle — and read nothing
 // without a signed-in staff account.
 //
-// The same client carries the realtime channel between the TV and Mr Bowen's
-// phone (bus.js). Broadcast needs no sign-in, so the monster board plays
-// without one.
-import { createClient } from '@supabase/supabase-js'
+// The same client (src/lib/remote/client.js) carries the realtime channel
+// between the TV and Mr Bowen's phone (src/lib/remote/bus.js). Broadcast needs
+// no sign-in, so the monster board plays without one.
+import { supabase } from '../lib/remote/client.js'
 
-const SUPABASE_URL = 'https://gpfycuxltrjeeyxnnktu.supabase.co'
-const SUPABASE_KEY = 'sb_publishable_PnbUt3hda2bKjMnW__il0w_7aR3lqhe'
-
-export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
-  auth: {
-    // bowenpra.github.io also serves the Dashboard, which keeps its students'
-    // Supabase sessions in this origin's localStorage. A key of our own means a
-    // staff sign-in here never replaces a student's session there.
-    storageKey: 'classroom:guess-who-auth',
-    persistSession: true,
-    autoRefreshToken: true,
-    detectSessionInUrl: false,
-  },
-})
+export { supabase }
 
 /**
  * The Current's sign-in, unchanged: an email and password, or a short name,

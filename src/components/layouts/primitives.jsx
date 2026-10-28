@@ -3,7 +3,7 @@
 // resolver, typed note cards, a reveal box, media frames, header bars, and pills.
 // Everything here is theme-safe (light + dark) and eslint-clean (no setState in
 // effects; icons via createElement). Non-component helpers live in helpers.jsx.
-import { useState, createElement } from 'react'
+import { useState, useContext, createElement } from 'react'
 import {
   BookOpen, Microscope, FlaskConical, Leaf, Pencil, Hourglass, Home, Sparkles,
   Zap, Info, CheckCircle2, Lightbulb, Ruler, Maximize2, Quote, Boxes, Sprout,
@@ -39,6 +39,7 @@ import {
 import WidgetRenderer, { WidgetErrorBoundary } from '../WidgetRenderer.jsx'
 import { parseInlineText, renderContent, NOTE_TONES } from './helpers.jsx'
 import { field, tr } from '../../lib/lang.js'
+import { RevealContext } from '../../lib/deckControls.js'
 
 // ── Icon resolver ──────────────────────────────────────────────────────────
 const ICONS = {
@@ -115,9 +116,16 @@ export function NoteStack({ notes = [], lang = 'en', isDisplayMode = false, colu
 }
 
 // ── Reveal box (answer-box / flip-card) ──────────────────────────────────────
-/** `reveal` = { label, answer, prompt } (+ `…Vn` / `…Fr` twins). */
+/**
+ * `reveal` = { label, answer, prompt } (+ `…Vn` / `…Fr` twins). Inside a deck
+ * the open state is the deck's (RevealContext), so the phone remote can open
+ * and close it; anywhere else the box keeps its own.
+ */
 export function Reveal({ reveal, lang = 'en', accent = '#8b5cf6', isDisplayMode = false }) {
-  const [open, setOpen] = useState(false)
+  const control = useContext(RevealContext)
+  const [ownOpen, setOwnOpen] = useState(false)
+  const open = control ? control.open : ownOpen
+  const setOpen = control ? control.setOpen : setOwnOpen
   if (!reveal) return null
   const label = field(reveal, 'label', lang) || tr(lang, 'Reveal the answer', 'Hiện đáp án', 'Voir la réponse')
   const prompt = field(reveal, 'prompt', lang)

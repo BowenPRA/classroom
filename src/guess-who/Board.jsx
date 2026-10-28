@@ -8,10 +8,11 @@
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Maximize, Minimize, Volume2, VolumeX, Home, Smartphone, LogOut, ExternalLink, Ghost as GhostIcon, Users, School, Undo2, ListChecks, SendHorizontal, Pencil } from 'lucide-react'
-import { Sky, Lantern, Prize, Ghost, Face, QrCode } from './art.jsx'
+import { Sky, Lantern, Prize, Ghost, Face } from './art.jsx'
+import { QrCode } from '../lib/remote/QrCode.jsx'
 import SignIn from './SignIn.jsx'
 import { useSchool } from './useSchool.js'
-import { openBus } from './bus.js'
+import { openBus } from '../lib/remote/bus.js'
 import { signOut } from './school.js'
 import { matchClass, gridFor } from './match.js'
 import { play, unlockAudio, isMuted, setMuted } from './sfx.js'
@@ -170,7 +171,7 @@ export default function Board() {
   }, [])
 
   useEffect(() => {
-    const bus = openBus(room, 'board', (msg) => {
+    const bus = openBus(`guess-who-${room}`, 'board', (msg) => {
       if (!String(msg.from).startsWith('remote')) return
       lastSeen.current = Date.now()
       setRemoteLive(true)

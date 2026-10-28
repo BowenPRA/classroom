@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 
 // "Display mode" is what the class sees: no toolbars, type ~40% larger, the
 // cursor hidden once the mouse stops. On a desktop or an iPad it is also real
@@ -18,6 +18,7 @@ const exitFullscreen = () => (document.exitFullscreen || document.webkitExitFull
 export function useDisplayMode(containerRef, { idleMs = 3000 } = {}) {
   const [isDisplayMode, setIsDisplayMode] = useState(false)
   const [isIdle, setIsIdle] = useState(false)
+  const pokeRef = useRef(null)
 
   // Leaving fullscreen by any route (Esc, the browser's own control, a system
   // gesture) also leaves display mode, so the toolbars come back.
@@ -36,22 +37,29 @@ export function useDisplayMode(containerRef, { idleMs = 3000 } = {}) {
   useEffect(() => {
     if (!isDisplayMode) return undefined
     let timeout
-    const activity = () => {
+    const activity = (ms = idleMs) => {
       setIsIdle(false)
       clearTimeout(timeout)
-      timeout = setTimeout(() => setIsIdle(true), idleMs)
+      timeout = setTimeout(() => setIsIdle(true), ms)
     }
+    const onActivity = () => activity()
+    pokeRef.current = activity
     activity()
-    window.addEventListener('mousemove', activity)
-    window.addEventListener('keydown', activity)
-    window.addEventListener('touchstart', activity)
+    window.addEventListener('mousemove', onActivity)
+    window.addEventListener('keydown', onActivity)
+    window.addEventListener('touchstart', onActivity)
     return () => {
+      pokeRef.current = null
       clearTimeout(timeout)
-      window.removeEventListener('mousemove', activity)
-      window.removeEventListener('keydown', activity)
-      window.removeEventListener('touchstart', activity)
+      window.removeEventListener('mousemove', onActivity)
+      window.removeEventListener('keydown', onActivity)
+      window.removeEventListener('touchstart', onActivity)
     }
   }, [isDisplayMode, idleMs])
+
+  // Show the dock for `ms` without a mouse: the phone remote's pick, so the
+  // drawn name appears beside the Pick button as it does after R.
+  const poke = useCallback((ms) => pokeRef.current?.(ms), [])
 
   // Display mode is switched on first and fullscreen asked for second, without
   // waiting on it: a request that is refused (no API, no user gesture, a frame
@@ -79,5 +87,5 @@ export function useDisplayMode(containerRef, { idleMs = 3000 } = {}) {
 
   const toggle = useCallback(() => (isDisplayMode ? exit() : enter()), [isDisplayMode, enter, exit])
 
-  return { isDisplayMode, isIdle, enter, exit, toggle }
+  return { isDisplayMode, isIdle, enter, exit, toggle, poke }
 }

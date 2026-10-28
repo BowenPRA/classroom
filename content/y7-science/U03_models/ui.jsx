@@ -9,7 +9,11 @@
 //
 // Every size has a projector step (`big`), because full screen is what the
 // class sees and the type there runs about 40% larger.
-import { Children } from 'react'
+//
+// Btn and GlassButton register with the slide (useSlideButton), so Mr Bowen
+// can press them from the phone remote; their words are the label he sees.
+import { Children, useRef } from 'react'
+import { useSlideButton } from '../../../src/lib/deckControls.js'
 
 export function GlassPanel({ className = '', children, style }) {
   return (
@@ -72,8 +76,11 @@ export function GlassButton({ icon: Icon, onClick, children, big = false, tone =
     amber: 'bg-amber-400 border-amber-300 text-slate-950 hover:bg-amber-300',
     sky: 'bg-sky-400 border-sky-300 text-slate-950 hover:bg-sky-300',
   }
+  const ref = useRef(null)
+  useSlideButton(ref, onClick)
   return (
     <button
+      ref={ref}
       type="button"
       onClick={onClick}
       disabled={disabled}
@@ -124,8 +131,11 @@ export function Btn({ onClick, disabled, tone = 'teal', icon: Icon, children, bi
     green: 'bg-[#4a8b23] border-[#386a1a]',
     slate: 'bg-slate-500 border-slate-700',
   }
+  const ref = useRef(null)
+  useSlideButton(ref, onClick)
   return (
     <button
+      ref={ref}
       type="button"
       onClick={onClick}
       disabled={disabled}

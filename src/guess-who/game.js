@@ -6,6 +6,7 @@
 // So the state below is the board's, and the remote renders the copy the board
 // broadcasts. It holds ids only — the people behind them are looked up in the
 // roster each end loads for itself.
+import { keptRoom } from '../lib/remote/room.js'
 
 export const BOARD_SIZE = 24
 
@@ -85,22 +86,9 @@ export const randomOf = (list) => list[Math.floor(Math.random() * list.length)]
 
 const ROOM_KEY = 'classroom:guess-who:room'
 const GAME_KEY = 'classroom:guess-who:game'
-const ROOM_LETTERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789' // no I/1 or O/0 to misread
 
-export const newRoomCode = () => Array.from({ length: 4 }, () => randomOf(ROOM_LETTERS)).join('')
-
-export const cleanRoomCode = (code) => String(code || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 4)
-
-/** This board's room code, made once and kept. */
-export function boardRoom() {
-  try {
-    const saved = cleanRoomCode(localStorage.getItem(ROOM_KEY))
-    if (saved.length === 4) return saved
-  } catch { /* storage blocked */ }
-  const code = newRoomCode()
-  try { localStorage.setItem(ROOM_KEY, code) } catch { /* storage blocked */ }
-  return code
-}
+/** This board's room code, made once and kept (src/lib/remote/room.js). */
+export const boardRoom = () => keptRoom(ROOM_KEY)
 
 export function loadGame() {
   try {

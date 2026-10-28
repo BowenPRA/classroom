@@ -61,6 +61,9 @@ src/
                           the one-press Pick button and the roster manager
   lib/useStudentPicker.js roster (per-device) and no-repeats round state
   lib/recentLessons.js    the home page's "recently opened" strip (per-device)
+  lib/useDeckRemote.js    the laptop's end of the phone remote (see "Phone remote")
+  lib/remote/             bus, room code and QR shared by the phone remotes
+  remote/DeckRemote.jsx   the phone's screen, #/remote/<room>
   pages/                  Home (courses) · CoursePage (lessons) · Plan (printable)
 ```
 
@@ -179,11 +182,44 @@ each source + licence (see `content/y7-science/U01_1/images/`).
 | `←` `PageUp` | previous slide |
 | `F` | full screen on / off — the **Full screen** button does the same |
 | `R` | draw a random student (opens the class list if there is none yet) |
+| `B` | blank the screen ("Eyes on Mr Bowen"); any key or a click brings the slide back |
 | `Esc` | close an expanded picture, or leave full screen |
 
 Full screen is what the class sees: no toolbars, type about 40% larger, the
 cursor hidden after three idle seconds. Where a browser has no fullscreen API
 (an iPhone) the same view opens windowed instead of doing nothing.
+
+### Phone remote
+
+**Phone remote** in the bottom bar (or the phone icon in the projector dock)
+shows a QR code and a four-letter room code. Scan it, press **Full screen** on
+the laptop (a phone cannot start it), and the phone (`#/remote/<room>`) turns
+the slides; swiping works too. It also jumps to any slide, opens and closes the
+answer box, switches the language, picks a student (the name shows on the phone),
+blanks the screen, starts a countdown in the corner of the projector, and
+presses the slide's widget buttons. It shows the slide's lines from `plan.js`
+as well: any timeline sentence that starts "Slide 9:" and any answer whose `q`
+starts "Slide 9 —".
+
+- **Widget buttons** reach the phone through the shared `Btn` and `GlassButton`
+  (`content/y7-science/U03_models/ui.jsx`), which register with the slide
+  (`src/lib/deckControls.js`). A widget with its own `<button>`s stays
+  laptop-only; switching it to `Btn` is all it takes.
+- **The connection** is Supabase realtime on The Current's project (free plan,
+  shared with the school's admin app), plus BroadcastChannel between windows of
+  one browser. A deck opens nothing until the button is pressed, and loads the
+  realtime code only then (`remote-vendor` chunk, never fetched by a lesson).
+  It then stays on in that tab until the tab closes. The room code is kept in
+  the laptop's localStorage, so one phone link works every lesson; **New code**
+  locks out any phone holding the old one.
+- **Budget:** the phone says hello every 10 seconds while its screen is on, and
+  the laptop answers with the state — about 2,000 messages a lesson, roughly
+  90,000 a month at two lessons a day, under 5% of the free 2 million. The phone
+  goes quiet when it locks and pauses after 20 minutes without a tap. Keep
+  messages to ids, indexes and short strings.
+- The laptop owns all the state (`src/lib/useDeckRemote.js`); the phone only
+  asks (`src/remote/DeckRemote.jsx`). The bus, room code and QR are shared with
+  Guess Who in `src/lib/remote/`.
 
 ### Games
 

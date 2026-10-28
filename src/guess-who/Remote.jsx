@@ -9,9 +9,10 @@ import { Dices, Undo2, RotateCcw, Eye, Check, X, MessageCircleQuestion, Loader2,
 import { Face, Prize } from './art.jsx'
 import SignIn from './SignIn.jsx'
 import { useSchool } from './useSchool.js'
-import { openBus } from './bus.js'
+import { openBus } from '../lib/remote/bus.js'
 import { signOut } from './school.js'
-import { BOARD_SIZE, MIN_BOARD, MONSTERS, cleanRoomCode, cleanSteps, prizeFor, randomOf } from './game.js'
+import { BOARD_SIZE, MIN_BOARD, MONSTERS, cleanSteps, prizeFor, randomOf } from './game.js'
+import { cleanRoomCode } from '../lib/remote/room.js'
 
 export default function Remote() {
   const { room: param } = useParams()
@@ -61,7 +62,7 @@ function RemoteRoom({ room }) {
     const me = `remote-${Math.random().toString(36).slice(2, 8)}`
     // `let`: the status callback below fires later and needs the bus it belongs to.
     let bus
-    bus = openBus(room, me, (msg) => {
+    bus = openBus(`guess-who-${room}`, me, (msg) => {
       if (msg.from !== 'board' || msg.type !== 'state' || !msg.game) return
       lastState.current = Date.now()
       setBoardLive(true)
