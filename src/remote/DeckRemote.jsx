@@ -22,16 +22,17 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Navigate, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import {
   ChevronLeft, ChevronRight, Shuffle, EyeOff, Eye, Timer, ListOrdered, Loader2,
-  X, WifiOff, MonitorUp, RotateCw, Pause, Smartphone, Maximize2, Minimize2,
+  WifiOff, MonitorUp, RotateCw, Smartphone, Maximize2, Minimize2,
 } from 'lucide-react'
 import { getLesson } from '../../content/registry.js'
 import { openBus } from '../lib/remote/bus.js'
 import { cleanRoomCode } from '../lib/remote/room.js'
+import { usePresence, useWakeLock, useRemoteAppTags, lastRoom, rememberRoom, buzz } from '../lib/remote/phone.js'
+import { Sheet, Paused } from '../lib/remote/Sheet.jsx'
 import { planNotes } from './planNotes.js'
 
 const HELLO_MS = 10 * 1000
 const LAPTOP_GONE_MS = 25 * 1000
-const PAUSE_AFTER_MS = 20 * 60 * 1000
 const TIMER_MINUTES = [1, 2, 3, 5]
 // How long a picked name stays up top on the phone.
 const PICK_SHOWN_MS = 20 * 1000
@@ -55,34 +56,9 @@ const slideTitle = (slide, i) =>
 
 const clock = (secs) => `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`
 
-const buzz = () => { try { navigator.vibrate?.(12) } catch { /* not on this phone */ } }
-
-// The remote installs as its own app (Chrome: Add to Home screen): a full-
-// screen window with no address bar, opening on the last room. The manifest
-// is added on this page only, so a student who saves a lesson to their home
-// screen still gets the lesson site.
-function useRemoteAppTags() {
-  useEffect(() => {
-    const base = import.meta.env.BASE_URL
-    const tags = [
-      ['link', { rel: 'manifest', href: `${base}remote/manifest.webmanifest` }],
-      ['link', { rel: 'apple-touch-icon', href: `${base}remote/apple-180.png` }],
-      ['meta', { name: 'theme-color', content: '#0b1120' }],
-      ['meta', { name: 'mobile-web-app-capable', content: 'yes' }],
-      ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-      ['meta', { name: 'apple-mobile-web-app-title', content: 'Remote' }],
-    ].map(([tag, attrs]) => {
-      const el = document.createElement(tag)
-      for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v)
-      document.head.appendChild(el)
-      return el
-    })
-    return () => tags.forEach((el) => el.remove())
-  }, [])
-}
-
 export default function DeckRemote() {
-  useRemoteAppTags()
+  // Installs as its own app, opening on the last room (src/lib/remote/phone.js).
+  useRemoteAppTags({ dir: 'remote', title: 'Remote', theme: '#0b1120' })
   const { room: param } = useParams()
   const room = cleanRoomCode(param)
   useEffect(() => {
@@ -114,9 +90,7 @@ function RoomEntry() {
   const navigate = useNavigate()
   const [params] = useSearchParams()
   const [code, setCode] = useState('')
-  const [saved] = useState(() => {
-    try { return cleanRoomCode(localStorage.getItem(LAST_ROOM_KEY)) } catch { return '' }
-  })
+  const [saved] = useState(() => cleanRoomCode(lastRoom(LAST_ROOM_KEY)))
   const go = (e) => {
     e.preventDefault()
     const c = cleanRoomCode(code)
@@ -150,37 +124,9 @@ function RoomEntry() {
   )
 }
 
-/** Keep the screen on while `active`. Returns 'on', 'off' or 'unsupported'. */
-function useWakeLock(active) {
-  const supported = typeof navigator !== 'undefined' && 'wakeLock' in navigator
-  const [held, setHeld] = useState(false)
-  useEffect(() => {
-    if (!active || !supported) return undefined
-    let lock = null
-    let dead = false
-    // The browser lets go by itself when the page is hidden; `active` turns
-    // false then and true again on return, which asks again.
-    navigator.wakeLock.request('screen').then((l) => {
-      if (dead) { l.release().catch(() => {}); return }
-      lock = l
-      setHeld(true)
-      l.addEventListener('release', () => { if (!dead) setHeld(false) })
-    }).catch(() => { if (!dead) setHeld(false) })
-    return () => {
-      dead = true
-      lock?.release().catch(() => {})
-    }
-  }, [active, supported])
-  if (!supported) return 'unsupported'
-  return held && active ? 'on' : 'off'
-}
-
 function RemoteRoom({ room }) {
   const [host, setHost] = useState(null) // the laptop's last state, plus `at`, when it came
   const [net, setNet] = useState('connecting')
-  const [visible, setVisible] = useState(() => document.visibilityState !== 'hidden')
-  const [now, setNow] = useState(() => Date.now())
-  const [lastTap, setLastTap] = useState(() => Date.now())
   const [sheet, setSheet] = useState(null) // 'slides' | 'timer' | null
   const [pickAt, setPickAt] = useState(0) // when a new name was last picked
   const busRef = useRef(null)
@@ -188,34 +134,11 @@ function RemoteRoom({ room }) {
   const lastPick = useRef(undefined)
   const navigate = useNavigate()
 
-  useEffect(() => {
-    try { localStorage.setItem(LAST_ROOM_KEY, room) } catch { /* storage blocked */ }
-  }, [room])
+  useEffect(() => { rememberRoom(LAST_ROOM_KEY, room) }, [room])
 
-  // Twenty minutes without a tap pauses the remote: a phone left on the desk
-  // with its screen held on would otherwise say hello all afternoon.
-  const idle = now - lastTap > PAUSE_AFTER_MS
-  const active = visible && !idle
+  // Quiet when the screen locks, paused after twenty minutes without a tap.
+  const { visible, idle, active, now, poke } = usePresence()
   const wake = useWakeLock(active)
-
-  useEffect(() => {
-    const onVisibility = () => {
-      const shown = document.visibilityState !== 'hidden'
-      setVisible(shown)
-      // Unlocking the phone is a tap: it must reconnect, not wake up paused.
-      if (shown) {
-        setLastTap(Date.now())
-        setNow(Date.now())
-      }
-    }
-    document.addEventListener('visibilitychange', onVisibility)
-    // iOS can bring a page back from its cache without a visibility change.
-    window.addEventListener('pageshow', onVisibility)
-    return () => {
-      document.removeEventListener('visibilitychange', onVisibility)
-      window.removeEventListener('pageshow', onVisibility)
-    }
-  }, [])
 
   // Connected only while the screen is on and in use. Closing on a lock and
   // opening afresh on unlock is also how a dropped connection recovers.
@@ -240,10 +163,8 @@ function RemoteRoom({ room }) {
     // The hello doubles as a heartbeat: the laptop answers each one with the
     // whole state, which also says it is still there.
     const beat = setInterval(() => bus.send('hello'), HELLO_MS)
-    const tick = setInterval(() => setNow(Date.now()), 1000)
     return () => {
       clearInterval(beat)
-      clearInterval(tick)
       bus.close()
       busRef.current = null
     }
@@ -351,7 +272,7 @@ function RemoteRoom({ room }) {
   return (
     <Shell>
       {/* data-wake: whether the screen is held on ('on' / 'off' / 'unsupported'), for checks. */}
-      <div onPointerDown={() => setLastTap(Date.now())} data-wake={wake} className="flex-1 min-h-0 flex flex-col">
+      <div onPointerDown={poke} data-wake={wake} className="flex-1 min-h-0 flex flex-col">
         <header className="shrink-0 px-4 pt-[max(env(safe-area-inset-top),0.75rem)] pb-2 flex items-center justify-between gap-3">
           <span className={`flex items-center gap-2 text-sm font-black ${statusTone}`}>
             {StatusIcon
@@ -502,13 +423,7 @@ function RemoteRoom({ room }) {
         />
       )}
 
-      {visible && idle && (
-        <div className="fixed inset-0 z-50 bg-[#0b1120]/95 flex flex-col items-center justify-center gap-4 px-8 text-center" onClick={() => { setLastTap(Date.now()); setNow(Date.now()) }}>
-          <Pause className="w-12 h-12 text-slate-400" strokeWidth={2.5} />
-          <div className="text-2xl font-black">Paused</div>
-          <p className="font-bold text-slate-400">Twenty minutes without a tap, so the remote stopped to save data. Tap to carry on.</p>
-        </div>
-      )}
+      {visible && idle && <Paused onResume={poke} />}
     </Shell>
   )
 }
@@ -594,25 +509,6 @@ function Tool({ icon: Icon, label, onClick, disabled = false, on = false }) {
       <Icon className="w-5 h-5" strokeWidth={2.5} />
       {label}
     </button>
-  )
-}
-
-function Sheet({ title, onClose, children }) {
-  return (
-    <div className="fixed inset-0 z-40 bg-black/60 flex flex-col justify-end animate-in fade-in duration-200" onClick={onClose}>
-      <div
-        className="max-h-[85dvh] flex flex-col rounded-t-3xl bg-slate-900 border-t border-white/10 animate-in slide-in-from-bottom-4 duration-300"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="shrink-0 flex items-center justify-between gap-3 px-5 pt-4 pb-3">
-          <div className="min-w-0 text-lg font-black truncate">{title}</div>
-          <button onClick={onClose} className="p-2 rounded-xl bg-white/10 active:bg-white/20" aria-label="Close">
-            <X className="w-5 h-5" strokeWidth={3} />
-          </button>
-        </div>
-        <div className="overflow-y-auto px-3 pb-[max(env(safe-area-inset-bottom),1rem)]">{children}</div>
-      </div>
-    </div>
   )
 }
 

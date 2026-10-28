@@ -19,16 +19,20 @@ import { play, unlockAudio, isMuted, setMuted } from './sfx.js'
 import { useStudentPicker } from '../lib/useStudentPicker.js'
 import { RandomStudentModal } from '../components/RandomStudent.jsx'
 import {
-  BOARD_SIZE, MIN_BOARD, MONSTERS, STARTERS, blankGame, boardRoom, cleanQuestion, cleanSteps, dealIds, loadGame, prizeFor,
-  prizeStatus, saveGame,
+  BOARD_SIZE, MIN_BOARD, MONSTERS, blankGame, boardRoom, cleanQuestion, cleanSteps, dealIds, fixLog, loadGame, newGameId,
+  prizeFor, prizeStatus, saveGame,
 } from './game.js'
+import { suggestions } from './questions.js'
+
+// The phone says hello every 10 seconds while it is on; three missed is gone.
+const REMOTE_GONE_MS = 25 * 1000
 
 function reducer(g, a) {
   switch (a.type) {
     case 'source':
       return g.phase === 'lobby' ? { ...blankGame(a.source), steps: g.steps, game: g.game } : g
     case 'deal':
-      return { ...g, phase: 'pick', cards: a.cards, secret: null, down: [], pending: null, log: [], guess: null, game: g.game + 1 }
+      return { ...g, phase: 'pick', cards: a.cards, secret: null, down: [], pending: null, log: [], guess: null, game: g.game + 1, id: a.id }
     case 'setCards':
       return g.phase === 'pick' ? { ...g, cards: a.cards } : g
     case 'pick':
@@ -45,6 +49,10 @@ function reducer(g, a) {
       return g.phase === 'play' ? { ...g, log: [...g.log, { q: g.pending, a: a.answer }], pending: null } : g
     case 'undo':
       return g.phase === 'play' && g.log.length ? { ...g, log: g.log.slice(0, -1) } : g
+    case 'fix': {
+      const log = g.phase === 'play' ? fixLog(g.log, a) : null
+      return log ? { ...g, log } : g
+    }
     case 'reveal':
       return g.phase === 'play' ? { ...g, phase: 'reveal', guess: a.guess } : g
     case 'steps': {
@@ -97,18 +105,36 @@ export default function Board() {
   const [fullscreen, setFullscreen] = useState(false)
   // The question being typed on the laptop, before it is sent.
   const [draft, setDraft] = useState('')
+  // A note under the log when Mr Bowen puts an answer right: { text, i, key }.
+  const [note, setNote] = useState(null)
+
+  const inGuess = guessing && game.phase === 'play'
+  const confirming = inGuess && confirmId ? confirmId : null
+
+  // Ideas for the player's next question, from what is still unasked and the
+  // faces still up (questions.js).
+  const ideas = useMemo(() => {
+    if (game.phase !== 'play') return []
+    const up = game.cards.filter((id) => !game.down.includes(id)).map((id) => byId.get(id)).filter(Boolean)
+    const asked = [...game.log.map((e) => e.q), game.pending]
+    return suggestions({ board: monsters ? 'monsters' : 'school', asked, faces: up, game: game.game })
+  }, [game.phase, game.cards, game.down, game.log, game.pending, game.game, byId, monsters])
 
   // The bus callback is made once; it reads the latest game through refs.
   const busRef = useRef(null)
-  const live = useRef({ game, people, ready })
+  const live = useRef({ game, people, ready, inGuess, confirming })
   const lastSeen = useRef(0)
   const splashCount = useRef(0)
-  useEffect(() => { live.current = { game, people, ready } })
+  useEffect(() => { live.current = { game, people, ready, inGuess, confirming } })
 
   const sendState = useCallback(() => {
-    const { game: g, ready: r, people: p } = live.current
+    const { game: g, ready: r, people: p, inGuess: guessingNow, confirming: considering } = live.current
     // `pool`: everyone this board could deal, so the remote can swap faces in.
-    busRef.current?.send('state', { game: g, ready: r, count: p?.length || 0, pool: (p || []).map((x) => x.id) })
+    // `guessing` / `considering`: the player is making the final guess, and
+    // the face they are about to confirm, so Mr Bowen sees it coming.
+    busRef.current?.send('state', {
+      game: g, ready: r, count: p?.length || 0, pool: (p || []).map((x) => x.id), guessing: guessingNow, considering,
+    })
   }, [])
 
   const act = useCallback((intent) => {
@@ -117,10 +143,11 @@ export default function Board() {
       case 'deal': {
         const pool = live.current.people
         if ((pool?.length || 0) < MIN_BOARD) return
-        dispatch({ type: 'deal', cards: dealIds(pool) })
+        dispatch({ type: 'deal', cards: dealIds(pool), id: newGameId() })
         setGuessing(false)
         setConfirmId(null)
         setDraft('')
+        setNote(null)
         play('deal')
         return
       }
@@ -155,6 +182,21 @@ export default function Board() {
       case 'undo':
         dispatch({ type: 'undo' })
         return
+      case 'fix': {
+        // Mr Bowen putting an answer right: say so under the log, so the
+        // player can turn back any faces the wrong answer made them flip.
+        const fix = { i: intent.i, q: intent.q, a: intent.a, to: intent.to ?? null }
+        if (g.phase !== 'play' || !fixLog(g.log, fix)) return
+        dispatch({ type: 'fix', ...fix })
+        const n = fix.i + 1
+        setNote({
+          text: fix.to ? `Mr Bowen changed answer ${n} to ${fix.to.toUpperCase()}.` : `Mr Bowen took out question ${n}.`,
+          i: fix.to ? fix.i : null,
+          key: Date.now(),
+        })
+        play('ask')
+        return
+      }
       case 'giveUp':
         dispatch({ type: 'reveal', guess: null })
         setGuessing(false)
@@ -184,13 +226,11 @@ export default function Board() {
     return () => { bus.close(); busRef.current = null }
   }, [room, act, sendState])
 
-  useEffect(() => {
-    saveGame(game)
-    sendState()
-  }, [game, ready, sendState])
+  useEffect(() => { saveGame(game) }, [game])
+  useEffect(() => { sendState() }, [game, ready, inGuess, confirming, sendState])
 
   useEffect(() => {
-    const t = setInterval(() => setRemoteLive(Date.now() - lastSeen.current < 15000), 3000)
+    const t = setInterval(() => setRemoteLive(Date.now() - lastSeen.current < REMOTE_GONE_MS), 3000)
     return () => clearInterval(t)
   }, [])
 
@@ -199,6 +239,12 @@ export default function Board() {
     const t = setTimeout(() => setSplash(null), 1700)
     return () => clearTimeout(t)
   }, [splash])
+
+  useEffect(() => {
+    if (!note) return
+    const t = setTimeout(() => setNote(null), 7000)
+    return () => clearTimeout(t)
+  }, [note])
 
   const won = game.phase === 'reveal' && game.guess !== null && game.guess === game.secret
   useEffect(() => {
@@ -219,9 +265,6 @@ export default function Board() {
     if (document.fullscreenElement) document.exitFullscreen?.()
     else document.documentElement.requestFullscreen?.().catch(() => {})
   }, [])
-
-  const inGuess = guessing && game.phase === 'play'
-  const confirming = inGuess && confirmId ? confirmId : null
 
   useEffect(() => {
     const onKey = (e) => {
@@ -358,13 +401,14 @@ export default function Board() {
               <AskBox
                 key={game.game}
                 game={game}
+                ideas={ideas}
                 draft={draft}
                 onDraft={setDraft}
                 onSend={sendQuestion}
                 onChange={() => { setDraft(game.pending || ''); dispatch({ type: 'unask' }) }}
               />
             )}
-            <QuestionLog log={game.log} />
+            <QuestionLog log={game.log} note={note} />
             <div className="gw-side-foot">
               <div className="gw-faces-left">
                 <span className="gw-faces-left-n">{facesLeft}</span>
@@ -503,15 +547,13 @@ function Meter({ steps, asked }) {
 }
 
 /**
- * Where the player types a question for Mr Bowen. Model questions sit under it,
- * and a tap puts one in the box to send or change. A sent question waits here,
- * big enough for the queue to read, until he answers on his phone.
+ * Where the player types a question for Mr Bowen. Up to three ideas sit under
+ * it (questions.js), each on something not asked yet, and a tap puts one in the
+ * box to send or change. A sent question waits here, big enough for the queue
+ * to read, until he answers on his phone.
  */
-function AskBox({ game, draft, onDraft, onSend, onChange }) {
+function AskBox({ game, ideas, draft, onDraft, onSend, onChange }) {
   const input = useRef(null)
-  const list = STARTERS[game.source] || STARTERS.school
-  // Two model questions, a different two each game: the list below soon shows more.
-  const models = [0, 1].map((k) => list[(game.game * 2 + k) % list.length])
   const playing = game.phase === 'play'
 
   // Ready for the next question as soon as the last one is answered.
@@ -544,7 +586,7 @@ function AskBox({ game, draft, onDraft, onSend, onChange }) {
           className="gw-ask-input"
           value={draft}
           onChange={(e) => onDraft(e.target.value)}
-          placeholder="Is your person…?"
+          placeholder={game.source === 'monsters' ? 'Is your monster…?' : 'Is your person…?'}
           maxLength={140}
           autoComplete="off"
           spellCheck
@@ -555,30 +597,45 @@ function AskBox({ game, draft, onDraft, onSend, onChange }) {
           Ask
         </button>
       </div>
-      <div className="gw-models">
-        {models.map((q) => (
-          <button key={q} type="button" className="gw-model" disabled={!playing} onClick={() => { onDraft(q); input.current?.focus() }}>
-            {q}
-          </button>
-        ))}
-      </div>
+      {ideas.length > 0 && (
+        <div className="gw-models">
+          {ideas.map((q) => (
+            <button key={q} type="button" className="gw-model" disabled={!playing} onClick={() => { onDraft(q); input.current?.focus() }}>
+              {q}
+            </button>
+          ))}
+        </div>
+      )}
     </form>
   )
 }
 
 /** Every question asked this game, with Mr Bowen's answer. The newest stays in view. */
-function QuestionLog({ log }) {
+function QuestionLog({ log, note }) {
   const list = useRef(null)
   useEffect(() => {
     if (list.current) list.current.scrollTop = list.current.scrollHeight
   }, [log.length])
+  // The note under the list takes room: keep the changed answer (or else the
+  // newest) in view above it.
+  useEffect(() => {
+    const el = list.current
+    if (!el || !note) return
+    const changed = note.i !== null ? el.children[note.i] : null
+    if (!changed) { el.scrollTop = el.scrollHeight; return }
+    // By hand, not scrollIntoView, which would also scroll the board itself.
+    const box = el.getBoundingClientRect()
+    const item = changed.getBoundingClientRect()
+    if (item.bottom > box.bottom) el.scrollTop += item.bottom - box.bottom
+    else if (item.top < box.top) el.scrollTop -= box.top - item.top
+  }, [note])
   return (
     <div className="gw-log">
       <div className="gw-log-head">Questions and answers</div>
       {log.length ? (
         <ol ref={list} className="gw-log-list">
           {log.map((e, i) => (
-            <li key={i} className={`gw-log-item is-${e.a}`}>
+            <li key={i} className={`gw-log-item is-${e.a} ${note?.i === i ? 'is-changed' : ''}`}>
               <span className="gw-log-n">{i + 1}</span>
               <span className={`gw-log-q ${e.q ? '' : 'is-spoken'}`}>{e.q || 'Asked out loud'}</span>
               <span className="gw-log-a">{e.a === 'yes' ? 'YES' : 'NO'}</span>
@@ -587,6 +644,12 @@ function QuestionLog({ log }) {
         </ol>
       ) : (
         <p className="gw-log-empty">No questions yet.</p>
+      )}
+      {note && (
+        <div key={note.key} className="gw-log-note" aria-live="polite">
+          <Pencil className="gw-icon" strokeWidth={2.5} />
+          {note.text}
+        </div>
       )}
     </div>
   )

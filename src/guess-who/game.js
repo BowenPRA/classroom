@@ -38,6 +38,20 @@ export function prizeStatus(asked, steps) {
 /** A typed question, tidied: one line, at most 140 characters, or '' if empty. */
 export const cleanQuestion = (text) => String(text || '').replace(/\s+/g, ' ').trim().slice(0, 140)
 
+/**
+ * The log with one answer put right: entry `i` set to `to` ('yes' / 'no'), or
+ * taken out (`to` null). `q` and `a` are what the remote saw there; if the
+ * entry no longer matches (an answer landed in between), nothing changes and
+ * null comes back.
+ */
+export function fixLog(log, { i, q = null, a, to }) {
+  const e = log[i]
+  if (!Number.isInteger(i) || !e || (e.q ?? null) !== (q ?? null) || e.a !== a) return null
+  if (to === null) return log.filter((_, k) => k !== i)
+  if (to !== 'yes' && to !== 'no') return null
+  return log.map((x, k) => (k === i ? { ...x, a: to } : x))
+}
+
 /** Three whole numbers, each above the last, or null. */
 export function cleanSteps(steps) {
   if (!Array.isArray(steps) || steps.length !== 3) return null
@@ -60,7 +74,11 @@ export const blankGame = (source = 'class') => ({
   guess: null, // the id guessed, or null if Mr Bowen ended the game
   steps: DEFAULT_STEPS,
   game: 0, // bumped on every deal, so animations restart
+  id: null, // a fresh code on every deal, so a phone counts each game once in its tally
 })
+
+/** A code for one game: random, so a board whose storage was cleared never repeats one. */
+export const newGameId = () => Math.random().toString(36).slice(2, 10)
 
 function shuffle(list) {
   const a = [...list]
@@ -141,29 +159,3 @@ export const MONSTERS = [
   ['elf', 'Elf', '🧝'],
 ].map(([id, name, emoji]) => ({ id: `monster-${id}`, name, emoji }))
 
-// Shown under the board, a few at a time. Asking the question is the hard
-// part for this class, so the board keeps a model sentence in front of them.
-export const STARTERS = {
-  school: [
-    'Is your person a boy?',
-    'Is your person a girl?',
-    'Is your person in Year 7?',
-    'Is your person in primary school?',
-    'Does your person wear glasses?',
-    'Does your person have long hair?',
-    'Is your person older than 10?',
-    'Does their name start with A?',
-    'Is your person smiling?',
-    'Does your person have short hair?',
-  ],
-  monsters: [
-    'Can your monster fly?',
-    'Is your monster green?',
-    'Does your monster have horns?',
-    'Is your monster an animal?',
-    'Does your monster wear a hat?',
-    'Does your monster have wings?',
-    'Is your monster a person?',
-    'Does your monster have a tail?',
-  ],
-}

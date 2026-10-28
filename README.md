@@ -15,6 +15,7 @@ npm run dev        # local dev server
 npm run build      # production build → dist/
 npm run deploy     # build once + publish dist/ to both gh-pages branches
 npm run audit:svg  # check every diagram's text fits its boxes
+npm test           # unit tests (Guess Who's question ideas, src/**/*.test.js)
 npm run check:deck -- "http://localhost:5173/#/lesson/y7-science/U01_1"
                    # walk every slide: overflow, broken images, console errors
                    # (add `vn` or `fr` to walk it in that language)
@@ -62,7 +63,7 @@ src/
   lib/useStudentPicker.js roster (per-device) and no-repeats round state
   lib/recentLessons.js    the home page's "recently opened" strip (per-device)
   lib/useDeckRemote.js    the laptop's end of the phone remote (see "Phone remote")
-  lib/remote/             bus, room code and QR shared by the phone remotes
+  lib/remote/             bus, room code, QR and phone pieces shared by the phone remotes
   remote/DeckRemote.jsx   the phone's screen, #/remote/<room>
   pages/                  Home (courses) · CoursePage (lessons) · Plan (printable)
 ```
@@ -228,7 +229,10 @@ starts "Slide 9 —".
   messages to ids, indexes and short strings.
 - The laptop owns all the state (`src/lib/useDeckRemote.js`); the phone only
   asks (`src/remote/DeckRemote.jsx`). The bus, room code and QR are shared with
-  Guess Who in `src/lib/remote/`.
+  Guess Who in `src/lib/remote/`, and so are the phone's own pieces: staying
+  awake, going quiet when locked or idle, the home-screen tags (`phone.js`) and
+  the bottom sheet (`Sheet.jsx`). Guess Who's remote installs the same way, from
+  `public/guess-who/`.
 
 ### Games
 
