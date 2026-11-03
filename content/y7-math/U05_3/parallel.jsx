@@ -84,7 +84,7 @@ export function SetSquareSlide({ lang = 'en', isDisplayMode = false }) {
                 <line x1={fx} y1={RULER_Y} x2={f1(end[0])} y2={f1(end[1])} stroke={odd ? PURPLE : INK} strokeWidth="5" strokeLinecap="round" />
                 <path d={sector([fx, RULER_Y], 40, 180 - a, 180)} fill={odd ? PURPLE_T : ORANGE_T} stroke={odd ? PURPLE : KEY} strokeWidth="2.5" />
                 <text x={f1(lx)} y={f1(ly + 8)} fontFamily={FONT} fontSize="23" fontWeight="900" fill={odd ? PURPLE : KEY} textAnchor="middle">{a}°</text>
-                {parallel && k >= 2 && <path d={chevron(mid[0], mid[1], 180 - a, INK, 15)} fill="none" stroke={INK} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />}
+                {parallel && k >= 2 && <path d={chevron(mid[0], mid[1], 180 - a, 15)} fill="none" stroke={INK} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />}
               </g>
             )
           })}
