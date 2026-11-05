@@ -255,7 +255,7 @@ export default function Deck({ lesson, course }) {
           />
         )}
 
-      {blank && <BlankScreen lang={lang} onLift={() => setBlank(false)} />}
+      {blank && <BlankScreen lang={lang} teacher={course?.teacher} onLift={() => setBlank(false)} />}
 
       {/* Random-student picker (roster saved per-device; works in full screen) */}
       <RandomStudentModal open={pickerOpen} onClose={() => setPickerOpen(false)} lang={lang} picker={picker} />

@@ -47,7 +47,9 @@ const lessons = Object.entries(modules).map(([path, mod]) => {
 
 const byOrder = (a, b) => a.order - b.order || a.slug.localeCompare(b.slug)
 
-/** Courses joined with their lessons, in display order. */
+/** Courses joined with their lessons, in display order. Every field of a
+ *  courses.js entry passes through as it is (`teacher`, `units`, …); only
+ *  lesson meta is picked field by field above. */
 export function getCatalog() {
   return COURSES.map((course) => ({
     ...course,

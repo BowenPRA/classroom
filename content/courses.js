@@ -3,6 +3,10 @@
 // `id` must match the folder name under content/<id>/ and each lesson's meta.course.
 // `units` names the textbook units: the course page lists lessons newest first
 // under a heading per unit, and a unit missing here is headed by its number.
+// `teacher` (optional) names the class teacher for a PRA teacher's course
+// ('Mr. David'): the deck's blank screen says "Eyes on Mr. David" and the plan's
+// header names him. Leave it out on Mr Bowen's courses; the decks then say
+// Mr Bowen, as before. The registry passes every course field through.
 export const COURSES = [
   {
     id: 'y7-math',
@@ -34,8 +38,9 @@ export const COURSES = [
   },
   {
     id: 'y5-math',
-    title: 'Year 5 Maths',
+    title: 'Year 5 Mathematics',
     subtitle: 'Cambridge Primary · Mr. David',
+    teacher: 'Mr. David',
     color: '#22a06b',
     icon: 'Calculator',
     bilingual: false, // English only: no language switch

@@ -8,13 +8,33 @@ import { ArrowLeft, Printer, Clock, FileDown } from 'lucide-react'
 // `print` lists files to print for the lesson (a PDF imported with `?url`, so
 // Vite fingerprints it — never a hand-written path). It renders as links on
 // screen and is hidden on the printed sheet, where a link is useless.
+//
+// Printed, a plan is one A4 page (PRA's rule for every teacher's plan). The
+// print style below is compact: A4 with 12 mm margins, no card padding, and
+// the root font at 13px, so every rem-based size and gap in the sheet shrinks
+// together and the screen view is untouched. Sections may split across pages
+// (a long plan no longer leaves half a page empty); a heading stays with its
+// first line and a row or answer never splits. Check with headless Chrome:
+// docs/TEACHER-COURSES.md, "The plan".
+const PRINT_CSS = `
+@page { size: A4; margin: 12mm; }
+@media print {
+  html { font-size: 13px; }
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .sheet { box-shadow: none !important; margin: 0 !important; max-width: none !important; padding: 0 !important; }
+  .sheet section { break-inside: auto; margin-bottom: 1rem; }
+  .sheet h2 { break-after: avoid; }
+  .sheet li, .sheet tr, .sheet dl > div { break-inside: avoid; }
+}`
+
 export default function Plan({ lesson, course, onBack }) {
   const plan = lesson.plan || {}
   const color = course?.color || '#1cb0f6'
 
   return (
     <div className="min-h-screen bg-slate-100 dark:bg-slate-950 print:bg-white py-6 sm:py-10 print:py-0">
-      <style>{`@media print { .no-print { display: none !important; } .sheet { box-shadow: none !important; margin: 0 !important; max-width: none !important; } body { background: #fff; } }`}</style>
+      <style>{PRINT_CSS}</style>
 
       {/* Screen-only toolbar */}
       <div className="no-print max-w-3xl mx-auto px-4 mb-4 flex items-center justify-between">
@@ -29,7 +49,7 @@ export default function Plan({ lesson, course, onBack }) {
       {/* The sheet */}
       <div className="sheet max-w-3xl mx-auto bg-white text-slate-900 rounded-2xl print:rounded-none shadow-lg px-8 sm:px-12 py-10">
         <div className="border-b-4 pb-4 mb-6" style={{ borderColor: color }}>
-          <div className="text-xs font-black uppercase tracking-[0.2em]" style={{ color }}>{course?.title} · Lesson {lesson.unit}</div>
+          <div className="text-xs font-black uppercase tracking-[0.2em]" style={{ color }}>{course?.title}{course?.teacher && ` · ${course.teacher}`} · {lessonLabel(lesson.unit)}</div>
           <h1 className="text-3xl font-black tracking-tight mt-1">{lesson.title}</h1>
           <div className="flex flex-wrap gap-4 mt-3 text-sm font-bold text-slate-600">
             {plan.duration && <span className="inline-flex items-center gap-1.5"><Clock className="w-4 h-4" strokeWidth={2.5} />{plan.duration}</span>}
@@ -114,6 +134,13 @@ export default function Plan({ lesson, course, onBack }) {
       </div>
     </div>
   )
+}
+
+// "Lesson 5.2" for a book section; a teacher lesson numbered in its unit
+// (meta.unit '5 · Lesson 3', folder U05_L3) reads "Unit 5 · Lesson 3".
+function lessonLabel(unit) {
+  const m = /^(\d+) · Lesson (\d+)$/.exec(unit)
+  return m ? `Unit ${m[1]} · Lesson ${m[2]}` : `Lesson ${unit}`
 }
 
 function Section({ title, color, children }) {
