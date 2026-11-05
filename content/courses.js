@@ -33,6 +33,19 @@ export const COURSES = [
     },
   },
   {
+    id: 'y5-math',
+    title: 'Year 5 Maths',
+    subtitle: 'Cambridge Primary · Mr. David',
+    color: '#22a06b',
+    icon: 'Calculator',
+    bilingual: false, // English only: no language switch
+    // Cambridge Primary Mathematics 5 (2nd edition) units, as in Mr. David's
+    // planning folders. Lessons are listed under the unit they belong to.
+    units: {
+      5: 'Addition and subtraction',
+    },
+  },
+  {
     id: 'games',
     title: 'Classroom Games',
     subtitle: 'Play-to-learn · Kindergarten to Year 7',
