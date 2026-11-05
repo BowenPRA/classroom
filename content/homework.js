@@ -40,6 +40,7 @@ import hw11 from '../homework/hw11/hw11.pdf?url'
 import hw11x from '../homework/hw11x/hw11x.pdf?url'
 import hw11fr from '../homework/hw11/hw11-fr.pdf?url'
 import hw11xfr from '../homework/hw11x/hw11x-fr.pdf?url'
+import y5m05 from '../homework/y5m05/y5m05.pdf?url'
 
 export const HOMEWORK = [
   {
@@ -332,5 +333,15 @@ export const HOMEWORK = [
     title: 'How High Does It Bounce? — English / Français',
     subtitle: 'EX 11 with a French line under every question',
     pdf: hw11xfr,
+  },
+  // Year 5 Maths (Mr. David), the first teacher course after Mr Bowen's Year 7:
+  // the worksheet for Unit 5 lesson 3, Below Zero in Words (content/y5-math/U05_L3).
+  // Four pages; the answer key (y5m05-teacher.pdf) stays off the site like the others.
+  {
+    id: 'y5m05',
+    label: 'Y5 M5',
+    title: 'Below Zero in Words',
+    subtitle: 'Year 5 Maths · Mr. David · Unit 5 · temperatures, floors, money and the difference',
+    pdf: y5m05,
   },
 ]

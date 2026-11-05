@@ -2,6 +2,8 @@
 // Mr. David's one-page lesson plan, rendered by src/pages/Plan.jsx.
 // Field names matter: vocab [{ term, def }], timeline [{ time, phase, detail }],
 // answers [{ q, a }] (an array). Slide numbers match slides.js.
+import worksheet from '../../../homework/y5m05/y5m05.pdf?url'
+
 export const plan = {
   duration: '50 minutes, one period — 23 slides. If you fall behind: play five rounds of Up or Down? (13) instead of eight, and skip slide 21.',
   objective:
@@ -11,8 +13,11 @@ export const plan = {
   materials: [
     'Projector / TV; slides 3 and 13 are interactive and work offline (press the orange button)',
     'Mini whiteboards and pens (slides 1, 9, 10, 17, 18, 20, 21, 23); maths notebooks',
-    'Worksheet "Below Zero in Words" (Y5 M5 on the Homework page): one per student, for practice or homework',
+    'Worksheet “Below Zero in Words” (Y5 M5 on the Homework page, 4 pages): one per student, for practice or homework. The answer key is y5m05-teacher.pdf in the repo, not on the site',
     'Optional: a counting stick or a long number line with 0 in the middle, for students who need to point',
+  ],
+  print: [
+    { label: 'Worksheet: Below Zero in Words (Y5 M5)', href: worksheet, note: '4 pages, one per student; hand out after slide 23' },
   ],
   vocab: [
     { term: 'negative number', def: 'a number below zero, written with a minus sign: −3' },
@@ -53,7 +58,7 @@ export const plan = {
   ],
   notes:
     'NOTEBOOK COUNT (slide 22): 5 written panels — up and down words (6), zero is a bridge (8), estimate (10), owe (12), the difference between (16). No drawings. Only the orange panel is copied; the line under it is read aloud.\n\n' +
-    'WHERE IT SITS. After your two Unit 5 lessons (Subtracting into Negative Numbers; Adding & Subtracting with Negative Numbers), which used small numbers on a drawn line. This lesson keeps your method — jump to zero, then the rest — and adds bigger numbers, estimating, and the English of word problems. The scheme of work’s next steps in Unit 5 are shapes standing for two unknown numbers (5Nc.02) and adding and subtracting decimals (5Nf.09); the worksheet’s last page has one puzzle of each kind as a preview.\n\n' +
+    'WHERE IT SITS. After your two Unit 5 lessons (Subtracting into Negative Numbers; Adding & Subtracting with Negative Numbers), which used small numbers on a drawn line. This lesson keeps your method — jump to zero, then the rest — and adds bigger numbers, estimating, and the English of word problems. The scheme of work’s next steps in Unit 5 are shapes standing for two unknown numbers (5Nc.02) and adding and subtracting decimals (5Nf.09); the problem bank (problem-bank.md, beside this file) already has items for both.\n\n' +
     'THE ENGLISH IS THE LESSON. The class can count back past zero; what stops them is the sentence. Three things to say out loud whenever they come up: “subtract 5 from 2” is 2 − 5 (the number after from comes first); “the difference between” is a gap and is never negative; “deeper” and “colder” are down words even though they sound like more.\n\n' +
     'FOR THE OBSERVER. The goals are on slide 2 in everyday words and checked on slide 22 with the key words. Ask before you tell: the starter (1), the lift (3), two votes (7, 15), the estimate (10), the homework (11). Everyone answers at once on 7, 13 and 15; whiteboards on 9, 10, 17, 18, 20, 21 and 23 show who has it. Real photographs: lift panels (5) and snow in Sa Pa (6).\n\n' +
     'MR. DAVID. The examples use your name, deadpan (the homework you marked 4/4, the lost car, paying your sister too much). There are no student names anywhere in the deck. English only: no language switch.\n\n' +
