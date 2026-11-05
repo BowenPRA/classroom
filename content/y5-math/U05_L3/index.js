@@ -1,7 +1,7 @@
 // A lesson module: default-exports { meta, slides, plan }. The registry
 // auto-discovers this file (content/<course>/<unit>/index.js).
 //
-// Year 5 Maths (Mr. David), Unit 5 Addition and subtraction, lesson 3:
+// Year 5 Mathematics (Mr. David), Unit 5 Addition and subtraction, lesson 3:
 // Below Zero in Words. Bigger jumps across zero, estimating first, and the
 // English of word problems: rises / falls, floors below the ground, owing
 // money, and "the difference between". The first deck built for a PRA teacher

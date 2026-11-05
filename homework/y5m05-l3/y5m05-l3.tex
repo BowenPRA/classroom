@@ -1,5 +1,5 @@
-% homework/y5m05/y5m05.tex
-% Year 5 Maths (Mr. David) - Unit 5 worksheet: Below Zero in Words.
+% homework/y5m05-l3/y5m05-l3.tex
+% Year 5 Mathematics (Mr. David) - Unit 5 worksheet: Below Zero in Words.
 % Goes with the deck content/y5-math/U05_L3 (Unit 5, lesson 3).
 %
 % The first worksheet built for a PRA teacher other than Mr Bowen. Same house
@@ -18,9 +18,9 @@
 %
 % Pure ASCII source, like every packet.
 % Build (from this folder, twice each):
-%   pdflatex y5m05.tex
-%   pdflatex -jobname=y5m05-teacher "\def\TEACHER{}\input{y5m05.tex}"
-% or: pwsh .claude/skills/new-homework/scripts/build-hw.ps1 y5m05
+%   pdflatex y5m05-l3.tex
+%   pdflatex -jobname=y5m05-l3-teacher "\def\TEACHER{}\input{y5m05-l3.tex}"
+% or: pwsh .claude/skills/new-homework/scripts/build-hw.ps1 y5m05-l3
 
 \documentclass[12pt,a4paper]{article}
 
@@ -31,7 +31,7 @@
 
 \input{../hw-style.tex}
 
-\fancyhead[L]{\small\color{black!55}Year 5 Maths\sep Unit 5\sep Below Zero in Words}
+\fancyhead[L]{\small\color{black!55}Year 5 Mathematics\sep Unit 5\sep Below Zero in Words}
 
 % A number line from #1 to #2 with every whole number labelled, zero bold.
 \newcommand{\numline}[2]{%
@@ -50,7 +50,7 @@
 \begin{tcolorbox}[enhanced, colback=cbpurple!7, colframe=cbpurple!7, arc=7pt,
                   borderline west={6pt}{0pt}{cbpurple},
                   left=18pt, right=14pt, top=14pt, bottom=14pt]
-  {\color{cbpurple}\bfseries YEAR 5 MATHS\sep UNIT 5\sep WORKSHEET}\\[6pt]
+  {\color{cbpurple}\bfseries YEAR 5 MATHEMATICS\sep UNIT 5\sep WORKSHEET}\\[6pt]
   {\color{cbpurple}\Huge\bfseries Below Zero in Words}\\[10pt]
   {\color{black!70}Adding and subtracting across zero: temperatures, floors and money}\\
   {\color{black!70}Mr. David}

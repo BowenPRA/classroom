@@ -1,5 +1,5 @@
 // content/y5-math/U05_L3/slides.js
-// Year 5 Maths (Mr. David) · Unit 5 Addition and subtraction · lesson 3:
+// Year 5 Mathematics (Mr. David) · Unit 5 Addition and subtraction · lesson 3:
 // Below Zero in Words. One period, after Mr. David's two Unit 5 lessons
 // ("Subtracting into Negative Numbers" and "Adding & Subtracting with Negative
 // Numbers"), which taught the jumps on a number line with small numbers. This
@@ -60,7 +60,7 @@ export const slides = [
     layout: 'hero',
     color: PURPLE,
     icon: 'Building2',
-    brand: 'Year 5 Maths',
+    brand: 'Year 5 Mathematics',
     eyebrow: 'Unit 5 · Addition and subtraction',
     title: 'Below Zero in Words',
     card: {
@@ -458,7 +458,7 @@ export const slides = [
     layout: 'hero',
     color: PURPLE,
     icon: 'Target',
-    brand: 'Year 5 Maths',
+    brand: 'Year 5 Mathematics',
     eyebrow: 'Exit question',
     title: 'Overnight',
     subtitle: 'At 9 p.m. it is **5 °C**. By morning it **falls by 12 °C**. What is the temperature now? What is the **difference**?',

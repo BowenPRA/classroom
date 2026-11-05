@@ -1,15 +1,15 @@
-# Year 5 Maths · Unit 5 worksheet — Below Zero in Words
+# Year 5 Mathematics · Unit 5 worksheet — Below Zero in Words
 
-`y5m05.tex`: the printed worksheet for **Year 5 Maths (Mr. David), Unit 5 Addition and
+`y5m05-l3.tex`: the printed worksheet for **Year 5 Mathematics (Mr. David), Unit 5 Addition and
 subtraction, lesson 3** — the deck `content/y5-math/U05_L3`. Built 5 November 2026 as the
 sample of what a PRA teacher gets back from a lesson request.
 
 | File | What it is |
 | --- | --- |
-| `y5m05.pdf` | Student copy. **4 pages.** Linked on `#/homework` as **Y5 M5**. |
-| `y5m05-teacher.pdf` | Student copy plus a 1-page answer key with the likely wrong answers. Not linked from the site. |
+| `y5m05-l3.pdf` | Student copy. **4 pages.** Linked on `#/homework` as **Y5 M5 L3**. |
+| `y5m05-l3-teacher.pdf` | Student copy plus a 1-page answer key with the likely wrong answers. Not linked from the site. |
 
-Build: `pwsh .claude/skills/new-homework/scripts/build-hw.ps1 y5m05` (house style
+Build: `pwsh .claude/skills/new-homework/scripts/build-hw.ps1 y5m05-l3` (house style
 `../hw-style.tex`, unchanged).
 
 ## What is in it

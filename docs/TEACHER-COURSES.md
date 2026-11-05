@@ -1,14 +1,14 @@
 # Teacher courses
 
 How a course for another PRA teacher differs from Mr Bowen's Year 7 decks. Written on
-5 November 2026 while building the first one: **Year 5 Maths, Mr. David**
-(`content/y5-math/`, lesson `U05_L3` *Below Zero in Words*, worksheet `homework/y5m05/`).
+5 November 2026 while building the first one: **Year 5 Mathematics, Mr. David**
+(`content/y5-math/`, lesson `U05_L3` *Below Zero in Words*, worksheet `homework/y5m05-l3/`).
 Everything in `CLAUDE.md`, `docs/LESSON-PLAYBOOK.md` and the `new-lesson` / `new-homework`
 skills still applies; this file lists only what changes.
 
 The operator's side (requests from The Current, the queue, links back to the teacher) is
-the `teacher-lessons` skill in `C:\Users\sbowe\.claude\skills\teacher-lessons\`. Where the
-two disagree, the differences are listed at the end.
+the `teacher-lessons` skill in `C:\Users\sbowe\.claude\skills\teacher-lessons\`. The two
+use the same names (settled 5 Nov 2026, below); change both together.
 
 ## What a teacher gets
 
@@ -16,27 +16,39 @@ two disagree, the differences are listed at the end.
 | --- | --- | --- |
 | Classroom deck | `content/<course>/<unit>/` | `new-lesson` skill, playbook |
 | One-page plan | `plan.js` in the same folder, at `#/plan/<course>/<unit>` | below |
-| Printed worksheet + key | `homework/<packet>/` | `new-homework` skill |
+| Printed worksheet + key | `homework/<packet>/`, on `#/homework`, and a copy in the shared drive's Lesson packs | `new-homework` skill |
 | Problem bank | `content/<course>/<unit>/problem-bank.md` | below; feeds the Dashboard's step practice |
 
 ## Naming
 
-- **Course id:** `y<year>-<subject>`: `y5-math`, `y5-english`. One course per class, so
-  two teachers of one year group would need two ids (`y5-math-david`); not needed yet.
-- **Title and subtitle:** `title: 'Year 5 Maths'`, `subtitle: 'Cambridge Primary · Mr. David'`.
-  The teacher's name goes in the subtitle, so the home page shows whose class it is.
+One rule for every teacher course, used by this file and the `teacher-lessons` skill alike.
+
+| What | Rule | Year 5 pilot |
+| --- | --- | --- |
+| Course id | `y<year>-<subject>`, subject as in `courses.js`: `math`, `science`, `english`. Two teachers of one year and subject: add the name (`y5-math-david`); not needed yet | `y5-math` |
+| Course title | `Year <n> <Subject>` in the `courses.js` style: Mathematics, Science, English | `Year 5 Mathematics` |
+| Subtitle | `Cambridge Primary · <teacher>`, so the home page shows whose class it is | `Cambridge Primary · Mr. David` |
+| `teacher` | The teacher as PRA writes it, with the full stop. The deck's blank screen and the plan's header use it; Mr Bowen's courses leave it out | `Mr. David` |
+| Lesson folder, book section | The Workbook (or Learner's Book) section, like Mr Bowen's decks: `U05_3`, `meta.unit: '5.3'` | none yet |
+| Lesson folder, no section | The lesson's place in the teacher's unit: `U05_L3` = Unit 5, lesson 3 (counting the teacher's own lessons in that unit), `meta.unit: '5 · Lesson 3'`. The unit comes from the teacher's planning folder or the scheme of work; if neither shows it, ask | `U05_L3` |
+| Request number | Lives on the request (its links and notes), never in a folder, packet or `meta` | none |
+| Worksheet packet | `homework/y<year><subject letter><unit, 2 digits>-<section, or l + lesson>/`, letters `m` `s` `e`: `y5m05-3`, `y5m05-l3`. Files `<packet>.pdf` and `<packet>-teacher.pdf` | `homework/y5m05-l3/` |
+| Shelf label | `Y5 M5.3` or `Y5 M5 L3`. The shelf groups only `EX` and `FR` labels with the packet before them, so a teacher label stands alone | `Y5 M5 L3` |
+| Dashboard track | `Y<year>_<SUBJECT>`, unit id = lesson folder | `Y5_MATH` (not built) |
+
+- **Where the worksheet goes:** the student PDF on the classroom `#/homework` shelf, always
+  (an entry in `content/homework.js`); the answer key never goes on the site. Once Bowen has
+  made `G:\Shared drives\PRA Shared Drive\Lesson Planning\Lesson packs\`, both PDFs are also
+  copied to `Lesson packs\<Class>\` (e.g. `Year 5`), and the request's worksheet link is the
+  direct Drive link to the student PDF. Until the folder exists the link is
+  `https://bowenpra.github.io/classroom/#/homework` and the key stays with the operator.
 - **Icon:** one already in `src/lib/courseIcons.js` (`Calculator`, `BookOpen`, …). That
   file is shared code; a new icon is a change to `src/`, not to `content/`.
 - **Units:** `units: { 5: 'Addition and subtraction' }`, from the book's contents or, with
   no book, from the teacher's planning folders (Mr. David's are named `Unit 1- The number
   system` … `Unit 18- …`).
-- **Lesson folder:** with a book section, the section (`U05_1`). With no book on the
-  drive, the lesson's place in the teacher's unit: `U05_L3` = Unit 5, lesson 3, with
-  `meta.unit: '5 · Lesson 3'` (the course page groups by the leading number). Say in
-  `index.js` what the number means, so nobody mistakes it for book section 5.3.
-- **Worksheet packet:** `homework/y5m05/` (year, subject letter, unit). Label on the
-  shelf `Y5 M5`; the shelf groups only `EX` and `FR` labels with the packet before them,
-  so a teacher label stands alone.
+- Say in the lesson's `index.js` what its number means (book section or lesson in the
+  unit), so nobody mistakes `U05_L3` for book section 5.3.
 
 ## The teacher's name, and nobody else's
 
@@ -49,18 +61,21 @@ two disagree, the differences are listed at the end.
 - Deadpan word problems about the teacher (Mr. David's 4/4 homework, his lost car) are in
   the house style, but they are about a colleague: keep them kind, and the teacher can ask
   for them to go.
-- **Shared code still says Mr Bowen.** The blank screen (`B`) reads "Eyes on Mr Bowen"
-  (`src/components/DeckChrome.jsx`), and the plan page has no teacher field. A course-level
-  `teacher: 'Mr. David'` read by DeckChrome would fix both; that is a `src/` change for
-  Bowen, not done here.
+- **The course's `teacher` field** names the teacher in the shared chrome: the blank
+  screen (`B`) reads "Eyes on Mr. David" (`BlankScreen` in `src/components/DeckChrome.jsx`;
+  in Vietnamese "Hãy nhìn thầy David", cô for Ms) and the plan's header reads "Year 5
+  Mathematics · Mr. David · Unit 5 · Lesson 3". Without the field a deck says Mr Bowen in
+  EN, VN and FR, as before. `getCatalog()` passes course fields through whole; only lesson
+  `meta` is whitelisted in `registry.js`.
 
 ## Languages
 
-- Teacher courses are **English only**: `bilingual: false` in `courses.js` hides the
-  switch, and the lesson writes **no `…Vn` or `…Fr` twins** (Year 7's French is for
-  Bowen's class only). Leave `meta.french` and `meta.vietnamese` out.
-- If a class profile asks for Vietnamese support, that is `bilingual: true` plus `…Vn`
-  twins written inline from the start, natural Vietnamese (the admin repo's
+- Teacher courses are **English only** unless the class profile asks for Vietnamese:
+  `bilingual: false` in `courses.js` hides the switch, and the lesson writes **no `…Vn` or
+  `…Fr` twins** (Year 7's French is for Bowen's class only). Leave `meta.french` and
+  `meta.vietnamese` out; the defaults are right.
+- If a class profile asks for Vietnamese support, that is `bilingual: true` (still no
+  `meta` flags: VN is on by default, FR off) plus `…Vn` twins written inline from the start, natural Vietnamese (the admin repo's
   `VIETNAMESE.md`), and never "trường" or "học sinh".
 - `slides-lint.mjs content/<course>/<unit>/slides.js --no-vn --no-fr` checks an
   English-only deck (it then only checks the `$` pairs).
@@ -80,12 +95,18 @@ two disagree, the differences are listed at the end.
 
 - `plan.js` with the field names in `src/pages/Plan.jsx` (`vocab [{term, def}]`,
   `timeline [{time, phase, detail}]`, `answers [{q, a}]`, `print [{label, href, note}]`).
-- Aim for **one printed page**: one line a slide range in the timeline, answers grouped by
-  slide range, notes in one short paragraph. The reasoning a teacher does not need in
-  class goes in the header comment of `slides.js`.
-- Today `Plan.jsx` prints its sections with big padding and type, so even the tight Y5
-  5 L3 plan prints on **2 pages** (headless Chrome, `#/plan/y5-math/U05_L3`). A compact
-  print style in `Plan.jsx` would make it one; that file belongs to another session.
+- **One printed A4 page**, always. One line a timeline row, answers grouped by slide range,
+  notes in one short paragraph; keep every answer. The reasoning a teacher does not need in
+  class goes in the header comment of `slides.js`. Make room by cutting words, never by
+  making the type smaller.
+- `Plan.jsx` prints compact (5 Nov 2026): `@page` A4 with 12 mm margins, no card padding,
+  the root font at 13px so every rem size and gap shrinks together, and sections allowed to
+  split so no half page is left empty. The screen view is unchanged. With it the Y5 5 L3
+  plan prints on 1 page (2 before); Mr Bowen's longer plans went from 8 to 4 pages (Maths
+  5.2, Science 3 Coffee) and from 3 to 2 (Maths 2.3), same layout.
+- **Check it:** print `#/plan/<course>/<unit>` from the dev server to PDF in headless Chrome
+  and count the pages with `pdfinfo` (the page size line should say A4). Plan.jsx sets
+  `@page` A4, so `--print-to-pdf` no longer falls back to Letter.
 - Link the worksheet in `print` with a `?url` import of the student PDF; never write a
   path to a PDF (Vite fingerprints them).
 
@@ -121,6 +142,10 @@ or test question while there is no Workbook) to a question type, then per type 6
 items with answers, easy to hard. Two or three types are marked ★ for step practice: each
 gets numbered steps with a title of at most 8 words and a one-line hint, and its table has
 a column per step value, so the Dashboard's step engine can check one step at a time.
+It is committed with the lesson (its items are fresh, so the public repo is fine), and the
+next lesson for the class starts from its unused items. The answer-check script
+(`check_bank.py`, `teacher-lessons` skill, `problem-bank.md` section 3) stays in the
+operator's `C:\Users\sbowe\pra-triage\tmp\lesson-<N>\`.
 
 ## Checks that caught something on the first build
 
@@ -139,14 +164,12 @@ a column per step value, so the Dashboard's step engine can check one step at a 
   characters, so leave a little more room.
 - The printed plan, opened with headless Chrome `--print-to-pdf`, to count its pages.
 
-## Where this differs from the teacher-lessons skill
+## Settled with the teacher-lessons skill (5 Nov 2026)
 
-Written in parallel on the same day; settle these once:
-
-| Point | This build | `teacher-lessons` skill |
-| --- | --- | --- |
-| Course title | "Year 5 Maths" | "Year 5 Mathematics" |
-| Unit folder with no book section | `U05_L3` (lesson in the teacher's unit) | `U05_R12` (request number) |
-| Worksheet folder | `homework/y5m05/` | `homework/<course>-<unit>/` |
-| Worksheet on `#/homework` | yes (`Y5 M5`) | only if the teacher asks; PDF on the shared drive |
-| `meta.french` / `meta.vietnamese` | left out | `french: false`, `vietnamese` from the profile |
+The first build and the skill were written in parallel and named things differently. The
+rule above is now in both: course title `Year 5 Mathematics` (was "Year 5 Maths"); lesson
+folder by book section or lesson in the unit, never the request number (the skill had
+`U05_R12`); worksheet packet `y5m05-l3` (was `y5m05`, which a second Unit 5 lesson would
+have clashed with; the skill had `y5-math-U05_1`); worksheet on `#/homework` and on the
+shared drive (the skill had the drive only); `meta.french` / `meta.vietnamese` left out;
+the problem bank beside the lesson, committed with it (the skill had it in `tmp\`).
