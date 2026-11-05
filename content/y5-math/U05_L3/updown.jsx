@@ -35,13 +35,13 @@ function Arrow({ up }) {
   const c = up ? GREEN : RED
   return up ? (
     <g>
-      <polygon points="200,150 140,250 260,250" fill={c} />
+      <path d="M 200 150 L 140 250 L 260 250 Z" fill={c} />
       <rect x="175" y="248" width="50" height="120" fill={c} />
     </g>
   ) : (
     <g>
       <rect x="175" y="150" width="50" height="120" fill={c} />
-      <polygon points="200,370 140,268 260,268" fill={c} />
+      <path d="M 200 370 L 140 268 L 260 268 Z" fill={c} />
     </g>
   )
 }
@@ -66,7 +66,7 @@ export function UpOrDown({ isDisplayMode = false }) {
   return (
     <div className="w-full h-full flex flex-col gap-3 select-none">
       <div className="flex-1 min-h-0 w-full">
-        <svg viewBox="0 0 1120 440" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+        <svg viewBox="0 0 1120 440" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
           <rect x="0" y="0" width="1120" height="440" rx="16" fill="#ffffff" />
           <text x="560" y="52" fontFamily={FONT} fontSize="24" fontWeight="800" fill={MUTED} textAnchor="middle">{`Round ${i + 1} of ${ROUNDS.length}`}</text>
           <text x="560" y="120" fontFamily={FONT} fontSize={long ? 40 : 50} fontWeight="900" fill={INK} textAnchor="middle">{sentence}</text>

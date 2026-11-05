@@ -49,7 +49,10 @@ export function LiftStepper({ isDisplayMode = false }) {
   const [step, setStep] = useState(0)
   // the step whose second jump (from G to the end floor) has happened
   const [arrived, setArrived] = useState(-1)
+  // the step whose lift has landed: only then does the number sentence show
+  const [landed, setLanded] = useState(-1)
   const timer = useRef(null)
+  const timer2 = useRef(null)
   const big = isDisplayMode
   const k = Math.floor(step / 2)
   const shown = step % 2 === 1
@@ -61,8 +64,15 @@ export function LiftStepper({ isDisplayMode = false }) {
 
   useEffect(() => {
     clearTimeout(timer.current)
-    if (shown) timer.current = setTimeout(() => setArrived(step), 1300)
-    return () => clearTimeout(timer.current)
+    clearTimeout(timer2.current)
+    if (shown) {
+      timer.current = setTimeout(() => setArrived(step), 1300)
+      timer2.current = setTimeout(() => setLanded(step), 2500)
+    }
+    return () => {
+      clearTimeout(timer.current)
+      clearTimeout(timer2.current)
+    }
   }, [step, shown])
 
   const back = () => setStep((v) => Math.max(0, v - 1))
@@ -100,7 +110,7 @@ export function LiftStepper({ isDisplayMode = false }) {
           <text x="500" y="112" fontFamily={FONT} fontSize="38" fontWeight="900" fill={INK}>{`The lift is on floor ${name(start)}.`}</text>
           <text x="500" y="164" fontFamily={FONT} fontSize="38" fontWeight="900" fill={change > 0 ? BLUE : RED}>{say(change)}</text>
 
-          {shown ? (
+          {shown && landed === step ? (
             <g>
               <text x="500" y="230" fontFamily={FONT} fontSize="28" fontWeight="800" fill={GREEN}>{`${toZero} to the ground floor, then ${rest} more.`}</text>
               <text x="500" y="318" fontFamily={FONT} fontSize="64" fontWeight="900" fill={KEY}>{sentence(start, change)}</text>
@@ -109,7 +119,7 @@ export function LiftStepper({ isDisplayMode = false }) {
           ) : (
             <g>
               <text x="500" y="318" fontFamily={FONT} fontSize="64" fontWeight="900" fill="#cfd8dc">{`${num(start)} ${change > 0 ? '+' : '−'} ${Math.abs(change)} = ?`}</text>
-              <text x="500" y="384" fontFamily={FONT} fontSize="30" fontWeight="800" fill={MUTED}>Which floor? Say it first.</text>
+              <text x="500" y="384" fontFamily={FONT} fontSize="30" fontWeight="800" fill={MUTED}>{shown ? 'Watch the lift…' : 'Which floor? Say it first.'}</text>
             </g>
           )}
         </svg>
