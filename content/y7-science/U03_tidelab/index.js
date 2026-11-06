@@ -25,6 +25,8 @@ export default {
     order: 21.5,
     french: true,
     vietnamese: false,
+    // The self-study twin on the Dashboard (src/lib/dashboardLink.js): 3.4 Tides absorbs this lab.
+    dashboard: { track: 'Y7_SCI', unit: 'U03_4' },
   },
   slides,
   plan,
