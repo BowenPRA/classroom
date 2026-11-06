@@ -33,15 +33,18 @@ Get these pinned down first — guessing any of them wastes the whole run.
   (`Y7MathUnit01.pdf`) covering 1.1–1.6. For maths you must find the section
   inside it; do not assume the file is the section.
 - **The teaching date**, for the hero's `date` field.
-- **The exemplars.** Read Science 2.5 (`content/y7-science/U02_5/`) and Maths
-  2.3 (`content/y7-math/U02_3/`) end to end — slides, diagrams, widgets, plan.
-  They are the baseline for "how dense is too dense" and for how much English a
-  slide can carry. Decks older than these are over-written; do not copy their
-  wording. Then read the most recent unit in the course you are building, for
-  continuity with what the class had last lesson.
-- **The current standard.** Read `STANDARD.md` beside this file: the
+- **The standard and its decks.** Read `STANDARD.md` beside this file: the
   flow, the clarity pass and the parallel-session rules that the decks from
-  Coffee, Carbon and Stars onward are judged by.
+  Coffee, Carbon and Stars onward are judged by. Then read `slides.js`,
+  `plan.js` and one widget from at least two of the decks it names. They are
+  the bar.
+- **How few words.** Science 2.5 (`content/y7-science/U02_5/`) and Maths 2.3
+  (`content/y7-math/U02_3/`) still set how much English a slide can carry.
+  Decks older than these are over-written; do not copy their wording. Then
+  read the most recent unit in the course you are building, for continuity
+  with what the class had last lesson.
+- **The traps.** Read `docs/TRAPS.md`: what goes wrong while lint, build and
+  every check pass.
 
 ## 1 · Read the book pages
 

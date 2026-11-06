@@ -1,0 +1,307 @@
+% homework/y5m05-l3/y5m05-l3.tex
+% Year 5 Mathematics (Mr. David) - Unit 5 worksheet: Below Zero in Words.
+% Goes with the deck content/y5-math/U05_L3 (Unit 5, lesson 3).
+%
+% The first worksheet built for a PRA teacher other than Mr Bowen. Same house
+% style as the Year 7 packets (homework/hw-style.tex), with three differences
+% for a Year 5 class:
+%   * shorter: four pages for the student, one key page for the teacher;
+%   * the language of the question is still the spine (Word help box on the
+%     page where the words are used), but the numbers are Stage 5: one of the
+%     two numbers is negative (framework 5Ni.01), never both;
+%   * Mr. David in the word problems instead of Mr Bowen. No student names.
+%
+% Every item is new. The question TYPES follow the Unit 5 end-of-unit test and
+% the Stage 5 scheme of work (Unit 5.4 Topic 1); none of the test's items or
+% numbers is used. The next Unit 5 topics (shapes for unknown numbers,
+% decimals) are left to the problem bank, not previewed here.
+%
+% Pure ASCII source, like every packet.
+% Build (from this folder, twice each):
+%   pdflatex y5m05-l3.tex
+%   pdflatex -jobname=y5m05-l3-teacher "\def\TEACHER{}\input{y5m05-l3.tex}"
+% or: pwsh .claude/skills/new-homework/scripts/build-hw.ps1 y5m05-l3
+
+\documentclass[12pt,a4paper]{article}
+
+\newif\ifkey
+\ifdefined\TEACHER\keytrue\else
+  \keyfalse
+\fi
+
+\input{../hw-style.tex}
+
+\fancyhead[L]{\small\color{black!55}Year 5 Mathematics\sep Unit 5\sep Below Zero in Words}
+
+% A number line from #1 to #2 with every whole number labelled, zero bold.
+\newcommand{\numline}[2]{%
+  \begin{tikzpicture}[x=0.92cm,y=1cm]
+    \draw[line width=1.1pt,cbteal,{Latex[length=3mm]}-{Latex[length=3mm]}] (#1-0.7,0) -- (#2+0.7,0);
+    \foreach \n in {#1,...,#2}{
+      \draw[line width=0.9pt,cbteal] (\n,-0.18) -- (\n,0.18);
+      \node[below=4pt,font=\small] at (\n,-0.18) {$\n$};
+    }
+    \draw[line width=2pt,cborange] (0,-0.28) -- (0,0.28);
+  \end{tikzpicture}}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{tcolorbox}[enhanced, colback=cbpurple!7, colframe=cbpurple!7, arc=7pt,
+                  borderline west={6pt}{0pt}{cbpurple},
+                  left=18pt, right=14pt, top=14pt, bottom=14pt]
+  {\color{cbpurple}\bfseries YEAR 5 MATHEMATICS\sep UNIT 5\sep WORKSHEET}\\[6pt]
+  {\color{cbpurple}\Huge\bfseries Below Zero in Words}\\[10pt]
+  {\color{black!70}Adding and subtracting across zero: temperatures, floors and money}\\
+  {\color{black!70}Mr. David}
+\end{tcolorbox}
+
+\vspace{8pt}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+  \textbf{Name:} \blank[5.6cm] & \textbf{Class:} \blank[5.6cm] \\
+  \textbf{Date given:} \blank[4.6cm] & \textbf{Date due:} \blank[5.0cm] \\
+\end{tabularx}
+
+\vspace{6pt}
+\begin{activity}[How to do this worksheet]
+  \begin{itemize}
+    \item Write your answers \textbf{on this sheet}.
+    \item In a word problem, \key{write the number sentence first}, then the answer.
+    \item Stuck? Draw a number line with \key{0 in the middle}.
+    \item A new word? Look for the blue \eng{Word help} box.
+  \end{itemize}
+\end{activity}
+
+\begin{remember}
+  \key{Zero is a bridge.} First jump to 0. Then jump again.\\[3pt]
+  $3-8$: \quad 3 to 0 is 3 jumps, then 5 more jumps. \quad $3-8=-5$
+\end{remember}
+
+% ===========================================================================
+\hwsection{Section A\sep Number lines}
+
+\qhead{A1}{Count on and count back}
+\noindent Write the missing numbers. The steps are always the same size.
+
+\vspace{4pt}
+\begin{enumerate}[label=(\alph*), itemsep=8pt]
+  \item $9,\ 6,\ 3,\ \blank[1.4cm],\ \blank[1.4cm],\ \blank[1.4cm]$
+  \item $-11,\ -7,\ -3,\ \blank[1.4cm],\ \blank[1.4cm],\ \blank[1.4cm]$
+  \item $14,\ 9,\ 4,\ \blank[1.4cm],\ \blank[1.4cm],\ \blank[1.4cm]$
+  \item $\blank[1.4cm],\ -15,\ -5,\ 5,\ \blank[1.4cm],\ \blank[1.4cm]$
+\end{enumerate}
+
+\qhead{A2}{Show the jumps}
+\noindent Draw the jumps on the number line. Then write the answer.
+
+\vspace{6pt}
+\noindent\textbf{(a)} $3-7=\blank[2cm]$
+
+\vspace{4pt}
+\noindent\resizebox{0.92\textwidth}{!}{\numline{-6}{6}}
+
+\vspace{14pt}
+\noindent\textbf{(b)} $-5+9=\blank[2cm]$
+
+\vspace{4pt}
+\noindent\resizebox{0.92\textwidth}{!}{\numline{-6}{6}}
+
+\qhead{A3}{Work them out}
+\noindent The numbers get bigger as you go. Use zero as a bridge.
+
+\vspace{8pt}
+\begin{multicols}{3}
+\begin{enumerate}[label=(\alph*), itemsep=14pt]
+  \item $2-6 = \blank[1.5cm]$
+  \item $1-9 = \blank[1.5cm]$
+  \item $-4+7 = \blank[1.5cm]$
+  \item $-8+3 = \blank[1.5cm]$
+  \item $5-12 = \blank[1.5cm]$
+  \item $-10+16 = \blank[1.5cm]$
+  \item $20-35 = \blank[1.5cm]$
+  \item $-25+40 = \blank[1.5cm]$
+  \item $7-100 = \blank[1.5cm]$
+  \item $-30+120 = \blank[1.5cm]$
+  \item $15-204 = \blank[1.5cm]$
+  \item $-60+1005 = \blank[1.2cm]$
+\end{enumerate}
+\end{multicols}
+
+% ===========================================================================
+\hwsection{Section B\sep The English of the question}
+
+\begin{wordhelp}[Word help --- these words tell you to add or subtract]
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    \eng{rises}, \eng{goes up}, \eng{gets warmer} & add $(+)$ \\
+    \eng{falls}, \eng{drops}, \eng{goes down}, \eng{colder} & subtract $(-)$ \\
+    \eng{deeper} & further down: subtract $(-)$ \\
+    \eng{ground floor} (G), \eng{B1}, \eng{B2} & floor 0, then $-1$, $-2$ under the ground \\
+    \eng{owe} & you must pay money back. Money you owe is \textbf{negative}. \\
+    \eng{subtract 5 from 2} & start at 2: $2-5$. The number after \eng{from} comes first. \\
+    \eng{the difference between} & the gap between two numbers. It is never negative. \\
+  \end{tabularx}
+\end{wordhelp}
+
+\qhead{B2}{Number sentence first}
+\noindent Write the number sentence. Then write the answer.
+
+\vspace{4pt}
+\begin{enumerate}[label=\arabic*., itemsep=9pt]
+  \item The temperature is $2\dC$. It falls by $9\dC$. \\[4pt]
+        Number sentence: \blank[5.6cm] \quad Answer: \blank[2.6cm]
+  \item The lift is on floor 3. It goes down 7 floors. \\[4pt]
+        Number sentence: \blank[5.6cm] \quad Floor: \blank[2.6cm]
+  \item The lift is on floor B5. It goes up 8 floors. \\[4pt]
+        Number sentence: \blank[5.6cm] \quad Floor: \blank[2.6cm]
+  \item Mr. David has 15\,000 dong. He buys a book for 40\,000 dong. He borrows the
+        rest. How much does he owe? \\[4pt]
+        Number sentence: \blank[5.6cm] \quad Answer: \blank[2.6cm]
+  \item Subtract 12 from 5. \\[4pt]
+        Number sentence: \blank[5.6cm] \quad Answer: \blank[2.6cm]
+\end{enumerate}
+
+\qhead{B3}{The difference between}
+\noindent Count the gap. A number line helps.
+
+\vspace{4pt}
+\begin{enumerate}[label=(\alph*), itemsep=10pt]
+  \item The difference between $3$ and $10$. \hfill \blank[2.6cm]
+  \item The difference between $-2$ and $6$. \hfill \blank[2.6cm]
+  \item The difference between $-9$ and $4$. \hfill \blank[2.6cm]
+  \item How much warmer is $8\dC$ than $-5\dC$? \hfill \blank[2.6cm]
+  \item How many floors is it from floor B3 up to floor 6? \hfill \blank[2.6cm]
+\end{enumerate}
+
+% ===========================================================================
+\hwsection{Section C\sep Read the table}
+
+\qhead{C1}{One morning in January}
+\noindent The table shows the temperature at 7 a.m. in five places on the same day.
+{\small\color{black!60}(The numbers are made up for this worksheet.)}
+
+\vspace{8pt}
+\begin{center}
+\begin{tabular}{|p{5.2cm}|p{3.4cm}|}
+  \hline
+  \rule{0pt}{1.5em}\textbf{Place} & \textbf{Temperature} \\ \hline
+  \rule{0pt}{1.5em}M\d{\^o}c Ch\^au, Vietnam & $4\dC$ \\ \hline
+  \rule{0pt}{1.5em}H\d{a} Long, Vietnam & $13\dC$ \\ \hline
+  \rule{0pt}{1.5em}Beijing, China & $-6\dC$ \\ \hline
+  \rule{0pt}{1.5em}Ulaanbaatar, Mongolia & $-24\dC$ \\ \hline
+  \rule{0pt}{1.5em}Sydney, Australia & $26\dC$ \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{enumerate}[label=(\alph*), itemsep=11pt]
+  \item Which place is the coldest? \hfill \blank[4.2cm]
+  \item Beijing gets $9\dC$ warmer. What is the new temperature? \hfill \blank[2.4cm]
+  \item In M\d{\^o}c Ch\^au it falls by $7\dC$. What is the new temperature? \hfill \blank[2.4cm]
+  \item The difference between Sydney and Beijing? \hfill \blank[2.4cm]
+  \item Write the five temperatures in order, \textbf{coldest first}. \\[6pt]
+        \blank[2.2cm],\quad \blank[2.2cm],\quad \blank[2.2cm],\quad \blank[2.2cm],\quad \blank[2.2cm]
+\end{enumerate}
+
+\qhead{C2}{Estimate first}
+\noindent Use easy numbers to estimate. Then work out the exact answer.
+
+\vspace{6pt}
+\noindent
+\begin{tabularx}{\textwidth}{|p{3.6cm}|X|X|}
+  \hline
+  \rule{0pt}{1.6em}\textbf{Calculation} & \textbf{Estimate} & \textbf{Exact answer} \\ \hline
+  \rule{0pt}{2.2em}$-49+151$ & & \\ \hline
+  \rule{0pt}{2.2em}$302-498$ & & \\ \hline
+  \rule{0pt}{2.2em}$-99+1001$ & & \\ \hline
+\end{tabularx}
+
+% ===========================================================================
+\hwsection{Section D\sep Think about it}
+
+\qhead{D1}{Mr. David's homework}
+\noindent Mr. David got all three wrong. Write the correct answer. Then say what he did wrong.
+
+\vspace{4pt}
+\begin{enumerate}[label=(\alph*), itemsep=6pt]
+  \item $6-10=4$ \hfill Correct answer: \blank[2.2cm]
+        \wlines{1}
+  \item $-3+8=-11$ \hfill Correct answer: \blank[2.2cm]
+        \wlines{1}
+  \item The difference between $-5$ and $3$ is $2$. \hfill Correct answer: \blank[2.2cm]
+        \wlines{1}
+\end{enumerate}
+
+\qhead{D2}{Make up the story}
+\noindent Write a word problem for each number sentence. Use a temperature, a lift
+or money. Use a word from the Word help box. End with a question.
+
+\vspace{6pt}
+\noindent\textbf{(a)} \expr{4-9=-5}
+\wlines{2}
+
+\vspace{8pt}
+\noindent\textbf{(b)} \expr{-3+10=7}
+\wlines{2}
+
+% ===========================================================================
+% ANSWER KEY (teacher copy only)
+% ===========================================================================
+\ifkey
+\newpage
+\hwsection[cbred]{Answer Key --- Teacher Copy}
+\linespread{1.0}\selectfont
+\setlist[enumerate]{itemsep=1pt, topsep=2pt, leftmargin=*}
+\small
+
+\qhead[cbred]{A1}{Count on and count back}
+\noindent (a) $0, -3, -6$ \quad (b) $1, 5, 9$ \quad (c) $-1, -6, -11$ \quad
+(d) $-25$ \ldots\ $15, 25$ (steps of 10). A student who writes $-1$ after $3$ in (a)
+has stopped seeing the step size at zero: count the jumps aloud with them.
+
+\qhead[cbred]{A2}{Show the jumps}
+\noindent (a) $-4$: 3 jumps left to 0, then 4 more. \quad (b) $4$: 5 jumps right to 0,
+then 4 more. Check the arrow starts at the first number, not at 0.
+
+\qhead[cbred]{A3}{Work them out}
+\noindent (a) $-4$ (b) $-8$ (c) $3$ (d) $-5$ (e) $-7$ (f) $6$ (g) $-15$ (h) $15$
+(i) $-93$ (j) $90$ (k) $-189$ (l) $945$. \\
+The common wrong answers are the gap with the wrong sign ($7-100=93$) and the
+``keep the minus'' sum ($-4+7=-11$, the scheme of work's misconception). Both mean
+the student is not starting at the first number.
+
+\qhead[cbred]{B2}{Number sentence first}
+\noindent 1. $2-9=-7\dC$ \quad 2. $3-7=-4$, floor B4 \quad
+3. $-5+8=3$, floor 3 \quad 4. $15\,000-40\,000=-25\,000$: he owes 25\,000 dong \quad
+5. $5-12=-7$. \\
+In 5, $12-5=7$ is the English mistake (the number after \textit{from} comes first),
+not an arithmetic one: ask the student to read the sentence aloud.
+
+\qhead[cbred]{B3}{The difference between}
+\noindent (a) 7 \quad (b) 8 \quad (c) 13 \quad (d) $13\dC$ \quad (e) 9 floors (3 up to
+G, then 6). Answers of 4, 5 or 3 in (b)--(e) come from subtracting the digits and
+ignoring the minus sign. A difference is never negative: $-13$ is wrong.
+
+\qhead[cbred]{C1}{One morning in January}
+\noindent (a) Ulaanbaatar \quad (b) $-6+9=3\dC$ \quad (c) $4-7=-3\dC$ \quad
+(d) $26+6=32\dC$ \quad (e) $-24, -6, 4, 13, 26$ ($\dC$). In (e), students who put $-6$
+before $-24$ are ordering by the digits; ask which is colder.
+
+\qhead[cbred]{C2}{Estimate first}
+\noindent $-50+150=100$, exact $102$. \quad $300-500=-200$, exact $-196$. \quad
+$-100+1000=900$, exact $902$. Any sensible rounded estimate is fine; the point is that
+the exact answer is close to it.
+
+\qhead[cbred]{D1}{Mr. David's homework}
+\noindent (a) $-4$: he found the gap between 6 and 10 instead of starting at 6 and going
+down 10. (b) $5$: he added 3 and 8 and kept the minus sign. (c) $8$: he subtracted 3
+from 5; the gap crosses zero, $5+3$.
+
+\qhead[cbred]{D2}{Make up the story}
+\noindent Check in this order: (1) it \textbf{starts} at the first number (4, or $-3$);
+(2) the word matches the sign (falls / goes down / spends for (a), rises / goes up /
+earns for (b)); (3) full sentences ending in a question; (4) the answer is $-5$ or 7.
+Example (a): ``It is $4\dC$. The temperature falls by $9\dC$. What is the temperature
+now?'' Example (b): ``The lift is on B3. It goes up 10 floors. Which floor is it on now?''
+
+\fi
+\end{document}

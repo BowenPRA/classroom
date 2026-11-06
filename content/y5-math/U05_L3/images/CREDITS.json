@@ -1,0 +1,29 @@
+[
+  {
+    "file": "lift-minus.jpg",
+    "name": "Elevator Negative Floor Numbers in Ireland (16785350923).jpg",
+    "title": "Lift buttons with 0 (the exit level) and −1, −2 for the basement levels, Radisson Blu Royal Hotel, Dublin",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Elevator_Negative_Floor_Numbers_in_Ireland_(16785350923).jpg",
+    "license": "CC BY 2.0",
+    "artist": "Tony Webster from Minneapolis, Minnesota, United States",
+    "usage": "LIFTS_PHOTO (slide 10), left half. The 960 px Commons thumbnail, uncropped, quality 80."
+  },
+  {
+    "file": "lift-b3.jpg",
+    "name": "Lift panel of L16 Xiyuan Station (20170523130437).jpg",
+    "title": "Lift panel with buttons B1, B2 and B3, Xiyuan Station, Beijing",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Lift_panel_of_L16_Xiyuan_Station_(20170523130437).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "N509FZ",
+    "usage": "LIFTS_PHOTO (slide 10), right half. The 960 px Commons thumbnail, uncropped, quality 80. Shown beside the Dublin panel so the class sees that −2 and B2 name the same floor."
+  },
+  {
+    "file": "sapa-snow.jpg",
+    "name": "Tuyetsapa2011.jpg",
+    "title": "Snow in Sa Pa, Lào Cai, Vietnam, 2011",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Tuyetsapa2011.jpg",
+    "license": "Public domain",
+    "artist": "Thái Nhi at vi.wikipedia",
+    "usage": "SAPA_PHOTO (slide 6). The 960 px Commons thumbnail, uncropped, quality 80. The temperatures on the slides are made up for the lesson; the photo only shows that Vietnam has places below 0 °C."
+  }
+]

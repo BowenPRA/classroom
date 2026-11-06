@@ -185,17 +185,26 @@ export function ProjectorDock({ index, total, bilingual, langs, lang, setLang, p
 
 /**
  * The blank screen (B on the laptop, or Blank on the phone): a calm dark
- * screen over everything, for when Mr Bowen needs the room's attention. A
- * click or any key brings the slide back.
+ * screen over everything, for when the teacher needs the room's attention. A
+ * click or any key brings the slide back. `teacher` is the course's
+ * `teacher` field from content/courses.js ('Mr. David'); without one it is
+ * Mr Bowen, as on every deck before teacher courses.
  */
-export function BlankScreen({ lang, onLift }) {
+export function BlankScreen({ lang, teacher, onLift }) {
   return (
     <div onClick={onLift} className="absolute inset-0 z-[60] bg-[#0b1120] flex items-center justify-center p-8 text-center animate-in fade-in duration-500">
       <p className="text-slate-400 font-black tracking-tight text-[clamp(1.75rem,4vw,4rem)]">
-        {tr(lang, 'Eyes on Mr Bowen', 'Hãy nhìn thầy Bowen', 'Les yeux sur Mr Bowen')}
+        {eyesOn(lang, teacher)}
       </p>
     </div>
   )
+}
+
+/** "Eyes on …" in the deck's language. Vietnamese says thầy for Mr and cô for Ms / Mrs / Miss. */
+function eyesOn(lang, teacher) {
+  if (!teacher) return tr(lang, 'Eyes on Mr Bowen', 'Hãy nhìn thầy Bowen', 'Les yeux sur Mr Bowen')
+  const vn = teacher.replace(/^Mr\.?\s+/, 'thầy ').replace(/^(Ms|Mrs|Miss)\.?\s+/, 'cô ')
+  return tr(lang, `Eyes on ${teacher}`, `Hãy nhìn ${vn}`, `Les yeux sur ${teacher}`)
 }
 
 const clock = (secs) => `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`
