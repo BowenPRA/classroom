@@ -9,20 +9,25 @@
 //  · `split` diagrams are 840×560, `showcase` ones 1120×440, vote cards 720×320,
 //    goal pictures 480×300 (no words on them).
 //
-// Colour rule, the same on every number line: negative numbers red, zero and
-// the "bridge" orange or blue, positive numbers blue; jumps green or orange.
+// Colour rule, the same on every number line and thermometer: negative numbers
+// red, zero (the bridge) orange, positive numbers blue, jumps green. The lift's
+// G is orange too. Only GAP adds an orange bracket for the whole gap.
 //
-//   The goals     PIC_THERMO · PIC_LIFT · PIC_GAP
-//   Floors        LIFTS_PHOTO   two real lift panels: 0, −1, −2 and B1, B2, B3
+//   The goals     PIC_THERMO · PIC_LIFT (a lift and a coin) · PIC_GAP
+//   Floors        LIFTS_PHOTO   two real lift panels: 0, −1, −2 and B1, B2, B3;
+//                               orange rings on −2 and B2, the floor the "=" joins
 //   Temperature   SAPA_PHOTO    snow in Sa Pa (the numbers in the lesson are made up)
 //                 ANS_5C / ANS_M11C   vote: −3 °C rises by 8 °C
 //                 THERMO_BRIDGE −3 up 3 to zero, then up 5 to 5
 //                 ZERO_LINE     the tool: a line with only 0 on it
 //   Mistakes      HOMEWORK      Mr. David's homework, which he marked 4/4
+//                               (original numbers: 7 − 112 and −6 + 10)
 //   Money         MONEY         20 000 dong, a 25 000 dong bánh mì, owes 5 000
-//   Difference    ANS_1 / ANS_9 vote: the difference between −4 and 5
+//   Difference    NL_SUB / NL_GAP  slide 15: 2 − 5 on a line; the gap from 2 to 5
+//                 ANS_1 / ANS_9 vote: the difference between −4 and 5
 //                 GAP           the gap: 4 + 5 = 9
-//   The table     TABLE         six places at 6 a.m. (made-up numbers)
+//   Word problem  FREEZER       an open freezer and the ice cream (no words)
+//   (The temperature table on slide 18 is the TableReveal widget, table.jsx.)
 
 import liftMinus from './images/lift-minus.jpg'
 import liftB3 from './images/lift-b3.jpg'
@@ -38,7 +43,7 @@ export const DIAGRAMS = {
     <line x1="250.0" y1="70.0" x2="266.0" y2="70.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="250.0" y1="100.0" x2="266.0" y2="100.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="250.0" y1="130.0" x2="266.0" y2="130.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
-    <line x1="244.0" y1="160.0" x2="282.0" y2="160.0" stroke="#1a5fa8" stroke-width="5" stroke-linecap="round"/>
+    <line x1="244.0" y1="160.0" x2="282.0" y2="160.0" stroke="#c25e12" stroke-width="5" stroke-linecap="round"/>
     <line x1="250.0" y1="190.0" x2="266.0" y2="190.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="250.0" y1="220.0" x2="266.0" y2="220.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <g stroke="#1a5fa8" stroke-width="7" stroke-linecap="round">
@@ -58,15 +63,13 @@ export const DIAGRAMS = {
     <circle cx="240" cy="148" r="20" fill="#e3e8ee" stroke="#2b2b2b" stroke-width="3"/>
     <circle cx="240" cy="196" r="20" fill="#e3e8ee" stroke="#2b2b2b" stroke-width="3"/>
     <circle cx="240" cy="244" r="20" fill="#fde68a" stroke="#2b2b2b" stroke-width="3"/>
-    <text x="240" y="60" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="20" font-weight="bold" fill="#2b2b2b" text-anchor="middle">2</text>
-    <text x="240" y="108" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="20" font-weight="bold" fill="#2b2b2b" text-anchor="middle">1</text>
-    <text x="240" y="156" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="20" font-weight="bold" fill="#2b2b2b" text-anchor="middle">G</text>
-    <text x="240" y="204" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="17" font-weight="bold" fill="#2b2b2b" text-anchor="middle">B1</text>
-    <text x="240" y="252" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="17" font-weight="bold" fill="#2b2b2b" text-anchor="middle">B2</text>
     <polygon points="360,250 342.0,220 378.0,220" fill="#c25e12"/>
     <line x1="360.0" y1="70.0" x2="360.0" y2="225.0" stroke="#c25e12" stroke-width="10" stroke-linecap="round"/>
     <line x1="60.0" y1="178.0" x2="160.0" y2="178.0" stroke="#4a8b23" stroke-width="6" stroke-linecap="round"/>
     <rect x="60" y="182" width="100" height="100" fill="#efe3cf"/>
+    <circle cx="110" cy="96" r="44" fill="#e8a317" stroke="#2b2b2b" stroke-width="4"/>
+    <circle cx="110" cy="96" r="30" fill="none" stroke="#a86e0a" stroke-width="4"/>
+    <circle cx="110" cy="96" r="9" fill="#a86e0a"/>
   </svg>`,
 
   PIC_GAP: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" class="w-full h-full">
@@ -80,7 +83,7 @@ export const DIAGRAMS = {
     <line x1="138.0" y1="189.0" x2="138.0" y2="211.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="172.0" y1="189.0" x2="172.0" y2="211.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="206.0" y1="189.0" x2="206.0" y2="211.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
-    <line x1="240.0" y1="184.0" x2="240.0" y2="216.0" stroke="#2b2b2b" stroke-width="5" stroke-linecap="round"/>
+    <line x1="240.0" y1="184.0" x2="240.0" y2="216.0" stroke="#c25e12" stroke-width="5" stroke-linecap="round"/>
     <line x1="274.0" y1="189.0" x2="274.0" y2="211.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="308.0" y1="189.0" x2="308.0" y2="211.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="342.0" y1="189.0" x2="342.0" y2="211.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
@@ -99,6 +102,8 @@ export const DIAGRAMS = {
     <image href="${liftB3}" x="586" y="20" width="510" height="357" preserveAspectRatio="xMidYMid meet"/>
     <text x="279" y="418" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#2b2b2b" text-anchor="middle">Dublin: 0, −1, −2</text>
     <text x="841" y="418" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#2b2b2b" text-anchor="middle">Beijing: B1, B2, B3</text>
+    <ellipse cx="179" cy="242" rx="86" ry="40" fill="none" stroke="#c25e12" stroke-width="7"/>
+    <circle cx="853" cy="151" r="32" fill="none" stroke="#c25e12" stroke-width="7"/>
     <circle cx="560" cy="200" r="34" fill="#c25e12"/>
     <text x="560" y="213" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="40" font-weight="bold" fill="#ffffff" text-anchor="middle">=</text>
   </svg>`,
@@ -135,25 +140,25 @@ export const DIAGRAMS = {
     <line x1="290.0" y1="398.0" x2="318.0" y2="398.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="290.0" y1="362.0" x2="318.0" y2="362.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="290.0" y1="326.0" x2="318.0" y2="326.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
-    <line x1="268.0" y1="290.0" x2="318.0" y2="290.0" stroke="#1a5fa8" stroke-width="5" stroke-linecap="round"/>
+    <line x1="268.0" y1="290.0" x2="318.0" y2="290.0" stroke="#c25e12" stroke-width="5" stroke-linecap="round"/>
     <line x1="290.0" y1="254.0" x2="318.0" y2="254.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="290.0" y1="218.0" x2="318.0" y2="218.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="290.0" y1="182.0" x2="318.0" y2="182.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="290.0" y1="146.0" x2="318.0" y2="146.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="290.0" y1="110.0" x2="318.0" y2="110.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="290.0" y1="74.0" x2="318.0" y2="74.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
-    <text x="280" y="479" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#c8102e" text-anchor="end">−5</text>
-    <text x="280" y="443" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#c8102e" text-anchor="end">−4</text>
-    <text x="280" y="407" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#c8102e" text-anchor="end">−3</text>
-    <text x="280" y="371" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#c8102e" text-anchor="end">−2</text>
-    <text x="280" y="335" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#c8102e" text-anchor="end">−1</text>
-    <text x="258" y="299" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#1a5fa8" text-anchor="end">0</text>
-    <text x="280" y="263" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="end">1</text>
-    <text x="280" y="227" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="end">2</text>
-    <text x="280" y="191" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="end">3</text>
-    <text x="280" y="155" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="end">4</text>
-    <text x="280" y="119" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="end">5</text>
-    <text x="280" y="83" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="end">6</text>
+    <text x="280" y="479" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c8102e" text-anchor="end">−5</text>
+    <text x="280" y="443" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c8102e" text-anchor="end">−4</text>
+    <text x="280" y="407" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c8102e" text-anchor="end">−3</text>
+    <text x="280" y="371" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c8102e" text-anchor="end">−2</text>
+    <text x="280" y="335" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c8102e" text-anchor="end">−1</text>
+    <text x="258" y="299" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c25e12" text-anchor="end">0</text>
+    <text x="280" y="263" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#2b2b2b" text-anchor="end">1</text>
+    <text x="280" y="227" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#2b2b2b" text-anchor="end">2</text>
+    <text x="280" y="191" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#2b2b2b" text-anchor="end">3</text>
+    <text x="280" y="155" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#2b2b2b" text-anchor="end">4</text>
+    <text x="280" y="119" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#2b2b2b" text-anchor="end">5</text>
+    <text x="280" y="83" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#2b2b2b" text-anchor="end">6</text>
     <path d="M 420 398 Q 500 344 420 296" fill="none" stroke="#4a8b23" stroke-width="6" stroke-linecap="round"/>
     <polygon points="420,294 436,284.4 436,303.6" fill="#4a8b23"/>
     <path d="M 420 290 Q 540 200 420 116" fill="none" stroke="#4a8b23" stroke-width="6" stroke-linecap="round"/>
@@ -162,8 +167,6 @@ export const DIAGRAMS = {
     <text x="560" y="210" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="34" font-weight="bold" fill="#4a8b23" text-anchor="start">+5</text>
     <text x="610" y="408" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c8102e" text-anchor="start">start: −3 °C</text>
     <text x="610" y="120" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#1a5fa8" text-anchor="start">end: 5 °C</text>
-    <text x="140" y="276" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c25e12" text-anchor="middle">zero</text>
-    <text x="140" y="312" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="24" font-weight="bold" fill="#c25e12" text-anchor="middle">the bridge</text>
   </svg>`,
 
   ZERO_LINE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
@@ -172,12 +175,12 @@ export const DIAGRAMS = {
     <line x1="80.0" y1="300.0" x2="760.0" y2="300.0" stroke="#2b2b2b" stroke-width="5" stroke-linecap="round"/>
     <polygon points="790,300 768,286.8 768,313.2" fill="#2b2b2b"/>
     <polygon points="50,300 72,286.8 72,313.2" fill="#2b2b2b"/>
-    <line x1="420.0" y1="270.0" x2="420.0" y2="330.0" stroke="#1a5fa8" stroke-width="7" stroke-linecap="round"/>
-    <text x="420" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="48" font-weight="bold" fill="#1a5fa8" text-anchor="middle">0</text>
+    <line x1="420.0" y1="270.0" x2="420.0" y2="330.0" stroke="#c25e12" stroke-width="7" stroke-linecap="round"/>
+    <text x="420" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="48" font-weight="bold" fill="#c25e12" text-anchor="middle">0</text>
     <text x="150" y="230" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="36" font-weight="bold" fill="#c8102e" text-anchor="middle">less</text>
     <text x="690" y="230" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="36" font-weight="bold" fill="#1a5fa8" text-anchor="middle">more</text>
-    <text x="150" y="440" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#5b6770" text-anchor="middle">subtract: jump left</text>
-    <text x="690" y="440" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#5b6770" text-anchor="middle">add: jump right</text>
+    <text x="190" y="440" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="29" font-weight="bold" fill="#5b6770" text-anchor="middle">subtract: jump left</text>
+    <text x="650" y="440" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="29" font-weight="bold" fill="#5b6770" text-anchor="middle">add: jump right</text>
   </svg>`,
 
   HOMEWORK: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
@@ -193,8 +196,8 @@ export const DIAGRAMS = {
     <text x="140" y="86" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="32" font-weight="bold" fill="#2b2b2b" text-anchor="start">Mr. David’s homework</text>
     <circle cx="704" cy="78" r="44" fill="none" stroke="#c8102e" stroke-width="4"/>
     <text x="704" y="91" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="34" font-weight="bold" fill="#c8102e" text-anchor="middle">4/4</text>
-    <text x="140" y="208" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="38" font-weight="bold" fill="#2b2b2b" text-anchor="start">a)  4 − 106 = 102</text>
-    <text x="140" y="288" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="38" font-weight="bold" fill="#2b2b2b" text-anchor="start">b)  −5 + 9 = −14</text>
+    <text x="140" y="208" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="38" font-weight="bold" fill="#2b2b2b" text-anchor="start">a)  7 − 112 = 105</text>
+    <text x="140" y="288" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="38" font-weight="bold" fill="#2b2b2b" text-anchor="start">b)  −6 + 10 = −16</text>
     <text x="140" y="368" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="38" font-weight="bold" fill="#2b2b2b" text-anchor="start">c)  −7 + 7 = 0</text>
     <text x="140" y="448" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="38" font-weight="bold" fill="#2b2b2b" text-anchor="start">d)  3 − 10 = −7</text>
     <path d="M 728 190 l 12 14 l 24 -30 M 728 270 l 12 14 l 24 -30 M 728 350 l 12 14 l 24 -30 M 728 430 l 12 14 l 24 -30" fill="none" stroke="#c8102e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -209,25 +212,25 @@ export const DIAGRAMS = {
     <polygon points="628,330 612,320.4 612,339.6" fill="#2b2b2b"/>
     <polygon points="72,330 88,320.4 88,339.6" fill="#2b2b2b"/>
     <line x1="110.0" y1="319.0" x2="110.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
-    <line x1="206.0" y1="314.0" x2="206.0" y2="346.0" stroke="#2b2b2b" stroke-width="5" stroke-linecap="round"/>
+    <line x1="206.0" y1="314.0" x2="206.0" y2="346.0" stroke="#c25e12" stroke-width="5" stroke-linecap="round"/>
     <line x1="302.0" y1="319.0" x2="302.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="398.0" y1="319.0" x2="398.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="494.0" y1="319.0" x2="494.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="590.0" y1="319.0" x2="590.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <text x="110" y="382" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#c8102e" text-anchor="middle">−5&#160;000</text>
-    <text x="206" y="382" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="middle">0</text>
+    <text x="206" y="382" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#c25e12" text-anchor="middle">0</text>
     <text x="302" y="382" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#1a5fa8" text-anchor="middle">5&#160;000</text>
     <text x="398" y="382" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#1a5fa8" text-anchor="middle">10&#160;000</text>
     <text x="494" y="382" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#1a5fa8" text-anchor="middle">15&#160;000</text>
     <text x="590" y="382" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#1a5fa8" text-anchor="middle">20&#160;000</text>
     <circle cx="590" cy="330" r="13" fill="#1a5fa8" stroke="#2b2b2b" stroke-width="3"/>
-    <path d="M 590.0 326.0 Q 398.0 220.0 206.0 326.0" fill="none" stroke="#c25e12" stroke-width="5" stroke-linecap="round"/><polygon points="206.0,326 197.6,312 214.4,312" fill="#c25e12"/>
-    <path d="M 206.0 326.0 Q 158.0 250.0 110.0 326.0" fill="none" stroke="#c25e12" stroke-width="5" stroke-linecap="round"/><polygon points="110.0,326 101.6,312 118.4,312" fill="#c25e12"/>
-    <text x="398" y="200" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c25e12" text-anchor="middle">20&#160;000</text>
-    <text x="158" y="236" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c25e12" text-anchor="middle">5&#160;000</text>
+    <path d="M 590.0 326.0 Q 398.0 220.0 206.0 326.0" fill="none" stroke="#4a8b23" stroke-width="5" stroke-linecap="round"/><polygon points="206.0,326 197.6,312 214.4,312" fill="#4a8b23"/>
+    <path d="M 206.0 326.0 Q 158.0 250.0 110.0 326.0" fill="none" stroke="#4a8b23" stroke-width="5" stroke-linecap="round"/><polygon points="110.0,326 101.6,312 118.4,312" fill="#4a8b23"/>
+    <text x="398" y="200" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#4a8b23" text-anchor="middle">−20&#160;000</text>
+    <text x="158" y="236" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#4a8b23" text-anchor="middle">−5&#160;000</text>
     <circle cx="110" cy="330" r="13" fill="#c8102e" stroke="#2b2b2b" stroke-width="3"/>
-    <text x="350" y="470" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#2b2b2b" text-anchor="middle">He borrows 5&#160;000 dong.</text>
-    <text x="350" y="522" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c8102e" text-anchor="middle">He owes 5&#160;000 dong: −5&#160;000</text>
+    <text x="350" y="470" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#2b2b2b" text-anchor="middle">He pays 20&#160;000 now.</text>
+    <text x="350" y="522" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c8102e" text-anchor="middle">He owes the seller 5&#160;000.</text>
   </svg>`,
 
   ANS_1: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" class="w-full h-full">
@@ -255,25 +258,25 @@ export const DIAGRAMS = {
     <line x1="210.0" y1="319.0" x2="210.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="270.0" y1="319.0" x2="270.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="330.0" y1="319.0" x2="330.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
-    <line x1="390.0" y1="314.0" x2="390.0" y2="346.0" stroke="#2b2b2b" stroke-width="5" stroke-linecap="round"/>
+    <line x1="390.0" y1="314.0" x2="390.0" y2="346.0" stroke="#c25e12" stroke-width="5" stroke-linecap="round"/>
     <line x1="450.0" y1="319.0" x2="450.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="510.0" y1="319.0" x2="510.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="570.0" y1="319.0" x2="570.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="630.0" y1="319.0" x2="630.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="690.0" y1="319.0" x2="690.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
     <line x1="750.0" y1="319.0" x2="750.0" y2="341.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
-    <text x="90" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#c8102e" text-anchor="middle">−5</text>
-    <text x="150" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#c8102e" text-anchor="middle">−4</text>
-    <text x="210" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#c8102e" text-anchor="middle">−3</text>
-    <text x="270" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#c8102e" text-anchor="middle">−2</text>
-    <text x="330" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#c8102e" text-anchor="middle">−1</text>
-    <text x="390" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="middle">0</text>
-    <text x="450" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#1a5fa8" text-anchor="middle">1</text>
-    <text x="510" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#1a5fa8" text-anchor="middle">2</text>
-    <text x="570" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#1a5fa8" text-anchor="middle">3</text>
-    <text x="630" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#1a5fa8" text-anchor="middle">4</text>
-    <text x="690" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#1a5fa8" text-anchor="middle">5</text>
-    <text x="750" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="bold" fill="#1a5fa8" text-anchor="middle">6</text>
+    <text x="90" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c8102e" text-anchor="middle">−5</text>
+    <text x="150" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c8102e" text-anchor="middle">−4</text>
+    <text x="210" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c8102e" text-anchor="middle">−3</text>
+    <text x="270" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c8102e" text-anchor="middle">−2</text>
+    <text x="330" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c8102e" text-anchor="middle">−1</text>
+    <text x="390" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#c25e12" text-anchor="middle">0</text>
+    <text x="450" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#1a5fa8" text-anchor="middle">1</text>
+    <text x="510" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#1a5fa8" text-anchor="middle">2</text>
+    <text x="570" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#1a5fa8" text-anchor="middle">3</text>
+    <text x="630" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#1a5fa8" text-anchor="middle">4</text>
+    <text x="690" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#1a5fa8" text-anchor="middle">5</text>
+    <text x="750" y="380" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="bold" fill="#1a5fa8" text-anchor="middle">6</text>
     <circle cx="150" cy="330" r="14" fill="#c8102e" stroke="#2b2b2b" stroke-width="3"/>
     <circle cx="690" cy="330" r="14" fill="#1a5fa8" stroke="#2b2b2b" stroke-width="3"/>
     <path d="M 150 290 L 150 262 L 386 262 L 386 290" fill="none" stroke="#4a8b23" stroke-width="6" stroke-linejoin="round"/>
@@ -282,39 +285,87 @@ export const DIAGRAMS = {
     <text x="540" y="244" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="40" font-weight="bold" fill="#4a8b23" text-anchor="middle">5</text>
     <path d="M 150 200 L 150 170 L 690 170 L 690 200" fill="none" stroke="#c25e12" stroke-width="7" stroke-linejoin="round"/>
     <text x="420" y="148" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="44" font-weight="bold" fill="#c25e12" text-anchor="middle">4 + 5 = 9</text>
-    <text x="420" y="480" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="30" font-weight="bold" fill="#2b2b2b" text-anchor="middle">The gap is 9 steps long.</text>
   </svg>`,
 
-  TABLE: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
+  NL_SUB: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" class="w-full h-full">
+    <rect x="0" y="0" width="720" height="220" rx="14" fill="#ffffff"/>
+    <rect x="0.75" y="0.75" width="718.5" height="218.5" rx="13" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+    <line x1="36.0" y1="140.0" x2="684.0" y2="140.0" stroke="#2b2b2b" stroke-width="4" stroke-linecap="round"/>
+    <polygon points="694,140 678,130.4 678,149.6" fill="#2b2b2b"/>
+    <polygon points="26,140 42,130.4 42,149.6" fill="#2b2b2b"/>
+    <line x1="80.0" y1="129.0" x2="80.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="160.0" y1="129.0" x2="160.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="240.0" y1="129.0" x2="240.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="320.0" y1="129.0" x2="320.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="400.0" y1="124.0" x2="400.0" y2="156.0" stroke="#c25e12" stroke-width="5" stroke-linecap="round"/>
+    <line x1="480.0" y1="129.0" x2="480.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="560.0" y1="129.0" x2="560.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="640.0" y1="129.0" x2="640.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <text x="80" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c8102e" text-anchor="middle">−4</text>
+    <text x="160" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c8102e" text-anchor="middle">−3</text>
+    <text x="240" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c8102e" text-anchor="middle">−2</text>
+    <text x="320" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c8102e" text-anchor="middle">−1</text>
+    <text x="400" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c25e12" text-anchor="middle">0</text>
+    <text x="480" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#1a5fa8" text-anchor="middle">1</text>
+    <text x="560" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#1a5fa8" text-anchor="middle">2</text>
+    <text x="640" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#1a5fa8" text-anchor="middle">3</text>
+    <circle cx="560" cy="140" r="13" fill="#1a5fa8" stroke="#2b2b2b" stroke-width="3"/>
+    <path d="M 560.0 132.0 Q 480.0 50.0 400.0 132.0" fill="none" stroke="#4a8b23" stroke-width="5" stroke-linecap="round"/><polygon points="400.0,134 391.6,120 408.4,120" fill="#4a8b23"/>
+    <path d="M 400.0 132.0 Q 280.0 0.0 160.0 132.0" fill="none" stroke="#4a8b23" stroke-width="5" stroke-linecap="round"/><polygon points="160.0,134 151.6,120 168.4,120" fill="#4a8b23"/>
+    <circle cx="160" cy="140" r="13" fill="#c8102e" stroke="#2b2b2b" stroke-width="3"/>
+    <text x="480" y="80" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="34" font-weight="bold" fill="#4a8b23" text-anchor="middle">−2</text>
+    <text x="280" y="56" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="34" font-weight="bold" fill="#4a8b23" text-anchor="middle">−3</text>
+  </svg>`,
+
+  NL_GAP: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" class="w-full h-full">
+    <rect x="0" y="0" width="720" height="220" rx="14" fill="#ffffff"/>
+    <rect x="0.75" y="0.75" width="718.5" height="218.5" rx="13" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+    <line x1="46.0" y1="140.0" x2="684.0" y2="140.0" stroke="#2b2b2b" stroke-width="4" stroke-linecap="round"/>
+    <polygon points="694,140 678,130.4 678,149.6" fill="#2b2b2b"/>
+    <polygon points="36,140 52,130.4 52,149.6" fill="#2b2b2b"/>
+    <line x1="70.0" y1="129.0" x2="70.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="155.0" y1="124.0" x2="155.0" y2="156.0" stroke="#c25e12" stroke-width="5" stroke-linecap="round"/>
+    <line x1="240.0" y1="129.0" x2="240.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="325.0" y1="129.0" x2="325.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="410.0" y1="129.0" x2="410.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="495.0" y1="129.0" x2="495.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="580.0" y1="129.0" x2="580.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="665.0" y1="129.0" x2="665.0" y2="151.0" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <text x="70" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c8102e" text-anchor="middle">−1</text>
+    <text x="155" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c25e12" text-anchor="middle">0</text>
+    <text x="240" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#1a5fa8" text-anchor="middle">1</text>
+    <text x="325" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#1a5fa8" text-anchor="middle">2</text>
+    <text x="410" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#1a5fa8" text-anchor="middle">3</text>
+    <text x="495" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#1a5fa8" text-anchor="middle">4</text>
+    <text x="580" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#1a5fa8" text-anchor="middle">5</text>
+    <text x="665" y="192" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#1a5fa8" text-anchor="middle">6</text>
+    <circle cx="325" cy="140" r="13" fill="#1a5fa8" stroke="#2b2b2b" stroke-width="3"/>
+    <circle cx="580" cy="140" r="13" fill="#1a5fa8" stroke="#2b2b2b" stroke-width="3"/>
+    <path d="M 325 116 L 325 84 L 580 84 L 580 116" fill="none" stroke="#c25e12" stroke-width="6" stroke-linejoin="round"/>
+    <text x="452" y="68" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="44" font-weight="bold" fill="#c25e12" text-anchor="middle">3</text>
+  </svg>`,
+
+  FREEZER: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     <rect x="0" y="0" width="840" height="560" rx="14" fill="#ffffff"/>
     <rect x="0.75" y="0.75" width="838.5" height="558.5" rx="13" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
-    <rect x="150" y="30" width="540" height="66" fill="#0087a8"/>
-    <text x="310" y="75" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="30" font-weight="bold" fill="#ffffff" text-anchor="middle">Place</text>
-    <text x="580" y="75" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="30" font-weight="bold" fill="#ffffff" text-anchor="middle">Temperature</text>
-    <rect x="150" y="96" width="540" height="66" fill="#e3eef9" stroke="#b8c4d0" stroke-width="2"/>
-    <line x1="470.0" y1="96.0" x2="470.0" y2="162.0" stroke="#b8c4d0" stroke-width="2" stroke-linecap="round"/>
-    <rect x="150" y="162" width="540" height="66" fill="#ffffff" stroke="#b8c4d0" stroke-width="2"/>
-    <line x1="470.0" y1="162.0" x2="470.0" y2="228.0" stroke="#b8c4d0" stroke-width="2" stroke-linecap="round"/>
-    <rect x="150" y="228" width="540" height="66" fill="#e3eef9" stroke="#b8c4d0" stroke-width="2"/>
-    <line x1="470.0" y1="228.0" x2="470.0" y2="294.0" stroke="#b8c4d0" stroke-width="2" stroke-linecap="round"/>
-    <rect x="150" y="294" width="540" height="66" fill="#ffffff" stroke="#b8c4d0" stroke-width="2"/>
-    <line x1="470.0" y1="294.0" x2="470.0" y2="360.0" stroke="#b8c4d0" stroke-width="2" stroke-linecap="round"/>
-    <rect x="150" y="360" width="540" height="66" fill="#e3eef9" stroke="#b8c4d0" stroke-width="2"/>
-    <line x1="470.0" y1="360.0" x2="470.0" y2="426.0" stroke="#b8c4d0" stroke-width="2" stroke-linecap="round"/>
-    <rect x="150" y="426" width="540" height="66" fill="#ffffff" stroke="#b8c4d0" stroke-width="2"/>
-    <line x1="470.0" y1="426.0" x2="470.0" y2="492.0" stroke="#b8c4d0" stroke-width="2" stroke-linecap="round"/>
-    <text x="180" y="140" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#2b2b2b" text-anchor="start">Hội An</text>
-    <text x="580" y="140" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#2b2b2b" text-anchor="middle">19&#160;°C</text>
-    <text x="180" y="206" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#2b2b2b" text-anchor="start">Hà Nội</text>
-    <text x="580" y="206" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#2b2b2b" text-anchor="middle">11&#160;°C</text>
-    <text x="180" y="272" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#2b2b2b" text-anchor="start">Sa Pa</text>
-    <text x="580" y="272" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c8102e" text-anchor="middle">−2&#160;°C</text>
-    <text x="180" y="338" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#2b2b2b" text-anchor="start">Seoul</text>
-    <text x="580" y="338" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c8102e" text-anchor="middle">−7&#160;°C</text>
-    <text x="180" y="404" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#2b2b2b" text-anchor="start">Harbin</text>
-    <text x="580" y="404" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#c8102e" text-anchor="middle">−21&#160;°C</text>
-    <text x="180" y="470" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#2b2b2b" text-anchor="start">Đà Lạt</text>
-    <text x="580" y="470" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="bold" fill="#2b2b2b" text-anchor="middle">9&#160;°C</text>
-    <text x="420" y="540" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="24" fill="#5b6770" text-anchor="middle">6 a.m., one morning in January</text>
+    <line x1="120.0" y1="520.0" x2="720.0" y2="520.0" stroke="#9aa5ae" stroke-width="4" stroke-linecap="round"/>
+    <rect x="290" y="40" width="250" height="480" rx="18" fill="#f4f6f8" stroke="#2b2b2b" stroke-width="5"/>
+    <rect x="304" y="54" width="222" height="160" rx="8" fill="#cfe8f5" stroke="#2b2b2b" stroke-width="3"/>
+    <line x1="304.0" y1="150.0" x2="526.0" y2="150.0" stroke="#7fa3c0" stroke-width="4" stroke-linecap="round"/>
+    <rect x="360" y="160" width="104" height="50" rx="6" fill="#f2a7c0" stroke="#2b2b2b" stroke-width="3"/>
+    <rect x="352" y="150" width="120" height="16" rx="5" fill="#e07fa1" stroke="#2b2b2b" stroke-width="3"/>
+    <g stroke="#ffffff" stroke-width="5" stroke-linecap="round">
+      <line x1="340" y1="80" x2="340" y2="124"/><line x1="321" y1="91" x2="359" y2="113"/><line x1="321" y1="113" x2="359" y2="91"/>
+      <line x1="480" y1="84" x2="480" y2="120"/><line x1="464" y1="93" x2="496" y2="111"/><line x1="464" y1="111" x2="496" y2="93"/>
+    </g>
+    <polygon points="540,50 690,24 690,246 540,216" fill="#e3e8ee" stroke="#2b2b2b" stroke-width="5" stroke-linejoin="round"/>
+    <line x1="668.0" y1="96.0" x2="668.0" y2="168.0" stroke="#2b2b2b" stroke-width="7" stroke-linecap="round"/>
+    <rect x="290" y="222" width="250" height="298" rx="10" fill="#f4f6f8" stroke="#2b2b2b" stroke-width="5"/>
+    <line x1="318.0" y1="250.0" x2="318.0" y2="340.0" stroke="#2b2b2b" stroke-width="7" stroke-linecap="round"/>
+    <g fill="none" stroke="#7fa3c0" stroke-width="5" stroke-linecap="round">
+      <path d="M 560 280 q 20 -12 40 0 t 40 0"/>
+      <path d="M 580 318 q 20 -12 40 0 t 40 0"/>
+      <path d="M 560 356 q 20 -12 40 0 t 40 0"/>
+    </g>
   </svg>`,
 }

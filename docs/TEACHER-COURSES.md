@@ -3,8 +3,10 @@
 How a course for another PRA teacher differs from Mr Bowen's Year 7 decks. Written on
 5 November 2026 while building the first one: **Year 5 Mathematics, Mr. David**
 (`content/y5-math/`, lesson `U05_L3` *Below Zero in Words*, worksheet `homework/y5m05-l3/`).
-Everything in `CLAUDE.md`, `docs/LESSON-PLAYBOOK.md` and the `new-lesson` / `new-homework`
-skills still applies; this file lists only what changes.
+Everything in `CLAUDE.md`, `docs/LESSON-PLAYBOOK.md`, `docs/TRAPS.md` and the `new-lesson` /
+`new-homework` skills still applies, and a teacher's lesson meets the whole of
+`.claude/skills/new-lesson/STANDARD.md` (its "Teacher courses" section says what differs).
+This file lists only what changes.
 
 The operator's side (requests from The Current, the queue, links back to the teacher) is
 the `teacher-lessons` skill in `C:\Users\sbowe\.claude\skills\teacher-lessons\`. The two
@@ -55,9 +57,10 @@ One rule for every teacher course, used by this file and the `teacher-lessons` s
 - The teacher's name replaces Mr Bowen in every example and word problem, written the way
   PRA writes it: **Mr. David**, **Ms. Kiu** (with the full stop; Mr Bowen's decks have
   none). No student names anywhere: the repo is public and mirrored to two accounts.
-- **No cartoon of the teacher.** The Mr Bowen cartoon (`src/lib/mrBowen.js`) is his. Do not
-  draw a real member of staff; the "What happens next?" strip is left out, or drawn with
-  objects only. Y5 5 L3 replaced it with the lift stepper.
+- **No cartoon of the teacher.** The Mr Bowen cartoon (`src/lib/mrBowen.js`) is his, and
+  no real member of staff is ever drawn. The "What happens next?" strip is still in every
+  teacher's lesson (STANDARD.md step 6), drawn with the shared made-up story character in
+  `src/lib/storyCharacter.js`.
 - Deadpan word problems about the teacher (Mr. David's 4/4 homework, his lost car) are in
   the house style, but they are about a colleague: keep them kind, and the teacher can ask
   for them to go.
@@ -85,11 +88,17 @@ One rule for every teacher course, used by this file and the `teacher-lessons` s
 
 ## Shape and size
 
-- Same flow as `STANDARD.md` (hero starter → goals → a stepper → key word and write panel
-  → votes → a game → practice → checklist → exit), 20–24 slides for one period.
+- STANDARD.md's whole 12-step flow, about 20–26 slides for one period: hero starter;
+  "Today You Will…"; a stepper to say first; key word, then a write panel; whiteboards, then
+  back to the starter; the "What happens next?" strip with the story character; votes; a
+  model or widget predicted per press; a whole-class activity; put it together; "Can You Do
+  These?"; exit question. Nothing is cut to save build time: one lesson is a long session.
 - Fewer copy-down panels for younger classes: Y5 5 L3 has 5 short ones and no drawings.
 - Votes, the standing game and whiteboards matter more, not less: the age group needs to
   move.
+- **The clarity pass is required** (STANDARD.md "The clarity pass"), done by a fresh
+  subagent, and its audit is kept as `CLARITY.md` in the lesson folder
+  (`content/y5-math/U05_L3/CLARITY.md` is the first).
 
 ## The plan
 
@@ -158,7 +167,7 @@ operator's `C:\Users\sbowe\pra-triage\tmp\lesson-<N>\`.
 - **A no-break-space fixer must touch strings only.** A regex putting U+00A0 into
   thousands (`20 000`) also hit `viewBox="0 0 1120 440"` and polygon `points` in a
   widget, which silently broke the SVG. Lint passed. Tokenise with espree (as
-  `lessons-app-conventions` trap 28 says) or check every SVG attribute after.
+  `docs/TRAPS.md` says) or check every SVG attribute after.
 - In a template literal (diagrams.js) write `&#160;`, not the character: eslint's
   `no-irregular-whitespace` rejects it there. `audit:svg` then counts the entity as six
   characters, so leave a little more room.

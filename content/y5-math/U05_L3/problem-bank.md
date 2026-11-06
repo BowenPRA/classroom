@@ -8,7 +8,8 @@ Workbook (or Learner's Book) on the drive yet, so the question types below come 
 
 - the **Stage 5 Unit 5 end-of-unit test** (`Assessments Library/Maths/Year 5/End of unit/
   Y5 Maths - End-of-unit test 5`), types only — none of its items, numbers or contexts is
-  used here;
+  used here (checked again 5 Nov 2026: T1 items 4 and 10, T2's Oslo, T7 item 3 and T8
+  item 5 were too close to the test and were replaced);
 - the **Stage 5 scheme of work**, Unit 5.4 Topic 1 (*Addition, subtraction and negative
   numbers*), and the framework objectives 5Nc.01, 5Nc.02, 5Ni.01 and 5Nf.09.
 
@@ -59,15 +60,15 @@ then the rest"; this type drills it with bigger numbers.
 | 1 | 4 − 7 | 4 | 4 | 3 | −3 |
 | 2 | −3 + 8 | −3 | 3 | 5 | 5 |
 | 3 | 6 − 11 | 6 | 6 | 5 | −5 |
-| 4 | −9 + 4 | −9 | — (4 does not reach 0) | — | −5 |
+| 4 | −8 + 3 | −8 | — (3 does not reach 0) | — | −5 |
 | 5 | 13 − 20 | 13 | 13 | 7 | −7 |
 | 6 | −15 + 32 | −15 | 15 | 17 | 17 |
 | 7 | 25 − 60 | 25 | 25 | 35 | −35 |
 | 8 | −48 + 75 | −48 | 48 | 27 | 27 |
 | 9 | 9 − 130 | 9 | 9 | 121 | −121 |
-| 10 | −70 + 1006 | −70 | 70 | 936 | 936 |
+| 10 | −70 + 1240 | −70 | 70 | 1170 | 1170 |
 
-Item 4 is the check that zero is only a bridge when you cross it: −9 + 4 stops at −5.
+Item 4 is the check that zero is only a bridge when you cross it: −8 + 3 stops at −5.
 Expect −13 on item 2 (−3 + 8 treated as "add 3 and 8, keep the minus": the scheme of
 work's misconception) and 121 on item 9 (the gap, not the answer).
 
@@ -82,7 +83,7 @@ The table (made-up numbers, one morning in January):
 | Hà Nội | 12 °C |
 | Tokyo | 3 °C |
 | Toronto | −9 °C |
-| Oslo | −13 °C |
+| Helsinki | −13 °C |
 | Bangkok | 27 °C |
 
 **Steps** (T5 uses the same five)
@@ -99,10 +100,10 @@ The table (made-up numbers, one morning in January):
 | 2 | Toronto rises by 5 °C. New temperature? | −9 | rises → + | −9 + 5 | −4 °C |
 | 3 | Fansipan gets 10 °C warmer. New temperature? | −4 | warmer → + | −4 + 10 | 6 °C |
 | 4 | Tokyo gets 8 °C colder. New temperature? | 3 | colder → − | 3 − 8 | −5 °C |
-| 5 | Oslo rises by 20 °C. New temperature? | −13 | rises → + | −13 + 20 | 7 °C |
+| 5 | Helsinki rises by 20 °C. New temperature? | −13 | rises → + | −13 + 20 | 7 °C |
 | 6 | Hà Nội drops by 15 °C. New temperature? | 12 | drops → − | 12 − 15 | −3 °C |
-| 7 | Toronto falls by 4 °C and Oslo rises by 1 °C. Which is colder now? | −9 and −13 | falls → −, rises → + | −9 − 4 and −13 + 1 | Toronto (−13 °C is colder than −12 °C) |
-| 8 | What is the difference between Bangkok and Oslo? | (T3) | — | 13 to 0, then 27 | 40 °C |
+| 7 | Toronto falls by 4 °C and Helsinki rises by 1 °C. Which is colder now? | −9 and −13 | falls → −, rises → + | −9 − 4 and −13 + 1 | Toronto (−13 °C is colder than −12 °C) |
+| 8 | What is the difference between Bangkok and Helsinki? | (T3) | — | 13 to 0, then 27 | 40 °C |
 
 ## T3 ★ The difference between
 
@@ -186,7 +187,7 @@ gap; *subtract a from b* means b − a.
 | --- | --- | --- |
 | 1 | What is the total of 0.4 and 0.3? | 0.7 |
 | 2 | What is the total of 0.8 and 0.5? | 1.3 |
-| 3 | What is the difference between 1 and 0.7? | 0.3 |
+| 3 | What is the difference between 3 and 0.6? | 2.4 |
 | 4 | Find the sum of 2.6 and 4.8. | 7.4 |
 | 5 | Subtract 1.9 from 6.4. | 4.5 |
 | 6 | Find the sum of 3.27 and 5.46. | 8.73 |
@@ -201,7 +202,7 @@ gap; *subtract a from b* means b − a.
 | 2 | A ribbon is 3.5 m long. Mr. David cuts off 1.8 m. How much is left? | 1.7 m |
 | 3 | Two parcels weigh 4.25 kg and 3.60 kg. What is the total? | 7.85 kg |
 | 4 | Mr. David runs 2.35 km on Monday and 3.80 km on Tuesday. His goal is 8 km. How far does he still have to run? | 1.85 km |
-| 5 | Mr. David's suitcase may weigh 23 kg. It weighs 18.75 kg. He adds 3.40 kg of coffee. Is it under or over the limit, and by how much? | 22.15 kg: under by 0.85 kg |
+| 5 | Mr. David's motorbike basket may hold 12 kg. It holds 8.75 kg. He adds 2.40 kg of mangoes. Is it under or over the limit, and by how much? | 11.15 kg: under by 0.85 kg |
 | 6 | A jug holds 1.50 litres. Mr. David wants three glasses of 0.65 litres. He pours two. How much is left? Is there enough for the third? | 0.20 litres; no |
 
 ## T9 Number puzzles: the same total on every side

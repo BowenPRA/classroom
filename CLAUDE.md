@@ -15,10 +15,16 @@ A lesson is a folder — `content/<course>/<unit>/index.js`, default-exporting
 `{ meta, slides, plan }`. The registry discovers it automatically; there is no
 list to update.
 
-**The exemplars are Science 2.5 (`content/y7-science/U02_5/`) and Maths 2.3
-(`content/y7-math/U02_3/`).** Read both before building. Match their density,
-their mix of diagrams, real photographs and widgets, and their English. Older
-decks are over-written — borrow ideas from them, never wording.
+**The bar is `.claude/skills/new-lesson/STANDARD.md` and the decks it names**
+(Coffee, Carbon and Stars; 3.4 Tides; 3.5 and 3.6 Energy; Maths 5.2 and 5.3):
+its 12-step flow, its pictures, film and widgets, and its clarity pass. Read it
+and at least two of those decks before building. **Science 2.5
+(`content/y7-science/U02_5/`) and Maths 2.3 (`content/y7-math/U02_3/`) still
+set how few words a slide carries.** Older decks are over-written — borrow
+ideas from them, never wording.
+
+**`docs/TRAPS.md`** lists what goes wrong while lint, build and every check
+pass. Read it before your first deck and whenever something "isn't applying".
 
 ## Homework is a different artefact
 

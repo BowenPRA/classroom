@@ -126,6 +126,28 @@ pages to a fresh subagent. What the 27–28 Oct passes caught:
   to copy or draw.
 - Text smaller than about 20 px on the projector.
 
+## Teacher courses
+
+A lesson for another PRA teacher (the operator's `teacher-lessons` skill;
+names, course fields and sources in `docs/TEACHER-COURSES.md`) meets this whole
+standard: all 12 steps of the flow, the copy-down budget, the pictures, film
+and widgets, and the clarity pass. One lesson is a long session to build. What
+differs:
+
+- **The teacher's name** in every worked example, story and word problem,
+  written as PRA writes it (Mr. David, Ms. Kiu). Never Mr Bowen and never a
+  student's name. The silly word problems at the end are about a colleague:
+  keep them kind. The hero gets a date only if the teacher gives one.
+- **The "What happens next?" strip** (step 6) uses the shared made-up
+  character in `src/lib/storyCharacter.js`. Never the Mr Bowen cartoon for
+  another teacher, and never a drawing of a real teacher.
+- **Languages from the class profile.** English always; `…Vn` twins only when
+  the profile asks for Vietnamese support. No French: widgets call
+  `tr(lang, en, vn)`, and the clarity pass walks EN (and VN when the deck has
+  it) instead of EN and FR.
+- **The plan is one printed A4 page.** Make room by cutting words, never by
+  shrinking the type.
+
 ## Working beside other sessions
 
 Several Claude sessions often work in this folder at once.
@@ -144,7 +166,7 @@ Several Claude sessions often work in this folder at once.
   port). Read the real port from its log.
 - **Deploy from a clean worktree of the current `main`**, never with a plain
   `npm run deploy` while anyone's uncommitted work is in the folder. Follow
-  the route in the `deploy-from-clean-worktree` memory, and publish to both
+  the route in `docs/TRAPS.md` ("Deploy"), and publish to both
   remotes. Then confirm the live bundle hash. If another session deployed
   between your build and your push and your lesson is missing from the live
   site, deploy again from the newest `main`.

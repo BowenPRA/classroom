@@ -8,9 +8,15 @@ traps that have already cost time.
 
 ### The exemplars
 
-Two decks are the standard every new lesson is measured against. Read both end
-to end before building — they are the right density, the right mix of
-diagrams, photographs and widgets, and the right amount of English:
+The bar every new lesson is measured against is
+[`STANDARD.md`](../.claude/skills/new-lesson/STANDARD.md) and the decks it
+names: Coffee, Carbon and Stars (`content/y7-science/U03_coffee/`), 3.4 Tides
+(`U03_4`), 3.5 and 3.6 Energy (`U03_5`, `U03_6`), Maths 5.2
+(`content/y7-math/U05_2/`) and 5.3 (`U05_3`). They set the flow, the mix of
+photographs, film and widgets, and the clarity pass. Read `slides.js`,
+`plan.js` and one widget from at least two of them before building.
+
+Two older decks still set how few words a slide carries:
 
 - **Science 2.5** — [`content/y7-science/U02_5/`](../content/y7-science/U02_5/)
   (Atoms, elements and the Periodic Table)
@@ -166,9 +172,9 @@ A widget earns its place by doing one thing a static slide cannot.
 
 ## 3. Build order
 
-1. **Read** [README.md](../README.md) and both exemplars (Science 2.5, Maths
-   2.3) end to end. Match their patterns and their density; don't invent
-   parallel ones.
+1. **Read** [README.md](../README.md), `STANDARD.md` and at least two of its
+   decks, then Science 2.5 and Maths 2.3 for how few words a slide carries.
+   Match their patterns and their density; don't invent parallel ones.
 2. **Write the beat sheet first** — one line per slide, in teaching order,
    before any code. Mark which slides are questions, which are copy-down, and
    which are Draw This.
