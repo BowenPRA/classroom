@@ -185,8 +185,8 @@ export const slides = [
     title: 'Seven Things a Polar Bear Does',
     titleFr: 'Sept choses que fait un ours polaire',
     widget: BearSeven,
-    caption: 'Every organism does these seven. The book calls them **characteristics**.',
-    captionFr: 'Tout organisme fait ces sept choses. Le livre les appelle des **characteristics** (caractéristiques).',
+    caption: 'The book calls these seven the **characteristics** of living organisms.',
+    captionFr: 'Le livre appelle ces sept choses les **characteristics** (caractéristiques) du vivant.',
   },
 
   // 7. Vote: is respiration breathing?
