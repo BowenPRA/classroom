@@ -76,10 +76,10 @@ function SevenRows({ lang, isDisplayMode, mode }) {
         <svg viewBox="0 0 1500 560" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
           <rect x="0" y="0" width="1500" height="560" rx="16" fill="#ffffff" />
           <defs>
-            <clipPath id={`seven-photo-${mode}`}><rect x="20" y="20" width="470" height="520" rx="16" /></clipPath>
+            <clipPath id={`seven-photo-${mode}`}><rect x="20" y="140" width="470" height="248" rx="16" /></clipPath>
           </defs>
-          <image href={photo} x="20" y="20" width="470" height="520" preserveAspectRatio="xMidYMid slice" clipPath={`url(#seven-photo-${mode})`} />
-          <rect x="20" y="20" width="470" height="520" rx="16" fill="none" stroke="#cbd5e1" strokeWidth="2" />
+          <image href={photo} x="20" y="140" width="470" height="248" preserveAspectRatio="xMidYMid slice" clipPath={`url(#seven-photo-${mode})`} />
+          <rect x="20" y="140" width="470" height="248" rx="16" fill="none" stroke="#cbd5e1" strokeWidth="2" />
 
           {LETTERS.map((letter, i) => {
             const y = rowY(i)
@@ -149,10 +149,6 @@ function SevenRows({ lang, isDisplayMode, mode }) {
       </div>
     </div>
   )
-}
-
-export function BearSeven({ lang = 'en', isDisplayMode = false }) {
-  return <SevenRows lang={lang} isDisplayMode={isDisplayMode} mode="bear" />
 }
 
 export function CarCheck({ lang = 'en', isDisplayMode = false }) {

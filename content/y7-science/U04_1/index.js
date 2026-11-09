@@ -20,7 +20,7 @@ export default {
     unit: '4.1',
     id: 'U04_1',
     title: 'Characteristics of Living Organisms',
-    subtitle: 'Is it alive? Spot it, name them, test it: organisms, the seven characteristics (MRS GREN), and why a car is not alive',
+    subtitle: 'Is it alive? Spot it, name them, test it: organisms, the seven characteristics (MRS GREN) in a polar bear and a plant, and why a car is not alive',
     objective:
       'Say whether something is a living organism; list the seven characteristics of living organisms — movement, respiration, sensitivity, growth, ' +
       'reproduction, excretion and nutrition — and say what each means; explain that a living organism does all seven, so a car, fire or a rock is not alive.',

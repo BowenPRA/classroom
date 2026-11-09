@@ -11,25 +11,28 @@
 //   Spot it    one living thing and one never-alive thing in the room
 //              (Getting started); what can the living one do? A tree has no
 //              heart and does not breathe like you, but it is alive. Organism.
-//   Name them  the book's polar bears, a letter a press: M R S G R E N. Is
-//              respiration breathing? (vote) M, R, S. "Sensitive" in everyday
-//              English and in science; the sensitive plant, filmed. G, R, E, N.
-//              Back to the starter's list. Mr Bowen's new pet (a rock).
-//              Alive or Not?, everyone standing, with real traps.
+//   Name them  the book's polar bears, built a label a press: M R S G R E N.
+//              Is respiration breathing? (vote) M, R, S, a bear beside a plant.
+//              Jog on the spot: feel respiration. "Sensitive" in everyday
+//              English and in science; your pupils (pairs); the sensitive
+//              plant, filmed. G, R, E, N. Back to the starter's list. Mr
+//              Bowen's new pet (a rock). Alive or Not?, everyone standing.
 //   Test it    Activity 4.1.1, is a car alive? Groups, then the seven checked a
 //              press at a time. An organism does all seven. Questions 1–7.
 //
-// The goals slide (2) and the checklist (19) say the same three things, so
-// the lesson ends where it said it would; the starter's list comes back on 12.
+// The goals slide (2) and the checklist (21) say the same three things, so
+// the lesson ends where it said it would; the starter's list comes back on 14.
 //
-// COPY-DOWN: 4 written panels — organism (5), M R S (8), G R E N (11), all
-// seven (17). No drawing. Each panel is the definition only.
+// COPY-DOWN: 4 written panels — organism (5), M R S (8), G R E N (13), all
+// seven (19). No drawing. Each panel is the definition only; the table
+// beside it (a bear and a plant) is read, not copied.
 //
 // WRITING RULE (the 2.5 density): one hook line, short sentences, and the body
 // never repeats the write note, a label or the caption.
 
 import { DIAGRAMS } from './diagrams.js'
-import { BearSeven, CarCheck } from './seven.jsx'
+import { BearSeven } from './bears.jsx'
+import { CarCheck } from './seven.jsx'
 import { PetRock } from './story.jsx'
 import { AliveOrNot } from './game.jsx'
 import { MimosaFilm } from './film.jsx'
@@ -210,8 +213,8 @@ export const slides = [
     icon: 'Pencil',
     eyebrow: 'Answer: B · key words',
     eyebrowFr: 'Réponse : B · mots clés',
-    title: 'M, R, S',
-    titleFr: 'M, R, S',
+    title: 'Movement, Respiration, Sensitivity',
+    titleFr: 'Mouvement, respiration, sensibilité',
     ratio: 36,
     inlineSvg: DIAGRAMS.MRS,
     content: '**Breathing** brings in oxygen. **Respiration** uses it, inside your cells.',
@@ -225,7 +228,25 @@ export const slides = [
     ],
   },
 
-  // 9. English check: two meanings of "sensitive"
+  // 9. Try it: feel respiration speed up
+  {
+    layout: 'statement',
+    accent: PURPLE,
+    eyebrow: 'Try it · everyone stands',
+    eyebrowFr: 'Essaie · tout le monde debout',
+    title: 'Jog on the Spot',
+    titleFr: 'Cours sur place',
+    text: 'Jog on the spot for **20 seconds**. What changes in your body?',
+    textFr: 'Cours sur place pendant **20 secondes**. Qu’est-ce qui change dans ton corps ?',
+    reveal: {
+      label: 'Why?',
+      labelFr: 'Pourquoi ?',
+      answer: 'You breathe **faster** and get **hot**. Your cells need more energy, so they do more **respiration**.',
+      answerFr: 'Tu respires **plus vite** et tu as **chaud**. Tes cellules ont besoin de plus d’énergie, alors elles font plus de **respiration**.',
+    },
+  },
+
+  // 10. English check: two meanings of "sensitive"
   {
     layout: 'compare',
     accent: BLUE,
@@ -256,7 +277,30 @@ export const slides = [
     ],
   },
 
-  // 10. Film: the sensitive plant (Mimosa pudica)
+  // 11. Try it in pairs: your pupils are sensitive to light
+  {
+    layout: 'split',
+    accent: PURPLE,
+    icon: 'Users',
+    eyebrow: 'Try it · pairs',
+    eyebrowFr: 'Essaie · en binôme',
+    title: 'Your Eyes Are Sensitive',
+    titleFr: 'Tes yeux sont sensibles',
+    ratio: 45,
+    inlineSvg: DIAGRAMS.PUPIL,
+    content: 'Cover your eyes for **10 seconds**. Then open them and look at the window. Your partner watches your **pupil**.',
+    contentFr: 'Cache tes yeux pendant **10 secondes**. Puis ouvre-les et regarde la fenêtre. Ton binôme regarde ta **pupille** (pupil).',
+    reveal: {
+      prompt: 'What did the pupil do?',
+      promptFr: 'Qu’a fait la pupille ?',
+      label: 'Answer',
+      labelFr: 'Réponse',
+      answer: 'It got **smaller**. Your eye noticed more light: that is **sensitivity**.',
+      answerFr: 'Elle est devenue **plus petite**. Ton œil a remarqué plus de lumière : c’est la **sensibilité**.',
+    },
+  },
+
+  // 12. Film: the sensitive plant (Mimosa pudica)
   {
     layout: 'showcase',
     accent: GREEN,
@@ -270,19 +314,19 @@ export const slides = [
     captionFr: 'Tu la connais : **cây xấu hổ**. Quelles **deux** caractéristiques vois-tu ?',
   },
 
-  // 11. Growth, reproduction, excretion, nutrition (write)
+  // 13. Growth, reproduction, excretion, nutrition (write)
   {
     layout: 'split',
     accent: TEAL,
     icon: 'Pencil',
     eyebrow: 'Key words',
     eyebrowFr: 'Mots clés',
-    title: 'G, R, E, N',
-    titleFr: 'G, R, E, N',
+    title: 'Growth, Reproduction, Excretion, Nutrition',
+    titleFr: 'Croissance, reproduction, excrétion, nutrition',
     ratio: 36,
     inlineSvg: DIAGRAMS.GREN,
-    content: 'Plants **make** their own food, using light. Bears **eat** meat.',
-    contentFr: 'Les plantes **fabriquent** leur nourriture, avec la lumière. Les ours **mangent** de la viande.',
+    content: 'A plant does all seven too, just more **slowly**.',
+    contentFr: 'Une plante fait les sept aussi, mais plus **lentement**.',
     notes: [
       {
         tone: 'write',
@@ -292,7 +336,7 @@ export const slides = [
     ],
   },
 
-  // 12. Back to the starter: the pairs' lists
+  // 14. Back to the starter: the pairs' lists
   {
     layout: 'statement',
     accent: PURPLE,
@@ -310,7 +354,7 @@ export const slides = [
     },
   },
 
-  // 13. What happens next? Mr Bowen's new pet (deadpan)
+  // 15. What happens next? Mr Bowen's new pet (deadpan)
   {
     layout: 'showcase',
     accent: BLUE,
@@ -324,7 +368,7 @@ export const slides = [
     captionFr: 'Avant chaque étape, **prédis** : que se passe-t-il ensuite ?',
   },
 
-  // 14. Alive or Not?: the whole class, standing
+  // 16. Alive or Not?: the whole class, standing
   {
     layout: 'showcase',
     accent: GREEN,
@@ -342,7 +386,7 @@ export const slides = [
   // TEST IT — is a car alive?
   // ════════════════════════════════════════════════════════════════════════
 
-  // 15. Activity 4.1.1 (page 129): groups
+  // 17. Activity 4.1.1 (page 129): groups
   {
     layout: 'split',
     accent: PURPLE,
@@ -353,8 +397,8 @@ export const slides = [
     titleFr: 'Une voiture est-elle vivante ?',
     ratio: 45,
     inlineSvg: DIAGRAMS.CAR,
-    content: 'A car uses **fuel** and **oxygen** to move. It gives off **waste gases**. Some cars **sense** the dark and turn on their lights.',
-    contentFr: 'Une voiture utilise du **carburant** et de l’**oxygène** pour avancer. Elle rejette des **gaz**. Certaines **sentent** le noir et allument leurs phares.',
+    content: 'Read the four facts on the photo. A car also takes in **oxygen** from the air.',
+    contentFr: 'Lis les quatre faits sur la photo. Une voiture prend aussi de l’**oxygène** dans l’air.',
     notes: [
       {
         tone: 'task',
@@ -365,7 +409,7 @@ export const slides = [
     ],
   },
 
-  // 16. The car, checked against the seven
+  // 18. The car, checked against the seven
   {
     layout: 'showcase',
     accent: TEAL,
@@ -379,7 +423,7 @@ export const slides = [
     captionFr: 'Ton groupe les a-t-il trouvées ?',
   },
 
-  // 17. Put it together: all seven (write)
+  // 19. Put it together: all seven (write)
   {
     layout: 'split',
     accent: ORANGE,
@@ -401,7 +445,7 @@ export const slides = [
     ],
   },
 
-  // 18. Questions 1–7 (pages 128–129), on whiteboards
+  // 20. Questions 1–7 (pages 128–129), on whiteboards
   {
     layout: 'showcase',
     accent: PURPLE,
@@ -415,7 +459,7 @@ export const slides = [
     captionFr: 'Un mot peut servir **une fois**, **plusieurs fois**, ou **pas du tout**.',
   },
 
-  // 19. Checklist: slide 2's goals, ticked off
+  // 21. Checklist: slide 2's goals, ticked off
   {
     layout: 'stack',
     variant: 'checklist',
@@ -436,7 +480,7 @@ export const slides = [
     ],
   },
 
-  // 20. Exit: a robot vacuum cleaner
+  // 22. Exit: a robot vacuum cleaner
   {
     layout: 'hero',
     color: GREEN,

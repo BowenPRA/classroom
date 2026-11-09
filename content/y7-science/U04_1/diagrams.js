@@ -10,11 +10,14 @@
 //     ORGANISMS     organisms: the book's polar bears, the tree, a buffalo, you
 //   Name them
 //     ANS_BREATHING / ANS_CELLS   vote: what does respiration mean?
-//     MRS / GREN    the seven, letter and picture, beside their write panels
+//     MRS / GREN    the seven beside their write panels: a polar bear and a
+//                   plant side by side, because plants do all seven too
+//     PUPIL         Try it: the pupil and the iris, named
 //     SENSE_EVERYDAY / SENSE_SCIENCE   "sensitive" in everyday English and
 //                   in science
 //   Test it
-//     CAR           Activity 4.1.1: is a car alive? (page 129)
+//     CAR           Activity 4.1.1: is a car alive? (page 129) — the book's
+//                   four facts labelled on a real petrol car
 //     ALL_SEVEN     put it together: the bear does all seven, the car some
 //
 // Split diagrams are drawn at 840×560, vote cards at 720×320, goal and
@@ -27,7 +30,7 @@ import { mrBowenSvg } from '../../../src/lib/mrBowen.js'
 import { tv } from '../U03_7/art.js'
 import {
   INK, KEY, GREEN, RED, GOLD, FONT,
-  plate, paws, cell, eye, sprouts, egg, breath, bowl, SEVEN, rock, plant, magnifier, mark,
+  plate, cell, breath, SEVEN, rock, plant, magnifier, mark,
 } from './art.js'
 import bearsPhoto from './images/polar-bears.jpg'
 import banyanPhoto from './images/banyan.jpg'
@@ -44,6 +47,12 @@ const BLUE_VOTE = '#1a5fa8'
 const photo = (id, href, x, y, w, h) => `<clipPath id="${id}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12"/></clipPath>
     <image href="${href}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice" clip-path="url(#${id})"/>
     <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" fill="none" stroke="#cbd5e1" stroke-width="2"/>`
+
+// A whole photograph fitted into a cell (not cropped), for the wide car.
+const fit = (href, x, y, w, h) => `<image href="${href}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid meet"/>`
+
+// An orange leader line from a label to a dot on the picture.
+const leaderDot = (x1, y1, x2, y2) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${KEY}" stroke-width="3"/><circle cx="${x2}" cy="${y2}" r="7" fill="${KEY}" stroke="#ffffff" stroke-width="2"/>`
 
 // A letter of MRS GREN in a teal circle (shapes only; the letter is written out).
 const disc = (cx, cy, r = 46) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#0087a8"/>`
@@ -65,7 +74,7 @@ export const DIAGRAMS = {
 
   PIC_TEST_IT: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" class="w-full h-full">
     ${plate(480, 300)}
-    ${photo('goal-car', carPhoto, 16, 36, 342, 228)}
+    <rect x="16" y="60" width="352" height="186" rx="12" fill="#f4f8fb"/>${fit(carPhoto, 16, 60, 352, 186)}
     ${magnifier(366, 118, 1.25)}
   </svg>`,
 
@@ -102,26 +111,65 @@ export const DIAGRAMS = {
     <text x="212" y="216" font-family="${FONT}" font-size="38" font-weight="bold" fill="${KEY}">for energy</text>
   </svg>`,
 
+  // M R S, a polar bear beside a plant: plants do them too, slowly.
   MRS: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
-    ${disc(250, 98)}<text x="250" y="114" font-family="${FONT}" font-size="46" font-weight="bold" fill="#ffffff" text-anchor="middle">M</text>
-    ${paws(500, 98, 1.15)}
-    ${disc(250, 280)}<text x="250" y="296" font-family="${FONT}" font-size="46" font-weight="bold" fill="#ffffff" text-anchor="middle">R</text>
-    ${cell(500, 282, 1.15)}
-    ${disc(250, 462)}<text x="250" y="478" font-family="${FONT}" font-size="46" font-weight="bold" fill="#ffffff" text-anchor="middle">S</text>
-    ${eye(500, 462, 1.15)}
+    ${photo('mrs-bear', bearsPhoto, 228, 14, 174, 104)}
+    ${plant(664, 66, 0.72)}
+    <line x1="20" y1="132" x2="820" y2="132" stroke="#d5dbe1" stroke-width="3"/>
+    <line x1="490" y1="146" x2="490" y2="546" stroke="#d5dbe1" stroke-width="2" stroke-dasharray="8 7"/>
+    ${disc(72, 200, 42)}<text x="72" y="216" font-family="${FONT}" font-size="44" font-weight="bold" fill="#ffffff" text-anchor="middle">M</text>
+    <text x="315" y="210" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">walks and swims</text>
+    <text x="660" y="210" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">turns to the light</text>
+    <line x1="20" y1="268" x2="820" y2="268" stroke="#d5dbe1" stroke-width="2"/>
+    ${disc(72, 336, 42)}<text x="72" y="352" font-family="${FONT}" font-size="44" font-weight="bold" fill="#ffffff" text-anchor="middle">R</text>
+    <rect x="160" y="300" width="650" height="72" rx="14" fill="#fff4e8"/>
+    <text x="485" y="346" font-family="${FONT}" font-size="30" font-weight="bold" fill="${KEY}" text-anchor="middle">both: food → energy, inside cells</text>
+    <line x1="20" y1="404" x2="820" y2="404" stroke="#d5dbe1" stroke-width="2"/>
+    ${disc(72, 472, 42)}<text x="72" y="488" font-family="${FONT}" font-size="44" font-weight="bold" fill="#ffffff" text-anchor="middle">S</text>
+    <text x="315" y="482" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">smells meat</text>
+    <text x="660" y="482" font-family="${FONT}" font-size="30" font-weight="bold" fill="${INK}" text-anchor="middle">senses light</text>
   </svg>`,
 
+  // G R E N, the same two columns.
   GREN: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
-    ${disc(250, 76, 42)}<text x="250" y="91" font-family="${FONT}" font-size="42" font-weight="bold" fill="#ffffff" text-anchor="middle">G</text>
-    ${sprouts(500, 70, 0.95)}
-    ${disc(250, 212, 42)}<text x="250" y="227" font-family="${FONT}" font-size="42" font-weight="bold" fill="#ffffff" text-anchor="middle">R</text>
-    ${egg(500, 216, 0.9)}
-    ${disc(250, 348, 42)}<text x="250" y="363" font-family="${FONT}" font-size="42" font-weight="bold" fill="#ffffff" text-anchor="middle">E</text>
-    ${breath(486, 344, 0.95)}
-    ${disc(250, 484, 42)}<text x="250" y="499" font-family="${FONT}" font-size="42" font-weight="bold" fill="#ffffff" text-anchor="middle">N</text>
-    ${bowl(500, 484, 0.95)}
+    ${photo('gren-bear', bearsPhoto, 228, 14, 174, 104)}
+    ${plant(664, 66, 0.72)}
+    <line x1="20" y1="132" x2="820" y2="132" stroke="#d5dbe1" stroke-width="3"/>
+    <line x1="490" y1="142" x2="490" y2="550" stroke="#d5dbe1" stroke-width="2" stroke-dasharray="8 7"/>
+    ${disc(72, 184, 36)}<text x="72" y="198" font-family="${FONT}" font-size="38" font-weight="bold" fill="#ffffff" text-anchor="middle">G</text>
+    <text x="315" y="194" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">the cubs get bigger</text>
+    <text x="660" y="194" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">a seedling gets taller</text>
+    <line x1="20" y1="236" x2="820" y2="236" stroke="#d5dbe1" stroke-width="2"/>
+    ${disc(72, 288, 36)}<text x="72" y="302" font-family="${FONT}" font-size="38" font-weight="bold" fill="#ffffff" text-anchor="middle">R</text>
+    <text x="315" y="298" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">has cubs</text>
+    <text x="660" y="298" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">makes seeds</text>
+    <line x1="20" y1="340" x2="820" y2="340" stroke="#d5dbe1" stroke-width="2"/>
+    ${disc(72, 392, 36)}<text x="72" y="406" font-family="${FONT}" font-size="38" font-weight="bold" fill="#ffffff" text-anchor="middle">E</text>
+    <text x="315" y="384" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">breathes out</text>
+    <text x="315" y="416" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">carbon dioxide</text>
+    <text x="660" y="384" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">its leaves give</text>
+    <text x="660" y="416" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">off oxygen</text>
+    <line x1="20" y1="444" x2="820" y2="444" stroke="#d5dbe1" stroke-width="2"/>
+    ${disc(72, 496, 36)}<text x="72" y="510" font-family="${FONT}" font-size="38" font-weight="bold" fill="#ffffff" text-anchor="middle">N</text>
+    <text x="315" y="506" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">eats meat</text>
+    <text x="660" y="490" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">makes its food,</text>
+    <text x="660" y="522" font-family="${FONT}" font-size="28" font-weight="bold" fill="${INK}" text-anchor="middle">using light</text>
+  </svg>`,
+
+  // Try it: the pupil and the iris, named (an English trap: a pupil is also a student).
+  PUPIL: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
+    ${plate(840, 560)}
+    <path d="M 120 290 Q 400 70 680 290 Q 400 510 120 290 Z" fill="#ffffff" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>
+    <circle cx="400" cy="290" r="112" fill="#6f9fd8" stroke="${INK}" stroke-width="5"/>
+    <circle cx="400" cy="290" r="50" fill="${INK}"/>
+    <circle cx="426" cy="262" r="14" fill="#ffffff"/>
+    <path d="M 160 214 l -30 -40 M 260 150 l -14 -48 M 400 128 l 0 -50 M 540 150 l 14 -48 M 640 214 l 30 -40" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>
+    ${leaderDot(560, 470, 400, 306)}
+    <text x="574" y="496" font-family="${FONT}" font-size="34" font-weight="bold" fill="${KEY}">pupil</text>
+    ${leaderDot(700, 128, 490, 234)}
+    <text x="640" y="110" font-family="${FONT}" font-size="34" font-weight="bold" fill="${KEY}">iris</text>
   </svg>`,
 
   // Everyday English: Mr Bowen cries at a sad film.
@@ -148,16 +196,26 @@ export const DIAGRAMS = {
   </svg>`,
 
   // ── Test it ───────────────────────────────────────────────────────────────
+  // Activity 4.1.1: the book's facts about cars, on a real petrol car.
   CAR: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
-    ${photo('car', carPhoto, 12, 12, 816, 536)}
+    ${fit(carPhoto, 60, 92, 720, 380)}
+    <rect x="60" y="92" width="720" height="380" rx="12" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+    ${leaderDot(150, 62, 81, 226)}
+    <text x="40" y="50" font-family="${FONT}" font-size="27" font-weight="bold" fill="${KEY}">lights on in the dark</text>
+    ${leaderDot(450, 62, 448, 268)}
+    <text x="400" y="50" font-family="${FONT}" font-size="27" font-weight="bold" fill="${KEY}">fuel goes in</text>
+    ${leaderDot(100, 512, 104, 340)}
+    <text x="40" y="542" font-family="${FONT}" font-size="27" font-weight="bold" fill="${KEY}">it moves</text>
+    ${leaderDot(640, 512, 650, 424)}
+    <text x="430" y="542" font-family="${FONT}" font-size="27" font-weight="bold" fill="${KEY}">waste gases come out</text>
   </svg>`,
 
   // The bear does all seven; the car does one, sort of does five, and not two.
   ALL_SEVEN: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" class="w-full h-full">
     ${plate(840, 560)}
     ${photo('all-bears', bearsPhoto, 16, 16, 396, 264)}
-    ${photo('all-car', carPhoto, 428, 16, 396, 264)}
+    <rect x="428" y="16" width="396" height="264" rx="12" fill="#f4f8fb" stroke="#cbd5e1" stroke-width="2"/>${fit(carPhoto, 432, 44, 388, 208)}
     <text x="40" y="340" font-family="${FONT}" font-size="34" font-weight="bold" fill="${INK}" text-anchor="middle">M</text>
     <text x="93" y="340" font-family="${FONT}" font-size="34" font-weight="bold" fill="${INK}" text-anchor="middle">R</text>
     <text x="146" y="340" font-family="${FONT}" font-size="34" font-weight="bold" fill="${INK}" text-anchor="middle">S</text>
