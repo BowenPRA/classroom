@@ -41,6 +41,7 @@ import hw11x from '../homework/hw11x/hw11x.pdf?url'
 import hw11fr from '../homework/hw11/hw11-fr.pdf?url'
 import hw11xfr from '../homework/hw11x/hw11x-fr.pdf?url'
 import y5m05l3 from '../homework/y5m05-l3/y5m05-l3.pdf?url'
+import hw12 from '../homework/hw12/hw12.pdf?url'
 
 export const HOMEWORK = [
   {
@@ -344,5 +345,14 @@ export const HOMEWORK = [
     title: 'Below Zero in Words',
     subtitle: 'Year 5 Mathematics · Mr. David · Unit 5 · temperatures, floors, money and the difference',
     pdf: y5m05l3,
+  },
+  // Maths 5.3 with no protractor (a printed one to read, a grid, 360 as a check)
+  // and a short 5.1–5.2 review; Science 4.1 and 4.2. English only, eight pages.
+  {
+    id: 'hw12',
+    label: 'HW 12',
+    title: 'None of the Seven',
+    subtitle: 'Maths 5.3 (no protractor) and a 5.1–5.2 review · Science 4.1–4.2',
+    pdf: hw12,
   },
 ]
