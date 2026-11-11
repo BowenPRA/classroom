@@ -20,8 +20,8 @@ export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-20 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-slate-950/85 backdrop-blur-md supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-950/70">
       <div className={`${PAGE_WIDTH} flex items-center justify-between h-16`}>
-        <Link to="/" className="flex items-center gap-2.5 rounded-lg text-slate-900 dark:text-white font-extrabold text-lg tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1cb0f6]">
-          <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#1cb0f6] text-white shadow-sm shadow-sky-500/30">
+        <Link to="/" className="group flex items-center gap-2.5 rounded-lg text-slate-900 dark:text-white font-extrabold text-lg tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1cb0f6]">
+          <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-[#1cb0f6] text-white border-b-[3px] border-[#1576a8] group-hover:-rotate-6 transition-transform">
             <GraduationCap className="w-[18px] h-[18px]" strokeWidth={2.5} />
           </span>
           Lessons

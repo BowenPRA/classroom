@@ -36,6 +36,16 @@ body {
 .dark .accent-text {
   color: color-mix(in srgb, var(--accent) 60%, white);
 }
+/* For type on something that stays white in dark mode too (the banners' icon
+   tile and Newest button), so it keeps the darker shade. */
+.accent-ink,
+.dark .accent-ink {
+  color: color-mix(in srgb, var(--accent) 65%, black);
+}
+.accent-ink-tint,
+.dark .accent-ink-tint {
+  background-color: color-mix(in srgb, var(--accent) 12%, white);
+}
 .accent-solid {
   background-color: color-mix(in srgb, var(--accent) 62%, black);
   color: white;
@@ -51,6 +61,76 @@ body {
 }
 .dark .accent-glow {
   background: radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%);
+}
+/* The full-colour banner on a course card and atop a course page. It starts a
+   shade deeper than the brand colour so white type on it stays readable, even
+   on the amber of the games. */
+.accent-banner {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 80%, #1e1b4b), color-mix(in srgb, var(--accent) 58%, #1e1b4b));
+}
+/* The home page's cards carry no white type on their banners, so they keep
+   the brand colour at full brightness. */
+.accent-banner-bright {
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 75%, #1e1b4b));
+}
+/* The thick bottom edge of a chunky, pressable thing (the decks' own button
+   style), in a darker shade of the course colour. */
+.accent-edge {
+  border-color: color-mix(in srgb, var(--accent) 45%, #1e1b4b);
+}
+.accent-edge-soft {
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+@layer utilities {
+  /* In the utilities layer so Tailwind's hover: and group-hover: work on them. */
+  .accent-fill {
+    background-color: var(--accent);
+    color: white;
+  }
+  .accent-wash {
+    background-color: color-mix(in srgb, var(--accent) 7%, transparent);
+  }
+  .accent-tint-strong {
+    background-color: color-mix(in srgb, var(--accent) 19%, transparent);
+  }
+  .accent-tint-stronger {
+    background-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+}
+
+/* The faint squared-paper dots behind the top of the home, course and homework
+   pages, fading out down the page. */
+.dot-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgb(148 163 184 / 0.35) 1px, transparent 0);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 85%);
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+.dark .dot-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgb(100 116 139 / 0.3) 1px, transparent 0);
+}
+
+/* Mr Bowen bobbing on the home page, and his speech bubble popping in. Only
+   for anyone who has not asked their device for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .bob {
+    animation: bob 3.2s ease-in-out infinite;
+  }
+  .pop-in {
+    animation: pop-in 0.5s 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+}
+@keyframes bob {
+  50% {
+    transform: translateY(-5px);
+  }
+}
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6) rotate(-10deg);
+  }
 }
 
 /* Thin, theme-aware scrollbar used inside scrolling slide panels. */
