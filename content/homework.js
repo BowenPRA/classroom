@@ -42,6 +42,7 @@ import hw11fr from '../homework/hw11/hw11-fr.pdf?url'
 import hw11xfr from '../homework/hw11x/hw11x-fr.pdf?url'
 import y5m05l3 from '../homework/y5m05-l3/y5m05-l3.pdf?url'
 import hw12 from '../homework/hw12/hw12.pdf?url'
+import hw12x from '../homework/hw12x/hw12x.pdf?url'
 
 export const HOMEWORK = [
   {
@@ -354,5 +355,14 @@ export const HOMEWORK = [
     title: 'None of the Seven',
     subtitle: 'Maths 5.3 (no protractor) and a 5.1–5.2 review · Science 4.1–4.2',
     pdf: hw12,
+  },
+  // Goes out with HW 12: adding and taking away (whole numbers and Unit 4
+  // decimals, printed as boxes to fill) and angles that are a take-away.
+  {
+    id: 'hw12x',
+    label: 'EX 12',
+    title: 'What’s Left of 180°?',
+    subtitle: 'Extra · add and take away, decimals, a walk and a shop, angles on a straight line',
+    pdf: hw12x,
   },
 ]
