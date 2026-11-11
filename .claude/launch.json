@@ -16,12 +16,15 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": [
         "--prefix",
-        "C:/Users/bowen/Dashboard",
+        "C:/Users/sbowe/Dashboard",
         "run",
-        "dev"
+        "dev",
+        "--",
+        "--port",
+        "5174",
+        "--strictPort"
       ],
-      "port": 5173,
-      "autoPort": true
+      "port": 5174
     }
   ]
 }
