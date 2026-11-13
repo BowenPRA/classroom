@@ -44,7 +44,7 @@ import {
   Calculator, FlaskConical, Trophy, Gamepad2, ArrowLeft, Plus, X,
   Play, Pause, Eye, Check, Timer, Flag, RotateCcw, Crown, Users, Sparkles,
   Music, Volume2, VolumeX, Pencil, CookingPot, Apple, Atom, Rocket, Globe,
-  Variable, Droplets, Orbit, Sun,
+  Variable, Droplets, Orbit, Sun, PawPrint,
 } from 'lucide-react'
 
 import { tr, field } from '../../../src/lib/lang.js'
@@ -155,7 +155,7 @@ import bossBattle from './audio/boss-battle.opus'
 import timeAttack from './audio/time-attack.ogg'
 import phonk from './audio/phonk.opus'
 
-const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot, Apple, Atom, Rocket, Globe, Variable, Droplets, Orbit, Sun }
+const ICONS = { Calculator, FlaskConical, Trophy, Sparkles, CookingPot, Apple, Atom, Rocket, Globe, Variable, Droplets, Orbit, Sun, PawPrint }
 
 // The clue countdown (TIMER_SECONDS, in rules.js), and the music that runs with it.
 // Loud enough to be heard over a room of Year 7s arguing, quiet enough that

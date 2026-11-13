@@ -1368,5 +1368,95 @@
     "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U03_2/images/hltau.jpg, the picture on A Young Star: HL Tauri in Science 3.2.",
     "usage": "Maths Unit 4 + Science 3.1–3.2 board, Evidence & Models 300 (question picture): the photograph is the evidence the clue asks about.",
     "bytes": 36886
+  },
+  {
+    "name": "sci41-car.jpg",
+    "title": "A Toyota Vios (a petrol car) parked in Ho Chi Minh City, Vietnam",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Toyota_Vios_(XP150)_sedan_rear_view.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "EurovisionNim",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U04_1/images/car.jpg (the 960px thumbnail, number plate blurred), the car in Science 4.1’s Is a Car Alive?",
+    "usage": "Science 4.1–4.3 board, Alive? 300 (question picture): the car is named in the clue.",
+    "bytes": 109029
+  },
+  {
+    "name": "sci42-microscope.jpg",
+    "title": "A scientist at a scanning electron microscope, the picture on the screens beside her",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Scientist_during_work_with_Scanning_Electron_Microscope.jpg",
+    "license": "CC BY 4.0",
+    "artist": "Gabriela P.",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U04_2/images/electron-microscope.jpg (the 960px thumbnail, uncropped), on Science 4.2’s Electron Microscope slide.",
+    "usage": "Science 4.1–4.3 board, Viruses 200 (answer picture): the machine is the answer.",
+    "bytes": 92890
+  },
+  {
+    "name": "sci42-covid.jpg",
+    "title": "Real SARS-CoV-2 viruses from a patient in the USA, seen with a transmission electron microscope (colourised)",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Novel_Coronavirus_SARS-CoV-2.jpg",
+    "license": "CC BY 2.0",
+    "artist": "NIAID-RML",
+    "source": "Wikimedia Commons. Byte-identical copy of content/y7-science/U04_2/images/covid-photo.jpg (the 960px thumbnail, uncropped), on Science 4.2’s A Virus You Know.",
+    "usage": "Science 4.1–4.3 board, Viruses 300 (question picture): the clue asks the class to look at the spikes.",
+    "bytes": 131347
+  },
+  {
+    "name": "sci43-budgies.jpg",
+    "title": "The Three Wise Birds: three budgerigars of different colours on a branch",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:The_Three_Wise_Birds.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Liptonpattnayak",
+    "source": "Wikimedia Commons, the 1280px thumbnail (1280x704; original 4701x2585).",
+    "usage": "Science 4.1–4.3 board, Species 100 (question picture): three colours, one species. Cropped to the birds (x 100-1280, y 70-640), 1180x570.",
+    "bytes": 179939
+  },
+  {
+    "name": "sci43-liger.jpg",
+    "title": "Liger, Novosibirsk Zoo",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:NSK-ZOO-liger.jpg",
+    "license": "Public domain",
+    "artist": "Алексей Шилин (Aleksey Shilin)",
+    "source": "Wikimedia Commons, the 1280px thumbnail (1280x704; original 2090x1150).",
+    "usage": "Science 4.1–4.3 board, Hybrids 100 (answer picture). Uncropped.",
+    "bytes": 357669
+  },
+  {
+    "name": "sci43-zonkey.jpg",
+    "title": "A zonkey: half zebra, half donkey",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:A_zonky.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Ruth boraggina from Belleville, USA",
+    "source": "Wikimedia Commons, the original file (640x480; nothing larger exists).",
+    "usage": "Science 4.1–4.3 board, Hybrids 200 (answer picture). Uncropped, not enlarged.",
+    "bytes": 69713
+  },
+  {
+    "name": "sci43-wholphin.jpg",
+    "title": "Second-generation wholphin “Kawili Kai” (born 23 December 2004) at Sea Life Park Hawaii, 9 months old",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Baby_wolphin_by_pinhole.jpeg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Mark Interrante from Silicon Valley, USA",
+    "source": "Wikimedia Commons, the 1280px thumbnail (1280x1024; original 1481x1185). Her mother Kekaimalu is a first-generation wholphin (false killer whale x bottlenose dolphin).",
+    "usage": "Science 4.1–4.3 board, Hybrids 300 (answer picture). Cropped top and bottom (y 40-940), 1280x900.",
+    "bytes": 231960
+  },
+  {
+    "name": "sci43-pizzly.jpg",
+    "title": "Pizzlies in Osnabrück: a polar bear x brown bear hybrid at Osnabrück Zoo, Germany",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:Grolar.JPG",
+    "license": "CC BY-SA 3.0",
+    "artist": "Corradox",
+    "source": "Wikimedia Commons, the original file (780x678).",
+    "usage": "Science 4.1–4.3 board, Hybrids 400 (answer picture). Uncropped, not enlarged. The clue says brown bear, not grizzly, because these zoo bears are polar x brown.",
+    "bytes": 88413
+  },
+  {
+    "name": "sci43-mule.jpg",
+    "title": "Young mule runs wild in mining district (DOCUMERICA, US National Archives 543840)",
+    "descUrl": "https://commons.wikimedia.org/wiki/File:YOUNG_MULE_RUNS_WILD_IN_MINING_DISTRICT_-_NARA_-_543840.jpg",
+    "license": "Public domain",
+    "artist": "Bill Gillette (US Environmental Protection Agency)",
+    "source": "Wikimedia Commons, the 1280px thumbnail (1280x1897; original 2024x3000).",
+    "usage": "Science 4.1–4.3 board, Hybrids 500 (answer picture). Cropped square to the foal (x 20-1250, y 130-1360), resized to 960x960, and the red cast of the old slide film toned down (grey-world white balance at 45 percent).",
+    "bytes": 117602
   }
 ]

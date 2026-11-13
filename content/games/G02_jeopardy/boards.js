@@ -1,5 +1,5 @@
 // content/games/G02_jeopardy/boards.js
-// Thirteen Jeopardy boards of five clues a category.
+// Fourteen Jeopardy boards of five clues a category.
 //
 //   1. Mathematics 1.1–1.3   — integers, sign rules, multiples and the LCM
 //   2. Science 1.1–1.3       — cells, plant vs animal, specialised cells
@@ -17,9 +17,12 @@
 //      4.1–4.2                 subtracting decimals. English and French only
 //  11. Maths Unit 4 +        — × and ÷ decimals, shortcuts, money and the mean;
 //      Science 3.1–3.2         forces, and how the Solar System formed. EN/FR
-//  12. Teens                 — IGCSE chemistry and physics, word history, pop
+//  12. Science 4.1–4.3       — living or not, the seven, viruses, species, a
+//                              guessing round of hybrids (a photo on every
+//                              reveal) and the science English. EN/FR
+//  13. Teens                 — IGCSE chemistry and physics, word history, pop
 //                              songs and big numbers; the hardest board
-//  13. Teens 2               — myth or fact, celebrity couples, famous covers,
+//  14. Teens 2               — myth or fact, celebrity couples, famous covers,
 //                              geography and accidental inventions
 //
 // The board grid takes its column count from `categories.length`, so a board
@@ -3301,7 +3304,336 @@ export const BOARDS = [
     ],
   },
 
-  // ── 12 · TEENS ────────────────────────────────────────────────────────────
+  // ── 12 · SCIENCE 4.1–4.3 ──────────────────────────────────────────────────
+  // The week of 9 November: the start of Unit 4, Grouping and identifying
+  // organisms. Two columns from 4.1 (characteristics of living organisms), one
+  // from 4.2 (viruses), one from 4.3 (what a species is, from the book: there
+  // is no deck yet), a guessing round of hybrids, and the science English.
+  //
+  // English and French, like Boards 10 and 11. The traps are the decks' own:
+  // respiration is not breathing (in French the two are one word, which makes
+  // it worse), a car does some of the seven but not all, breathing out carbon
+  // dioxide is excretion, the CELL makes the new viruses, three colours of
+  // budgie are one species, similar is not identical, and a liger does not make
+  // lions and tigers one species. The 200s and 300s of Science English are the
+  // English traps: the two meanings of "sensitive", and "the virus makes
+  // copies" against replication.
+  //
+  // HYBRIDS is a guessing round: "A ___ and a ___ have a baby. What is it
+  // called?" Every clue in it holds back a photograph of the real animal until
+  // the reveal, because seeing it is the payoff. The column ends on 4.3's word:
+  // a wholphin can be fertile, a mule cannot. The tigon (tiger dad, lion mum)
+  // has no clue of its own, because no usable photograph of one exists on
+  // Commons; it rides in the liger's answer instead.
+  {
+    id: 'living-viruses-species',
+    title: 'Science 4.1–4.3',
+    titleFr: 'Sciences 4.1–4.3',
+    subtitle: 'Living things, viruses, species and hybrids',
+    subtitleFr: 'Le vivant, les virus, les espèces et les hybrides',
+    icon: 'PawPrint',
+    accent: '#65a30d',
+    categories: [
+      {
+        name: 'Alive?',
+        nameFr: 'Vivant ?',
+        clues: [
+          {
+            value: 100,
+            q: 'What is an organism?',
+            qFr: 'Qu’est-ce qu’un organisme (organism) ?',
+            a: 'A living thing. You are an organism, and so is a tree.',
+            aFr: 'Un être vivant. Tu es un organisme, et un arbre aussi.',
+          },
+          {
+            value: 200,
+            q: 'A tree has no heart, and it does not breathe like you. How do we know it is alive?',
+            qFr: 'Un arbre n’a pas de cœur, et il ne respire pas comme toi. Comment sait-on qu’il est vivant ?',
+            a: 'It grows, and it makes seeds. A heartbeat is not the test.',
+            aFr: 'Il grandit, et il fait des graines. Le cœur n’est pas le test.',
+          },
+          {
+            value: 300,
+            q: 'A car moves. It takes in fuel and oxygen, and it gives out waste gases. Is it alive?',
+            qFr: 'Une voiture bouge. Elle prend du carburant et de l’oxygène, et elle rejette des gaz. Est-elle vivante ?',
+            // A question picture: the car is named in the clue.
+            qImage: {
+              src: IMAGES.sci41Car,
+              alt: 'A silver Toyota Vios, a petrol car, parked in Ho Chi Minh City.',
+              altFr: 'Une Toyota Vios grise, une voiture à essence, garée à Hô Chi Minh-Ville.',
+            },
+            a: 'No. It does some of the seven, but not all. It cannot grow or reproduce.',
+            aFr: 'Non. Elle fait quelques-unes des sept, mais pas toutes. Elle ne peut pas grandir ni se reproduire.',
+          },
+          {
+            value: 400,
+            q: 'A robot vacuum cleaner moves, and it senses walls. Is it alive? Name two of the seven it cannot do.',
+            qFr: 'Un robot aspirateur bouge, et il sent les murs. Est-il vivant ? Nomme deux des sept qu’il ne sait pas faire.',
+            a: 'Not alive. It cannot grow or reproduce. It never eats (nutrition), and it has no cells for respiration.',
+            aFr: 'Pas vivant. Il ne peut pas grandir ni se reproduire. Il ne mange jamais (nutrition), et il n’a pas de cellules pour la respiration.',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen says his pet rock is alive. It is very quiet, and it never complains. How many of the seven does the rock do?',
+            qFr: 'M. Bowen dit que son caillou de compagnie est vivant. Il est très calme, et il ne se plaint jamais. Combien des sept le caillou fait-il ?',
+            a: 'None. A living organism does all seven. Being quiet is not one of them.',
+            aFr: 'Aucune. Un organisme vivant fait les sept. Être calme n’en fait pas partie.',
+          },
+        ],
+      },
+      {
+        name: 'The Seven',
+        nameFr: 'Les sept',
+        clues: [
+          {
+            value: 100,
+            q: 'What does the G in MRS GREN stand for? What does it mean?',
+            qFr: 'Que veut dire le G de MRS GREN ? Qu’est-ce que ça signifie ?',
+            a: 'Growth: getting bigger.',
+            aFr: 'Growth (la croissance) : devenir plus grand.',
+          },
+          {
+            value: 200,
+            q: 'In science, is respiration the same as breathing?',
+            qFr: 'En sciences, « respiration » veut-il dire « breathing » (respirer) ?',
+            a: 'No. Respiration is breaking down food inside cells to get energy. Breathing only brings in the oxygen.',
+            aFr: 'Non. La respiration, c’est décomposer la nourriture dans les cellules pour avoir de l’énergie. Respirer (breathing) fait seulement entrer l’oxygène.',
+          },
+          {
+            value: 300,
+            q: 'You jog on the spot for 20 seconds. You get hot, and you breathe faster. Why?',
+            qFr: 'Tu cours sur place pendant 20 secondes. Tu as chaud, et tu respires plus vite. Pourquoi ?',
+            a: 'Your cells need more energy, so they do more respiration.',
+            aFr: 'Tes cellules ont besoin de plus d’énergie, alors elles font plus de respiration.',
+          },
+          {
+            value: 400,
+            q: 'You touch a sensitive plant, and its leaves fold up. Which two of the seven do you see?',
+            qFr: 'Tu touches une sensitive, et ses feuilles se replient. Quelles deux caractéristiques des sept vois-tu ?',
+            a: 'Sensitivity: it notices the touch. Movement: its leaves change shape.',
+            aFr: 'La sensibilité (sensitivity) : elle remarque le toucher. Le mouvement (movement) : ses feuilles changent de forme.',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen eats three bánh mì for breakfast. Then he breathes out carbon dioxide. Which two of the seven is he doing?',
+            qFr: 'M. Bowen mange trois bánh mì au petit-déjeuner. Puis il rejette du dioxyde de carbone en expirant. Quelles deux caractéristiques des sept fait-il ?',
+            a: 'Nutrition: taking in food. Excretion: getting rid of waste, such as carbon dioxide. Three is a lot.',
+            aFr: 'La nutrition : prendre de la nourriture. L’excrétion (excretion) : rejeter les déchets, comme le dioxyde de carbone. Trois, c’est beaucoup.',
+          },
+        ],
+      },
+      {
+        name: 'Viruses',
+        nameFr: 'Les virus',
+        clues: [
+          {
+            value: 100,
+            q: 'You are made of cells. Is a virus made of cells?',
+            qFr: 'Tu es fait de cellules. Un virus est-il fait de cellules ?',
+            a: 'No. A virus is a very small particle, much smaller than a cell. It has no membrane, no cytoplasm and no nucleus.',
+            aFr: 'Non. Un virus est une très petite particule, bien plus petite qu’une cellule. Il n’a pas de membrane, pas de cytoplasme et pas de noyau.',
+          },
+          {
+            value: 200,
+            q: 'A virus is too small to see with a normal microscope. What kind of microscope can see it?',
+            qFr: 'Un virus est trop petit pour un microscope normal. Quel microscope peut le voir ?',
+            // Held back: the machine is the answer.
+            aImage: {
+              src: IMAGES.sci42Microscope,
+              alt: 'A scientist at a scanning electron microscope, with its pictures on the screens beside her.',
+              altFr: 'Une scientifique devant un microscope électronique à balayage, ses images sur les écrans à côté d’elle.',
+            },
+            a: 'An electron microscope. 10 000 flu viruses in a line are only about 1 mm long.',
+            aFr: 'Un microscope électronique (electron microscope). 10 000 virus de la grippe en ligne font environ 1 mm.',
+          },
+          {
+            value: 300,
+            q: 'Corona means “crown”. Look at the spikes on these coronaviruses. Which part of a virus are they? Name the other two parts.',
+            qFr: 'Corona veut dire « couronne ». Regarde les pointes de ces coronavirus. Quelle partie d’un virus sont-elles ? Nomme les deux autres parties.',
+            // A question picture: the clue asks the class to look at it.
+            qImage: {
+              src: IMAGES.sci42Covid,
+              alt: 'Real SARS-CoV-2 viruses seen with an electron microscope, coloured: spikes make a crown round each one.',
+              altFr: 'De vrais virus SARS-CoV-2 vus au microscope électronique, en couleurs : des pointes font une couronne autour de chacun.',
+            },
+            a: 'The pegs: they stick to your cells. The other two parts are the protein coat and the RNA, the instructions inside.',
+            aFr: 'Les picots (pegs) : ils se collent à tes cellules. Les deux autres parties sont l’enveloppe de protéines (protein coat) et l’ARN (RNA), les instructions à l’intérieur.',
+          },
+          {
+            value: 400,
+            q: 'Put these in order: A the cell dies, B the pegs stick, C the cell copies the RNA, D the virus gets in.',
+            qFr: 'Remets dans l’ordre : A la cellule meurt, B les picots se collent, C la cellule copie l’ARN, D le virus entre.',
+            a: 'B, D, C, A: stick, get in, copy, burst out. The new viruses burst out, and the cell dies.',
+            aFr: 'B, D, C, A : se coller, entrer, copier, éclater. Les nouveaux virus sortent, et la cellule meurt.',
+          },
+          {
+            value: 500,
+            q: 'Is a virus alive? Pick a side and give a reason.',
+            qFr: 'Un virus est-il vivant ? Choisis un côté et donne une raison.',
+            a: 'Both can be right: scientists disagree. Not alive: it is not made of cells, and on its own it does none of the seven. Alive: it has instructions (RNA), and inside a cell it replicates.',
+            aFr: 'Les deux peuvent être justes : les scientifiques ne sont pas d’accord. Pas vivant : il n’est pas fait de cellules, et tout seul il ne fait aucune des sept. Vivant : il a des instructions (ARN), et dans une cellule il se réplique.',
+          },
+        ],
+      },
+      {
+        name: 'Species',
+        nameFr: 'Les espèces',
+        clues: [
+          {
+            value: 100,
+            q: 'Three budgies of different colours. Are they three species, or one?',
+            qFr: 'Trois perruches (budgies) de couleurs différentes. Sont-elles trois espèces, ou une seule ?',
+            // A question picture: the colours are the trap, so the class has to
+            // see them.
+            qImage: {
+              src: IMAGES.sci43Budgies,
+              alt: 'Three budgies on a branch: one yellow and green, one blue and white, one green with a yellow head.',
+              altFr: 'Trois perruches sur une branche : une jaune et verte, une bleue et blanche, une verte à tête jaune.',
+            },
+            a: 'One species. Colour does not make a new species. These differences are called variation.',
+            aFr: 'Une seule espèce. La couleur ne fait pas une nouvelle espèce. Ces différences s’appellent la variation (variation).',
+          },
+          {
+            value: 200,
+            q: 'Two elephants of the same species. Are they identical or similar?',
+            qFr: 'Deux éléphants de la même espèce. Sont-ils identiques (identical) ou semblables (similar) ?',
+            a: 'Similar. Identical means exactly the same. Some Indian elephants have straighter tusks, or pink markings in different places.',
+            aFr: 'Semblables (similar). Identical veut dire exactement pareils. Certains éléphants d’Inde ont des défenses plus droites, ou des taches roses à d’autres endroits.',
+          },
+          {
+            value: 300,
+            q: 'Indian elephants and African elephants look similar. Are they one species, or two?',
+            qFr: 'Les éléphants d’Inde et les éléphants d’Afrique se ressemblent. Sont-ils une seule espèce, ou deux ?',
+            a: 'Two different species. Looking similar is not the test.',
+            aFr: 'Deux espèces différentes. Se ressembler, ce n’est pas le test.',
+          },
+          {
+            value: 400,
+            q: 'How do scientists decide if two organisms are the same species?',
+            qFr: 'Comment les scientifiques décident-ils si deux organismes sont de la même espèce ?',
+            a: 'They can reproduce together and have fertile offspring: young that can have young of their own.',
+            aFr: 'Ils peuvent se reproduire ensemble et avoir des petits féconds (fertile offspring) : des petits qui pourront avoir des petits à leur tour.',
+          },
+          {
+            value: 500,
+            q: 'A lion and a tiger can have a baby. So why are lions and tigers still two different species?',
+            qFr: 'Un lion et une tigresse peuvent avoir un petit. Alors pourquoi les lions et les tigres sont-ils toujours deux espèces différentes ?',
+            a: 'The baby, a liger, is almost always infertile: it cannot have babies of its own. One species makes fertile offspring.',
+            aFr: 'Le petit, un ligre, est presque toujours stérile (infertile) : il ne peut pas avoir de petits. Une espèce fait des petits féconds.',
+          },
+        ],
+      },
+      {
+        name: 'Hybrids',
+        nameFr: 'Les hybrides',
+        clues: [
+          {
+            value: 100,
+            q: 'A male lion and a female tiger have a baby. What is it called?',
+            qFr: 'Un lion et une tigresse ont un petit. Comment s’appelle-t-il ?',
+            aImage: {
+              src: IMAGES.sci43Liger,
+              alt: 'A liger lying on rocks at Novosibirsk Zoo: a lion’s face, with faint tiger stripes on its body.',
+              altFr: 'Un ligre couché sur des rochers au zoo de Novossibirsk : une tête de lion, avec de légères rayures de tigre sur le corps.',
+            },
+            a: 'A liger: lion + tiger. Dad’s name goes first. A tiger dad and a lion mum make a tigon!',
+            aFr: 'Un ligre (liger) : lion + tigre. Le nom du papa vient en premier. Un papa tigre et une maman lionne font un tigron (tigon) !',
+          },
+          {
+            value: 200,
+            q: 'A zebra and a donkey have a baby. What is it called?',
+            qFr: 'Un zèbre et un âne ont un petit. Comment s’appelle-t-il ?',
+            aImage: {
+              src: IMAGES.sci43Zonkey,
+              alt: 'A zonkey in a field: shaped like a donkey, with zebra stripes.',
+              altFr: 'Un zébrâne dans un pré : la forme d’un âne, avec des rayures de zèbre.',
+            },
+            a: 'A zonkey (or a zedonk): zebra + donkey. Look at the stripes.',
+            aFr: 'Un zébrâne (zonkey) : zèbre + âne. Regarde les rayures.',
+          },
+          {
+            value: 300,
+            q: 'A false killer whale and a bottlenose dolphin have a baby. What is it called?',
+            qFr: 'Un faux-orque et un grand dauphin ont un petit. Comment s’appelle-t-il ?',
+            aImage: {
+              src: IMAGES.sci43Wholphin,
+              alt: 'Kawili Kai, a baby wholphin, 9 months old, at Sea Life Park in Hawaii.',
+              altFr: 'Kawili Kai, un bébé wholphin de 9 mois, au Sea Life Park à Hawaï.',
+            },
+            a: 'A wholphin: whale + dolphin. This one was born in Hawaii in 2004. Her mum was a wholphin too, so wholphins can be fertile!',
+            aFr: 'Un wholphin : whale (baleine) + dolphin (dauphin). Celle-ci est née à Hawaï en 2004. Sa maman était aussi un wholphin, donc les wholphins peuvent être féconds !',
+          },
+          {
+            value: 400,
+            q: 'A polar bear and a brown bear have a baby. What is it called?',
+            qFr: 'Un ours polaire et un ours brun ont un petit. Comment s’appelle-t-il ?',
+            aImage: {
+              src: IMAGES.sci43Pizzly,
+              alt: 'A pale, cream-coloured bear at Osnabrück Zoo in Germany: half polar bear, half brown bear.',
+              altFr: 'Un ours pâle, couleur crème, au zoo d’Osnabrück en Allemagne : moitié ours polaire, moitié ours brun.',
+            },
+            a: 'A pizzly bear, or a grolar bear: polar + grizzly (a kind of brown bear). Some live in the wild, in the Arctic.',
+            aFr: 'Un pizzly, ou un grolar : polar + grizzly (une sorte d’ours brun). Il y en a dans la nature, dans l’Arctique.',
+          },
+          {
+            value: 500,
+            q: 'A male donkey and a female horse have a baby. Mr Bowen says it is a “dorse”. He is wrong. What is it called?',
+            qFr: 'Un âne et une jument ont un petit. M. Bowen dit que c’est un « dorse ». Il a tort. Comment s’appelle-t-il ?',
+            aImage: {
+              src: IMAGES.sci43Mule,
+              alt: 'A young mule with long ears, standing on a dusty path.',
+              altFr: 'Un jeune mulet aux longues oreilles, debout sur un chemin poussiéreux.',
+            },
+            a: 'A mule. Its name is not a mix of the two words. Mules are infertile: they cannot have babies of their own.',
+            aFr: 'Un mulet (mule). Son nom n’est pas un mélange des deux mots. Les mulets sont stériles (infertile) : ils ne peuvent pas avoir de petits.',
+          },
+        ],
+      },
+      {
+        name: 'Science English',
+        nameFr: 'L’anglais des sciences',
+        clues: [
+          {
+            value: 100,
+            q: 'What does “offspring” mean?',
+            qFr: 'Que veut dire « offspring » ?',
+            a: 'Children: the young that an organism makes. Kittens are a cat’s offspring.',
+            aFr: 'Les petits d’un organisme, ses enfants. Les chatons sont les « offspring » d’une chatte.',
+          },
+          {
+            value: 200,
+            q: '“Mr Bowen is sensitive: he cries at sad films.” “A plant is sensitive to light.” Which one is the science meaning?',
+            qFr: '« Mr Bowen is sensitive: he cries at sad films. » « A plant is sensitive to light. » Laquelle a le sens scientifique ?',
+            a: 'The plant. In science, sensitive means it notices changes around it. Crying at films is everyday English.',
+            aFr: 'La plante. En sciences, « sensitive » veut dire remarquer les changements autour de soi. Pleurer devant un film, c’est l’anglais de tous les jours.',
+          },
+          {
+            value: 300,
+            q: '“The virus makes copies of itself.” What is wrong with this sentence? What is the science word?',
+            qFr: '« The virus makes copies of itself. » Qu’est-ce qui ne va pas dans cette phrase ? Quel est le mot scientifique ?',
+            a: 'The virus makes the CELL build the copies. The science word is replication.',
+            aFr: 'Le virus fait fabriquer les copies par la CELLULE. Le mot scientifique est « replication » (la réplication).',
+          },
+          {
+            value: 400,
+            q: '“Fertile” and “infertile”: what does each one mean? What does “in-” do to the word?',
+            qFr: '« Fertile » et « infertile » : que veut dire chacun ? Que fait « in- » au mot ?',
+            a: 'Fertile: can produce offspring. Infertile: cannot. “In-” means “not”, like “incorrect”.',
+            aFr: 'Fertile : peut avoir des petits. Infertile : ne peut pas. « In- » veut dire « pas », comme dans « incorrect ».',
+          },
+          {
+            value: 500,
+            q: 'Mr Bowen wants a specimen of a tiger for the classroom. What is a specimen? Does he need the whole tiger?',
+            qFr: 'M. Bowen veut un spécimen (specimen) de tigre pour la classe. Qu’est-ce qu’un spécimen ? A-t-il besoin du tigre entier ?',
+            a: 'A specimen is a sample of an organism. One hair is enough. Please do not bring the whole tiger.',
+            aFr: 'Un spécimen, c’est un échantillon (a sample) d’un organisme. Un poil suffit. Merci de ne pas apporter le tigre entier.',
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── 13 · TEENS ────────────────────────────────────────────────────────────
   // The hardest board. IGCSE chemistry and physics that need a calculation or
   // a reason, then three rounds anyone can win: word history, pop songs, and
   // big numbers. The trivia rounds do the same job as Board 4's: they stop the
@@ -3541,7 +3873,7 @@ export const BOARDS = [
     ],
   },
 
-  // ── 13 · TEENS 2 ──────────────────────────────────────────────────────────
+  // ── 14 · TEENS 2 ──────────────────────────────────────────────────────────
   // Trivia only, no syllabus: Myth or Fact, Celebrity Couples, Famous Covers,
   // Geography and Accidental Inventions. Every answer still wants a reason.
   //

@@ -209,6 +209,17 @@ import bathroomScales from './images/sci31-scales.jpg'
 import orionNebula from './images/sci32-orion.jpg'
 import jupiter from './images/sci32-jupiter.jpg'
 import hlTauri from './images/sci32-hltau.jpg'
+// Year 7 · Science 4.1–4.3 (car, microscope and coronavirus copied from the
+// decks; the hybrids and the budgies fetched from Commons for this board)
+import sci41Car from './images/sci41-car.jpg'
+import sci42Microscope from './images/sci42-microscope.jpg'
+import sci42Covid from './images/sci42-covid.jpg'
+import sci43Budgies from './images/sci43-budgies.jpg'
+import sci43Liger from './images/sci43-liger.jpg'
+import sci43Zonkey from './images/sci43-zonkey.jpg'
+import sci43Wholphin from './images/sci43-wholphin.jpg'
+import sci43Pizzly from './images/sci43-pizzly.jpg'
+import sci43Mule from './images/sci43-mule.jpg'
 
 // ── Teens ─────────────────────────────────────────────────────────────────────
 // Ha Long Bay again (limestone is CaCO₃), and six drawings: nuclide notation,
@@ -364,6 +375,16 @@ export const IMAGES = {
   orionNebula,
   jupiter,
   hlTauri,
+  // Year 7 · Science 4.1–4.3
+  sci41Car,
+  sci42Microscope,
+  sci42Covid,
+  sci43Budgies,
+  sci43Liger,
+  sci43Zonkey,
+  sci43Wholphin,
+  sci43Pizzly,
+  sci43Mule,
   // Teens
   teenHalong,
   teenNuclideNa,
