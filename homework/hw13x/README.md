@@ -1,4 +1,4 @@
-# Year 7 · Extra Homework 13 — How Many Wholes?
+# Year 7 · Extra Homework 13 — The Same Amount
 
 `hw13x.tex` is an **eight-page** extra packet that goes out with **Homework 13** (`../hw13/`,
 *Count It, Measure It, Key It*) and is due the same day, **Monday 23 November 2026**. The
@@ -13,6 +13,14 @@ French.
 | `hw13x-teacher.pdf` | Student copy plus a 2-page key with the wrong answers to expect. **10 pages.** |
 
 Build: `pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw13x`
+
+## Revised 17 November 2026
+
+The teacher found the first version's formatting and spacing poor and disliked the title
+*How Many Wholes?* Renamed **The Same Amount**. Each page now breaks where it was planned
+(`\clearpage`) and its spare space is spread between questions (`\vfill`) or given to
+bigger pictures, arrows, table rows and key diagrams, instead of collecting at the foot
+of the page. No question changed.
 
 ## The framing
 

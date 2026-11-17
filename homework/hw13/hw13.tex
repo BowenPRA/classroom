@@ -92,15 +92,12 @@
 % -- Key drawings ------------------------------------------------------------
 \tikzset{
   qbox/.style={draw=cbteal, line width=0.9pt, rounded corners=4pt, fill=cbteal!5,
-    minimum width=4.3cm, minimum height=1.4cm, align=center, font=\small},
+    minimum width=4.3cm, minimum height=1.9cm, align=center, font=\small},
   nbox/.style={draw=cbgreen, line width=0.9pt, rounded corners=4pt, fill=cbgreen!7,
-    minimum width=2.7cm, minimum height=1.0cm, align=center, font=\small},
+    minimum width=2.7cm, minimum height=1.2cm, align=center, font=\small},
   yn/.style={font=\footnotesize\bfseries, fill=white, inner sep=1pt},
   br/.style={black!70, line width=0.8pt, -{Stealth[length=5pt]}},
 }
-
-% A touch tighter than the house 1.06, to land on eight pages.
-\linespread{1.02}\selectfont
 
 \begin{document}
 
@@ -144,6 +141,7 @@
 % ===========================================================================
 % SECTION A -- MATHS 7.1: EQUIVALENT FRACTIONS AND MIXED NUMBERS
 % ===========================================================================
+\vfill
 \hwsection{Section A \textperiodcentered\ Maths 7.1 --- Fractions in New Ways}
 
 % -- A1 ---------------------------------------------------------------------
@@ -156,7 +154,7 @@
 bottom by the \key{same number}. (a) is started for you.
 
 \vspace{8pt}
-{\renewcommand{\arraystretch}{2.25}%
+{\renewcommand{\arraystretch}{2.7}%
 \noindent\begin{tabular}{@{}l@{\qquad}l@{}}
   \textbf{(a)} & $\fr{3}{4} = \fr{\bxd{6}}{8} = \fr{9}{\bx} = \fr{\bx}{20} = \fr{30}{\bx}$ \\
   \textbf{(b)} & $\fr{2}{5} = \fr{6}{\bx} = \fr{\bx}{25} = \fr{16}{\bx} = \fr{\bx}{100}$ \\
@@ -165,9 +163,17 @@ bottom by the \key{same number}. (a) is started for you.
 \end{tabular}}
 \end{minipage}
 
+\vspace{14pt}
+\noindent\begin{minipage}{\textwidth}
+\noindent\textbf{(e)} Write \textbf{three} fractions equal to $\fr{5}{6}$. One must have a
+denominator bigger than 50.
+\par\vspace{14pt}\hspace*{1.6em}\blank[2.6cm]\qquad\blank[2.6cm]\qquad\blank[2.6cm]
+\end{minipage}
+
 % -- A2 ---------------------------------------------------------------------
 % (d) is equal through a third fraction (2/3); (e) looks like
 % 3/4 but is not -- 12/16 is 3/4, and 2/3 is not.
+\clearpage
 \qhead{A2}{Equal or not equal?}
 
 \noindent\begin{minipage}{\textwidth}
@@ -191,6 +197,7 @@ multiply or divide by? (a) is done for you.
 \end{tabularx}}
 
 % -- A3 ---------------------------------------------------------------------
+\vfill
 \qhead{A3}{Change it both ways}
 
 \noindent\begin{minipage}{\textwidth}
@@ -228,6 +235,7 @@ multiply or divide by? (a) is done for you.
 % Change it first (U07_1a slide 21). (b) is equal; (c) needs 4 1/3 = 13/3 =
 % 26/6, which is fair without Part 2's common denominators because the
 % packet says "sixths".
+\vfill
 \qhead{A4}{Which is bigger? Change it first}
 
 \noindent\begin{minipage}{\textwidth}
@@ -246,6 +254,7 @@ multiply or divide by? (a) is done for you.
 \end{minipage}
 
 % -- A5 ---------------------------------------------------------------------
+\clearpage
 \qhead{A5}{Mr Bowen and the fractions}
 
 \begin{wordhelp}
@@ -264,19 +273,20 @@ slices. He and his friends eat \textbf{19} slices.
 
 \vspace{6pt}
 \hspace*{1.6em}\textbf{(ii)} What fraction of a pizza is left over? \ \blank[2.4cm]
-\begin{workspace}[1.7cm]\end{workspace}
+\begin{workspace}[3.6cm]\end{workspace}
 \end{minipage}
 
 \noindent\begin{minipage}{\textwidth}
 \noindent\textbf{(b)} A recipe needs $\mx{2}{3}{4}$ cups of rice. Mr Bowen only has a
 $\fr{1}{4}$ cup. How many times must he fill the $\fr{1}{4}$ cup? \ \blank[2.0cm]
-\begin{workspace}[1.7cm]\end{workspace}
+\begin{workspace}[3.6cm]\end{workspace}
 \end{minipage}
 
 
 % -- A6 ---------------------------------------------------------------------
 % Three classic errors and one correct answer (b), which is right but not
 % simplified -- 3 2/4 = 3 1/2, both fine.
+\vfill
 \qhead{A6}{Mr Bowen's homework}
 
 \noindent\begin{minipage}{\textwidth}
@@ -297,6 +307,7 @@ $\fr{1}{4}$ cup. How many times must he fill the $\fr{1}{4}$ cup? \ \blank[2.0cm
 \end{minipage}
 
 % -- A7 ---------------------------------------------------------------------
+\clearpage
 \qhead[cbgreen]{A7}{Now you write the question}
 
 \noindent\begin{minipage}{\textwidth}
@@ -316,6 +327,7 @@ $\fr{1}{4}$ cup. How many times must he fill the $\fr{1}{4}$ cup? \ \blank[2.0cm
 % ===========================================================================
 % SECTION B -- MATHS 6.1: THREE KINDS OF DATA, FROM ANIMALS
 % ===========================================================================
+\vfill
 \hwsection{Section B \textperiodcentered\ Maths 6.1 --- Animal Data}
 
 
@@ -359,6 +371,7 @@ $\fr{1}{4}$ cup. How many times must he fill the $\fr{1}{4}$ cup? \ \blank[2.0cm
 \end{minipage}
 
 % -- B2 ---------------------------------------------------------------------
+\clearpage
 \qhead{B2}{The hard ones}
 
 \noindent\begin{minipage}{\textwidth}
@@ -388,13 +401,14 @@ whole number, so mass is discrete data.''}
 \textbf{Critique} (say what is wrong, and why) and \textbf{suggest} (say how to make it
 right). \\[3pt]
 Start: \eng{``He is wrong because \ldots'' \ ``Mass is \ldots''}
-\qlines{2}
+\qlines{4}
 \end{minipage}
 
 % -- B3 ---------------------------------------------------------------------
 % Grouped frequency: 3, 4, 5, 3, 1 (16). (c) is the trap: "longer than 27 cm"
 % excludes 27.0, so 8 of 16 = half, not most. The grouped table cannot answer
 % it; the list can.
+\vfill
 \qhead{B3}{Baby crocodiles}
 
 \noindent\begin{minipage}{\textwidth}
@@ -437,6 +451,7 @@ Their lengths in cm are:
 % -- B4 ---------------------------------------------------------------------
 % The bridge. 4.5's write panel: ask about what you can count, measure or
 % see. Count = discrete, measure = continuous, see (a word) = categorical.
+\clearpage
 \qhead{B4}{From data to a key question}
 
 \noindent\begin{minipage}{\textwidth}
@@ -456,7 +471,6 @@ is done for you.
   (a) Body covered in & categorical & \tl{Is its body covered in feathers?} \\ \hline
   (b) Number of legs \tall & discrete & \\ \hline
   (c) Mass (kg) \tall & continuous & \\ \hline
-  (d) Eggs or babies? \tall & categorical & \\ \hline
 \end{tabularx}}
 \end{minipage}
 
@@ -471,57 +485,66 @@ Start: \eng{``It is bad because \ldots \ A better question is \ldots''}
 % ===========================================================================
 % SECTION C -- SCIENCE 4.4-4.5: USING AND BUILDING KEYS
 % ===========================================================================
+\vfill
 \hwsection{Section C \textperiodcentered\ Science 4.4 and 4.5 --- Keys}
 
 % -- C1 ---------------------------------------------------------------------
-% Numbered key, page-140 style. P octopus 1b 3b 4a; Q shrimp 1a 2a;
-% R jellyfish 1b 3b 4b; S starfish 1b 3a; T sea snail 1a 2b.
-\qhead{C1}{Use a numbered key: at the beach}
+% A branching key (the teacher prefers the diagrams). P octopus; Q shrimp;
+% R jellyfish; S starfish; T sea snail.
+\qhead{C1}{Use a key: at the beach}
 
 \noindent\begin{minipage}{\textwidth}
-\noindent\begin{minipage}[t]{0.57\textwidth}\vspace{0pt}
-  {\renewcommand{\arraystretch}{1.12}%
-  \begin{tabular}{@{}l@{\ \ }P{5.6cm}@{\ }l@{}}
-    \textbf{1a} & It has a shell. & go to 2 \\
-    \textbf{1b} & It does not have a shell. & go to 3 \\[2pt]
-    \textbf{2a} & It has legs. & \textbf{shrimp} \\
-    \textbf{2b} & It does not have legs. & \textbf{sea snail} \\[2pt]
-    \textbf{3a} & It has exactly five arms. & \textbf{starfish} \\
-    \textbf{3b} & It does not have five arms. & go to 4 \\[2pt]
-    \textbf{4a} & It has eight arms with suckers. & \textbf{octopus} \\
-    \textbf{4b} & It has many thin tentacles. & \textbf{jellyfish} \\
-  \end{tabular}}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.40\textwidth}\vspace{0pt}
-\begin{wordhelp}
-  \raggedright
-  \eng{a shell} = a hard cover on the outside \\[2pt]
-  \eng{suckers} = small round cups that hold on \\[2pt]
-  \eng{tentacles} = long, thin, soft arms that sting \\[2pt]
-  \eng{exactly} = not more and not less
-\end{wordhelp}
+\noindent{\color{cbblue}\textbf{Word help:}} \eng{a shell} = a hard cover \quad
+\eng{suckers} = small round cups \quad
+\eng{tentacles} = stinging arms
+
+\vspace{2pt}
+\centering
+\begin{tikzpicture}[x=1cm, y=1cm,
+    kq/.style={qbox, minimum width=4.2cm, minimum height=1.0cm},
+    kn/.style={nbox, minimum width=2.3cm, minimum height=0.8cm, font=\small\bfseries}]
+  \node[kq] (q1) at (0,0) {Does it have a shell?};
+  \node[kq] (q2) at (-4.4,-1.7) {Does it have legs?};
+  \node[kq] (q3) at (3.6,-1.7) {Does it have exactly\\five arms?};
+  \node[kn] (shr) at (-6.2,-3.4) {shrimp};
+  \node[kn] (sna) at (-2.7,-3.4) {sea snail};
+  \node[kn] (sta) at (1.3,-3.4) {starfish};
+  \node[kq] (q4) at (5.4,-3.4) {Does it have eight arms\\with suckers?};
+  \node[kn] (oct) at (3.9,-5.1) {octopus};
+  \node[kn] (jel) at (7.0,-5.1) {jellyfish};
+  \draw[br] (q1.south) -- node[yn] {yes} (q2.north);
+  \draw[br] (q1.south) -- node[yn] {no} (q3.north);
+  \draw[br] (q2.south) -- node[yn] {yes} (shr.north);
+  \draw[br] (q2.south) -- node[yn] {no} (sna.north);
+  \draw[br] (q3.south) -- node[yn] {yes} (sta.north);
+  \draw[br] (q3.south) -- node[yn] {no} (q4.north);
+  \draw[br] (q4.south) -- node[yn] {yes} (oct.north);
+  \draw[br] (q4.south) -- node[yn] {no} (jel.north);
+\end{tikzpicture}
 \end{minipage}
 
-\vspace{8pt}
-\noindent Mr Bowen finds five animals. Write each one's \textbf{steps} and
-\textbf{name}. P is done for you.
+\vspace{10pt}
+\noindent\begin{minipage}{\textwidth}
+\noindent Mr Bowen finds five animals. Follow the key. Write each one's \textbf{name}.
+P is done for you.
 
-\vspace{3pt}
-{\renewcommand{\arraystretch}{1.4}%
-\noindent\begin{tabularx}{\textwidth}{|c|L|C{2.3cm}|C{2.3cm}|}
+\vspace{2pt}
+{\renewcommand{\arraystretch}{1.35}%
+\noindent\begin{tabularx}{\textwidth}{|c|L|C{3.2cm}|}
   \hline
-  & \textbf{What Mr Bowen sees} & \textbf{Steps} & \textbf{Name} \\ \hline
-  P & No shell. Eight soft arms, each with two rows of suckers. & \tl{1b, 3b, 4a} & \tl{octopus} \\ \hline
-  Q & A thin shell. Ten legs and two long feelers. & & \\ \hline
-  R & No shell. A soft round top, like an umbrella. Many tentacles. & & \\ \hline
-  S & No shell. Five arms in the shape of a star. & & \\ \hline
-  T & A round, curly shell. It moves on one soft foot. No legs. & & \\ \hline
+  & \textbf{What Mr Bowen sees} & \textbf{Name} \\ \hline
+  P & No shell. Eight soft arms, each with two rows of suckers. & \tl{octopus} \\ \hline
+  Q & A thin shell. Ten legs and two long feelers. & \\ \hline
+  R & No shell. A soft round top, like an umbrella. Many tentacles. & \\ \hline
+  S & No shell. Five arms in the shape of a star. & \\ \hline
+  T & A round, curly shell. It moves on one soft foot. No legs. & \\ \hline
 \end{tabularx}}
 \end{minipage}
 
 % -- C2 ---------------------------------------------------------------------
 % Build the key from B1. The frame forces a 3-3 first split: 3 = 1 + 2,
 % 2 = 1 + 1, so five questions for six names. One answer is in the key.
+\clearpage
 \qhead{C2}{Build a dichotomous key: the six animals}
 
 \noindent\begin{minipage}{\textwidth}
@@ -542,24 +565,24 @@ Write a question in each blue box and a name in each green box.
   \node[qbox, minimum width=5.6cm] (q1) at (0,0) {};
   \node[font=\footnotesize\bfseries, text=cbteal, anchor=north west] at
     ($(q1.north west)+(0.1,-0.05)$) {1};
-  \node[qbox] (q2) at (-4.6,-2.2) {};
+  \node[qbox] (q2) at (-4.6,-2.7) {};
   \node[font=\footnotesize\bfseries, text=cbteal, anchor=north west] at
     ($(q2.north west)+(0.1,-0.05)$) {2};
-  \node[qbox] (q3) at (4.6,-2.2) {};
+  \node[qbox] (q3) at (4.6,-2.7) {};
   \node[font=\footnotesize\bfseries, text=cbteal, anchor=north west] at
     ($(q3.north west)+(0.1,-0.05)$) {3};
-  \node[nbox, minimum width=2.4cm] (n1) at (-7.2,-4.4) {};
-  \node[qbox] (q4) at (-3.1,-4.4) {};
+  \node[nbox, minimum width=2.4cm] (n1) at (-7.2,-5.4) {};
+  \node[qbox] (q4) at (-3.1,-5.4) {};
   \node[font=\footnotesize\bfseries, text=cbteal, anchor=north west] at
     ($(q4.north west)+(0.1,-0.05)$) {4};
-  \node[qbox] (q5) at (3.1,-4.4) {};
+  \node[qbox] (q5) at (3.1,-5.4) {};
   \node[font=\footnotesize\bfseries, text=cbteal, anchor=north west] at
     ($(q5.north west)+(0.1,-0.05)$) {5};
-  \node[nbox, minimum width=2.4cm] (n6) at (7.2,-4.4) {};
-  \node[nbox, minimum width=2.4cm] (n2) at (-4.6,-6.4) {};
-  \node[nbox, minimum width=2.4cm] (n3) at (-1.6,-6.4) {};
-  \node[nbox, minimum width=2.4cm] (n4) at (1.6,-6.4) {};
-  \node[nbox, minimum width=2.4cm] (n5) at (4.6,-6.4) {};
+  \node[nbox, minimum width=2.4cm] (n6) at (7.2,-5.4) {};
+  \node[nbox, minimum width=2.4cm] (n2) at (-4.6,-7.9) {};
+  \node[nbox, minimum width=2.4cm] (n3) at (-1.6,-7.9) {};
+  \node[nbox, minimum width=2.4cm] (n4) at (1.6,-7.9) {};
+  \node[nbox, minimum width=2.4cm] (n5) at (4.6,-7.9) {};
   \draw[br] (q1.south) -- node[yn, pos=0.45] {yes} (q2.north);
   \draw[br] (q1.south) -- node[yn, pos=0.45] {no} (q3.north);
   \draw[br] (q2.south) -- node[yn, pos=0.45] {yes} (n1.north);
@@ -576,6 +599,7 @@ Write a question in each blue box and a name in each green box.
 % -- C3 ---------------------------------------------------------------------
 % Most keys send the elephant to the water buffalo (or the sun bear): no
 % scales, four legs, babies, heavy. The fix is a sixth question.
+\vfill
 \qhead{C3}{A new animal}
 
 \noindent\begin{minipage}{\textwidth}
@@ -587,62 +611,46 @@ covered in thin hair, 4 legs, about 600 cm long, about 4000 kg, babies (1 at a t
   \item Use \textbf{your} C2 key on the elephant. Which name does your key give?
         \ \blank[3.4cm]
   \item Is the name right? Why does this happen? Answer in a full sentence.
-        \qlines{2}
+        \qlines{3}
   \item Write \textbf{one} new good key question that splits the elephant from that
         animal. Use a number if you can.
-        \qlines{1}
+        \qlines{2}
 \end{enumerate}
 \end{minipage}
 
 % -- C4 ---------------------------------------------------------------------
-\qhead{C4}{The same key, numbered}
+\clearpage
+\qhead{C4}{Check your key}
 
 \noindent\begin{minipage}{\textwidth}
-\noindent Write your C2 key as a \key{numbered} key. Each question becomes two
-sentences, \textbf{a} and \textbf{b}. Each line ends with \textbf{go to} a number or
-with a \textbf{name}.
-
-\vspace{4pt}
-\begin{wordhelp}[Word help: one question, two sentences]
-  \textbf{Does} it \textbf{have} legs? \quad $\to$ \quad
-  \textbf{a} It \textbf{has} legs. \quad \textbf{b} It \textbf{does not have} legs.
-\end{wordhelp}
-
-{\renewcommand{\arraystretch}{1.75}%
-\noindent\begin{tabularx}{\textwidth}{@{}l@{\ \ }L@{\ \ }l@{}}
-  \textbf{1a} & \blank[10.2cm] & \blank[2.6cm] \\
-  \textbf{1b} & \blank[10.2cm] & \blank[2.6cm] \\
-  \textbf{2a} & \blank[10.2cm] & \blank[2.6cm] \\
-  \textbf{2b} & \blank[10.2cm] & \blank[2.6cm] \\
-  \textbf{3a} & \blank[10.2cm] & \blank[2.6cm] \\
-  \textbf{3b} & \blank[10.2cm] & \blank[2.6cm] \\
-  \textbf{4a} & \blank[10.2cm] & \blank[2.6cm] \\
-  \textbf{4b} & \blank[10.2cm] & \blank[2.6cm] \\
-  \textbf{5a} & \blank[10.2cm] & \blank[2.6cm] \\
-  \textbf{5b} & \blank[10.2cm] & \blank[2.6cm] \\
-\end{tabularx}}
+\noindent\textbf{(a)} Test your C2 key on the \textbf{king cobra}. Start at box 1 and
+draw over its path with a \textbf{pencil}, all the way to its name. Does it end on
+\emph{king cobra}? \quad yes \sep no
 \end{minipage}
 
-\vspace{6pt}
+\vspace{12pt}
 \noindent\begin{minipage}{\textwidth}
-\noindent\textbf{(b)} Test your key on the \textbf{king cobra}. Write its steps, like
-\emph{1a, 3b}. \ \blank[4.4cm]
-\end{minipage}
-
-\vspace{10pt}
-\noindent\begin{minipage}{\textwidth}
-\noindent\textbf{(c)} Why is your key a \key{dichotomous} key? Finish the sentence. \\[3pt]
+\noindent\textbf{(b)} Why is your key a \key{dichotomous} key? Finish the sentence. \\[3pt]
 \eng{``It is dichotomous because every question \ldots''}
-\qlines{2}
+\qlines{3}
 \end{minipage}
 
 \vspace{10pt}
 \noindent\begin{minipage}{\textwidth}
-\noindent\textbf{(d)} A \textbf{duck} is about \textbf{55 cm} long. Write one good key
+\noindent\textbf{(c)} A \textbf{duck} is about \textbf{55 cm} long. Write one good key
 question that splits the \textbf{kingfisher} from the duck. Use the B1 table. Which kind of
 data does your question use?
 \qlines{2}
 \noindent Kind of data: \blank[4.0cm]
+\end{minipage}
+
+\vspace{14pt}
+\noindent\begin{minipage}{\textwidth}
+\noindent\textbf{(d)} Test your key on a \textbf{user}. Ask someone at home to use your
+C2 key on the \textbf{pangolin}. Did they reach the right name? \quad yes \sep no \\[4pt]
+Write their \textbf{feedback}: one question that was hard, and why. \\[3pt]
+\eng{``Question \ldots\ was hard because \ldots''}
+\qlines{4}
 \end{minipage}
 
 % ===========================================================================
@@ -758,20 +766,19 @@ discuss ``longer than'' with the class.}
 
 \qhead[cbred]{B4}{From data to a key question}
 \noindent (b) e.g. Does it have more than 2 legs? / Does it have legs? \quad
-(c) e.g. Is its mass more than 100 kg? \quad (d) Does it lay eggs? \quad
+(c) e.g. Is its mass more than 100 kg? \quad
 (e) ``Heavy'' is different for everyone; e.g. ``Is its mass more than 10 kg?''
 
 \smallskip
 \noindent{\small Reject (c) answers with no number (``Is it heavy?'') --- that is (e).
 Note that ``Does it have legs?'' is discrete even with no number in it: you count to 0.}
 
-\qhead[cbred]{C1}{Use a numbered key}
-\noindent Q 1a, 2a shrimp \quad R 1b, 3b, 4b jellyfish \quad S 1b, 3a starfish \quad
-T 1a, 2b sea snail.
+\qhead[cbred]{C1}{Use a key}
+\noindent Q shrimp \quad R jellyfish \quad S starfish \quad T sea snail
 
 \smallskip
 \noindent{\small Expect T as ``starfish'' or R as ``octopus'' from students who jump to
-the names without reading the steps. ``Exactly five'' is in the word help.}
+a name without following the arrows. ``Exactly five'' is in the word help.}
 
 \qhead[cbred]{C2 and C4}{Build the key}
 \noindent One key that fits the frame (yes is always on the left):
@@ -780,8 +787,8 @@ the names without reading the steps. ``Exactly five'' is in the word help.}
 4 Does it have legs? Yes: \textbf{pangolin}; No: \textbf{king cobra}. \
 3 Does it have 4 legs? Yes $\to$ 5; No: \textbf{kingfisher}. \
 5 Is its mass more than 100 kg? Yes: \textbf{water buffalo}; No: \textbf{sun bear}.
-\quad C4(b) for this key: 1a, 2b, 4b. \quad C4(c): ``\ldots every question has
-two answers (yes or no), so it branches into two.'' \quad C4(d): e.g. ``Is it longer
+\quad C4(a) for this key: box 1 yes, box 2 no, box 4 no. \quad C4(b): ``\ldots every
+question has two answers (yes or no), so it branches into two.'' \quad C4(c): e.g. ``Is it longer
 than 30 cm?'' (continuous); ``Does it have webbed feet?'' is good too (categorical: you
 can see it).
 
@@ -790,7 +797,8 @@ can see it).
 kingfisher, crocodile). Students may write a question whose ``yes'' side has two
 animals where the frame has one; accept a key that works if the arrows and names agree.
 Check, in order: six different names, one per green box; every question is yes/no with
-one answer from everyone (count, measure or see); the C4 lines match the tree. Reject
+one answer from everyone (count, measure or see); the king cobra's path ends on its
+name. Reject
 ``Is it big?'', ``Is it dangerous?'', ``Is it a bird?'' (naming the answer is not a key
 question).}
 

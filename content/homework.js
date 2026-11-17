@@ -382,7 +382,7 @@ export const HOMEWORK = [
   {
     id: 'hw13x',
     label: 'EX 13',
-    title: 'How Many Wholes?',
+    title: 'The Same Amount',
     subtitle: 'Extra · equivalent fractions, improper fractions and mixed numbers, a little on keys',
     pdf: hw13x,
   },

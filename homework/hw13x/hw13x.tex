@@ -1,5 +1,5 @@
 % homework/hw13x/hw13x.tex
-% Year 7 - Extra Homework 13: How Many Wholes?
+% Year 7 - Extra Homework 13: The Same Amount.
 %
 % Goes out with Homework 13 (homework/hw13, Count It, Measure It, Key It),
 % due the same day. The teacher asked (17 Nov 2026) for an easier eight-page
@@ -100,13 +100,13 @@
 % a/b = c/d with a curved arrow over the top and one under the bottom.
 \newcommand{\eqa}[5]{%
   \begin{tikzpicture}[baseline=(e.base)]
-    \node (f1) at (0,0) {\Large$\dfrac{#1}{#2}$};
-    \node (e) at (0.95,0) {\Large$=$};
-    \node (f2) at (1.9,0) {\Large$\dfrac{#3}{#4}$};
-    \draw[-{Stealth[length=5pt]}, cborange, line width=0.8pt] (0.0,0.72)
-      to[out=50, in=130] node[above=-1pt, font=\small\bfseries] {#5} (1.9,0.78);
-    \draw[-{Stealth[length=5pt]}, cborange, line width=0.8pt] (0.0,-0.72)
-      to[out=-50, in=-130] node[below=-1pt, font=\small\bfseries] {#5} (1.9,-0.78);
+    \node (f1) at (0,0) {\LARGE$\dfrac{#1}{#2}$};
+    \node (e) at (1.05,0) {\LARGE$=$};
+    \node (f2) at (2.1,0) {\LARGE$\dfrac{#3}{#4}$};
+    \draw[-{Stealth[length=5pt]}, cborange, line width=0.8pt] (0.0,0.85)
+      to[out=50, in=130] node[above=-1pt, font=\small\bfseries] {#5} (2.1,0.9);
+    \draw[-{Stealth[length=5pt]}, cborange, line width=0.8pt] (0.0,-0.85)
+      to[out=-50, in=-130] node[below=-1pt, font=\small\bfseries] {#5} (2.1,-0.9);
   \end{tikzpicture}}
 
 % -- Key drawings ------------------------------------------------------------
@@ -131,7 +131,7 @@
                   left=18pt, right=14pt, top=10pt, bottom=10pt]
   {\color{cbpurple}\bfseries YEAR 7\sep MATHS UNIT 7\sep SCIENCE UNIT 4\sep
   EXTRA HOMEWORK 13}\\[5pt]
-  {\color{cbpurple}\Huge\bfseries How Many Wholes?}\\[7pt]
+  {\color{cbpurple}\Huge\bfseries The Same Amount}\\[7pt]
   {\color{black!70}Part 1: Maths --- 7.1 Equivalent fractions, improper fractions and
   mixed numbers}\\
   {\color{black!70}Part 2: Data and keys --- a little of 6.1, 4.4 and 4.5}
@@ -177,16 +177,17 @@
 
 \vspace{6pt}
 {\renewcommand{\arraystretch}{1.3}%
-\noindent\begin{tabularx}{\textwidth}{@{}l@{\ \ }P{4.4cm}C{2.0cm}L@{}}
-  \textbf{(a)} & \fbar{8}{3} & $\tl{\fr{3}{8}}$ & \tl{three eighths} \\[8pt]
-  \textbf{(b)} & \fpie{4}{1} & \blank[1.4cm] & \blank[6.0cm] \\[8pt]
-  \textbf{(c)} & \fbar{5}{2} & \blank[1.4cm] & \blank[6.0cm] \\[8pt]
-  \textbf{(d)} & \fpie{6}{5} & \blank[1.4cm] & \blank[6.0cm] \\[8pt]
-  \textbf{(e)} & \fbar{10}{7} & \blank[1.4cm] & \blank[6.0cm] \\
+\noindent\begin{tabularx}{\textwidth}{@{}l@{\ \ }P{4.8cm}C{2.0cm}L@{}}
+  \textbf{(a)} & \fbar[4.4]{8}{3} & $\tl{\fr{3}{8}}$ & \tl{three eighths} \\[16pt]
+  \textbf{(b)} & \fpie[0.8]{4}{1} & \blank[1.4cm] & \blank[6.0cm] \\[16pt]
+  \textbf{(c)} & \fbar[4.4]{5}{2} & \blank[1.4cm] & \blank[6.0cm] \\[16pt]
+  \textbf{(d)} & \fpie[0.8]{6}{5} & \blank[1.4cm] & \blank[6.0cm] \\[16pt]
+  \textbf{(e)} & \fbar[4.4]{10}{7} & \blank[1.4cm] & \blank[6.0cm] \\
 \end{tabularx}}
 \end{minipage}
 
 % -- X2 ---------------------------------------------------------------------
+\clearpage
 \qhead{X2}{Shade the same amount}
 
 \noindent\begin{minipage}{\textwidth}
@@ -215,6 +216,7 @@ fill the box.
 \end{minipage}
 
 % -- X3 ---------------------------------------------------------------------
+\vfill
 \qhead{X3}{The fraction wall}
 
 \noindent\begin{minipage}{\textwidth}
@@ -252,6 +254,7 @@ fill the box.
 \end{minipage}
 
 % -- X4 ---------------------------------------------------------------------
+\vfill
 \qhead{X4}{Equal or not equal?}
 
 \noindent\begin{minipage}{\textwidth}
@@ -271,6 +274,7 @@ to check.
 \end{minipage}
 
 % -- X5 ---------------------------------------------------------------------
+\clearpage
 \qhead{X5}{Fill the box: follow the arrows}
 
 \noindent\begin{minipage}{\textwidth}
@@ -289,7 +293,7 @@ arrow too.
 \textbf{(d)}\ \eqa{5}{6}{10}{\bx}{$\times$\,\bx}
 \end{minipage}
 
-\vspace{6pt}
+\vfill
 \noindent\begin{minipage}{\textwidth}
 \noindent\textbf{Divide.}
 
@@ -300,12 +304,12 @@ arrow too.
 \textbf{(h)}\ \eqa{8}{10}{\bx}{5}{$\div$\,\bx}
 \end{minipage}
 
-\vspace{6pt}
+\vfill
 \noindent\begin{minipage}{\textwidth}
 \noindent\textbf{No arrows.} \ You choose the number.
 
 \vspace{4pt}
-{\renewcommand{\arraystretch}{2.4}%
+{\renewcommand{\arraystretch}{3.0}%
 \noindent\begin{tabular}{@{}l@{\ \ }l@{\qquad\qquad}l@{\ \ }l@{\qquad\qquad}l@{\ \ }l@{}}
   \textbf{(i)} & $\fr{4}{5} = \fr{\bx}{15}$ &
   \textbf{(j)} & $\fr{1}{6} = \fr{3}{\bx}$ &
@@ -319,11 +323,12 @@ arrow too.
 \end{tabular}}
 
 \vspace{6pt}
-\noindent\textbf{(r)} Write \textbf{three} fractions that are equal to $\fr{1}{2}$.
+\vspace{10pt}\noindent\textbf{(r)} Write \textbf{three} fractions that are equal to $\fr{1}{2}$.
 \quad\blank[2.0cm]\quad\blank[2.0cm]\quad\blank[2.0cm]
 \end{minipage}
 
 % -- X6 ---------------------------------------------------------------------
+\clearpage
 \qhead{X6}{Count the wholes}
 
 \noindent\begin{minipage}{\textwidth}
@@ -354,6 +359,7 @@ arrow too.
 \end{minipage}
 
 % -- X7 ---------------------------------------------------------------------
+\vfill
 \qhead{X7}{Improper fraction to mixed number: divide}
 
 \noindent\begin{minipage}{\textwidth}
@@ -378,6 +384,7 @@ the answer is just a whole number.}
 \end{minipage}
 
 % -- X8 ---------------------------------------------------------------------
+\clearpage
 \qhead{X8}{Mixed number to improper fraction: multiply, then add}
 
 \noindent\begin{minipage}{\textwidth}
@@ -397,6 +404,7 @@ the answer is just a whole number.}
 \end{minipage}
 
 % -- X9 ---------------------------------------------------------------------
+\vfill
 \qhead{X9}{On the number line}
 
 \noindent\begin{minipage}{\textwidth}
@@ -429,6 +437,7 @@ quarters \textbf{and} as a mixed number. A is done for you.
 \end{minipage}
 
 % -- X10 --------------------------------------------------------------------
+\vfill
 \qhead{X10}{Match the pairs}
 
 \noindent\begin{minipage}{\textwidth}
@@ -449,6 +458,7 @@ quarters \textbf{and} as a mixed number. A is done for you.
 \end{minipage}
 
 % -- X11 --------------------------------------------------------------------
+\clearpage
 \qhead{X11}{Mr Bowen's fractions}
 
 \begin{wordhelp}
@@ -486,6 +496,7 @@ $\fr{1}{2}$ of the same bottle size. Who drinks more? Circle one.
 \end{minipage}
 
 % -- X12 --------------------------------------------------------------------
+\vfill
 \qhead{X12}{Mr Bowen's mistakes}
 
 \noindent\begin{minipage}{\textwidth}
@@ -507,6 +518,7 @@ the wrong ones and write the correct answer.
 % ===========================================================================
 % PART 2 -- A LITTLE DATA AND KEYS
 % ===========================================================================
+\clearpage
 \hwsection{Part 2 \textperiodcentered\ Data and Keys}
 
 % -- X13 --------------------------------------------------------------------
@@ -516,7 +528,7 @@ the wrong ones and write the correct answer.
 \noindent Tick (\checkmark) one box in each row. (a) is done for you.
 
 \vspace{4pt}
-{\renewcommand{\arraystretch}{1.4}%
+{\renewcommand{\arraystretch}{1.9}%
 \noindent\begin{tabularx}{\textwidth}{|L|C{2.3cm}|C{2.3cm}|C{2.3cm}|}
   \hline
   \textbf{Animal fact} & \textbf{a word} & \textbf{a count} & \textbf{a measure} \\[-3pt]
@@ -533,6 +545,7 @@ the wrong ones and write the correct answer.
 % -- X14 --------------------------------------------------------------------
 % chicken: legs, feathers. frog: legs, no feathers, no fur. buffalo: legs,
 % no feathers, fur/hair. snake: no legs.
+\vfill
 \qhead{X14}{Use the key}
 
 \noindent\begin{minipage}{\textwidth}
@@ -541,7 +554,7 @@ Write the name of each animal. A is done for you.
 
 \vspace{6pt}
 \noindent\begin{minipage}[c]{0.56\textwidth}\centering
-\begin{tikzpicture}[x=1cm, y=1cm]
+\begin{tikzpicture}[x=1cm, y=1.35cm]
   \node[qbox, minimum width=3.6cm] (q1) at (0,0) {Does it have legs?};
   \node[nbox, minimum width=1.9cm] (snake) at (2.4,-1.5) {snake};
   \node[qbox, minimum width=3.6cm] (q2) at (-1.0,-1.5) {Does it have feathers?};
@@ -573,6 +586,7 @@ Write the name of each animal. A is done for you.
 \end{minipage}
 
 % -- X15 --------------------------------------------------------------------
+\clearpage
 \qhead{X15}{Good question or bad question?}
 
 \noindent\begin{minipage}{\textwidth}
@@ -580,7 +594,7 @@ Write the name of each animal. A is done for you.
 what you can \textbf{count}, \textbf{measure} or \textbf{see}. Tick good or bad.
 
 \vspace{4pt}
-{\renewcommand{\arraystretch}{1.4}%
+{\renewcommand{\arraystretch}{2.0}%
 \noindent\begin{tabularx}{\textwidth}{|L|C{2.0cm}|C{2.0cm}|}
   \hline
   \textbf{Key question} & \textbf{good} & \textbf{bad} \\ \hline
@@ -595,6 +609,7 @@ what you can \textbf{count}, \textbf{measure} or \textbf{see}. Tick good or bad.
 
 % -- X16 --------------------------------------------------------------------
 % fish: no legs. butterfly: 6 legs. chicken: 2 legs, feathers. dog: 4 legs, fur.
+\vfill
 \qhead{X16}{Finish the key}
 
 \noindent\begin{minipage}{\textwidth}
@@ -608,7 +623,7 @@ word bank.
 
 \vspace{8pt}
 \centering
-\begin{tikzpicture}[x=1cm, y=1cm]
+\begin{tikzpicture}[x=1.1cm, y=1.45cm]
   \node[qbox] (q1) at (0,0) {Does it have legs?};
   \node[nbox] (fish) at (4.6,-1.7) {fish};
   \node[qbox, minimum height=1.3cm] (q2) at (-1.8,-1.7) {Does it have \\[6pt]

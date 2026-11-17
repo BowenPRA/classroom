@@ -14,12 +14,25 @@ Due **Monday 23 November 2026**, printed on the cover in red.
 | `hw13.pdf` | Student copy, English. **8 pages** (two sheets, double-sided). |
 | `hw13-teacher.pdf` | Student copy plus a 3-page answer key with diagnoses. **11 pages.** |
 
-**Extra Homework 13** (`../hw13x/`, *How Many Wholes?*) goes out with it.
+**Extra Homework 13** (`../hw13x/`, *The Same Amount*) goes out with it.
 
 Built and verified: student 8 pages, teacher 11, no errors or overfull boxes; every page read and every answer checked by hand.
 
 Build: `pwsh .claude/skills/new-homework/scripts/build-hw.ps1 hw13`. The packet sets
 `\linespread{1.02}` (house 1.06) to land on eight pages.
+
+## Revised 17 November 2026
+
+The teacher found the first version's formatting and spacing poor and did not want C4
+(rewrite your key as a numbered key): *"I just like the diagrams."* So:
+
+- **C4 is now "Check your key"**: trace the king cobra's path through the C2 diagram in
+  pencil; why it is dichotomous; kingfisher or duck; and a user test at home with
+  feedback (4.5). No numbered keys anywhere.
+- **C1 is a branching diagram** (five beach animals); the table asks only for names.
+- House line spacing (1.06) is back. Each page breaks where planned (`\clearpage`) and
+  spare space goes between questions (`\vfill`) or into bigger writing boxes and lines.
+  A1(e) is back; B4 lost row (d), which repeated row (a), so B4 and C1 share page 6.
 
 ## The segue
 
@@ -47,10 +60,10 @@ categorical data. C2 builds the dichotomous key for the same six animals from th
 | B3 | 16 baby crocodiles: grouped frequency table; "most are longer than 27 cm" is 8 of 16 |
 | B4 | From data to a key question; make "Is it heavy?" good |
 | **Part 3 · Keys** | |
-| C1 | Use a numbered key: five sea animals |
+| C1 | Use a branching key: five beach animals |
 | C2 | Build the dichotomous key for the six (a frame: 3 and 3, five questions) |
 | C3 | The Asian elephant the key cannot name; add a question |
-| C4 | The same key, numbered; test on the king cobra; why "dichotomous"; kingfisher or duck |
+| C4 | Check your key: trace the king cobra; why "dichotomous"; kingfisher or duck; a user test at home |
 
 ## Cut to reach eight pages
 
