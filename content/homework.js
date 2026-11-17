@@ -43,6 +43,8 @@ import hw11xfr from '../homework/hw11x/hw11x-fr.pdf?url'
 import y5m05l3 from '../homework/y5m05-l3/y5m05-l3.pdf?url'
 import hw12 from '../homework/hw12/hw12.pdf?url'
 import hw12x from '../homework/hw12x/hw12x.pdf?url'
+import hw13 from '../homework/hw13/hw13.pdf?url'
+import hw13x from '../homework/hw13x/hw13x.pdf?url'
 
 export const HOMEWORK = [
   {
@@ -364,5 +366,24 @@ export const HOMEWORK = [
     title: 'What’s Left of 180°?',
     subtitle: 'Extra · add and take away, decimals, a walk and a shop, angles on a straight line',
     pdf: hw12x,
+  },
+  // Maths 7.1 Part 1 at full stretch; 6.1's three kinds of data from six
+  // animals of Viet Nam, which become the key questions; Science 4.4–4.5, a
+  // dichotomous key built from the same table. English only, eight pages.
+  {
+    id: 'hw13',
+    label: 'HW 13',
+    title: 'Count It, Measure It, Key It',
+    subtitle: 'Maths 7.1 fractions · 6.1 animal data · Science 4.4–4.5 keys',
+    pdf: hw13,
+  },
+  // Goes out with HW 13: equivalent fractions and improper / mixed numbers in
+  // pictures and printed boxes, then a little data and keys.
+  {
+    id: 'hw13x',
+    label: 'EX 13',
+    title: 'How Many Wholes?',
+    subtitle: 'Extra · equivalent fractions, improper fractions and mixed numbers, a little on keys',
+    pdf: hw13x,
   },
 ]
